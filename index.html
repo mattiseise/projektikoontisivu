@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1f2a44">
+  <meta name="description" content="Koonti toteutetuista näyttöprojekteista: peliprojektit, webprojektit, ohjelmointi, kyberturvallisuus ja IT-tuki. Selaa projekteja ja avaa niiden ohjatut sivustot.">
+  <title>Näyttöprojektit</title>
+  <link rel="icon" href="kuvat/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="koonti.css">
+  <script src="projektit.js" defer></script>
+  <script src="koonti.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#lista">Siirry projekteihin</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <p class="eyebrow">BC Helsinki · ohjatut näyttöprojektit</p>
+      <h1>Valitse näyttöprojekti</h1>
+      <p class="lead">Jokainen projekti on 15 viikon ohjattu polku, jonka lopussa on julkaistu työ ja
+        näyttöaineisto. Avaa projektin sivusto ja katso, mitä siinä tehdään viikko viikolta —
+        ja mitä tutkinnon osia sillä suoritetaan.</p>
+      <dl class="header-stats">
+        <div><dt>projektia</dt><dd data-stat="projekteja">–</dd></div>
+        <div><dt>käynnissä</dt><dd data-stat="kaynnissa">–</dd></div>
+        <div><dt>projektityyppiä</dt><dd data-stat="tyyppeja">–</dd></div>
+      </dl>
+    </div>
+  </header>
+
+  <div class="controls" role="search">
+    <div class="controls-inner">
+      <label class="search">
+        <span class="visually-hidden">Hae projekteista</span>
+        <input type="search" data-haku placeholder="Hae nimestä, tekniikasta tai tutkinnon osasta…" autocomplete="off">
+      </label>
+      <div class="chip-row" role="group" aria-label="Rajaa projektityypin mukaan" data-kategoriat></div>
+      <div class="chip-row secondary" role="group" aria-label="Rajaa tilan mukaan">
+        <button type="button" class="chip" data-tila="kaikki" aria-pressed="true">Kaikki</button>
+        <button type="button" class="chip" data-tila="kaynnissa" aria-pressed="false">Käynnissä</button>
+        <button type="button" class="chip" data-tila="paattynyt" aria-pressed="false">Päättyneet</button>
+      </div>
+    </div>
+  </div>
+
+  <main id="lista">
+    <p class="result-count" data-tulokset aria-live="polite"></p>
+    <div class="ryhmat" data-ryhmat></div>
+    <p class="empty-state" data-tyhja hidden>Ei osumia. Kokeile toista hakusanaa tai poista rajaukset.</p>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p><strong>Näyttöprojektit</strong> · koontisivu. Projektisivustot ovat omia repositoryjaan;
+        tämä sivu vain kokoaa ne yhteen.</p>
+      <p class="muted">Uusi projekti lisätään <code>projektit.js</code>-tiedostoon näyttöprojekti-skillillä.
+        Sivu on staattinen eikä kerää mitään tietoa kävijästä.</p>
+    </div>
+  </footer>
+</body>
+</html>
