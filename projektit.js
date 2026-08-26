@@ -14,6 +14,7 @@
  *   kuvaus         1–2 virkettä opiskelijalle: mitä tässä tehdään
  *   lukuvuosi      "2026–27"
  *   viikot         "vko 34–49"
+ *   kesto          projektin pituus, esim. "14 viikkoa", tyhjä jos ei haluta näyttää
  *   ryhma          opiskelijaryhmän tunnus, tyhjä jos ei haluta näyttää
  *   tekniikat      lista
  *   sivusto        julkaistu GitHub Pages -osoite
@@ -34,6 +35,7 @@ window.PROJEKTIT = [
     "kuvaus": "Koulun kahvilapeli Unitylla: asiakkaat tilaavat, pelaaja toimittaa, vaikeus kasvaa ja tulokset tallentuvat. Peli julkaistaan WebGL-buildina, jota kuka tahansa voi kokeilla selaimessa.",
     "lukuvuosi": "2026–27",
     "viikot": "vko 34–49",
+    "kesto": "14 viikkoa",
     "ryhma": "",
     "tekniikat": ["Unity", "C#", "JSON", "PlayerPrefs", "Git", "WebGL"],
     "sivusto": "https://mattiseise.github.io/pelinayttoprojektit/",
@@ -57,6 +59,7 @@ window.PROJEKTIT = [
     "kuvaus": "Oma teemapaketti Minecraft Java Editioniin: itse piirretyt tekstuurit, Blockbench-mallit, äänet ja datapaketin skriptit. Valmis paketti julkaistaan avoimella lisenssillä, ja kuka tahansa voi ladata ja asentaa sen.",
     "lukuvuosi": "2026–27",
     "viikot": "vko 34–49",
+    "kesto": "14 viikkoa",
     "ryhma": "",
     "tekniikat": ["Minecraft Java", "Blockbench", "Piskel", "JSON", "mcfunction", "Git"],
     "sivusto": "https://mattiseise.github.io/bittibiomi/",

@@ -43,7 +43,7 @@
 
   function hakutekstit(p) {
     return [
-      p.nimi, p.kuvaus, p.lukuvuosi, p.ryhma, p.tila,
+      p.nimi, p.kuvaus, p.lukuvuosi, p.viikot, p.kesto, p.ryhma, p.tila,
       kategoria(p.tyyppi).nimi,
       ...(p.tekniikat || []),
       ...(p.tutkinnonOsat || []).map((o) => o.nimi),
@@ -75,7 +75,7 @@
       ? `<img src="${esc(p.kuva)}" alt="Kuvakaappaus projektin ${esc(p.nimi)} sivustosta" loading="lazy" width="640" height="400">`
       : `<div class="placeholder">Ei kuvaa</div>`;
 
-    const meta = [p.lukuvuosi, p.viikot, p.ryhma].filter(Boolean)
+    const meta = [p.lukuvuosi, p.viikot, p.kesto, p.ryhma].filter(Boolean)
       .map((m) => `<span>${esc(m)}</span>`).join("");
 
     const tekniikat = (p.tekniikat || []).length

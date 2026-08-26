@@ -48,6 +48,13 @@ Tyyppi ratkaisee kortin ryhmän ja värin. Uusi tyyppi lisätään `koonti.js`:n
 `kaynnissa` tai `paattynyt`. Käynnissä olevat näkyvät ensin. Kun toteutus
 päättyy, aja lisäysskripti uudelleen `--tila paattynyt`.
 
+## Kesto
+
+`viikot` on kalenterijakso, esimerkiksi `vko 34–49`. `kesto` on projektin
+todellinen pituus, esimerkiksi `14 viikkoa`. Ne eivät ole sama asia, koska
+jaksoon osuu lomia. Kesto vaihtelee projekteittain, joten sivu ei oleta
+mitään kiinteää viikkomäärää. Molemmat kentät saa jättää tyhjiksi.
+
 ## Paikallinen esikatselu
 
 Avaa `index.html` selaimessa. Data luetaan `projektit.js`:stä tavallisena
