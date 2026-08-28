@@ -68,6 +68,19 @@
 
   /* ---------- kortti ---------- */
 
+  /* Kielimerkki näkyy vain kun projekti ei ole suomenkielinen. */
+  const KIELET = {
+    en: ["🇬🇧", "EN", "Projekti on englanninkielinen"],
+    sv: ["🇸🇪", "SV", "Projekti on ruotsinkielinen"]
+  };
+
+  function kieliMerkki(p) {
+    const k = KIELET[String(p.kieli || "").toLowerCase()];
+    if (!k) return "";
+    const [lippu, koodi, selite] = k;
+    return `<span class="kieli-merkki" title="${esc(selite)}"><span aria-hidden="true">${lippu}</span>${esc(koodi)}<span class="vain-ruudunlukijalle">${esc(selite)}</span></span>`;
+  }
+
   function kortti(p) {
     const kat = kategoria(p.tyyppi);
     const kaynnissa = p.tila === "kaynnissa";
@@ -113,6 +126,7 @@
           ${kuva}
           <span class="tyyppi-merkki" style="background:${kat.vari}">${esc(kat.lyhyt || kat.nimi)}</span>
           <span class="tila-merkki${kaynnissa ? " kaynnissa" : ""}">${kaynnissa ? "Käynnissä" : "Päättynyt"}</span>
+          ${kieliMerkki(p)}
         </div>
         <div class="kortti-sisalto">
           <h3>${p.sivusto ? `<a href="${esc(p.sivusto)}">${esc(p.nimi)}</a>` : esc(p.nimi)}</h3>

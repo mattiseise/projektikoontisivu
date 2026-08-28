@@ -11,6 +11,7 @@
  *   nimi           näkyvä nimi
  *   tyyppi         peli | web | ohjelmointi | kyber | ittuki | muu
  *   tila           kaynnissa | paattynyt
+ *   kieli          sivuston kieli, jos EI suomi: "en" | "sv" (näkyy kortissa lippumerkkinä)
  *   kuvaus         1–2 virkettä opiskelijalle: mitä tässä tehdään
  *   lukuvuosi      "2026–27"
  *   viikot         "vko 34–49"
@@ -37,7 +38,14 @@ window.PROJEKTIT = [
     "viikot": "vko 34–49",
     "kesto": "14 viikkoa",
     "ryhma": "",
-    "tekniikat": ["Unity", "C#", "JSON", "PlayerPrefs", "Git", "WebGL"],
+    "tekniikat": [
+      "Unity",
+      "C#",
+      "JSON",
+      "PlayerPrefs",
+      "Git",
+      "WebGL"
+    ],
     "sivusto": "https://mattiseise.github.io/pelinayttoprojektit/",
     "repo": "https://github.com/mattiseise/pelinayttoprojektit",
     "kuva": "kuvat/kahvilakoodi.jpg",
@@ -46,9 +54,18 @@ window.PROJEKTIT = [
     "vaatimuksia": 32,
     "luovutus": "pe 4.12.2026",
     "tutkinnonOsat": [
-      { "nimi": "Ohjelmointi", "vaatimuksia": 11 },
-      { "nimi": "Ohjelmistokehittäjänä toimiminen", "vaatimuksia": 14 },
-      { "nimi": "Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla", "vaatimuksia": 7 }
+      {
+        "nimi": "Ohjelmointi",
+        "vaatimuksia": 11
+      },
+      {
+        "nimi": "Ohjelmistokehittäjänä toimiminen",
+        "vaatimuksia": 14
+      },
+      {
+        "nimi": "Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla",
+        "vaatimuksia": 7
+      }
     ]
   },
   {
@@ -61,7 +78,14 @@ window.PROJEKTIT = [
     "viikot": "vko 34–49",
     "kesto": "14 viikkoa",
     "ryhma": "",
-    "tekniikat": ["Minecraft Java", "Blockbench", "Piskel", "JSON", "mcfunction", "Git"],
+    "tekniikat": [
+      "Minecraft Java",
+      "Blockbench",
+      "Piskel",
+      "JSON",
+      "mcfunction",
+      "Git"
+    ],
     "sivusto": "https://mattiseise.github.io/bittibiomi/",
     "repo": "https://github.com/mattiseise/bittibiomi",
     "kuva": "kuvat/bittibiomi.jpg",
@@ -70,9 +94,44 @@ window.PROJEKTIT = [
     "vaatimuksia": 32,
     "luovutus": "pe 4.12.2026",
     "tutkinnonOsat": [
-      { "nimi": "Ohjelmointi", "vaatimuksia": 11 },
-      { "nimi": "Ohjelmistokehittäjänä toimiminen", "vaatimuksia": 14 },
-      { "nimi": "Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla", "vaatimuksia": 7 }
+      {
+        "nimi": "Ohjelmointi",
+        "vaatimuksia": 11
+      },
+      {
+        "nimi": "Ohjelmistokehittäjänä toimiminen",
+        "vaatimuksia": 14
+      },
+      {
+        "nimi": "Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla",
+        "vaatimuksia": 7
+      }
     ]
+  },
+  {
+    "slug": "pingpongtanks",
+    "nimi": "Ping Pong Tanks",
+    "tyyppi": "peli",
+    "tila": "kaynnissa",
+    "kieli": "en",
+    "kuvaus": "Kahden pelaajan tankkiareena samalla näppäimistöllä: kimpoavat ammukset, DFS-generoitu sokkelo ja power-upit. Oma GDD toteutetaan Unitylla MVP:ksi asti. Sivusto ja projektidokumentaatio ovat englanniksi.",
+    "lukuvuosi": "2026–27",
+    "viikot": "vko 36–49",
+    "kesto": "13 työviikkoa",
+    "ryhma": "",
+    "tekniikat": [
+      "Unity",
+      "C#",
+      "Git",
+      "GitHub"
+    ],
+    "sivusto": "https://mattiseise.github.io/projekti_pingpongtanks/",
+    "repo": "https://github.com/mattiseise/projekti_pingpongtanks",
+    "kuva": "kuvat/pingpongtanks.jpg",
+    "tutkinto": "Tieto- ja viestintätekniikan perustutkinto",
+    "diaarinumero": "",
+    "vaatimuksia": 0,
+    "luovutus": "pe 4.12.2026",
+    "tutkinnonOsat": []
   }
 ];

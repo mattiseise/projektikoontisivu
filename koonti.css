@@ -150,6 +150,17 @@ main { max-width: var(--content); margin: 0 auto; padding: clamp(1.4rem, 3vw, 2.
 }
 .tila-merkki::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--muted); }
 .tila-merkki.kaynnissa::before { background: var(--live); }
+.kieli-merkki {
+  position: absolute; left: .7rem; bottom: .7rem;
+  display: inline-flex; align-items: center; gap: .3rem;
+  padding: .22rem .55rem; border-radius: 999px;
+  color: var(--navy); background: rgba(255,255,255,.94);
+  font-size: .7rem; font-weight: 800; letter-spacing: .04em;
+}
+.vain-ruudunlukijalle {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
 
 .kortti-sisalto { display: flex; flex-direction: column; flex: 1; padding: 1rem 1.05rem 1.05rem; }
 .kortti h3 { font-size: 1.12rem; font-weight: 850; }
