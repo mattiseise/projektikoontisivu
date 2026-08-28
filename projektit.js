@@ -133,5 +133,50 @@ window.PROJEKTIT = [
     "vaatimuksia": 0,
     "luovutus": "pe 4.12.2026",
     "tutkinnonOsat": []
+  },
+  {
+    "slug": "parlar-ioniano",
+    "nimi": "Parlar Ioniano",
+    "tyyppi": "web",
+    "tila": "kaynnissa",
+    "kieli": "en",
+    "kuvaus": "Opiskelija esittelee itse luomansa kielen: React-sivusto, jossa kielioppitaulukot tulevat datasta, numeromuunnin on rakennettu itse alusta ja tuotos julkaistaan GitHub Pagesiin. Koko projekti englanniksi.",
+    "lukuvuosi": "2026–27",
+    "viikot": "vko 36–49",
+    "kesto": "11 työviikkoa",
+    "ryhma": "Joustava",
+    "tekniikat": [
+      "React",
+      "Vite",
+      "JavaScript",
+      "MUI",
+      "Git",
+      "GitHub Pages"
+    ],
+    "sivusto": "https://mattiseise.github.io/projektikoontisivu/parlar-ioniano/",
+    "repo": "https://github.com/mattiseise/projektikoontisivu",
+    "kuva": "kuvat/parlar-ioniano.jpg",
+    "tutkinto": "Tieto- ja viestintätekniikan perustutkinto",
+    "diaarinumero": "OPH-6216-2025",
+    "vaatimuksia": 44,
+    "luovutus": "pe 4.12.2026",
+    "tutkinnonOsat": [
+      {
+        "nimi": "Tieto- ja viestintätekniikan perustehtävät",
+        "vaatimuksia": 12
+      },
+      {
+        "nimi": "Ohjelmointi",
+        "vaatimuksia": 11
+      },
+      {
+        "nimi": "Ohjelmistokehittäjänä toimiminen",
+        "vaatimuksia": 14
+      },
+      {
+        "nimi": "Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla",
+        "vaatimuksia": 7
+      }
+    ]
   }
 ];

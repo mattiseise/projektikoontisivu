@@ -1,0 +1,62 @@
+{
+  "aksentti": "#1e56a0",
+  "aksenttiTumma": "#143e78",
+  "vaihevarit": [
+    "#1e56a0",
+    "#a87b00",
+    "#b0473a",
+    "#6d28d9"
+  ],
+  "tyokierto": [
+    "Site map",
+    "Component",
+    "Data",
+    "Test",
+    "Publish"
+  ],
+  "vaiheet": [
+    [
+      "A",
+      "Foundations"
+    ],
+    [
+      "B",
+      "Grammar views"
+    ],
+    [
+      "C",
+      "Finish"
+    ],
+    [
+      "D",
+      "Release"
+    ]
+  ],
+  "suunnitelma": [
+    "Goal & audience",
+    "My decisions",
+    "Site map"
+  ],
+  "testaus": [
+    "Plan the test",
+    "Run in browser",
+    "Find the bug",
+    "Fix",
+    "Re-test"
+  ],
+  "tekoaly": [
+    "Ask",
+    "Verify",
+    "Test",
+    "Log"
+  ],
+  "tunnus": "neliot",
+  "tyokiertoOtsikko": "WORKFLOW",
+  "tyokiertoAlt": "The weekly workflow: site map, component, data, test, publish",
+  "vaiheetAlt": "The four phases of the project",
+  "suunnitelmaOtsikko": "THE PLAN COMES BEFORE THE CODE",
+  "suunnitelmaAlt": "The parts of the technical plan",
+  "testausAlt": "The testing loop from planned test to re-test",
+  "tekoalyAlt": "The four steps of AI use: ask, verify, test, log",
+  "tekoalyMuistutus": "Every content line is checked against your own PDF."
+}
