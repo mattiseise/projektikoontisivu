@@ -1,0 +1,60 @@
+{
+  "aksentti": "#0e7490",
+  "aksenttiTumma": "#155e75",
+  "vaihevarit": [
+    "#1a6fae",
+    "#0e7490",
+    "#b83280",
+    "#ca8a04"
+  ],
+  "tyokierto": [
+    "Issue",
+    "Komponentti",
+    "API",
+    "Testi",
+    "Commit"
+  ],
+  "vaiheet": [
+    [
+      "A",
+      "Ydin"
+    ],
+    [
+      "B",
+      "Featuret"
+    ],
+    [
+      "C",
+      "Valmiiksi"
+    ],
+    [
+      "D",
+      "Julkaisu"
+    ]
+  ],
+  "suunnitelma": [
+    "Tavoite ja rajaus",
+    "Omat päätökset",
+    "Tietomalli"
+  ],
+  "testaus": [
+    "Suunnittele testi",
+    "Aja testi",
+    "Löydä virhe",
+    "Korjaa",
+    "Uusintatesti"
+  ],
+  "tekoaly": [
+    "Kysy",
+    "Tarkista",
+    "Testaa",
+    "Kirjaa"
+  ],
+  "tunnus": "ympyra",
+  "tekoalyMuistutus": "Laskenta, rakenne ja CSS tehdään itse.",
+  "tyokiertoAlt": "Infografiikka: tuntikirjauksesta syntyy lasketut yhteenvedot viikoittain, henkilöittäin ja tehtävälajeittain.",
+  "vaiheetAlt": "Aikajana neljästä vaiheesta: Ydin työviikot 1–5, Featuret 6–10, Valmiiksi 11–15, Julkaisu 16–18.",
+  "suunnitelmaAlt": "Kaavio suunnitelman kolmesta osasta: perustiedot, opiskelijan omat päätökset ja ohjaajan päätökset.",
+  "testausAlt": "Testauksen kierto: suunnittele testi, aja, löydä virhe, korjaa ja uusintatestaa.",
+  "tekoalyAlt": "Tekoälyn käytön neljä sääntöä: kysy, tarkista, testaa ja kirjaa."
+}

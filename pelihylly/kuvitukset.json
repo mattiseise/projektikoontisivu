@@ -1,0 +1,63 @@
+{
+  "aksentti": "#6d28d9",
+  "aksenttiTumma": "#5b21b6",
+  "vaihevarit": [
+    "#8d5a2b",
+    "#6b7f3f",
+    "#5b6b8c",
+    "#8d4a5b"
+  ],
+  "tyokierto": [
+    "Suunnitelma",
+    "Komponentti",
+    "API ja data",
+    "Testi",
+    "Julkaisu"
+  ],
+  "vaiheet": [
+    [
+      "A",
+      "Ydin"
+    ],
+    [
+      "B",
+      "Featuret"
+    ],
+    [
+      "C",
+      "Valmiiksi"
+    ],
+    [
+      "D",
+      "Julkaisu"
+    ]
+  ],
+  "suunnitelma": [
+    "Tarve ja käyttäjät",
+    "Omat päätökset",
+    "Tietomalli ja sivukartta"
+  ],
+  "testaus": [
+    "Suunnittele testi",
+    "Aja selaimessa",
+    "Löydä virhe",
+    "Korjaa",
+    "Uusintatesti"
+  ],
+  "tekoaly": [
+    "Kysy",
+    "Tarkista",
+    "Testaa",
+    "Kirjaa"
+  ],
+  "tunnus": "neliot",
+  "tyokiertoOtsikko": "VIIKON TYÖKIERTO",
+  "suunnitelmaOtsikko": "SUUNNITELMA SYNTYY ENNEN TOTEUTUSTA",
+  "tekoalyTekstit": [
+    "Selitä ratkaisu omin sanoin.",
+    "Vertaa Reactin ja Expressin dokumentaatioon.",
+    "Aja testi itse omassa ympäristössä.",
+    "Merkitse käyttö AI-lokiin."
+  ],
+  "tekoalyMuistutus": "Komponenttirakenne, saavutettavuus ja CSS tehdään itse."
+}

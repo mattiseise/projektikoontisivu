@@ -1,0 +1,61 @@
+{
+  "aksentti": "#c2410c",
+  "aksenttiTumma": "#9a3412",
+  "vaihevarit": [
+    "#8d5a2b",
+    "#1a6fae",
+    "#c03434",
+    "#2b6e6e"
+  ],
+  "tyokierto": [
+    "Tarina",
+    "Komponentti",
+    "API",
+    "Testi",
+    "Julkaisu"
+  ],
+  "vaiheet": [
+    [
+      "A",
+      "Ydin"
+    ],
+    [
+      "B",
+      "Ostopolku"
+    ],
+    [
+      "C",
+      "Valmiiksi"
+    ],
+    [
+      "D",
+      "Julkaisu"
+    ]
+  ],
+  "suunnitelma": [
+    "Tavoite ja asiakas",
+    "Omat päätökset",
+    "Tietomalli"
+  ],
+  "testaus": [
+    "Suunnittele testi",
+    "Aja selaimessa",
+    "Löydä virhe",
+    "Korjaa",
+    "Uusintatesti"
+  ],
+  "tekoaly": [
+    "Kysy",
+    "Tarkista",
+    "Testaa",
+    "Kirjaa"
+  ],
+  "tunnus": "neliot",
+  "tyokiertoOtsikko": "TYÖKIERTO",
+  "tyokiertoAlt": "Infografiikka työkierrosta: tarina, komponentti, API, testi ja julkaisu peräkkäisinä askelina, joita terrakotanvärinen nuoli yhdistää.",
+  "vaiheetAlt": "Aikajana neljästä vaiheesta A–D väreineen: Ydin, Ostopolku, Valmiiksi ja Julkaisu, viikot 1–18 ilman päivämääriä.",
+  "suunnitelmaAlt": "Kaavio suunnitelman kolmesta osasta: tavoite ja asiakas, omat päätökset sekä tietomalli laatikkoina.",
+  "testausAlt": "Viisivaiheinen testisilmukka: suunnittele testi, aja selaimessa, löydä virhe, korjaa ja uusintatesti.",
+  "tekoalyAlt": "Neljä tekoälysääntöä peräkkäin: kysy, tarkista, testaa ja kirjaa.",
+  "tekoalyMuistutus": "Komponenttirakenne, tietoturvaratkaisut ja CSS tehdään itse."
+}

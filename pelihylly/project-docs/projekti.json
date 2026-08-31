@@ -1,0 +1,226 @@
+{
+  "slug": "pelihylly",
+  "nimi": "PeliHylly",
+  "kuvaus": "Ohjattu näyttöprojekti: oma pelikirjastopalvelu rakennetaan Reactilla ja Expressillä viikko kerrallaan 18 työviikossa ja julkaistaan tuotantoon.",
+  "vuosi": 2026,
+  "paivaton": true,
+  "viikot": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+  ],
+  "julkaisuviikko": 17,
+  "tunnusmerkki": "🎮",
+  "paletti": {
+    "aksentti": "#6d28d9",
+    "aksenttiTumma": "#5b21b6",
+    "taulukkoSavy": "#ede9fe",
+    "riviSavy": "#f6f3fd"
+  },
+  "vaiheet": [
+    {
+      "tunnus": "A",
+      "lyhyt": "Ydin",
+      "otsikko": "Palvelun ydin: toimeksianto, suunnitelma ja julkaistu pelilista",
+      "viikot": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "vari": "#8d5a2b"
+    },
+    {
+      "tunnus": "B",
+      "lyhyt": "Featuret",
+      "otsikko": "Tilat, käyttäjät, profiilit ja asiakaskatselmointi",
+      "viikot": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "vari": "#6b7f3f"
+    },
+    {
+      "tunnus": "C",
+      "lyhyt": "Valmiiksi",
+      "otsikko": "Palautemuutos, saavutettavuus, testaus, laatu ja dokumentaatio",
+      "viikot": [
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "vari": "#5b6b8c"
+    },
+    {
+      "tunnus": "D",
+      "lyhyt": "Julkaisu",
+      "otsikko": "Julkaisuehdokas, v1.0 ja näyttö",
+      "viikot": [
+        16,
+        17,
+        18
+      ],
+      "vari": "#8d4a5b"
+    }
+  ],
+  "kuvitukset": {
+    "tyokierto": [
+      "Suunnitelma",
+      "Komponentti",
+      "API ja data",
+      "Testi",
+      "Julkaisu"
+    ],
+    "tyokiertoOtsikko": "VIIKON TYÖKIERTO",
+    "suunnitelma": [
+      "Tarve ja käyttäjät",
+      "Omat päätökset",
+      "Tietomalli ja sivukartta"
+    ],
+    "suunnitelmaOtsikko": "SUUNNITELMA SYNTYY ENNEN TOTEUTUSTA",
+    "testaus": [
+      "Suunnittele testi",
+      "Aja selaimessa",
+      "Löydä virhe",
+      "Korjaa",
+      "Uusintatesti"
+    ],
+    "tekoaly": [
+      "Kysy",
+      "Tarkista",
+      "Testaa",
+      "Kirjaa"
+    ],
+    "tekoalyTekstit": [
+      "Selitä ratkaisu omin sanoin.",
+      "Vertaa Reactin ja Expressin dokumentaatioon.",
+      "Aja testi itse omassa ympäristössä.",
+      "Merkitse käyttö AI-lokiin."
+    ],
+    "tekoalyMuistutus": "Komponenttirakenne, saavutettavuus ja CSS tehdään itse.",
+    "tunnus": "neliot"
+  },
+  "tokenit": {
+    "KUVAUS": "Ohjattu näyttöprojekti: oma pelikirjastopalvelu rakennetaan Reactilla ja Expressillä viikko kerrallaan 18 työviikossa ja julkaistaan tuotantoon.",
+    "HERO_OTSIKKO": "Rakenna pelihylly verkkoon.<br><em>Näytä osaamisesi.</em>",
+    "LEAD": "Rakennat 18 työviikossa PeliHyllyn — pelikirjastopalvelun, jossa Pelikellari ry:n jäsenet pitävät kirjaa peleistään, tiloistaan ja arvosteluistaan. Työ etenee viikko kerrallaan: ensin suunnitelma ja julkaistu runko, sitten tilat, käyttäjät ja profiilit, lopuksi laatu, testaus ja v1.0-julkaisu. Näytössä arvioidaan React- ja Express-toteutuksesi, tietovarastoratkaisusi, testauksesi ja työskentelytapasi. Projektipäiväkirja kirjoitetaan tällä sivulla ja viedään joka viikko repositoryyn.",
+    "JAKSO": "Työviikot 1–18",
+    "DEADLINE": "työviikon 18 lopussa",
+    "ALKUPVM": "työviikolla 1",
+    "ALKUPVM_LYHYT": "Työviikko 1",
+    "LOPPU_MA": "Päivä 1",
+    "LOPPU_TI": "Päivä 2",
+    "LOPPU_KE": "Päivä 3",
+    "LOPPU_TO": "Päivä 4",
+    "LOPPU_PE": "Päivä 5",
+    "VAATIMUSMAARA": "32",
+    "ALOITUS_NAPPI": "Aloita PeliHyllyn teko",
+    "POLKU_NAVI": "Projektipolku",
+    "POLKU_OTSIKKO": "Palvelun rakentuminen",
+    "POLKU_H2": "PeliHylly valmistuu näkymä kerrallaan",
+    "POLKU_OHJE": "se kertoo, mikä palvelussa toimii tämän viikon jälkeen.",
+    "TYOMAA_OTSIKKO": "Tee työ projektikansiossa",
+    "TYOMAA_TEKSTI": "Varsinainen työ tehdään repositoryn kansioissa: <code>client/</code> (React-sovellus), <code>server/</code> (Express ja SQLite) ja <code>project-docs/</code> (suunnitelma, testit, päiväkirja ja AI-loki).",
+    "TYOMAA_LISA": "Tämä sivu ohjaa työtä — koodi ja dokumentit elävät Gitissä.",
+    "JULKAISULAUSE": "Rasti tällä sivulla ei ole palautus — työnäyte on aina repositoryssa.",
+    "KANSIOT": "<code>project-docs</code> (suunnitelma, testit, päiväkirja ja AI-loki) sekä <code>client</code> ja <code>server</code>",
+    "KICKOFF_KARKI": "Kehitysympäristö toimii, repository on olemassa julkisen repon pelisäännöillä ja toimeksiannosta on kirjattu kysymyslista ohjaajalle — ensimmäinen commit on tehty.",
+    "PAIVA1": "Lue Pelikellari ry:n toimeksianto ja alleviivaa vaatimukset ja epäselvyydet.",
+    "PAIVA2": "Kirjaa vähintään kahdeksan kysymyksen lista ohjaajalle — rajaus ratkeaa kysymällä, ei arvaamalla.",
+    "PAIVA3": "Asenna ja todenna työkalut: Node LTS, Git ja editori. Tulosteet talteen päiväkirjaan.",
+    "PAIVA4": "Luo Vite + React -projekti ja käynnistä kehityspalvelin. Sovi ohjaajan kanssa julkisen repon pelisäännöistä.",
+    "PAIVA5_OTSIKKO": "Ensimmäinen commit",
+    "PAIVA5": "Luo etärepository, lisää README ja .gitignore ja tee ensimmäinen commit ja push — projekti on nyt olemassa muuallakin kuin omalla koneella.",
+    "TOIMEKSIANTO_OTSIKKO": "Toimeksianto: Pelikellari ry",
+    "RESURSSI_OTSIKKO": "Projektin resurssit ja pohjat",
+    "JALKI_VAATIMUS": "s7 · kehittää ohjelmiston toimintalogiikkaa",
+    "JALKI_ISSUE": "#23 Tilan vaihto kirjaa historiarivin",
+    "JALKI_VALMIS": "korjauscommit + kuvakaappaus profiilin tilahistoriasta",
+    "JALKI_TESTI": "T6: tilamuutos luo täsmäävän history-rivin",
+    "SUUNNITELMA_EYEBROW": "Ennen koodia",
+    "SUUNNITELMA_OTSIKKO": "Tekninen suunnitelma ja sivukartta",
+    "SUUNNITELMA_JOHDANTO": "Suunnitelma täytetään viikolla 2 ja siihen palataan viikoilla 11 ja 16. Esitäytetyt osiot tulevat toimeksiannosta — kaikki päätökset ovat silti sinun, ja ne testataan omassa työssäsi nimetyillä viikoilla.",
+    "SUUNNITELMA_AJOITUS": "Täytetään työviikolla 2 · päivitetään viikoilla 11 ja 16",
+    "SUUNNITELMA_TIEDOSTO": "suunnitelma.md",
+    "OMAT_PAATOKSET_OTSIKKO": "Omat päätökset — sinä omistat nämä",
+    "OMAT_PAATOKSET_TEKSTI": "Tietovarasto, tietomalli ja tilojen nimet, sivukartta ja komponenttijako, julkaisualusta, autentikointitapa, toinen ulkoinen komponentti, kokoelmien laajennuspäätös ja responsiivisuuden taitekohdat ovat sinun päätöksiäsi perusteluineen. Myös aiheen muunnelma (musiikki- tai DVD-arkisto) on mahdollinen, jos perustelet ohjaajalle, mikä muunnelmassa on oikeasti järkevää. Ohjaajan päätökset — lisenssi ja repon julkisuus — kirjataan avoimiksi asioiksi, kunnes ne on sovittu.",
+    "ASKEL2": "mitä muutat ja mihin tiedostoon",
+    "ASKEL4": "aja itse selaimessa ja APIssa",
+    "TESTI_EI_RIITA": "sivujen klikkailua ja toteamista, että toimii",
+    "AI_JOHDANTO": "Tekoäly on sallittu apuväline, mutta näytön ydin — komponenttirakenne, saavutettavuusratkaisut ja CSS — tehdään itse. Tekoäly saa selittää virheilmoituksia, tarkistaa ratkaisujasi ja ehdottaa testitapauksia. Jokainen merkittävä käyttö kirjataan AI-lokiin.",
+    "AI_KOHDE": "juuri tähän projektiin ja omaan tietomalliisi",
+    "AI_LAHDE": "Reactin, Expressin ja SQLiten dokumentaatioon",
+    "AI_ESIM_KYSYMYS": "Miksi useEffect ajautuu kahdesti kehitystilassa ja pitääkö se estää?",
+    "AI_ESIM_KAYTTO": "Selitys StrictModesta ymmärretty; siivousfunktio lisätty omaan fetch-hookkiin omalla koodilla.",
+    "AI_ESIM_TARKISTUS": "Verrattu Reactin dokumentaation StrictMode-sivuun ja ajettu T1 uudelleen kehitys- ja tuotantobuildissa.",
+    "LUOVUTUS": "Näyttömatriisi täsmälinkitettynä, päiväkirja, AI-loki ja v1.0 luovutettu ohjaajalle.",
+    "FOOTER_TEKNIIKKA": "React + Vite · Node.js + Express · SQLite",
+    "FOOTER_VASTUUVAPAUS": " · Pelikellari ry on kuvitteellinen asiakas — sivusto on oppilaitoksen näyttöprojekti.",
+    "HERO_KUVA_OTSIKKO": "Viikon työkierto",
+    "HERO_KUVA_TEKSTI": "Jokainen viikko kulkee saman kierron: suunnittele pieni pala, rakenna komponentti, kytke se APIin ja dataan, testaa kirjatulla odotuksella ja vie julkaistuun versioon.",
+    "HERO_KUVA_ALT": "Viisivaiheinen työkierto: suunnitelma, komponentti, API ja data, testi, julkaisu.",
+    "POLKU_KUVA_OTSIKKO": "Neljä vaihetta, 18 työviikkoa",
+    "POLKU_KUVA_TEKSTI": "Ydin (1–5) tuottaa julkaistun pelilistan, Featuret (6–10) tilat, käyttäjät ja profiilit sekä asiakaskatselmoinnin, Valmiiksi (11–15) palautemuutoksen, testauksen ja laadun, Julkaisu (16–18) julkaisuehdokkaan, v1.0:n ja näytön.",
+    "POLKU_KUVA_ALT": "Projektipolku neljässä vaiheessa: Ydin viikot 1–5, Featuret 6–10, Valmiiksi 11–15, Julkaisu 16–18.",
+    "SUUNNITELMA_KUVA_OTSIKKO": "Suunnitelma ennen koodia",
+    "SUUNNITELMA_KUVA_TEKSTI": "Suunnitelmassa on kolme osaa: asiakkaan tarve ja käyttäjäryhmät, sinun omat perustellut päätöksesi sekä tietomalli ja sivukartta, joita vasten toteutus tarkistetaan.",
+    "SUUNNITELMA_KUVA_ALT": "Suunnitelman kolme osaa: tarve ja käyttäjät, omat päätökset, tietomalli ja sivukartta.",
+    "TESTI_KUVA_ALT": "Testauksen viisi askelta: suunnittele testi, aja selaimessa, löydä virhe, korjaa, uusintatesti. Testi on valmis vasta onnistuneen uusintatestin jälkeen.",
+    "AI_KUVA_ALT": "Tekoälyn käytön neljä askelta: kysy, tarkista, testaa, kirjaa. Komponenttirakenne, saavutettavuus ja CSS tehdään itse."
+  },
+  "koonti": {
+    "tyyppi": "web",
+    "tila": "kaynnissa",
+    "kuvaus": "Oma pelikirjastopalvelu Reactilla ja Expressillä: jäsen lisää pelinsä, vaihtaa tilan yhdellä napilla ja profiilisivu kokoaa tilastot ja tilahistorian. Palvelu julkaistaan tuotantoon julkiseen osoitteeseen, jossa kuvitteellisen Pelikellari ry:n jäsenet kokeilevat sitä.",
+    "tekniikat": [
+      "React",
+      "Vite",
+      "react-router",
+      "Node.js",
+      "Express",
+      "SQLite",
+      "Git"
+    ],
+    "kesto": "18 työviikkoa",
+    "tutkinto": "Tieto- ja viestintätekniikan perustutkinto",
+    "diaarinumero": "OPH-6216-2025",
+    "vaatimuksia": 32,
+    "tutkinnonOsat": [
+      {
+        "nimi": "Ohjelmointi",
+        "vaatimuksia": 11
+      },
+      {
+        "nimi": "Ohjelmistokehittäjänä toimiminen",
+        "vaatimuksia": 14
+      },
+      {
+        "nimi": "Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla",
+        "vaatimuksia": 7
+      }
+    ],
+    "sivusto": "https://mattiseise.github.io/projektikoontisivu/pelihylly/",
+    "repo": "https://github.com/mattiseise/projektikoontisivu"
+  }
+}

@@ -1,0 +1,214 @@
+{
+  "slug": "tuntitutka",
+  "nimi": "TuntiTutka",
+  "kuvaus": "Ohjattu näyttöprojekti: työaikaseurantasovellus mainostoimistolle rakennetaan toiminto kerrallaan 18 työviikossa ja julkaistaan tuotantoon.",
+  "vuosi": 2026,
+  "paivaton": true,
+  "viikot": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+  ],
+  "julkaisuviikko": 17,
+  "tunnusmerkki": "⏱",
+  "paletti": {
+    "aksentti": "#0e7490",
+    "aksenttiTumma": "#155e75",
+    "taulukkoSavy": "#e3f2f6",
+    "riviSavy": "#f2f9fb"
+  },
+  "vaiheet": [
+    {
+      "tunnus": "A",
+      "lyhyt": "Ydin",
+      "otsikko": "Sovelluksen ydin: suunnitelma, julkaistu runko, roolit ja tuntikirjaus",
+      "viikot": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "vari": "#1a6fae"
+    },
+    {
+      "tunnus": "B",
+      "lyhyt": "Featuret",
+      "otsikko": "Featuret: hallinta, omat kirjaukset, lasketut yhteenvedot ja asiakaskatselmointi",
+      "viikot": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "vari": "#0e7490"
+    },
+    {
+      "tunnus": "C",
+      "lyhyt": "Valmiiksi",
+      "otsikko": "Valmiiksi: palautemuutos, mobiili, tietoturva, testaus ja laatu",
+      "viikot": [
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "vari": "#b83280"
+    },
+    {
+      "tunnus": "D",
+      "lyhyt": "Julkaisu",
+      "otsikko": "Julkaisu: RC ja julkaisutestaus, v1.0 ja näyttö",
+      "viikot": [
+        16,
+        17,
+        18
+      ],
+      "vari": "#ca8a04"
+    }
+  ],
+  "kuvitukset": {
+    "tyokierto": [
+      "Issue",
+      "Komponentti",
+      "API",
+      "Testi",
+      "Commit"
+    ],
+    "suunnitelma": [
+      "Tavoite ja rajaus",
+      "Omat päätökset",
+      "Tietomalli"
+    ],
+    "testaus": [
+      "Suunnittele testi",
+      "Aja testi",
+      "Löydä virhe",
+      "Korjaa",
+      "Uusintatesti"
+    ],
+    "tekoaly": [
+      "Kysy",
+      "Tarkista",
+      "Testaa",
+      "Kirjaa"
+    ],
+    "tekoalyMuistutus": "Laskenta, rakenne ja CSS tehdään itse.",
+    "tunnus": "ympyra",
+    "tyokiertoAlt": "Infografiikka: tuntikirjauksesta syntyy lasketut yhteenvedot viikoittain, henkilöittäin ja tehtävälajeittain.",
+    "vaiheetAlt": "Aikajana neljästä vaiheesta: Ydin työviikot 1–5, Featuret 6–10, Valmiiksi 11–15, Julkaisu 16–18.",
+    "suunnitelmaAlt": "Kaavio suunnitelman kolmesta osasta: perustiedot, opiskelijan omat päätökset ja ohjaajan päätökset.",
+    "testausAlt": "Testauksen kierto: suunnittele testi, aja, löydä virhe, korjaa ja uusintatestaa.",
+    "tekoalyAlt": "Tekoälyn käytön neljä sääntöä: kysy, tarkista, testaa ja kirjaa."
+  },
+  "tokenit": {
+    "KUVAUS": "Ohjattu näyttöprojekti: työaikaseurantasovellus mainostoimistolle rakennetaan toiminto kerrallaan 18 työviikossa ja julkaistaan tuotantoon.",
+    "HERO_OTSIKKO": "Tee työaikaseuranta.<br><em>Näytä osaamisesi.</em>",
+    "LEAD": "TuntiTutka on 18 työviikon näyttöprojekti: rakennat mainostoimistolle työaikaseurannan Sveltellä, Expressillä ja SQLitellä, julkaiset sen tuotantoon ja todennat osaamisesi kolmessa tutkinnon osassa.",
+    "POLKU_NAVI": "Projektipolku",
+    "POLKU_OTSIKKO": "Sovelluksen rakentuminen",
+    "POLKU_H2": "Sovellus valmistuu toiminto kerrallaan",
+    "POLKU_OHJE": "Avaa oma työviikkosi, tee tehtävät järjestyksessä ja kirjoita viikon lopussa projektipäiväkirja. Jokainen viikko tuottaa havaittavan tuloksen ja työnäytteen.",
+    "TYOMAA_OTSIKKO": "Työ tapahtuu repositoryssa",
+    "TYOMAA_TEKSTI": "Kaikki koodi, suunnitelma ja päiväkirja elävät GitHub-repositoryssa. Tämä sivusto ohjaa työtä, mutta työnäytteet syntyvät repoon.",
+    "TYOMAA_LISA": "Kansiot: client/, server/ ja project-docs/.",
+    "JULKAISULAUSE": "Committaa päiväkirja joka viikko — se on osa näyttöaineistoa.",
+    "KANSIOT": "<code>project-docs/</code>, <code>client/</code> ja <code>server/</code>",
+    "KICKOFF_KARKI": "Ensimmäisen vaiheen alkajaisiksi tyhjä sovellusrunko viedään jo julkiseen osoitteeseen — tyhjä sivu tuotannossa voittaa valmiin sivun localhostissa.",
+    "PAIVA1": "Lue toimeksianto ja poimi asiakkaan ydinkipu: raportointi. Kirjaa kysymyslista ohjaajalle.",
+    "PAIVA2": "Erottele P0 (kirjaus, roolit, lasketut yhteenvedot) lisäominaisuuksista ja sovi rajauksesta ohjaajan kanssa.",
+    "PAIVA3": "Asenna Node ja Git, luo repository ja Svelte + Vite -projekti. Tee julkisen repon tarkistukset.",
+    "PAIVA4": "Piirrä tietomalli ja rautalangat kirjaus- ja raporttinäkymästä. Päätä: summat lasketaan, ei tallenneta.",
+    "PAIVA5_OTSIKKO": "Julkaise",
+    "PAIVA5": "Vie tyhjä runko julkiseen osoitteeseen ja committaa kaikki. Ensimmäinen havaittava tulos on olemassa.",
+    "TOIMEKSIANTO_OTSIKKO": "Excel-tuntilaput pois — työaikaseuranta, johon voi luottaa",
+    "RESURSSI_OTSIKKO": "Työkalut ja aineisto",
+    "JALKI_VAATIMUS": "s7 · kehittää ohjelmiston toimintalogiikkaa",
+    "JALKI_ISSUE": "#23 Viikkoyhteenvedon laskenta GROUP BY -kyselyllä",
+    "JALKI_VALMIS": "Summat täsmäävät käsin laskettuihin kolmella testiaineistolla",
+    "JALKI_TESTI": "T03 · testiraportti ja raporttinäkymän kuvakaappaus",
+    "SUUNNITELMA_EYEBROW": "Ennen koodia",
+    "SUUNNITELMA_OTSIKKO": "Tekninen suunnitelma",
+    "SUUNNITELMA_JOHDANTO": "Suunnitelma tehdään työviikolla 2 ja siihen palataan koko projektin ajan. Esitäytetyt osiot tulevat toimeksiannosta — päätökset ovat sinun ja ne testataan omassa työssäsi.",
+    "SUUNNITELMA_AJOITUS": "Täytä työviikolla 2, ohjaajan hyväksyntä ennen viikkoa 3. Päätöksiin palataan viikoilla 3, 4, 6, 7 ja 9.",
+    "SUUNNITELMA_TIEDOSTO": "suunnitelma.md",
+    "OMAT_PAATOKSET_OTSIKKO": "Nämä päätät itse",
+    "OMAT_PAATOKSET_TEKSTI": "Tietomalli, tietovarasto, julkaisualusta, istuntotapa, reititys- ja kaaviokirjasto sekä viikkokäytäntö. Jokainen päätös perustellaan ja testataan omassa työssäsi.",
+    "ASKEL2": "hyväksymiskriteerit issueen",
+    "ASKEL4": "odotettu tulos kirjattuna ennen ajoa",
+    "TESTI_EI_RIITA": "satunnaista klikkailua",
+    "TESTI_KUVA_ALT": "Testauksen kierto: suunnittele testi, aja, löydä virhe, korjaa ja uusintatestaa.",
+    "AI_JOHDANTO": "Tekoäly saa selittää virheilmoituksia, ehdottaa testitapauksia ja tarkistaa koodiasi. Ydin tehdään itse: yhteenvetojen laskentalogiikka, sovelluksen rakenne, saavutettavuusratkaisut ja CSS — ne ovat se osaaminen, jonka näyttö arvioi. Jokainen merkittävä käyttö kirjataan AI-lokiin.",
+    "AI_KOHDE": "omaan tietomalliisi ja komponenttijakoosi",
+    "AI_LAHDE": "Sveltin, Expressin ja SQLiten viralliseen dokumentaatioon",
+    "AI_ESIM_KYSYMYS": "Miksi GROUP BY jakaa sunnuntain kirjaukset väärälle viikolle?",
+    "AI_ESIM_KAYTTO": "Käytin strftime-korjauksen ehdotuksen, vaihdoin sarakenimet omiksi",
+    "AI_ESIM_TARKISTUS": "Ajoin kyselyn testiaineistolla ja vertasin käsin laskettuun summaan",
+    "AI_KUVA_ALT": "Tekoälyn käytön neljä sääntöä: kysy, tarkista, testaa ja kirjaa.",
+    "LUOVUTUS": "Näyttömatriisi täsmälinkitettynä, projektipäiväkirja, AI-loki ja julkaistu v1.0 luovutettu arvioijalle.",
+    "FOOTER_TEKNIIKKA": "Svelte + Vite · Node.js + Express · SQLite",
+    "FOOTER_VASTUUVAPAUS": " · Toimeksiannon mainostoimisto ja sen projektipäällikkö ovat kuvitteellisia.",
+    "ALOITUS_NAPPI": "Aloita sovelluksen teko",
+    "VAATIMUSMAARA": "32",
+    "HERO_KUVA_OTSIKKO": "Tunnit talteen, tieto näkyviin",
+    "HERO_KUVA_TEKSTI": "Työntekijä kirjaa — projektipäällikkö näkee summat heti. Yhteenvedot lasketaan joka pyynnöllä, ei tallenneta.",
+    "HERO_KUVA_ALT": "Infografiikka: tuntikirjauksesta syntyy lasketut yhteenvedot viikoittain, henkilöittäin ja tehtävälajeittain.",
+    "POLKU_KUVA_OTSIKKO": "18 työviikkoa, neljä vaihetta",
+    "POLKU_KUVA_TEKSTI": "Ydin, featuret, valmiiksi ja julkaisu — jokainen viikko tuottaa havaittavan tuloksen ja työnäytteen.",
+    "POLKU_KUVA_ALT": "Aikajana neljästä vaiheesta: Ydin työviikot 1–5, Featuret 6–10, Valmiiksi 11–15, Julkaisu 16–18.",
+    "SUUNNITELMA_KUVA_OTSIKKO": "Suunnitelma ohjaa työtä",
+    "SUUNNITELMA_KUVA_TEKSTI": "Tavoite ja rajaus, omat päätökset perusteluineen ja tietomalli. Ohjaajan päätökset pysyvät avoimina asioina kunnes ne on sovittu.",
+    "SUUNNITELMA_KUVA_ALT": "Kaavio suunnitelman kolmesta osasta: perustiedot, opiskelijan omat päätökset ja ohjaajan päätökset."
+  },
+  "koonti": {
+    "tyyppi": "web",
+    "tila": "kaynnissa",
+    "kuvaus": "Rakennat mainostoimistolle työaikaseurannan: työntekijät kirjaavat tunnit tehtävälajeittain ja projektipäällikkö saa aina ajantasaiset yhteenvedot kaavioina. Svelte + Express + SQLite, kaksi käyttäjäroolia ja julkaisu tuotantoon.",
+    "tekniikat": [
+      "Svelte",
+      "Vite",
+      "Node.js",
+      "Express",
+      "SQLite",
+      "Chart.js",
+      "Git"
+    ],
+    "kesto": "18 työviikkoa",
+    "tutkinto": "Tieto- ja viestintätekniikan perustutkinto",
+    "diaarinumero": "OPH-6216-2025",
+    "vaatimuksia": 32,
+    "tutkinnonOsat": [
+      {
+        "nimi": "Ohjelmointi",
+        "vaatimuksia": 11
+      },
+      {
+        "nimi": "Ohjelmistokehittäjänä toimiminen",
+        "vaatimuksia": 14
+      },
+      {
+        "nimi": "Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla",
+        "vaatimuksia": 7
+      }
+    ],
+    "sivusto": "https://mattiseise.github.io/projektikoontisivu/tuntitutka/",
+    "repo": "https://github.com/mattiseise/projektikoontisivu"
+  }
+}

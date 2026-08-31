@@ -178,5 +178,132 @@ window.PROJEKTIT = [
         "vaatimuksia": 7
       }
     ]
+  },
+  {
+    "slug": "pelihylly",
+    "nimi": "PeliHylly",
+    "tyyppi": "web",
+    "tila": "kaynnissa",
+    "kieli": "",
+    "kuvaus": "Oma pelikirjastopalvelu Reactilla ja Expressillä: jäsen lisää pelinsä, vaihtaa tilan yhdellä napilla ja profiilisivu kokoaa tilastot ja tilahistorian. Palvelu julkaistaan tuotantoon julkiseen osoitteeseen, jossa kuvitteellisen Pelikellari ry:n jäsenet kokeilevat sitä.",
+    "lukuvuosi": "",
+    "viikot": "oma aikataulu",
+    "kesto": "18 työviikkoa",
+    "ryhma": "",
+    "tekniikat": [
+      "React",
+      "Vite",
+      "react-router",
+      "Node.js",
+      "Express",
+      "SQLite",
+      "Git"
+    ],
+    "sivusto": "https://mattiseise.github.io/projektikoontisivu/pelihylly/",
+    "repo": "https://github.com/mattiseise/projektikoontisivu",
+    "kuva": "kuvat/pelihylly.jpg",
+    "tutkinto": "Tieto- ja viestintätekniikan perustutkinto",
+    "diaarinumero": "OPH-6216-2025",
+    "vaatimuksia": 32,
+    "luovutus": "18. työviikon perjantai",
+    "tutkinnonOsat": [
+      {
+        "nimi": "Ohjelmointi",
+        "vaatimuksia": 11
+      },
+      {
+        "nimi": "Ohjelmistokehittäjänä toimiminen",
+        "vaatimuksia": 14
+      },
+      {
+        "nimi": "Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla",
+        "vaatimuksia": 7
+      }
+    ]
+  },
+  {
+    "slug": "noppakauppa",
+    "nimi": "NoppaKauppa",
+    "tyyppi": "web",
+    "tila": "kaynnissa",
+    "kieli": "",
+    "kuvaus": "Lautapeliliikkeen ensimmäinen verkkokauppa: tuotteet kategorioittain, sanahaku, Pinia-ostoskori, tunnukset ja tilaukset ilman maksunvälitystä — sekä henkilökunnan tuotehallinta roolisuojauksella. Vue 3 -frontti ja FastAPI+SQLite-backend julkaistaan tuotantoon, ja tietoturva-arvio tehdään omin hyökkäystestein.",
+    "lukuvuosi": "",
+    "viikot": "oma aikataulu",
+    "kesto": "18 työviikkoa",
+    "ryhma": "",
+    "tekniikat": [
+      "Vue 3",
+      "Vite",
+      "Pinia",
+      "vue-router",
+      "Python",
+      "FastAPI",
+      "SQLite",
+      "Git"
+    ],
+    "sivusto": "https://mattiseise.github.io/projektikoontisivu/noppakauppa/",
+    "repo": "https://github.com/mattiseise/projektikoontisivu",
+    "kuva": "kuvat/noppakauppa.jpg",
+    "tutkinto": "Tieto- ja viestintätekniikan perustutkinto",
+    "diaarinumero": "OPH-6216-2025",
+    "vaatimuksia": 32,
+    "luovutus": "18. työviikon perjantai",
+    "tutkinnonOsat": [
+      {
+        "nimi": "Ohjelmointi",
+        "vaatimuksia": 11
+      },
+      {
+        "nimi": "Ohjelmistokehittäjänä toimiminen",
+        "vaatimuksia": 14
+      },
+      {
+        "nimi": "Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla",
+        "vaatimuksia": 7
+      }
+    ]
+  },
+  {
+    "slug": "tuntitutka",
+    "nimi": "TuntiTutka",
+    "tyyppi": "web",
+    "tila": "kaynnissa",
+    "kieli": "",
+    "kuvaus": "Rakennat mainostoimistolle työaikaseurannan: työntekijät kirjaavat tunnit tehtävälajeittain ja projektipäällikkö saa aina ajantasaiset yhteenvedot kaavioina. Svelte + Express + SQLite, kaksi käyttäjäroolia ja julkaisu tuotantoon.",
+    "lukuvuosi": "",
+    "viikot": "oma aikataulu",
+    "kesto": "18 työviikkoa",
+    "ryhma": "",
+    "tekniikat": [
+      "Svelte",
+      "Vite",
+      "Node.js",
+      "Express",
+      "SQLite",
+      "Chart.js",
+      "Git"
+    ],
+    "sivusto": "https://mattiseise.github.io/projektikoontisivu/tuntitutka/",
+    "repo": "https://github.com/mattiseise/projektikoontisivu",
+    "kuva": "kuvat/tuntitutka.jpg",
+    "tutkinto": "Tieto- ja viestintätekniikan perustutkinto",
+    "diaarinumero": "OPH-6216-2025",
+    "vaatimuksia": 32,
+    "luovutus": "18. työviikon perjantai",
+    "tutkinnonOsat": [
+      {
+        "nimi": "Ohjelmointi",
+        "vaatimuksia": 11
+      },
+      {
+        "nimi": "Ohjelmistokehittäjänä toimiminen",
+        "vaatimuksia": 14
+      },
+      {
+        "nimi": "Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla",
+        "vaatimuksia": 7
+      }
+    ]
   }
 ];

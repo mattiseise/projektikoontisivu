@@ -1,0 +1,221 @@
+{
+  "slug": "noppakauppa",
+  "nimi": "NoppaKauppa",
+  "kuvaus": "Ohjattu näyttöprojekti: lautapelien verkkokauppa rakennetaan Vue 3:lla ja FastAPI:lla 18 työviikossa ja julkaistaan tuotantoon asiakkaan käyttöön.",
+  "vuosi": 2026,
+  "paivaton": true,
+  "viikot": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+  ],
+  "julkaisuviikko": 17,
+  "tunnusmerkki": "🎲",
+  "paletti": {
+    "aksentti": "#c2410c",
+    "aksenttiTumma": "#9a3412",
+    "taulukkoSavy": "#fbeee5",
+    "riviSavy": "#fdf5ef"
+  },
+  "vaiheet": [
+    {
+      "tunnus": "A",
+      "lyhyt": "Ydin",
+      "otsikko": "Kaupan ydin: toimeksianto, tietomalli ja julkaistu tuotelista",
+      "viikot": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "vari": "#8d5a2b"
+    },
+    {
+      "tunnus": "B",
+      "lyhyt": "Ostopolku",
+      "otsikko": "Ostopolku: haku, kori, tunnukset, tilaus ja asiakaskatselmointi",
+      "viikot": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "vari": "#1a6fae"
+    },
+    {
+      "tunnus": "C",
+      "lyhyt": "Valmiiksi",
+      "otsikko": "Valmiiksi: palautemuutos, henkilökunnan työkalut, tietoturva ja laatu",
+      "viikot": [
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "vari": "#c03434"
+    },
+    {
+      "tunnus": "D",
+      "lyhyt": "Julkaisu",
+      "otsikko": "Julkaisu ja näyttö",
+      "viikot": [
+        16,
+        17,
+        18
+      ],
+      "vari": "#2b6e6e"
+    }
+  ],
+  "kuvitukset": {
+    "tyokierto": [
+      "Tarina",
+      "Komponentti",
+      "API",
+      "Testi",
+      "Julkaisu"
+    ],
+    "tyokiertoOtsikko": "TYÖKIERTO",
+    "tyokiertoAlt": "Infografiikka työkierrosta: tarina, komponentti, API, testi ja julkaisu peräkkäisinä askelina, joita terrakotanvärinen nuoli yhdistää.",
+    "vaiheetAlt": "Aikajana neljästä vaiheesta A–D väreineen: Ydin, Ostopolku, Valmiiksi ja Julkaisu, viikot 1–18 ilman päivämääriä.",
+    "suunnitelma": [
+      "Tavoite ja asiakas",
+      "Omat päätökset",
+      "Tietomalli"
+    ],
+    "suunnitelmaAlt": "Kaavio suunnitelman kolmesta osasta: tavoite ja asiakas, omat päätökset sekä tietomalli laatikkoina.",
+    "testaus": [
+      "Suunnittele testi",
+      "Aja selaimessa",
+      "Löydä virhe",
+      "Korjaa",
+      "Uusintatesti"
+    ],
+    "testausAlt": "Viisivaiheinen testisilmukka: suunnittele testi, aja selaimessa, löydä virhe, korjaa ja uusintatesti.",
+    "tekoaly": [
+      "Kysy",
+      "Tarkista",
+      "Testaa",
+      "Kirjaa"
+    ],
+    "tekoalyAlt": "Neljä tekoälysääntöä peräkkäin: kysy, tarkista, testaa ja kirjaa.",
+    "tekoalyMuistutus": "Komponenttirakenne, tietoturvaratkaisut ja CSS tehdään itse.",
+    "tunnus": "neliot"
+  },
+  "tokenit": {
+    "KUVAUS": "Ohjattu näyttöprojekti: lautapelien verkkokauppa rakennetaan Vue 3:lla ja FastAPI:lla 18 työviikossa ja julkaistaan tuotantoon asiakkaan käyttöön.",
+    "HERO_OTSIKKO": "Rakenna verkkokauppa.<br><em>Näytä osaamisesi.</em>",
+    "LEAD": "Rakennat lautapeliliikkeen ensimmäisen verkkokaupan Vue 3:lla ja FastAPI:lla: tuotteet, haku, ostoskori, tunnukset ja tilaukset — ilman maksunvälitystä, se on rajattu pois asiakkaan päätöksellä. Työ etenee 18 työviikkoa vaihe kerrallaan, ja kauppa julkaistaan verkkoon jo viidennellä viikolla. Näytössä arvioidaan koodisi, tietoturvaratkaisusi ja tapasi viedä työ julkaisuun asti. Projektipäiväkirja kirjoitetaan tällä sivulla ja viedään joka viikko Gitiin.",
+    "ALOITUS_NAPPI": "Aloita kaupan rakentaminen",
+    "POLKU_NAVI": "Kaupan polku",
+    "POLKU_OTSIKKO": "Kaupan rakentuminen",
+    "POLKU_H2": "Kauppa valmistuu ominaisuus kerrallaan",
+    "POLKU_OHJE": "mitä kaupassa toimii tämän viikon jälkeen.",
+    "TYOMAA_OTSIKKO": "Yksi kauppa, monta viikkoa",
+    "TYOMAA_TEKSTI": "Rakennat samaa verkkokauppaa koko projektin ajan: jokainen viikko lisää siihen yhden havaittavan asian — näkymän, toiminnon tai laatuparannuksen.",
+    "TYOMAA_LISA": "Frontti kansiossa frontend/, backend kansiossa backend/, dokumentit kansiossa project-docs/.",
+    "JULKAISULAUSE": "Sama commit-rytmi jatkuu koko projektin: pieni muutos, testi, commit.",
+    "KANSIOT": "frontend/, backend/ ja project-docs/",
+    "KICKOFF_KARKI": "Ensimmäisen vaiheen lopussa kauppa on julkisessa osoitteessa ja tuotteet tulevat tietokannasta.",
+    "PAIVA1": "Lue toimeksianto ja kirjaa vähintään kuusi kysymystä ohjaajalle: mitä asiakas oikeasti tarvitsee ja mitä on rajattu pois.",
+    "PAIVA2": "Sovi julkisen repon asiat: yksityisyystarkistus, tekijänimi ja alaikäisellä huoltajan suostumus ohjaajan kautta.",
+    "PAIVA3": "Luo repository kansioineen ja alusta Vue+Vite-frontti ja FastAPI-backend. Käynnistä molemmat.",
+    "PAIVA4": "Aloita tekninen suunnitelma: käyttäjätarinat toimeksiannosta ja ensimmäinen luonnos tietomallista.",
+    "PAIVA5_OTSIKKO": "Ensimmäinen commit",
+    "PAIVA5": "Vie kaikki Gitiin: README, kansiorakenne ja käynnistyvät projektit. Kirjoita viikon päiväkirjamerkintä.",
+    "TOIMEKSIANTO_OTSIKKO": "Nopan Nurkka tarvitsee verkkokaupan",
+    "RESURSSI_OTSIKKO": "Aineisto ja työkalut",
+    "JALKI_VAATIMUS": "Arvioi ohjelmiston tietoturvaa (s11)",
+    "JALKI_ISSUE": "Issue #31: Estä toisen käyttäjän tilaushistorian katselu",
+    "JALKI_TESTI": "T12 + IDOR-testi: vieras id → 403",
+    "JALKI_VALMIS": "tietoturva-arvio.md + korjauscommit",
+    "SUUNNITELMA_EYEBROW": "Ennen koodia",
+    "SUUNNITELMA_OTSIKKO": "Tekninen suunnitelma",
+    "SUUNNITELMA_JOHDANTO": "Suunnitelma kokoaa käyttäjätarinat, tietomallin ja omat päätöksesi yhteen tiedostoon. Esitäytetyt osiot tulevat toimeksiannosta — päätökset ovat sinun, ja jokaiseen palataan nimetyllä viikolla.",
+    "SUUNNITELMA_AJOITUS": "Runko viikolla 2 · päivitetään viikoilla 5, 8, 9 ja 11",
+    "SUUNNITELMA_TIEDOSTO": "suunnitelma.md",
+    "OMAT_PAATOKSET_OTSIKKO": "Sinun kauppasi, sinun päätöksesi",
+    "OMAT_PAATOKSET_TEKSTI": "Teema, tietomalli, istuntoratkaisu, korin tallennus, lisäpaketti ja julkaisualusta ovat sinun päätöksiäsi. Perustele jokainen omalla projektillasi — ohjaajan päätökset (lisenssi, repon julkisuus) kirjataan avoimiksi kunnes ne on sovittu.",
+    "ASKEL2": "mitä dataa liikkuu ja mikä komponentti vastaa",
+    "ASKEL4": "myös rajat ja virhetilanteet",
+    "TESTI_EI_RIITA": "klikkailua ja toteamista että toimii",
+    "AI_JOHDANTO": "Tekoäly on sallittu apuväline: se saa selittää virheilmoituksia, ehdottaa testitapauksia ja tarkistaa ratkaisujasi. Ydin tehdään itse — komponenttirakenne, tietoturvaratkaisut (salasanat, istunnot, roolit) ja CSS ovat sitä osaamista, jota näyttö arvioi. Merkittävä käyttö kirjataan AI-lokiin: ymmärrä, tarkista, testaa, kirjaa.",
+    "AI_KOHDE": "juuri sinun kauppaasi ja tietomalliisi",
+    "AI_LAHDE": "Vuen, Pinian ja FastAPI:n virallisiin dokumentaatioihin",
+    "AI_ESIM_KYSYMYS": "Miksi FastAPI palauttaa 422 tilauslomakkeen lähetyksestä?",
+    "AI_ESIM_KAYTTO": "Selitys auttoi: Pydantic-mallista puuttui kenttä. Korjasin mallin itse ja lisäsin testin T10.",
+    "AI_ESIM_TARKISTUS": "Vertasin FastAPI:n dokumentaatioon ja ajoin T10:n uudelleen — meni läpi.",
+    "LUOVUTUS": "Näyttömatriisi linkitetty, demo harjoiteltu, aineisto luovutettu.",
+    "LOPPU_MA": "Päivä 1",
+    "LOPPU_TI": "Päivä 2",
+    "LOPPU_KE": "Päivä 3",
+    "LOPPU_TO": "Päivä 4",
+    "LOPPU_PE": "Päivä 5",
+    "VAATIMUSMAARA": "32",
+    "FOOTER_TEKNIIKKA": "Vue 3 · Pinia · FastAPI · SQLite · julkaisu tuotantoon",
+    "FOOTER_VASTUUVAPAUS": " · Nopan Nurkka on kuvitteellinen liike. Projektissa ei käsitellä oikeita asiakastietoja eikä maksuja.",
+    "HERO_KUVA_OTSIKKO": "Kauppa auki 18 viikossa",
+    "HERO_KUVA_TEKSTI": "Käyttäjätarinasta komponentiksi, komponentista rajapinnaksi, rajapinnasta julkaistuksi kaupaksi — sama työkierto joka viikko.",
+    "HERO_KUVA_ALT": "Infografiikka työkierrosta: tarina, komponentti, API, testi ja julkaisu peräkkäisinä askelina, joita terrakotanvärinen nuoli yhdistää.",
+    "POLKU_KUVA_OTSIKKO": "Neljä vaihetta, yksi ostopolku",
+    "POLKU_KUVA_TEKSTI": "A rakentaa ytimen ja julkaisee rungon, B rakentaa ostopolun ja tuo asiakkaan katsomaan, C viimeistelee työkalut, tietoturvan ja laadun, D julkaisee ja näyttää.",
+    "POLKU_KUVA_ALT": "Aikajana neljästä vaiheesta A–D väreineen: Ydin, Ostopolku, Valmiiksi ja Julkaisu, viikot 1–18 ilman päivämääriä.",
+    "SUUNNITELMA_KUVA_OTSIKKO": "Suunnitelma kantaa päätökset",
+    "SUUNNITELMA_KUVA_TEKSTI": "Tavoite ja asiakas tulevat toimeksiannosta — teema, tietomalli, istuntoratkaisu ja julkaisualusta ovat sinun päätöksiäsi, ja jokaiseen palataan nimetyllä viikolla.",
+    "SUUNNITELMA_KUVA_ALT": "Kaavio suunnitelman kolmesta osasta: tavoite ja asiakas, omat päätökset sekä tietomalli laatikkoina.",
+    "TESTI_KUVA_ALT": "Viisivaiheinen testisilmukka: suunnittele testi, aja selaimessa, löydä virhe, korjaa ja uusintatesti.",
+    "AI_KUVA_ALT": "Neljä tekoälysääntöä peräkkäin: kysy, tarkista, testaa ja kirjaa."
+  },
+  "koonti": {
+    "tyyppi": "web",
+    "tila": "kaynnissa",
+    "kuvaus": "Lautapeliliikkeen ensimmäinen verkkokauppa: tuotteet kategorioittain, sanahaku, Pinia-ostoskori, tunnukset ja tilaukset ilman maksunvälitystä — sekä henkilökunnan tuotehallinta roolisuojauksella. Vue 3 -frontti ja FastAPI+SQLite-backend julkaistaan tuotantoon, ja tietoturva-arvio tehdään omin hyökkäystestein.",
+    "tekniikat": [
+      "Vue 3",
+      "Vite",
+      "Pinia",
+      "vue-router",
+      "Python",
+      "FastAPI",
+      "SQLite",
+      "Git"
+    ],
+    "kesto": "18 työviikkoa",
+    "tutkinto": "Tieto- ja viestintätekniikan perustutkinto",
+    "diaarinumero": "OPH-6216-2025",
+    "vaatimuksia": 32,
+    "tutkinnonOsat": [
+      {
+        "nimi": "Ohjelmointi",
+        "vaatimuksia": 11
+      },
+      {
+        "nimi": "Ohjelmistokehittäjänä toimiminen",
+        "vaatimuksia": 14
+      },
+      {
+        "nimi": "Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla",
+        "vaatimuksia": 7
+      }
+    ],
+    "sivusto": "https://mattiseise.github.io/projektikoontisivu/noppakauppa/",
+    "repo": "https://github.com/mattiseise/projektikoontisivu"
+  }
+}

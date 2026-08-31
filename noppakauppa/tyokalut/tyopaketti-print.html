@@ -1,0 +1,250 @@
+<!doctype html><html lang="fi"><head><meta charset="utf-8"><title>NoppaKauppa – työpaketti</title><style>
+@page { size: A4; margin: 16mm; }
+body { font-family: -apple-system, 'Segoe UI', sans-serif; font-size: 10pt; line-height: 1.45; color: #1a1a1a; margin: 0; }
+h1 { color: #9a3412; font-size: 17pt; margin: 0 0 8pt; page-break-after: avoid; }
+h2 { color: #9a3412; font-size: 12pt; margin: 14pt 0 5pt; page-break-after: avoid; }
+.cover { text-align: center; padding-top: 70mm; page-break-after: always; }
+.cover h1 { font-size: 34pt; }
+.cover p { color: #555; }
+table { border-collapse: collapse; width: 100%; margin: 6pt 0; page-break-inside: avoid; }
+td, th { border: 0.5pt solid #bbb; padding: 3pt 5pt; text-align: left; vertical-align: top; font-size: 9pt; }
+th { background: #fbeee5; }
+.wk { page-break-inside: avoid; margin-bottom: 8pt; }
+.feature { color: #555; font-style: italic; margin: 0 0 4pt; }
+.task { margin: 2pt 0; }
+.done { color: #9a3412; font-size: 9pt; margin: 3pt 0 0; }
+.ev { color: #555; font-size: 9pt; margin: 2pt 0 0; }
+.page { page-break-before: always; }
+.muted { color: #555; }
+.item { font-size: 9pt; margin: 2pt 0; }
+</style></head><body>
+<div class="cover"><h1>NoppaKauppa</h1><p style="font-size:14pt">Paperinen työpaketti</p><p>Lautapelien verkkokauppa: Vue 3, Pinia, FastAPI, SQLite ja julkaisu tuotantoon</p><p style="font-size:12pt"><strong>18 työviikkoa · päivätön aikataulu, viikot 1–18 · luovutus 18. työviikon perjantai</strong></p><p style="max-width:120mm;margin:18pt auto 0">Tämä paketti on aikataulu ja tarkistuslista tilanteisiin, joissa sivusto ei ole auki. Projektipäiväkirja kirjoitetaan sivustolla ja viedään repositoryn project-docs-kansioon. Rasti tässä vihossa ei ole palautus — työ on aina Git-repositoryssa.</p><p style="max-width:120mm;margin:10pt auto 0">Aikataulu on päivätön: viikot ovat työviikkoja 1–18 opiskelijan omasta aloituksesta, eivät kalenteriviikkoja.</p><p style="max-width:120mm;margin:10pt auto 0">Julkiseen repositoryyn ei laiteta henkilötietoja, salaisuuksia eikä oikeiden kauppojen tekstejä tai kuvia. Tuotedata keksitään itse.</p></div>
+<h1>Aikataulu</h1><table><tr><th>Vko</th><th>Ajoitus</th><th>Viikon aihe</th><th>Vaihe</th></tr>
+<tr><td><strong>1</strong></td><td>Työviikko 1 / 18</td><td>Aloitus: toimeksianto ja työympäristö</td><td>A</td></tr>
+<tr><td><strong>2</strong></td><td>Työviikko 2 / 18</td><td>Suunnitelma ja tietomalli</td><td>A</td></tr>
+<tr><td><strong>3</strong></td><td>Työviikko 3 / 18</td><td>Tuotelista kannasta</td><td>A</td></tr>
+<tr><td><strong>4</strong></td><td>Työviikko 4 / 18</td><td>Kategoriat ja reititys</td><td>A</td></tr>
+<tr><td><strong>5</strong></td><td>Työviikko 5 / 18</td><td>Ensijulkaisu</td><td>A</td></tr>
+<tr><td><strong>6</strong></td><td>Työviikko 6 / 18</td><td>Sanahaku</td><td>B</td></tr>
+<tr><td><strong>7</strong></td><td>Työviikko 7 / 18</td><td>Ostoskori</td><td>B</td></tr>
+<tr><td><strong>8</strong></td><td>Työviikko 8 / 18</td><td>Tunnukset ja istunto</td><td>B</td></tr>
+<tr><td><strong>9</strong></td><td>Työviikko 9 / 18</td><td>Tilaus ja tilaushistoria</td><td>B</td></tr>
+<tr><td><strong>10</strong></td><td>Työviikko 10 / 18</td><td>Asiakaskatselmointi</td><td>B</td></tr>
+<tr><td><strong>11</strong></td><td>Työviikko 11 / 18</td><td>Palautemuutos ja omat tiedot</td><td>C</td></tr>
+<tr><td><strong>12</strong></td><td>Työviikko 12 / 18</td><td>Tuotehallinta ja roolisuojaus</td><td>C</td></tr>
+<tr><td><strong>13</strong></td><td>Työviikko 13 / 18</td><td>Tilaukset ja saavutettavuus</td><td>C</td></tr>
+<tr><td><strong>14</strong></td><td>Työviikko 14 / 18</td><td>Tietoturvaviikko</td><td>C</td></tr>
+<tr><td><strong>15</strong></td><td>Työviikko 15 / 18</td><td>Testaus ja regressio</td><td>C</td></tr>
+<tr><td><strong>16</strong></td><td>Työviikko 16 / 18</td><td>Julkaisuehdokas ja julkaisutestaus</td><td>D</td></tr>
+<tr><td><strong>17</strong></td><td>Työviikko 17 / 18</td><td>Julkaisu v1.0</td><td>D</td></tr>
+<tr><td><strong>18</strong></td><td>Työviikko 18 / 18</td><td>Näyttö</td><td>D</td></tr>
+</table><p class="muted">Palautus viimeistään 18. työviikon perjantai. Sivusto: tehtävien tarkat ohjeet, toteutusavut ja projektipäiväkirja.</p>
+<h1 class="page">Vaihe A — Kaupan ydin: toimeksianto, tietomalli ja julkaistu tuotelista</h1>
+<div class="wk"><h2>Työviikko 1 / 18 — Aloitus: toimeksianto ja työympäristö</h2>
+<p class="feature">Viikon jälkeen toimeksianto on luettu ja kysymyslista viety ohjaajalle: repository on GitHubissa ensimmäisellä commitilla, ja sekä Vue+Vite-frontti että FastAPI-backend käynnistyvät omalla koneellasi.</p>
+<p class="task">☐&nbsp; Lue toimeksianto ja kirjaa vähintään kuusi kysymystä ohjaajalle tai asiakkaalle.</p>
+<p class="task">☐&nbsp; Sovi julkisen repon asiat ja käynnistä ohjaajan kanssa katselmoijien etsintä viikkoja 10 ja 16 varten.</p>
+<p class="task">☐&nbsp; Luo repository ja kansiorakenne: frontend/, backend/ ja project-docs/.</p>
+<p class="task">☐&nbsp; Alusta Vite+Vue-projekti ja FastAPI-sovellus ja käynnistä molemmat kehityspalvelimet.</p>
+<p class="done"><strong>Valmis kun:</strong> Molemmat kehityspalvelimet käynnistyvät ohjeen komennoilla; repo on GitHubissa README:n ja ensimmäisen commitin kanssa; kysymyslista on ohjaajalla ja vastaukset tai avoimet asiat, mukaan lukien katselmoijien tilanne, on kirjattu.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> repositoryn linkki, ensimmäisen commitin tunnus ja kysymyslista project-docs-kansiossa.</p>
+</div>
+<div class="wk"><h2>Työviikko 2 / 18 — Suunnitelma ja tietomalli</h2>
+<p class="feature">Viikon jälkeen tekninen suunnitelma on olemassa: priorisoidut käyttäjätarinat, SQLite-tietomalli, tietovarastovertailu, rautalangat ja P0-tehtävät issueina — ja teemapäätös on lyöty lukkoon.</p>
+<p class="task">☐&nbsp; Kirjoita käyttäjätarinat toimeksiannosta ja priorisoi ne P0-, P1- ja P2-tasoille.</p>
+<p class="task">☐&nbsp; Piirrä tietomalli: tuote, kategoria, käyttäjä rooleineen, tilaus ja tilausrivi.</p>
+<p class="task">☐&nbsp; Vertaa tietovarastovaihtoehdot (SQLite, JSON-tiedosto, PostgreSQL) ja perustele valinta.</p>
+<p class="task">☐&nbsp; Luonnostele rautalangat, hyväksytä ne ja pilko P0 vähintään kahdeksaksi issueksi.</p>
+<p class="done"><strong>Valmis kun:</strong> suunnitelma.md:ssä on tarinat prioriteetteineen, tietomallikaavio, tietovarastoperustelu ja teemapäätös; issueita on vähintään kahdeksan ja P0 on merkitty; rautalankojen hyväksyntä on kirjattu — kuka hyväksyi ja mitä hän sanoi. Hyväksyjäksi käy ohjaaja asiakkaan äänenä, jos katselmoijaa ei ole vielä nimetty.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> suunnitelma.md, tietomallikuva, issue-listan linkki ja hyväksyntämerkintä.</p>
+</div>
+<div class="wk"><h2>Työviikko 3 / 18 — Tuotelista kannasta</h2>
+<p class="feature">Viikon jälkeen tuotelista tulee SQLite-kannasta FastAPI-rajapinnan kautta ja renderöityy itse rakennetuissa Vue-komponenteissa — lataus- ja virhetilat mukaan lukien.</p>
+<p class="task">☐&nbsp; Luo SQLite-kanta ja seed-skripti noin 20 oman teeman tuotteella.</p>
+<p class="task">☐&nbsp; Toteuta GET /api/tuotteet ja kokeile se FastAPI:n /docs-sivulla.</p>
+<p class="task">☐&nbsp; Rakenna TuoteLista- ja TuoteKortti-komponentit itse ilman valmista UI-komponenttikirjastoa.</p>
+<p class="task">☐&nbsp; Käsittele lataus-, tyhjä- ja virhetilat sekä kirjaa ja aja testit T01 ja T02.</p>
+<p class="done"><strong>Valmis kun:</strong> Kehityspalvelin näyttää kannasta tulevat tuotteet; API palauttaa JSONia, mikä on testattu /docs-sivulta; kun backend sammutetaan, käyttäjä näkee virheilmoituksen eikä tyhjää ruutua.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> commit-linkki, kuvakaappaus tuotelistasta ja testien T01–T02 tulokset päiväkirjassa.</p>
+</div>
+<div class="wk"><h2>Työviikko 4 / 18 — Kategoriat ja reititys</h2>
+<p class="feature">Viikon jälkeen vue-router on käytössä: kategorianäkymä, tuotesivu omalla URL:llaan ja 404-näkymä. Navigointi toimii puhelimella.</p>
+<p class="task">☐&nbsp; Asenna ja konfiguroi vue-router ja kirjaa, miksi ulkoinen reitityskomponentti tarvitaan.</p>
+<p class="task">☐&nbsp; Toteuta kategorialistaus ja kategoriakohtainen tuotenäkymä.</p>
+<p class="task">☐&nbsp; Toteuta tuotesivu reittiparametrilla ja 404-reitti.</p>
+<p class="task">☐&nbsp; Päätä responsiivisuuden taitekohdat, rakenna saavutettavuuden perusta sisään ja testaa oikealla puhelimella.</p>
+<p class="done"><strong>Valmis kun:</strong> Jokaisella tuotteella ja kategorialla on oma URL, joka toimii myös selaimen päivityksellä; tuntematon osoite näyttää 404-näkymän; navigointi toimii omalla puhelimella ja perusnäkymissä pääsee liikkumaan näppäimistöllä.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> commit, reittikartta suunnitelmassa ja kuvakaappaus omalta puhelimelta.</p>
+</div>
+<div class="wk"><h2>Työviikko 5 / 18 — Ensijulkaisu</h2>
+<p class="feature">Viikon jälkeen NoppaKauppa on julkisessa osoitteessa — frontend, backend ja kanta — ja julkaisualustan valinta on vertailtu ja perusteltu.</p>
+<p class="task">☐&nbsp; Vertaa vähintään kolme julkaisuvaihtoehtoa ja valitse perustellen.</p>
+<p class="task">☐&nbsp; Konfiguroi tuotanto-build ja ympäristömuuttujat; .env ei mene repositoryyn.</p>
+<p class="task">☐&nbsp; Julkaise kauppa ja savutestaa julkinen osoite toisella laitteella (T03).</p>
+<p class="task">☐&nbsp; Aloita käyttöönotto-ohje READMEen.</p>
+<p class="done"><strong>Valmis kun:</strong> Julkinen URL näyttää tuotelistan kannasta; osoite toimii puhelimella ja toisella koneella; salaisuudet ja .env-tiedosto eivät ole repositoryssä.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> julkinen URL, julkaisulokin kuvakaappaus, vertailutaulukko suunnitelmassa ja T03:n tulos.</p>
+</div>
+<h1 class="page">Vaihe B — Ostopolku: haku, kori, tunnukset, tilaus ja asiakaskatselmointi</h1>
+<div class="wk"><h2>Työviikko 6 / 18 — Sanahaku</h2>
+<p class="feature">Viikon jälkeen sanahaku löytää tuotteet nimen osalla kirjainkoosta riippumatta; tyhjä tulos ja backend-virhe on käsitelty, ja kysely on parametrisoitu.</p>
+<p class="task">☐&nbsp; Toteuta haku-endpoint kyselyparametrilla parametrisoidulla SQL:llä ja kirjaa, miksi parametrisointi tehdään.</p>
+<p class="task">☐&nbsp; Rakenna hakukenttä ja tuloslista.</p>
+<p class="task">☐&nbsp; Käsittele tyhjä tulos opastavalla tekstillä ja backend-virhe omalla viestillään.</p>
+<p class="task">☐&nbsp; Kirjaa ja aja testit T04 ja T05.</p>
+<p class="done"><strong>Valmis kun:</strong> Haku ”nop” löytää ”Nopanheitto”-tuotteen; haku merkkijonolla '; DROP TABLE palauttaa nolla osumaa eikä kaada mitään; tyhjä tulos opastaa käyttäjää.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> commit, testien T04–T05 tulokset ja kuvakaappaus hakudemosta.</p>
+</div>
+<div class="wk"><h2>Työviikko 7 / 18 — Ostoskori</h2>
+<p class="feature">Viikon jälkeen Pinia-ostoskori toimii: lisää, poista, muuta määrää, summa laskee oikein ja kori säilyy sivun päivityksen yli — ja koko ominaisuus syntyi omassa haarassa ja yhdistyi pääversioon pull requestilla.</p>
+<p class="task">☐&nbsp; Vertaa korin tallennusvaihtoehdot ja tee päätös ohjaajan kanssa kirjaten.</p>
+<p class="task">☐&nbsp; Toteuta kori-store haarassa feature/ostoskori ja yhdistä se pull requestilla.</p>
+<p class="task">☐&nbsp; Rakenna korinäkymä määränmuutoksineen ja summineen.</p>
+<p class="task">☐&nbsp; Kirjaa ja aja testit T06 ja T07 sekä kirjaa virheenkorjausketju K1.</p>
+<p class="done"><strong>Valmis kun:</strong> Tuotteita voi lisätä ja poistaa, määrää muuttaa ja summa täsmää; kori säilyy sivun päivityksessä; pull request on yhdistetty ja mahdollinen konflikti on ratkaistu.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> PR-linkki, päätösmuistio, testien T06–T07 tulokset ja K1-ketju päiväkirjassa.</p>
+</div>
+<div class="wk"><h2>Työviikko 8 / 18 — Tunnukset ja istunto</h2>
+<p class="feature">Viikon jälkeen rekisteröityminen ja kirjautuminen toimivat: salasanat tallennetaan vain hashattuna, istunto hoidetaan perustellulla ratkaisulla, ja käyttäjällä on roolikenttä tulevia henkilökuntanäkymiä varten.</p>
+<p class="task">☐&nbsp; Vertaa istuntoratkaisut (JWT ja eväste-sessio) ja kirjaa päätös perusteluineen ohjaajan kommentilla.</p>
+<p class="task">☐&nbsp; Toteuta rekisteröityminen validointeineen ja salasanan hashaus.</p>
+<p class="task">☐&nbsp; Toteuta kirjautuminen, uloskirjautuminen ja auth-store Piniaan.</p>
+<p class="task">☐&nbsp; Kirjaa ja aja testit T08 ja T09.</p>
+<p class="done"><strong>Valmis kun:</strong> Kannassa ei näy yhtään selkokielistä salasanaa; väärä salasana ja tuntematon tunnus antavat saman yleisen virheilmoituksen; kirjautumistila säilyy sivun päivityksessä ja uloskirjautuminen tyhjentää sen.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> päätösmuistio, kuvakaappaus kantariveistä (hash näkyy, salasana ei) ja testien T08–T09 tulokset.</p>
+</div>
+<div class="wk"><h2>Työviikko 9 / 18 — Tilaus ja tilaushistoria</h2>
+<p class="feature">Viikon jälkeen kirjautunut asiakas tilaa korin sisällön ilman maksunvälitystä: tilaus tallentuu riveineen tilaushetken hinnoilla, kori tyhjenee ja tilaus näkyy omassa tilaushistoriassa.</p>
+<p class="task">☐&nbsp; Toteuta tilauksen luonti transaktiona: tilaus ja rivit tallentuvat yhtenä kokonaisuutena.</p>
+<p class="task">☐&nbsp; Rakenna tilauslomake ja valitse validointiin perusteltu ulkoinen paketti tai perustele oma validointi.</p>
+<p class="task">☐&nbsp; Toteuta tilaushistorianäkymä, joka näyttää vain omat tilaukset.</p>
+<p class="task">☐&nbsp; Kirjaa ja aja testit T10 ja T11.</p>
+<p class="done"><strong>Valmis kun:</strong> Tilaus näkyy kannassa riveineen ja tilaushetken hinnoilla; historia näyttää vain omat tilaukset; tyhjää koria ei voi tilata eikä kirjautumaton pääse tilaamaan.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> commit, lisäpaketin perustelu suunnitelmassa, testien T10–T11 tulokset ja kuvakaappaus historiasta.</p>
+</div>
+<div class="wk"><h2>Työviikko 10 / 18 — Asiakaskatselmointi</h2>
+<p class="feature">Viikon jälkeen ulkopuolinen henkilö asiakkaan roolissa on kokeillut julkaistua kauppaa tehtäväradalla — löydä peli, koriin, tilaa — palaute on kirjattu hänen omin sanoin erillään omasta tulkinnasta, ja muutokset on sovittu issueiksi.</p>
+<p class="task">☐&nbsp; Kutsu nimetty ulkopuolinen asiakkaan rooliin ja laadi kolmen tehtävän tehtävärata.</p>
+<p class="task">☐&nbsp; Vedä katselmointi julkisessa osoitteessa ja kirjaa sitaatit ja oma tulkinta erikseen.</p>
+<p class="task">☐&nbsp; Muuta palaute issueiksi ja priorisoi ne ohjaajan kanssa.</p>
+<p class="task">☐&nbsp; Kirjoita asiakkaalle yhteenveto ilman teknistä jargonia.</p>
+<p class="done"><strong>Valmis kun:</strong> Katselmointimuistiossa on nimetty rooli, testaajan omat sanat ja niistä erillään oma tulkinta; vähintään kolme palautekohtaa on issueina prioriteetteineen; asiakasyhteenveto on kirjoitettu.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> katselmointimuistio project-docs-kansiossa ja palauteissueiden linkit.</p>
+</div>
+<h1 class="page">Vaihe C — Valmiiksi: palautemuutos, henkilökunnan työkalut, tietoturva ja laatu</h1>
+<div class="wk"><h2>Työviikko 11 / 18 — Palautemuutos ja omat tiedot</h2>
+<p class="feature">Viikon jälkeen tärkein katselmointipalaute on toteutettu näkyväksi muutokseksi tuotantoon asti, asiakastietojen muokkaus on valmis, ja suunnitelman työmääräarviot on päivitetty toteutuneen perusteella.</p>
+<p class="task">☐&nbsp; Toteuta katselmoinnin tärkein muutos ketjuna: issue, haara, commit ja tuotanto.</p>
+<p class="task">☐&nbsp; Toteuta omien asiakastietojen muokkaus; käyttäjätunnusta ei voi vaihtaa.</p>
+<p class="task">☐&nbsp; Päivitä suunnitelma ja työmääräarviot toteutuneen perusteella.</p>
+<p class="task">☐&nbsp; Kirjaa virheenkorjausketju K2 aidosta havainnosta.</p>
+<p class="done"><strong>Valmis kun:</strong> Muutos näkyy julkaistussa versiossa ja issue sulkeutuu committiin viitaten; omia tietoja voi muokata mutta käyttäjätunnusta ei; suunnitelmassa näkyy päivitetty arvio perusteluineen.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> ketju issuesta committiin ja tuotantolinkkiin, K2-ketju ja suunnitelman muutoshistoria.</p>
+</div>
+<div class="wk"><h2>Työviikko 12 / 18 — Tuotehallinta ja roolisuojaus</h2>
+<p class="feature">Viikon jälkeen henkilökuntarooli hallitsee tuotteita selaimessa — lisäys, muokkaus ja poisto — ja hallintareitit on suojattu kahdella tasolla: route guard frontissa ja roolitarkistus API:ssa.</p>
+<p class="task">☐&nbsp; Toteuta roolipohjainen pääsynhallinta: route guard frontissa ja roolitarkistus API:ssa.</p>
+<p class="task">☐&nbsp; Rakenna tuotehallintanäkymä lisäys-, muokkaus- ja poistolomakkeineen.</p>
+<p class="task">☐&nbsp; Validoi syötteet sekä frontissa että backendissä.</p>
+<p class="task">☐&nbsp; Kirjaa ja aja testit T12 ja T13, joissa asiakasrooli yrittää hallintaan myös suoralla API-kutsulla.</p>
+<p class="done"><strong>Valmis kun:</strong> Asiakasroolilla suora URL hallintanäkymään ohjaa pois ja suora API-kutsu palauttaa 401 tai 403; henkilökunnan lisäämä tuote näkyy heti kaupan puolella.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> testien T12–T13 tulokset curl-kutsun vastauksineen, commit ja kuvakaappaus hallintanäkymästä.</p>
+</div>
+<div class="wk"><h2>Työviikko 13 / 18 — Tilaukset ja saavutettavuus</h2>
+<p class="feature">Viikon jälkeen henkilökunta selaa kaikkia tilauksia uusimmat ensin ja merkitsee tilauksen käsitellyksi — ja tilan muutos näkyy asiakkaan tilaushistoriassa. Featurelista päättyy tähän; viikon toinen puolisko on koko sovelluksen saavutettavuustarkistus.</p>
+<p class="task">☐&nbsp; Toteuta henkilökunnan tilauslistaus suodatuksella: uudet ja käsitellyt.</p>
+<p class="task">☐&nbsp; Toteuta tilauksen tila ja sen muutos, näytä tila asiakkaan historiassa ja aja testi T14.</p>
+<p class="task">☐&nbsp; Tee saavutettavuustarkistus koko sovellukselle ja korjaa löydökset.</p>
+<p class="task">☐&nbsp; Aja Lighthouse ennen ja jälkeen korjausten ja tallenna raportit.</p>
+<p class="done"><strong>Valmis kun:</strong> Henkilökunta näkee kaikkien tilaukset ja asiakas vain omansa; käsitellyksi-merkintä näkyy asiakkaalle; ostopolun voi kulkea läpi pelkällä näppäimistöllä; Lighthouse-raportit ennen ja jälkeen on tallennettu ja vähintään yksi saavutettavuuspuute on korjattu.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> commit, T14:n tulos, kuvakaappaukset molemmilla rooleilla ja Lighthouse-raportit ennen ja jälkeen.</p>
+</div>
+<div class="wk"><h2>Työviikko 14 / 18 — Tietoturvaviikko</h2>
+<p class="feature">Viikon jälkeen kirjallinen tietoturva-arvio on olemassa — uhkat, ratkaisut ja jäännösriskit — ja vähintään kaksi kovennusta on toteutettu omien hyökkäystestien löydösten perusteella.</p>
+<p class="task">☐&nbsp; Käy sovellus läpi tietoturvan tarkistuslistalla kohta kohdalta.</p>
+<p class="task">☐&nbsp; Testaa hyökkääjän silmin: SQL-injektio, XSS, IDOR ja hallinta-API ilman istuntoa.</p>
+<p class="task">☐&nbsp; Korjaa löydökset ja kirjaa virheenkorjausketju K3.</p>
+<p class="task">☐&nbsp; Kirjoita tietoturva-arvio.md ja käy se läpi ohjaajan kanssa.</p>
+<p class="done"><strong>Valmis kun:</strong> tietoturva-arvio.md:ssä jokaisella tunnistetulla riskillä on ratkaisu tai perusteltu jäännösriski; vähintään yksi aito löydös on korjattu täydellisenä K3-ketjuna; ohjaajan läpikäynti on kirjattu.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> tietoturva-arvio.md, hyökkäystestien kirjaukset, K3-ketju ja korjauscommitit.</p>
+</div>
+<div class="wk"><h2>Työviikko 15 / 18 — Testaus ja regressio</h2>
+<p class="feature">Viikon jälkeen koko testimatriisi eli neljätoista tapausta on ajettu julkaistua versiota vasten tuloksineen — mukaan lukien viikkojen 13 ja 14 korjausten regressiot — ja koodia on refaktoroitu vähintään yhdessä, enintään kahdessa kohdassa käyttäytymistä muuttamatta.</p>
+<p class="task">☐&nbsp; Aja koko testimatriisi T01–T14 julkaistua versiota vasten ja kirjaa jokaisen rivin toteutunut tulos.</p>
+<p class="task">☐&nbsp; Aja viikkojen 13 ja 14 korjausten regressiotestit.</p>
+<p class="task">☐&nbsp; Refaktoroi vähintään yksi, enintään kaksi kohdetta ja aja matriisin osumat uudelleen.</p>
+<p class="done"><strong>Valmis kun:</strong> Matriisin jokaisella rivillä on odotettu ja toteutunut tulos julkaistua versiota vasten; refaktorointicommiteissa testit on ajettu uudelleen ja tulos kirjattu; poikkeamat ovat issueina.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> testimatriisin tulostaulukko project-docs-kansiossa, refaktorointicommitit ja poikkeamaissuet.</p>
+</div>
+<h1 class="page">Vaihe D — Julkaisu ja näyttö</h1>
+<div class="wk"><h2>Työviikko 16 / 18 — Julkaisuehdokas ja julkaisutestaus</h2>
+<p class="feature">Viikon jälkeen sisältö on jäädytetty ja julkaisuehdokas v1.0-rc1 on julkaistu — ja ulkopuolinen henkilö on ottanut kaupan käyttöön ja tehnyt testitilauksen puhtaassa ympäristössä pelkän kirjoitetun ohjeen avulla, ilman suullista apua.</p>
+<p class="task">☐&nbsp; Jäädytä sisältö, julkaise julkaisuehdokas ja merkitse git-tag v1.0-rc1.</p>
+<p class="task">☐&nbsp; Siivoa repository ja viimeistele käyttöönotto- ja käyttöohje.</p>
+<p class="task">☐&nbsp; Järjestä julkaisutestaus: nimetty ulkopuolinen ja puhdas ympäristö ilman suullista apua.</p>
+<p class="task">☐&nbsp; Kirjaa havainnot testaajan sanoin ja luokittele estävät ja ei-estävät löydökset.</p>
+<p class="done"><strong>Valmis kun:</strong> Testaaja pääsi ohjeen avulla rekisteröitymisestä testitilaukseen asti ilman suullista apua — tai jokainen epäröintikohta on kirjattu ohjeen korjauslistaksi; estävät virheet on listattu erikseen.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> v1.0-rc1-tag, julkaisutestin pöytäkirja ja ohjeen korjauslista.</p>
+</div>
+<div class="wk"><h2>Työviikko 17 / 18 — Julkaisu v1.0</h2>
+<p class="feature">Viikon jälkeen estävät virheet on korjattu — vain ne, jäädytys pitää — v1.0 on julkaistu tuotantoon ja luovutettu asiakkaalle selkokielisellä luovutusviestillä, ja dokumentaatio on valmis.</p>
+<p class="task">☐&nbsp; Korjaa julkaisutestauksen estävät löydökset; ei-estävät kirjataan tunnetuiksi puutteiksi.</p>
+<p class="task">☐&nbsp; Julkaise versio 1.0 ja merkitse git-tag.</p>
+<p class="task">☐&nbsp; Viimeistele dokumentaatio: käyttöönotto, käynnistys, riippuvuudet, ympäristömuuttujat ja tunnetut puutteet.</p>
+<p class="task">☐&nbsp; Kirjoita asiakkaan luovutusviesti selkokielellä.</p>
+<p class="done"><strong>Valmis kun:</strong> Tagi v1.0 on olemassa; julkinen osoite toimii; README:n avulla ulkopuolinen saa kehitysympäristön käyntiin; luovutusviesti ja tunnetut puutteet on kirjattu.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> v1.0-tag ja julkaisumuistio, tuotanto-URL sekä luovutusviesti project-docs-kansiossa.</p>
+</div>
+<div class="wk"><h2>Työviikko 18 / 18 — Näyttö</h2>
+<p class="feature">Viikon jälkeen mitään uutta ei ole lisätty: kaikkien 32 vaatimuksen työnäytteet on täsmälinkitetty näyttömatriisiin, 8–10 minuutin demo on harjoiteltu ja itsearviointi on kirjoitettu.</p>
+<p class="task">☐&nbsp; Linkitä kaikkien 32 vaatimuksen työnäytteet näyttömatriisiin.</p>
+<p class="task">☐&nbsp; Harjoittele 8–10 minuutin demo ja aja se kellon kanssa.</p>
+<p class="task">☐&nbsp; Kirjoita itsearviointi konkreettisin esimerkein.</p>
+<p class="task">☐&nbsp; Luovuta aineisto sovitulla tavalla.</p>
+<p class="done"><strong>Valmis kun:</strong> Matriisin jokaisella rivillä on toimiva linkki; demo on ajettu kellon kanssa vähintään kerran toiselle ihmiselle; itsearviointi nimeää konkreettisia tilanteita.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> täytetty näyttömatriisi, demorunko ja itsearviointi päiväkirjan viimeisenä merkintänä.</p>
+</div>
+<h1 class="page">Viimeiset viisi päivää</h1>
+<p class="task"><strong>Päivä 1</strong> · Sisältöjäädytys — viimeinen hyväksytty versio</p>
+<p class="task"><strong>Päivä 2</strong> · Aineisto: päiväkirja, testimatriisi, muistiot ja linkit</p>
+<p class="task"><strong>Päivä 3</strong> · Harjoittelu: 8–10 minuutin demo ja itsearviointi</p>
+<p class="task"><strong>Päivä 4</strong> · Puskuri ja tarkistus toisen henkilön kanssa</p>
+<p class="task"><strong>Päivä 5</strong> · Luovutus: näyttömatriisi linkitetty, demo harjoiteltu, aineisto luovutettu</p>
+<h1 class="page">Näyttömatriisi — 32 osaamisvaatimusta</h1><p class="muted">Rasti vasta, kun vaatimukselle on täsmällinen työnäyte: linkki, commit, kuva, testirivi tai muistio. Sama työnäyte voi kelvata useaan kohtaan.</p>
+<h2>Ohjelmointi · 11 vaatimusta</h2>
+<p class="item">☐&nbsp; <strong>käyttää ohjelmointieditoria tai kehitysympäristöä</strong> — Viikko 1: kehitysympäristö pystyssä — VS Code, Vite- ja FastAPI-kehityspalvelimet, selaimen kehittäjätyökalut; käynnistyskomennot READMEssä ja päiväkirjassa.</p>
+<p class="item">☐&nbsp; <strong>etsii ja korjaa virheitä ohjelmakoodista</strong> — Viikot 7, 11 ja 14: kolme täydellistä virheenkorjausketjua (K1 ostoskori, K2 palautemuutos, K3 tietoturvalöydös) — havainto, toisto, syy, korjauscommit, uusintatesti ja regressiotesti.</p>
+<p class="item">☐&nbsp; <strong>testaa ohjelman toimintoja</strong> — Viikko 15: 14 tapauksen testimatriisi (odotetut tulokset kirjattu ennen ajoa) ajettuna julkaistua versiota vasten sekä uusintatestaukset korjausten jälkeen.</p>
+<p class="item">☐&nbsp; <strong>käyttää rakenteista ohjelmointia toteutuksissa</strong> — Viikko 9: tilauslogiikka jaettuna moduuleihin ja funktioihin (reitit, kantakerros, validointi); frontissa komponentti- ja store-jako — ei yhtä jättitiedostoa.</p>
+<p class="item">☐&nbsp; <strong>kirjoittaa ylläpidettävää ohjelmakoodia</strong> — Viikko 15: refaktorointicommitit perusteluineen — nimeäminen, toisteisuuden poisto ja komponentin pilkkominen, testit vihreinä ennen ja jälkeen.</p>
+<p class="item">☐&nbsp; <strong>tulkitsee suunnitelmia ja toteuttaa käyttöliittymän tai sen osia</strong> — Viikko 4: näkymät toteutettu viikon 2 hyväksytyistä rautalangoista; responsiivisuuden taitekohdat ja mobiilitestaus oikealla puhelimella.</p>
+<p class="item">☐&nbsp; <strong>tulkitsee suunnitelmia ja toteuttaa ohjelmiston toimintoja</strong> — Viikko 9: tilaus ja tilaushistoria toteutettu käyttäjätarinoiden ja hyväksymiskriteerien mukaan; kytkentä tarina, issue ja commit.</p>
+<p class="item">☐&nbsp; <strong>sopii tehtävistä tiimin muiden jäsenten kanssa</strong> — Viikko 2: tehtävät sovittu ohjaajan kanssa ja kirjattu issueiksi; tehtävien tila näkyvänä koko projektin ajan.</p>
+<p class="item">☐&nbsp; <strong>etsii ratkaisuvaihtoehtoja ja ratkoo ongelmia yhdessä tiimin kanssa</strong> — Viikot 7 ja 8: kaksi kirjattua vertailua ja yhteispäätöstä ohjaajan kanssa — korin tallennus ja istuntoratkaisu.</p>
+<p class="item">☐&nbsp; <strong>arvioi ratkaisujen toimivuuden yhdessä tiimin kanssa</strong> — Viikko 10: asiakaskatselmoinnin muistio — täyttääkö toteutus tarinat ja mitä muutetaan ennen seuraavaa versiota, priorisoituna ohjaajan kanssa.</p>
+<p class="item">☐&nbsp; <strong>arvioi omaa toimintaa tiimin jäsenenä</strong> — Viikko 18: itsearviointi konkreettisin tilantein — mikä onnistui, missä tarvitsit apua ja mitä tekisit toisin.</p>
+<h2>Ohjelmistokehittäjänä toimiminen · 14 vaatimusta</h2>
+<p class="item">☐&nbsp; <strong>selvittää kehitystiimin kanssa asiakkaan tarpeet</strong> — Viikko 2: toimeksiannosta johdetut käyttäjätarinat, kysymyslista ja vastaukset sekä rajaus (maksaminen pois) kirjattuna.</p>
+<p class="item">☐&nbsp; <strong>viestii tekniset asiat asiakaslähtöisesti</strong> — Viikot 10 ja 17: katselmoinnin asiakaskielinen yhteenveto ja luovutusviesti ilman teknistä jargonia; maksurajauksen selitys asiakkaalle.</p>
+<p class="item">☐&nbsp; <strong>osallistuu version katselmointiin</strong> — Viikot 10 ja 16: kaksi katselmointia — asiakaskatselmointi puolivälissä ja julkaisuehdokkaan julkaisutestaus, muistiot rooleineen ja sitaatteineen.</p>
+<p class="item">☐&nbsp; <strong>asettaa kehitystiimin kanssa toteutettavat toiminnot tärkeysjärjestykseen</strong> — Viikko 2: käyttäjätarinoiden P0-, P1- ja P2-priorisointi perusteluineen; P0 on toimiva ostopolku ilman maksua.</p>
+<p class="item">☐&nbsp; <strong>jakaa kehitystiimin kanssa toteutettavat toiminnot tehtäviksi</strong> — Viikko 2: tarinat pilkottu vähintään kahdeksaksi issueksi, joissa yksi issue on noin puolen tai yhden päivän työ.</p>
+<p class="item">☐&nbsp; <strong>suunnittelee ja arvioi kehitystiimin kanssa tehtävien toteuttamista</strong> — Viikko 11: työmääräarviot ja niiden päivitys toteutuneen perusteella — suunnitelman muutoshistoria näyttää mikä arvio muuttui ja miksi.</p>
+<p class="item">☐&nbsp; <strong>kehittää ohjelmiston toimintalogiikkaa</strong> — Viikot 9 ja 13: tilauksen muodostus transaktiona, tilaushetken hinnat, tilausten tilat ja niiden muutokset sekä roolikohtaiset näkymät.</p>
+<p class="item">☐&nbsp; <strong>valitsee ohjelmistoon sopivan tietovaraston</strong> — Viikko 2: kirjallinen vertailu SQLite, JSON-tiedosto ja PostgreSQL datan rakenteen, käyttötilanteen ja laajuuden perusteella; perusteltu valinta suunnitelmassa.</p>
+<p class="item">☐&nbsp; <strong>toteuttaa yhteyden tietovarastoon</strong> — Viikot 3 ja 12: luku (tuotelista, haku) ja kirjoitus (tilaukset, tuotehallinnan lisäys, muokkaus ja poisto) SQLite-kantaan hallitusti.</p>
+<p class="item">☐&nbsp; <strong>hyödyntää rajapintoja ja käsittelee tietoa</strong> — Viikko 6: oma REST-rajapinta — haku kyselyparametrilla, virhetilanteiden käsittely fetchissä sekä lataus-, tyhjä- ja virhetilat käyttöliittymässä.</p>
+<p class="item">☐&nbsp; <strong>arvioi ohjelmiston tietoturvaa</strong> — Viikot 8, 12 ja 14: salasanojen hashaus ja istuntopäätös, kaksikerroksinen roolisuojaus sekä tietoturva-arvio omine hyökkäystesteineen (injektio, XSS, IDOR).</p>
+<p class="item">☐&nbsp; <strong>käyttää versionhallintaa</strong> — Viikko 1 alkaen: Git koko projektin ajan — tarkoituksenmukaiset commitit, etärepository ja sovitut haarakäytännöt; commit-historia näyttöaineistona.</p>
+<p class="item">☐&nbsp; <strong>liittää ohjelman osan olemassa olevaan versioon</strong> — Viikko 7: ostoskori toteutettu haarassa feature/ostoskori ja yhdistetty pull requestilla; mahdollinen konflikti ratkaistu ja kirjattu.</p>
+<p class="item">☐&nbsp; <strong>julkaisee ohjelman tuotantoympäristöön</strong> — Viikot 5 ja 17: ensijulkaisu vertailtuun alustaan ympäristömuuttujineen sekä julkaisuehdokkaan ja version 1.0 julkaisut tageineen ja julkaisumuistioineen.</p>
+<h2>Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla · 7 vaatimusta</h2>
+<p class="item">☐&nbsp; <strong>ottaa käyttöön ja konfiguroi ohjelmistokomponenttikirjaston käyttöön soveltuvan kehittämisympäristön</strong> — Viikot 1 ja 5: Vue 3 - ja Vite-projektin luonti ja konfigurointi; kehitys- ja tuotantoasetusten ero (API-osoite, build) dokumentoituna.</p>
+<p class="item">☐&nbsp; <strong>selvittää ohjelmistokomponenttikirjaston tarjoamat mahdollisuudet ja rajoitteet</strong> — Viikko 2: selvitys suunnitelmassa — mitä Vue ja Pinia ratkaisevat (komponentit, reaktiivisuus, tila) ja missä tarvitaan muuta (backend rooleille ja istunnoille, yksisivusovelluksen rajoitteet).</p>
+<p class="item">☐&nbsp; <strong>käyttää ohjelmistokomponenttikirjaston tärkeimpiä toimintoja ja työkaluja</strong> — Viikot 3 ja 7: komponentit, propsit, computed-arvot ja Pinia-store (kori, auth) käytössä; itse rakennettu tuotelistanäkymä ilman valmista UI-kirjastoa.</p>
+<p class="item">☐&nbsp; <strong>tuo kehittämisympäristöön ulkoisia komponentteja</strong> — Viikot 4 ja 9: vue-router perusteltuna sekä yksi oma perusteltu lisäpaketti — käyttötarkoitus, konfigurointi ja riippuvuusvaikutus kirjattuna.</p>
+<p class="item">☐&nbsp; <strong>suunnittelee, toteuttaa ja testaa ohjelmiston ohjelmistokomponenttikirjastoa käyttäen</strong> — Viikko 15: komponenttirakenne ja vastuut suunnitelmassa, tarinoiden mukainen toteutus ja koko testimatriisi kirjastopohjaista sovellusta vasten.</p>
+<p class="item">☐&nbsp; <strong>julkaisee ohjelmiston asiakkaan ympäristöön</strong> — Viikko 17: tuotanto-build ja version 1.0 julkaisu sovittuun ympäristöön; luovutus asiakkaalle ohjeineen.</p>
+<p class="item">☐&nbsp; <strong>dokumentoi ohjelmiston sovitulla tavalla</strong> — Viikko 16: README käyttöönottoineen, käynnistyksineen, riippuvuuksineen, ympäristöasetuksineen ja tunnettuine puutteineen — ulkopuolisen julkaisutestillä todennettu ohje.</p>
+<p class="muted" style="margin-top:10pt"><em>Muista: sivuston rastit ja kentät tallentuvat vain selaimeen. Ne eivät siirry opettajalle eivätkä korvaa Gitissä olevaa työtä.</em></p>
+</body></html>
