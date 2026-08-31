@@ -30,7 +30,7 @@ työtilassa — niitä ei kirjoiteta tähän repositoryyn.
 
 ## Julkaisu
 
-Sivusto on täysin staattinen. Julkaise repositoryn juuresta `main`-branchista
+Sivusto on täysin staattinen. Julkaise repositoryn juuresta `main`-haarasta
 GitHub Pagesiin: repositoryn asetukset → Pages → Deploy from a branch → `main`
 ja `/ (root)`. Tiedosto `.nojekyll` on jo mukana, joten Pages tarjoilee kaikki
 tiedostot sellaisenaan.

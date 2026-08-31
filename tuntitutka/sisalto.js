@@ -43,8 +43,8 @@ window.NAYTTOPROJEKTI = {
     },
     {
       tunnus: "B",
-      lyhyt: "Featuret",
-      otsikko: "Featuret: hallinta, omat kirjaukset, lasketut yhteenvedot ja asiakaskatselmointi",
+      lyhyt: "Ominaisuudet",
+      otsikko: "Ominaisuudet: hallinta, omat kirjaukset, lasketut yhteenvedot ja asiakaskatselmointi",
       viikot: [6, 7, 8, 9, 10],
       vari: "#0e7490"
     },
@@ -261,7 +261,7 @@ window.NAYTTOPROJEKTI = {
       "---",
       "",
       "Tallenna tämä tiedosto polkuun `project-docs/suunnitelma.md` ja tee commit.",
-      "Päivitä tiedosto ja committaa uudelleen aina, kun päätös tarkentuu tai",
+      "Päivitä tiedosto ja tee uusi commit aina, kun päätös tarkentuu tai",
       "ohjaaja vastaa avoimeen asiaan.",
       ""
     ].join("\n")
@@ -284,7 +284,7 @@ window.NAYTTOPROJEKTI = {
         ["Svelte + Vite -runko käyntiin.", "Luo Svelte-projekti Vitellä ja käynnistä kehityspalvelin. Ota kuvakaappaus selaimessa näkyvästä rungosta."],
         ["Kansiorakenne ja README.", "Luo kansiot client/, server/ ja project-docs/. Kirjoita README:hen mitä olet tekemässä, kenelle ja millä komennoilla projekti käynnistyy."],
         ["Toimeksianto ja kysymyslista.", "Lue toimeksianto läpi ja alleviivaa pakolliset asiat. Kirjoita jokaisesta epäselvästä kohdasta kysymys ohjaajalle — tavoite on vähintään kuusi kysymystä."],
-        ["Commit ja push.", "Tee ensimmäinen commit, jonka viesti kertoo projektin perustamisesta, ja pushaa se etärepositoryyn."]
+        ["Commit ja push.", "Tee ensimmäinen commit, jonka viesti kertoo projektin perustamisesta, ja vie se etärepositoryyn (git push)."]
       ],
       help: {
         title: "Perusta kehitysympäristö ja repository",
@@ -292,10 +292,10 @@ window.NAYTTOPROJEKTI = {
         actions: [
           "Asenna Node LTS ja tarkista versiot: node -v, npm -v, git --version.",
           "Luo Svelte-runko: npm create vite@latest -- --template svelte, sitten npm install ja npm run dev.",
-          "Luo GitHub-repository, aja git init, tee ensimmäinen commit ja pushaa.",
+          "Luo GitHub-repository, aja git init, tee ensimmäinen commit ja vie se GitHubiin (git push).",
           "Käy julkisen repon tarkistuslista läpi ohjaajan kanssa ja pyydä kuittaus kirjallisena."
         ],
-        code: "ALOITUKSEN TARKISTUSLISTA\n[ ] node -v, npm -v ja git --version kirjattu README:hen\n[ ] npm run dev avaa sovelluksen selaimessa\n[ ] kansiot client/, server/ ja project-docs/ olemassa\n[ ] .gitignore estää node_modules/, *.db ja .env\n[ ] repositoryssa ei ole henkilötietoja eikä koulun tunnisteita\n[ ] tekijänimi sovittu ohjaajan kanssa\n[ ] kysymyslistassa vähintään 6 kysymystä\n[ ] ensimmäinen commit pushattu",
+        code: "ALOITUKSEN TARKISTUSLISTA\n[ ] node -v, npm -v ja git --version kirjattu README:hen\n[ ] npm run dev avaa sovelluksen selaimessa\n[ ] kansiot client/, server/ ja project-docs/ olemassa\n[ ] .gitignore estää node_modules/, *.db ja .env\n[ ] repositoryssa ei ole henkilötietoja eikä koulun tunnisteita\n[ ] tekijänimi sovittu ohjaajan kanssa\n[ ] kysymyslistassa vähintään 6 kysymystä\n[ ] ensimmäinen commit viety etärepositoryyn (push)",
         test: "Kloonaa repository toiseen kansioon ja varmista, että sovellus käynnistyy pelkän README:n ohjeilla.",
         links: [
           ["Vite: Getting Started", "https://vitejs.dev/guide/"],
@@ -313,7 +313,7 @@ window.NAYTTOPROJEKTI = {
       excerpt: "Pahin puute ei ole kirjaaminen vaan raportointi.",
       connection: "Työviikon 1 kysymyslista saa vastaukset, ja toimeksianto muuttuu priorisoiduiksi käyttäjätarinoiksi ja tietomalliksi, joiden päälle koko loppuprojekti rakentuu.",
       deliverable: "project-docs/suunnitelma.md, tietomallikaavio, tietovarastovertailu, rautalangat kirjaus- ja raporttinäkymästä sekä issue-taulu työmääräarvioineen.",
-      why: "Ilman priorisointia featurelista paisuu; ilman tietomallia raporttilaskenta menee uusiksi. Päätös “lasketaan, ei tallenneta” ratkaisee tässä, ettei sovellukseen synny synkronoitavia summatauluja.",
+      why: "Ilman priorisointia ominaisuuslista paisuu; ilman tietomallia raporttilaskenta menee uusiksi. Päätös “lasketaan, ei tallenneta” ratkaisee tässä, ettei sovellukseen synny synkronoitavia summatauluja.",
       done: "project-docs/suunnitelma.md on repossa ja ohjaaja on hyväksynyt rajauksen kirjatulla kommentilla; jokaisella P0-tarinalla on issue, hyväksymiskriteerit ja arvio tunteina.",
       record: "Kirjoita työviikon 2 merkintään: P0-rajaus, tietovarastovalinta perusteluineen, tietomallin taulut ja se, mitä päätit jättää tallentamatta. Liitä linkki issue-tauluun ja ohjaajan hyväksyntään.",
       skills: ["vaatimusmäärittely", "tietomallinnus", "priorisointi", "työn ositus"],
@@ -339,7 +339,7 @@ window.NAYTTOPROJEKTI = {
         test: "Käy jokainen P0-tarina läpi tietomallia vasten ja kysy: löytyykö jokaiselle kriteerille kenttä tai taulu? Jos ei, tietomalli on kesken."
       },
       example: "Käyttäjätarina “Työntekijänä kirjaan tunnit projektille ja tehtävälajille, jotta projektipäällikkö näkee ajantasaisen tilanteen” + kolme hyväksymiskriteeriä + arvio 6 h + issue #12.",
-      notEnough: "Featurelista ilman prioriteetteja, ja tietovarastoperustelu “SQLite on kevyt ja suosittu” ilman kytkentää omaan dataan."
+      notEnough: "Ominaisuuslista ilman prioriteetteja, ja tietovarastoperustelu “SQLite on kevyt ja suosittu” ilman kytkentää omaan dataan."
     },
 
     3: {
@@ -357,7 +357,7 @@ window.NAYTTOPROJEKTI = {
         ["SQLite-skeema skriptillä.", "Kirjoita ajettava init-skripti, joka luo työviikon 2 tietomallin taulut tyhjään tietokantaan. Skeema on koodissa, ei käsin klikattuna."],
         ["Julkaisualustan vertailu ja valinta.", "Vertaa Renderiä, Fly.iota ja Railwayta kriteereillä: ilmainen taso, Node-tuki, SQLite-tiedoston pysyvyys ja levy, lokit. Tämä on oma päätöksesi — perustele se kirjallisesti."],
         ["Ensimmäinen julkaisu.", "Vie runko valitulle alustalle ja kirjaa julkinen osoite README:hen. Tarkista ympäristömuuttujat ja tietokantatiedoston polku."],
-        ["Savutesti julkisessa osoitteessa.", "Pyydä toista henkilöä avaamaan /api/health omalla laitteellaan. Kirjaa tulos ja ota kuvakaappaus deploy-lokista."]
+        ["Savutesti julkisessa osoitteessa.", "Pyydä toista henkilöä avaamaan /api/health omalla laitteellaan. Kirjaa tulos ja ota kuvakaappaus alustan julkaisulokista."]
       ],
       help: {
         title: "Palvelimen rakenne ja julkaisun tarkistuslista",
@@ -368,7 +368,7 @@ window.NAYTTOPROJEKTI = {
           "Kirjoita alustavertailu taulukkona ennen kuin luot tilin mihinkään palveluun.",
           "Julkaise, kirjaa osoite README:hen ja pyydä toista henkilöä testaamaan."
         ],
-        code: "JULKAISUN TARKISTUSLISTA\n[ ] tuotantobuild syntyy komennolla ja toimii paikallisesti\n[ ] palvelin kuuntelee alustan antamaa porttia (PORT)\n[ ] tietokantatiedoston polku on ympäristömuuttujassa\n[ ] .env EI ole repositoryssa\n[ ] deploy-loki tallessa kuvakaappauksena\n[ ] /api/health vastaa 200 julkisessa osoitteessa\n[ ] osoite on README:ssä\n\nk2-SELVITYS (taulukko)\nRatkaisee: komponentit, reaktiivisuus, sidonnat, build\nEi ratkaise: reititys, kaaviot, backend, tietokanta\nMistä lisä: reitityskirjasto (vk 6), kaaviokirjasto (vk 9), Express + SQLite",
+        code: "JULKAISUN TARKISTUSLISTA\n[ ] tuotantobuild syntyy komennolla ja toimii paikallisesti\n[ ] palvelin kuuntelee alustan antamaa porttia (PORT)\n[ ] tietokantatiedoston polku on ympäristömuuttujassa\n[ ] .env EI ole repositoryssa\n[ ] alustan julkaisuloki tallessa kuvakaappauksena\n[ ] /api/health vastaa 200 julkisessa osoitteessa\n[ ] osoite on README:ssä\n\nk2-SELVITYS (taulukko)\nRatkaisee: komponentit, reaktiivisuus, sidonnat, build\nEi ratkaise: reititys, kaaviot, backend, tietokanta\nMistä lisä: reitityskirjasto (vk 6), kaaviokirjasto (vk 9), Express + SQLite",
         test: "Avaa julkinen osoite laitteella, jolla et ole koskaan kehittänyt projektia, ja tarkista että /api/health vastaa.",
         links: [
           ["Express: Serving static files", "https://expressjs.com/en/starter/static-files.html"],
@@ -393,7 +393,7 @@ window.NAYTTOPROJEKTI = {
         ["Istuntotapojen vertailu ja päätös.", "Vertaa evästesessiota ja tokenia nimenomaan tässä sovelluksessa (SQLite, yksi palvelin). Tee päätös yhdessä ohjaajan kanssa ja kirjaa keskustelu muistioon."],
         ["Kirjautumislomake.", "Toteuta kirjautuminen ja uloskirjautuminen sekä roolitiedon välitys frontendiin. Virheviestit suomeksi ja kentän vieressä."],
         ["Middleware-ketju.", "Kirjoita autentikointimiddleware ja roolimiddleware. Erottele 401 (ei kirjautunut) ja 403 (ei oikeuksia)."],
-        ["Roolin mukainen navigaatio.", "Näytä hallintalinkit vain projektipäällikölle. Muista: navigaation piilottaminen ei riitä, reitit suojataan palvelimella."],
+        ["Roolin mukainen navigaatio.", "Näytä hallintalinkit vain projektipäällikölle. Navigaation piilottaminen ei kuitenkaan riitä: reitit suojataan palvelimella."],
         ["Testi molemmilla rooleilla.", "Kirjaudu sisään kummallakin roolilla ja tarkista näkymät. Kutsu suojattua API-reittiä ilman kirjautumista ja varmista 401."]
       ],
       help: {
@@ -620,14 +620,14 @@ window.NAYTTOPROJEKTI = {
       type: "feature",
       feature: "Katselmoinnin tärkein muutos on toteutettu omassa haarassa ja yhdistetty pull requestilla pääversioon; vähintään yksi merge-konflikti on ratkaistu hallitusti.",
       connection: "Työviikon 10 palaute muuttuu koodiksi — ja samalla harjoitellaan se tapa, jolla ominaisuus liitetään olemassa olevaan versioon hallitusti.",
-      deliverable: "Feature-haara pienine commiteineen, pull request kuvauksineen ja itsekatselmointeineen, ratkaistu konflikti ja muutos tuotannossa.",
+      deliverable: "Ominaisuushaara pienine commiteineen, pull request kuvauksineen ja itsekatselmointeineen, ratkaistu konflikti ja muutos tuotannossa.",
       why: "Ominaisuuden hallittu liittäminen olemassa olevaan versioon on oma vaatimuksensa — ja palaute, joka ei johda muutokseen, on kerätty turhaan.",
       done: "Pull requestin kuvaus ja keskustelu näyttävät mitä muutettiin ja miksi; muutos on tuotannossa; konfliktin ratkaisu näkyy historiassa; katselmointimuistion kohta on kuitattu linkillä.",
       record: "Kirjoita työviikon 11 merkintään: mikä muutos valittiin ja miksi juuri se, pull requestin linkki, miten konflikti syntyi ja miten ratkaisit sen.",
       skills: ["Git-haarat", "pull request", "konfliktin ratkaisu"],
       steps: [
         ["Issue ja kriteerit.", "Valitse katselmoinnin tärkein muutos ja tarkenna sen hyväksymiskriteerit issueen ennen kuin kirjoitat riviäkään."],
-        ["Haara.", "Luo feature-haara, jonka nimi kertoo mitä tehdään (esimerkiksi feature/viikkosuodatin-ylos)."],
+        ["Haara.", "Luo ominaisuushaara (feature branch), jonka nimi kertoo mitä tehdään — esimerkiksi feature/viikkosuodatin-ylos."],
         ["Toteutus pienin commitein.", "Tee muutos pienissä osissa. Yksi commit = yksi looginen muutos, viesti kertoo mitä ja miksi."],
         ["PR ja itsekatselmointi.", "Avaa pull request, kirjoita kuvaus (mitä, miksi, linkki palautteeseen) ja katselmoi oma koodisi kommentein: perustele valinnat ja merkitse kohdat, joita epäilet."],
         ["Konfliktin ratkaisu ja merge.", "Ratkaise merge-konflikti hallitusti ja yhdistä pääversioon. Jos konfliktia ei synny luonnostaan, tee ohjattu harjoituskonflikti ja merkitse se selvästi harjoitukseksi."],
@@ -787,12 +787,12 @@ window.NAYTTOPROJEKTI = {
 
     16: {
       type: "julkaisu",
-      feature: "Sisältö on jäädytetty, julkaisuehdokas v1.0-rc1 on julkaistu ja tagattu — ja nimetty ulkopuolinen henkilö on testannut sen molemmilla rooleilla pelkän kirjallisen ohjeen avulla.",
+      feature: "Sisältö on jäädytetty, julkaisuehdokas v1.0-rc1 on julkaistu ja merkitty Git-tagilla — ja nimetty ulkopuolinen henkilö on testannut sen molemmilla rooleilla pelkän kirjallisen ohjeen avulla.",
       excerpt: "Mukana on ohje, jolla uusi työntekijä pääsee alkuun kysymättä minulta mitään.",
       connection: "Dokumentaatio on kirjoitettu; nyt se pannaan koetukselle oikeassa tilanteessa — ensin itse puhtaassa ympäristössä, sitten ulkopuolisen käsissä.",
-      deliverable: "Jäädytyspäätös ja issue-luokittelu, tagattu RC julkisessa osoitteessa, oma asennuspöytäkirja, korjattu käyttöönotto-ohje, ulkopuolisen testauspöytäkirja ja estävien issueiden lista.",
+      deliverable: "Jäädytyspäätös ja issue-luokittelu, tagilla merkitty RC julkisessa osoitteessa, oma asennuspöytäkirja, korjattu käyttöönotto-ohje, ulkopuolisen testauspöytäkirja ja estävien issueiden lista.",
       why: "Julkaisutestaus julkaisuehdokasta vasten jättää kokonaisen viikon puskuria: mitä tahansa testaaja löytää, korjaukselle on aikaa ennen v1.0:aa. Jäädytys estää viimeisten viikkojen valumisen uusiin ominaisuuksiin, ja oma puhdas asennus siivoaa ohjeen aukot ennen ulkopuolisen vuoroa.",
-      done: "v1.0-rc1 on julkisessa osoitteessa ja tagattuna; oma asennuspöytäkirja ja ulkopuolisen testauspöytäkirja (nimetty rooli, ajankohta, testaajan omat sanat erillään omasta tulkinnasta) ovat repossa; estävät virheet on kirjattu issueiksi — niitä ei korjata kiireellä tällä viikolla vaan seuraavalla.",
+      done: "v1.0-rc1 on julkisessa osoitteessa ja merkitty tagilla; oma asennuspöytäkirja ja ulkopuolisen testauspöytäkirja (nimetty rooli, ajankohta, testaajan omat sanat erillään omasta tulkinnasta) ovat repossa; estävät virheet on kirjattu issueiksi — niitä ei korjata kiireellä tällä viikolla vaan seuraavalla.",
       record: "Kirjoita työviikon 16 merkintään: jäädytyspäätös ja mitä jätit v1.1-listalle, oman puhtaan asennuksen epäröintikohdat ja ohjeeseen tehdyt korjaukset sekä ulkopuolisen tärkeimmät havainnot sitaatteina.",
       skills: ["tuotantobuild", "ympäristökonfiguraatio", "versiotagit", "julkaisutestauksen järjestäminen"],
       steps: [
@@ -812,7 +812,7 @@ window.NAYTTOPROJEKTI = {
           "Älä auta testaajaa suullisesti: jokainen kysymys on ohjeen puute, ei testaajan vika.",
           "Kirjaa estävät virheet issueiksi äläkä korjaa niitä kiireellä tällä viikolla."
         ],
-        code: "JULKAISUN TARKISTUSLISTA\n[ ] tuotantobuild syntyy puhtaassa hakemistossa\n[ ] ympäristömuuttujat dokumentoitu ja asetettu\n[ ] tietokantatiedoston polku ja pysyvyys tarkistettu\n[ ] lokit näkyvät alustan lokinäkymässä\n[ ] savutesti julkisessa osoitteessa: kirjaus ja raportti\n[ ] git tag v1.0-rc1 luotu ja pushattu\n\nPÖYTÄKIRJAMERKINTÄ\nVaihe N: mitä tein → mihin pysähdyin → mitä ohjeeseen lisättiin\nTestaajan sitaatti: \"…\"\nOma tulkinta: …\nLuokitus: estävä / v1.1",
+        code: "JULKAISUN TARKISTUSLISTA\n[ ] tuotantobuild syntyy puhtaassa hakemistossa\n[ ] ympäristömuuttujat dokumentoitu ja asetettu\n[ ] tietokantatiedoston polku ja pysyvyys tarkistettu\n[ ] lokit näkyvät alustan lokinäkymässä\n[ ] savutesti julkisessa osoitteessa: kirjaus ja raportti\n[ ] git tag v1.0-rc1 luotu ja viety etärepositoryyn\n\nPÖYTÄKIRJAMERKINTÄ\nVaihe N: mitä tein → mihin pysähdyin → mitä ohjeeseen lisättiin\nTestaajan sitaatti: \"…\"\nOma tulkinta: …\nLuokitus: estävä / v1.1",
         test: "Anna ohje ja osoite testaajalle ilman yhtään suullista lisäystä ja katso kelloa: kuinka kauan alkuun pääseminen kesti."
       },
       example: "Pöytäkirjamerkintä: “Vaihe 4: ohje ei kertonut mihin .env luodaan → lisättiin ohjeeseen polku ja esimerkkitiedosto”, ja sen vieressä testaajan oma sitaatti havainnostaan.",
@@ -821,11 +821,11 @@ window.NAYTTOPROJEKTI = {
 
     17: {
       type: "julkaisu",
-      feature: "Julkaisutestauksen estävät virheet on korjattu täydellisenä virheenkorjausketjuna, v1.0 on julkaistu ja tagattu, ja sovellus on luovutettu asiakkaalle.",
+      feature: "Julkaisutestauksen estävät virheet on korjattu täydellisenä virheenkorjausketjuna, v1.0 on julkaistu ja merkitty tagilla, ja sovellus on luovutettu asiakkaalle.",
       connection: "Edellisen viikon havainnot muuttuvat korjauksiksi, ja julkaisuehdokkaasta tulee v1.0 — loppuviikko on puskuria, jota ei täytetä uusilla ominaisuuksilla.",
       deliverable: "Kolmas virheenkorjausketju, v1.0-tag ja release, julkaisutiedote, savutestin tulos ja luovutusviesti asiakkaalle.",
       why: "v1.0 ilman korjattuja estäviä virheitä on vain julkaisuehdokas uudella nimellä — ja koko viikon puskuri tekee julkaisusta hallitun tapahtuman, ei paniikkia. Luovutusviesti on asiakaslähtöisen viestinnän viimeinen näyte.",
-      done: "v1.0 on julkisessa osoitteessa ja tagattuna; kolmas ketju on täydellisenä repossa (tai kirjaus siitä, mistä aidosta havainnosta ketju ajettiin); savutestin tulos, julkaisutiedote ja luovutusviesti ovat repossa; viikolle jäi puskuriaikaa eikä mitään uutta aloitettu.",
+      done: "v1.0 on julkisessa osoitteessa ja merkitty tagilla; kolmas ketju on täydellisenä repossa (tai kirjaus siitä, mistä aidosta havainnosta ketju ajettiin); savutestin tulos, julkaisutiedote ja luovutusviesti ovat repossa; viikolle jäi puskuriaikaa eikä mitään uutta aloitettu.",
       record: "Kirjoita työviikon 17 merkintään: mitkä estävät virheet korjattiin ja miten, v1.0:n tagi ja julkaisutiedotteen ydin sekä se, mitä jätit tietoisesti v1.1-listalle.",
       skills: ["julkaisu tuotantoon", "release-käytännöt", "regressiotestaus", "asiakasviestintä"],
       steps: [
@@ -930,8 +930,8 @@ window.NAYTTOPROJEKTI = {
         [10, "Asiakaskatselmointi", "Katselmointimuistio testaajan sitaatteineen, oma tulkinta erikseen, priorisoidut muutokset issueina. Katselmoija nimetty viimeistään työviikolla 8."],
         [13, "Tietoturva", "Ajettu reittitaulukko (reitti × rooli × odotettu × saatu), korjaukset uusintatestattuina, salaisuudet .env:ssä ja poissa Git-historiasta, XSS-testi tehtynä."],
         [14, "Testaus", "Vähintään 12 testitapausta kolmessa luokassa odotusarvoineen ennen ajoa, vähintään kaksi täydellistä virheenkorjausketjua, regressiotestit ajettavissa komennolla."],
-        [16, "Julkaisuehdokas ja julkaisutestaus", "v1.0-rc1 tagattuna julkisessa osoitteessa, oma asennuspöytäkirja, ulkopuolisen testauspöytäkirja ja estävät issueina."],
-        [17, "v1.0", "Estävät korjattu täydellisenä ketjuna, v1.0 tagattuna ja julkaistuna, savutesti ajettuna, julkaisutiedote ja luovutusviesti repossa."],
+        [16, "Julkaisuehdokas ja julkaisutestaus", "v1.0-rc1 merkittynä tagilla ja julkisessa osoitteessa, oma asennuspöytäkirja, ulkopuolisen testauspöytäkirja ja estävät issueina."],
+        [17, "v1.0", "Estävät korjattu täydellisenä ketjuna, v1.0 merkittynä tagilla ja julkaistuna, savutesti ajettuna, julkaisutiedote ja luovutusviesti repossa."],
         [18, "Näyttöaineisto", "Näyttömatriisi täsmälinkitettynä 32 vaatimukseen, demo harjoiteltuna kellon kanssa, itsearviointi konkreettisin tilantein."]
       ],
       tyonaytteet: {
@@ -958,7 +958,7 @@ window.NAYTTOPROJEKTI = {
         s10: ["9 (pohjustus 8)", "Raportti-API:n kutsu fetchillä, JSON-muunnos kaavion muotoon testattuna funktiona, virhetilanteet (tyhjä data, verkkovirhe, lataus) käsiteltyinä"],
         s11: ["13", "Tietoturva-arvio (syötteet, käyttöoikeudet, salasanat, istunnot, tietojen näkyvyys), ajettu reittitaulukko ja XSS-testi; salaisuudet .env:ssä"],
         s12: ["1→ (koonti 11)", "Git koko projektin ajan: tarkoituksenmukaiset commitit, etärepository ja haarakäytäntö; historia työnäytteenä"],
-        s13: ["11", "Palautemuutos feature-haarassa, pull request, itsekatselmointi, konfliktin ratkaisu ja merge pääversioon"],
+        s13: ["11", "Palautemuutos ominaisuushaarassa, pull request, itsekatselmointi, konfliktin ratkaisu ja merge pääversioon"],
         s14: ["17 (ensijulkaisu 3, julkaisutestaus 16)", "Tuotantobuild, ympäristöasetukset ja julkaisu valittuun pilvialustaan; v1.0 julkisessa osoitteessa asiakkaan käytettävissä"],
         k1: ["1 (täydentyy 3)", "Svelte + Vite -projektin luonti ja konfigurointi: vite.config, dev-proxy backendiin sekä kehitys- ja tuotantoasetukset"],
         k2: ["3", "Kirjallinen selvitys: mitä Svelte ja Vite ratkaisevat (komponentit, reaktiivisuus, build), mitä eivät (reititys, kaaviot) ja mistä puuttuva otetaan"],
@@ -981,7 +981,7 @@ window.NAYTTOPROJEKTI = {
       palautuspaketti: [
         ["Julkaistu tuotos", "v1.0 julkisessa osoitteessa, Git-tag v1.0 ja release; julkaisutiedote ja luovutusviesti repositoryssä."],
         ["Repository", "Julkinen repository, jossa client/, server/ ja project-docs/ sekä koko commit-historia haaroineen ja pull requesteineen."],
-        ["Suunnitelma ja päiväkirja", "project-docs/suunnitelma.md, projektipaivakirja.md ja ai-loki.md — päiväkirja committattuna viikoittain."],
+        ["Suunnitelma ja päiväkirja", "project-docs/suunnitelma.md, projektipaivakirja.md ja ai-loki.md — päiväkirjasta on commit joka viikolta."],
         ["Laatuaineisto", "Testiraportti (vähintään 12 tapausta), kolme virheenkorjausketjua, tietoturva-arvio ja reittitaulukko, saavutettavuusraportit ennen ja jälkeen."],
         ["Katselmoinnit", "Katselmointimuistio (työviikko 10) ja julkaisutestauksen pöytäkirja (16) sekä oma asennuspöytäkirja."],
         ["Näyttöaineisto", "Täsmälinkitetty näyttömatriisi 32 vaatimukselle, demorunko ja itsearviointi."]

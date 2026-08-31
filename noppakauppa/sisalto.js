@@ -234,7 +234,7 @@ window.NAYTTOPROJEKTI = {
         ["Sovi julkisen repon asiat.", "Yksityisyystarkistus, tekijänimi ja alaikäisellä huoltajan suostumus ohjaajan kautta. Käynnistä samalla katselmoijien etsintä viikkoja 10 ja 16 varten — molemmat pysyvät avoimina asioina, kunnes vastaus on saatu."],
         ["Luo repository ja kansiot.", "Kansiot frontend/, backend/ ja project-docs/ sekä README ja .gitignore."],
         ["Alusta frontti ja backend.", "Luo Vite+Vue-projekti ja FastAPI-sovellus ja käynnistä molemmat kehityspalvelimet."],
-        ["Committaa ja kirjaa.", "Tee ensimmäinen commit ja kirjoita viikon projektipäiväkirjamerkintä."]
+        ["Tee commit ja kirjaa.", "Tee ensimmäinen commit ja kirjoita viikon projektipäiväkirjamerkintä."]
       ],
       help: {
         title: "Perusta repository ja käynnistä molemmat palvelimet",
@@ -245,7 +245,7 @@ window.NAYTTOPROJEKTI = {
           "Alusta backend: virtuaaliympäristö, pip install fastapi uvicorn, sitten uvicorn main:app --reload.",
           "git init, ensimmäinen commit, luo GitHubiin repository ja push."
         ],
-        code: "ALOITUKSEN TARKISTUSLISTA\n[ ] npm run dev vastaa selaimessa\n[ ] uvicorn main:app --reload vastaa selaimessa\n[ ] /docs-sivu aukeaa backendistä\n[ ] .gitignore estää node_modules, .env ja *.db\n[ ] README kertoo mitä tehdään ja miten projekti käynnistetään\n[ ] kysymyslista on project-docs-kansiossa\n[ ] ensimmäinen commit on pushattu",
+        code: "ALOITUKSEN TARKISTUSLISTA\n[ ] npm run dev vastaa selaimessa\n[ ] uvicorn main:app --reload vastaa selaimessa\n[ ] /docs-sivu aukeaa backendistä\n[ ] .gitignore estää node_modules, .env ja *.db\n[ ] README kertoo mitä tehdään ja miten projekti käynnistetään\n[ ] kysymyslista on project-docs-kansiossa\n[ ] ensimmäinen commit on viety etärepositoryyn (push)",
         test: "Sulje molemmat terminaalit, avaa ne uudelleen ja käynnistä frontti ja backend pelkän README:n komennoilla — molempien pitää vastata selaimessa.",
         links: [
           ["Vite: Getting Started", "https://vite.dev/guide/"],
@@ -262,7 +262,7 @@ window.NAYTTOPROJEKTI = {
       excerpt: "En halua tähän ensimmäiseen versioon maksunvälitystä.",
       connection: "Viikon 1 kysymysten vastaukset muuttuvat nyt tarinoiksi, tauluiksi ja tehtäviksi. Tästä suunnitelmasta loput viikot ottavat järjestyksensä.",
       deliverable: "suunnitelma.md tarinoineen, tietomallikaavio, tietovarastovertailu, hyväksytyt rautalangat ja vähintään kahdeksan issueta.",
-      why: "Ilman tietomallia ostoskori ja tilaus rakennetaan kahdesti; ilman P0-rajausta featurelista kasvaa eikä mikään valmistu.",
+      why: "Ilman tietomallia ostoskori ja tilaus rakennetaan kahdesti; ilman P0-rajausta ominaisuuslista kasvaa eikä mikään valmistu.",
       done: "suunnitelma.md:ssä on tarinat prioriteetteineen, tietomallikaavio, tietovarastoperustelu ja teemapäätös; issueita on vähintään kahdeksan ja P0 on merkitty; rautalankojen hyväksyntä on kirjattu — kuka hyväksyi ja mitä hän sanoi. Hyväksyjäksi käy ohjaaja asiakkaan äänenä, jos katselmoijaa ei ole vielä nimetty.",
       record: "Kirjoita työviikon 2 merkintään: teemapäätös perusteluineen, tietovarastovalinta, kuka hyväksyi rautalangat ja mitä hän sanoi, sekä linkki issue-listaan.",
       skills: ["asiakastarpeen selvittäminen (s1)", "priorisointi ja tehtäviksi jako (s4, s5)", "tietovaraston valinta (s8)", "kirjaston mahdollisuudet ja rajoitteet (k2)"],
@@ -307,7 +307,7 @@ window.NAYTTOPROJEKTI = {
         ["Toteuta endpoint.", "GET /api/tuotteet ja kokeile se FastAPI:n /docs-sivulla ennen frontin koodaamista."],
         ["Rakenna komponentit itse.", "App → TuoteLista → TuoteKortti ja fetch-kutsu. Älä käytä valmista UI-komponenttikirjastoa."],
         ["Toteuta lataus-, tyhjä- ja virhetilat.", "Käyttäjän pitää nähdä, mitä tapahtuu, myös silloin kun mikään ei toimi."],
-        ["Aja T01 ja T02 ja committaa.", "Kirjaa odotettu tulos ennen ajoa ja toteutunut tulos ajon jälkeen."]
+        ["Aja T01 ja T02 ja tee commit.", "Kirjaa odotettu tulos ennen ajoa ja toteutunut tulos ajon jälkeen."]
       ],
       help: {
         title: "Komponenttipuu ja API-kutsun tarkistuslista",
@@ -372,7 +372,7 @@ window.NAYTTOPROJEKTI = {
       steps: [
         ["Tee vertailutaulukko.", "Vähintään kolme vaihtoehtoa: hinta, rajoitteet ja SQLite-tiedoston pysyvyys. Kirjaa myös ilmaistason rajoitteet, kuten uneen menevä palvelin."],
         ["Konfiguroi backendin tuotantoasetukset.", "CORS-originit ja ympäristömuuttujat. .env ei mene repositoryyn, .env.example menee."],
-        ["Buildaa frontti ja osoita se tuotanto-APIin.", "Kehitys- ja tuotanto-osoitteen ero hoidetaan ympäristömuuttujalla, ei koodissa vaihtamalla."],
+        ["Tee frontin tuotanto-build ja osoita se tuotanto-APIin.", "Kehitys- ja tuotanto-osoitteen ero hoidetaan ympäristömuuttujalla, ei koodissa vaihtamalla."],
         ["Julkaise molemmat.", "Vie frontend ja backend valitsemallesi alustalle ja tarkista lokit."],
         ["Savutestaa toisella laitteella ja kirjaa T03.", "Avaa julkinen osoite laitteella, jolla et ole kehittänyt, ja kirjaa tulos."]
       ],
@@ -637,11 +637,11 @@ window.NAYTTOPROJEKTI = {
 
     13: {
       type: "feature",
-      feature: "Viikon jälkeen henkilökunta selaa kaikkia tilauksia uusimmat ensin ja merkitsee tilauksen käsitellyksi — ja tilan muutos näkyy asiakkaan tilaushistoriassa. Featurelista päättyy tähän; viikon toinen puolisko on koko sovelluksen saavutettavuustarkistus.",
+      feature: "Viikon jälkeen henkilökunta selaa kaikkia tilauksia uusimmat ensin ja merkitsee tilauksen käsitellyksi — ja tilan muutos näkyy asiakkaan tilaushistoriassa. Ominaisuuslista päättyy tähän; viikon toinen puolisko on koko sovelluksen saavutettavuustarkistus.",
       excerpt: "Minun ja myyjäni pitää pystyä lisäämään ja muokkaamaan tuotteita suoraan selaimessa — ja selaamaan asiakkaiden tekemiä tilauksia, jotta näen mitä pitää kerätä hyllystä.",
       connection: "Tuotehallinta viikolta 12 saa parikseen tilausten hallinnan, ja viikon 4 saavutettavuusperusta todennetaan nyt, kun kaikki näkymät ovat olemassa.",
       deliverable: "Henkilökunnan tilauslistaus suodatuksineen, tilan muutos ja sen näkyminen asiakkaalle, testi T14 sekä Lighthouse-raportit ennen ja jälkeen korjausten.",
-      why: "Tämä sulkee asiakkaan alkuperäisen tarpeen — yrittäjän arkityökalu on kasassa. Jos tämän jälkeen lisää featureja, projekti on rajattu väärin. Saavutettavuus on webprojektissa vaatimus, ei kaunistus, ja se tarkistetaan nyt kun kaikki näkymät ovat olemassa.",
+      why: "Tämä sulkee asiakkaan alkuperäisen tarpeen — yrittäjän arkityökalu on kasassa. Jos tämän jälkeen lisää ominaisuuksia, projekti on rajattu väärin. Saavutettavuus on webprojektissa vaatimus, ei kaunistus, ja se tarkistetaan nyt kun kaikki näkymät ovat olemassa.",
       done: "Henkilökunta näkee kaikkien tilaukset ja asiakas vain omansa; käsitellyksi-merkintä näkyy asiakkaalle; ostopolun voi kulkea läpi pelkällä näppäimistöllä; Lighthouse-raportit ennen ja jälkeen on tallennettu ja vähintään yksi saavutettavuuspuute on korjattu.",
       record: "Kirjoita työviikon 13 merkintään: mitä tietoa henkilökunnan tilausnäkymään valitsit ja miksi, T14:n tulos molemmilla rooleilla sekä saavutettavuuslöydökset ja Lighthouse-pisteet ennen ja jälkeen.",
       skills: ["toimintalogiikka: tilat ja niiden muutokset (s7)", "rajapinnat (s10)", "roolit (s11)", "saavutettavuus"],
@@ -747,7 +747,7 @@ window.NAYTTOPROJEKTI = {
       record: "Kirjoita työviikon 16 merkintään: mitä siivosit repositorystä, kuka testasi ja missä ympäristössä, missä kohdissa hän epäröi sekä mitkä löydökset ovat estäviä ja mitkä eivät.",
       skills: ["julkaisuprosessi (s14)", "dokumentointi (k7)", "version katselmointi (s3)"],
       steps: [
-        ["Jäädytä sisältö, julkaise RC ja tagaa.", "Merkitse git-tag v1.0-rc1. Tämän jälkeen vain estävien virheiden korjaukset."],
+        ["Jäädytä sisältö, julkaise RC ja merkitse tagi.", "Merkitse git-tag v1.0-rc1. Tämän jälkeen vain estävien virheiden korjaukset."],
         ["Siivoa repository ja kirjoita ohjeet loppuun.", "README käyttöönottoineen ja lyhyt asiakasohje kaupan käyttöön."],
         ["Sovi testaaja ja ympäristö.", "Nimetty ulkopuolinen, mieluiten eri henkilö kuin viikolla 10; puhdas ympäristö eli toinen kone tai selain ilman evästeitä ja aiempia kirjautumisia."],
         ["Havainnoi puuttumatta.", "Älä neuvo. Kirjaa jokainen epäröinti ja se, mistä ohjeesta tieto puuttui."],
@@ -757,7 +757,7 @@ window.NAYTTOPROJEKTI = {
         title: "Julkaisutestin pöytäkirjapohja",
         tree: "1. Testaajan nimi ja rooli\n2. Ympäristö: laite, selain, ”ei aiempia tunnuksia, ei evästeitä”\n3. Käytössä ollut ohje (linkki tai versio)\n4. Tehtävät: rekisteröidy → etsi tuote → tilaa\n5. Havainnot: aika, kohta, testaajan sanat\n6. Luokittelu: estävä / ei-estävä\n7. Ohjeen korjauslista",
         actions: [
-          "Tagaa RC ennen testiä, jotta testattu versio on tunnistettavissa.",
+          "Merkitse RC:n git-tag ennen testiä, jotta testattu versio on tunnistettavissa.",
           "Poista repositorystä turhat tiedostot, kokeilut ja unohtuneet salaisuudet.",
           "Anna testaajalle vain kirjoitettu ohje — älä kerro mitään suullisesti.",
           "Korjaa ohje samana päivänä ja pyydä testaajaa kokeilemaan korjattu kohta uudelleen."
@@ -782,12 +782,12 @@ window.NAYTTOPROJEKTI = {
       skills: ["julkaisu tuotantoon (s14)", "julkaisu asiakkaan ympäristöön (k6)", "asiakaslähtöinen viestintä (s2)"],
       steps: [
         ["Korjaa estävät ja regressiotestaa.", "Ei-estävät kirjataan tunnetuiksi puutteiksi, ei korjata nyt."],
-        ["Julkaise ja tagaa v1.0.", "Kirjoita julkaisumuistio: mitä mukana, mitä rajattu pois ja miksi."],
+        ["Julkaise v1.0 ja merkitse tagi.", "Kirjoita julkaisumuistio: mitä mukana, mitä rajattu pois ja miksi."],
         ["Tarkista README ulkopuolisen silmin.", "Käyttöönotto, käynnistys, riippuvuudet, ympäristömuuttujat ja tunnetut puutteet."],
         ["Kirjoita luovutusviesti asiakkaalle.", "Mitä tehtiin, mitä rajattiin pois (maksaminen), miten kauppaa käytetään ja mitä seuraava versio voisi sisältää — ilman teknistä jargonia."]
       ],
       example: "Julkaisumuistio, jossa on mukana olevat ominaisuudet, pois rajatut asiat perusteluineen, tunnetut puutteet ja seuraavat askeleet — sekä luovutusviesti, jonka asiakas ymmärtää ilman selityksiä.",
-      notEnough: "”Deployasin uusimman mainin” ilman tagia, muutoslistaa ja luovutusviestiä."
+      notEnough: "”Julkaisin uusimman mainin” ilman tagia, muutoslistaa ja luovutusviestiä."
     },
 
     18: {
@@ -863,9 +863,9 @@ window.NAYTTOPROJEKTI = {
         [5, "Ensijulkaisu", "Julkinen osoite toimii toisella laitteella; alustavertailu on kirjattu; salaisuudet eivät ole repossa."],
         [9, "Ostopolku valmis", "Tilaus tallentuu transaktiona tilaushetken hinnoilla; historia näyttää vain omat tilaukset; k4-lisäpaketin perustelu on kirjattu."],
         [10, "Asiakaskatselmointi", "Nimetty ulkopuolinen on testannut; sitaatit ja oma tulkinta ovat muistiossa erillään; palaute on issueina ja priorisoitu."],
-        [13, "Featurelista päättyy", "Henkilökunnan tilausnäkymä toimii ja saavutettavuustarkistus on tehty Lighthouse-raportein. Tästä eteenpäin ei lisätä uusia ominaisuuksia."],
+        [13, "Ominaisuuslista päättyy", "Henkilökunnan tilausnäkymä toimii ja saavutettavuustarkistus on tehty Lighthouse-raportein. Tästä eteenpäin ei lisätä uusia ominaisuuksia."],
         [14, "Tietoturva-arvio", "Arvio läpikäydään ohjaajan kanssa: jokaisella riskillä on ratkaisu tai perusteltu jäännösriski; K3-ketju on kokonainen."],
-        [16, "Julkaisuehdokas", "v1.0-rc1 on tagattu, repo siivottu ja ulkopuolinen on tehnyt testitilauksen pelkän ohjeen avulla puhtaassa ympäristössä."],
+        [16, "Julkaisuehdokas", "Tagi v1.0-rc1 on merkitty, repo on siivottu ja ulkopuolinen on tehnyt testitilauksen pelkän ohjeen avulla puhtaassa ympäristössä."],
         [18, "Näyttö", "Matriisin jokaisella rivillä on toimiva linkki; demo on harjoiteltu kellon kanssa; itsearviointi on kirjoitettu."]
       ],
       tyonaytteet: {
@@ -924,7 +924,7 @@ window.NAYTTOPROJEKTI = {
         ["Katselmoijat ovat viikon 1 järjestelykysymys", "Etsintä käynnistetään heti viikolla 1 ja nimeäminen tehdään viimeistään ennen viikkoa 10. Kunnes katselmoija on nimetty, ohjaaja toimii asiakkaan äänenä (viikko 2). Viikon 10 ja 16 katselmoija ei saa olla oma ohjaaja."],
         ["Maksunvälitys on rajattu pois asiakkaan suulla", "Rajaus on toimeksiannossa asiakkaan omana päätöksenä. Sitä ei toteuteta osittainkaan, ja rajauksen selittäminen asiakkaalle on osa s2:n työnäytettä."],
         ["Testiluokkien jakauma on tietoinen poikkeama", "14 testitapausta jakautuvat 6 normaalia, 4 rajaa ja 4 virhetilannetta. Virhetilanneluokka täydentyy viikon 14 hyökkäystesteillä (injektio, XSS, IDOR, auktorisointi), jotka kirjataan samalla tarkkuudella matriisin jatkoksi."],
-        ["Viikon 13 jälkeen ei uusia ominaisuuksia", "Featurelistan päättyminen sanotaan opiskelijalle ääneen viikon 13 kortissa. Jos uusia ominaisuuksia ilmaantuu viikoilla 14–17, rajaus on pettänyt ja se on syytä ottaa puheeksi."],
+        ["Viikon 13 jälkeen ei uusia ominaisuuksia", "Ominaisuuslistan päättyminen sanotaan opiskelijalle ääneen viikon 13 kortissa. Jos uusia ominaisuuksia ilmaantuu viikoilla 14–17, rajaus on pettänyt ja se on syytä ottaa puheeksi."],
         ["Avoimet asiat ovat ohjaajan pöydällä", "Lisenssi, repositoryn julkisuus ja tekijänimi (alaikäisellä huoltajan suostumus), oppilaitoksen linja julkaisualustasta, katselmoijien nimeäminen ja perusteversion siirtymäsääntö (OPH-6216-2025). Tyhjä kenttä suunnitelmassa on oikea tulos, kunnes asia on sovittu."]
       ]
     }

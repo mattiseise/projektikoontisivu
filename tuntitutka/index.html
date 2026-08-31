@@ -35,6 +35,7 @@
       <span><strong>TuntiTutka</strong><small>Ohjattu näyttöprojekti</small></span>
     </a>
     <nav class="top-nav" aria-label="Päänavigaatio">
+      <a href="#osaamistavoitteet">Mitä näytetään</a>
       <a href="#aloitusohje">Näin käytät sivua</a>
       <a href="#toimeksianto">Toimeksianto</a>
       <a href="#suunnitelma">Suunnitelma</a>
@@ -93,6 +94,15 @@
         </figure>
       </section>
 
+      <section class="start-guide section-pad" id="osaamistavoitteet" aria-labelledby="goals-title">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Mitä tässä näytetään</p>
+          <h2 id="goals-title">Kolme tutkinnon osaa, yksi sovellus</h2>
+          <p>Projekti kattaa kolme tutkinnon osaa: Ohjelmointi (45 osp), Ohjelmistokehittäjänä toimiminen (45 osp) ja Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla (30 osp). Ohjelmoinnin osaaminen näkyy koodissa, jonka kirjoitat, testaat ja korjaat itse — esimerkiksi yhteenvetojen laskennassa ja virheenkorjausketjuissa. Ohjelmistokehittäjänä toimiminen on työtapa: puret toimeksiannon käyttäjätarinoiksi, priorisoit ne, ohjaat työtä Gitillä ja issueilla, arvioit tietoturvan ja julkaiset sovelluksen tuotantoon. Komponenttikirjasto-osa todennetaan Sveltellä: rakennat käyttöliittymän komponenteista, otat reititys- ja kaaviokirjaston käyttöön perustellusti ja julkaiset tuotantoversion asiakkaan ympäristöön. Kaikki 32 osaamisvaatimusta on avattu sivun näyttömatriisissa.</p>
+          <p>Tutkinnon osissa on myös tiimissä tehtäviä kokonaisuuksia. Siksi tehtävissä puhutaan tiimistä, katselmoinneista ja asiakkaasta, vaikka teet TuntiTutkan muuten yksin: ohjaava opettaja toimii tarvittaessa asiakkaana ja ohjaajana, ja sopimiset, katselmoinnit ja yhteiset päätökset käydään hänen tai muun nimetyn henkilön kanssa — esimerkiksi työviikkojen 10 ja 16 katselmoijien. Ne ovat osa arvioitavaa osaamista, eivät muodollisuus.</p>
+        </div>
+      </section>
+
       <section class="start-guide section-pad" id="aloitusohje" aria-labelledby="start-guide-title">
         <div class="section-heading reveal">
           <p class="eyebrow">Lue tämä ennen viikkoa 1</p>
@@ -103,7 +113,7 @@
           <article role="listitem"><span>1</span><h3>Työ tapahtuu repositoryssa</h3><p>Kaikki koodi, suunnitelma ja päiväkirja elävät GitHub-repositoryssa. Tämä sivusto ohjaa työtä, mutta työnäytteet syntyvät repoon.</p><small>Kansiot: client/, server/ ja project-docs/.</small></article>
           <article role="listitem"><span>2</span><h3>Ohjaa työ Gitillä</h3><p>Tehtävät ovat GitHubin tehtäväkortteja (issueita). Valmis työ näkyy pieninä tallennettuina muutoksina (committeina).</p><small>Yksi tehtäväkortti = yleensä puolen tai yhden päivän työ.</small></article>
           <article role="listitem"><span>3</span><h3>Kirjoita tällä sivulla</h3><p>Jokaisen viikon lopussa vastaat kolmeen kysymykseen: mitä ja miten, miksi sekä missä työnäyte on.</p><small>Kentät tallentuvat vain tähän selaimeen.</small></article>
-          <article role="listitem"><span>4</span><h3>Vie päiväkirja talteen</h3><p>Lataa koko projektipäiväkirja jokaisen viikon lopussa ja korvaa repositoryn vanha tiedosto.</p><small>Tiedosto: <code>project-docs/projektipaivakirja.md</code>. Committaa päiväkirja joka viikko — se on osa näyttöaineistoa.</small></article>
+          <article role="listitem"><span>4</span><h3>Vie päiväkirja talteen</h3><p>Lataa koko projektipäiväkirja jokaisen viikon lopussa ja korvaa repositoryn vanha tiedosto.</p><small>Tiedosto: <code>project-docs/projektipaivakirja.md</code>. Tee päiväkirjasta commit joka viikko — se on osa näyttöaineistoa.</small></article>
         </div>
         <div class="start-checklist reveal">
           <div>
@@ -295,7 +305,7 @@
           <li class="reveal" data-delay="1"><span>Päivä 2</span><strong>Rajaus</strong><p>Erottele P0 (kirjaus, roolit, lasketut yhteenvedot) lisäominaisuuksista ja sovi rajauksesta ohjaajan kanssa.</p></li>
           <li class="reveal" data-delay="2"><span>Päivä 3</span><strong>Työkaluperusta</strong><p>Asenna Node ja Git, luo repository ja Svelte + Vite -projekti. Tee julkisen repon tarkistukset.</p></li>
           <li class="reveal" data-delay="3"><span>Päivä 4</span><strong>Suunnittele</strong><p>Piirrä tietomalli ja rautalangat kirjaus- ja raporttinäkymästä. Päätä: summat lasketaan, ei tallenneta.</p></li>
-          <li class="reveal" data-delay="4"><span>Päivä 5</span><strong>Julkaise</strong><p>Vie tyhjä runko julkiseen osoitteeseen ja committaa kaikki. Ensimmäinen havaittava tulos on olemassa.</p></li>
+          <li class="reveal" data-delay="4"><span>Päivä 5</span><strong>Julkaise</strong><p>Vie tyhjä runko julkiseen osoitteeseen ja tee kaikesta commit. Ensimmäinen havaittava tulos on olemassa.</p></li>
         </ol>
       </section>
 
@@ -307,8 +317,8 @@
         </div>
 
         <figure class="path-visual reveal">
-          <div class="image-stage"><img src="assets/vaiheet.svg" width="1129" height="369" alt="Aikajana neljästä vaiheesta: Ydin työviikot 1–5, Featuret 6–10, Valmiiksi 11–15, Julkaisu 16–18."></div>
-          <figcaption><strong>18 työviikkoa, neljä vaihetta</strong> Ydin, featuret, valmiiksi ja julkaisu — jokainen viikko tuottaa havaittavan tuloksen ja työnäytteen.</figcaption>
+          <div class="image-stage"><img src="assets/vaiheet.svg" width="1129" height="369" alt="Aikajana neljästä vaiheesta: Ydin työviikot 1–5, Ominaisuudet 6–10, Valmiiksi 11–15, Julkaisu 16–18."></div>
+          <figcaption><strong>18 työviikkoa, neljä vaihetta</strong> Ydin, ominaisuudet, valmiiksi ja julkaisu — jokainen viikko tuottaa havaittavan tuloksen ja työnäytteen.</figcaption>
         </figure>
 
         <div class="phase-block" id="vaihe-a">
@@ -358,7 +368,7 @@
                 <ol></ol>
                 <p class="checkpoint"><strong>Valmis kun:</strong></p>
               </div>
-              <p class="evidence"><strong>Näytä:</strong> julkinen osoite README:ssä, deploy-lokin kuvakaappaus, init-skripti, k2-selvitys ja alustavertailu (k2, s14 ensijulkaisu; s9 pohjustuu).</p>
+              <p class="evidence"><strong>Näytä:</strong> julkinen osoite README:ssä, julkaisulokin kuvakaappaus, init-skripti, k2-selvitys ja alustavertailu (k2, s14 ensijulkaisu; s9 pohjustuu).</p>
             </div>
           </details>
 
@@ -396,7 +406,7 @@
         </div>
 
         <div class="phase-block" id="vaihe-b">
-          <div class="phase-heading"><span>B</span><div><p>Työviikot 6–10</p><h3>Featuret: hallinta, omat kirjaukset, lasketut yhteenvedot ja asiakaskatselmointi</h3></div></div>
+          <div class="phase-heading"><span>B</span><div><p>Työviikot 6–10</p><h3>Ominaisuudet: hallinta, omat kirjaukset, lasketut yhteenvedot ja asiakaskatselmointi</h3></div></div>
 
           <details class="week-card" id="week-6" data-week="6">
             <summary><span class="week-number">6</span><span class="week-title"><small>Työviikko 6 / 18</small><strong>Hallintanäkymät</strong></span><span class="week-status">0 / 4</span></summary>
@@ -486,7 +496,7 @@
             <summary><span class="week-number">11</span><span class="week-title"><small>Työviikko 11 / 18</small><strong>Palautemuutos</strong></span><span class="week-status">0 / 4</span></summary>
             <div class="week-content">
               <label><input type="checkbox" data-task="11-1"> <span>Valitse katselmoinnin tärkein muutos ja tarkenna hyväksymiskriteerit issueen.</span></label>
-              <label><input type="checkbox" data-task="11-2"> <span>Toteuta muutos feature-haarassa pienin commitein.</span></label>
+              <label><input type="checkbox" data-task="11-2"> <span>Toteuta muutos ominaisuushaarassa pienin commitein.</span></label>
               <label><input type="checkbox" data-task="11-3"> <span>Tee pull request, katselmoi oma koodisi kommentein ja ratkaise merge-konflikti.</span></label>
               <label><input type="checkbox" data-task="11-4"> <span>Todenna muutos julkaistussa versiossa ja kuittaa katselmointimuistion kohta.</span></label>
               <div class="lesson-instructions">
@@ -739,7 +749,7 @@
             <label><input type="checkbox" data-evidence="s11"><span><strong>arvioi ohjelmiston tietoturvaa</strong> Tietoturva-arvio työviikolla 13: syötteet, käyttöoikeudet, salasanat, istunnot ja tietojen näkyvyys; ajettu reittitaulukko ja XSS-testi, salaisuudet ympäristömuuttujissa.</span></label>
             <p class="matrix-group" role="heading" aria-level="4">Opiskelija versioi ja julkaisee ohjelman</p>
             <label><input type="checkbox" data-evidence="s12"><span><strong>käyttää versionhallintaa</strong> Git koko projektin ajan työviikolta 1: tarkoituksenmukaiset commitit, etärepository ja haarakäytäntö. Historia työnäytteenä, koonti työviikolla 11.</span></label>
-            <label><input type="checkbox" data-evidence="s13"><span><strong>liittää ohjelman osan olemassa olevaan versioon</strong> Palautemuutos feature-haarassa työviikolla 11: pull request, itsekatselmointi, konfliktin ratkaisu ja merge pääversioon.</span></label>
+            <label><input type="checkbox" data-evidence="s13"><span><strong>liittää ohjelman osan olemassa olevaan versioon</strong> Palautemuutos ominaisuushaarassa työviikolla 11: pull request, itsekatselmointi, konfliktin ratkaisu ja merge pääversioon.</span></label>
             <label><input type="checkbox" data-evidence="s14"><span><strong>julkaisee ohjelman tuotantoympäristöön</strong> Tuotantobuild, ympäristöasetukset ja julkaisu valittuun pilvialustaan: ensijulkaisu työviikolla 3, julkaisuehdokas 16 ja v1.0 työviikolla 17 julkisessa osoitteessa.</span></label>
           </div>
         </details>

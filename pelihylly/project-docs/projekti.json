@@ -48,7 +48,7 @@
     },
     {
       "tunnus": "B",
-      "lyhyt": "Featuret",
+      "lyhyt": "Ominaisuudet",
       "otsikko": "Tilat, käyttäjät, profiilit ja asiakaskatselmointi",
       "viikot": [
         6,
@@ -181,8 +181,8 @@
     "HERO_KUVA_TEKSTI": "Jokainen viikko kulkee saman kierron: suunnittele pieni pala, rakenna komponentti, kytke se APIin ja dataan, testaa kirjatulla odotuksella ja vie julkaistuun versioon.",
     "HERO_KUVA_ALT": "Viisivaiheinen työkierto: suunnitelma, komponentti, API ja data, testi, julkaisu.",
     "POLKU_KUVA_OTSIKKO": "Neljä vaihetta, 18 työviikkoa",
-    "POLKU_KUVA_TEKSTI": "Ydin (1–5) tuottaa julkaistun pelilistan, Featuret (6–10) tilat, käyttäjät ja profiilit sekä asiakaskatselmoinnin, Valmiiksi (11–15) palautemuutoksen, testauksen ja laadun, Julkaisu (16–18) julkaisuehdokkaan, v1.0:n ja näytön.",
-    "POLKU_KUVA_ALT": "Projektipolku neljässä vaiheessa: Ydin viikot 1–5, Featuret 6–10, Valmiiksi 11–15, Julkaisu 16–18.",
+    "POLKU_KUVA_TEKSTI": "Ydin (1–5) tuottaa julkaistun pelilistan, Ominaisuudet (6–10) tilat, käyttäjät ja profiilit sekä asiakaskatselmoinnin, Valmiiksi (11–15) palautemuutoksen, testauksen ja laadun, Julkaisu (16–18) julkaisuehdokkaan, v1.0:n ja näytön.",
+    "POLKU_KUVA_ALT": "Projektipolku neljässä vaiheessa: Ydin viikot 1–5, Ominaisuudet 6–10, Valmiiksi 11–15, Julkaisu 16–18.",
     "SUUNNITELMA_KUVA_OTSIKKO": "Suunnitelma ennen koodia",
     "SUUNNITELMA_KUVA_TEKSTI": "Suunnitelmassa on kolme osaa: asiakkaan tarve ja käyttäjäryhmät, sinun omat perustellut päätöksesi sekä tietomalli ja sivukartta, joita vasten toteutus tarkistetaan.",
     "SUUNNITELMA_KUVA_ALT": "Suunnitelman kolme osaa: tarve ja käyttäjät, omat päätökset, tietomalli ja sivukartta.",

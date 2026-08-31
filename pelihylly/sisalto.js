@@ -28,7 +28,7 @@ window.NAYTTOPROJEKTI = {
   /* ---- vaiheet ---- */
   vaiheet: [
     { tunnus: "A", lyhyt: "Ydin",      otsikko: "Palvelun ydin: toimeksianto, suunnitelma ja julkaistu pelilista", viikot: [1, 2, 3, 4, 5],        vari: "#8d5a2b" },
-    { tunnus: "B", lyhyt: "Featuret",  otsikko: "Tilat, käyttäjät, profiilit ja asiakaskatselmointi",               viikot: [6, 7, 8, 9, 10],       vari: "#6b7f3f" },
+    { tunnus: "B", lyhyt: "Ominaisuudet", otsikko: "Tilat, käyttäjät, profiilit ja asiakaskatselmointi",               viikot: [6, 7, 8, 9, 10],       vari: "#6b7f3f" },
     { tunnus: "C", lyhyt: "Valmiiksi", otsikko: "Palautemuutos, saavutettavuus, testaus, laatu ja dokumentaatio",   viikot: [11, 12, 13, 14, 15],   vari: "#5b6b8c" },
     { tunnus: "D", lyhyt: "Julkaisu",  otsikko: "Julkaisuehdokas, v1.0 ja näyttö",                                  viikot: [16, 17, 18],           vari: "#8d4a5b" }
   ],
@@ -256,7 +256,7 @@ window.NAYTTOPROJEKTI = {
           "Luo Vite + React -projekti client-kansioon ja käynnistä kehityspalvelin.",
           "Kirjoita README, lisää .gitignore, tee ensimmäinen commit ja push etärepositoryyn."
         ],
-        code: "ALOITUKSEN TARKISTUSLISTA\n[ ] node -v ja git --version tulostettu ja talletettu\n[ ] client/ kääntyy ja dev-palvelin käynnistyy\n[ ] README kertoo mikä projekti on ja miten se käynnistetään\n[ ] .gitignore estää node_modules-kansion ja .env-tiedostot\n[ ] project-docs/kysymykset.md sisältää vähintään 8 kysymystä\n[ ] ensimmäinen commit on pushattu etärepositoryyn\n\nJULKISEN REPON TARKISTUSLISTA\n[ ] historiassa ei ole henkilötietoja, salasanoja eikä avaimia\n[ ] tekijänimestä on sovittu ohjaajan kanssa\n[ ] alaikäisellä huoltajan suostumus hoidettu ohjaajan kautta\n[ ] repon julkisuus on ohjaajan päätös — merkitse avoimeksi asiaksi kunnes sovittu",
+        code: "ALOITUKSEN TARKISTUSLISTA\n[ ] node -v ja git --version tulostettu ja talletettu\n[ ] client/ kääntyy ja dev-palvelin käynnistyy\n[ ] README kertoo mikä projekti on ja miten se käynnistetään\n[ ] .gitignore estää node_modules-kansion ja .env-tiedostot\n[ ] project-docs/kysymykset.md sisältää vähintään 8 kysymystä\n[ ] ensimmäinen commit on viety etärepositoryyn (push)\n\nJULKISEN REPON TARKISTUSLISTA\n[ ] historiassa ei ole henkilötietoja, salasanoja eikä avaimia\n[ ] tekijänimestä on sovittu ohjaajan kanssa\n[ ] alaikäisellä huoltajan suostumus hoidettu ohjaajan kautta\n[ ] repon julkisuus on ohjaajan päätös — merkitse avoimeksi asiaksi kunnes sovittu",
         test: "Kloonaa repository toiseen kansioon ja tarkista, että sovellusrunko käynnistyy pelkän README:n ohjeilla.",
         links: [["Vite: Getting Started", "https://vite.dev/guide/"], ["GitHub Docs: repositoryn luominen", "https://docs.github.com/en/repositories"]]
       },
@@ -270,7 +270,7 @@ window.NAYTTOPROJEKTI = {
       excerpt: "Mieluummin vähemmän ja kunnolla.",
       connection: "Viikon 1 kysymyslista sai vastaukset; nyt vastaukset muuttuvat käyttäjätarinoiksi, tietomalliksi ja rajaukseksi, joiden mukaan loput 16 viikkoa etenevät.",
       deliverable: "`project-docs/suunnitelma.md`, tietomallikaavio, sivukartta ja rautalangat, tietovarastovertailu sekä issue-taulu työmääräarvioineen.",
-      why: "Ilman rajausta 18 viikkoa valuu featurelistan kasvattamiseen; ilman tietomallia tilahistoria ja kokoelmat joudutaan repimään auki myöhemmin.",
+      why: "Ilman rajausta 18 viikkoa valuu ominaisuuslistan kasvattamiseen; ilman tietomallia tilahistoria ja kokoelmat joudutaan repimään auki myöhemmin.",
       done: "Suunnitelma on `project-docs/suunnitelma.md`-tiedostossa, ohjaaja on kuitannut P0-rajauksen kirjallisesti (issue-kommentti), ja jokaisella P0-issuella on työmääräarvio.",
       record: "Kirjoita työviikon 2 merkintään: mitkä tarinat jäivät P0:n ulkopuolelle ja miksi, tietovarastovalinnan perustelu omin sanoin sekä linkki issue-tauluun ja ohjaajan kuittaukseen.",
       skills: ["priorisointi (s4)", "työn ositus ja arviointi (s5, s6)", "tietovaraston valinta (s8)", "komponenttirakenteen suunnittelu (k5)"],
@@ -353,7 +353,7 @@ window.NAYTTOPROJEKTI = {
         ["Datahaku.", "useEffect ja fetch omaan hookkiin."],
         ["Komponenttijako.", "Lista, kortti ja tilaindikaattori — vastuut erillään."],
         ["Virhetila.", "Sammuta backend ja katso, mitä käyttäjä näkee."],
-        ["Testaa ja committaa.", "Kirjaa T1–T2 odotuksineen ennen ajoa ja aja ne."]
+        ["Testaa ja tee commit.", "Kirjaa T1–T2 odotuksineen ennen ajoa ja aja ne."]
       ],
       help: {
         title: "Komponenttipuu ja fetchin tarkistuslista",
@@ -491,7 +491,7 @@ window.NAYTTOPROJEKTI = {
       why: "Profiili on asiakkaan ”yhteinen olohuone” ja koko palvelun näyteikkuna — ja suunnitelmasta toteuttaminen (p6) todentuu vain, jos luonnos ja lopputulos voidaan asettaa rinnakkain.",
       done: "Vierailija näkee profiilin tilastoineen yksityisessä selainikkunassa, ja tilastoluvut täsmäävät tietokannan tarkistuskyselyyn; rautalankavertailu on päiväkirjassa.",
       record: "Kirjoita työviikon 8 merkintään: poikkeamat rautalangasta perusteluineen, T9:n tulos sekä — jos aito bugi osui tälle viikolle — virheenkorjausketju 1 kokonaisuudessaan.",
-      skills: ["käyttöliittymän toteutus suunnitelmista (p6)", "Reactin hookit ja reititysparametrit (k3)", "SQL-koosteet", "virheiden jäljitys devtoolseilla (p2)"],
+      skills: ["käyttöliittymän toteutus suunnitelmista (p6)", "Reactin hookit ja reititysparametrit (k3)", "SQL-koosteet", "virheiden jäljitys kehittäjätyökaluilla (p2)"],
       steps: [
         ["Koostekyselyt.", "Lukumäärät tiloittain ja laitteittain suoraan SQL:llä."],
         ["Kooste-API.", "Yksi reitti palauttaa koko profiilin datan."],
@@ -677,7 +677,7 @@ window.NAYTTOPROJEKTI = {
         ["Matriisin täydennys.", "Aiemmat T1–T12 ja uudet tapaukset; pidä luokat tasapainossa."],
         ["Ajo tuotantoa vasten.", "Ei localhost-oikaisua."],
         ["Havaintojen kirjaus.", "Toistamisohje niin tarkasti, että toinen henkilö toistaa vian."],
-        ["Syyn jäljitys.", "Devtools, verkkopyynnöt ja palvelinloki."],
+        ["Syyn jäljitys.", "Kehittäjätyökalut, verkkopyynnöt ja palvelinloki."],
         ["Korjaus ja uusintatesti.", "Korjauscommit ja sama testi uudelleen."],
         ["Regressiotarkistus.", "Aja ydinpolut uudelleen korjauksen jälkeen."]
       ],
@@ -688,7 +688,7 @@ window.NAYTTOPROJEKTI = {
           "Täydennä matriisi niin, että tapauksia on vähintään 12 ja luokat ovat tasapainossa.",
           "Kirjoita jokaisen tapauksen odotettu tulos ennen kuin ajat sen.",
           "Aja koko matriisi julkaistua tuotantoversiota vasten.",
-          "Kirjaa jokainen löydös toistamisohjeineen ja jäljitä syy devtoolsien ja palvelinlokin avulla.",
+          "Kirjaa jokainen löydös toistamisohjeineen ja jäljitä syy kehittäjätyökalujen ja palvelinlokin avulla.",
           "Korjaa, uusintatestaa ja aja lopuksi ydinpolut regressiona.",
           "Aja T13: katkaise verkkoyhteys kesken lomakkeen lähetyksen."
         ],
@@ -797,7 +797,7 @@ window.NAYTTOPROJEKTI = {
         tree: "TESTAAJALLE ANNETAAN\n- repositoryn osoite tai paketti\n- kirjallinen käyttöönotto-ohje\n- palvelun julkinen osoite\n\nTESTAAJALLE EI ANNETA\n- suullisia vinkkejä\n- valmiiksi täytettyä .env-tiedostoa\n- apua, ellei työ pysähdy kokonaan",
         actions: [
           "Jäädytä sisältö ja kirjaa jäädytyshetki committiin tai tagiin.",
-          "Rakenna tuotantobuild, tagaa julkaisuehdokas ja julkaise asiakkaan ympäristöön.",
+          "Rakenna tuotantobuild, merkitse julkaisuehdokas tagilla ja julkaise asiakkaan ympäristöön.",
           "Sovi ohjaajan kanssa julkaisutestaaja — eri henkilö kuin työviikon 10 asiakkaan edustaja.",
           "Kirjaa testaajan omat sanat ja jokainen epäröintikohta ohjeen korjauslistaksi.",
           "Luokittele löydökset ohjaajan kanssa estäviin ja v1.1:een siirtyviin.",
@@ -813,7 +813,7 @@ window.NAYTTOPROJEKTI = {
 
     17: {
       type: "julkaisu",
-      feature: "Estävät virheet on korjattu ja uusintatestattu, v1.0 on tuotannossa asiakkaan osoitteessa tagattuna, ja julkaisutiedote on kirjoitettu asiakkaan kielellä.",
+      feature: "Estävät virheet on korjattu ja uusintatestattu, v1.0 on tuotannossa asiakkaan osoitteessa tagilla merkittynä, ja julkaisutiedote on kirjoitettu asiakkaan kielellä.",
       connection: "Työviikon 16 estävät löydökset korjataan ja ketju 3 viedään regressiotestiin asti — sen jälkeen sama osoite, joka avattiin työviikolla 3, saa version v1.0.",
       deliverable: "Korjatut estävät virheet ja ketju 3 regressiotestiin asti, tuotantobuild ja tag `v1.0`, julkaisutiedote asiakkaalle sekä savutestikirjaus.",
       why: "Työ ei saa loppua vaan valmistua — versioitu, tuotannossa oleva ja tiedotettu julkaisu on s14:n ja koko projektin päätepiste.",
@@ -834,12 +834,12 @@ window.NAYTTOPROJEKTI = {
         actions: [
           "Korjaa vain estävät löydökset ja vie ketju 3 regressiotestiin asti.",
           "Tarkista, ettei yksikään salaisuus ole repositoryssa.",
-          "Rakenna tuotantobuild, aja migraatiot ja tagaa versio v1.0.",
+          "Rakenna tuotantobuild, aja migraatiot ja merkitse versio tagilla `v1.0`.",
           "Julkaise samaan osoitteeseen, jonka asiakas on tuntenut työviikosta 3 asti.",
           "Kirjoita julkaisutiedote ilman teknistä jargonia ja kerro, mikä siirtyi v1.1:een.",
           "Savutestaa yksityisessä selainikkunassa ja toisella laitteella."
         ],
-        code: "JULKAISUN TARKISTUSLISTA\n[ ] estävät virheet korjattu ja uusintatestattu\n[ ] regressio ajettu ydinpoluille\n[ ] tuotantobuild syntyy virheittä\n[ ] ympäristömuuttujat asetettu, ei salaisuuksia repossa\n[ ] migraatiot ajettu tuotantokantaan\n[ ] tag v1.0 luotu ja pushattu\n[ ] julkinen osoite toimii yksityisessä ikkunassa\n[ ] toinen laite testattu\n[ ] julkaisutiedote lähetetty ja tallennettu project-docs/viestit.md\n\nSAVUTESTI\nLaite 1: __________  tulos: __________\nLaite 2: __________  tulos: __________",
+        code: "JULKAISUN TARKISTUSLISTA\n[ ] estävät virheet korjattu ja uusintatestattu\n[ ] regressio ajettu ydinpoluille\n[ ] tuotantobuild syntyy virheittä\n[ ] ympäristömuuttujat asetettu, ei salaisuuksia repossa\n[ ] migraatiot ajettu tuotantokantaan\n[ ] tag v1.0 luotu ja viety etärepositoryyn (push)\n[ ] julkinen osoite toimii yksityisessä ikkunassa\n[ ] toinen laite testattu\n[ ] julkaisutiedote lähetetty ja tallennettu project-docs/viestit.md\n\nSAVUTESTI\nLaite 1: __________  tulos: __________\nLaite 2: __________  tulos: __________",
         test: "Avaa osoite laitteella, jolla et ole koskaan kirjautunut palveluun, ja tee koko polku rekisteröitymisestä tilanvaihtoon.",
         links: []
       },
@@ -942,7 +942,7 @@ window.NAYTTOPROJEKTI = {
         [18, "Näyttö", "Näyttömatriisi täsmälinkitettynä, demo ajassa, itsearvio ja AI-loki repositoryssa."]
       ],
       tyonaytteet: {
-        p1: ["1", "VS Code + Vite-dev-palvelin käytössä koko projektin; työkalutodennusten tulosteet ja devtools-käyttö ketjukirjauksissa"],
+        p1: ["1", "VS Code + Vite-dev-palvelin käytössä koko projektin; työkalutodennusten tulosteet ja kehittäjätyökalujen käyttö ketjukirjauksissa"],
         p2: ["8, 13, 16", "Kolme täydellistä virheenkorjausketjua: ketju 1 kehitystyössä löytyneestä aidosta bugista (ankkuri työviikko 8), ketju 2 testimatriisin löydöksestä, ketju 3 julkaisutestin estävästä löydöksestä"],
         p3: ["13", "Testimatriisi ≥12 tapausta kolmessa luokassa, odotettu tulos kirjattu ennen ajoa, uusintatestit korjausten jälkeen"],
         p4: ["4, 14", "Komponenttijako (PeliLista/PeliKortti), oma fetch-hookki, Express-reittien moduulijako; syvennys refaktoroinnissa työviikolla 14"],

@@ -21,7 +21,7 @@
     ],
     [
       "B",
-      "Featuret"
+      "Ominaisuudet"
     ],
     [
       "C",
@@ -53,7 +53,7 @@
   "tunnus": "ympyra",
   "tekoalyMuistutus": "Laskenta, rakenne ja CSS tehdään itse.",
   "tyokiertoAlt": "Infografiikka: tuntikirjauksesta syntyy lasketut yhteenvedot viikoittain, henkilöittäin ja tehtävälajeittain.",
-  "vaiheetAlt": "Aikajana neljästä vaiheesta: Ydin työviikot 1–5, Featuret 6–10, Valmiiksi 11–15, Julkaisu 16–18.",
+  "vaiheetAlt": "Aikajana neljästä vaiheesta: Ydin työviikot 1–5, Ominaisuudet 6–10, Valmiiksi 11–15, Julkaisu 16–18.",
   "suunnitelmaAlt": "Kaavio suunnitelman kolmesta osasta: perustiedot, opiskelijan omat päätökset ja ohjaajan päätökset.",
   "testausAlt": "Testauksen kierto: suunnittele testi, aja, löydä virhe, korjaa ja uusintatestaa.",
   "tekoalyAlt": "Tekoälyn käytön neljä sääntöä: kysy, tarkista, testaa ja kirjaa."

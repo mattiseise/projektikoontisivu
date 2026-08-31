@@ -29,8 +29,8 @@ kalenteriviikkoja. Sivustolla, työpaketissa ja opettajan aineistossa ei ole yht
 kalenteripäivämäärää, joten sama paketti käy mille tahansa aloitusajankohdalle ja mille tahansa
 tahdille. Viikkokorteissa lukee `Työviikko N / 18`, ja luovutus ajoittuu työviikon 18 loppuun.
 
-Käytännössä tämä tarkoittaa, että ohjaaja sopii aloituspäivän opiskelijan kanssa eikä
-aikataulua tarvitse päivittää lukuvuoden vaihtuessa.
+Ohjaaja sopii aloituspäivän opiskelijan kanssa, eikä aikataulua tarvitse päivittää
+lukuvuoden vaihtuessa.
 
 ## Pedagoginen hyväksyntä
 
