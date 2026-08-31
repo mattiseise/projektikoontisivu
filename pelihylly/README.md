@@ -10,8 +10,8 @@ opiskelijan 18 työviikon näyttöprojektin läpi: se sisältää toimeksiannon,
 18 viikkokorttia tehtävineen ja toteutusapuineen, projektipäiväkirjan, AI-lokin, näyttömatriisin
 (32 osaamisvaatimusta) sekä paperisen työpaketin ja opettajan näyttösuunnitelman.
 
-Opiskelijan varsinainen työ — React-sovellus, Express-palvelin, SQLite-tietokanta ja
-dokumentaatio — tehdään **eri repositoryyn** kansioihin `client/`, `server/` ja `project-docs/`.
+Opiskelijan varsinainen työ (React-sovellus, Express-palvelin, SQLite-tietokanta ja
+dokumentaatio) tehdään **eri repositoryyn** kansioihin `client/`, `server/` ja `project-docs/`.
 
 Näyttö kattaa kolme tutkinnon osaa (Tieto- ja viestintätekniikan perustutkinto,
 diaarinumero OPH-6216-2025, perusteId 9816282):
@@ -46,11 +46,11 @@ sekä päivättömyys.
 | --- | --- |
 | `index.html` | sivuston rakenne, viikkokortit ja näyttömatriisi |
 | `sisalto.js` | projektin koko sisältödata: viikkojen ohjeet, vaiheet, suunnitelmapohja, opettaja-aineisto |
-| `app.js` | geneerinen moottori — **ei muokata projektikohtaisesti** |
+| `app.js` | geneerinen moottori, **ei muokata projektikohtaisesti** |
 | `styles.css` | ulkoasu; projektikohtaista vain `:root`-lohkon paletti |
 | `kuvitukset.json` | SVG-kuvitusten tekstit ja värit |
 | `project-docs/projekti.json` | projektin konfiguraatio (viikot, vaiheet, paletti, tokenit, koontikortti) |
-| `tyokalut/` | generaattorit ja tarkistusskripti — **ei muokata projektikohtaisesti** |
+| `tyokalut/` | generaattorit ja tarkistusskripti, **ei muokata projektikohtaisesti** |
 | `assets/`, `downloads/` | generoidut SVG-kuvitukset, faviconit sekä docx- ja pdf-lataukset |
 
 ## Julkaiseminen
@@ -74,7 +74,7 @@ Avaa `index.html` selaimessa tai käynnistä paikallinen HTTP-palvelin repositor
 
 Tehtävien tila, projektipäiväkirja, suunnitelma ja AI-loki tallentuvat vain käyttäjän selaimen
 paikalliseen tallennustilaan. Sivusto ei lähetä tietoja palvelimelle. Rasti sivustolla ei ole
-palautus — työnäyte on aina opiskelijan omassa Git-repositoryssa.
+palautus: työnäyte on aina opiskelijan omassa Git-repositoryssa.
 
 ## Materiaalien generointi
 

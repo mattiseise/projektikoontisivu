@@ -70,7 +70,7 @@
     continueStart: "Aloita projekti",
     continueDone: "Kaikki tehtävät valmiina",
     planNotStarted: "Ei vielä aloitettu",
-    planPartial: (done, total) => `Kesken — ${done} / ${total} kenttää täytetty`,
+    planPartial: (done, total) => `Kesken: ${done} / ${total} kenttää täytetty`,
     planDone: "Suunnitelma valmis ✓",
     planEmptyValue: "_(ei vielä täytetty)_",
     dateLocale: "fi-FI",

@@ -14,7 +14,7 @@ opiskelijan omaan GitHub-repositoryyn.
   OPH-6216-2025 (perusteId 9816282).
 - **Tutkinnon osat:** Ohjelmointi (11 vaatimusta) · Ohjelmistokehittäjänä
   toimiminen (14) · Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla
-  (7) — yhteensä 32 osaamisvaatimusta.
+  (7). Yhteensä 32 osaamisvaatimusta.
 - **Kesto:** 18 työviikkoa, neljä vaihetta (5 + 5 + 5 + 3).
 
 ## Päivätön aikataulu
@@ -26,7 +26,7 @@ alaotsikko on muotoa `Työviikko N / 18`, ja sama muoto toistuu paperisessa
 työpaketissa. Näin sama aineisto käy eri ryhmille eri ajankohtina.
 
 Ryhmäkohtaiset päivämäärät sovitaan erikseen, esimerkiksi opintojakson omassa
-työtilassa — niitä ei kirjoiteta tähän repositoryyn.
+työtilassa. Niitä ei kirjoiteta tähän repositoryyn.
 
 ## Julkaisu
 
@@ -44,7 +44,7 @@ HTTP-palvelin repositoryn juuressa.
 | --- | --- |
 | `index.html` | sivuston rakenne, 18 viikkokorttia ja näyttömatriisi |
 | `sisalto.js` | projektin koko sisältödata: viikkojen ohjeet, vaiheet, suunnitelmapohja, opettaja-aineisto |
-| `app.js` | geneerinen moottori — **ei muokata projektikohtaisesti** |
+| `app.js` | geneerinen moottori: **ei muokata projektikohtaisesti** |
 | `styles.css` | ulkoasu; projektikohtaista vain `:root`-lohkon paletti |
 | `kuvitukset.json` | SVG-kuvitusten tekstit ja värit |
 | `project-docs/projekti.json` | projektin konfiguraatio ja koontikortin tiedot |
@@ -81,6 +81,6 @@ Suunnitelma on läpäissyt pedagogisen Linnea-portin 31.8.2026: ei estäviä
 löydöksiä. Auditoinnin kriteeristönä olivat pedagoginen runko (mitoitus,
 AI-resilienssi, katselmoinnit, testaus), ePerusteiden 32 vaatimusta ja
 suunnittelubriiffin päivätön tila. Portin korjattavat huomiot on käsitelty
-suunnitelmassa ennen toteutusta — muun muassa työviikon 6 kuormitusrajaus ja
+suunnitelmassa ennen toteutusta, muun muassa työviikon 6 kuormitusrajaus ja
 julkaisutestauksen ajoitus julkaisuehdokasta vasten työviikolla 16, jolloin
 työviikko 17 jää estävien korjauksille ja v1.0-julkaisulle.

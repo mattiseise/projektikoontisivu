@@ -174,12 +174,16 @@ def draw_suunnitelma():
               size=26, fill=TXT2, spacing="0.2em")]
     for i, part in enumerate(parts):
         x = pad + i * (cw + gap)
+        lines = wrap(part, 18)
+        # Otsikkopalkin korkeus elaa rivimaaran mukaan, jotta pitka otsikko ei valu
+        # palkin ulkopuolelle vaalealle pohjalle.
+        hh = 28 + len(lines) * 26
         b.append(rect(x, 120, cw, 340, "#f6f7f4", r=10))
-        b.append(rect(x, 120, cw, 54, PANEL2, r=10))
-        b.append(rect(x, 160, cw, 14, PANEL2))
-        for j, line in enumerate(wrap(part, 18)):
+        b.append(rect(x, 120, cw, hh, PANEL2, r=10))
+        b.append(rect(x, 120 + hh - 14, cw, 14, PANEL2))
+        for j, line in enumerate(lines):
             b.append(text(x + cw / 2, 155 + j * 26, line, size=23, fill=TXT))
-        b.append(panel_lines(x + 30, 210, cw - 60, 7, gap=26, color="#c9d2cb"))
+        b.append(panel_lines(x + 30, 140 + hh + 16, cw - 60, 7, gap=26, color="#c9d2cb"))
         b.append(rect(x + 30, 410, 90, 26, ACCENT, r=13))
         b.append(text(x + 75, 429, "OMA", size=17, fill="#ffffff"))
     save("suunnitelma-luonnos.svg", svg(W, H, "".join(b), CFG.get("suunnitelmaAlt", "Suunnitelman osat")))
@@ -225,7 +229,7 @@ def draw_tekoaly():
         "Aja testi itse.",
         "Kirjaa käyttö ja oppi.",
     ])
-    b = [text(W / 2, 80, "TEKOÄLY ON APUVÄLINE — PÄÄTÖS ON SINUN", size=30, fill=TXT2, spacing="0.2em")]
+    b = [text(W / 2, 80, CFG.get("tekoalyOtsikkoIso", "TEKOÄLY ON APUVÄLINE, PÄÄTÖS ON SINUN"), size=30, fill=TXT2, spacing="0.2em")]
     pad, gap = 90, 40
     cw = (W - 2 * pad - 3 * gap) / 4
     for i, step in enumerate(steps[:4]):

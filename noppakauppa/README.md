@@ -8,7 +8,7 @@ Sivusto sisältää toimeksiannon, viikoittaiset ohjatut tehtävät, teknisen su
 lomakkeen, projektipäiväkirjan, AI-lokin ja näyttömatriisin. Näyttö annetaan Tieto- ja
 viestintätekniikan perustutkinnon (diaarinumero OPH-6216-2025, perusteId 9816282) kolmesta
 tutkinnon osasta: Ohjelmointi (11 vaatimusta), Ohjelmistokehittäjänä toimiminen (14) ja
-Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla (7) — yhteensä 32 vaatimusta.
+Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla (7), yhteensä 32 vaatimusta.
 
 **Tämä repository on ohjaussivusto, ei itse verkkokauppa.** Opiskelija rakentaa
 verkkokaupan omaan repositoryynsä; tämä sivusto kertoo, mitä milläkin viikolla tehdään ja
@@ -29,8 +29,8 @@ Käytännössä tämä tarkoittaa kolmea asiaa:
   `Työviikko N / 18`.
 
 Jos aikataulu joskus sidotaan kalenteriin, muutos tehdään `project-docs/projekti.json`:iin
-(poista `paivaton`, anna oikeat ISO-viikot ja vuosi) ja sivusto generoidaan uudelleen —
-yksittäisiä päivämääriä ei kirjoiteta käsin HTML:ään.
+(poista `paivaton`, anna oikeat ISO-viikot ja vuosi) ja sivusto generoidaan uudelleen.
+Yksittäisiä päivämääriä ei kirjoiteta käsin HTML:ään.
 
 ## Julkaiseminen
 
@@ -39,7 +39,7 @@ Sivusto on täysin staattinen eikä lähetä tietoja mihinkään.
 1. Vie repository GitHubiin.
 2. Ota GitHub Pages käyttöön: **Settings → Pages → Source: Deploy from a branch**,
    branch `main`, kansio `/ (root)`.
-3. Repositoryn juuressa oleva `.nojekyll` estää Jekyll-käsittelyn — älä poista sitä.
+3. Repositoryn juuressa oleva `.nojekyll` estää Jekyll-käsittelyn. Älä poista sitä.
 
 Paikallinen esikatselu: avaa `index.html` selaimessa tai käynnistä repositoryn juuressa
 staattinen HTTP-palvelin (esimerkiksi `python3 -m http.server`).
@@ -50,11 +50,11 @@ staattinen HTTP-palvelin (esimerkiksi `python3 -m http.server`).
 | --- | --- |
 | `index.html` | sivuston rakenne, viikkokortit, suunnitelmalomake ja näyttömatriisi |
 | `sisalto.js` | projektin koko sisältödata: viikkojen ohjeet, vaiheet, suunnitelmapohja, opettaja-aineisto |
-| `app.js` | geneerinen moottori — **ei muokata projektikohtaisesti** |
+| `app.js` | geneerinen moottori: **ei muokata projektikohtaisesti** |
 | `styles.css` | ulkoasu; projektikohtaista vain `:root`-lohkon paletti |
 | `kuvitukset.json` | SVG-kuvitusten tekstit ja värit |
 | `project-docs/projekti.json` | projektin konfiguraatio ja koontikortin tiedot |
-| `tyokalut/` | generaattorit ja tarkistusskripti — kopioituvat rungosta, ei muokata |
+| `tyokalut/` | generaattorit ja tarkistusskripti; kopioituvat rungosta, ei muokata |
 
 ## Materiaalien generointi
 
