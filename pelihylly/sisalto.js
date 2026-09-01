@@ -261,7 +261,14 @@ window.NAYTTOPROJEKTI = {
         links: [["Vite: Getting Started", "https://vite.dev/guide/"], ["GitHub Docs: repositoryn luominen", "https://docs.github.com/en/repositories"]]
       },
       example: "Kysymyslistan kysymys, joka pakottaa päätöksen: ”Näkeekö vierailija myös tähtiarviot ja kommentit vai vain tilat?”",
-      notEnough: "”Asensin Noden ja VS Coden” ilman versiotulosteita ja ilman kysymyslistaa."
+      notEnough: "”Asensin Noden ja VS Coden” ilman versiotulosteita ja ilman kysymyslistaa.",
+      paivat: [
+        ["Tarve", "Lue Pelikellari ry:n toimeksianto ja alleviivaa vaatimukset ja epäselvyydet."],
+        ["Rajaus", "Kirjaa vähintään kahdeksan kysymyksen lista ohjaajalle: rajaus ratkeaa kysymällä, ei arvaamalla."],
+        ["Työkaluperusta", "Asenna ja todenna työkalut: Node LTS, Git ja editori. Tulosteet talteen päiväkirjaan."],
+        ["Suunnittele", "Luo Vite + React -projekti ja käynnistä kehityspalvelin. Sovi ohjaajan kanssa julkisen repon pelisäännöistä."],
+        ["Ensimmäinen commit", "Luo etärepository, lisää README ja .gitignore ja tee ensimmäinen commit ja push. Projekti on nyt olemassa muuallakin kuin omalla koneella."]
+      ]
     },
 
     2: {
@@ -274,7 +281,7 @@ window.NAYTTOPROJEKTI = {
       done: "Suunnitelma on `project-docs/suunnitelma.md`-tiedostossa, ohjaaja on kuitannut P0-rajauksen kirjallisesti (issue-kommentti), ja jokaisella P0-issuella on työmääräarvio.",
       record: "Kirjoita työviikon 2 merkintään: mitkä tarinat jäivät P0:n ulkopuolelle ja miksi, tietovarastovalinnan perustelu omin sanoin sekä linkki issue-tauluun ja ohjaajan kuittaukseen.",
       skills: ["priorisointi (s4)", "työn ositus ja arviointi (s5, s6)", "tietovaraston valinta (s8)", "komponenttirakenteen suunnittelu (k5)"],
-      resources: [["Avaa suunnitelmalomake", "#suunnitelma", false]],
+      resources: [["Avaa suunnitelmalomake", "#view-suunnitelma", false]],
       steps: [
         ["Käyttäjätarinat.", "Kirjoita muodossa ”Jäsenenä haluan… jotta…” ja lisää jokaiseen hyväksymiskriteerit."],
         ["Priorisointi ohjaajan kanssa.", "P0 on toimiva ydin; profiiliviestit menevät P2:een."],
@@ -600,7 +607,7 @@ window.NAYTTOPROJEKTI = {
       done: "PR:ssä on kuvaus, viittaus palautteeseen ja katselmointikommentti; muutos on tuotannossa; suunnitelman diff näyttää päivitetyt arviot.",
       record: "Kirjoita työviikon 11 merkintään: mikä muutos valittiin ja miksi, miten arvio erosi toteumasta, kokoelmien päätös perusteluineen sekä PR-linkki.",
       skills: ["liittäminen olemassa olevaan versioon (s13)", "versionhallinnan työnkulku (s12)", "suunnittelun ja arvioinnin päivitys (s6)"],
-      resources: [["Avaa suunnitelmalomake", "#suunnitelma", false]],
+      resources: [["Avaa suunnitelmalomake", "#view-suunnitelma", false]],
       steps: [
         ["Valinta ja kriteerit.", "Viittaa katselmointimuistion havaintoon ja kirjaa hyväksymiskriteerit."],
         ["Haara.", "Nimeä haara muodossa `feature/…`."],
@@ -783,7 +790,7 @@ window.NAYTTOPROJEKTI = {
       done: "Testaaja rekisteröityi, lisäsi pelin ja vaihtoi tilan ilman suullista apua, tai jokainen epäröintikohta on kirjattu ja luokiteltu; RC-tag on repositoryssa ja estävien vikojen ketjut aloitettu.",
       record: "Kirjoita työviikon 16 merkintään: missä testaaja epäröi ja mitä hän sanoi, mitkä löydökset ovat estäviä ja miksi, sekä ketju 3:n alku.",
       skills: ["version katselmointi (s3)", "julkaisu asiakkaan ympäristöön (k6)", "virheiden jäljitys tuoreeltaan (p2)", "estävä/ei-estävä-priorisointi"],
-      resources: [["Avaa suunnitelmalomake", "#suunnitelma", false]],
+      resources: [["Avaa suunnitelmalomake", "#view-suunnitelma", false]],
       steps: [
         ["Jäädytys.", "Ei uusia ominaisuuksia tästä eteenpäin."],
         ["RC-julkaisu.", "Viten tuotantobuild, tag (esim. `v1.0-rc1`) ja asiakkaan ympäristö."],
@@ -856,7 +863,7 @@ window.NAYTTOPROJEKTI = {
       done: "Ohjaaja avaa matriisista satunnaisen rivin ja päätyy oikeaan työnäytteeseen alle minuutissa; demo pysyy harjoituksessa ajassa; itsearvio ja AI-loki ovat päiväkirjan mukana repositoryssa.",
       record: "Kirjoita työviikon 18 merkintään: mitkä matriisin rivit olivat vaikeimmat linkittää ja miksi, demon harjoiteltu kesto sekä itsearvion tärkein havainto.",
       skills: ["oman toiminnan arviointi (p11)", "näyttöaineiston jäsentäminen", "esittäminen"],
-      resources: [["Siirry näyttömatriisiin", "#todisteet", false]],
+      resources: [["Siirry näyttömatriisiin", "#view-naytto", false]],
       steps: [
         ["Matriisin linkitys.", "Rivi kerrallaan: avaa linkki ja tarkista, että se osoittaa oikeaan työnäytteeseen."],
         ["Aukkojen tarkistus ohjaajan kanssa.", "Käykää yhdessä läpi rivit, joille et löytänyt työnäytettä."],
@@ -881,7 +888,14 @@ window.NAYTTOPROJEKTI = {
         links: []
       },
       example: "Itsearvion konkretia: ”Aliarvioin kirjautumisen työmäärän kahdella päivällä. Seuraavassa projektissa teen auth-vertailun jo suunnitteluviikolla.”",
-      notEnough: "”Opin paljon Reactista ja projekti oli opettavainen.”"
+      notEnough: "”Opin paljon Reactista ja projekti oli opettavainen.”",
+      paivat: [
+        ["Sisältöjäädytys", "Viimeinen hyväksytty versio."],
+        ["Aineisto", "Päiväkirja, testit ja linkit koossa."],
+        ["Harjoittelu", "8–10 min demo ja itsearviointi."],
+        ["Puskuri", "Tarkistus toisen henkilön kanssa."],
+        ["Luovutus", "Näyttömatriisi täsmälinkitettynä, päiväkirja, AI-loki ja v1.0 luovutettu ohjaajalle."]
+      ]
     }
   },
 

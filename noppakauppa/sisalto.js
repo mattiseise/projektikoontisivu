@@ -253,7 +253,14 @@ window.NAYTTOPROJEKTI = {
         ]
       },
       example: "Kysymyslista, jossa on muun muassa ”pitääkö tilauksesta lähteä sähköposti-ilmoitus vai riittääkö näkymä?” ja ”mitkä kategoriat teillä on käytössä liikkeessä?”, sekä ohjaajan vastaus kunkin kysymyksen perässä.",
-      notEnough: "”Loin repon ja projektit” ilman kysymyslistaa ja ilman että backend oikeasti käynnistyy."
+      notEnough: "”Loin repon ja projektit” ilman kysymyslistaa ja ilman että backend oikeasti käynnistyy.",
+      paivat: [
+        ["Tarve", "Lue toimeksianto ja kirjaa vähintään kuusi kysymystä ohjaajalle: mitä asiakas oikeasti tarvitsee ja mitä on rajattu pois."],
+        ["Rajaus", "Sovi julkisen repon asiat: yksityisyystarkistus, tekijänimi ja alaikäisellä huoltajan suostumus ohjaajan kautta."],
+        ["Työkaluperusta", "Luo repository kansioineen ja alusta Vue+Vite-frontti ja FastAPI-backend. Käynnistä molemmat."],
+        ["Suunnittele", "Aloita tekninen suunnitelma: käyttäjätarinat toimeksiannosta ja ensimmäinen luonnos tietomallista."],
+        ["Ensimmäinen commit", "Vie kaikki Gitiin: README, kansiorakenne ja käynnistyvät projektit. Kirjoita viikon päiväkirjamerkintä."]
+      ]
     },
 
     2: {
@@ -266,7 +273,7 @@ window.NAYTTOPROJEKTI = {
       done: "suunnitelma.md:ssä on tarinat prioriteetteineen, tietomallikaavio, tietovarastoperustelu ja teemapäätös; issueita on vähintään kahdeksan ja P0 on merkitty; rautalankojen hyväksyntä on kirjattu: kuka hyväksyi ja mitä hän sanoi. Hyväksyjäksi käy ohjaaja asiakkaan äänenä, jos katselmoijaa ei ole vielä nimetty.",
       record: "Kirjoita työviikon 2 merkintään: teemapäätös perusteluineen, tietovarastovalinta, kuka hyväksyi rautalangat ja mitä hän sanoi, sekä linkki issue-listaan.",
       skills: ["asiakastarpeen selvittäminen (s1)", "priorisointi ja tehtäviksi jako (s4, s5)", "tietovaraston valinta (s8)", "kirjaston mahdollisuudet ja rajoitteet (k2)"],
-      resources: [["Avaa suunnitelmalomake", "#suunnitelma", false]],
+      resources: [["Avaa suunnitelmalomake", "#view-suunnitelma", false]],
       steps: [
         ["Poimi käyttäjät ja teot.", "Kirjoita toimeksiannosta käyttäjätarinat hyväksymiskriteereineen: asiakas, henkilökunta, yrittäjä."],
         ["Priorisoi P0, P1 ja P2.", "Perustele rajaus ja kirjaa maksunvälitys eksplisiittisesti pois rajatuksi."],
@@ -807,7 +814,14 @@ window.NAYTTOPROJEKTI = {
         ["Luovuta aineisto sovitulla tavalla.", "Tarkista, että kaikki linkit toimivat myös ulkopuoliselle."]
       ],
       example: "Itsearviointi, joka nimeää tilanteen: ”istuntoratkaisun vertailussa tarvitsin ohjaajan apua ymmärtääkseni evästeiden ja tokenien eron. Ensi kerralla varaan vertailuille enemmän aikaa”.",
-      notEnough: "”Opin paljon uutta ja projekti sujui hyvin”, itsearviointi ilman yhtään konkreettista esimerkkiä."
+      notEnough: "”Opin paljon uutta ja projekti sujui hyvin”, itsearviointi ilman yhtään konkreettista esimerkkiä.",
+      paivat: [
+        ["Sisältöjäädytys", "Viimeinen hyväksytty versio."],
+        ["Aineisto", "Päiväkirja, testit ja linkit koossa."],
+        ["Harjoittelu", "8–10 min demo ja itsearviointi."],
+        ["Puskuri", "Tarkistus toisen henkilön kanssa."],
+        ["Luovutus", "Matriisi linkitetty, aineisto luovutettu."]
+      ]
     }
   },
 

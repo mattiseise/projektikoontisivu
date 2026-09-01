@@ -304,7 +304,14 @@ window.NAYTTOPROJEKTI = {
         ]
       },
       example: "Versiotaulukko README:ssä: työkalu → versio → tarkistuskomento (Node 20.11.1 → node -v). Mukana kuvakaappaus käynnistyneestä dev-palvelimesta ja commit “Perusta projekti, kansiorakenne ja Svelte-runko”.",
-      notEnough: "“Asensin kaikki ja kaikki toimii” ilman versionumeroita, kuvakaappausta ja ensimmäistä committia: mitään ei voi todentaa jälkikäteen."
+      notEnough: "“Asensin kaikki ja kaikki toimii” ilman versionumeroita, kuvakaappausta ja ensimmäistä committia: mitään ei voi todentaa jälkikäteen.",
+      paivat: [
+        ["Tarve", "Lue toimeksianto ja poimi asiakkaan ydinkipu: raportointi. Kirjaa kysymyslista ohjaajalle."],
+        ["Rajaus", "Erottele P0 (kirjaus, roolit, lasketut yhteenvedot) lisäominaisuuksista ja sovi rajauksesta ohjaajan kanssa."],
+        ["Työkaluperusta", "Asenna Node ja Git, luo repository ja Svelte + Vite -projekti. Tee julkisen repon tarkistukset."],
+        ["Suunnittele", "Piirrä tietomalli ja rautalangat kirjaus- ja raporttinäkymästä. Päätä: summat lasketaan, ei tallenneta."],
+        ["Julkaise", "Vie tyhjä runko julkiseen osoitteeseen ja tee kaikesta commit. Ensimmäinen havaittava tulos on olemassa."]
+      ]
     },
 
     2: {
@@ -317,7 +324,7 @@ window.NAYTTOPROJEKTI = {
       done: "project-docs/suunnitelma.md on repossa ja ohjaaja on hyväksynyt rajauksen kirjatulla kommentilla; jokaisella P0-tarinalla on issue, hyväksymiskriteerit ja arvio tunteina.",
       record: "Kirjoita työviikon 2 merkintään: P0-rajaus, tietovarastovalinta perusteluineen, tietomallin taulut ja se, mitä päätit jättää tallentamatta. Liitä linkki issue-tauluun ja ohjaajan hyväksyntään.",
       skills: ["vaatimusmäärittely", "tietomallinnus", "priorisointi", "työn ositus"],
-      resources: [["Avaa suunnitelmalomake", "#suunnitelma", false]],
+      resources: [["Avaa suunnitelmalomake", "#view-suunnitelma", false]],
       steps: [
         ["Käyttäjätarinat.", "Kirjoita toimeksiannosta käyttäjätarinat muodossa “Työntekijänä … jotta …” ja anna jokaiselle 2–4 hyväksymiskriteeriä."],
         ["Priorisointi ohjaajan kanssa.", "Merkitse jokainen tarina P0, P1 tai P2 yhdessä ohjaajan kanssa (hän toimii asiakkaan sijaisena). Kirjaa perustelut, älä vain kirjaimia."],
@@ -861,7 +868,7 @@ window.NAYTTOPROJEKTI = {
       done: "Jokainen matriisin rivi osoittaa olemassa olevaan aineistoon ja linkki aukeaa; demo on ajettu kellon kanssa vähintään kerran toiselle henkilölle; itsearviointi sisältää konkreettisia tilanteita, ei yleislauseita.",
       record: "Kirjoita työviikon 18 merkintään: mitkä matriisin kohdat olivat heikoimmin todennettuja ja miten korjasit ne, demon kesto harjoituksessa sekä itsearvioinnin ydin.",
       skills: ["näyttöaineiston kokoaminen", "esittäminen", "itsearviointi"],
-      resources: [["Avaa näyttömatriisi", "#todisteet", false]],
+      resources: [["Avaa näyttömatriisi", "#view-naytto", false]],
       steps: [
         ["Matriisin täsmälinkitys.", "Käy kaikki 32 vaatimusta läpi ja liitä jokaiseen viikko, työnäyte ja toimiva linkki: commit, issue, dokumentti tai kuvakaappaus."],
         ["Aukkotarkistus.", "Etsi kohdat, joissa linkki puuttuu tai osoittaa epämääräiseen aineistoon. Korjaa ne nyt, kun aikaa vielä on."],
@@ -870,7 +877,14 @@ window.NAYTTOPROJEKTI = {
         ["Puskuri ja luovutus.", "Tarkista aineiston aukot vielä kerran ja luovuta paketti. Jätä puskuria korjauksille."]
       ],
       example: "Itsearviointi: “Työviikolla 8 GROUP BY -viikkorajaus meni väärin; pyysin ohjaajalta apua strftime-muotoihin ja opin testaamaan aikarajat ensin.”",
-      notEnough: "“Opin paljon ja projekti sujui hyvin”, ilman tilanteita, nimiä ja sitä, mitä tekisit toisin."
+      notEnough: "“Opin paljon ja projekti sujui hyvin”, ilman tilanteita, nimiä ja sitä, mitä tekisit toisin.",
+      paivat: [
+        ["Sisältöjäädytys", "Viimeinen hyväksytty versio; matriisin täsmälinkitys alkaa."],
+        ["Aineisto", "Päiväkirja, AI-loki, testiraportti ja linkkien tarkistus."],
+        ["Harjoittelu", "8–10 minuutin demo kellon kanssa ja itsearviointi."],
+        ["Puskuri", "Aukkojen korjaus ja tarkistus toisen henkilön kanssa."],
+        ["Luovutus", "Näyttömatriisi täsmälinkitettynä, projektipäiväkirja, AI-loki ja julkaistu v1.0 luovutettu arvioijalle."]
+      ]
     }
   },
 

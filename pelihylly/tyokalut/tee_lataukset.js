@@ -66,28 +66,30 @@ function stripTags(s) {
     .replace(/\s+/g, " ").trim();
 }
 
-/* Viikkokortit index.html:stä */
+/* Viikkokortit index.html:stä (kaksipalstainen layout: <article class="week-card">,
+   data-week-label kantaa "Vko"-sarakkeen tekstin, <h1 class="view-title"> otsikon). */
 const weeks = [];
-const cardRe = /<details class="week-card" id="week-(\d+)"[\s\S]*?<small>([^<]+)<\/small><strong>([^<]+)<\/strong>[\s\S]*?<\/details>/g;
+const cardRe = /<article class="week-card" id="week-(\d+)" data-week="\d+">\s*<p class="view-eyebrow" data-week-label="([^"]+)"[^>]*>[^<]*<\/p>\s*<h1 class="view-title">([^<]+)<\/h1>[\s\S]*?<\/article>/g;
 let m;
 while ((m = cardRe.exec(html))) {
   const [block, num, dates, title] = m;
-  const tasks = [...block.matchAll(/data-task="[\d-]+">\s*<span>([\s\S]*?)<\/span><\/label>/g)]
+  const tasks = [...block.matchAll(/data-task="[\d-]+"[^>]*>\s*<span class="task-box"[^>]*><\/span>\s*<span class="task-text">([\s\S]*?)<\/span><\/label>/g)]
     .map((t) => stripTags(t[1]).replace(/tällä sivulla/g, "sivustolla").replace(/on this page/g, "on the site"));
-  const ev = block.match(/<p class="evidence"><strong>[^<]*<\/strong>\s*([\s\S]*?)<\/p>/);
+  const ev = block.match(/<p class="evidence">([\s\S]*?)<\/p>/);
   weeks.push({ num: +num, dates, title, tasks, evidence: ev ? stripTags(ev[1]) : "" });
 }
 
-/* Lomaviikot holiday-cardeista */
+/* Lomaviikot holiday-cardeista (sama otsikkomuoto kuin week-cardeissa:
+   view-eyebrow kantaa data-week-label-attribuutin, h1.view-title on nimi). */
 const holidays = {};
-const holRe = /<article class="holiday-card" id="week-(\d+)"[\s\S]*?<p class="eyebrow">([^<]*)<\/p><h3>([^<]+)<\/h3><p>([\s\S]*?)<\/p>/g;
+const holRe = /<article class="holiday-card" id="week-(\d+)" data-week="\d+">\s*<p class="view-eyebrow" data-week-label="([^"]+)"[^>]*>[^<]*<\/p>\s*<h1 class="view-title">([^<]+)<\/h1>\s*<p>([\s\S]*?)<\/p>/g;
 while ((m = holRe.exec(html))) {
-  holidays[+m[1]] = { dates: stripTags(m[2]).replace(/^Vko\s*\d+\s*·\s*/, ""), title: stripTags(m[3]), text: stripTags(m[4]) };
+  holidays[+m[1]] = { dates: stripTags(m[2]), title: stripTags(m[3]), text: stripTags(m[4]) };
 }
 
-/* Näyttömatriisi */
+/* Näyttömatriisi (kaksipalstainen layout: otsikko + laskuri omissa <span>:eissä) */
 const matrices = [];
-const matRe = /<details class="matrix[^>]*>\s*<summary>([^<]+)<\/summary>([\s\S]*?)<\/details>/g;
+const matRe = /<details class="matrix"[^>]*>\s*<summary><span class="matrix-title">([^<]+)<\/span><span class="matrix-count">[^<]*<\/span><\/summary>([\s\S]*?)<\/details>/g;
 while ((m = matRe.exec(html))) {
   const items = [...m[2].matchAll(/data-evidence="([a-z0-9]+)"><span><strong>([^<]+)<\/strong>\s*([\s\S]*?)<\/span>/g)]
     .map((i) => ({ id: i[1], title: stripTags(i[2]), hint: stripTags(i[3]) }));
