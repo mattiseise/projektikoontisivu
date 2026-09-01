@@ -32,7 +32,7 @@ const L_OLETUS = {
   lang: "fi",
   tyopakettiOtsikko: "Paperinen työpaketti",
   tyopakettiTiedostoOtsikko: "työpaketti",
-  kansiJohdanto: "Tämä paketti on aikataulu ja tarkistuslista tilanteisiin, joissa sivusto ei ole auki. Projektipäiväkirja kirjoitetaan sivustolla ja viedään repositoryn project-docs-kansioon. Rasti tässä vihossa ei ole palautus — työ on aina Git-repositoryssa.",
+  kansiJohdanto: "Tämä paketti on aikataulu ja tarkistuslista tilanteisiin, joissa sivusto ei ole auki. Projektipäiväkirja kirjoitetaan sivustolla ja viedään repositoryn project-docs-kansioon. Rasti tässä vihossa ei ole palautus: työ on aina Git-repositoryssa.",
   luovutus: (d) => `luovutus ${d}`,
   aikatauluOtsikko: "Aikataulu yhdellä aukeamalla",
   aikatauluLyhyt: "Aikataulu",
@@ -40,15 +40,15 @@ const L_OLETUS = {
   sarakePvm: "Pvm",
   sarakeAihe: "Viikon aihe",
   sarakeVaihe: "Vaihe",
-  eiProjektityota: (title) => `${title} — ei projektityötä`,
+  eiProjektityota: (title) => `${title} – ei projektityötä`,
   palautusHuomio: (d) => `Palautus viimeistään ${d}. Sivusto: tehtävien tarkat ohjeet, toteutusavut ja projektipäiväkirja.`,
-  vaiheOtsikko: (tunnus, otsikko) => `Vaihe ${tunnus} — ${otsikko}`,
-  viikkoOtsikko: (num, dates, title) => `Vko ${num} · ${dates} — ${title}`,
+  vaiheOtsikko: (tunnus, otsikko) => `Vaihe ${tunnus} – ${otsikko}`,
+  viikkoOtsikko: (num, dates, title) => `Vko ${num} · ${dates} – ${title}`,
   valmisKun: "Valmis kun: ",
   valmisKunLabel: "Valmis kun:",
   evidenceLabel: "Työnäyte Git-repositoryyn ennen rastia:",
   viimeisetPaivatOtsikko: "Viimeiset viisi päivää",
-  matriisiOtsikko: (n) => `Näyttömatriisi — ${n} osaamisvaatimusta`,
+  matriisiOtsikko: (n) => `Näyttömatriisi – ${n} osaamisvaatimusta`,
   matriisiJohdanto: "Rasti vasta, kun vaatimukselle on täsmällinen työnäyte: linkki, commit, kuva, testirivi tai muistio. Sama työnäyte voi kelvata useaan kohtaan.",
   selainHuomio: "Muista: sivuston rastit ja kentät tallentuvat vain selaimeen. Ne eivät siirry opettajalle eivätkä korvaa Gitissä olevaa työtä."
 };
@@ -66,28 +66,30 @@ function stripTags(s) {
     .replace(/\s+/g, " ").trim();
 }
 
-/* Viikkokortit index.html:stä */
+/* Viikkokortit index.html:stä (kaksipalstainen layout: <article class="week-card">,
+   data-week-label kantaa "Vko"-sarakkeen tekstin, <h1 class="view-title"> otsikon). */
 const weeks = [];
-const cardRe = /<details class="week-card" id="week-(\d+)"[\s\S]*?<small>([^<]+)<\/small><strong>([^<]+)<\/strong>[\s\S]*?<\/details>/g;
+const cardRe = /<article class="week-card" id="week-(\d+)" data-week="\d+">\s*<p class="view-eyebrow" data-week-label="([^"]+)"[^>]*>[^<]*<\/p>\s*<h1 class="view-title">([^<]+)<\/h1>[\s\S]*?<\/article>/g;
 let m;
 while ((m = cardRe.exec(html))) {
   const [block, num, dates, title] = m;
-  const tasks = [...block.matchAll(/data-task="[\d-]+">\s*<span>([\s\S]*?)<\/span><\/label>/g)]
+  const tasks = [...block.matchAll(/data-task="[\d-]+"[^>]*>\s*<span class="task-box"[^>]*><\/span>\s*<span class="task-text">([\s\S]*?)<\/span><\/label>/g)]
     .map((t) => stripTags(t[1]).replace(/tällä sivulla/g, "sivustolla").replace(/on this page/g, "on the site"));
-  const ev = block.match(/<p class="evidence"><strong>[^<]*<\/strong>\s*([\s\S]*?)<\/p>/);
+  const ev = block.match(/<p class="evidence">([\s\S]*?)<\/p>/);
   weeks.push({ num: +num, dates, title, tasks, evidence: ev ? stripTags(ev[1]) : "" });
 }
 
-/* Lomaviikot holiday-cardeista */
+/* Lomaviikot holiday-cardeista (sama otsikkomuoto kuin week-cardeissa:
+   view-eyebrow kantaa data-week-label-attribuutin, h1.view-title on nimi). */
 const holidays = {};
-const holRe = /<article class="holiday-card" id="week-(\d+)"[\s\S]*?<p class="eyebrow">([^<]*)<\/p><h3>([^<]+)<\/h3><p>([\s\S]*?)<\/p>/g;
+const holRe = /<article class="holiday-card" id="week-(\d+)" data-week="\d+">\s*<p class="view-eyebrow" data-week-label="([^"]+)"[^>]*>[^<]*<\/p>\s*<h1 class="view-title">([^<]+)<\/h1>\s*<p>([\s\S]*?)<\/p>/g;
 while ((m = holRe.exec(html))) {
-  holidays[+m[1]] = { dates: stripTags(m[2]).replace(/^Vko\s*\d+\s*·\s*/, ""), title: stripTags(m[3]), text: stripTags(m[4]) };
+  holidays[+m[1]] = { dates: stripTags(m[2]), title: stripTags(m[3]), text: stripTags(m[4]) };
 }
 
-/* Näyttömatriisi */
+/* Näyttömatriisi (kaksipalstainen layout: otsikko + laskuri omissa <span>:eissä) */
 const matrices = [];
-const matRe = /<details class="matrix[^>]*>\s*<summary>([^<]+)<\/summary>([\s\S]*?)<\/details>/g;
+const matRe = /<details class="matrix"[^>]*>\s*<summary><span class="matrix-title">([^<]+)<\/span><span class="matrix-count">[^<]*<\/span><\/summary>([\s\S]*?)<\/details>/g;
 while ((m = matRe.exec(html))) {
   const items = [...m[2].matchAll(/data-evidence="([a-z0-9]+)"><span><strong>([^<]+)<\/strong>\s*([\s\S]*?)<\/span>/g)]
     .map((i) => ({ id: i[1], title: stripTags(i[2]), hint: stripTags(i[3]) }));
@@ -180,11 +182,11 @@ walkWeeks(
     cell(String(wk.num), { w: schedW[0], bold: true }),
     cell(wk.dates, { w: schedW[1] }),
     cell(wk.title, { w: schedW[2] }),
-    cell(phase ? `${phase.tunnus} · ${phase.lyhyt || phase.otsikko.split(":")[0]}` : "—", { w: schedW[3] }),
+    cell(phase ? `${phase.tunnus} · ${phase.lyhyt || phase.otsikko.split(":")[0]}` : "–", { w: schedW[3] }),
   ]})),
   (num, hol) => schedRows.push(new TableRow({ children: [
     cell(String(num), { w: schedW[0] }), cell(hol.dates, { w: schedW[1] }),
-    cell(lt("eiProjektityota", hol.title), { w: schedW[2] }), cell("—", { w: schedW[3] }),
+    cell(lt("eiProjektityota", hol.title), { w: schedW[2] }), cell("–", { w: schedW[3] }),
   ]}))
 );
 tp.push(table(schedW, schedRows));
@@ -223,7 +225,7 @@ if (matrices.length) {
   tp.push(p(lt("matriisiJohdanto"), { color: GREY }));
   matrices.forEach((mat) => {
     tp.push(h2(mat.title));
-    mat.items.forEach((i) => tp.push(p(`☐  ${i.title} — ${i.hint}`, { size: 19, after: 60 })));
+    mat.items.forEach((i) => tp.push(p(`☐  ${i.title} – ${i.hint}`, { size: 19, after: 60 })));
   });
 }
 tp.push(p(lt("selainHuomio"), { before: 240, italics: true, color: GREY }));
@@ -309,7 +311,7 @@ dp.push(p("Siirrä tämän taulukon sisältö CREDITS-tiedostoon repositoryyn. J
 dp.push(pageBreak());
 
 dp.push(h1("7 · AI-lokin paperiversio"));
-dp.push(p("Sivuston AI-loki on ensisijainen. Käytä tätä, jos kirjaat merkinnän ilman selainta — siirrä se sivustolle saman päivän aikana.", { color: GREY }));
+dp.push(p("Sivuston AI-loki on ensisijainen. Käytä tätä, jos kirjaat merkinnän ilman selainta: siirrä se sivustolle saman päivän aikana.", { color: GREY }));
 const aw = widths([20, 25, 28, 27]);
 const aRows = [headerRow([["Päivä ja työkalu", aw[0]], ["Mihin pyysit apua?", aw[1]], ["Mitä käytit, muutit tai hylkäsit?", aw[2]], ["Miten tarkistit ja mitä opit?", aw[3]]])];
 for (let i = 0; i < 6; i++) aRows.push(new TableRow({ children: aw.map((w) => cell("", { w })) }));
@@ -360,7 +362,7 @@ if (NS.kohde) {
       const rows = [headerRow([["Arvioinnin kohde", mw[0]], ["Vko", mw[1]], ["Työnäyte", mw[2]]])];
       mat.items.forEach((it) => {
         if (!MAP[it.id]) missing.push(it.id);
-        const [wks, proof] = MAP[it.id] || ["—", it.hint];
+        const [wks, proof] = MAP[it.id] || ["–", it.hint];
         rows.push(new TableRow({ children: [
           cell(it.title, { w: mw[0], bold: true }), cell(wks, { w: mw[1] }), cell(proof, { w: mw[2] }),
         ]}));
@@ -444,8 +446,8 @@ th { background: #${TINT}; }
 H.push(`<div class="cover"><h1>${esc(P.nimi)}</h1><p style="font-size:14pt">${esc(lt("tyopakettiOtsikko"))}</p><p>${esc(tpKansiKuvaus || "")}</p><p style="font-size:12pt"><strong>${esc(tpJakso)}${tpDeadline ? ` · ${esc(lt("luovutus", tpDeadline))}` : ""}</strong></p><p style="max-width:120mm;margin:18pt auto 0">${esc(lt("kansiJohdanto"))}</p>${tpKansiHuomiot.map((n) => `<p style="max-width:120mm;margin:10pt auto 0">${esc(n)}</p>`).join("")}</div>`);
 H.push(`<h1>${esc(lt("aikatauluLyhyt"))}</h1><table><tr><th>${esc(lt("sarakeViikko"))}</th><th>${esc(lt("sarakePvm"))}</th><th>${esc(lt("sarakeAihe"))}</th><th>${esc(lt("sarakeVaihe"))}</th></tr>`);
 walkWeeks(
-  (wk, g, phase) => H.push(`<tr><td><strong>${wk.num}</strong></td><td>${esc(wk.dates)}</td><td>${esc(wk.title)}</td><td>${phase ? esc(phase.tunnus) : "—"}</td></tr>`),
-  (num, hol) => H.push(`<tr><td>${num}</td><td>${esc(hol.dates)}</td><td>${esc(lt("eiProjektityota", hol.title))}</td><td>—</td></tr>`)
+  (wk, g, phase) => H.push(`<tr><td><strong>${wk.num}</strong></td><td>${esc(wk.dates)}</td><td>${esc(wk.title)}</td><td>${phase ? esc(phase.tunnus) : "–"}</td></tr>`),
+  (num, hol) => H.push(`<tr><td>${num}</td><td>${esc(hol.dates)}</td><td>${esc(lt("eiProjektityota", hol.title))}</td><td>–</td></tr>`)
 );
 H.push(`</table>${tpDeadline ? `<p class="muted">${esc(lt("palautusHuomio", tpDeadline))}</p>` : ""}`);
 (P.vaiheet || []).forEach((phase) => {
@@ -475,7 +477,7 @@ if (matrices.length) {
   H.push(`<h1 class="page">${esc(lt("matriisiOtsikko", requirementCount))}</h1><p class="muted">${esc(lt("matriisiJohdanto"))}</p>`);
   matrices.forEach((mat) => {
     H.push(`<h2>${esc(mat.title)}</h2>`);
-    mat.items.forEach((i) => H.push(`<p class="item">☐&nbsp; <strong>${esc(i.title)}</strong> — ${esc(i.hint)}</p>`));
+    mat.items.forEach((i) => H.push(`<p class="item">☐&nbsp; <strong>${esc(i.title)}</strong> – ${esc(i.hint)}</p>`));
   });
 }
 H.push(`<p class="muted" style="margin-top:10pt"><em>${esc(lt("selainHuomio"))}</em></p>`);

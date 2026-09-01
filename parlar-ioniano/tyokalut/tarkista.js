@@ -7,6 +7,10 @@
  * Tarkistaa, että index.html ja sisalto.js ovat keskenään yhtenäiset ja että
  * mikään täyttämättä jäänyt kohta ei päädy opiskelijan silmien eteen.
  * Poistumiskoodi 1, jos virheitä löytyi.
+ *
+ * v2 (kaksipalstainen layout): viikkokortit ovat <article class="week-card">
+ * (ei enää <details>), koska JS näyttää yhden viikon kerrallaan sivupalkin
+ * kautta. Rakenteen tarkka kuvaus: /root/work/layout-rakenne.md.
  */
 const fs = require("fs");
 const path = require("path");
@@ -75,6 +79,9 @@ workWeeks.forEach((w) => {
       if (!g.help[f]) err(`viikko ${w}: help.${f} puuttuu`);
     });
   }
+  if (g.paivat && (!Array.isArray(g.paivat) || g.paivat.some((p) => !Array.isArray(p) || p.length < 2))) {
+    err(`viikko ${w}: viikkoOhjeet.paivat pitää olla [[nimi, teksti], …] -taulukko`);
+  }
   if (!P.viikkoNimet[w]) err(`viikko ${w}: viikkoNimet-nimi puuttuu`);
 });
 Object.keys(P.viikkoOhjeet || {}).forEach((w) => {
@@ -94,21 +101,23 @@ const covered = [];
     covered.push(w);
     if (!weeks.includes(w)) err(`vaihe ${ph.tunnus}: viikko ${w} ei ole viikot-listassa`);
   });
-  if (!html.includes(`>${ph.tunnus}</span>`)) warn(`vaiheen ${ph.tunnus} phase-heading ei löytynyt index.html:stä`);
+  /* Vaiheotsikko esiintyy sivupalkin viikkonavigaatiossa vasta kun app.js on
+     rakentanut sen, joten HTML:stä ei enää voi tarkistaa suoraan — riittää,
+     että vaihe kattaa viikkonsa (tarkistettu yllä) ja tunnus on kelvollinen. */
 });
 weeks.filter((w) => !covered.includes(w)).forEach((w) => err(`viikko ${w} ei kuulu mihinkään vaiheeseen`));
 
 /* ---------- 4. index.html: viikkokortit ---------- */
-const cardWeeks = [...html.matchAll(/<details class="week-card" id="week-(\d+)"/g)].map((m) => Number(m[1]));
+const cardWeeks = [...html.matchAll(/<article class="week-card" id="week-(\d+)" data-week="\d+">/g)].map((m) => Number(m[1]));
 const holidayCards = [...html.matchAll(/<article class="holiday-card" id="week-(\d+)"/g)].map((m) => Number(m[1]));
 
-workWeeks.filter((w) => !cardWeeks.includes(w)).forEach((w) => err(`index.html: viikkokortti week-${w} puuttuu`));
+workWeeks.filter((w) => !cardWeeks.includes(w)).forEach((w) => err(`index.html: viikkokortti week-${w} puuttuu (odotettu <article class="week-card" id="week-${w}">)`));
 cardWeeks.filter((w) => !workWeeks.includes(w)).forEach((w) => err(`index.html: ylimääräinen viikkokortti week-${w}`));
 holidays.filter((w) => !holidayCards.includes(w)).forEach((w) => err(`index.html: holiday-card week-${w} puuttuu`));
 if (new Set(cardWeeks).size !== cardWeeks.length) err("index.html: sama viikkokortti kahdesti");
 
 /* Kortin sisäinen rakenne */
-const cardBlocks = [...html.matchAll(/<details class="week-card" id="week-(\d+)"[\s\S]*?<\/details>/g)];
+const cardBlocks = [...html.matchAll(/<article class="week-card" id="week-(\d+)"[\s\S]*?<\/article>/g)];
 const allTaskIds = [];
 cardBlocks.forEach(([block, num]) => {
   const ids = [...block.matchAll(/data-task="([\d-]+)"/g)].map((m) => m[1]);
@@ -119,16 +128,19 @@ cardBlocks.forEach(([block, num]) => {
     if (allTaskIds.includes(id)) err(`tehtävätunnus '${id}' esiintyy kahdesti`);
     allTaskIds.push(id);
   });
-  if (!/<p class="evidence"><strong>/.test(block)) err(`viikko ${num}: .evidence-rivi puuttuu`);
-  if (!/<div class="lesson-instructions">/.test(block)) err(`viikko ${num}: .lesson-instructions puuttuu`);
-  if (!/<p class="lesson-label">/.test(block)) err(`viikko ${num}: .lesson-label puuttuu (app.js kirjoittaa siihen)`);
-  if (!/<p class="checkpoint">/.test(block)) err(`viikko ${num}: .checkpoint puuttuu`);
-  const status = block.match(/<span class="week-status">(\d+) \/ (\d+)<\/span>/);
-  if (!status) err(`viikko ${num}: week-status puuttuu summarysta`);
+  const evidenceMatch = block.match(/<p class="evidence">([\s\S]*?)<\/p>/);
+  if (!evidenceMatch || !evidenceMatch[1].trim()) err(`viikko ${num}: .evidence-rivi puuttuu tai on tyhjä`);
+  if (!/class="[^"]*\blesson-instructions\b[^"]*"/.test(block)) err(`viikko ${num}: .lesson-instructions puuttuu`);
+  if (!/<span class="lesson-label"/.test(block)) err(`viikko ${num}: .lesson-label puuttuu (app.js kirjoittaa siihen)`);
+  if (!/<p class="checkpoint">/.test(block)) err(`viikko ${num}: .checkpoint puuttuu (Valmis kun -kortti)`);
+  if (!/<h1 class="view-title">[^<]+<\/h1>/.test(block)) err(`viikko ${num}: <h1 class="view-title"> puuttuu tai on tyhjä`);
+  if (!/data-week-journal="\d+"/.test(block)) err(`viikko ${num}: .week-journal (data-week-journal) puuttuu`);
+  const status = block.match(/<span class="week-status"[^>]*>(\d+) \/ (\d+)<\/span>/);
+  if (!status) err(`viikko ${num}: week-status puuttuu`);
   else if (Number(status[2]) !== ids.length) err(`viikko ${num}: week-status sanoo ${status[2]}, tehtäviä on ${ids.length}`);
 });
 
-/* ---------- 5. viikkojen päivämäärät ---------- */
+/* ---------- 5. viikkojen "small-rivi" / data-week-label ---------- */
 function isoMonday(year, week) {
   const simple = new Date(Date.UTC(year, 0, 4));
   const day = simple.getUTCDay() || 7;
@@ -137,9 +149,19 @@ function isoMonday(year, week) {
 }
 const years = Array.isArray(P.vuosi) ? P.vuosi.map(Number) : [Number(P.vuosi)];
 const EN_MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-[...html.matchAll(/id="week-(\d+)"[\s\S]{0,300}?<small>([^<]+)<\/small>/g)].forEach(([, num, dates]) => {
+/* Paivaton tila (P.paivaton): viikot ovat jarjestysnumeroita 1...N ilman
+   kalenteripaivia, joten ISO-viikkotarkistus ohitetaan. data-week-label-
+   attribuutin pitaa silti mainita viikon numero, jotta paperipaketti ja
+   sivu pysyvat synkassa. Dated-tilassa attribuutin pitaa olla ISO-viikon
+   paivamaara. */
+[...html.matchAll(/<article class="week-card" id="week-(\d+)"[^>]*>\s*<p class="view-eyebrow" data-week-label="([^"]+)"/g)].forEach(([, num, dates]) => {
+  if (P.paivaton) {
+    if (!new RegExp(`(^|[^0-9])${num}([^0-9]|$)`).test(dates)) {
+      err(`viikko ${num}: paivattoman tilan data-week-label "${dates}" ei mainitse viikon numeroa`);
+    }
+    return;
+  }
   const w = Number(num);
-  /* Sivusto voi olla suomeksi (31.8.–4.9.) tai englanniksi (31 Aug – 4 Sep). */
   const candidates = years.flatMap((y) => {
     const ma = isoMonday(y, w);
     const pe = new Date(ma.getTime() + 4 * 86400000);
@@ -154,7 +176,7 @@ const EN_MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"
   });
   const seen = dates.trim().replace(/\s/g, "");
   if (!candidates.some((c) => c.replace(/\s/g, "") === seen)) {
-    err(`viikko ${w}: päivämäärä "${dates.trim()}" ei vastaa ISO-viikkoa (odotettu ${candidates.join(" tai ")})`);
+    err(`viikko ${w}: data-week-label "${dates}" ei vastaa ISO-viikkoa (odotettu ${candidates.join(" tai ")})`);
   }
 });
 
@@ -163,23 +185,24 @@ const EN_MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"
    sisällä matriisia lainkaan. Jos matriisi on, se tarkistetaan kokonaan; jos ei ole,
    koko lohko ohitetaan — mutta puolikas matriisi on virhe. */
 const evidenceIds = [...html.matchAll(/data-evidence="([a-z0-9]+)"/g)].map((m) => m[1]);
-const matrixCount = [...html.matchAll(/<details class="matrix/g)].length;
+const matrixCount = [...html.matchAll(/<details class="matrix"/g)].length;
 const evidenceCounter = html.match(/data-evidence-count>0 \/ (\d+)</);
 const matrixUsed = Boolean(evidenceIds.length || matrixCount || evidenceCounter);
 if (matrixUsed) {
   if (!evidenceIds.length) err("index.html: näyttömatriisista puuttuvat data-evidence-rastit");
-  if (!matrixCount) err("index.html: yhtään tutkinnon osan matriisia ei löytynyt");
+  if (!matrixCount) err("index.html: yhtään tutkinnon osan matriisia ei löytynyt (odotettu <details class=\"matrix\">)");
   const dupes = evidenceIds.filter((id, i) => evidenceIds.indexOf(id) !== i);
   if (dupes.length) err(`data-evidence-tunnus toistuu: ${[...new Set(dupes)].join(", ")}`);
   if (evidenceCounter && Number(evidenceCounter[1]) !== evidenceIds.length) {
     err(`näyttömatriisin laskuri sanoo ${evidenceCounter[1]}, rasteja on ${evidenceIds.length}`);
   }
-  [...html.matchAll(/<summary>([^<]*·\s*(\d+)\s*vaatimusta)<\/summary>/g)].forEach(([, label, n]) => {
-    const block = html.slice(html.indexOf(label));
-    const end = block.indexOf("</details>");
-    const count = [...block.slice(0, end).matchAll(/data-evidence=/g)].length;
-    if (Number(n) !== count) err(`matriisi "${label}": otsikko sanoo ${n}, rasteja on ${count}`);
-  });
+  [...html.matchAll(/<summary><span class="matrix-title">([^<]+)<\/span><span class="matrix-count">(\d+) vaatimusta<\/span><\/summary>([\s\S]*?)<\/details>/g)]
+    .forEach(([, title, n, body]) => {
+      const count = [...body.matchAll(/data-evidence=/g)].length;
+      if (Number(n) !== count) err(`matriisi "${title}": otsikko sanoo ${n}, rasteja on ${count}`);
+    });
+} else {
+  warn("index.html: yhtään <summary><span class=\"matrix-title\">…</span><span class=\"matrix-count\">…</span></summary> -muotoista matriisiotsikkoa ei löytynyt (ohitettu, koska matriisia ei käytetä)");
 }
 
 /* ---------- 7. suunnitelmalomake ---------- */
@@ -209,7 +232,7 @@ if (/Lorem ipsum|TODO|FIXME|XXX/i.test(html)) warn("index.html sisältää TODO/
 /* ---------- 8b. testauksen minimit suhteessa kestoon ---------- */
 const testiOsuma = html.match(/[Vv]ähintään\s+(\d+)\s+suunniteltua\s+testitapausta/)
   || html.match(/[Aa]t least\s+(\d+)\s+planned test cases/);
-if (!testiOsuma) warn("testauksen vähimmäistavoitetta ei löytynyt check-listalta");
+if (!testiOsuma) warn("testauksen vähimmäistavoitetta ei löytynyt");
 else if (Number(testiOsuma[1]) < MITOITUS.testeja) {
   warn(`testejä luvattu ${testiOsuma[1]}, ${workWeeks.length} viikon projektissa vähintään ${MITOITUS.testeja}`);
 }
@@ -238,6 +261,15 @@ if (opettajaSuunnitelma?.tyonaytteet) {
   evidenceIds.filter((id) => !map[id]).forEach((id) => warn(`näyttösuunnitelmasta puuttuu työnäytemäppäys: ${id}`));
   Object.keys(map).filter((id) => !evidenceIds.includes(id)).forEach((id) => warn(`näyttösuunnitelmassa tuntematon tunnus: ${id}`));
 }
+
+/* ---------- 12. kaksipalstaisen layoutin runko ---------- */
+const REQUIRED_VIEWS = ["kaytto", "toimeksianto", "tyotapa", "galleria", "viikko", "suunnitelma", "paivakirja", "ailoki", "naytto"];
+REQUIRED_VIEWS.forEach((v) => {
+  if (!new RegExp(`<section class="view" data-view="${v}"`).test(html)) err(`index.html: näkymä data-view="${v}" puuttuu`);
+});
+if (!html.includes('data-week-links')) err('index.html: sivupalkin viikkonavigaation kiinnityskohta (data-week-links) puuttuu');
+if (!/id="sivupalkki"/.test(html)) err('index.html: sivupalkin id="sivupalkki" puuttuu (mobiilivalikko tarvitsee sen)');
+if (!html.includes('data-sidebar-toggle')) warn('index.html: mobiilin valikkonappi (data-sidebar-toggle) puuttuu');
 
 /* ---------- tulos ---------- */
 const total = allTaskIds.length;

@@ -1,8 +1,9 @@
 <!doctype html>
 <!--
   Näyttöprojektin runko / demonstration project frame.
-  Rakennetta ei muuteta: app.js ja tyokalut/tee_lataukset.js luottavat
-  luokkanimiin, data-attribuutteihin ja viikkokorttien muotoon.
+  Kaksipalstainen sovellusnäkymä (layoutuudistus v2). Rakennetta ei muuteta:
+  app.js ja tyokalut/tee_lataukset.js luottavat luokkanimiin, data-attribuutteihin
+  ja näkymien/viikkokorttien muotoon. Rakenteen tarkka kuvaus: /root/work/layout-rakenne.md.
   Site language: English. Requirement names in the evidence matrix stay in
   Finnish exactly as in ePerusteet (OPH-6216-2025).
 -->
@@ -11,7 +12,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#143e78">
-  <meta name="description" content="Guided demonstration project: build and publish a React site that presents the Ionian language, week by week, from 31 Aug to 4 Dec 2026.">
+  <meta name="description" content="Guided demonstration project: build and publish a hand-coded HTML, CSS and JavaScript site with Bootstrap that presents the Ionian language, week by week, from 31 Aug to 4 Dec 2026.">
   <title>Parlar Ioniano – guided demonstration project</title>
   <link rel="icon" href="assets/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
@@ -19,7 +20,7 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap">
   <link rel="stylesheet" href="styles.css">
   <script src="sisalto.js" defer></script>
   <script src="app.js" defer></script>
@@ -27,479 +28,173 @@
 <body>
   <a class="skip-link" href="#sisalto">Skip to content</a>
 
-  <header class="site-header">
-    <a class="brand" href="#alku" aria-label="Parlar Ioniano, back to top">
-      <span class="brand-mark" aria-hidden="true"><span>Ι</span></span>
-      <span><strong>Parlar Ioniano</strong><small>Guided demonstration project</small></span>
-    </a>
-    <nav class="top-nav" aria-label="Main navigation">
-      <a href="#osaamistavoitteet">What you demonstrate</a>
-      <a href="#aloitusohje">How to use this page</a>
-      <a href="#toimeksianto">The brief</a>
-      <a href="#suunnitelma">The plan</a>
-      <a href="#polku">Build path</a>
-      <a href="#tyotapa">Work method</a>
-      <a href="#tekoaly">AI</a>
-      <a href="#todisteet">Evidence</a>
-    </nav>
-    <button class="button button-ghost print-button" type="button" data-print>▣ Print this guide</button>
-  </header>
-
-  <div class="page-shell" id="alku">
-    <aside class="progress-rail" aria-label="My progress">
-      <div class="progress-card">
-        <p class="eyebrow">Demonstration progress</p>
-        <div class="progress-ring" aria-hidden="true"><strong data-progress-number>0%</strong></div>
-        <p class="progress-copy" data-progress-copy>0 / 0 tasks done</p>
-        <div class="linear-progress" aria-hidden="true"><span data-progress-bar></span></div>
-        <p class="progress-note">The ticks are your own working memory. The work samples go to the Git repository.</p>
-        <button class="button button-primary button-full" type="button" data-continue>Start the project</button>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Demonstration project navigation" id="sivupalkki">
+      <div class="sidebar-header">
+        <span class="brand-mark" aria-hidden="true">Ι</span>
+        <div>
+          <p class="sidebar-kicker">Demonstration project · 11 project weeks</p>
+          <p class="sidebar-title">Parlar Ioniano</p>
+        </div>
+        <button class="mobile-menu-toggle" type="button" data-sidebar-toggle aria-expanded="false" aria-controls="sivupalkki">☰ Menu</button>
       </div>
 
-      <nav class="week-nav" aria-label="Weeks">
-        <p class="eyebrow">How the site grows</p>
-        <div class="week-links" data-week-links></div>
-      </nav>
+      <div class="sidebar-progress">
+        <div class="progress-row">
+          <span class="progress-pct" data-progress-number>0%</span>
+          <span class="progress-copy" data-progress-copy>0 / 0 tasks done</span>
+        </div>
+        <div class="progress-bar" aria-hidden="true"><span data-progress-bar></span></div>
+        <button class="resume-button" type="button" data-continue><span>Start the project</span><span aria-hidden="true">→</span></button>
+        <p class="resume-note" data-continue-note>Week 36</p>
+      </div>
 
-      <div class="deadline-card">
-        <span class="deadline-label">Finished no later than</span>
-        <strong>Fri 4 Dec 2026</strong>
-        <span>Week 49</span>
+      <div class="sidebar-scroll">
+        <nav class="nav-group" aria-label="Guidance and background">
+          <p class="nav-group-title">Guidance and background · read before you start</p>
+          <a class="nav-row" href="#view-kaytto" data-view-nav="kaytto">How to use this site<span class="nav-meta">start here</span></a>
+          <a class="nav-row" href="#view-toimeksianto" data-view-nav="toimeksianto">The brief<span class="nav-meta"></span></a>
+          <a class="nav-row" href="#view-tyotapa" data-view-nav="tyotapa">Work method<span class="nav-meta"></span></a>
+          <a class="nav-row" href="#view-galleria" data-view-nav="galleria">Gallery<span class="nav-meta">wk 48</span></a>
+        </nav>
+
+        <nav class="week-nav" aria-label="Weeks" data-week-links></nav>
+
+        <nav class="nav-group nav-group-docs" aria-label="My documents">
+          <p class="nav-group-title">My documents · written during the work</p>
+          <a class="nav-row" href="#view-suunnitelma" data-view-nav="suunnitelma">Plan<span class="nav-meta" data-plan-status-meta>updating</span></a>
+          <a class="nav-row" href="#view-paivakirja" data-view-nav="paivakirja">Project journal<span class="nav-meta" data-journal-summary>0 / 11</span></a>
+          <a class="nav-row" href="#view-ailoki" data-view-nav="ailoki">AI log<span class="nav-meta" data-log-count>0</span></a>
+          <a class="nav-row" href="#view-naytto" data-view-nav="naytto">Evidence matrix<span class="nav-meta" data-evidence-count>0 / 44</span></a>
+        </nav>
       </div>
     </aside>
 
-    <main id="sisalto">
-      <section class="hero section-pad" aria-labelledby="hero-title">
-        <div class="hero-copy reveal">
-          <p class="eyebrow eyebrow-accent">Demonstration project · weeks 36–49</p>
-          <h1 id="hero-title">Present your language.<br><em>Demonstrate your skills.</em></h1>
-          <p class="lead">You created a language. In this project you build the website that presents it: a React app where every grammar table comes from data, one view is built from scratch, and the result is published for real learners. You work one week at a time on this page, keep your project journal here, and push every work sample to your Git repository. The demonstration assesses your web development skills — the language itself is your own source material.</p>
-          <div class="hero-actions">
-            <button class="button button-primary" type="button" data-continue>Start the project</button>
-            <a class="button button-secondary" href="downloads/parlar-ioniano-tyopaketti.pdf" download>Download the paper schedule</a>
-          </div>
-          <ul class="fact-row" aria-label="Key project facts">
-            <li><strong>11</strong><span>project weeks</span></li>
-            <li data-fact="loma"><strong>wk 41–43</strong><span>no project work</span></li>
-            <li><strong>v1.0</strong><span>in week 48</span></li>
-          </ul>
-        </div>
+    <main class="view-main" id="sisalto">
 
-        <figure class="hero-visual reveal" data-delay="1">
-          <div class="image-stage image-stage-wide">
-            <img src="assets/tyokierto.svg" width="1672" height="941" alt="Weekly workflow: site map, component, data, test, publish">
-          </div>
-          <figcaption><strong>The same loop every week.</strong> Pick a task, build the component, feed it data, test it, publish it.</figcaption>
+      <!-- ============ HOW TO USE THIS SITE ============ -->
+      <section class="view" data-view="kaytto" id="view-kaytto">
+        <p class="view-eyebrow">What this project shows, and how to use this page</p>
+        <h1 class="view-title">One project, one place to write</h1>
+        <p class="view-lead">You created a language. In this project you build the website that presents it: hand-written HTML, CSS and JavaScript, one week at a time on this page. This site's project journal is the project's plan log, work diary and evidence index — you do not fill in the same answers in a separate Word template.</p>
+
+        <section class="view-section">
+          <h2>What you learn and demonstrate here</h2>
+          <p class="view-lead" style="margin-top:10px">This one project is the demonstration for four qualification units — Tieto- ja viestintätekniikan perustehtävät (25 competence points), Ohjelmointi (45), Ohjelmistokehittäjänä toimiminen (45) and Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla (30) — 44 assessed requirements in total, all listed in the evidence matrix at the end of this page. In practice you learn and show how to set up a real toolchain and publish through it, how to write structured, maintainable and tested JavaScript, how to plan work as issues, estimate it and review it with a client, and how to choose a component library on measured evidence and build an accessible site on it. Nothing is assessed separately: every requirement is proved by the work you do in these weeks and by the work sample it leaves behind — a commit, a memo, a test row.</p>
+          <p class="view-lead" style="margin-top:10px">One thing worth saying plainly: the qualification units also include competencies that are demonstrated in a team. That is why the weekly tasks talk about a team, reviews and a client even though you build this project alone — the supervising teacher acts as the client and the supervisor when one is needed, and the agreements, reviews and shared decisions are held with them or with another named person. Those conversations are assessed competence in their own right, not a formality.</p>
+        </section>
+
+        <figure class="view-figure view-section">
+          <div class="image-stage"><img src="assets/vaiheet.svg" width="1129" height="369" alt="Timeline of the four phases A–D with their colours: Foundations, Grammar views, Finish and Release, weeks 36–49."></div>
+          <figcaption><strong>Four phases.</strong> Foundations first, then the grammar views, then quality and testing, and finally the release and the demonstration. Read the current week's result first, work through its steps in order, test the done-when condition and fill in the week's project journal.</figcaption>
         </figure>
-      </section>
 
-      <section class="start-guide section-pad" id="osaamistavoitteet" aria-labelledby="goals-title">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Four qualification units · 44 requirements</p>
-          <h2 id="goals-title">What you learn and demonstrate here</h2>
-          <p>This one project is the demonstration for four qualification units — Tieto- ja viestintätekniikan perustehtävät (25 competence points), Ohjelmointi (45), Ohjelmistokehittäjänä toimiminen (45) and Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla (30) — 44 assessed requirements in total, all listed in the evidence matrix at the end of this page. In practice you learn and show how to set up a real toolchain and publish through it, how to write structured, maintainable and tested React code, how to plan work as issues, estimate it and review it with a client, and how to choose a component library on measured evidence and build an accessible site on it. Nothing is assessed separately: every requirement is proved by the work you do in these weeks and by the work sample it leaves behind — a commit, a memo, a test row.</p>
-          <p>One thing worth saying plainly: the qualification units also include competencies that are demonstrated in a team. That is why the weekly tasks talk about a team, reviews and a client even though you build this project alone — the supervising teacher acts as the client and the supervisor when one is needed, and the agreements, reviews and shared decisions are held with them or with another named person. Those conversations are assessed competence in their own right, not a formality.</p>
+        <div class="principle-grid">
+          <div class="card"><span class="num">1</span><h3>Build in your project folder</h3><p>The real work happens in your local repository: the page files in the root, css/ and js/ for your own code, data/ for the language data (JSON), tests/ for the unit tests.</p><small>A local web server (Live Server) shows changes instantly — fetch() will not read data/ over file://.</small></div>
+          <div class="card"><span class="num">2</span><h3>Steer the work with Git</h3><p>The tasks live as GitHub issues. Finished work shows up as small saved changes (commits).</p><small>One issue = usually half a day or one day of work.</small></div>
+          <div class="card"><span class="num">3</span><h3>Write on this page</h3><p>At the end of every week you answer three questions: what and how, why, and where the work sample is.</p><small>The fields are stored only in this browser.</small></div>
+          <div class="card"><span class="num">4</span><h3>Export the journal to Git</h3><p>Download the whole project journal at the end of every week and replace the old file in the repository.</p><small>File: <code>project-docs/project-journal.md</code>. The repository is public — never commit personal data.</small></div>
         </div>
-      </section>
 
-      <section class="start-guide section-pad" id="aloitusohje" aria-labelledby="start-guide-title">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Read this before week 36</p>
-          <h2 id="start-guide-title">One project, one place to write</h2>
-          <p>In this project you do not fill in the same answers in a separate Word template. This site's project journal is the project's plan log, work diary and evidence index.</p>
+        <div class="card card-tint view-section checklist-box">
+          <p class="section-label section-label-accent">Do this once, at the start</p>
+          <ol>
+            <li>Create the folders css/, js/, data/, tests/ and project-docs/ in the repository.</li>
+            <li>Open week 36 and do one task at a time.</li>
+            <li>At the end of the week, fill in the three main journal fields.</li>
+            <li>Press <strong>Download the whole project journal</strong>, move the file into <code>project-docs</code> and commit.</li>
+          </ol>
         </div>
-        <div class="workplace-map reveal" role="list" aria-label="Where the parts of the project live">
-          <article role="listitem"><span>1</span><h3>Build in your project folder</h3><p>The real work happens in your local repository: src/ for components, public/content/ for the language data (JSON), tests/ for unit tests.</p><small>The dev server (npm run dev) shows changes instantly.</small></article>
-          <article role="listitem"><span>2</span><h3>Steer the work with Git</h3><p>The tasks live as GitHub issues. Finished work shows up as small saved changes (commits).</p><small>One issue = usually half a day or one day of work.</small></article>
-          <article role="listitem"><span>3</span><h3>Write on this page</h3><p>At the end of every week you answer three questions: what and how, why, and where the work sample is.</p><small>The fields are stored only in this browser.</small></article>
-          <article role="listitem"><span>4</span><h3>Export the journal to Git</h3><p>Download the whole project journal at the end of every week and replace the old file in the repository.</p><small>File: <code>project-docs/project-journal.md</code>. The repository is public — never commit personal data.</small></article>
-        </div>
-        <div class="start-checklist reveal">
+
+        <div class="card view-section download-card">
           <div>
-            <p class="eyebrow">Do this once, at the start</p>
-            <ol>
-              <li>Create the folders src/, public/content/, tests/ and project-docs/ in the repository.</li>
-              <li>Open week 36 and do one task at a time.</li>
-              <li>At the end of the week, fill in the three main journal fields.</li>
-              <li>Press <strong>Download the whole project journal</strong>, move the file into <code>project-docs</code> and commit.</li>
-            </ol>
+            <strong>Paper work pack</strong>
+            <p>A schedule and a checklist for the moments when this page is not open. You never rewrite your answers into it.</p>
           </div>
-          <div class="journal-export-card">
-            <strong>Project journal + AI log</strong>
-            <p>Export your answers regularly. Browser storage does not travel to another device, and it never replaces the work sample in Git.</p>
-            <button class="button button-primary" type="button" data-export-journal>Download the whole project journal (.md)</button>
-            <span class="save-status" data-journal-summary aria-live="polite">0 / 11 weeks recorded</span>
+          <div class="download-actions">
+            <a class="button button-primary" href="downloads/parlar-ioniano-tyopaketti.pdf" download>Download PDF</a>
+            <a class="button button-secondary" href="downloads/parlar-ioniano-tyopaketti.docx" download>Download Word</a>
           </div>
         </div>
-        <details class="source-role reveal">
+
+        <p class="footnote view-section"><strong>Remember:</strong> the ticks and text fields on this site are your own working memory. They are stored only in this browser and never reach the teacher. A tick is not a submission and not part of the evidence. Tick only when the work is tested and the work sample is in the Git repository.</p>
+
+        <details class="source-role">
           <summary>What are the paper work pack and the original template for?</summary>
           <p><strong>The paper work pack</strong> is a schedule and a checklist for the moments when this page is not open. You never rewrite your answers into it.</p>
           <p><strong>The teacher's source documents</strong> feed this build path. Their topics are already inside the weekly tasks and the project journal. Fill in a separate template only if the teacher gives you a separate instruction.</p>
         </details>
-        <p class="browser-state-note reveal"><strong>Remember:</strong> the ticks and text fields on this site are your own working memory. They are stored only in this browser and never reach the teacher. A tick is not a submission and not part of the evidence. Tick only when the work is tested and the work sample is in the Git repository.</p>
+
+        <div class="download-card view-section" style="margin-top:20px">
+          <div><strong>Your own state in this browser</strong><p>Ticks, project journal, plan and AI log are stored only in this browser.</p></div>
+          <button class="button button-ghost" type="button" data-reset>Reset my progress</button>
+        </div>
+
+        <details class="source-role">
+          <summary>Teacher's source material · no separate filling without instructions</summary>
+          <p>These are the teacher's source documents. You do not fill them in without a separate instruction. The weekly tasks and the project journal cover the same content.</p>
+          <p><a href="downloads/nayttosuunnitelma.docx" download>Näyttösuunnitelma (assessment plan, in Finnish, .docx)</a> – the demonstration's scope, roles, checkpoints and the 44-requirement work-sample mapping.</p>
+          <p><a href="downloads/nayton-dokumentointipohjat.docx" download>Dokumentointipohjat (documentation templates, in Finnish, .docx)</a> – kickoff notes, comparison memo, review log, test matrix, debugging chain, licence record and the AI log's paper version.</p>
+        </details>
       </section>
 
-      <section class="project-brief section-pad reveal" id="toimeksianto" aria-labelledby="brief-title">
-        <div class="brief-main">
-          <p class="eyebrow">Original brief · given 31 Aug 2026</p>
-          <h2 id="brief-title">A website for a language that exists nowhere else</h2>
-          <div class="full-assignment">
-            <p>I have spent years building a language. Ionian — Lingua Ioniana — is a Romance language with its own alphabet, three genders, its own numbers and its own café small talk. Right now it lives in a 58-page reference PDF that only I can navigate. I want a website where a curious learner can actually find things: how a letter is pronounced, how the pronouns change when you talk to a friend or a stranger, which article goes with which gender, and how to count to ten thousand.</p>
-            <p>Accuracy matters more than volume. No AI and no other person knows this language, so every table on the site must be checked against my PDF — an invented form is a bug. My terms of use stay visible: the material is mine, it is shared to spread awareness of Ionian, and the site credits me as the author. Where my PDF is still under construction, the site says “coming later” instead of making content up.</p>
-            <p>At the end of October I want to try a half-way version at a real web address on my own phone, and I will bring along a tester who has never seen Ionian. I want to hear, in their words, whether they can find the alphabet, read a pronoun table and understand what this language is — without me explaining anything.</p>
-            <p>By the fourth of December I want version 1.0 at a public URL: a site with a number converter I can show off, a phrasebook where a beginner can learn my café dialogue, and a README good enough that another person can get the project running without asking me anything.</p>
-          </div>
+      <!-- ============ THE BRIEF ============ -->
+      <section class="view" data-view="toimeksianto" id="view-toimeksianto">
+        <p class="view-eyebrow">Original brief · given 31 Aug 2026</p>
+        <h1 class="view-title">A website for a language that exists nowhere else</h1>
+        <div class="brief-text">
+          <p>I have spent years building a language. Ionian — Lingua Ioniana — is a Romance language with its own alphabet, three genders, its own numbers and its own café small talk. Right now it lives in a 58-page reference PDF that only I can navigate. I want a website where a curious learner can actually find things: how a letter is pronounced, how the pronouns change when you talk to a friend or a stranger, which article goes with which gender, and how to count to ten thousand.</p>
+          <p>Accuracy matters more than volume. No AI and no other person knows this language, so every table on the site must be checked against my PDF — an invented form is a bug. My terms of use stay visible: the material is mine, it is shared to spread awareness of Ionian, and the site credits me as the author. Where my PDF is still under construction, the site says “coming later” instead of making content up.</p>
+          <p>At the end of October I want to try a half-way version at a real web address on my own phone, and I will bring along a tester who has never seen Ionian. I want to hear, in their words, whether they can find the alphabet, read a pronoun table and understand what this language is — without me explaining anything.</p>
+          <p>By the fourth of December I want version 1.0 at a public URL: a site with a number converter I can show off, a phrasebook where a beginner can learn my café dialogue, and a README good enough that another person can get the project running without asking me anything.</p>
         </div>
-        <div class="brief-aside">
-          <div class="technology-box">
-            <p class="eyebrow">Agreed implementation</p>
-            <p>React + Vite (JavaScript). A component library chosen by comparison in week 38 — the tables, tabs and navigation build on it, and the number converter view is built from scratch without it. All content lives as JSON in <code>public/content/</code> and is fetched at runtime. Unit tests with Vitest in Node. Published on GitHub Pages.</p>
-            <p><strong>P0 minimum:</strong> Home · Alphabet &amp; Pronunciation · Pronouns · Nouns, Articles &amp; Gender · Numbers + converter · Phrasebook &amp; Chapter 1.</p>
-          </div>
-          <div class="scope-box">
-            <p class="eyebrow">Keep the scope</p>
-            <p>Named temptations that are <strong>not</strong> in this project: an interactive verb conjugator, audio recordings, user accounts, and content for the PDF's under-construction pages 57–58 — the site says “coming later”. The Verbs overview (P1) may start only if P0 is complete by the end of week 46.</p>
-          </div>
-          <div class="decision-box">
-            <p class="eyebrow">Agree with the supervisor</p>
-            <p>These are not yours to decide — not alone and not with AI. Empty means “open item”, and that is the correct state until agreed:</p>
-            <p>1 · The license of the code (the language material keeps its own terms).<br>
-               2 · The institution's line on the device-security evidence (t12).<br>
-               3 · Your public author name on the site and the repository.<br>
-               4 · Who acts as the external tester in weeks 44 and 48.<br>
-               5 · How the review notes may record people (first name and role only).</p>
-          </div>
-          <div class="graphics-box">
-            <p class="eyebrow">Source material and tools</p>
-            <p>The 58-page reference PDF is the single source of truth for all language content: every table is typed from it and verified against it. Fonts come from Google Fonts and icons from the chosen library — both listed in CREDITS. The flag and column motif may be redrawn as your own simple SVG; no images from elsewhere. AI may help with React code (logged in the AI log) — never with Ionian content.</p>
-          </div>
-        </div>
-        <div class="traceability-card">
-          <div>
-            <p class="eyebrow">Keep the red thread visible</p>
-            <h3>Requirement → issue → implementation → test → work sample</h3>
-          </div>
-          <div class="traceability-example" role="group" aria-label="Example of requirement traceability">
-            <span><small>Requirement</small>Explores the possibilities and limits of the component library (k2)</span>
-            <b aria-hidden="true">→</b>
-            <span><small>Issue</small>#7 Compare component libraries for the grammar tables</span>
-            <b aria-hidden="true">→</b>
-            <span><small>Done when</small>Memo lists possibilities, limits and own measurements for 3 options</span>
-            <b aria-hidden="true">→</b>
-            <span><small>Test and work sample</small>Comparison memo in project-docs/, decision in the plan, library configured in commit</span>
-          </div>
-        </div>
-      </section>
 
-      <section class="plan-section section-pad" id="suunnitelma" aria-labelledby="plan-title">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Technical plan · fill in during weeks 36–37</p>
-          <h2 id="plan-title">One plan, your decisions</h2>
-          <p>The pre-filled sections come from the brief. You write the decisions that are yours: goal, audience, component library, scope. The supervisor owns the open items — do not decide those yourself or with AI.</p>
-          <p class="plan-timing"><strong>Timing:</strong> Draft it in week 36, finish it by the end of week 37, and update it when the supervisor answers an open item.</p>
-        </div>
-        <figure class="plan-visual reveal">
-          <div class="image-stage"><img src="assets/suunnitelma-luonnos.svg" width="1128" height="540" alt="The plan has three parts: goal and audience, my decisions, site map"></div>
-          <figcaption><strong>The plan comes before the code.</strong> Goal, audience and site map first — then the first component.</figcaption>
-        </figure>
-        <div class="plan-layout">
-          <div class="plan-prefilled reveal" aria-label="Pre-filled plan sections">
-            <p class="eyebrow">Pre-filled · included in the downloaded file</p>
-            <article>
-              <h3>1 · Concept</h3>
-              <p>A public reference site for Ionian (Lingua Ioniana), a constructed Romance language. React + Vite, all grammar content as JSON under <code>public/content/</code>, fetched at runtime — the source of truth is the author's reference PDF. Published on GitHub Pages. The whole project is in English.</p>
-            </article>
-            <article>
-              <h3>2 · Site map and scope</h3>
-              <p><strong>P0:</strong> Home · Alphabet &amp; Pronunciation · Pronouns · Nouns, Articles &amp; Gender · Numbers &amp; Comparison with the converter · Phrasebook &amp; Chapter 1. <strong>P1</strong> (only if P0 is done by the end of week 46): Verbs overview. <strong>P2:</strong> Word-building. <strong>Out:</strong> conjugator, accounts, audio, PDF pages 57–58.</p>
-            </article>
-            <article>
-              <h3>7 · Data (binding)</h3>
-              <p>Content JSON is loaded at runtime with fetch() from <code>public/content/</code>. Loading and error states are implemented in week 39. Every content file is checked against the reference PDF — an invented form is a bug. A broken-network response is a test case.</p>
-            </article>
-            <article>
-              <h3>8 · Quality bar</h3>
-              <p>At least 12 planned test cases with the expected result written before the run, 3 complete debugging chains, an accessibility pass with Lighthouse before/after pairs, a client review in week 44 and an external user test in week 48.</p>
-            </article>
-            <article>
-              <h3>9 · Roles</h3>
-              <p>The student is the developer AND the client in the language creator's role. The supervisor acts as the client's representative in reviews. The external tester is a different person who has never seen Ionian.</p>
-            </article>
-            <article>
-              <h3>10 · Open items — the supervisor owns these</h3>
-              <p>License of the code · the institution's device-security policy line (t12). An empty field is the correct result until these are agreed.</p>
-              <small class="plan-open-note">Open items are not filled in by the student or by AI. They are agreed with the supervisor and updated into the plan afterwards.</small>
-            </article>
+        <div class="grid-2 view-section">
+          <div class="card">
+            <p class="section-label section-label-accent">Agreed implementation</p>
+            <p style="margin-top:8px">Hand-written HTML, CSS and JavaScript — no build step and no bundler. Bootstrap is the component library, loaded from a CDN and compared and configured in week 38 — the navbar, tables, tabs, cards and accordion build on it, and the number converter page is built from scratch without it. All content lives as JSON in <code>data/</code> and is fetched at runtime. Unit tests run in the browser from <code>tests/tests.html</code>. Published on GitHub Pages from the main branch.</p>
+            <p style="margin-top:8px"><strong>P0 minimum:</strong> Home · Alphabet &amp; Pronunciation · Pronouns · Nouns, Articles &amp; Gender · Numbers + converter · Phrasebook &amp; Chapter 1.</p>
           </div>
-          <form class="plan-form reveal" data-plan-form data-delay="1">
-            <div class="plan-form-heading">
-              <div><p class="eyebrow">My decisions</p><h3>Decisions that are yours</h3><p>Fill these in yourself. Each decision is tested in your own work during the named weeks.</p></div>
-              <span data-plan-status>Not started yet</span>
-            </div>
-            <fieldset>
-              <legend>A · Basics</legend>
-              <label>Public author name (agreed in week 36)<input type="text" data-plan-field="author" placeholder="The name shown on the site and in the repository"></label>
-              <label>Repository URL<input type="text" data-plan-field="repoUrl" placeholder="https://github.com/…"></label>
-            </fieldset>
-            <fieldset>
-              <legend>B · My decisions</legend>
-              <label>3 · Goal in my own words<textarea rows="3" data-plan-field="goal" placeholder="What does this site make possible, for whom — one honest paragraph"></textarea></label>
-              <label>4 · Audience<textarea rows="2" data-plan-field="audience" placeholder="Who actually visits: a curious beginner? a conlang hobbyist? what do they need first?"></textarea></label>
-              <label>5 · Component library — my choice (week 38)<input type="text" data-plan-field="library" placeholder="The library, chosen after the comparison memo"></label>
-              <label>Why this library — own measurements<textarea rows="3" data-plan-field="libraryWhy" placeholder="Bundle before/after, Lighthouse scores, the limits you accept — numbers from YOUR build"></textarea></label>
-              <label>6 · What I will NOT do (scope guard)<textarea rows="3" data-plan-field="scope" placeholder="The temptations you name and refuse — in your own words"></textarea></label>
-              <p class="plan-calibration"><strong>Not enough:</strong> “Goal: a good site about my language.” <strong>Enough:</strong> “A beginner finds how to pronounce any letter in under 30 seconds; the converter handles 0–999 999; everything a learner needs up to the PDF's Chapter 1 — and nothing more.”</p>
-            </fieldset>
-            <fieldset>
-              <legend>C · Supervisor's decisions — leave empty until agreed</legend>
-              <label>License of the code<input type="text" data-plan-field="license" placeholder="Open item — agreed with the supervisor"></label>
-              <label>Institution's device-security policy line (t12)<input type="text" data-plan-field="institutionPolicy" placeholder="Open item — agreed with the supervisor"></label>
-            </fieldset>
-            <div class="plan-actions">
-              <button class="button button-primary" type="button" data-plan-export>Download technical-plan.md</button>
-              <small>Save the file to <code>project-docs/technical-plan.md</code> and commit. Update it when the supervisor answers the open items.</small>
-            </div>
-            <p class="plan-ai-note"><strong>Remember:</strong> do not let AI decide for you. The supervisor's items are not decided by you or by AI. If you used AI for ideation, log it in the AI log.</p>
-          </form>
+          <div class="card">
+            <p class="section-label">Keep the scope</p>
+            <p style="margin-top:8px">Named temptations that are <strong>not</strong> in this project: an interactive verb conjugator, audio recordings, user accounts, and content for the PDF's under-construction pages 57–58 — the site says “coming later”. The Verbs overview (P1) may start only if P0 is complete by the end of week 46.</p>
+          </div>
+        </div>
+
+        <div class="card card-tint decision-box view-section">
+          <p class="section-label">Agree with the supervisor</p>
+          <p style="margin-top:4px">These are not yours to decide — not alone and not with AI. Empty means “open item”, and that is the correct state until agreed:</p>
+          <ul>
+            <li>The license of the code (the language material keeps its own terms).</li>
+            <li>The institution's line on the device-security evidence (t12).</li>
+            <li>Your public author name on the site and the repository.</li>
+            <li>Who acts as the external tester in weeks 44 and 48.</li>
+            <li>How the review notes may record people (first name and role only).</li>
+          </ul>
+        </div>
+
+        <div class="card view-section">
+          <p class="section-label">Source material and tools</p>
+          <p style="margin-top:8px">The 58-page reference PDF is the single source of truth for all language content: every table is typed from it and verified against it. Fonts come from Google Fonts and icons from Bootstrap Icons — both loaded from a CDN with a pinned version and both listed in CREDITS. The flag and column motif may be redrawn as your own simple SVG; no images from elsewhere. AI may help with HTML, CSS and JavaScript (logged in the AI log) — never with Ionian content.</p>
+        </div>
+
+        <div class="view-section">
+          <h2>Keep the red thread visible</h2>
+          <p style="margin-top:6px;font-size:15px;color:var(--muted)">Requirement → issue → implementation → test → work sample</p>
+          <div class="lanka-row" role="group" aria-label="Example of requirement traceability">
+            <div><p class="section-label">Requirement</p><p>Explores the possibilities and limits of the component library (k2)</p></div>
+            <div><p class="section-label">Issue</p><p>#7 Compare component libraries for the grammar tables</p></div>
+            <div><p class="section-label">Done when</p><p>Memo lists possibilities, limits and own measurements for 3 options</p></div>
+            <div><p class="section-label">Test and work sample</p><p>Comparison memo in project-docs/, decision in the plan, Bootstrap configured in css/style.css in a commit</p></div>
+          </div>
         </div>
       </section>
 
-      <section class="kickoff section-pad" aria-labelledby="kickoff-title">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Getting started</p>
-          <h2 id="kickoff-title">The first phase at a glance</h2>
-          <p>This is not a separate task list. The same work is done inside the week cards 36–38. By the end of the first phase an empty but real app is live at your public URL.</p>
-        </div>
-        <ol class="day-path">
-          <li class="reveal"><span>Day 1</span><strong>Need</strong><p>Read the brief, underline the requirements and write down every unclear point as a question for the kickoff talk.</p></li>
-          <li class="reveal" data-delay="1"><span>Day 2</span><strong>Scope</strong><p>Agree the scope: which views are P0, what is explicitly out (the conjugator!), and who reviews the site in week 44.</p></li>
-          <li class="reveal" data-delay="2"><span>Day 3</span><strong>Toolchain</strong><p>Install Node LTS, create the Vite + React app, run it locally and open it from your phone over the local network.</p></li>
-          <li class="reveal" data-delay="3"><span>Day 4</span><strong>Plan</strong><p>Draft the technical plan from the pre-filled sections and split the P0 work into GitHub issues.</p></li>
-          <li class="reveal" data-delay="4"><span>Day 5</span><strong>Publish</strong><p>Deploy the empty app to GitHub Pages and verify the public URL works on another device. First commit, first deploy — the pipeline exists.</p></li>
-        </ol>
-      </section>
-
-      <section class="learning-path section-pad" id="polku" aria-labelledby="path-title">
-        <div class="section-heading reveal">
-          <p class="eyebrow">How the site grows</p>
-          <h2 id="path-title">The site is built one view at a time</h2>
-          <p>Open only the current week. Read the week's result first: it tells you what exists after the week that did not exist before. Work through the steps in order, test the done-when condition and fill in the week's project journal.</p>
-        </div>
-
-        <figure class="path-visual reveal">
-          <div class="image-stage"><img src="assets/vaiheet.svg" width="1129" height="369" alt="The four phases: Foundations, Grammar views, Finish, Release"></div>
-          <figcaption><strong>Four phases.</strong> Foundations first, then the grammar views, then quality and testing, and finally the release and the demonstration.</figcaption>
-        </figure>
-
-        <div class="phase-block" id="vaihe-a">
-          <div class="phase-heading"><span>A</span><div><p>Weeks 36–38</p><h3>Foundations: brief, toolchain, plan and a published shell</h3></div></div>
-
-          <details class="week-card" id="week-36" data-week="36" open>
-            <summary><span class="week-number">36</span><span class="week-title"><small>31 Aug – 4 Sep</small><strong>Kickoff, toolchain and the first deploy</strong></span><span class="week-status">0 / 4</span></summary>
-            <div class="week-content">
-              <label><input type="checkbox" data-task="36-1"> <span>Hold the kickoff talk: bring your question list and record every answer as a decision, an open item or an assumption.</span></label>
-              <label><input type="checkbox" data-task="36-2"> <span>Set up Node, the Vite + React app and the public repository — privacy check first, 2FA on.</span></label>
-              <label><input type="checkbox" data-task="36-3"> <span>Run the dev server on your phone over the local network, then publish the empty app to GitHub Pages.</span></label>
-              <label><input type="checkbox" data-task="36-4"> <span>Draft the technical plan below and split the P0 views into prioritised issues.</span></label>
-              <div class="lesson-instructions">
-                <p class="lesson-label"><span>Guided work</span> How to proceed</p>
-                <ol><li><strong>Step.</strong> Filled from data.</li></ol>
-                <p class="checkpoint"><strong>Before you continue:</strong> filled from data.</p>
-              </div>
-              <p class="evidence"><strong>Show:</strong> kickoff notes with the question list, the repository with its README, the first deploy live at the public URL, the plan draft, the P0 backlog — and the phone screenshot in project-docs/evidence/week-36/.</p>
-            </div>
-          </details>
-
-          <details class="week-card" id="week-37" data-week="37">
-            <summary><span class="week-number">37</span><span class="week-title"><small>7–11 Sep</small><strong>Content becomes data: the Alphabet view</strong></span><span class="week-status">0 / 3</span></summary>
-            <div class="week-content">
-              <label><input type="checkbox" data-task="37-1"> <span>Type letters.json from your PDF (pages 7, 9–11 and 41) and document the data-store decision in the plan.</span></label>
-              <label><input type="checkbox" data-task="37-2"> <span>Build the Alphabet &amp; Pronunciation view on a runtime fetch with loading and error states.</span></label>
-              <label><input type="checkbox" data-task="37-3"> <span>Run the validation script, add one check of your own and prove it fails on a planted error.</span></label>
-              <div class="lesson-instructions">
-                <p class="lesson-label"><span>Guided work</span> How to proceed</p>
-                <ol><li><strong>Step.</strong> Filled from data.</li></ol>
-                <p class="checkpoint"><strong>Before you continue:</strong> filled from data.</p>
-              </div>
-              <p class="evidence"><strong>Show:</strong> letters.json, the Alphabet view live at the public URL, the validation script in tools/ and its pass/fail output in the journal.</p>
-            </div>
-          </details>
-
-          <details class="week-card" id="week-38" data-week="38">
-            <summary><span class="week-number">38</span><span class="week-title"><small>14–18 Sep</small><strong>App shell and the component library decision</strong></span><span class="week-status">0 / 3</span></summary>
-            <div class="week-content">
-              <label><input type="checkbox" data-task="38-1"> <span>Write the comparison memo: two component libraries plus the no-library option, with your own bundle and Lighthouse measurements.</span></label>
-              <label><input type="checkbox" data-task="38-2"> <span>Install and theme the chosen library, and build the navigation, the routes and the Home view.</span></label>
-              <label><input type="checkbox" data-task="38-3"> <span>Measure again after the install and record the before/after numbers in the memo.</span></label>
-              <div class="lesson-instructions">
-                <p class="lesson-label"><span>Guided work</span> How to proceed</p>
-                <ol><li><strong>Step.</strong> Filled from data.</li></ol>
-                <p class="checkpoint"><strong>Before you continue:</strong> filled from data.</p>
-              </div>
-              <p class="evidence"><strong>Show:</strong> project-docs/library-comparison.md with measured numbers, the themed shell live at the public URL, and the Home view with the credit and the terms of use.</p>
-            </div>
-          </details>
-        </div>
-
-        <div class="phase-block" id="vaihe-b">
-          <div class="phase-heading"><span>B</span><div><p>Weeks 39–44 · no project work in weeks 41–43</p><h3>Grammar views: data-driven tables and the client review</h3></div></div>
-
-          <details class="week-card" id="week-39" data-week="39">
-            <summary><span class="week-number">39</span><span class="week-title"><small>21–25 Sep</small><strong>Pronouns: one component, eight tables</strong></span><span class="week-status">0 / 3</span></summary>
-            <div class="week-content">
-              <label><input type="checkbox" data-task="39-1"> <span>Design pronouns.json so one shape serves all eight pronoun tables, and type the data from PDF pages 13–18 and 22–26.</span></label>
-              <label><input type="checkbox" data-task="39-2"> <span>Build the reusable GrammarTable component and wire the eight tables into tabs.</span></label>
-              <label><input type="checkbox" data-task="39-3"> <span>Make the loading and error states real and capture both as screenshots.</span></label>
-              <div class="lesson-instructions">
-                <p class="lesson-label"><span>Guided work</span> How to proceed</p>
-                <ol><li><strong>Step.</strong> Filled from data.</li></ol>
-                <p class="checkpoint"><strong>Before you continue:</strong> filled from data.</p>
-              </div>
-              <p class="evidence"><strong>Show:</strong> pronouns.json, GrammarTable.jsx, the tabbed Pronouns view live, and the loading/error screenshots in project-docs/evidence/week-39/.</p>
-            </div>
-          </details>
-
-          <details class="week-card" id="week-40" data-week="40">
-            <summary><span class="week-number">40</span><span class="week-title"><small>28 Sep – 2 Oct</small><strong>Nouns, articles and gender — and v0.5</strong></span><span class="week-status">0 / 4</span></summary>
-            <div class="week-content">
-              <label><input type="checkbox" data-task="40-1"> <span>Type nouns.json and articles.json from PDF pages 8 and 19–21, including the elision rules.</span></label>
-              <label><input type="checkbox" data-task="40-2"> <span>Render the gender-by-number matrices with the reused table component and add the example sentences.</span></label>
-              <label><input type="checkbox" data-task="40-3"> <span>Tag v0.5 and deploy it.</span></label>
-              <label><input type="checkbox" data-task="40-4"> <span>Book the week-44 review in writing: names, date and tasks into project-docs/review-agreement.md.</span></label>
-              <div class="lesson-instructions">
-                <p class="lesson-label"><span>Guided work</span> How to proceed</p>
-                <ol><li><strong>Step.</strong> Filled from data.</li></ol>
-                <p class="checkpoint"><strong>Before you continue:</strong> filled from data.</p>
-              </div>
-              <p class="evidence"><strong>Show:</strong> the Nouns &amp; Articles view live, the v0.5 tag, and the committed review agreement with names and a date.</p>
-            </div>
-          </details>
-
-          <article class="holiday-card" id="week-41" data-week="41">
-            <span aria-hidden="true">📚</span>
-            <div><p class="eyebrow">5–9 Oct</p><h3>No project work</h3><p>This week is reserved for other studies. No project tasks and no catch-up work. Continue in week 44 from the latest working <code>main</code> version.</p></div>
-          </article>
-
-          <article class="holiday-card" id="week-42" data-week="42">
-            <span aria-hidden="true">☕</span>
-            <div><p class="eyebrow">12–16 Oct</p><h3>Autumn break</h3><p>No project work and no catch-up tasks. Rest. The site and the v0.5 tag will wait exactly where you left them.</p></div>
-          </article>
-
-          <article class="holiday-card" id="week-43" data-week="43">
-            <span aria-hidden="true">📚</span>
-            <div><p class="eyebrow">19–23 Oct</p><h3>No project work</h3><p>Reserved for other studies. The review happens in week 44 — the agreement is already in the repository.</p></div>
-          </article>
-
-          <details class="week-card" id="week-44" data-week="44">
-            <summary><span class="week-number">44</span><span class="week-title"><small>26–30 Oct</small><strong>Client review and re-plan</strong></span><span class="week-status">0 / 4</span></summary>
-            <div class="week-content">
-              <label><input type="checkbox" data-task="44-1"> <span>Run the review session and record the tester's findings verbatim, separated from your interpretation.</span></label>
-              <label><input type="checkbox" data-task="44-2"> <span>Turn the client's decisions into issues and re-prioritise the backlog, comparing estimates with reality.</span></label>
-              <label><input type="checkbox" data-task="44-3"> <span>Fix a small batch and document debugging chain 1/3 end to end.</span></label>
-              <label><input type="checkbox" data-task="44-4"> <span>Check the t12 open item (device-security policy) with the supervisor and update the plan.</span></label>
-              <div class="lesson-instructions">
-                <p class="lesson-label"><span>Guided work</span> How to proceed</p>
-                <ol><li><strong>Step.</strong> Filled from data.</li></ol>
-                <p class="checkpoint"><strong>Before you continue:</strong> filled from data.</p>
-              </div>
-              <p class="evidence"><strong>Show:</strong> project-docs/review-2026-w44.md with the two voices separated, the updated backlog, the fix commits, and chain 1 in debugging-chains.md.</p>
-            </div>
-          </details>
-        </div>
-
-        <div class="phase-block" id="vaihe-c">
-          <div class="phase-heading"><span>C</span><div><p>Weeks 45–47</p><h3>Finish: feedback change, quality and testing</h3></div></div>
-
-          <details class="week-card" id="week-45" data-week="45">
-            <summary><span class="week-number">45</span><span class="week-title"><small>2–6 Nov</small><strong>The number converter — built from scratch</strong></span><span class="week-status">0 / 3</span></summary>
-            <div class="week-content">
-              <label><input type="checkbox" data-task="45-1"> <span>Write the converter tests first: expected values from PDF pages 42–45, committed while still red.</span></label>
-              <label><input type="checkbox" data-task="45-2"> <span>Implement numberToIonian and the ordinal helpers as small pure functions until the suite is green.</span></label>
-              <label><input type="checkbox" data-task="45-3"> <span>Build the converter UI from scratch — no library components — and ship the week-44 feedback change.</span></label>
-              <div class="lesson-instructions">
-                <p class="lesson-label"><span>Guided work</span> How to proceed</p>
-                <ol><li><strong>Step.</strong> Filled from data.</li></ol>
-                <p class="checkpoint"><strong>Before you continue:</strong> filled from data.</p>
-              </div>
-              <p class="evidence"><strong>Show:</strong> tests/numbers.test.js with PDF-cited expectations, src/lib/numbers.js, the Numbers view live, and the feedback-change commit linked to its finding.</p>
-            </div>
-          </details>
-
-          <details class="week-card" id="week-46" data-week="46">
-            <summary><span class="week-number">46</span><span class="week-title"><small>9–13 Nov</small><strong>Phrasebook, dialogues and search</strong></span><span class="week-status">0 / 4</span></summary>
-            <div class="week-content">
-              <label><input type="checkbox" data-task="46-1"> <span>Type phrases.json from PDF pages 12 and 51–56 and mark pages 57–58 as “coming later”.</span></label>
-              <label><input type="checkbox" data-task="46-2"> <span>Build the dialogue viewer with the Ionian/English toggle.</span></label>
-              <label><input type="checkbox" data-task="46-3"> <span>Build the search with a controlled input and prove the XSS string renders as text.</span></label>
-              <label><input type="checkbox" data-task="46-4"> <span>Fill the test matrix to at least 12 cases and commit LICENSE and CREDITS per the client's decision.</span></label>
-              <div class="lesson-instructions">
-                <p class="lesson-label"><span>Guided work</span> How to proceed</p>
-                <ol><li><strong>Step.</strong> Filled from data.</li></ol>
-                <p class="checkpoint"><strong>Before you continue:</strong> filled from data.</p>
-              </div>
-              <p class="evidence"><strong>Show:</strong> the Phrasebook live with search, the XSS screenshot, the full test matrix with expected results filled in, and the LICENSE/CREDITS commits.</p>
-            </div>
-          </details>
-
-          <details class="week-card" id="week-47" data-week="47">
-            <summary><span class="week-number">47</span><span class="week-title"><small>16–20 Nov</small><strong>Quality and testing week</strong></span><span class="week-status">0 / 4</span></summary>
-            <div class="week-content">
-              <label><input type="checkbox" data-task="47-1"> <span>Execute the whole test matrix against the public URL and fill the observed column with dates.</span></label>
-              <label><input type="checkbox" data-task="47-2"> <span>Complete debugging chain 3/3 and compile chains 1–3 into one document.</span></label>
-              <label><input type="checkbox" data-task="47-3"> <span>Run the accessibility audit: fix keyboard, contrast, alt and labels, and record Lighthouse before/after pairs.</span></label>
-              <label><input type="checkbox" data-task="47-4"> <span>Run npm audit and the no-secrets check, then refactor in small commits with tests green in between.</span></label>
-              <div class="lesson-instructions">
-                <p class="lesson-label"><span>Guided work</span> How to proceed</p>
-                <ol><li><strong>Step.</strong> Filled from data.</li></ol>
-                <p class="checkpoint"><strong>Before you continue:</strong> filled from data.</p>
-              </div>
-              <p class="evidence"><strong>Show:</strong> the executed test matrix, debugging-chains.md with three complete chains, the Lighthouse pairs in project-docs/lighthouse/, and the refactor commit series.</p>
-            </div>
-          </details>
-        </div>
-
-        <div class="phase-block" id="vaihe-d">
-          <div class="phase-heading"><span>D</span><div><p>Weeks 48–49</p><h3>Release and demonstration</h3></div></div>
-
-          <details class="week-card" id="week-48" data-week="48">
-            <summary><span class="week-number">48</span><span class="week-title"><small>23–27 Nov</small><strong>Release candidate, user test and v1.0</strong></span><span class="week-status">0 / 4</span></summary>
-            <div class="week-content">
-              <label><input type="checkbox" data-task="48-1"> <span>Freeze the content and tag the release candidate.</span></label>
-              <label><input type="checkbox" data-task="48-2"> <span>Run the clean-environment test from a fresh clone using only the README, fixing the README where it fails.</span></label>
-              <label><input type="checkbox" data-task="48-3"> <span>Run the external user test with a written task card, recording the tester's words verbatim and separately.</span></label>
-              <label><input type="checkbox" data-task="48-4"> <span>Write the deployment-path description from your own artefacts and release v1.0.</span></label>
-              <div class="lesson-instructions">
-                <p class="lesson-label"><span>Guided work</span> How to proceed</p>
-                <ol><li><strong>Step.</strong> Filled from data.</li></ol>
-                <p class="checkpoint"><strong>Before you continue:</strong> filled from data.</p>
-              </div>
-              <p class="evidence"><strong>Show:</strong> the clean-clone notes, user-test-2026-w48.md, deployment-path.md, the instruction-fix commits and the v1.0 release.</p>
-            </div>
-          </details>
-
-          <details class="week-card" id="week-49" data-week="49">
-            <summary><span class="week-number">49</span><span class="week-title"><small>30 Nov – 4 Dec</small><strong>Demonstration week</strong></span><span class="week-status">0 / 3</span></summary>
-            <div class="week-content">
-              <label><input type="checkbox" data-task="49-1"> <span>Link all 44 matrix rows below to their exact work samples.</span></label>
-              <label><input type="checkbox" data-task="49-2"> <span>Commit the final project journal and AI log, and write the self-assessment.</span></label>
-              <label><input type="checkbox" data-task="49-3"> <span>Rehearse the 8–10 minute demo twice with a timer and hand over on Friday.</span></label>
-              <div class="lesson-instructions">
-                <p class="lesson-label"><span>Guided work</span> How to proceed</p>
-                <ol><li><strong>Step.</strong> Filled from data.</li></ol>
-                <p class="checkpoint"><strong>Before you continue:</strong> filled from data.</p>
-              </div>
-              <p class="evidence"><strong>Show:</strong> the fully linked matrix, project-docs with the final journal, AI log and self-assessment, and the handover confirmation.</p>
-            </div>
-          </details>
-        </div>
-      </section>
-
-      <section class="work-method section-pad" id="tyotapa" aria-labelledby="method-title">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Every working session</p>
-          <h2 id="method-title">Six steps, every time</h2>
-        </div>
-        <ol class="workflow-loop reveal">
+      <!-- ============ WORK METHOD ============ -->
+      <section class="view" data-view="tyotapa" id="view-tyotapa">
+        <p class="view-eyebrow">Every working session</p>
+        <h1 class="view-title">Six steps, every time</h1>
+        <ol class="workflow-loop">
           <li><span>1</span><strong>Pick</strong><small>one small task</small></li>
           <li><span>2</span><strong>Plan</strong><small>which file and which data</small></li>
           <li><span>3</span><strong>Build</strong><small>piece by piece</small></li>
@@ -507,201 +202,1090 @@
           <li><span>5</span><strong>Save</strong><small>commit and push</small></li>
           <li><span>6</span><strong>Log</strong><small>work sample and takeaway</small></li>
         </ol>
-        <p class="method-rule reveal"><strong>Rule of thumb:</strong> if you cannot explain the change, the work is not done yet.</p>
-      </section>
+        <p class="rule-note"><strong>Rule of thumb:</strong> if you cannot explain the change, the work is not done yet.</p>
+        <p class="rule-note">Open only the current week. Read the week's result first: it tells you what exists after the week that did not exist before. Work through the steps in order, test the done-when condition and fill in the week's project journal.</p>
 
-      <section class="feature-section section-pad" aria-labelledby="test-title">
-        <figure class="feature-visual reveal">
+        <figure class="view-figure view-section">
           <div class="image-stage"><img src="assets/testauskierros.svg" width="1500" height="1000" alt="Testing loop: plan the test, run it, find the bug, fix, re-test"></div>
           <figcaption>A test is done only after a passing re-test.</figcaption>
         </figure>
-        <div class="feature-copy reveal" data-delay="1">
-          <p class="eyebrow">Quality assurance</p>
-          <h2 id="test-title">Test like a developer</h2>
-          <p>Testing is not just clicking around. Record the expected result, the observed result, the cause of the bug, the fix and the re-test.</p>
-          <ul class="check-list">
+
+        <div class="view-section">
+          <h2>Test like a developer</h2>
+          <p class="view-lead" style="margin-top:8px">Testing is not just clicking around. Record the expected result, the observed result, the cause of the bug, the fix and the re-test.</p>
+          <ul class="tooling-list">
             <li>At least 12 planned test cases with the expected result written before the run — thirds: normal use, limits, error cases.</li>
             <li>3 complete debugging chains: observation → reproduction → cause → fix commit → re-test → regression test.</li>
-            <li>The broken-network case: block a content JSON and expect your own error state, not a blank page.</li>
+            <li>The broken-network case: block a data JSON in DevTools and expect your own error state, not a blank page.</li>
             <li>The converter's junk inputs: empty, letters, negative, too large — decide the behaviour and write it down.</li>
-            <li>The search's XSS string renders as harmless text — prove it on the public URL.</li>
+            <li>The search's XSS string renders as harmless text because you used textContent — prove it on the public URL.</li>
             <li>The released version is tested in a clean environment, never only in your own working folder.</li>
           </ul>
         </div>
       </section>
 
-      <section class="ai-section section-pad" id="tekoaly" aria-labelledby="ai-title">
-        <div class="ai-heading reveal">
-          <p class="eyebrow eyebrow-accent">AI is an allowed tool</p>
-          <h2 id="ai-title">You make the decisions.<br>AI is a tool.</h2>
-          <p>AI may help you with React code, error messages and test ideas — logged, verified and tested. It cannot help you with the content: no model knows Ionian. Every grammar table, every phrase and every expected test result comes from your own PDF and is checked against it. The site structure, the accessibility solutions and the number converter logic are your own work — that is what the demonstration assesses.</p>
+      <!-- ============ GALLERY ============ -->
+      <section class="view" data-view="galleria" id="view-galleria">
+        <p class="view-eyebrow">Published work</p>
+        <h1 class="view-title">Gallery</h1>
+        <p class="view-lead">The finished v1.0 release is lifted here in week 48: name, screenshot, license and the release link.</p>
+        <div class="gallery-grid" data-gallery>
+          <!-- Teacher adds one card per published release:
+          <a class="gallery-card" href="https://github.com/user/repo/releases/tag/v1.0">
+            <img src="assets/galleria/name.png" width="640" height="360" alt="Screenshot" loading="lazy">
+            <strong>Name</strong><span>Author's first name · v1.0</span>
+          </a>
+          -->
         </div>
-        <figure class="ai-visual reveal" data-delay="1">
+        <p class="gallery-empty" data-gallery-empty>The release is published in week 48.</p>
+      </section>
+
+      <!-- ============ VIIKKONÄKYMÄ ============ -->
+      <section class="view" data-view="viikko" id="view-viikko">
+
+        <article class="week-card" id="week-36" data-week="36">
+          <p class="view-eyebrow" data-week-label="31 Aug – 4 Sep">Phase A · Foundations · Week 36 · 31 Aug – 4 Sep</p>
+          <h1 class="view-title">Kickoff, toolchain and the first deploy</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>After this week</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">From the brief – the client's wish this week fulfills</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Finished this week</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Why this matters</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>This week's tech</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Weekly tasks</h2><span class="week-status" data-week-status>0 / 4</span></div>
+            <div class="task-list">
+              <label class="task-row"><input type="checkbox" data-task="36-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Hold the kickoff talk: bring your question list and record every answer as a decision, an open item or an assumption.</span></label>
+              <label class="task-row"><input type="checkbox" data-task="36-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Set up VS Code, the site folder served over http://localhost and the public repository — privacy check first, 2FA on.</span></label>
+              <label class="task-row"><input type="checkbox" data-task="36-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Open the local server on your phone over the local network, then publish the empty site to GitHub Pages.</span></label>
+              <label class="task-row"><input type="checkbox" data-task="36-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Draft the technical plan below and split the P0 pages into prioritised issues.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>How to proceed</h2><span class="lesson-label" data-lesson-label>guided work · do in order</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="This week's templates and tools"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Step.</strong> Filled from data.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>I need implementation help</span><small>open only if you get stuck – try it yourself first</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Weekly day rhythm</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Done when</p><p class="checkpoint">Before you continue: check the week's done-when condition.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Show</p><p class="evidence">Kickoff notes with the question list, the repository with its README, the first deploy live at the public URL, the plan draft, the P0 backlog — and the phone screenshot in project-docs/evidence/week-36/.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="36">
+            <div class="journal-heading">
+              <h2>Weekly project journal</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Log AI help</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Whole journal →</button>
+              </div>
+            </div>
+            <p class="journal-lead">This is the journal's only place to write: three questions at the end of the week. The fields are stored only in this browser — the download and the state of recorded weeks are in the Project journal view.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>What did you do and how?</span><textarea rows="3" data-journal-field="work" placeholder="Write in your own words…"></textarea></label>
+              <label><span>Why did you do it this way?</span><textarea rows="2" data-journal-field="reason" placeholder="Justifications and alternatives you considered"></textarea></label>
+              <label><span>Where is the work sample?</span><input type="text" data-journal-field="evidence" placeholder="Commit link, screenshot or file path"></label>
+            </div>
+            <span data-journal-status>Not recorded yet</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Move between weeks"></nav>
+        </article>
+
+        <article class="week-card" id="week-37" data-week="37">
+          <p class="view-eyebrow" data-week-label="7–11 Sep">Phase A · Foundations · Week 37 · 7–11 Sep</p>
+          <h1 class="view-title">Content becomes data: the Alphabet view</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>After this week</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">From the brief – the client's wish this week fulfills</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Finished this week</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Why this matters</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>This week's tech</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Weekly tasks</h2><span class="week-status" data-week-status>0 / 3</span></div>
+            <div class="task-list">
+              <label class="task-row"><input type="checkbox" data-task="37-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Type data/letters.json and the first records of data/words.json from your PDF (pages 7, 9–11, 12 and 41) and document the data-store decision in the plan.</span></label>
+              <label class="task-row"><input type="checkbox" data-task="37-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Build js/data.js as the shared loader and the Alphabet &amp; Pronunciation page on a runtime fetch with loading and error states.</span></label>
+              <label class="task-row"><input type="checkbox" data-task="37-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Run tools/check-data.html, add one check of your own and prove it fails on a planted error.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>How to proceed</h2><span class="lesson-label" data-lesson-label>guided work · do in order</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="This week's templates and tools"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Step.</strong> Filled from data.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>I need implementation help</span><small>open only if you get stuck – try it yourself first</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Weekly day rhythm</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Done when</p><p class="checkpoint">Before you continue: check the week's done-when condition.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Show</p><p class="evidence">data/letters.json and data/words.json, js/data.js, the Alphabet page live at the public URL, and the tools/check-data.html report pass/fail in the journal.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="37">
+            <div class="journal-heading">
+              <h2>Weekly project journal</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Log AI help</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Whole journal →</button>
+              </div>
+            </div>
+            <p class="journal-lead">This is the journal's only place to write: three questions at the end of the week. The fields are stored only in this browser — the download and the state of recorded weeks are in the Project journal view.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>What did you do and how?</span><textarea rows="3" data-journal-field="work" placeholder="Write in your own words…"></textarea></label>
+              <label><span>Why did you do it this way?</span><textarea rows="2" data-journal-field="reason" placeholder="Justifications and alternatives you considered"></textarea></label>
+              <label><span>Where is the work sample?</span><input type="text" data-journal-field="evidence" placeholder="Commit link, screenshot or file path"></label>
+            </div>
+            <span data-journal-status>Not recorded yet</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Move between weeks"></nav>
+        </article>
+
+        <article class="week-card" id="week-38" data-week="38">
+          <p class="view-eyebrow" data-week-label="14–18 Sep">Phase A · Foundations · Week 38 · 14–18 Sep</p>
+          <h1 class="view-title">Bootstrap shell and the component decision</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>After this week</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">From the brief – the client's wish this week fulfills</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Finished this week</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Why this matters</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>This week's tech</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Weekly tasks</h2><span class="week-status" data-week-status>0 / 3</span></div>
+            <div class="task-list">
+              <label class="task-row"><input type="checkbox" data-task="38-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Write the comparison memo: Bootstrap, one other component library and the no-library option, with your own transferred-KB and Lighthouse measurements.</span></label>
+              <label class="task-row"><input type="checkbox" data-task="38-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Load Bootstrap from the CDN with a pinned version, configure the theme in css/style.css, and build the navbar, the grid and the Home page.</span></label>
+              <label class="task-row"><input type="checkbox" data-task="38-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Measure again from the DevTools Network panel and record the before/after numbers in the memo.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>How to proceed</h2><span class="lesson-label" data-lesson-label>guided work · do in order</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="This week's templates and tools"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Step.</strong> Filled from data.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>I need implementation help</span><small>open only if you get stuck – try it yourself first</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Weekly day rhythm</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Done when</p><p class="checkpoint">Before you continue: check the week's done-when condition.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Show</p><p class="evidence">The comparison memo with your own measured numbers is in project-docs/, the navbar works from every page on the public URL and collapses correctly on a phone, and the Home page shows the credit and terms.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="38">
+            <div class="journal-heading">
+              <h2>Weekly project journal</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Log AI help</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Whole journal →</button>
+              </div>
+            </div>
+            <p class="journal-lead">This is the journal's only place to write: three questions at the end of the week. The fields are stored only in this browser — the download and the state of recorded weeks are in the Project journal view.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>What did you do and how?</span><textarea rows="3" data-journal-field="work" placeholder="Write in your own words…"></textarea></label>
+              <label><span>Why did you do it this way?</span><textarea rows="2" data-journal-field="reason" placeholder="Justifications and alternatives you considered"></textarea></label>
+              <label><span>Where is the work sample?</span><input type="text" data-journal-field="evidence" placeholder="Commit link, screenshot or file path"></label>
+            </div>
+            <span data-journal-status>Not recorded yet</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Move between weeks"></nav>
+        </article>
+
+        <article class="week-card" id="week-39" data-week="39">
+          <p class="view-eyebrow" data-week-label="21–25 Sep">Phase B · Grammar views · Week 39 · 21–25 Sep</p>
+          <h1 class="view-title">Pronouns: one function, eight tables</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>After this week</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">From the brief – the client's wish this week fulfills</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Finished this week</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Why this matters</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>This week's tech</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Weekly tasks</h2><span class="week-status" data-week-status>0 / 3</span></div>
+            <div class="task-list">
+              <label class="task-row"><input type="checkbox" data-task="39-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Design the pronouns section of data/grammar.json so one shape serves all eight tables, and type the data from PDF pages 13–18 and 22–26.</span></label>
+              <label class="task-row"><input type="checkbox" data-task="39-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Write the reusable renderTable() in js/render.js and wire the eight tables into Bootstrap tabs.</span></label>
+              <label class="task-row"><input type="checkbox" data-task="39-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Make the loading and error states real and capture both as screenshots.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>How to proceed</h2><span class="lesson-label" data-lesson-label>guided work · do in order</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="This week's templates and tools"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Step.</strong> Filled from data.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>I need implementation help</span><small>open only if you get stuck – try it yourself first</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Weekly day rhythm</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Done when</p><p class="checkpoint">Before you continue: check the week's done-when condition.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Show</p><p class="evidence">All eight pronoun tables render on the public URL from data/grammar.json, the tabs can be operated with the keyboard alone, wide tables scroll horizontally on a phone, and renaming the JSON shows your error state.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="39">
+            <div class="journal-heading">
+              <h2>Weekly project journal</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Log AI help</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Whole journal →</button>
+              </div>
+            </div>
+            <p class="journal-lead">This is the journal's only place to write: three questions at the end of the week. The fields are stored only in this browser — the download and the state of recorded weeks are in the Project journal view.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>What did you do and how?</span><textarea rows="3" data-journal-field="work" placeholder="Write in your own words…"></textarea></label>
+              <label><span>Why did you do it this way?</span><textarea rows="2" data-journal-field="reason" placeholder="Justifications and alternatives you considered"></textarea></label>
+              <label><span>Where is the work sample?</span><input type="text" data-journal-field="evidence" placeholder="Commit link, screenshot or file path"></label>
+            </div>
+            <span data-journal-status>Not recorded yet</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Move between weeks"></nav>
+        </article>
+
+        <article class="week-card" id="week-40" data-week="40">
+          <p class="view-eyebrow" data-week-label="28 Sep – 2 Oct">Phase B · Grammar views · Week 40 · 28 Sep – 2 Oct</p>
+          <h1 class="view-title">Nouns, articles and gender — and v0.5</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>After this week</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">From the brief – the client's wish this week fulfills</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Finished this week</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Why this matters</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>This week's tech</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Weekly tasks</h2><span class="week-status" data-week-status>0 / 4</span></div>
+            <div class="task-list">
+              <label class="task-row"><input type="checkbox" data-task="40-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Add the nouns and articles sections to data/grammar.json from PDF pages 8 and 19–21, including the elision rules.</span></label>
+              <label class="task-row"><input type="checkbox" data-task="40-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Render the gender-by-number matrices with the reused renderTable() inside a Bootstrap accordion, and add the example sentences.</span></label>
+              <label class="task-row"><input type="checkbox" data-task="40-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Tag v0.5 and deploy it.</span></label>
+              <label class="task-row"><input type="checkbox" data-task="40-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Book the week-44 review in writing: names, date and tasks into project-docs/review-agreement.md.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>How to proceed</h2><span class="lesson-label" data-lesson-label>guided work · do in order</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="This week's templates and tools"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Step.</strong> Filled from data.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>I need implementation help</span><small>open only if you get stuck – try it yourself first</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Weekly day rhythm</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Done when</p><p class="checkpoint">Before you continue: check the week's done-when condition.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Show</p><p class="evidence">The four grammar pages render correctly on the public URL, the accordion opens and closes with the keyboard alone, v0.5 is tagged, and the review agreement (names + date) is committed in project-docs/.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="40">
+            <div class="journal-heading">
+              <h2>Weekly project journal</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Log AI help</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Whole journal →</button>
+              </div>
+            </div>
+            <p class="journal-lead">This is the journal's only place to write: three questions at the end of the week. The fields are stored only in this browser — the download and the state of recorded weeks are in the Project journal view.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>What did you do and how?</span><textarea rows="3" data-journal-field="work" placeholder="Write in your own words…"></textarea></label>
+              <label><span>Why did you do it this way?</span><textarea rows="2" data-journal-field="reason" placeholder="Justifications and alternatives you considered"></textarea></label>
+              <label><span>Where is the work sample?</span><input type="text" data-journal-field="evidence" placeholder="Commit link, screenshot or file path"></label>
+            </div>
+            <span data-journal-status>Not recorded yet</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Move between weeks"></nav>
+        </article>
+
+        <article class="holiday-card" id="week-41" data-week="41">
+          <p class="view-eyebrow" data-week-label="5–9 Oct">Phase B · Grammar views · Week 41 · 5–9 Oct</p>
+          <h1 class="view-title">No project work</h1>
+          <p style="margin-top:16px">This week is reserved for other studies. No project tasks and no catch-up work. Continue in week 44 from the latest working <code>main</code> version.</p>
+        </article>
+
+        <article class="holiday-card" id="week-42" data-week="42">
+          <p class="view-eyebrow" data-week-label="12–16 Oct">Phase B · Grammar views · Week 42 · 12–16 Oct</p>
+          <h1 class="view-title">Autumn break</h1>
+          <p style="margin-top:16px">No project work and no catch-up tasks. Rest. The site and the v0.5 tag will wait exactly where you left them.</p>
+        </article>
+
+        <article class="holiday-card" id="week-43" data-week="43">
+          <p class="view-eyebrow" data-week-label="19–23 Oct">Phase B · Grammar views · Week 43 · 19–23 Oct</p>
+          <h1 class="view-title">No project work</h1>
+          <p style="margin-top:16px">Reserved for other studies. The review happens in week 44 — the agreement is already in the repository.</p>
+        </article>
+
+        <article class="week-card" id="week-44" data-week="44">
+          <p class="view-eyebrow" data-week-label="26–30 Oct">Phase B · Grammar views · Week 44 · 26–30 Oct</p>
+          <h1 class="view-title">Client review and re-plan</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>After this week</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">From the brief – the client's wish this week fulfills</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Finished this week</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Why this matters</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>This week's tech</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Weekly tasks</h2><span class="week-status" data-week-status>0 / 4</span></div>
+            <div class="task-list">
+              <label class="task-row"><input type="checkbox" data-task="44-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Run the review session and record the tester's findings verbatim, separated from your interpretation.</span></label>
+              <label class="task-row"><input type="checkbox" data-task="44-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Turn the client's decisions into issues and re-prioritise the backlog, comparing estimates with reality.</span></label>
+              <label class="task-row"><input type="checkbox" data-task="44-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Fix a small batch and document debugging chain 1/3 end to end.</span></label>
+              <label class="task-row"><input type="checkbox" data-task="44-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Check the t12 open item (device-security policy) with the supervisor and update the plan.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>How to proceed</h2><span class="lesson-label" data-lesson-label>guided work · do in order</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="This week's templates and tools"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Step.</strong> Filled from data.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>I need implementation help</span><small>open only if you get stuck – try it yourself first</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Weekly day rhythm</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Done when</p><p class="checkpoint">Before you continue: check the week's done-when condition.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Show</p><p class="evidence">project-docs/review-2026-w44.md with the two voices separated, the updated backlog, the fix commits, and chain 1 in debugging-chains.md.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="44">
+            <div class="journal-heading">
+              <h2>Weekly project journal</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Log AI help</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Whole journal →</button>
+              </div>
+            </div>
+            <p class="journal-lead">This is the journal's only place to write: three questions at the end of the week. The fields are stored only in this browser — the download and the state of recorded weeks are in the Project journal view.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>What did you do and how?</span><textarea rows="3" data-journal-field="work" placeholder="Write in your own words…"></textarea></label>
+              <label><span>Why did you do it this way?</span><textarea rows="2" data-journal-field="reason" placeholder="Justifications and alternatives you considered"></textarea></label>
+              <label><span>Where is the work sample?</span><input type="text" data-journal-field="evidence" placeholder="Commit link, screenshot or file path"></label>
+            </div>
+            <span data-journal-status>Not recorded yet</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Move between weeks"></nav>
+        </article>
+
+        <article class="week-card" id="week-45" data-week="45">
+          <p class="view-eyebrow" data-week-label="2–6 Nov">Phase C · Finish · Week 45 · 2–6 Nov</p>
+          <h1 class="view-title">The number converter — built from scratch</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>After this week</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">From the brief – the client's wish this week fulfills</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Finished this week</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Why this matters</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>This week's tech</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Weekly tasks</h2><span class="week-status" data-week-status>0 / 3</span></div>
+            <div class="task-list">
+              <label class="task-row"><input type="checkbox" data-task="45-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Write the converter tests first: expected values from PDF pages 42–45, committed while still red.</span></label>
+              <label class="task-row"><input type="checkbox" data-task="45-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Implement numberToIonian and the ordinal helpers in js/numbers.js as small pure functions until tests/tests.html reports 0 failed.</span></label>
+              <label class="task-row"><input type="checkbox" data-task="45-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Build the converter UI from scratch — no Bootstrap components — and ship the week-44 feedback change.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>How to proceed</h2><span class="lesson-label" data-lesson-label>guided work · do in order</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="This week's templates and tools"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Step.</strong> Filled from data.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>I need implementation help</span><small>open only if you get stuck – try it yourself first</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Weekly day rhythm</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Done when</p><p class="checkpoint">Before you continue: check the week's done-when condition.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Show</p><p class="evidence">tests/numbers.test.js with PDF-cited expectations, js/numbers.js, the Numbers page live, and the feedback-change commit linked to its finding.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="45">
+            <div class="journal-heading">
+              <h2>Weekly project journal</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Log AI help</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Whole journal →</button>
+              </div>
+            </div>
+            <p class="journal-lead">This is the journal's only place to write: three questions at the end of the week. The fields are stored only in this browser — the download and the state of recorded weeks are in the Project journal view.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>What did you do and how?</span><textarea rows="3" data-journal-field="work" placeholder="Write in your own words…"></textarea></label>
+              <label><span>Why did you do it this way?</span><textarea rows="2" data-journal-field="reason" placeholder="Justifications and alternatives you considered"></textarea></label>
+              <label><span>Where is the work sample?</span><input type="text" data-journal-field="evidence" placeholder="Commit link, screenshot or file path"></label>
+            </div>
+            <span data-journal-status>Not recorded yet</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Move between weeks"></nav>
+        </article>
+
+        <article class="week-card" id="week-46" data-week="46">
+          <p class="view-eyebrow" data-week-label="9–13 Nov">Phase C · Finish · Week 46 · 9–13 Nov</p>
+          <h1 class="view-title">Phrasebook, word cards and search</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>After this week</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">From the brief – the client's wish this week fulfills</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Finished this week</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Why this matters</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>This week's tech</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Weekly tasks</h2><span class="week-status" data-week-status>0 / 4</span></div>
+            <div class="task-list">
+              <label class="task-row"><input type="checkbox" data-task="46-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Complete data/words.json and write data/phrases.json from PDF pages 12 and 51–56, marking pages 57–58 as “coming later”.</span></label>
+              <label class="task-row"><input type="checkbox" data-task="46-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Render the vocabulary as a Bootstrap card grid and build the dialogue viewer with the Ionian/English toggle.</span></label>
+              <label class="task-row"><input type="checkbox" data-task="46-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Build the search that filters the cards in memory, render with textContent, and prove the XSS string appears as text.</span></label>
+              <label class="task-row"><input type="checkbox" data-task="46-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Fill the test matrix to at least 12 cases and commit LICENSE and CREDITS per the client's decision.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>How to proceed</h2><span class="lesson-label" data-lesson-label>guided work · do in order</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="This week's templates and tools"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Step.</strong> Filled from data.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>I need implementation help</span><small>open only if you get stuck – try it yourself first</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Weekly day rhythm</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Done when</p><p class="checkpoint">Before you continue: check the week's done-when condition.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Show</p><p class="evidence">The Phrasebook live with the card grid and search, the XSS screenshot, the full test matrix with expected results filled in, and the LICENSE/CREDITS commits.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="46">
+            <div class="journal-heading">
+              <h2>Weekly project journal</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Log AI help</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Whole journal →</button>
+              </div>
+            </div>
+            <p class="journal-lead">This is the journal's only place to write: three questions at the end of the week. The fields are stored only in this browser — the download and the state of recorded weeks are in the Project journal view.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>What did you do and how?</span><textarea rows="3" data-journal-field="work" placeholder="Write in your own words…"></textarea></label>
+              <label><span>Why did you do it this way?</span><textarea rows="2" data-journal-field="reason" placeholder="Justifications and alternatives you considered"></textarea></label>
+              <label><span>Where is the work sample?</span><input type="text" data-journal-field="evidence" placeholder="Commit link, screenshot or file path"></label>
+            </div>
+            <span data-journal-status>Not recorded yet</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Move between weeks"></nav>
+        </article>
+
+        <article class="week-card" id="week-47" data-week="47">
+          <p class="view-eyebrow" data-week-label="16–20 Nov">Phase C · Finish · Week 47 · 16–20 Nov</p>
+          <h1 class="view-title">Quality and testing week</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>After this week</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">From the brief – the client's wish this week fulfills</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Finished this week</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Why this matters</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>This week's tech</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Weekly tasks</h2><span class="week-status" data-week-status>0 / 4</span></div>
+            <div class="task-list">
+              <label class="task-row"><input type="checkbox" data-task="47-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Execute the whole test matrix against the public URL and fill the observed column with dates.</span></label>
+              <label class="task-row"><input type="checkbox" data-task="47-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Complete debugging chain 3/3 and compile chains 1–3 into one document.</span></label>
+              <label class="task-row"><input type="checkbox" data-task="47-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Run the accessibility audit and the W3C HTML validation: fix keyboard, contrast, alt, labels and markup errors, and record the Lighthouse before/after pairs.</span></label>
+              <label class="task-row"><input type="checkbox" data-task="47-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Review the CDN dependencies (version pinned, integrity hash) and run the no-secrets check, then refactor in small commits with the tests green in between.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>How to proceed</h2><span class="lesson-label" data-lesson-label>guided work · do in order</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="This week's templates and tools"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Step.</strong> Filled from data.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>I need implementation help</span><small>open only if you get stuck – try it yourself first</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Weekly day rhythm</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Done when</p><p class="checkpoint">Before you continue: check the week's done-when condition.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Show</p><p class="evidence">The executed test matrix, debugging-chains.md with three complete chains, the Lighthouse pairs in project-docs/lighthouse/, html-validation.md and security-review.md, and the refactor commit series.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="47">
+            <div class="journal-heading">
+              <h2>Weekly project journal</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Log AI help</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Whole journal →</button>
+              </div>
+            </div>
+            <p class="journal-lead">This is the journal's only place to write: three questions at the end of the week. The fields are stored only in this browser — the download and the state of recorded weeks are in the Project journal view.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>What did you do and how?</span><textarea rows="3" data-journal-field="work" placeholder="Write in your own words…"></textarea></label>
+              <label><span>Why did you do it this way?</span><textarea rows="2" data-journal-field="reason" placeholder="Justifications and alternatives you considered"></textarea></label>
+              <label><span>Where is the work sample?</span><input type="text" data-journal-field="evidence" placeholder="Commit link, screenshot or file path"></label>
+            </div>
+            <span data-journal-status>Not recorded yet</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Move between weeks"></nav>
+        </article>
+
+        <article class="week-card" id="week-48" data-week="48">
+          <p class="view-eyebrow" data-week-label="23–27 Nov">Phase D · Release · Week 48 · 23–27 Nov</p>
+          <h1 class="view-title">Release candidate, user test and v1.0</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>After this week</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">From the brief – the client's wish this week fulfills</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Finished this week</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Why this matters</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>This week's tech</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Weekly tasks</h2><span class="week-status" data-week-status>0 / 4</span></div>
+            <div class="task-list">
+              <label class="task-row"><input type="checkbox" data-task="48-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Freeze the content and tag the release candidate.</span></label>
+              <label class="task-row"><input type="checkbox" data-task="48-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Run the clean-environment test from a fresh clone using only the README, fixing the README where it fails.</span></label>
+              <label class="task-row"><input type="checkbox" data-task="48-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Run the external user test with a written task card, recording the tester's words verbatim and separately.</span></label>
+              <label class="task-row"><input type="checkbox" data-task="48-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Write the deployment-path description from your own artefacts and release v1.0.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>How to proceed</h2><span class="lesson-label" data-lesson-label>guided work · do in order</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="This week's templates and tools"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Step.</strong> Filled from data.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>I need implementation help</span><small>open only if you get stuck – try it yourself first</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Weekly day rhythm</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Done when</p><p class="checkpoint">Before you continue: check the week's done-when condition.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Show</p><p class="evidence">The clean-clone notes, user-test-2026-w48.md, deployment-path.md, the instruction-fix commits and the v1.0 release.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="48">
+            <div class="journal-heading">
+              <h2>Weekly project journal</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Log AI help</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Whole journal →</button>
+              </div>
+            </div>
+            <p class="journal-lead">This is the journal's only place to write: three questions at the end of the week. The fields are stored only in this browser — the download and the state of recorded weeks are in the Project journal view.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>What did you do and how?</span><textarea rows="3" data-journal-field="work" placeholder="Write in your own words…"></textarea></label>
+              <label><span>Why did you do it this way?</span><textarea rows="2" data-journal-field="reason" placeholder="Justifications and alternatives you considered"></textarea></label>
+              <label><span>Where is the work sample?</span><input type="text" data-journal-field="evidence" placeholder="Commit link, screenshot or file path"></label>
+            </div>
+            <span data-journal-status>Not recorded yet</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Move between weeks"></nav>
+        </article>
+
+        <article class="week-card" id="week-49" data-week="49">
+          <p class="view-eyebrow" data-week-label="30 Nov – 4 Dec">Phase D · Release · Week 49 · 30 Nov – 4 Dec</p>
+          <h1 class="view-title">Demonstration week</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>After this week</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">From the brief – the client's wish this week fulfills</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Finished this week</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Why this matters</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>This week's tech</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Weekly tasks</h2><span class="week-status" data-week-status>0 / 3</span></div>
+            <div class="task-list">
+              <label class="task-row"><input type="checkbox" data-task="49-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Link all 44 matrix rows below to their exact work samples.</span></label>
+              <label class="task-row"><input type="checkbox" data-task="49-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Commit the final project journal and AI log, and write the self-assessment.</span></label>
+              <label class="task-row"><input type="checkbox" data-task="49-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Rehearse the 8–10 minute demo twice with a timer and hand over on Friday.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>How to proceed</h2><span class="lesson-label" data-lesson-label>guided work · do in order</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="This week's templates and tools"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Step.</strong> Filled from data.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>I need implementation help</span><small>open only if you get stuck – try it yourself first</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Weekly day rhythm</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Done when</p><p class="checkpoint">Before you continue: check the week's done-when condition.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Show</p><p class="evidence">The fully linked matrix, project-docs with the final journal, AI log and self-assessment, and the handover confirmation.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="49">
+            <div class="journal-heading">
+              <h2>Weekly project journal</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Log AI help</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Whole journal →</button>
+              </div>
+            </div>
+            <p class="journal-lead">This is the journal's only place to write: three questions at the end of the week. The fields are stored only in this browser — the download and the state of recorded weeks are in the Project journal view.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>What did you do and how?</span><textarea rows="3" data-journal-field="work" placeholder="Write in your own words…"></textarea></label>
+              <label><span>Why did you do it this way?</span><textarea rows="2" data-journal-field="reason" placeholder="Justifications and alternatives you considered"></textarea></label>
+              <label><span>Where is the work sample?</span><input type="text" data-journal-field="evidence" placeholder="Commit link, screenshot or file path"></label>
+            </div>
+            <span data-journal-status>Not recorded yet</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Move between weeks"></nav>
+        </article>
+
+      </section>
+
+      <!-- ============ PLAN ============ -->
+      <section class="view" data-view="suunnitelma" id="view-suunnitelma">
+        <p class="view-eyebrow">Before the code · draft in week 36, finished by week 37, revisited in week 38 and week 44</p>
+        <h1 class="view-title">One plan, your decisions</h1>
+        <p class="view-lead">The pre-filled sections come from the brief. You write the decisions that are yours: goal, audience, which Bootstrap components you build on, scope. The supervisor owns the open items — do not decide those yourself or with AI.</p>
+
+        <figure class="view-figure">
+          <div class="image-stage"><img src="assets/suunnitelma-luonnos.svg" width="1128" height="540" alt="The plan has three parts: goal and audience, my decisions, site map"></div>
+          <figcaption><strong>The plan comes before the code.</strong> Goal, audience and site map first — then the first component.</figcaption>
+        </figure>
+
+        <div class="plan-prefilled" aria-label="Pre-filled plan sections">
+          <p class="section-label">Pre-filled · included in the downloaded file</p>
+          <article>
+            <h3>1 · Concept</h3>
+            <p>A public reference site for Ionian (Lingua Ioniana), a constructed Romance language. Hand-written HTML, CSS and JavaScript with no build step; Bootstrap from a CDN as the component library; all grammar content as JSON under <code>data/</code>, fetched at runtime — the source of truth is the author's reference PDF. Published on GitHub Pages. The whole project is in English.</p>
+          </article>
+          <article>
+            <h3>2 · Site map and scope</h3>
+            <p><strong>P0:</strong> Home · Alphabet &amp; Pronunciation · Pronouns · Nouns, Articles &amp; Gender · Numbers &amp; Comparison with the converter · Phrasebook &amp; Chapter 1. <strong>P1</strong> (only if P0 is done by the end of week 46): Verbs overview. <strong>P2:</strong> Word-building. <strong>Out:</strong> conjugator, accounts, audio, PDF pages 57–58.</p>
+          </article>
+          <article>
+            <h3>7 · Data (binding)</h3>
+            <p>Content JSON is loaded at runtime with fetch() from <code>data/</code> through one shared loader in <code>js/data.js</code> — so the site is always opened over http://, never file://. Loading and error states are implemented in week 37 and proven in week 39. Every content file is checked against the reference PDF — an invented form is a bug. A broken-network response is a test case.</p>
+          </article>
+          <article>
+            <h3>8 · Quality bar</h3>
+            <p>At least 12 planned test cases with the expected result written before the run and executed from <code>tests/tests.html</code> in the browser, 3 complete debugging chains, an accessibility pass with Lighthouse before/after pairs, an HTML validation pass, a client review in week 44 and an external user test in week 48.</p>
+          </article>
+          <article>
+            <h3>9 · Roles</h3>
+            <p>The student is the developer AND the client in the language creator's role. The supervisor acts as the client's representative in reviews. The external tester is a different person who has never seen Ionian.</p>
+          </article>
+          <article>
+            <h3>10 · Open items — the supervisor owns these</h3>
+            <p>License of the code · the institution's device-security policy line (t12). An empty field is the correct result until these are agreed.</p>
+            <small class="plan-open-note">Open items are not filled in by the student or by AI. They are agreed with the supervisor and updated into the plan afterwards.</small>
+          </article>
+        </div>
+
+        <form class="plan-form" data-plan-form>
+          <div class="plan-form-heading">
+            <div><p class="section-label section-label-accent">My decisions</p><h3>Decisions that are yours</h3><p>Fill these in yourself. Each decision is tested in your own work during the named weeks.</p></div>
+            <span data-plan-status>Not started yet</span>
+          </div>
+
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">MINE</span><label class="plan-row-field">Public author name<input type="text" data-plan-field="author" placeholder="The name shown on the site and in the repository (agreed in week 36)"></label><span class="plan-row-week">week 36</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">MINE</span><label class="plan-row-field">Repository URL<input type="text" data-plan-field="repoUrl" placeholder="https://github.com/…"></label><span class="plan-row-week">week 36</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">MINE</span><label class="plan-row-field">3 · Goal in my own words<textarea rows="3" data-plan-field="goal" placeholder="What does this site make possible, for whom — one honest paragraph"></textarea></label><span class="plan-row-week">weeks 36–37</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">MINE</span><label class="plan-row-field">4 · Audience<textarea rows="2" data-plan-field="audience" placeholder="Who actually visits: a curious beginner? a conlang hobbyist? what do they need first?"></textarea></label><span class="plan-row-week">week 36</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">MINE</span><label class="plan-row-field">5 · Bootstrap components I build on<input type="text" data-plan-field="library" placeholder="e.g. navbar, grid, table, tabs, accordion, cards — and where you write your own CSS instead"></label><span class="plan-row-week">week 38</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">MINE</span><label class="plan-row-field">Why — possibilities and limits, with own measurements<textarea rows="3" data-plan-field="libraryWhy" placeholder="What Bootstrap gives you free, what it cannot do for the grammar tables, transferred KB before/after and Lighthouse scores — numbers from YOUR pages"></textarea></label><span class="plan-row-week">week 38</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">MINE</span><label class="plan-row-field">6 · What I will NOT do (scope guard)<textarea rows="3" data-plan-field="scope" placeholder="The temptations you name and refuse — in your own words"></textarea></label><span class="plan-row-week">week 36</span></div>
+          <p class="plan-calibration"><strong>Not enough:</strong> “Goal: a good site about my language.” <strong>Enough:</strong> “A beginner finds how to pronounce any letter in under 30 seconds; the converter handles 0–999 999; everything a learner needs up to the PDF's Chapter 1 — and nothing more.”</p>
+
+          <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">SUPERVISOR</span><label class="plan-row-field">License of the code<input type="text" data-plan-field="license" placeholder="Open item — agreed with the supervisor"></label><span class="plan-row-week">open item</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">SUPERVISOR</span><label class="plan-row-field">Institution's device-security policy line (t12)<input type="text" data-plan-field="institutionPolicy" placeholder="Open item — agreed with the supervisor"></label><span class="plan-row-week">open item</span></div>
+
+          <div class="plan-actions">
+            <button class="button button-primary" type="button" data-plan-export>Download technical-plan.md</button>
+            <small>Save the file to <code>project-docs/technical-plan.md</code> and commit. Update it when the supervisor answers the open items.</small>
+          </div>
+          <p class="plan-ai-note"><strong>Remember:</strong> do not let AI decide for you. The supervisor's items are not decided by you or by AI. If you used AI for ideation, log it in the AI log.</p>
+        </form>
+      </section>
+
+      <!-- ============ PROJECT JOURNAL (archive) ============ -->
+      <section class="view" data-view="paivakirja" id="view-paivakirja">
+        <p class="view-eyebrow">One place to write · pushed to Git every week</p>
+        <h1 class="view-title">Project journal</h1>
+        <p class="view-lead">The week's entry is written in the week view, under the tasks. This view is an archive: see which weeks are recorded and download the whole journal as a file.</p>
+
+        <div class="card card-tint journal-summary-card">
+          <div><span class="big" data-journal-count>0 / 11 weeks recorded</span><p>File: <code>project-docs/project-journal.md</code></p></div>
+          <button class="button button-primary" type="button" data-export-journal>Download the whole journal (.md)</button>
+        </div>
+
+        <div class="journal-weeks-grid" data-journal-weeks></div>
+      </section>
+
+      <!-- ============ AI LOG ============ -->
+      <section class="view" data-view="ailoki" id="view-ailoki">
+        <p class="view-eyebrow">AI is an allowed tool · understand, verify, test, log</p>
+        <h1 class="view-title">You make the decisions.<br>AI is a tool.</h1>
+        <p class="view-lead">AI may help you with HTML, CSS and JavaScript, error messages and test ideas — logged, verified and tested. It cannot help you with the content: no model knows Ionian. Every grammar table, every phrase and every expected test result comes from your own PDF and is checked against it. The site structure, the accessibility solutions and the number converter logic are your own work — that is what the demonstration assesses.</p>
+
+        <figure class="view-figure">
           <div class="image-stage"><img src="assets/tekoalyapu.svg" width="1500" height="1000" alt="The four steps of AI use: ask, verify, test, log"></div>
           <figcaption>Ask → verify → test → log and learn.</figcaption>
         </figure>
+
         <div class="ai-rules">
-          <article class="reveal"><span>01</span><h3>Understand</h3><p>Explain in your own words what the solution does and why it fits your own data model and components.</p></article>
-          <article class="reveal" data-delay="1"><span>02</span><h3>Verify</h3><p>Compare with the official React and library documentation and your own PDF. AI invents fields and commands — and it will invent Ionian.</p></article>
-          <article class="reveal" data-delay="2"><span>03</span><h3>Test</h3><p>Run the tests yourself. Never invent test results or feedback.</p></article>
-          <article class="reveal" data-delay="3"><span>04</span><h3>Log</h3><p>Record significant use, your own changes and what you learned.</p></article>
+          <div class="card"><span class="num">01</span><h3>Understand</h3><p>Explain in your own words what the solution does and why it fits your own data model and components.</p></div>
+          <div class="card"><span class="num">02</span><h3>Verify</h3><p>Compare with MDN, the official Bootstrap documentation and your own PDF. AI invents attributes, class names and methods — and it will invent Ionian.</p></div>
+          <div class="card"><span class="num">03</span><h3>Test</h3><p>Run the tests yourself. Never invent test results or feedback.</p></div>
+          <div class="card"><span class="num">04</span><h3>Log</h3><p>Record significant use, your own changes and what you learned.</p></div>
         </div>
 
-        <div class="ai-log reveal">
-          <div class="log-heading"><div><p class="eyebrow">My AI log</p><h3>Log significant AI help right away</h3></div><span data-log-count>0 entries</span></div>
-          <p class="ai-log-warning"><strong>Note:</strong> the log stored in this browser is working memory, not evidence by itself. It is included in the full project journal download. You can also download the AI log alone and save it in the <code>project-docs</code> folder.</p>
-          <form data-ai-form>
-            <label>Date and tool<input name="tool" required placeholder="31 Aug / ChatGPT"></label>
-            <label>What did you ask help for?<input name="question" required placeholder="Why does my fetch return undefined on GitHub Pages?"></label>
-            <label>What did you use, change or reject?<input name="used" required placeholder="Used the base-path fix, rejected the suggested library swap"></label>
-            <label>How did you verify it, and what did you learn?<input name="checked" required placeholder="Ran the app on the public URL, table renders — learned how BASE_URL works"></label>
-            <label>Evidence reference<input name="reference" required placeholder="Issue #12 / commit abc123 / test T05"></label>
+        <form class="ai-log-form" data-ai-form>
+          <div class="grid-2">
+            <label>Date and tool<input type="text" name="tool" required placeholder="31 Aug / ChatGPT"></label>
+            <label>What did you ask help for?<input type="text" name="question" required placeholder="Why does my fetch fail when I open the page as a file:// URL?"></label>
+          </div>
+          <label>What did you use, change or reject — and how did you verify it?<textarea name="used" rows="2" required placeholder="Used the local-server explanation, rejected the suggested innerHTML rendering. Served the folder over http://localhost, table renders — learned why fetch needs a server."></textarea></label>
+          <label>Evidence reference<input type="text" name="reference" required placeholder="Issue #12 / commit abc123 / test T05"></label>
+          <div class="privacy-row">
             <label class="privacy-confirm"><input type="checkbox" name="privacy" required> I confirm that I did not enter personal data, secrets or confidential material.</label>
             <button class="button button-primary" type="submit">Add to the log</button>
-          </form>
-          <div class="ai-log-actions">
-            <button class="button button-secondary" type="button" data-export-log>Download the AI log only (.md)</button>
-            <small>Never enter personal data, secrets or other confidential material.</small>
           </div>
-          <div class="log-entries" data-ai-entries aria-live="polite"><p class="empty-state">No entries yet.</p></div>
+        </form>
+        <div class="ai-log-meta">
+          <span><span data-log-count>0 entries</span> · the log is included in the whole project journal download.</span>
+          <button class="button button-secondary" type="button" data-export-log>Download the AI log only (.md)</button>
         </div>
+        <div class="log-entries" data-ai-entries aria-live="polite"><p class="empty-state">No entries yet.</p></div>
       </section>
 
-      <section class="evidence-section section-pad" id="todisteet" aria-labelledby="evidence-title">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Evidence</p>
-          <h2 id="evidence-title">The evidence grows while you work</h2>
-          <p>A finished product alone does not show all your competence. A work sample is one artefact that proves a skill: a commit, a screenshot, a test row or a memo. The evidence is all your work samples together, and the same sample can serve several requirements. The requirement names below are in Finnish, exactly as in the national criteria (ePerusteet) that the assessor reads — the description after each name tells you, in English, what proves it in this project.</p>
-        </div>
+      <!-- ============ EVIDENCE MATRIX ============ -->
+      <section class="view" data-view="naytto" id="view-naytto">
+        <p class="view-eyebrow">Evidence</p>
+        <h1 class="view-title">The evidence grows while you work</h1>
+        <p class="view-lead">A finished product alone does not show all your competence. A work sample is one artefact that proves a skill: a commit, a screenshot, a test row or a memo. The evidence is all your work samples together, and the same sample can serve several requirements. The requirement names below are in Finnish, exactly as in the national criteria (ePerusteet) that the assessor reads — the description after each name tells you, in English, what proves it in this project.</p>
 
-        <div class="evidence-summary reveal"><strong data-evidence-count>0 / 44</strong><span>competence requirements with a work sample marked</span></div>
+        <div class="card card-tint evidence-summary"><strong data-evidence-count>0 / 44</strong><span>competence requirements with a work sample marked</span></div>
 
-        <details class="matrix reveal" open>
-          <summary>Tieto- ja viestintätekniikan perustehtävät · 12 vaatimusta</summary>
+        <details class="matrix" open>
+          <summary><span class="matrix-title">Tieto- ja viestintätekniikan perustehtävät</span><span class="matrix-count">12 vaatimusta</span></summary>
           <div class="matrix-list">
-            <p class="matrix-group" role="heading" aria-level="4">Opiskelija toimii tieto- ja viestintätekniikan työtehtävissä</p>
-            <label><input type="checkbox" data-evidence="t1"><span><strong>Palveluasenne</strong> How you receive and act on feedback in the review and the user test (wk 44, 48).</span></label>
-            <label><input type="checkbox" data-evidence="t2"><span><strong>Asiakkaiden palvelu</strong> Kickoff and review with the client role: the question list and the recorded answers (wk 36, 44).</span></label>
-            <label><input type="checkbox" data-evidence="t3"><span><strong>Tarpeen varmistaminen</strong> The needs analysis and the justified solution proposal in the plan (wk 36).</span></label>
-            <label><input type="checkbox" data-evidence="t4"><span><strong>Palautteen pyytäminen</strong> The feedback request in the review; the self-assessment in the demonstration week (wk 44, 49).</span></label>
-            <label><input type="checkbox" data-evidence="t5"><span><strong>Viestintäkanavat</strong> GitHub issues and the agreed channels in use for the whole project (wk 36 onwards).</span></label>
-            <p class="matrix-group" role="heading" aria-level="4">Opiskelija tekee tiedonhakua ja ratkaisee tieto- ja viestintätekniikan ongelmia</p>
-            <label><input type="checkbox" data-evidence="t6"><span><strong>Alan perussanasto</strong> The comparison memo: field vocabulary and the library options with their trends (wk 38).</span></label>
-            <label><input type="checkbox" data-evidence="t7"><span><strong>Englanninkielinen materiaali</strong> English documentation sources cited in the journal and the AI log (wk 37–39).</span></label>
-            <label><input type="checkbox" data-evidence="t8"><span><strong>Tiedonhaku ongelmissa</strong> The information trail inside the debugging chains (wk 44–47).</span></label>
-            <p class="matrix-group" role="heading" aria-level="4">Opiskelija käyttää tietoteknistä ympäristöä</p>
-            <label><input type="checkbox" data-evidence="t9"><span><strong>Käyttöjärjestelmät</strong> The development environment set up: OS tools, Node, VS Code, Git (wk 36).</span></label>
-            <label><input type="checkbox" data-evidence="t10"><span><strong>Verkkoyhteyden jako</strong> The dev server shared to the local network and tested on a phone, with the security notes (wk 36).</span></label>
-            <label><input type="checkbox" data-evidence="t11"><span><strong>Verkon perusrakenne</strong> The deployment-path description from your own artefacts: localhost → LAN → Pages/HTTPS (wk 48).</span></label>
-            <label><input type="checkbox" data-evidence="t12"><span><strong>Laitteiden suojaus</strong> Partial: environment hardening (wk 36), the checkpoint (wk 44) and the dependency audit (wk 47); the rest is an open item owned by the supervisor.</span></label>
+            <p class="matrix-group">Opiskelija toimii tieto- ja viestintätekniikan työtehtävissä</p>
+            <label class="matrix-row"><input type="checkbox" data-evidence="t1"><span><strong>Palveluasenne</strong> How you receive and act on feedback in the review and the user test (wk 44, 48).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="t2"><span><strong>Asiakkaiden palvelu</strong> Kickoff and review with the client role: the question list and the recorded answers (wk 36, 44).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="t3"><span><strong>Tarpeen varmistaminen</strong> The needs analysis and the justified solution proposal in the plan (wk 36).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="t4"><span><strong>Palautteen pyytäminen</strong> The feedback request in the review; the self-assessment in the demonstration week (wk 44, 49).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="t5"><span><strong>Viestintäkanavat</strong> GitHub issues and the agreed channels in use for the whole project (wk 36 onwards).</span></label>
+            <p class="matrix-group">Opiskelija tekee tiedonhakua ja ratkaisee tieto- ja viestintätekniikan ongelmia</p>
+            <label class="matrix-row"><input type="checkbox" data-evidence="t6"><span><strong>Alan perussanasto</strong> The comparison memo: field vocabulary and the library options with their trends (wk 38).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="t7"><span><strong>Englanninkielinen materiaali</strong> English documentation sources cited in the journal and the AI log (wk 37–39).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="t8"><span><strong>Tiedonhaku ongelmissa</strong> The information trail inside the debugging chains (wk 44–47).</span></label>
+            <p class="matrix-group">Opiskelija käyttää tietoteknistä ympäristöä</p>
+            <label class="matrix-row"><input type="checkbox" data-evidence="t9"><span><strong>Käyttöjärjestelmät</strong> The development environment set up: OS tools, VS Code, a local web server, Git (wk 36).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="t10"><span><strong>Verkkoyhteyden jako</strong> The local web server shared to the local network and tested on a phone, with the security notes (wk 36).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="t11"><span><strong>Verkon perusrakenne</strong> The deployment-path description from your own artefacts: localhost → LAN → Pages/HTTPS (wk 48).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="t12"><span><strong>Laitteiden suojaus</strong> Partial: environment hardening (wk 36), the checkpoint (wk 44) and the dependency audit (wk 47); the rest is an open item owned by the supervisor.</span></label>
           </div>
         </details>
 
-        <details class="matrix reveal">
-          <summary>Ohjelmointi · 11 vaatimusta</summary>
+        <details class="matrix">
+          <summary><span class="matrix-title">Ohjelmointi</span><span class="matrix-count">11 vaatimusta</span></summary>
           <div class="matrix-list">
-            <p class="matrix-group" role="heading" aria-level="4">Opiskelija käyttää ohjelmistokehitysympäristöä</p>
-            <label><input type="checkbox" data-evidence="p1"><span><strong>Kehitysympäristö</strong> Vite + VS Code + ESLint in use; the first build and deploy (wk 36).</span></label>
-            <label><input type="checkbox" data-evidence="p2"><span><strong>Virheiden korjaus</strong> Three complete debugging chains, observation to regression test (wk 44–47).</span></label>
-            <label><input type="checkbox" data-evidence="p3"><span><strong>Toimintojen testaus</strong> The converter unit tests and the executed test matrix (wk 45, 47).</span></label>
-            <p class="matrix-group" role="heading" aria-level="4">Opiskelija ohjelmoi</p>
-            <label><input type="checkbox" data-evidence="p4"><span><strong>Rakenteinen ohjelmointi</strong> The converter's pure functions and module split in numbers.js (wk 45).</span></label>
-            <label><input type="checkbox" data-evidence="p5"><span><strong>Ylläpidettävä koodi</strong> The refactor series with green tests, naming and ESLint (wk 47).</span></label>
-            <label><input type="checkbox" data-evidence="p6"><span><strong>Käyttöliittymän toteutus</strong> The views built from the site map: Home, Alphabet, Pronouns, Nouns &amp; Articles (wk 38–40).</span></label>
-            <label><input type="checkbox" data-evidence="p7"><span><strong>Toimintojen toteutus</strong> The converter and the search, from issue to done-when condition (wk 45–46).</span></label>
-            <p class="matrix-group" role="heading" aria-level="4">Opiskelija toimii ohjelmistokehitystiimin jäsenenä</p>
-            <label><input type="checkbox" data-evidence="p8"><span><strong>Tehtävistä sopiminen</strong> The weekly agreements with the supervisor and the issue assignments (wk 36, 44).</span></label>
-            <label><input type="checkbox" data-evidence="p9"><span><strong>Ratkaisujen etsiminen yhdessä</strong> The library options discussed together; the review solutions agreed together (wk 38, 44).</span></label>
-            <label><input type="checkbox" data-evidence="p10"><span><strong>Toimivuuden arviointi</strong> The solutions evaluated in the review, with the recorded decisions (wk 44).</span></label>
-            <label><input type="checkbox" data-evidence="p11"><span><strong>Oman toiminnan arviointi</strong> The self-assessment and the journal's weekly reflections (wk 49).</span></label>
+            <p class="matrix-group">Opiskelija käyttää ohjelmistokehitysympäristöä</p>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p1"><span><strong>Kehitysympäristö</strong> VS Code, Live Server and browser DevTools in use; the first commit and deploy (wk 36).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p2"><span><strong>Virheiden korjaus</strong> Three complete debugging chains, observation to regression test (wk 44–47).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p3"><span><strong>Toimintojen testaus</strong> The converter unit tests in tests/tests.html and the executed test matrix (wk 45, 47).</span></label>
+            <p class="matrix-group">Opiskelija ohjelmoi</p>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p4"><span><strong>Rakenteinen ohjelmointi</strong> The converter's pure functions and ES-module split in js/numbers.js (wk 45).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p5"><span><strong>Ylläpidettävä koodi</strong> The refactor series with green tests, naming and HTML validation (wk 47).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p6"><span><strong>Käyttöliittymän toteutus</strong> The pages built from the site map: Home, Alphabet, Pronouns, Nouns &amp; Articles (wk 38–40).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p7"><span><strong>Toimintojen toteutus</strong> The converter and the search, from issue to done-when condition (wk 45–46).</span></label>
+            <p class="matrix-group">Opiskelija toimii ohjelmistokehitystiimin jäsenenä</p>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p8"><span><strong>Tehtävistä sopiminen</strong> The weekly agreements with the supervisor and the issue assignments (wk 36, 44).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p9"><span><strong>Ratkaisujen etsiminen yhdessä</strong> The library options discussed together; the review solutions agreed together (wk 38, 44).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p10"><span><strong>Toimivuuden arviointi</strong> The solutions evaluated in the review, with the recorded decisions (wk 44).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p11"><span><strong>Oman toiminnan arviointi</strong> The self-assessment and the journal's weekly reflections (wk 49).</span></label>
           </div>
         </details>
 
-        <details class="matrix reveal">
-          <summary>Ohjelmistokehittäjänä toimiminen · 14 vaatimusta</summary>
+        <details class="matrix">
+          <summary><span class="matrix-title">Ohjelmistokehittäjänä toimiminen</span><span class="matrix-count">14 vaatimusta</span></summary>
           <div class="matrix-list">
-            <p class="matrix-group" role="heading" aria-level="4">Opiskelija kommunikoi asiakkaan kanssa</p>
-            <label><input type="checkbox" data-evidence="s1"><span><strong>Asiakkaan tarpeet</strong> The kickoff: needs recorded as decisions, open items and assumptions (wk 36).</span></label>
-            <label><input type="checkbox" data-evidence="s2"><span><strong>Asiakaslähtöinen viestintä</strong> A technical matter explained in plain language in the review and test memos (wk 44, 48).</span></label>
-            <label><input type="checkbox" data-evidence="s3"><span><strong>Version katselmointi</strong> The v0.5 review with a decision for every finding (wk 44).</span></label>
-            <p class="matrix-group" role="heading" aria-level="4">Opiskelija suunnittelee ohjelmiston toteutuksen</p>
-            <label><input type="checkbox" data-evidence="s4"><span><strong>Tärkeysjärjestys</strong> The P0/P1/P2 backlog with justifications (wk 36).</span></label>
-            <label><input type="checkbox" data-evidence="s5"><span><strong>Tehtäviksi jako</strong> The views split into issues with done-when conditions (wk 36).</span></label>
-            <label><input type="checkbox" data-evidence="s6"><span><strong>Toteutuksen suunnittelu ja arviointi</strong> The size estimates and the estimate-vs-actual comparison in the re-plan (wk 36, 44).</span></label>
-            <p class="matrix-group" role="heading" aria-level="4">Opiskelija kehittää ohjelmiston toimintalogiikkaa ja tietovarastoyhteyksiä</p>
-            <label><input type="checkbox" data-evidence="s7"><span><strong>Toimintalogiikka</strong> The converter logic and the search (wk 45–46).</span></label>
-            <label><input type="checkbox" data-evidence="s8"><span><strong>Tietovaraston valinta</strong> The JSON + runtime-fetch decision with the rejected alternatives (wk 37).</span></label>
-            <label><input type="checkbox" data-evidence="s9"><span><strong>Yhteys tietovarastoon</strong> Fetch with loading and error states, implemented and tested (wk 37, 39).</span></label>
-            <label><input type="checkbox" data-evidence="s10"><span><strong>Rajapinnat ja tiedon käsittely</strong> The Fetch API plus the data transforms: grouping, filtering, search (wk 39, 46).</span></label>
-            <label><input type="checkbox" data-evidence="s11"><span><strong>Tietoturvan arviointi</strong> The XSS proof, the dependency audit and the no-secrets check (wk 46–47).</span></label>
-            <p class="matrix-group" role="heading" aria-level="4">Opiskelija versioi ja julkaisee ohjelman</p>
-            <label><input type="checkbox" data-evidence="s12"><span><strong>Versionhallinta</strong> The commit history, the v0.5 and v1.0 tags, the branches and PRs (wk 36–49).</span></label>
-            <label><input type="checkbox" data-evidence="s13"><span><strong>Osan liittäminen versioon</strong> The feedback change merged into the existing version from a feature branch (wk 45–46).</span></label>
-            <label><input type="checkbox" data-evidence="s14"><span><strong>Julkaisu tuotantoon</strong> The first deploy and the v1.0 release on GitHub Pages (wk 36, 48).</span></label>
+            <p class="matrix-group">Opiskelija kommunikoi asiakkaan kanssa</p>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s1"><span><strong>Asiakkaan tarpeet</strong> The kickoff: needs recorded as decisions, open items and assumptions (wk 36).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s2"><span><strong>Asiakaslähtöinen viestintä</strong> A technical matter explained in plain language in the review and test memos (wk 44, 48).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s3"><span><strong>Version katselmointi</strong> The v0.5 review with a decision for every finding (wk 44).</span></label>
+            <p class="matrix-group">Opiskelija suunnittelee ohjelmiston toteutuksen</p>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s4"><span><strong>Tärkeysjärjestys</strong> The P0/P1/P2 backlog with justifications (wk 36).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s5"><span><strong>Tehtäviksi jako</strong> The views split into issues with done-when conditions (wk 36).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s6"><span><strong>Toteutuksen suunnittelu ja arviointi</strong> The size estimates and the estimate-vs-actual comparison in the re-plan (wk 36, 44).</span></label>
+            <p class="matrix-group">Opiskelija kehittää ohjelmiston toimintalogiikkaa ja tietovarastoyhteyksiä</p>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s7"><span><strong>Toimintalogiikka</strong> The converter logic and the search (wk 45–46).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s8"><span><strong>Tietovaraston valinta</strong> The JSON-files-in-data/ + runtime-fetch decision with the rejected alternatives (wk 37).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s9"><span><strong>Yhteys tietovarastoon</strong> Fetch with loading and error states, implemented and tested (wk 37, 39).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s10"><span><strong>Rajapinnat ja tiedon käsittely</strong> The Fetch API plus the data transforms: grouping, filtering, search (wk 39, 46).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s11"><span><strong>Tietoturvan arviointi</strong> The textContent XSS proof, the CDN dependency review and the no-secrets check (wk 46–47).</span></label>
+            <p class="matrix-group">Opiskelija versioi ja julkaisee ohjelman</p>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s12"><span><strong>Versionhallinta</strong> The commit history, the v0.5 and v1.0 tags, the branches and PRs (wk 36–49).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s13"><span><strong>Osan liittäminen versioon</strong> The feedback change merged into the existing version from a feature branch (wk 45–46).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s14"><span><strong>Julkaisu tuotantoon</strong> The first deploy from the main branch and the v1.0 release on GitHub Pages (wk 36, 48).</span></label>
           </div>
         </details>
 
-        <details class="matrix reveal">
-          <summary>Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla · 7 vaatimusta</summary>
+        <details class="matrix">
+          <summary><span class="matrix-title">Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla</span><span class="matrix-count">7 vaatimusta</span></summary>
           <div class="matrix-list">
-            <p class="matrix-group" role="heading" aria-level="4">Opiskelija käyttää kehitysympäristöä</p>
-            <label><input type="checkbox" data-evidence="k1"><span><strong>Kehittämisympäristön käyttöönotto</strong> The environment set up and the library installed and themed (wk 36, 38).</span></label>
-            <label><input type="checkbox" data-evidence="k2"><span><strong>Mahdollisuudet ja rajoitteet</strong> The comparison memo with your own measurements (wk 38).</span></label>
-            <label><input type="checkbox" data-evidence="k3"><span><strong>Toiminnot ja työkalut</strong> The tables, tabs and navigation built on the library's components (wk 39–40).</span></label>
-            <label><input type="checkbox" data-evidence="k4"><span><strong>Ulkoiset komponentit</strong> External components brought in from npm: the library, the icons, the fonts (wk 38).</span></label>
-            <p class="matrix-group" role="heading" aria-level="4">Opiskelija toteuttaa ohjelmiston ohjelmistokomponenttikirjastolla</p>
-            <label><input type="checkbox" data-evidence="k5"><span><strong>Toteutus kirjastolla</strong> The views designed, implemented and tested with the library (wk 39–46).</span></label>
-            <label><input type="checkbox" data-evidence="k6"><span><strong>Julkaisu asiakkaalle</strong> Published to the client's environment: GitHub Pages, the public URL (wk 48).</span></label>
-            <label><input type="checkbox" data-evidence="k7"><span><strong>Dokumentointi</strong> The README and the user documentation in the agreed form (wk 48).</span></label>
+            <p class="matrix-group">Opiskelija käyttää kehitysympäristöä</p>
+            <label class="matrix-row"><input type="checkbox" data-evidence="k1"><span><strong>Kehittämisympäristön käyttöönotto</strong> The environment set up, and Bootstrap taken into use from the CDN and configured in css/style.css (wk 36, 38).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="k2"><span><strong>Mahdollisuudet ja rajoitteet</strong> The comparison memo naming Bootstrap's possibilities and limits with your own measurements (wk 38).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="k3"><span><strong>Toiminnot ja työkalut</strong> The navbar, grid, tables, tabs and accordion built on Bootstrap's components (wk 39–40).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="k4"><span><strong>Ulkoiset komponentit</strong> External components loaded from a CDN with pinned versions: Bootstrap CSS and JS, the icons, the fonts (wk 38).</span></label>
+            <p class="matrix-group">Opiskelija toteuttaa ohjelmiston ohjelmistokomponenttikirjastolla</p>
+            <label class="matrix-row"><input type="checkbox" data-evidence="k5"><span><strong>Toteutus kirjastolla</strong> The pages designed, implemented and tested with Bootstrap (wk 39–46).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="k6"><span><strong>Julkaisu asiakkaalle</strong> Published to the client's environment: GitHub Pages, the public URL (wk 48).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="k7"><span><strong>Dokumentointi</strong> The README and the user documentation in the agreed form (wk 48).</span></label>
           </div>
         </details>
       </section>
 
-      <section class="final-week section-pad" aria-labelledby="final-title">
-        <div class="final-heading reveal"><p class="eyebrow">The last week</p><h2 id="final-title">The last five days</h2><p>Nothing new is added any more. Now the competence is made findable.</p></div>
-        <ol class="final-days reveal">
-          <li><span>Mon 30 Nov</span><strong>Content freeze</strong><small>The last accepted version.</small></li>
-          <li><span>Tue 1 Dec</span><strong>Evidence</strong><small>Journal, tests and matrix links.</small></li>
-          <li><span>Wed 2 Dec</span><strong>Rehearsal</strong><small>The 8–10 min demo and the self-assessment.</small></li>
-          <li><span>Thu 3 Dec</span><strong>Buffer</strong><small>Final check with another person.</small></li>
-          <li class="deadline-day"><span>Fri 4 Dec</span><strong>Handover</strong><small>Demonstration and handover, Fri 4 Dec.</small></li>
-        </ol>
-      </section>
-
-      <section class="downloads section-pad" aria-labelledby="downloads-title">
-        <div><p class="eyebrow">Paper schedule</p><h2 id="downloads-title">Take the checklist with you</h2><p>The paper pack helps you follow the schedule and check the demonstration requirements. The actual project journal is written on this page and committed to the repository's <code>project-docs</code> folder.</p></div>
-        <div class="download-actions">
-          <a class="button button-primary" href="downloads/parlar-ioniano-tyopaketti.pdf" download>Download PDF</a>
-          <a class="button button-secondary" href="downloads/parlar-ioniano-tyopaketti.docx" download>Download Word</a>
-          <button class="button button-ghost" type="button" data-reset>Reset my progress</button>
-        </div>
-        <details class="source-downloads">
-          <summary>Teacher's source material · no separate filling without instructions</summary>
-          <div>
-            <a href="downloads/nayttosuunnitelma.docx" download>Näyttösuunnitelma (assessment plan, in Finnish, .docx)</a>
-            <a href="downloads/nayton-dokumentointipohjat.docx" download>Dokumentointipohjat (documentation templates, in Finnish, .docx)</a>
-          </div>
-        </details>
-      </section>
-
-      <section class="gallery section-pad" id="galleria" aria-labelledby="gallery-title">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Published work</p>
-          <h2 id="gallery-title">Gallery</h2>
-          <p>The finished v1.0 release is lifted here in week 48: name, screenshot, license and the release link.</p>
-        </div>
-        <div class="gallery-grid" data-gallery>
-          <p class="empty-state">The release is published in week 48.</p>
-        </div>
-      </section>
     </main>
   </div>
 
-  <footer>
-    <strong>Parlar Ioniano</strong>
-    <p>Guided demonstration project · React · Vite · component library · GitHub Pages · 2026 · Ionian (Lingua Ioniana) © its creator — used with permission on this project</p>
-    <a href="#alku">Back to top ↑</a>
-    <img class="ai-modified-badge" src="assets/ai-modified-badge.svg" width="84" height="28" alt="Content edited with AI assistance">
+  <footer class="view" style="max-width:var(--main-max);margin:0 auto;padding:0 40px 40px">
+    <div class="site-footnote">
+      <span><strong>Parlar Ioniano</strong> · Guided demonstration project · HTML · CSS · JavaScript · JSON · Bootstrap · GitHub Pages · 2026 · Ionian (Lingua Ioniana) © its creator — used with permission on this project</span>
+      <img class="ai-modified-badge" src="assets/ai-modified-badge.svg" width="84" height="28" alt="Content edited with AI assistance">
+    </div>
   </footer>
 </body>
 </html>

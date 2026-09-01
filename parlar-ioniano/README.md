@@ -1,8 +1,10 @@
 # Parlar Ioniano – guided demonstration project
 
 Guided demonstration-of-skills project (näyttöprojekti): the student builds and publishes
-a React site that presents Ionian (Lingua Ioniana), a constructed language of their own,
-view by view across weeks 36–49/2026 — and this site is the guided path they follow.
+a hand-coded HTML/CSS/JavaScript site — Bootstrap from a CDN, all language content as JSON
+loaded with fetch(), no build step — that presents Ionian (Lingua Ioniana), a constructed
+language of their own, page by page across weeks 36–49/2026 — and this site is the guided
+path they follow.
 
 The site is fully static. Published as a subfolder of the projektikoontisivu repository: https://mattiseise.github.io/projektikoontisivu/parlar-ioniano/
 
