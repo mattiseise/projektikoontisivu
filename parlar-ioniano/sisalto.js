@@ -319,14 +319,14 @@ window.NAYTTOPROJEKTI = {
       paivat: [
         ["Need", "Read the brief, underline the requirements and write down every unclear point as a question for the kickoff talk."],
         ["Scope", "Agree the scope: which views are P0, what is explicitly out (the conjugator!), and who reviews the site in week 44."],
-        ["Tools", "Install VS Code and Live Server, create the site folder, serve it over http://localhost and open it from your phone over the local network."],
+        ["Tools", "Install VS Code and Live Server, create the site folder, serve it over http://localhost and open it from your phone over its own hotspot."],
         ["Plan", "Draft the technical plan from the pre-filled sections and split the P0 work into GitHub issues."],
         ["Publish", "Publish the empty site to GitHub Pages from the main branch and verify the public URL works on another device. First commit, first deploy — the publishing path exists."]
       ],
       steps: [
         ["Read the brief like a contract.", "Underline what is required, then write every unclear point as a question. Bring the questions to a 15-minute kickoff talk with the supervisor and record each answer as a decision, an open item or an assumption."],
         ["Set up the tools.", "Install VS Code and the Live Server extension. Create the site folder with index.html, css/style.css and js/main.js — no Node, no npm, no build step. Open the page through the local server, never by double-clicking the file: fetch() cannot read data/*.json over file://."],
-        ["Share it to the local network.", "Run a local server on all interfaces and open the page from your phone on the same Wi-Fi. Note what you had to allow (firewall) and why that is safe on the school network."],
+        ["Share it over your phone hotspot.", "Create a hotspot on your phone and connect your computer to it. Run a local server on all interfaces and open the page on the phone. Note what you had to allow (firewall) and why a hotspot of your own keeps this off the school network."],
         ["Create the public repository and publish.", "Do the privacy check first: no personal data, no school identifiers, agree your public author name. Add a README skeleton, commit, push, switch GitHub Pages on for the main branch and open the public URL on another device. This is the moment the publishing path exists."],
         ["Draft the plan and split the work.", "Fill in the plan form below — the pre-filled sections come from the brief; the decisions are yours. Mark the supervisor's open items open. Turn the P0 pages into GitHub issues, each with a done-when condition and a size estimate, prioritised P0/P1/P2."]
       ],
@@ -337,11 +337,11 @@ window.NAYTTOPROJEKTI = {
           "Install VS Code and the Live Server extension. There is nothing to build: the files you write are the files that go live.",
           "Create index.html with the HTML5 skeleton (<!doctype html>, <html lang=\"en\">, a <title>), and link css/style.css in the head and js/main.js at the end of the body.",
           "Open it with Live Server (right-click → Open with Live Server). The address bar must say http://localhost:… — if it says file://, fetch will fail in week 37.",
-          "Phone test: run `python3 -m http.server 8000 --bind 0.0.0.0` in the project folder, then open http://<your-computer's-IP>:8000 on your phone on the same Wi-Fi. If it does not load, your firewall asked a question — answer it and write down what you allowed.",
+          "Phone test: connect your computer to your phone hotspot, run `python3 -m http.server 8000 --bind 0.0.0.0` in the project folder, then open http://<your-computer's-IP>:8000 on the phone. If it does not load, your firewall asked a question — answer it and write down what you allowed.",
           "Create the GitHub repository (public), then follow GitHub's 'push an existing repository' commands shown on the new repo page.",
           "Repository → Settings → Pages → Source: Deploy from a branch → main / (root). Commit an empty .nojekyll file in the root, wait a minute, then open the URL GitHub shows."
         ],
-        code: "FIRST DEPLOY CHECKLIST\n[ ] index.html opens through http://localhost, not file://\n[ ] the same page opens on my phone (python3 -m http.server --bind 0.0.0.0)\n[ ] repository is public, privacy check done, 2FA on\n[ ] Pages source = main branch / (root), .nojekyll committed\n[ ] the public URL works on a device that has never seen the project\n[ ] page has <html lang=\"en\">, a <title>, and the DevTools console is clean",
+        code: "FIRST DEPLOY CHECKLIST\n[ ] index.html opens through http://localhost, not file://\n[ ] the same page opens on my phone over its hotspot (python3 -m http.server --bind 0.0.0.0)\n[ ] repository is public, privacy check done, 2FA on\n[ ] Pages source = main branch / (root), .nojekyll committed\n[ ] the public URL works on a device that has never seen the project\n[ ] page has <html lang=\"en\">, a <title>, and the DevTools console is clean",
         test: "Open the public URL on a device that has never seen the project. The page renders — not a 404 and not a blank screen — and DevTools → Console shows no red errors.",
         links: [
           ["GitHub Docs: Pages", "https://docs.github.com/en/pages"],
