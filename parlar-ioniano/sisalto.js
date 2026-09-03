@@ -310,23 +310,23 @@ window.NAYTTOPROJEKTI = {
       feature: "After this week an empty but real site — plain index.html with Bootstrap loaded from a CDN — is live at your public GitHub Pages URL, the plan is drafted, and the P0 work is split into issues.",
       excerpt: "Right now it lives in a 58-page reference PDF that only I can navigate.",
       connection: "Everything starts from the brief: before the first page you agree what the site must do, set up the tools, and prove the publishing path works while the site is still empty — when a deploy fails now, nothing of value is at risk.",
-      deliverable: "Kickoff notes with a question list, a public repository with a privacy check done, the site folder served by a local web server and opened on your phone, the first deploy live at the public URL, the technical plan drafted and the P0 backlog as issues.",
+      deliverable: "Kickoff notes with a question list, a public repository with a privacy check done, the site folder served by a local web server on your computer, the first deploy published over your phone hotspot and live at the public URL, the technical plan drafted and the P0 backlog as issues.",
       why: "If open questions stay as silent assumptions, you build the wrong site. If the first deploy waits until November, you debug the publishing path at the worst possible moment. And because the repository is public from day one, the privacy check cannot wait.",
       done: "The public URL opens on a device that has never seen the project, and another person understands from the README and the plan what is being built and for whom.",
-      record: "Write in the Week 36 entry: the open questions and their answers (decision / open / assumption), the repository link, the first commit hash, and a screenshot of the site on your phone.",
+      record: "Write in the Week 36 entry: the open questions and their answers (decision / open / assumption), the repository link, the first commit hash, and a screenshot of the public URL open on your phone.",
       skills: ["development environment", "version control", "requirements reading", "network sharing"],
       resources: [["Open the plan form", "#view-suunnitelma", false]],
       paivat: [
         ["Need", "Read the brief, underline the requirements and write down every unclear point as a question for the kickoff talk."],
         ["Scope", "Agree the scope: which views are P0, what is explicitly out (the conjugator!), and who reviews the site in week 44."],
-        ["Tools", "Install VS Code and Live Server, create the site folder, serve it over http://localhost and open it from your phone over its own hotspot."],
+        ["Tools", "Install VS Code and Live Server, create the site folder, serve it over http://localhost and publish over your phone hotspot."],
         ["Plan", "Draft the technical plan from the pre-filled sections and split the P0 work into GitHub issues."],
         ["Publish", "Publish the empty site to GitHub Pages from the main branch and verify the public URL works on another device. First commit, first deploy — the publishing path exists."]
       ],
       steps: [
         ["Read the brief like a contract.", "Underline what is required, then write every unclear point as a question. Bring the questions to a 15-minute kickoff talk with the supervisor and record each answer as a decision, an open item or an assumption."],
         ["Set up the tools.", "Install VS Code and the Live Server extension. Create the site folder with index.html, css/style.css and js/main.js — no Node, no npm, no build step. Open the page through the local server, never by double-clicking the file: fetch() cannot read data/*.json over file://."],
-        ["Share it over your phone hotspot.", "Create a hotspot on your phone and connect your computer to it. Run a local server on all interfaces and open the page on the phone. Note what you had to allow (firewall) and why a hotspot of your own keeps this off the school network."],
+        ["Share your phone's connection.", "Create a hotspot on your phone and connect your computer to it, and do the first deploy over that connection. Note what you set up (hotspot name, a strong password) and why a connection of your own keeps this off the school network."],
         ["Create the public repository and publish.", "Do the privacy check first: no personal data, no school identifiers, agree your public author name. Add a README skeleton, commit, push, switch GitHub Pages on for the main branch and open the public URL on another device. This is the moment the publishing path exists."],
         ["Draft the plan and split the work.", "Fill in the plan form below — the pre-filled sections come from the brief; the decisions are yours. Mark the supervisor's open items open. Turn the P0 pages into GitHub issues, each with a done-when condition and a size estimate, prioritised P0/P1/P2."]
       ],
@@ -337,11 +337,11 @@ window.NAYTTOPROJEKTI = {
           "Install VS Code and the Live Server extension. There is nothing to build: the files you write are the files that go live.",
           "Create index.html with the HTML5 skeleton (<!doctype html>, <html lang=\"en\">, a <title>), and link css/style.css in the head and js/main.js at the end of the body.",
           "Open it with Live Server (right-click → Open with Live Server). The address bar must say http://localhost:… — if it says file://, fetch will fail in week 37.",
-          "Phone test: connect your computer to your phone hotspot, run `python3 -m http.server 8000 --bind 0.0.0.0` in the project folder, then open http://<your-computer's-IP>:8000 on the phone. If it does not load, your firewall asked a question — answer it and write down what you allowed.",
+          "Hotspot test: with your computer connected to your phone hotspot, push and publish; then open the public Pages URL on the phone. If the push fails, check which network your computer is actually on and write down what you fixed.",
           "Create the GitHub repository (public), then follow GitHub's 'push an existing repository' commands shown on the new repo page.",
           "Repository → Settings → Pages → Source: Deploy from a branch → main / (root). Commit an empty .nojekyll file in the root, wait a minute, then open the URL GitHub shows."
         ],
-        code: "FIRST DEPLOY CHECKLIST\n[ ] index.html opens through http://localhost, not file://\n[ ] the same page opens on my phone over its hotspot (python3 -m http.server --bind 0.0.0.0)\n[ ] repository is public, privacy check done, 2FA on\n[ ] Pages source = main branch / (root), .nojekyll committed\n[ ] the public URL works on a device that has never seen the project\n[ ] page has <html lang=\"en\">, a <title>, and the DevTools console is clean",
+        code: "FIRST DEPLOY CHECKLIST\n[ ] index.html opens through http://localhost, not file://\n[ ] the first deploy was pushed over my phone hotspot, and the public URL opens on the phone\n[ ] repository is public, privacy check done, 2FA on\n[ ] Pages source = main branch / (root), .nojekyll committed\n[ ] the public URL works on a device that has never seen the project\n[ ] page has <html lang=\"en\">, a <title>, and the DevTools console is clean",
         test: "Open the public URL on a device that has never seen the project. The page renders — not a 404 and not a blank screen — and DevTools → Console shows no red errors.",
         links: [
           ["GitHub Docs: Pages", "https://docs.github.com/en/pages"],
@@ -667,7 +667,7 @@ window.NAYTTOPROJEKTI = {
         ["Freeze and branch.", "Declare the content frozen: only blocking fixes from here. Tag the release candidate."],
         ["Test in a clean environment.", "Fresh clone on a machine (or account) that has never run the project. Follow the README literally — including how to start a local server, because fetch() will not read the data files over file:// — and fix the README, not your memory, wherever it fails."],
         ["Run the user test.", "A new tester (not the week-44 one, if possible) gets one written task: 'Using this site, learn to order in the café dialogue.' You watch in silence. Record their words verbatim; every hesitation becomes an instruction or UI fix. Note their role and the date — same discipline as week 44."],
-        ["Describe the deployment path.", "One page from your own artefacts: the week-36 phone screenshot (LAN), the Pages URL, the HTTPS padlock — localhost → local network → GitHub Pages/CDN. This is the network work sample, in your own images."],
+        ["Describe the deployment path.", "One page from your own artefacts: the week-36 phone screenshot (the public URL over your hotspot), the Pages URL, the HTTPS padlock — localhost → your own hotspot → GitHub Pages/CDN. This is the network work sample, in your own images."],
         ["Release v1.0.", "Apply the fixes, tag v1.0, write the GitHub release notes (what is in, what is 'coming later'), deploy, and check the credit and terms are visible one last time."]
       ],
       help: {
