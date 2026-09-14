@@ -152,6 +152,8 @@ window.NAYTTOPROJEKTI = {
     logReferencePrefix: "Evidence:",
     logRemoveAria: "Remove log entry",
     logRemove: "Remove",
+    exampleLabel: "Example of the expected precision · do not copy the content",
+    notEnoughLabel: "This is not enough yet",
     glossaryWeekLabel: "New terms this week",
     glossaryWeekLink: "Whole glossary →",
     glossaryWeekChip: (w) => `week ${w}`,
