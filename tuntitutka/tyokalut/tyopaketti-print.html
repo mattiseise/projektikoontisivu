@@ -35,7 +35,7 @@ th { background: #e3f2f6; }
 <tr><td><strong>13</strong></td><td>Työviikko 13 / 18</td><td>Tietoturva</td><td>C</td></tr>
 <tr><td><strong>14</strong></td><td>Työviikko 14 / 18</td><td>Testausviikko</td><td>C</td></tr>
 <tr><td><strong>15</strong></td><td>Työviikko 15 / 18</td><td>Laatu ja dokumentointi</td><td>C</td></tr>
-<tr><td><strong>16</strong></td><td>Työviikko 16 / 18</td><td>RC ja julkaisutestaus</td><td>D</td></tr>
+<tr><td><strong>16</strong></td><td>Työviikko 16 / 18</td><td>Julkaisuehdokas ja julkaisutestaus</td><td>D</td></tr>
 <tr><td><strong>17</strong></td><td>Työviikko 17 / 18</td><td>Julkaisu v1.0</td><td>D</td></tr>
 <tr><td><strong>18</strong></td><td>Työviikko 18 / 18</td><td>Näyttö</td><td>D</td></tr>
 </table><p class="muted">Palautus viimeistään 18. työviikon perjantai. Sivusto: tehtävien tarkat ohjeet, toteutusavut ja projektipäiväkirja.</p>
@@ -77,7 +77,7 @@ th { background: #e3f2f6; }
 <p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> kirjattu vertailu ja yhteinen päätös, kuvakaappaukset molemmilla rooleilla ja middleware-koodin commit (p9; s7 osa).</p>
 </div>
 <div class="wk"><h2>Työviikko 5 / 18 – Tuntikirjaus</h2>
-<p class="feature">Työntekijä kirjaa tunnit (projekti, tehtävälaji, tunnit, päivä, selitys) ja näkee omat kirjauksensa listana. Kirjausnäkymä on rakennettu itse alusta ilman valmista UI-komponenttikirjastoa.</p>
+<p class="feature">Työntekijä kirjaa tunnit (projekti, tehtävälaji, tunnit, päivä, selitys) ja näkee omat kirjauksensa listana. Kirjausnäkymä on rakennettu itse alusta ilman valmista käyttöliittymäkirjastoa.</p>
 <p class="task">☐&nbsp; Toteuta kirjauslomake rautalangan mukaan omina Svelte-komponentteina ja kirjaa komponenttijako.</p>
 <p class="task">☐&nbsp; Toteuta POST /api/kirjaukset backend-validointeineen (tunnit 0,25–24, pakolliset kentät, olemassa olevat viitteet).</p>
 <p class="task">☐&nbsp; Toteuta omien kirjausten lista (GET /api/kirjaukset/omat).</p>
@@ -89,7 +89,7 @@ th { background: #e3f2f6; }
 <div class="wk"><h2>Työviikko 6 / 18 – Hallintanäkymät</h2>
 <p class="feature">Projektipäällikkö perustaa projekteja, hallitsee projektityyppejä ja tehtävälajeja sekä liittää työntekijöitä projekteihin, ja sovellus on jaettu näkymiin reitityskirjastolla.</p>
 <p class="task">☐&nbsp; Vertaa kahta reititysratkaisua, valitse ja perustele; jaa sovellus reitteihin.</p>
-<p class="task">☐&nbsp; Toteuta projektien CRUD hallintanäkymään (nimi, tyyppi, aikaväli, kuvaus).</p>
+<p class="task">☐&nbsp; Toteuta projektien CRUD eli luonti, luku, muokkaus ja poisto hallintanäkymään (nimi, tyyppi, aikaväli, kuvaus).</p>
 <p class="task">☐&nbsp; Toteuta tehtävälajien ja projektityyppien hallinta kevyenä: lisäys sekä nimen ja kuvauksen muokkaus.</p>
 <p class="task">☐&nbsp; Toteuta projektin jäsenyys: työntekijän lisäys projektiin ja poisto projektista.</p>
 <p class="done"><strong>Valmis kun:</strong> Työntekijän kirjauslomakkeessa näkyvät vain projektit, joihin hänet on liitetty; vain projektipäällikkö pääsee hallintanäkymiin (testattu myös suoralla URL-osoitteella); reittikartta on dokumentoitu.</p>
@@ -116,7 +116,7 @@ th { background: #e3f2f6; }
 <div class="wk"><h2>Työviikko 9 / 18 – Raporttinäkymä ja kaaviot</h2>
 <p class="feature">Projektipäällikön raporttinäkymä esittää viikkotunnit pylväskaaviona ja tehtävälajijakauman kaaviona; tyhjä data, verkkovirhe ja lataustila käsitellään.</p>
 <p class="task">☐&nbsp; Vertaa kahta kaaviokirjastoa (koko, lisenssi, dokumentaatio, saavutettavuus) ja perustele valinta.</p>
-<p class="task">☐&nbsp; Toteuta fetch-haku raportti-API:sta sekä muunnosfunktio ja sen testi.</p>
+<p class="task">☐&nbsp; Toteuta raporttihaku selaimen fetch-funktiolla sekä muunnosfunktio ja sen testi.</p>
 <p class="task">☐&nbsp; Toteuta ryhmittelyn vaihto (viikko, henkilö, tehtävälaji) ja aikavälin valinta.</p>
 <p class="task">☐&nbsp; Käsittele tyhjä aineisto, verkkovirhe ja lataustila ohjaavin viestein.</p>
 <p class="done"><strong>Valmis kun:</strong> Kaaviot piirtyvät oikeasta datasta ja päivittyvät suodattimista; verkkovirhe (testataan katkaisemalla backend) näyttää viestin eikä tyhjää ruutua; muunnosfunktion testi menee läpi; valinta on perusteltu kirjallisesti.</p>
@@ -133,13 +133,13 @@ th { background: #e3f2f6; }
 </div>
 <h1 class="page">Vaihe C – Valmiiksi: palautemuutos, mobiili, tietoturva, testaus ja laatu</h1>
 <div class="wk"><h2>Työviikko 11 / 18 – Palautemuutos</h2>
-<p class="feature">Katselmoinnin tärkein muutos on toteutettu omassa haarassa ja yhdistetty pull requestilla pääversioon; vähintään yksi merge-konflikti on ratkaistu hallitusti.</p>
+<p class="feature">Katselmoinnin tärkein muutos on toteutettu omassa haarassa ja yhdistetty pääversioon pull requestilla (PR); vähintään yksi merge-konflikti on ratkaistu hallitusti.</p>
 <p class="task">☐&nbsp; Valitse katselmoinnin tärkein muutos ja tarkenna hyväksymiskriteerit issueen.</p>
 <p class="task">☐&nbsp; Toteuta muutos ominaisuushaarassa pienin commitein.</p>
 <p class="task">☐&nbsp; Tee pull request, katselmoi oma koodisi kommentein ja ratkaise merge-konflikti.</p>
 <p class="task">☐&nbsp; Todenna muutos julkaistussa versiossa ja kuittaa katselmointimuistion kohta.</p>
 <p class="done"><strong>Valmis kun:</strong> Pull requestin kuvaus ja keskustelu näyttävät mitä muutettiin ja miksi; muutos on tuotannossa; konfliktin ratkaisu näkyy historiassa; katselmointimuistion kohta on kuitattu linkillä.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> PR-linkki, merge-commit, ennen/jälkeen-kuvakaappaus ja kuitattu muistio (s13; s12 syvenee, p10 jatkuu).</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> pull request -linkki (PR), merge-commit, ennen/jälkeen-kuvakaappaus ja kuitattu muistio (s13; s12 syvenee, p10 jatkuu).</p>
 </div>
 <div class="wk"><h2>Työviikko 12 / 18 – Mobiili ja saavutettavuus</h2>
 <p class="feature">Tuntikirjaus onnistuu oikealla puhelimella; sovellus toimii näppäimistöllä, lomakkeilla on label-kytkennät ja kontrastit riittävät. Saavutettavuuspistemäärä on vähintään 90 ja ennen/jälkeen-raportit ovat tallessa.</p>
@@ -177,15 +177,15 @@ th { background: #e3f2f6; }
 <p class="done"><strong>Valmis kun:</strong> Regressiotestit menevät läpi refaktoroinnin jälkeen; ennen/jälkeen-diffit ja perustelut ovat repossa; dokumentit ovat repossa ja ohjeet on kirjoitettu käyttäjälle, ei arvioijalle; lisenssin tila on kirjattu.</p>
 <p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> ennen/jälkeen-diffit perusteluineen, README, käyttöönotto-ohje, riippuvuustaulukko ja pikaohjeet (p5, k7).</p>
 </div>
-<h1 class="page">Vaihe D – Julkaisu: RC ja julkaisutestaus, v1.0 ja näyttö</h1>
-<div class="wk"><h2>Työviikko 16 / 18 – RC ja julkaisutestaus</h2>
-<p class="feature">Sisältö on jäädytetty, julkaisuehdokas v1.0-rc1 on julkaistu ja merkitty Git-tagilla, ja nimetty ulkopuolinen henkilö on testannut sen molemmilla rooleilla pelkän kirjallisen ohjeen avulla.</p>
+<h1 class="page">Vaihe D – Julkaisu: julkaisuehdokas ja julkaisutestaus, v1.0 ja näyttö</h1>
+<div class="wk"><h2>Työviikko 16 / 18 – Julkaisuehdokas ja julkaisutestaus</h2>
+<p class="feature">Sisältö on jäädytetty, julkaisuehdokas (release candidate, RC) v1.0-rc1 on julkaistu ja merkitty Git-tagilla, ja nimetty ulkopuolinen henkilö on testannut sen molemmilla rooleilla pelkän kirjallisen ohjeen avulla.</p>
 <p class="task">☐&nbsp; Tee jäädytyspäätös, luokittele issuet estäviin ja v1.1-listaan ja tarkista tuotantoasetukset.</p>
 <p class="task">☐&nbsp; Julkaise julkaisuehdokas ja merkitse se Git-tagilla v1.0-rc1.</p>
 <p class="task">☐&nbsp; Asenna sovellus itse puhtaaseen ympäristöön pelkän käyttöönotto-ohjeen avulla ja pidä pöytäkirjaa.</p>
 <p class="task">☐&nbsp; Järjestä ulkopuolisen julkaisutestaus ja kirjaa havainnot sekä estävät virheet issueiksi.</p>
 <p class="done"><strong>Valmis kun:</strong> v1.0-rc1 on julkisessa osoitteessa ja merkitty tagilla; oma asennuspöytäkirja ja ulkopuolisen testauspöytäkirja (nimetty rooli, ajankohta, testaajan omat sanat erillään omasta tulkinnasta) ovat repossa; estävät virheet on kirjattu issueiksi (niitä ei korjata kiireellä tällä viikolla vaan seuraavalla).</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> RC-tag ja release, oma asennuspöytäkirja, ohjeen korjausdiffi, ulkopuolisen testauspöytäkirja ja estävien issue-lista (k6, s14 osa, s3 toinen katselmointi).</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> julkaisuehdokkaan tagi (v1.0-rc1) ja release, oma asennuspöytäkirja, ohjeen korjausdiffi, ulkopuolisen testauspöytäkirja ja estävien issue-lista (k6, s14 osa, s3 toinen katselmointi).</p>
 </div>
 <div class="wk"><h2>Työviikko 17 / 18 – Julkaisu v1.0</h2>
 <p class="feature">Julkaisutestauksen estävät virheet on korjattu täydellisenä virheenkorjausketjuna, v1.0 on julkaistu ja merkitty tagilla, ja sovellus on luovutettu asiakkaalle.</p>
@@ -194,7 +194,7 @@ th { background: #e3f2f6; }
 <p class="task">☐&nbsp; Aja savutesti julkaistulle v1.0:lle testipoluilla molemmilla rooleilla ja kirjaa tulos.</p>
 <p class="task">☐&nbsp; Kirjoita luovutusviesti asiakkaalle asiakaskielellä: osoite, tunnukset ja pikaohjeet.</p>
 <p class="done"><strong>Valmis kun:</strong> v1.0 on julkisessa osoitteessa ja merkitty tagilla; kolmas ketju on täydellisenä repossa (tai kirjaus siitä, mistä aidosta havainnosta ketju ajettiin); savutestin tulos, julkaisutiedote ja luovutusviesti ovat repossa; viikolle jäi puskuriaikaa eikä mitään uutta aloitettu.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> kolmas virheenkorjausketju, v1.0-tag ja release, savutestin kirjaus, julkaisutiedote ja luovutusviesti (s14, s2; k6 ja p2 täydentyvät).</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> kolmas virheenkorjausketju, v1.0-tagi ja release, savutestin kirjaus, julkaisutiedote ja luovutusviesti (s14, s2; k6 ja p2 täydentyvät).</p>
 </div>
 <div class="wk"><h2>Työviikko 18 / 18 – Näyttö</h2>
 <p class="feature">Mitään uutta ei rakenneta: näyttöaineisto on täsmälinkitetty kaikkiin 32 vaatimukseen, 8–10 minuutin demo on harjoiteltu ja itsearviointi on kirjoitettu.</p>
@@ -211,6 +211,31 @@ th { background: #e3f2f6; }
 <p class="task"><strong>Ke</strong> · Demoharjoitus kellon kanssa (8–10 min) ja itsearvioinnin kirjoittaminen</p>
 <p class="task"><strong>To</strong> · Puskuri: aukkojen korjaus ja tarkistus toisen henkilön kanssa</p>
 <p class="task"><strong>Pe</strong> · Luovutus: näyttömatriisi, projektipäiväkirja, AI-loki ja julkaistu v1.0</p>
+<h1 class="page">Sanasto</h1><p class="muted">Projektin tunnukset ja ammattitermit siinä järjestyksessä, jossa ne tulevat vastaan. Jokainen on selitetty myös sivustolla ensimmäisen käytön kohdalla.</p><table>
+<tr><td style="width:24%"><strong>repository</strong><br><span class="muted">vko 1</span></td><td><em>repo, projektin kansio versionhallinnassa.</em> GitHubissa oleva projektin kansio, jossa koodi, dokumentit ja koko muutoshistoria säilyvät. TuntiTutkan repositoryssa ovat kansiot client/, server/ ja project-docs/.</td></tr>
+<tr><td style="width:24%"><strong>commit</strong><br><span class="muted">vko 1</span></td><td><em>yksi tallennettu muutos.</em> Git-historiaan tallennettu muutos ja sen viesti. Yksi commit on yksi looginen muutos, ja commit-historia on itsessään näyttöaineistoa.</td></tr>
+<tr><td style="width:24%"><strong>frontend</strong></td><td><em>selaimessa toimiva osa.</em> Se osa sovelluksesta, jonka käyttäjä näkee ja jota hän klikkaa. TuntiTutkan frontend tehdään Sveltellä ja Vitellä kansioon client/.</td></tr>
+<tr><td style="width:24%"><strong>backend</strong></td><td><em>palvelimella toimiva osa.</em> Se osa sovelluksesta, joka ajetaan palvelimella: rajapinta, käyttöoikeudet ja tietokantayhteys. TuntiTutkan backend tehdään Node.js:llä ja Expressillä kansioon server/.</td></tr>
+<tr><td style="width:24%"><strong>p1, s1, k1</strong></td><td><em>näyttömatriisin vaatimustunnukset.</em> Viikkojen Näytä-riveillä olevat tunnukset viittaavat näyttömatriisin osaamisvaatimuksiin: p on Ohjelmointi, s on Ohjelmistokehittäjänä toimiminen ja k on ohjelmistokomponenttikirjasto. Numero yksilöi vaatimuksen, esimerkiksi s7.</td></tr>
+<tr><td style="width:24%"><strong>P0</strong><br><span class="muted">vko 2</span></td><td><em>pakollinen ydin.</em> Ominaisuudet, joiden on valmistuttava ennen mitään lisäominaisuuksia: kirjautuminen ja roolit, tuntikirjaus, omat kirjaukset ja lasketut yhteenvedot. P0 tehdään ensin.</td></tr>
+<tr><td style="width:24%"><strong>P1</strong><br><span class="muted">vko 2</span></td><td><em>tärkeä jatkosisältö.</em> Sisältö, joka tehdään vasta kun P0 toimii. TuntiTutkassa P1 on kaaviot, mobiilihionta ja yhteenvetojen vienti taulukkotiedostoksi.</td></tr>
+<tr><td style="width:24%"><strong>P2</strong><br><span class="muted">vko 2</span></td><td><em>valinnainen lisä.</em> Sisältö, joka voidaan jättää kokonaan pois ilman että työ jää kesken. TuntiTutkassa P2 on kirjausmuistutus ja usean viikon vertailu.</td></tr>
+<tr><td style="width:24%"><strong>GitHub-issue</strong><br><span class="muted">vko 2</span></td><td><em>tehtäväkortti.</em> GitHubissa oleva tehtäväkortti, jossa on hyväksymiskriteerit ja työmääräarvio. Yksi issue on tyypillisesti puolen tai yhden päivän työ, ja siihen viitataan numerolla, esimerkiksi #12.</td></tr>
+<tr><td style="width:24%"><strong>API</strong><br><span class="muted">vko 3</span></td><td><em>sovelluksen rajapinta.</em> Palvelimen osoitteet, joita selain kutsuu tietojen hakemiseen ja tallentamiseen, esimerkiksi /api/kirjaukset. TuntiTutkan rajapinta tarkistaa oikeudet itse: käyttöliittymästä piilotettu nappi ei ole suojaus.</td></tr>
+<tr><td style="width:24%"><strong>JSON</strong><br><span class="muted">vko 3</span></td><td><em>tekstimuotoinen tietomuoto.</em> Tapa esittää tieto nimi–arvo-pareina tekstinä. TuntiTutkassa JSON on sekä yksi vertailtavista tietovarastoista (JSON-tiedosto) että muoto, jossa rajapinta palauttaa kirjaukset ja raportit selaimelle.</td></tr>
+<tr><td style="width:24%"><strong>build</strong><br><span class="muted">vko 3</span></td><td><em>valmiiksi käännetty tuotantoversio.</em> Komennolla tuotettu versio sovelluksesta, joka viedään palvelimelle. Kehityspalvelin ei ole build: julkaistava versio syntyy aina erikseen.</td></tr>
+<tr><td style="width:24%"><strong>CSV</strong></td><td><em>taulukkotiedostomuoto.</em> Tekstitiedosto, jossa sarakkeet on erotettu toisistaan ja jonka taulukkolaskenta avaa sellaisenaan. TuntiTutkassa yhteenvetojen vienti CSV-tiedostoksi on P1-sisältöä.</td></tr>
+<tr><td style="width:24%"><strong>middleware</strong><br><span class="muted">vko 4</span></td><td><em>välikerros.</em> Palvelimen funktio, joka tarkistaa jokaisen pyynnön ennen kuin reitin oma käsittelijä ajetaan. TuntiTutkassa middleware tarkistaa kirjautumisen (401) ja roolin (403).</td></tr>
+<tr><td style="width:24%"><strong>REST</strong><br><span class="muted">vko 5</span></td><td><em>rajapinnan osoitetyyli.</em> Tapa rakentaa rajapinta niin, että osoite kertoo kohteen ja HTTP-metodi toiminnon: GET /api/kirjaukset hakee kirjaukset ja POST /api/kirjaukset lisää uuden.</td></tr>
+<tr><td style="width:24%"><strong>CRUD</strong><br><span class="muted">vko 6</span></td><td><em>luonti, luku, muokkaus ja poisto.</em> Tietueen neljä perustoimintoa. Projektien CRUD tarkoittaa, että projektipäällikkö voi luoda, listata, muokata ja poistaa projektit itse ilman että tietokantaan kosketaan käsin.</td></tr>
+<tr><td style="width:24%"><strong>SQL</strong><br><span class="muted">vko 8</span></td><td><em>tietokannan kyselykieli.</em> Kieli, jolla tietoa haetaan ja muokataan SQLite-kannassa. TuntiTutkan yhteenvedot lasketaan SQL-kyselyllä jokaisella pyynnöllä, eikä summia tallenneta mihinkään.</td></tr>
+<tr><td style="width:24%"><strong>haara</strong><br><span class="muted">vko 11</span></td><td><em>branch.</em> Oma kehityslinja, jossa muutoksen voi tehdä rikkomatta pääversiota. Työviikolla 11 palautemuutos tehdään omassa haarassa ja yhdistetään pääversioon vasta katselmoinnin jälkeen.</td></tr>
+<tr><td style="width:24%"><strong>pull request</strong><br><span class="muted">vko 11</span></td><td><em>PR, pyyntö yhdistää haara pääversioon.</em> GitHubissa avattava pyyntö, jossa haaran muutokset esitellään, katselmoidaan ja yhdistetään pääversioon. Kuvaus kertoo mitä muutettiin ja miksi. Lyhenne on PR.</td></tr>
+<tr><td style="width:24%"><strong>XSS</strong><br><span class="muted">vko 13</span></td><td><em>skriptin ujuttaminen syötteeseen.</em> Hyökkäys, jossa syötekenttään kirjoitettu skripti ajetaan toisen käyttäjän selaimessa. TuntiTutkassa testataan, että kirjauksen selitekenttään kirjoitettu skripti näkyy pelkkänä tekstinä.</td></tr>
+<tr><td style="width:24%"><strong>T01</strong><br><span class="muted">vko 14</span></td><td><em>testitapauksen tunnus.</em> T tarkoittaa testitapausta ja numero yksilöi sen: T01 on ensimmäinen testitapaus ja T02 toinen. TuntiTutkassa tapauksia on 13 (T01–T13), ja jokaisen odotettu tulos kirjataan ennen ajoa.</td></tr>
+<tr><td style="width:24%"><strong>RC</strong><br><span class="muted">vko 16</span></td><td><em>release candidate, julkaisuehdokas.</em> Lähes valmis versio, joka julkaistaan ja testataan ennen lopullista julkaisua. TuntiTutkan ensimmäinen julkaisuehdokas on v1.0-rc1 työviikolla 16.</td></tr>
+<tr><td style="width:24%"><strong>tagi</strong><br><span class="muted">vko 16</span></td><td><em>versiomerkintä Git-historiassa.</em> Nimilappu, joka kiinnitetään tiettyyn committiin, jotta juuri se versio löytyy myöhemmin: v1.0-rc1 ja v1.0. Release on tagin ympärille tehty julkaisumerkintä kuvauksineen.</td></tr>
+</table>
 <h1 class="page">Näyttömatriisi – 32 osaamisvaatimusta</h1><p class="muted">Rasti vasta, kun vaatimukselle on täsmällinen työnäyte: linkki, commit, kuva, testirivi tai muistio. Sama työnäyte voi kelvata useaan kohtaan.</p>
 <h2>Ohjelmointi</h2>
 <p class="item">☐&nbsp; <strong>käyttää ohjelmointieditoria tai kehitysympäristöä</strong> – VS Code, Vite dev -palvelin ja selaimen kehittäjätyökalut käytössä työviikolta 1: versiotaulukko, kuvakaappaus ja npm-skriptit README:ssä.</p>
@@ -218,7 +243,7 @@ th { background: #e3f2f6; }
 <p class="item">☐&nbsp; <strong>testaa ohjelman toimintoja</strong> – Testiraportti työviikolta 14: vähintään 12 tapausta odotettuine tuloksineen ennen ajoa; lomakkeet, roolit, tallennus, virhetilanteet ja responsiivisuus testattuina.</p>
 <p class="item">☐&nbsp; <strong>käyttää rakenteista ohjelmointia toteutuksissa</strong> – Laskentalogiikka omana moduulina työviikolla 8: funktiot, ehdot ja tietorakenteet raporttien ryhmittelyssä; moduulijako client, server, routes ja laskenta.</p>
 <p class="item">☐&nbsp; <strong>kirjoittaa ylläpidettävää ohjelmakoodia</strong> – Kolme dokumentoitua refaktorointia työviikolla 15 ennen/jälkeen-diffeineen ja perusteluineen; nimeämiskäytäntö ja vastuiden jako kuvattuina.</p>
-<p class="item">☐&nbsp; <strong>tulkitsee suunnitelmia ja toteuttaa käyttöliittymän tai sen osia</strong> – Kirjausnäkymä toteutettu työviikolla 5 työviikon 2 rautalangan mukaan itse ilman UI-kirjastoa; mobiili ja palautteet käyttäjälle viimeistellään työviikolla 12.</p>
+<p class="item">☐&nbsp; <strong>tulkitsee suunnitelmia ja toteuttaa käyttöliittymän tai sen osia</strong> – Kirjausnäkymä toteutettu työviikolla 5 työviikon 2 rautalangan mukaan itse ilman valmista käyttöliittymäkirjastoa; mobiili ja palautteet käyttäjälle viimeistellään työviikolla 12.</p>
 <p class="item">☐&nbsp; <strong>tulkitsee suunnitelmia ja toteuttaa ohjelmiston toimintoja</strong> – Hallintanäkymien toiminnot työviikolla 6 käyttäjätarinoiden ja hyväksymiskriteerien perusteella; omien kirjausten hallinta täydentää työviikolla 7. Issue-commit-ketju näkyvissä.</p>
 <p class="item">☐&nbsp; <strong>sopii tehtävistä tiimin muiden jäsenten kanssa</strong> – Issue-taulu työviikolta 2 alkaen ja viikoittainen sopiminen ohjaajan kanssa tiimiroolissa; tehtävien tila näkyvänä koko projektin ajan.</p>
 <p class="item">☐&nbsp; <strong>etsii ratkaisuvaihtoehtoja ja ratkoo ongelmia yhdessä tiimin kanssa</strong> – Istuntotapavertailu työviikolla 4: evästesession ja tokenin hyödyt ja riskit tässä sovelluksessa, kirjattu keskustelu ja yhteinen päätös ohjaajan kanssa.</p>

@@ -10,7 +10,7 @@
   "tyokierto": [
     "Tarina",
     "Komponentti",
-    "API",
+    "Rajapinta",
     "Testi",
     "Julkaisu"
   ],
@@ -52,7 +52,7 @@
   ],
   "tunnus": "neliot",
   "tyokiertoOtsikko": "TYÖKIERTO",
-  "tyokiertoAlt": "Infografiikka työkierrosta: tarina, komponentti, API, testi ja julkaisu peräkkäisinä askelina, joita terrakotanvärinen nuoli yhdistää.",
+  "tyokiertoAlt": "Infografiikka työkierrosta: tarina, komponentti, rajapinta, testi ja julkaisu peräkkäisinä askelina, joita terrakotanvärinen nuoli yhdistää.",
   "vaiheetAlt": "Aikajana neljästä vaiheesta A–D väreineen: Ydin, Ostopolku, Valmiiksi ja Julkaisu, viikot 1–18 ilman päivämääriä.",
   "suunnitelmaAlt": "Kaavio suunnitelman kolmesta osasta: tavoite ja asiakas, omat päätökset sekä tietomalli laatikkoina.",
   "testausAlt": "Viisivaiheinen testisilmukka: suunnittele testi, aja selaimessa, löydä virhe, korjaa ja uusintatesti.",

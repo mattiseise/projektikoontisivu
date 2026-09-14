@@ -57,6 +57,7 @@
           <a class="nav-row" href="#view-kaytto" data-view-nav="kaytto">Näin käytät sivua<span class="nav-meta">aloita tästä</span></a>
           <a class="nav-row" href="#view-toimeksianto" data-view-nav="toimeksianto">Toimeksianto<span class="nav-meta"></span></a>
           <a class="nav-row" href="#view-tyotapa" data-view-nav="tyotapa">Työtapa<span class="nav-meta"></span></a>
+          <a class="nav-row" href="#view-termit" data-view-nav="termit">Termit<span class="nav-meta" data-glossary-count></span></a>
           <a class="nav-row" href="#view-galleria" data-view-nav="galleria">Galleria<span class="nav-meta">vko 17</span></a>
         </nav>
 
@@ -83,7 +84,7 @@
 
         <section class="view-section">
           <h2>Kolme tutkinnon osaa, yksi sovellus</h2>
-          <p class="view-lead" style="margin-top:10px">Projekti kattaa kolme tutkinnon osaa: Ohjelmointi (45 osp), Ohjelmistokehittäjänä toimiminen (45 osp) ja Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla (30 osp). Ohjelmoinnin osaaminen näkyy koodissa, jonka kirjoitat, testaat ja korjaat itse, esimerkiksi yhteenvetojen laskennassa ja virheenkorjausketjuissa. Ohjelmistokehittäjänä toimiminen on työtapa: puret toimeksiannon käyttäjätarinoiksi, priorisoit ne, ohjaat työtä Gitillä ja issueilla, arvioit tietoturvan ja julkaiset sovelluksen tuotantoon. Komponenttikirjasto-osa todennetaan Sveltellä: rakennat käyttöliittymän komponenteista, otat reititys- ja kaaviokirjaston käyttöön perustellusti ja julkaiset tuotantoversion asiakkaan ympäristöön. Kaikki 32 osaamisvaatimusta on avattu sivun näyttömatriisissa.</p>
+          <p class="view-lead" style="margin-top:10px">Projekti kattaa kolme tutkinnon osaa: Ohjelmointi (45 osp), Ohjelmistokehittäjänä toimiminen (45 osp) ja Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla (30 osp). Ohjelmoinnin osaaminen näkyy koodissa, jonka kirjoitat, testaat ja korjaat itse, esimerkiksi yhteenvetojen laskennassa ja virheenkorjausketjuissa. Ohjelmistokehittäjänä toimiminen on työtapa: puret toimeksiannon käyttäjätarinoiksi, priorisoit ne, ohjaat työtä Gitillä ja issueilla, arvioit tietoturvan ja julkaiset sovelluksen tuotantoon. Komponenttikirjasto-osa todennetaan Sveltellä: rakennat käyttöliittymän komponenteista, otat reititys- ja kaaviokirjaston käyttöön perustellusti ja julkaiset tuotantoversion asiakkaan ympäristöön. Kaikki 32 osaamisvaatimusta on avattu sivun näyttömatriisissa. Viikkojen <strong>Näytä</strong>-riveillä olevat tunnukset viittaavat niihin: p on Ohjelmointi, s on Ohjelmistokehittäjänä toimiminen ja k on ohjelmistokomponenttikirjasto, ja numero yksilöi vaatimuksen (esimerkiksi s7).</p>
           <p class="view-lead" style="margin-top:10px">Tutkinnon osissa on myös tiimissä tehtäviä kokonaisuuksia. Siksi tehtävissä puhutaan tiimistä, katselmoinneista ja asiakkaasta, vaikka teet TuntiTutkan muuten yksin: ohjaava opettaja toimii tarvittaessa asiakkaana ja ohjaajana, ja sopimiset, katselmoinnit ja yhteiset päätökset käydään hänen tai muun nimetyn henkilön kanssa (esimerkiksi työviikkojen 10 ja 16 katselmoijien). Ne ovat osa arvioitavaa osaamista, eivät muodollisuus.</p>
         </section>
 
@@ -95,8 +96,8 @@
         <p class="view-lead">Avaa vain oma nykyinen työviikkosi ja lue ensin viikon kärki. Tee tehtävät järjestyksessä, testaa valmis kun -ehto ja kirjoita viikon lopussa projektipäiväkirja. Jokainen viikko tuottaa havaittavan tuloksen ja työnäytteen.</p>
 
         <div class="principle-grid">
-          <div class="card"><span class="num">1</span><h3>Työ tapahtuu repositoryssa</h3><p>Kaikki koodi, suunnitelma ja päiväkirja elävät GitHub-repositoryssa. Tämä sivusto ohjaa työtä, mutta työnäytteet syntyvät repoon.</p><small>Kansiot: client/, server/ ja project-docs/.</small></div>
-          <div class="card"><span class="num">2</span><h3>Ohjaa työ Gitillä</h3><p>Tehtävät ovat GitHubin tehtäväkortteja (issueita). Valmis työ näkyy pieninä tallennettuina muutoksina (committeina).</p><small>Yksi tehtäväkortti = yleensä puolen tai yhden päivän työ.</small></div>
+          <div class="card"><span class="num">1</span><h3>Työ tapahtuu repositoryssa</h3><p>Repository eli repo on projektin kansio versionhallinnassa: siellä säilyvät koodi, dokumentit ja koko muutoshistoria. Kaikki koodi, suunnitelma ja päiväkirja elävät GitHub-repositoryssa, ja työnäytteet syntyvät sinne.</p><small>Kansiot: client/, server/ ja project-docs/.</small></div>
+          <div class="card"><span class="num">2</span><h3>Ohjaa työ Gitillä</h3><p>Tehtävät kirjataan GitHub-issueiksi: issue on tehtäväkortti, jossa on hyväksymiskriteerit. Valmis työ tallennetaan committeina, ja yksi commit on yksi tallennettu muutos Git-historiassa.</p><small>Yksi issue = yleensä puolen tai yhden päivän työ.</small></div>
           <div class="card"><span class="num">3</span><h3>Kirjoita tällä sivulla</h3><p>Jokaisen viikon lopussa vastaat kolmeen kysymykseen: mitä ja miten, miksi sekä missä työnäyte on.</p><small>Kentät tallentuvat vain tähän selaimeen.</small></div>
           <div class="card"><span class="num">4</span><h3>Vie päiväkirja talteen</h3><p>Lataa koko projektipäiväkirja jokaisen viikon lopussa ja korvaa repositoryn vanha tiedosto.</p><small>Tiedosto: <code>project-docs/projektipaivakirja.md</code>. Tee päiväkirjasta commit joka viikko. Se on osa näyttöaineistoa.</small></div>
         </div>
@@ -153,9 +154,9 @@
         <div class="grid-2 view-section">
           <div class="card">
             <p class="section-label section-label-accent">Sovittu toteutustapa</p>
-            <p style="margin-top:8px"><strong>Frontend:</strong> Svelte + Vite. <strong>Backend:</strong> Node.js + Express. <strong>Tietovarasto:</strong> SQLite. Ulkoisia komponentteja otetaan käyttöön kaksi: reitityskirjasto (työviikko 6) ja kaaviokirjasto (työviikko 9), molemmat perusteltuina.</p>
+            <p style="margin-top:8px"><strong>Frontend</strong> eli selaimessa toimiva osa: Svelte + Vite. <strong>Backend</strong> eli palvelimella toimiva osa: Node.js + Express. <strong>Tietovarasto:</strong> SQLite. Ulkoisia komponentteja otetaan käyttöön kaksi: reitityskirjasto (työviikko 6) ja kaaviokirjasto (työviikko 9), molemmat perusteltuina.</p>
             <p style="margin-top:8px"><strong>Kansiot:</strong> <code>client/</code> (Svelte-sovellus), <code>server/</code> (Express ja SQLite) ja <code>project-docs/</code> (suunnitelma, päiväkirja, muistiot ja raportit).</p>
-            <p style="margin-top:8px"><strong>P0-minimi:</strong> kirjautuminen ja kaksi roolia · tuntikirjaus validointeineen · omat kirjaukset ja oma viikkosumma · projektien, projektityyppien ja tehtävälajien hallinta · projektin jäsenyydet · lasketut yhteenvedot kolmella ryhmittelyllä ja porautuminen kirjauksiin.</p>
+            <p style="margin-top:8px"><strong>P0 eli pakollinen ydin:</strong> kirjautuminen ja kaksi roolia · tuntikirjaus validointeineen · omat kirjaukset ja oma viikkosumma · projektien, projektityyppien ja tehtävälajien hallinta · projektin jäsenyydet · lasketut yhteenvedot kolmella ryhmittelyllä ja porautuminen kirjauksiin.</p>
             <p style="margin-top:8px"><strong>Laskentaperiaate:</strong> yhteenvetosummia ei tallenneta. Ne lasketaan kirjauksista jokaisella pyynnöllä.</p>
             <p style="margin-top:8px"><strong>Julkaisu:</strong> sovellus viedään julkiseen osoitteeseen jo työviikolla 3 ja samaa julkaisuputkea käytetään loppuun asti: julkaisuehdokas työviikolla 16 ja v1.0 työviikolla 17.</p>
           </div>
@@ -167,10 +168,10 @@
               <li>laskutus, laskupohjat ja kirjanpitointegraatiot</li>
               <li>sähköposti- tai push-muistutukset kirjaamatta jääneistä tunneista</li>
               <li>lomien, sairauspoissaolojen ja saldojen hallinta</li>
-              <li>valmis UI-komponenttikirjasto (Flowbite, Skeleton tai vastaava): rakenne, saavutettavuusratkaisut ja CSS tehdään itse</li>
+              <li>valmis käyttöliittymäkirjasto (Flowbite, Skeleton tai vastaava): rakenne, saavutettavuusratkaisut ja CSS tehdään itse</li>
               <li>usean toimiston tai asiakasyrityksen tuki</li>
             </ul>
-            <p>Kirjausmuistutus ja usean viikon vertailu ovat P2-listalla: ne tehdään vain, jos kaikki P0 ja P1 on valmiina.</p>
+            <p>P1 on tärkeä jatkosisältö, joka tehdään kun P0 toimii, ja P2 on valinnainen lisä, joka voidaan jättää pois. Kirjausmuistutus ja usean viikon vertailu ovat P2-listalla: ne tehdään vain, jos kaikki P0 ja P1 on valmiina.</p>
           </div>
         </div>
 
@@ -191,9 +192,9 @@
           <h2>Pidä punainen lanka näkyvissä</h2>
           <div class="lanka-row">
             <div><p class="section-label">Vaatimus</p><p>s7 · kehittää ohjelmiston toimintalogiikkaa</p></div>
-            <div><p class="section-label">Issue</p><p>#23 Viikkoyhteenvedon laskenta GROUP BY -kyselyllä</p></div>
+            <div><p class="section-label">Issue</p><p>GitHub-issue #23 Viikkoyhteenvedon laskenta GROUP BY -kyselyllä</p></div>
             <div><p class="section-label">Valmis kun</p><p>Summat täsmäävät käsin laskettuihin kolmella testiaineistolla</p></div>
-            <div><p class="section-label">Testi ja työnäyte</p><p>T03 · testiraportti ja raporttinäkymän kuvakaappaus</p></div>
+            <div><p class="section-label">Testi ja työnäyte</p><p>testitapaus T03 · testiraportti ja raporttinäkymän kuvakaappaus</p></div>
           </div>
         </div>
       </section>
@@ -219,15 +220,15 @@
 
         <div class="view-section">
           <h2>Testaa kuin kehittäjä</h2>
-          <p class="view-lead" style="margin-top:8px">Testaus ei ole pelkkää satunnaista klikkailua. Kirjaa odotettu tulos, havaittu tulos, virheen syy, korjaus ja uusintatesti.</p>
+          <p class="view-lead" style="margin-top:8px">Testaus ei ole pelkkää satunnaista klikkailua. Kirjaa odotettu tulos, havaittu tulos, virheen syy, korjaus ja uusintatesti. Testaat sekä käyttöliittymää että sovelluksen rajapintaa (API) eli niitä palvelimen osoitteita, joita selain kutsuu tietojen hakemiseen ja tallentamiseen, esimerkiksi <code>/api/kirjaukset</code>.</p>
           <ul class="tooling-list">
-            <li>Vähintään 12 suunniteltua testitapausta (tässä projektissa 13) kolmessa luokassa: normaali käyttö, rajat ja virhetilanteet.</li>
+            <li>Vähintään 12 suunniteltua testitapausta (tässä projektissa 13) kolmessa luokassa: normaali käyttö, rajat ja virhetilanteet. Jokainen testitapaus saa tunnuksen T01–T13, jotta siihen voi viitata päiväkirjassa ja korjausketjussa.</li>
             <li>Odotettu tulos kirjataan jokaisesta tapauksesta ennen ajoa. Jälkikäteen kirjattu odotus ei ole odotus.</li>
             <li>3 täydellistä virheenkorjausketjua aidoista havainnoista: havainto → toistamisohje → syy → korjauscommit → uusintatesti → regressiotesti.</li>
             <li>Yhteenvetojen summat verrataan käsin laskettuihin odotusarvoihin vähintään kolmella eri testiaineistolla.</li>
             <li>Rajatapaukset: 0,25 h ja 24 h, tyhjä viikko, sunnuntain kirjaus viikon- ja vuodenvaihteessa, projekti ilman jäseniä.</li>
             <li>Virhetilanteet: virheelliset tunnit, suora API-kutsu väärällä roolilla, skriptisyöte selitteessä, verkkovirhe raporttihaussa ja vanhentunut istunto.</li>
-            <li>Laskentamoduulin yksikkötestit ajetaan komennolla ja toimivat regressiosuojana.</li>
+            <li>Laskentamoduulin yksikkötestit eli yhtä funktiota kerrallaan tarkistavat automaattiset testit ajetaan komennolla. Ne toimivat regressiosuojana: ne paljastavat heti, jos aiemmin toiminut laskenta menee rikki.</li>
             <li>Julkaistu versio testataan puhtaassa ympäristössä: ensin itse, sitten ulkopuolinen pelkän kirjallisen ohjeen avulla.</li>
           </ul>
         </div>
@@ -240,7 +241,7 @@
         <div class="view-section">
           <h2>Aineisto ja työkalut</h2>
           <ul class="tooling-list">
-            <li><strong>Työkalut:</strong> Node LTS, Git ja VS Code. Sovellusrunko syntyy komennolla <code>npm create vite@latest -- --template svelte</code>. Virallinen dokumentaatio (Svelte, Vite, Express, SQLite) on ensisijainen lähde.</li>
+            <li><strong>Työkalut:</strong> Node LTS (pitkään tuettu vakaa versio), Git ja VS Code. Sovellusrunko syntyy komennolla <code>npm create vite@latest -- --template svelte</code>. Virallinen dokumentaatio (Svelte, Vite, Express, SQLite) on ensisijainen lähde.</li>
             <li><strong>Kirjastot:</strong> jokainen asennettu paketti perustellaan ja kirjataan riippuvuustaulukkoon (paketti → rooli tässä projektissa → versio). Tarkista lisenssi ennen asennusta ja merkitse se muistiin.</li>
             <li><strong>Testidata:</strong> kirjaukset syntyvät omasta käytöstä työviikolta 7 alkaen. Älä käytä oikeiden ihmisten nimiä, sähköposteja tai puhelinnumeroita edes testidatassa. Keksityt tunnukset riittävät.</li>
             <li><strong>Tekoälyn rajat:</strong> tekoäly saa selittää, ehdottaa ja tarkistaa. Yhteenvetojen laskentalogiikka, sovelluksen rakenne, saavutettavuusratkaisut ja CSS tehdään itse. Jokainen merkittävä käyttö kirjataan AI-lokiin.</li>
@@ -647,7 +648,7 @@
             <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 4</span></div>
             <div class="task-list">
             <label class="task-row"><input type="checkbox" data-task="6-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Vertaa kahta reititysratkaisua, valitse ja perustele; jaa sovellus reitteihin.</span></label>
-            <label class="task-row"><input type="checkbox" data-task="6-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta projektien CRUD hallintanäkymään (nimi, tyyppi, aikaväli, kuvaus).</span></label>
+            <label class="task-row"><input type="checkbox" data-task="6-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta projektien CRUD eli luonti, luku, muokkaus ja poisto hallintanäkymään (nimi, tyyppi, aikaväli, kuvaus).</span></label>
             <label class="task-row"><input type="checkbox" data-task="6-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta tehtävälajien ja projektityyppien hallinta kevyenä: lisäys sekä nimen ja kuvauksen muokkaus.</span></label>
             <label class="task-row"><input type="checkbox" data-task="6-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta projektin jäsenyys: työntekijän lisäys projektiin ja poisto projektista.</span></label>
             </div>
@@ -869,7 +870,7 @@
             <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 4</span></div>
             <div class="task-list">
             <label class="task-row"><input type="checkbox" data-task="9-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Vertaa kahta kaaviokirjastoa (koko, lisenssi, dokumentaatio, saavutettavuus) ja perustele valinta.</span></label>
-            <label class="task-row"><input type="checkbox" data-task="9-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta fetch-haku raportti-API:sta sekä muunnosfunktio ja sen testi.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="9-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta raporttihaku selaimen fetch-funktiolla sekä muunnosfunktio ja sen testi.</span></label>
             <label class="task-row"><input type="checkbox" data-task="9-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta ryhmittelyn vaihto (viikko, henkilö, tehtävälaji) ja aikavälin valinta.</span></label>
             <label class="task-row"><input type="checkbox" data-task="9-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Käsittele tyhjä aineisto, verkkovirhe ja lataustila ohjaavin viestein.</span></label>
             </div>
@@ -1041,7 +1042,7 @@
 
           <div class="outcome-grid">
             <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
-            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence">PR-linkki, merge-commit, ennen/jälkeen-kuvakaappaus ja kuitattu muistio (s13; s12 syvenee, p10 jatkuu).</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence">pull request -linkki (PR), merge-commit, ennen/jälkeen-kuvakaappaus ja kuitattu muistio (s13; s12 syvenee, p10 jatkuu).</p></div>
           </div>
 
           <section class="week-journal" data-week-journal="11">
@@ -1363,7 +1364,7 @@
 
         <article class="week-card" id="week-16" data-week="16">
           <p class="view-eyebrow" data-week-label="Työviikko 16 / 18">Vaihe D · Julkaisu · Työviikko 16 / 18</p>
-          <h1 class="view-title">RC ja julkaisutestaus</h1>
+          <h1 class="view-title">Julkaisuehdokas ja julkaisutestaus</h1>
 
           <div class="week-kicker" data-week-kicker hidden>
             <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
@@ -1411,7 +1412,7 @@
 
           <div class="outcome-grid">
             <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
-            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence">RC-tag ja release, oma asennuspöytäkirja, ohjeen korjausdiffi, ulkopuolisen testauspöytäkirja ja estävien issue-lista (k6, s14 osa, s3 toinen katselmointi).</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence">julkaisuehdokkaan tagi (v1.0-rc1) ja release, oma asennuspöytäkirja, ohjeen korjausdiffi, ulkopuolisen testauspöytäkirja ja estävien issue-lista (k6, s14 osa, s3 toinen katselmointi).</p></div>
           </div>
 
           <section class="week-journal" data-week-journal="16">
@@ -1485,7 +1486,7 @@
 
           <div class="outcome-grid">
             <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
-            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence">kolmas virheenkorjausketju, v1.0-tag ja release, savutestin kirjaus, julkaisutiedote ja luovutusviesti (s14, s2; k6 ja p2 täydentyvät).</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence">kolmas virheenkorjausketju, v1.0-tagi ja release, savutestin kirjaus, julkaisutiedote ja luovutusviesti (s14, s2; k6 ja p2 täydentyvät).</p></div>
           </div>
 
           <section class="week-journal" data-week-journal="17">
@@ -1600,9 +1601,9 @@
           <p class="section-label">Esitäytetty pohja · tulee mukaan tiedostoon</p>
           <article><h3>1 · Tavoite</h3><p>Mainostoimiston työaikaseuranta, joka korvaa Excel-tuntilaput: työntekijät kirjaavat tunnit tehtävälajeittain, projektipäällikkö saa aina ajantasaiset yhteenvedot viikoittain, henkilöittäin ja tehtävälajeittain.</p></article>
           <article><h3>2 · Asiakas ja käyttäjäryhmät</h3><p>Kahdeksan hengen mainostoimiston projektipäällikkö (tilaaja) ja työntekijät; kaksi roolia, joilla on eri oikeudet.</p></article>
-          <article><h3>3 · P0-rajaus</h3><p><strong>P0:</strong> kirjautuminen ja roolit · tuntikirjaus validointeineen · omat kirjaukset ja oma viikkosumma · projektien, projektityyppien ja tehtävälajien hallinta · projektin jäsenyydet · lasketut yhteenvedot kolmella ryhmittelyllä ja porautuminen.</p><p><strong>P1:</strong> kaaviot, mobiilihionta, CSV-vienti. <strong>P2:</strong> kirjausmuistutus, usean viikon vertailu.</p></article>
+          <article><h3>3 · Prioriteetit P0, P1 ja P2</h3><p>P0 on pakollinen ydin, jonka on valmistuttava. P1 on tärkeä jatkosisältö, joka tehdään kun P0 toimii. P2 on valinnainen lisä, joka voidaan jättää pois.</p><p><strong>P0:</strong> kirjautuminen ja roolit · tuntikirjaus validointeineen · omat kirjaukset ja oma viikkosumma · projektien, projektityyppien ja tehtävälajien hallinta · projektin jäsenyydet · lasketut yhteenvedot kolmella ryhmittelyllä ja porautuminen.</p><p><strong>P1:</strong> kaaviot, mobiilihionta, yhteenvetojen vienti taulukkotiedostoksi (CSV). <strong>P2:</strong> kirjausmuistutus, usean viikon vertailu.</p></article>
           <article><h3>4 · Laskentaperiaate</h3><p>Yhteenvetoja ei tallenneta. Ne lasketaan kirjauksista jokaisella pyynnöllä. Tietokantaan ei tule summataulua.</p></article>
-          <article><h3>5 · Teknologia</h3><p>Svelte + Vite (frontend), Node.js + Express (backend), SQLite (tietovarasto). Ulkoiset komponentit: reitityskirjasto ja kaaviokirjasto (valinnat perustellaan itse). Valmista UI-komponenttikirjastoa ei käytetä: rakenne, saavutettavuusratkaisut ja CSS tehdään itse.</p></article>
+          <article><h3>5 · Teknologia</h3><p>Svelte + Vite (frontend eli selaimessa toimiva osa), Node.js + Express (backend eli palvelimella toimiva osa), SQLite (tietovarasto). Ulkoiset komponentit: reitityskirjasto ja kaaviokirjasto (valinnat perustellaan itse). Valmista käyttöliittymäkirjastoa ei käytetä: rakenne, saavutettavuusratkaisut ja CSS tehdään itse.</p></article>
           <article><h3>6 · Avoimet asiat – ohjaaja omistaa</h3><p>Lisenssi · repositoryn julkisuus, tekijänimi ja alaikäisen huoltajan suostumus · katselmoijien roolit työviikoille 10 ja 16 · oppilaitoksen linja julkaisualustoista · perusteversion siirtymäsääntö (OPH-6216-2025) · arvioinnin järjestelyt työviikolle 18.</p><small class="plan-open-note">Näitä ei päätetä itse eikä tekoälyllä. Tyhjä kenttä on oikea tulos siihen asti, kunnes asia on sovittu ohjaajan kanssa.</small></article>
         </div>
 
@@ -1617,15 +1618,15 @@
           <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Tavoite omin sanoin: mistä tiedät onnistuneesi?<input type="text" data-plan-field="tavoite" placeholder="Projektipäällikkö näkee viikkotunnit ilman että kysyy keneltäkään mitään"></label><span class="plan-row-week">viikko 2</span></div>
           <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Käyttäjäryhmät ja niiden tärkein tarve omin sanoin<input type="text" data-plan-field="kohde" placeholder="Työntekijä: nopea kirjaus puhelimella. Projektipäällikkö: ajantasainen viikkoyhteenveto"></label><span class="plan-row-week">viikko 2</span></div>
           <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Tietomalli: taulut, avaimet ja mitä EI tallenneta<input type="text" data-plan-field="tietomalli" placeholder="kayttaja, projekti, projektityyppi, tehtavalaji, kirjaus, projektin_jasen (ei summataulua)"></label><span class="plan-row-week">viikot 2–3</span></div>
-          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Tietovarasto ja perustelu: SQLite / JSON-tiedosto / PostgreSQL<input type="text" data-plan-field="tietovarasto" placeholder="Valinta ja perustelu oman datan rakenteella, ei yleisillä ominaisuuksilla"></label><span class="plan-row-week">viikko 2</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Tietovarasto ja perustelu: SQLite, JSON-tiedosto (JSON on tekstimuotoinen tietomuoto, jossa tieto on nimi–arvo-pareina) vai PostgreSQL<input type="text" data-plan-field="tietovarasto" placeholder="Valinta ja perustelu oman datan rakenteella, ei yleisillä ominaisuuksilla"></label><span class="plan-row-week">viikko 2</span></div>
           <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Julkaisualusta: Render / Fly.io / Railway<input type="text" data-plan-field="julkaisualusta" placeholder="Kriteerit: ilmainen taso, Node-tuki, SQLite-tiedoston pysyvyys, lokit"></label><span class="plan-row-week">viikko 3</span></div>
-          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Istuntotapa: evästesessio vai token<input type="text" data-plan-field="istuntotapa" placeholder="Päätös ohjaajan kanssa ja perustelu tässä sovelluksessa"></label><span class="plan-row-week">viikko 4</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Istuntotapa: evästesessio vai token eli selaimelle annettava tunnistetieto<input type="text" data-plan-field="istuntotapa" placeholder="Päätös ohjaajan kanssa ja perustelu tässä sovelluksessa"></label><span class="plan-row-week">viikko 4</span></div>
           <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Komponenttijako: näkymät ja komponenttien vastuut<input type="text" data-plan-field="komponenttijako" placeholder="KirjausLomake, KirjausLista, KenttaVirhe: kunkin vastuu yhdellä lauseella"></label><span class="plan-row-week">viikot 5 ja 15</span></div>
           <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Reitityskirjasto ja perustelu<input type="text" data-plan-field="reitityskirjasto" placeholder="Vertailu: koko, ylläpito, dokumentaatio, tämän projektin tarve"></label><span class="plan-row-week">viikko 6</span></div>
           <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Viikkokäytäntö: ISO-viikko vai muu; viikon- ja vuodenvaihde<input type="text" data-plan-field="viikkokaytanto" placeholder="Valittu tapa ja miten sunnuntai sekä vuodenvaihde käsitellään"></label><span class="plan-row-week">viikko 7</span></div>
           <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Kaaviokirjasto ja perustelu<input type="text" data-plan-field="kaaviokirjasto" placeholder="Vertailu: koko, lisenssi, dokumentaatio, saavutettavuus"></label><span class="plan-row-week">viikko 9</span></div>
           <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Rajaus: mitä EI toteuteta<input type="text" data-plan-field="rajaus" placeholder="Esimerkiksi palkkalaskenta, laskutus ja sähköposti-ilmoitukset"></label><span class="plan-row-week">viikot 10 ja 16</span></div>
-          <p class="plan-calibration"><strong>Ei riitä:</strong> &rdquo;SQLite, koska se on kevyt ja suosittu&rdquo; tai &rdquo;JWT, koska se on moderni&rdquo;. <strong>Riittää:</strong> vaihtoehdot nimettyinä, kriteerit omasta datastasi ja käyttötilanteestasi, valinta ja se, mikä valinnasta jää huonommaksi.</p>
+          <p class="plan-calibration"><strong>Ei riitä:</strong> &rdquo;SQLite, koska se on kevyt ja suosittu&rdquo; tai &rdquo;token, koska se on moderni&rdquo;. <strong>Riittää:</strong> vaihtoehdot nimettyinä, kriteerit omasta datastasi ja käyttötilanteestasi, valinta ja se, mikä valinnasta jää huonommaksi.</p>
 
           <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Lisenssi (kysytään työviikolla 1, viimeistään 15)<input type="text" data-plan-field="lisenssi" placeholder="Täytä vasta kun ohjaaja on vastannut"></label><span class="plan-row-week">avoin asia</span></div>
           <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Repositoryn julkisuus, tekijänimi ja huoltajan suostumus<input type="text" data-plan-field="julkisuus" placeholder="Täytä vasta kun ohjaaja on kuitannut"></label><span class="plan-row-week">avoin asia</span></div>
@@ -1680,7 +1681,7 @@
             <label>Mihin pyysit apua?<input type="text" name="question" required placeholder="Miksi GROUP BY jakaa sunnuntain kirjaukset väärälle viikolle?"></label>
           </div>
           <label>Mitä käytit, muutit tai hylkäsit — ja miten tarkistit?<textarea name="used" rows="2" required placeholder="Käytin strftime-korjauksen ehdotuksen, vaihdoin sarakenimet omiksi. Ajoin kyselyn testiaineistolla ja vertasin käsin laskettuun summaan."></textarea></label>
-          <label>Aineistoviite<input type="text" name="reference" required placeholder="Issue #12 / commit abc123 / testi T05"></label>
+          <label>Aineistoviite<input type="text" name="reference" required placeholder="GitHub-issue #12 / commit abc123 / testitapaus T05"></label>
           <div class="privacy-row">
             <label class="privacy-confirm"><input type="checkbox" name="privacy" required> Vahvistan, etten syöttänyt henkilötietoja, salaisuuksia tai luottamuksellista aineistoa.</label>
             <button class="button button-primary" type="submit">Lisää lokiin</button>
@@ -1711,7 +1712,7 @@
             <p class="matrix-group">Opiskelija ohjelmoi</p>
             <label class="matrix-row"><input type="checkbox" data-evidence="p4"><span><strong>käyttää rakenteista ohjelmointia toteutuksissa</strong> Laskentalogiikka omana moduulina työviikolla 8: funktiot, ehdot ja tietorakenteet raporttien ryhmittelyssä; moduulijako client, server, routes ja laskenta.</span></label>
             <label class="matrix-row"><input type="checkbox" data-evidence="p5"><span><strong>kirjoittaa ylläpidettävää ohjelmakoodia</strong> Kolme dokumentoitua refaktorointia työviikolla 15 ennen/jälkeen-diffeineen ja perusteluineen; nimeämiskäytäntö ja vastuiden jako kuvattuina.</span></label>
-            <label class="matrix-row"><input type="checkbox" data-evidence="p6"><span><strong>tulkitsee suunnitelmia ja toteuttaa käyttöliittymän tai sen osia</strong> Kirjausnäkymä toteutettu työviikolla 5 työviikon 2 rautalangan mukaan itse ilman UI-kirjastoa; mobiili ja palautteet käyttäjälle viimeistellään työviikolla 12.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p6"><span><strong>tulkitsee suunnitelmia ja toteuttaa käyttöliittymän tai sen osia</strong> Kirjausnäkymä toteutettu työviikolla 5 työviikon 2 rautalangan mukaan itse ilman valmista käyttöliittymäkirjastoa; mobiili ja palautteet käyttäjälle viimeistellään työviikolla 12.</span></label>
             <label class="matrix-row"><input type="checkbox" data-evidence="p7"><span><strong>tulkitsee suunnitelmia ja toteuttaa ohjelmiston toimintoja</strong> Hallintanäkymien toiminnot työviikolla 6 käyttäjätarinoiden ja hyväksymiskriteerien perusteella; omien kirjausten hallinta täydentää työviikolla 7. Issue-commit-ketju näkyvissä.</span></label>
             <p class="matrix-group">Opiskelija toimii ohjelmistokehitystiimin jäsenenä</p>
             <label class="matrix-row"><input type="checkbox" data-evidence="p8"><span><strong>sopii tehtävistä tiimin muiden jäsenten kanssa</strong> Issue-taulu työviikolta 2 alkaen ja viikoittainen sopiminen ohjaajan kanssa tiimiroolissa; tehtävien tila näkyvänä koko projektin ajan.</span></label>
@@ -1759,6 +1760,14 @@
             <label class="matrix-row"><input type="checkbox" data-evidence="k7"><span><strong>dokumentoi ohjelmiston sovitulla tavalla</strong> README työviikolla 15: käyttöönotto, käynnistys, riippuvuudet rooleineen ja ympäristöasetukset; lisäksi asiakkaan pikaohjeet molemmille rooleille.</span></label>
           </div>
         </details>
+      </section>
+
+      <!-- ============ TERMIT / SANASTO ============ -->
+      <section class="view" data-view="termit" id="view-termit">
+        <p class="view-eyebrow">Sanasto · kertausta varten</p>
+        <h1 class="view-title">Tämän projektin termit</h1>
+        <p class="view-lead">Jokainen termi selitetään myös siinä kohdassa, jossa se tulee ensimmäisen kerran vastaan. Tänne voit palata, kun tunnus tai lyhenne unohtuu. Sanastossa ovat vain ne termit, joita tässä projektissa oikeasti käytetään.</p>
+        <dl class="glossary view-section" data-termisto></dl>
       </section>
 
       <!-- ============ GALLERIA ============ -->

@@ -40,6 +40,40 @@ window.NAYTTOPROJEKTI = {
     49: "Demonstration"
   },
 
+  /* Glossary: only the terms this project actually uses. Rendered into the
+     Glossary view and into the weekly "New terms this week" boxes. Every term
+     is also explained in running text where it first comes up. */
+  termisto: [
+    { termi: "repository", nimi: "Repo", selite: "The project folder whose whole history Git stores. Your site lives here, and the public copy on GitHub is what GitHub Pages serves." },
+    { termi: "commit", selite: "One named, saved change in the repository's history. A commit is the smallest work sample you can point an assessor at." },
+    { termi: "issue", nimi: "GitHub issue", selite: "A numbered task card in the repository, with its own description and done-when condition. The work of this project is planned as issues and closed with commits." },
+    { termi: "branch", selite: "A named line of commits. This project publishes from the main branch and uses a short feature branch for the week-45 feedback change." },
+    { termi: "JSON", nimi: "JavaScript Object Notation", selite: "A plain-text format for structured data. Every grammar table on this site is stored as JSON under data/ and read while the page is running." },
+    { termi: "fetch()", selite: "The browser call that loads a file — here a JSON file — while the page is open. It works only over http://, which is why the site is always opened through a local web server." },
+    { termi: "unit test", selite: "A small automated check that runs one of your functions and compares the result with the value you wrote down beforehand. This project's unit tests run in the browser from tests/tests.html." },
+    { termi: "CDN", nimi: "Content delivery network", selite: "A public server that hosts a library's files, so you link to them instead of copying them into your repository. Bootstrap, the icons and the fonts are loaded this way, each with a pinned version." },
+    { termi: "bundler", selite: "A tool that packs many source files into one file for the browser. This project has none: the files you write are exactly the files that go live." },
+    { termi: "URL", nimi: "Web address", selite: "The address a page is opened from. \"The public URL\" in these instructions always means your GitHub Pages address — the one anyone can open." },
+    { termi: "SVG", nimi: "Scalable Vector Graphics", selite: "An image written as text and drawn from shapes, so it stays sharp at any size. The flag and column motif are drawn as your own SVG." },
+    { termi: "P0", nimi: "Must-have core", selite: "The pages and features that have to be finished before anything else is started. Here: Home, Alphabet, Pronouns, Nouns & Articles, Numbers with the converter, and the Phrasebook." },
+    { termi: "P1", nimi: "Important follow-up", selite: "Work that is started only once every P0 item works. Here: the Verbs overview, and only if P0 is complete by the end of week 46." },
+    { termi: "P2", nimi: "Optional extra", selite: "Work that may be dropped without failing the project. Here: word-building." },
+    { termi: "XSS", nimi: "Cross-site scripting", selite: "An attack where text a visitor types is rendered as code by the page. Building every element with textContent instead of innerHTML is what stops it here." },
+    { termi: "deploy", selite: "Publishing the current version to the public address. In this project a deploy is a push to the main branch, which GitHub Pages then serves.", viikko: 36 },
+    { termi: "2FA", nimi: "Two-factor authentication", selite: "A second step on top of the password when you sign in to GitHub. Switched on in week 36 and part of the device-security evidence.", viikko: 36 },
+    { termi: "backlog", selite: "The ordered list of everything still to do, kept as issues and sorted P0 first. It is re-prioritised after the week-44 review.", viikko: 36 },
+    { termi: "API", nimi: "Application programming interface", selite: "The set of functions one piece of software offers another. The Fetch API is the browser's own interface for loading files; this project talks to no external service.", viikko: 37 },
+    { termi: "DOM", nimi: "Document Object Model", selite: "The browser's live tree of everything on the page. Your JavaScript renders the grammar tables by creating DOM elements, not by writing HTML strings.", viikko: 37 },
+    { termi: "IPA", nimi: "International Phonetic Alphabet", selite: "The standard symbols for speech sounds, written in square brackets. Every letter's IPA value is typed from the reference PDF and checked against it.", viikko: 37 },
+    { termi: "tag", nimi: "Git tag", selite: "A permanent name pinned to one exact commit, such as v0.5 or v1.0. A tag is how you can still show an assessor precisely what the reviewers saw.", viikko: 40 },
+    { termi: "T01", nimi: "Test case identifier", selite: "T means test case and the number identifies it: T01 is the first, T02 the second. The expected result is written down before the test is run.", viikko: 44 },
+    { termi: "regression test", selite: "A test added after a bug is fixed, so the same bug cannot come back unnoticed. Every debugging chain in this project ends in one.", viikko: 44 },
+    { termi: "UI", nimi: "User interface", selite: "The part of the site a visitor sees and operates: the input, the button, the result text. The number converter's UI is built by hand, without Bootstrap components.", viikko: 45 },
+    { termi: "refactor", selite: "Improving the structure of working code without changing what it does — renaming, extracting, deleting. The unit tests are what make it safe.", viikko: 47 },
+    { termi: "RC", nimi: "Release candidate", selite: "A version finished enough to be tested as if it were the release. RC1 is the first one; only blocking fixes go in after it.", viikko: 48 },
+    { termi: "LAN", nimi: "Local area network", selite: "The network your own devices share, for example your phone's hotspot. The deployment path runs localhost → LAN → GitHub Pages over HTTPS.", viikko: 48 }
+  ],
+
   /* ---- engine UI strings (English site) ----
    * Keys match app.js v2's UI_OLETUS exactly (kaksipalstainen layout engine).
    * The engine's own defaults are Finnish; every key is overridden here so
@@ -118,12 +152,21 @@ window.NAYTTOPROJEKTI = {
     logReferencePrefix: "Evidence:",
     logRemoveAria: "Remove log entry",
     logRemove: "Remove",
+    glossaryWeekLabel: "New terms this week",
+    glossaryWeekLink: "Whole glossary →",
+    glossaryWeekChip: (w) => `week ${w}`,
+    glossaryWeekChipAria: (w) => `This term comes up for the first time in week ${w}`,
+    glossaryCount: (n) => `${n} ${n === 1 ? "term" : "terms"}`,
+    glossaryEmpty: "This project has no separate glossary.",
     resetConfirm: (plan, files) => `Reset the tasks, the project journal${plan}, the ticks and the AI log in this browser? Download the project journal${files} first if you want to keep your answers.`
   },
 
   /* ---- paper pack strings (English) ---- */
   lataukset: {
     lang: "en",
+    sanastoOtsikko: "Glossary",
+    sanastoJohdanto: "The identifiers and technical terms of this project in the order you meet them. Each one is also explained on the site where it first comes up.",
+    sanastoViikko: (w) => `week ${w}`,
     tyopakettiOtsikko: "Paper work pack",
     tyopakettiTiedostoOtsikko: "work pack",
     kansiJohdanto: "This pack is a schedule and a checklist for the moments when the site is not open. The project journal is written on the site and committed to the repository's project-docs folder. A tick in this booklet is not a submission — the work always lives in the Git repository.",
@@ -208,7 +251,7 @@ window.NAYTTOPROJEKTI = {
     vihjeet: {
       work: "Name the concrete files, solutions, issues and tests.",
       reason: "The decision, the alternatives, the justification and what you learned.",
-      evidence: "e.g. commit link, issue #12 or test T05.",
+      evidence: "e.g. a commit link, GitHub issue #12 or test case T05.",
       next: "What is the first thing you will continue from next time?"
     }
   },
@@ -307,10 +350,11 @@ window.NAYTTOPROJEKTI = {
   viikkoOhjeet: {
     36: {
       type: "pohjustus",
+      termit: ["deploy", "2FA", "backlog"],
       feature: "After this week an empty but real site — plain index.html with Bootstrap loaded from a CDN — is live at your public GitHub Pages URL, the plan is drafted, and the P0 work is split into issues.",
       excerpt: "Right now it lives in a 58-page reference PDF that only I can navigate.",
-      connection: "Everything starts from the brief: before the first page you agree what the site must do, set up the tools, and prove the publishing path works while the site is still empty — when a deploy fails now, nothing of value is at risk.",
-      deliverable: "Kickoff notes with a question list, a public repository with a privacy check done, the site folder served by a local web server on your computer, the first deploy published over your phone hotspot and live at the public URL, the technical plan drafted and the P0 backlog as issues.",
+      connection: "Everything starts from the brief: before the first page you agree what the site must do, set up the tools, and prove the publishing path works while the site is still empty — when a deploy (publishing the current version to the public address) fails now, nothing of value is at risk.",
+      deliverable: "Kickoff notes with a question list, a public repository with a privacy check done, the site folder served by a local web server on your computer, the first deploy published over your phone hotspot and live at the public URL, the technical plan drafted and the P0 backlog — the ordered list of what is still to do — as issues.",
       why: "If open questions stay as silent assumptions, you build the wrong site. If the first deploy waits until November, you debug the publishing path at the worst possible moment. And because the repository is public from day one, the privacy check cannot wait.",
       done: "The public URL opens on a device that has never seen the project, and another person understands from the README and the plan what is being built and for whom.",
       record: "Write in the Week 36 entry: the open questions and their answers (decision / open / assumption), the repository link, the first commit hash, and a screenshot of the public URL open on your phone.",
@@ -327,7 +371,7 @@ window.NAYTTOPROJEKTI = {
         ["Read the brief like a contract.", "Underline what is required, then write every unclear point as a question. Bring the questions to a 15-minute kickoff talk with the supervisor and record each answer as a decision, an open item or an assumption."],
         ["Set up the tools.", "Install VS Code and the Live Server extension. Create the site folder with index.html, css/style.css and js/main.js — no Node, no npm, no build step. Open the page through the local server, never by double-clicking the file: fetch() cannot read data/*.json over file://."],
         ["Share your phone's connection.", "Create a hotspot on your phone and connect your computer to it, and do the first deploy over that connection. Note what you set up (hotspot name, a strong password) and why a connection of your own keeps this off the school network."],
-        ["Create the public repository and publish.", "Do the privacy check first: no personal data, no school identifiers, agree your public author name. Add a README skeleton, commit, push, switch GitHub Pages on for the main branch and open the public URL on another device. This is the moment the publishing path exists."],
+        ["Create the public repository and publish.", "Do the privacy check first: no personal data, no school identifiers, agree your public author name. Add a README skeleton — README.md is the front page GitHub shows for the repository, where you say what the project is and how to run it — then commit, push, switch GitHub Pages on for the main branch and open the public URL on another device. This is the moment the publishing path exists."],
         ["Draft the plan and split the work.", "Fill in the plan form below — the pre-filled sections come from the brief; the decisions are yours. Mark the supervisor's open items open. Turn the P0 pages into GitHub issues, each with a done-when condition and a size estimate, prioritised P0/P1/P2."]
       ],
       help: {
@@ -354,6 +398,7 @@ window.NAYTTOPROJEKTI = {
 
     37: {
       type: "feature",
+      termit: ["API", "DOM", "IPA"],
       feature: "The first real content is live: the Alphabet & Pronunciation page renders every letter, its IPA value and the digraphs — all fetched from a JSON file, none of it typed into the HTML.",
       excerpt: "Every table on the site must be checked against my PDF — an invented form is a bug.",
       connection: "This week sets the pattern every later page follows: content lives in data/*.json, the page fetches it at runtime with one shared loader, and the PDF is the source of truth. Get this right once and weeks 39–46 reuse it.",
@@ -363,10 +408,10 @@ window.NAYTTOPROJEKTI = {
       record: "Write in the Week 37 entry: why JSON files + runtime fetch (the alternatives you rejected), the four-key record shape you agreed for words.json, which PDF pages you transcribed, what the data check caught, and the commit links.",
       skills: ["data modelling", "fetch API", "JSON", "DOM rendering"],
       steps: [
-        ["Decide and document the data store.", "Content goes to data/*.json and is fetched at runtime. Write the decision and its justification into the plan (this is the data-store work sample) — what did you reject (tables typed into the HTML, a database, a CMS) and why?"],
-        ["Type letters.json from your PDF.", "Pages 7 and 9–11: every letter, IPA, the stressed/unstressed variants, diacritics and digraphs; page 41 notes on capitalisation. Type it yourself — no model knows these values, and every line you type is a line you can verify."],
+        ["Decide and document the data store.", "Content goes to data/*.json and is fetched at runtime. Write the decision and its justification into the plan (this is the data-store work sample) — what did you reject (tables typed into the HTML, a database, a content management system) and why?"],
+        ["Type letters.json from your PDF.", "Pages 7 and 9–11: every letter, its value in the International Phonetic Alphabet (IPA) — the standard symbols for speech sounds, written in square brackets — the stressed/unstressed variants, diacritics and digraphs; page 41 notes on capitalisation. Type it yourself — no model knows these values, and every line you type is a line you can verify."],
         ["Agree one record shape for vocabulary.", "Every word entry gets the same four keys: word, partOfSpeech, translation, example. Start data/words.json with ten words from PDF page 12. Week 46 builds the whole vocabulary page on this shape, so decide it now, not then."],
-        ["Build the page on one shared loader.", "js/data.js exports a single loadJSON() that fetches, checks response.ok and throws a readable error. The Alphabet page renders three states into one container: \"Loading…\", an error message that names the file, and the table."],
+        ["Build the page on one shared loader.", "js/data.js exports a single loadJSON() that calls the browser's Fetch API, checks response.ok and throws a readable error — an application programming interface (API) is the set of functions one piece of software offers another, and here the browser offers fetch(). The Alphabet page renders three states into one container: \"Loading…\", an error message that names the file, and the table. Build them with createElement as elements of the Document Object Model (DOM), the browser's live tree of the page, never as an HTML string."],
         ["Check the data, then verify against the source.", "Open tools/check-data.html, add one check of your own, and prove it works by breaking a line on purpose. Then read the rendered table against the PDF, letter by letter. Fix, commit, deploy."]
       ],
       help: {
@@ -403,7 +448,7 @@ window.NAYTTOPROJEKTI = {
         ["Measure the 'before'.", "Open your current site in DevTools → Network, hard-reload, and write down the transferred size and the number of requests. Run Lighthouse on the public URL and write down the scores. These are your before-numbers, from your own pages."],
         ["Compare three options.", "Bootstrap, one other component library (for example Bulma or Pico.css) and the no-library option. For each: what do its navbar, table, card and accordion components give you, what does it cost in transferred KB, what does its documentation promise about accessibility, and what are its limits for YOUR grammar tables?"],
         ["Talk it through, then decide.", "Present the memo to the supervisor (client's representative), record their view, then write the decision into the plan: which components you build on, and where you write your own CSS instead. The decision is yours; the discussion is the work sample for solving problems together."],
-        ["Take Bootstrap into use and configure it.", "Add the CSS link in the head and the bundle script at the end of the body, with a pinned version (never @latest) and an integrity hash. Configure the theme by overriding Bootstrap's CSS variables in css/style.css, loaded AFTER Bootstrap — you never edit the library itself."],
+        ["Take Bootstrap into use and configure it.", "Add the CSS link in the head and the bundle script at the end of the body, with a pinned version (never @latest) and an integrity hash — a fingerprint of the file that the browser checks, so an altered file on the CDN is refused instead of run. Configure the theme by overriding Bootstrap's CSS variables in css/style.css, loaded AFTER Bootstrap — you never edit the library itself."],
         ["Build the shell and measure again.", "The same navbar markup on every page, with aria-current=\"page\" on the current one. Then reload with DevTools open, note the new transferred size and the new Lighthouse scores next to the before-numbers, and deploy."]
       ],
       help: {
@@ -467,6 +512,7 @@ window.NAYTTOPROJEKTI = {
 
     40: {
       type: "feature",
+      termit: ["tag"],
       feature: "The Nouns, Articles & Gender page is live: gender rules, plural endings, definite/indefinite articles and the articulated prepositions — each rule section in a Bootstrap accordion, each matrix built by the same renderTable(). Before the break: v0.5 is tagged and the week-44 review is booked, in writing.",
       excerpt: "which article goes with which gender",
       connection: "Articles make no sense without gender, and every table on PDF pages 8 and 19–21 is the same matrix: gender × number. One mental model, one function — and with four content pages live, the site is worth showing to the client.",
@@ -479,7 +525,7 @@ window.NAYTTOPROJEKTI = {
         ["Model the matrix.", "Gender × number is the shape of every table here. Design the articles section of data/grammar.json so the same function renders definite articles, indefinite articles and articulated prepositions without special cases."],
         ["Type and verify the data.", "PDF pages 8 and 19–21, including the elision rules and the neuter-to-feminine plural switch — these details are exactly what a generator would invent wrongly. Verify line by line."],
         ["Compose the page with an accordion.", "One accordion item per topic: gender rules, plural endings, definite articles, indefinite articles, articulated prepositions. Short prose first, then the matrix, then the PDF's example sentences with their translations. Build the accordion items in a loop from the same array that feeds the tables."],
-        ["Tag v0.5.", "git tag v0.5 && git push --tags. Deploy. This is what the reviewers will see — resist polishing it during the break."],
+        ["Tag v0.5.", "git tag v0.5 && git push --tags. A tag is a permanent name pinned to one exact commit, so you can always show precisely what the reviewers saw. Deploy. This is what the reviewers will see — resist polishing it during the break."],
         ["Book the review in writing.", "Agree with the client (supervisor as representative) and the external tester: date, time, place in week 44, and what they will look at. Commit the note to project-docs/review-agreement.md. Send them the public URL."]
       ],
       help: {
@@ -505,6 +551,7 @@ window.NAYTTOPROJEKTI = {
 
     44: {
       type: "katselmointi",
+      termit: ["T01", "regression test"],
       feature: "The client and an external tester have used v0.5 at the public URL; their findings are recorded in their own words; the backlog is re-prioritised; the first complete debugging chain is documented from a real review finding.",
       excerpt: "I want to hear, in their words, whether they can find the alphabet, read a pronoun table and understand what this language is — without me explaining anything.",
       connection: "Three weeks away from the code, and now other people meet it. Everything in phase C is derived from what happens in this session — that is why the review is a week, not a meeting.",
@@ -517,7 +564,7 @@ window.NAYTTOPROJEKTI = {
         ["Run the session, mouth shut.", "Give the tester the three tasks from the review agreement and watch. Write down what they say and do — their words, not yours. Every hesitation is a finding."],
         ["Separate the voices.", "In the review log: left column what was said and done (verbatim), right column your interpretation. The client (supervisor as representative) decides on each finding: fix now, later, or not at all."],
         ["Re-plan.", "Turn the accepted findings into issues with done-when conditions, re-prioritise the backlog, and compare your original size estimates with what things actually took — write the delta down."],
-        ["Fix a small batch and document chain 1/3.", "Pick one real finding that is a bug. Reproduce it, find the cause, fix it in a commit, re-test, and add a regression test to the matrix. This is the complete chain, written down as it happened."],
+        ["Fix a small batch and document chain 1/3.", "Pick one real finding that is a bug. Reproduce it, find the cause, fix it in a commit, re-test, and add a regression test to the matrix — a numbered test case (T01, T02, T03 and so on) whose only job is to catch this bug if it ever comes back. This is the complete chain, written down as it happened."],
         ["Check the t12 open item.", "Ask the supervisor for the institution's line on the device-security evidence, and update the plan's open items."]
       ],
       help: {
@@ -530,7 +577,7 @@ window.NAYTTOPROJEKTI = {
           "Chain 1/3: pick a finding that reproduces reliably. Follow the template below — every arrow is a line you write.",
           "Keep the DevTools console open while you reproduce: on a fetch-driven site the console usually names the failing file before you have finished guessing."
         ],
-        code: "DEBUGGING CHAIN TEMPLATE (project-docs/debugging-chains.md)\n## Chain 1 — <short name> (week 44)\n- Observation (tester's words, verbatim): \"…\"\n- Reproduction: steps 1-2-3 that make it happen every time\n- Cause: the actual reason in the code/data (not a guess)\n- Fix: commit <hash> — what changed and why\n- Re-test: same steps, expected vs observed result\n- Regression test: T<nn> added to the matrix so it cannot return silently",
+        code: "DEBUGGING CHAIN TEMPLATE (project-docs/debugging-chains.md)\n## Chain 1 — <short name> (week 44)\n- Observation (tester's words, verbatim): \"…\"\n- Reproduction: steps 1-2-3 that make it happen every time\n- Cause: the actual reason in the code/data (not a guess)\n- Fix: commit <hash> — what changed and why\n- Re-test: same steps, expected vs observed result\n- Regression test: new numbered test case T<nn> added to the matrix so it cannot return silently",
         test: "Give the review log to someone who was not present: they can tell which lines are the tester's words and which are your interpretation, without asking you.",
         links: []
       },
@@ -540,6 +587,7 @@ window.NAYTTOPROJEKTI = {
 
     45: {
       type: "feature",
+      termit: ["UI"],
       feature: "The Numbers & Comparison page is live with a number converter built from scratch: type 319, get \"Trecentodecenove\" — pure functions in js/numbers.js, unit-tested in the browser against the PDF before the code ran.",
       excerpt: "how to count to ten thousand",
       connection: "Every other page renders data; this one computes. The converter is the one part of the site built without Bootstrap components — your own markup, your own CSS, your own logic and your own tests — and the review feedback from week 44 lands in the same deploy.",
@@ -551,7 +599,7 @@ window.NAYTTOPROJEKTI = {
       steps: [
         ["Read the rules like a spec.", "PDF pages 42–45: the -milla forms, the dash rule for 120–190/220–290/…, vowel clipping (Cinquantoto), and the paragoge/apocope list. Write each rule as one line in your own words — this list becomes your test plan."],
         ["Write the tests first.", "Take the test file from the help block: about twenty lines of your own, no framework and nothing to install. For each rule write 1–2 tests with the expected string FROM THE PDF and the page number in the test name. Open tests/tests.html: all red. Commit — this commit is the proof of test-first."],
-        ["Implement in small functions.", "js/numbers.js is an ES module that exports numberToIonian(): units → tens → hundreds → thousands, each its own function, composed at the top. No DOM, no fetch — that is what makes it testable. When a test goes green, commit. When one stays red, check the PDF before the code: the data can be wrong too."],
+        ["Implement in small functions.", "js/numbers.js is an ES module — a JavaScript file that exports functions for other files to import — and it exports numberToIonian(): units → tens → hundreds → thousands, each its own function, composed at the top. No DOM, no fetch — that is what makes it testable. When a test goes green, commit. When one stays red, check the PDF before the code: the data can be wrong too."],
         ["Build the UI from scratch.", "A plain <input> with a real <label>, a result element with aria-live=\"polite\", and your own CSS. No Bootstrap components in this one view — this is the built-by-hand work sample. Handle junk input kindly (empty, letters, negative, too big)."],
         ["Ship the feedback change.", "Implement the week-44 change in the same branch, link the commit to the finding, merge to main, deploy."]
       ],
@@ -616,6 +664,7 @@ window.NAYTTOPROJEKTI = {
 
     47: {
       type: "laatu",
+      termit: ["refactor"],
       feature: "The site passes a real quality bar: the full test matrix is run with results recorded, all three debugging chains are complete, accessibility is verified with before/after Lighthouse pairs, every page validates as HTML, and the code has been refactored while every test stays green.",
       excerpt: "Accuracy matters more than volume.",
       connection: "Everything exists; now you prove it holds. The tests you planned in week 46 get their observed-result column, the chains get their third member, and the refactor shows you can improve code without breaking it — because the tests say so.",
@@ -629,7 +678,7 @@ window.NAYTTOPROJEKTI = {
         ["Complete the chains.", "Chain 3/3 from a real matrix failure or a review remnant. Compile chains 1–3 into debugging-chains.md in identical format — observation to regression test, no gaps."],
         ["Audit accessibility with pairs.", "Lighthouse on every page: record the before scores. Fix keyboard order, focus visibility, contrast, alt texts, labels and heading levels. Record the after scores next to the before ones — the pair is the work sample."],
         ["Validate and review what you load.", "Run every page through the W3C HTML validator and fix what it finds; Bootstrap's markup patterns have required attributes and a duplicate id is a real bug. Then review your external code: the Bootstrap version is pinned (never @latest), the integrity hash is there, and you can say what each external file does. Grep the repository for secrets, and confirm the search's textContent behaviour once more on the deployed site."],
-        ["Refactor with a safety net.", "Rename the unclear, extract the duplicated, delete the dead — in small commits, reloading tests/tests.html between each. If a test goes red, the refactor stops until it is green."]
+        ["Refactor with a safety net.", "Refactoring means improving the structure of working code without changing what it does. Rename the unclear, extract the duplicated, delete the dead — in small commits, reloading tests/tests.html between each. If a test goes red, the refactor stops until it is green."]
       ],
       help: {
         title: "The accessibility audit and the validation pass, step by step",
@@ -655,6 +704,7 @@ window.NAYTTOPROJEKTI = {
 
     48: {
       type: "julkaisu",
+      termit: ["RC", "LAN"],
       feature: "Version 1.0 is released: content frozen, tested in a clean environment, verified by an external user who learned a café dialogue from the site alone — and the repository documentation lets a stranger run the project without asking you anything.",
       excerpt: "a README good enough that another person can get the project running without asking me anything.",
       connection: "The release candidate meets its real test: not your machine, not your explanations — a clean environment and a person who owes you nothing. What they stumble on, you fix; then it is v1.0.",
@@ -664,10 +714,10 @@ window.NAYTTOPROJEKTI = {
       record: "Write in the Week 48 entry: the clean-environment result, the tester's words (verbatim, separated), the instruction fixes their hesitations produced, and the v1.0 release link.",
       skills: ["release management", "user testing", "technical writing", "clean-environment verification"],
       steps: [
-        ["Freeze and branch.", "Declare the content frozen: only blocking fixes from here. Tag the release candidate."],
+        ["Freeze and branch.", "Declare the content frozen: only blocking fixes from here. Tag the release candidate (RC) — the version that is finished enough to be tested as if it were the release."],
         ["Test in a clean environment.", "Fresh clone on a machine (or account) that has never run the project. Follow the README literally — including how to start a local server, because fetch() will not read the data files over file:// — and fix the README, not your memory, wherever it fails."],
         ["Run the user test.", "A new tester (not the week-44 one, if possible) gets one written task: 'Using this site, learn to order in the café dialogue.' You watch in silence. Record their words verbatim; every hesitation becomes an instruction or UI fix. Note their role and the date — same discipline as week 44."],
-        ["Describe the deployment path.", "One page from your own artefacts: the week-36 phone screenshot (the public URL over your hotspot), the Pages URL, the HTTPS padlock — localhost → your own hotspot → GitHub Pages/CDN. This is the network work sample, in your own images."],
+        ["Describe the deployment path.", "One page from your own artefacts: the week-36 phone screenshot (the public URL over your hotspot), the Pages URL, the padlock in the address bar — localhost on your own machine → your phone's hotspot, a local area network (LAN) → GitHub Pages, served over HTTPS (http:// with encryption). This is the network work sample, in your own images."],
         ["Release v1.0.", "Apply the fixes, tag v1.0, write the GitHub release notes (what is in, what is 'coming later'), deploy, and check the credit and terms are visible one last time."]
       ],
       help: {

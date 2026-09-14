@@ -41,18 +41,18 @@ th { background: #ede9fe; }
 </table><p class="muted">Palautus viimeistään työviikon 18 lopussa. Sivusto: tehtävien tarkat ohjeet, toteutusavut ja projektipäiväkirja.</p>
 <h1 class="page">Vaihe A – Palvelun ydin: toimeksianto, suunnitelma ja julkaistu pelilista</h1>
 <div class="wk"><h2>Työviikko 1 / 18 – Aloitus</h2>
-<p class="feature">Kehitysympäristö toimii, repository on olemassa julkisen repon pelisäännöillä, ja toimeksiannosta on kirjattu kysymyslista ohjaajalle; ensimmäinen commit on tehty.</p>
+<p class="feature">Kehitysympäristö toimii, repository on olemassa julkisen repositoryn pelisäännöillä, ja toimeksiannosta on kirjattu kysymyslista ohjaajalle; ensimmäinen commit on tehty.</p>
 <p class="task">☐&nbsp; Lue toimeksianto ja kirjaa vähintään kahdeksan kysymyksen lista ohjaajalle ja asiakkaalle.</p>
-<p class="task">☐&nbsp; Asenna ja todenna työkalut (Node LTS, Git ja editori) ja luo Vite + React -projekti.</p>
+<p class="task">☐&nbsp; Asenna ja todenna työkalut (Node.js:n LTS-versio eli pitkään tuettu vakaa versio, Git ja editori) ja luo Vite + React -projekti.</p>
 <p class="task">☐&nbsp; Luo etärepository, tee ensimmäiset commitit ja push.</p>
-<p class="task">☐&nbsp; Tee julkisen repon tehtävät: yksityisyystarkistus, tekijänimestä sopiminen ja alaikäisellä huoltajan suostumus ohjaajan kautta.</p>
+<p class="task">☐&nbsp; Tee julkisen repositoryn tehtävät: yksityisyystarkistus, tekijänimestä sopiminen ja alaikäisellä huoltajan suostumus ohjaajan kautta.</p>
 <p class="done"><strong>Valmis kun:</strong> Ohjaaja avaa repositoryn osoitteen toisella koneella: README kertoo mikä projekti on, ja `npm install &amp;&amp; npm run dev` käynnistää sovellusrungon. Kysymyslista on `project-docs/kysymykset.md`-tiedostossa.</p>
 <p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Repositoryn osoite, ensimmäisen commitin tunniste, työkalutodennusten tulosteet ja project-docs/kysymykset.md.</p>
 </div>
 <div class="wk"><h2>Työviikko 2 / 18 – Suunnitelma ja tietomalli</h2>
 <p class="feature">Tekninen suunnitelma on repositoryssa: priorisoidut käyttäjätarinat (P0/P1/P2), tietomalli, tietovarastovertailu, sivukartta ja rautalangat, ja P0 on pilkottu issueiksi työmääräarvioineen.</p>
 <p class="task">☐&nbsp; Kirjoita käyttäjätarinat hyväksymiskriteereineen ja priorisoi P0, P1 ja P2 ohjaajan kanssa.</p>
-<p class="task">☐&nbsp; Piirrä tietomalli sekä sivukartta ja rautalangat keskeisistä näkymistä; profiilisivu tarkimmin.</p>
+<p class="task">☐&nbsp; Piirrä tietomalli sekä sivukartta ja rautalangat eli karkeat luonnokset näkymien rakenteesta; profiilisivu tarkimmin.</p>
 <p class="task">☐&nbsp; Vertaile tietovarastot (SQLite, JSON-tiedosto, palvelintietokanta) ja perustele valinta.</p>
 <p class="task">☐&nbsp; Pilko P0 issueiksi ja arvioi jokaisen työmäärä.</p>
 <p class="done"><strong>Valmis kun:</strong> Suunnitelma on `project-docs/suunnitelma.md`-tiedostossa, ohjaaja on kuitannut P0-rajauksen kirjallisesti (issue-kommentti), ja jokaisella P0-issuella on työmääräarvio.</p>
@@ -61,7 +61,7 @@ th { background: #ede9fe; }
 <div class="wk"><h2>Työviikko 3 / 18 – Julkaistu runko</h2>
 <p class="feature">Reititetty React-runko ja Express + SQLite -perusta ovat julkaistuna oikeassa osoitteessa: tyhjä sivu tuotannossa ennen valmista sivua localhostissa.</p>
 <p class="task">☐&nbsp; Tuo react-router perustellusti ja rakenna reitit etusivulle, peleille ja profiilille.</p>
-<p class="task">☐&nbsp; Pystytä Express ja /api/health; kytke SQLite ja luo skeema migraatioskriptillä.</p>
+<p class="task">☐&nbsp; Pystytä Express ja /api/health; kytke SQLite ja luo tietokannan rakenne eli skeema migraatioskriptillä, joka luo taulut ohjelmallisesti.</p>
 <p class="task">☐&nbsp; Vertaile julkaisualustat (Render, Railway, Fly.io), päätä ja julkaise.</p>
 <p class="task">☐&nbsp; Lähetä asiakkaalle tilannekatsaus ilman teknistä jargonia ja tallenna viesti repositoryyn.</p>
 <p class="done"><strong>Valmis kun:</strong> Julkinen osoite näyttää navigoitavan rungon, `/api/health` vastaa tuotannossa, ja tilannekatsausviesti on lähetetty ja tallennettu `project-docs/viestit.md`-tiedostoon.</p>
@@ -72,18 +72,18 @@ th { background: #ede9fe; }
 <p class="task">☐&nbsp; Tee siemendataskripti ja GET /api/games.</p>
 <p class="task">☐&nbsp; Rakenna PeliLista- ja PeliKortti-komponentit ja hae data omalla fetch-hookilla.</p>
 <p class="task">☐&nbsp; Käsittele lataus- ja virhetilat: kun API on alhaalla, käyttäjä näkee viestin eikä tyhjää sivua.</p>
-<p class="task">☐&nbsp; Kirjaa testitapaukset T1 ja T2 odotettuine tuloksineen ennen ajoa ja aja ne.</p>
+<p class="task">☐&nbsp; Kirjaa kaksi numeroitua testitapausta (T01 ja T02) odotettuine tuloksineen ennen ajoa ja aja ne.</p>
 <p class="done"><strong>Valmis kun:</strong> Lista renderöityy tuotannossa tietokannan datasta; kun API on alhaalla, sivu näyttää virheilmoituksen eikä jää tyhjäksi; molemmista kuvakaappaus.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Commitit, kuvakaappaus normaali- ja virhetilasta sekä testikirjaukset T1–T2.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Commitit, kuvakaappaus normaali- ja virhetilasta sekä testikirjaukset T01–T02.</p>
 </div>
 <div class="wk"><h2>Työviikko 5 / 18 – Pelin lisäys ja validointi</h2>
 <p class="feature">Peli lisätään itse alusta rakennetulla lomakkeella tähtiarvioineen ja kommentteineen, ja syötteet validoidaan sekä selaimessa että palvelimella; virheviestit kentittäin.</p>
-<p class="task">☐&nbsp; Rakenna lisäyslomake itse ilman UI-komponenttikirjastoa: label-kytkennät ja kontrolloitu tila.</p>
-<p class="task">☐&nbsp; Toteuta POST /api/games ja palvelinvalidointi, joka palauttaa 400:n ja virhelistan.</p>
+<p class="task">☐&nbsp; Rakenna lisäyslomake itse ilman valmista käyttöliittymäkirjastoa: label-kytkennät ja kontrolloitu tila.</p>
+<p class="task">☐&nbsp; Toteuta POST /api/games ja palvelinvalidointi, joka palauttaa virhekoodin 400 (virheellinen pyyntö) ja virhelistan.</p>
 <p class="task">☐&nbsp; Näytä virheviestit kenttien vieressä ohjelmallisesti kytkettyinä.</p>
-<p class="task">☐&nbsp; Kirjaa ja aja testitapaukset T3–T5: onnistuminen, rajat ja suora API-kutsu.</p>
+<p class="task">☐&nbsp; Kirjaa ja aja testitapaukset T03–T05: onnistuminen, rajat ja suora API-kutsu.</p>
 <p class="done"><strong>Valmis kun:</strong> Tyhjä nimi, ylipitkä nimi ja onnistunut lisäys käyttäytyvät ennalta kirjatun odotuksen mukaan sekä selaimessa että suoralla API-kutsulla (curl-tuloste talteen).</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Commitit, validointisääntötaulukko, curl-tulosteet ja testikirjaukset T3–T5.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Commitit, validointisääntötaulukko, curl-tulosteet ja testikirjaukset T03–T05.</p>
 </div>
 <h1 class="page">Vaihe B – Tilat, käyttäjät, profiilit ja asiakaskatselmointi</h1>
 <div class="wk"><h2>Työviikko 6 / 18 – Tilat ja tilahistoria</h2>
@@ -91,27 +91,27 @@ th { background: #ede9fe; }
 <p class="task">☐&nbsp; Määrittele tilat ja sallitut siirtymät itse ja kirjaa ne suunnitelmaan.</p>
 <p class="task">☐&nbsp; Toteuta tilanvaihto-API, joka kirjoittaa historiarivin samassa transaktiossa.</p>
 <p class="task">☐&nbsp; Näytä tilahistoria pelin sivulla ja toteuta ”pelaan parhaillaan” -merkintä.</p>
-<p class="task">☐&nbsp; Kirjaa ja aja testitapaus T6 ja todista tulos suoralla tietokantakyselyllä.</p>
+<p class="task">☐&nbsp; Kirjaa ja aja testitapaus T06 ja todista tulos suoralla tietokantakyselyllä.</p>
 <p class="done"><strong>Valmis kun:</strong> Tilan vaihto näkyy heti pelin sivulla, ja `status_history`-taulussa on rivi, jonka aikaleima ja vanha→uusi tila täsmäävät; suora tietokantakysely liitetty päiväkirjaan.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Commitit, siirtymätaulukko, sqlite3-kyselyn tuloste ennen ja jälkeen sekä T6.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Commitit, siirtymätaulukko, sqlite3-kyselyn tuloste ennen ja jälkeen sekä T06.</p>
 </div>
 <div class="wk"><h2>Työviikko 7 / 18 – Käyttäjät ja kirjautuminen</h2>
 <p class="feature">Rekisteröityminen ja kirjautuminen toimivat turvallisesti, ja vain kirjautunut käyttäjä voi muokata omia pelejään; todennettu myös API-tasolla.</p>
 <p class="task">☐&nbsp; Vertaile istuntopohjainen kirjautuminen ja token ohjaajan kanssa ja kirjaa päätös perusteluineen.</p>
 <p class="task">☐&nbsp; Toteuta rekisteröityminen bcrypt-hashilla: käyttäjänimi, salasana, sähköposti ja valinnainen profiilikuva.</p>
-<p class="task">☐&nbsp; Toteuta kirjautuminen ja suojaa muokkausreitit omistajuuden tarkistavalla middlewarella.</p>
-<p class="task">☐&nbsp; Kirjaa ja aja testitapaukset T7 ja T8: väärä salasana sekä toisen käyttäjän peli.</p>
+<p class="task">☐&nbsp; Toteuta kirjautuminen ja suojaa muokkausreitit middlewarella eli välikäsittelijällä, jonka läpi jokainen pyyntö kulkee ja joka tarkistaa omistajuuden.</p>
+<p class="task">☐&nbsp; Kirjaa ja aja testitapaukset T07 ja T08: väärä salasana sekä toisen käyttäjän peli.</p>
 <p class="done"><strong>Valmis kun:</strong> Toisen käyttäjän pelin muokkausyritys palauttaa 403 (curl-tuloste talteen); tietokannassa ja lokeissa ei näy selväkielistä salasanaa; vertailumuistiossa on ohjaajan kommentti.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Vertailumuistio ohjaajan kommentilla, commitit, curl-tulosteet sekä T7–T8.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Vertailumuistio ohjaajan kommentilla, commitit, curl-tulosteet sekä T07–T08.</p>
 </div>
 <div class="wk"><h2>Työviikko 8 / 18 – Profiilisivu</h2>
 <p class="feature">Julkinen profiilisivu kokoaa viikon 2 rautalangan mukaisesti parhaillaan pelattavat pelit, tilastot laitteittain ja tiloittain sekä tilahistorian.</p>
-<p class="task">☐&nbsp; Toteuta profiilin kooste-API ja laske lukumäärät SQL:n GROUP BY -kyselyillä.</p>
+<p class="task">☐&nbsp; Toteuta profiilin kooste-API ja laske lukumäärät tietokannan kyselykielellä SQL:llä (GROUP BY -kyselyt).</p>
 <p class="task">☐&nbsp; Rakenna profiilinäkymä itse rautalangan mukaan ja reititä se käyttäjänimen mukaan.</p>
 <p class="task">☐&nbsp; Varmista vierailijanäkymä yksityisessä selainikkunassa ilman kirjautumista.</p>
-<p class="task">☐&nbsp; Vertaa toteutusta rautalankaan, kirjaa poikkeamat perusteluineen ja aja testitapaus T9.</p>
+<p class="task">☐&nbsp; Vertaa toteutusta rautalankaan, kirjaa poikkeamat perusteluineen ja aja testitapaus T09.</p>
 <p class="done"><strong>Valmis kun:</strong> Vierailija näkee profiilin tilastoineen yksityisessä selainikkunassa, ja tilastoluvut täsmäävät tietokannan tarkistuskyselyyn; rautalankavertailu on päiväkirjassa.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Kuvakaappaus ja rautalanka rinnakkain, commitit, tarkistuskyselyn tuloste, T9 sekä ketju 1:n kirjaus, jos aito bugi osui tälle viikolle.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Kuvakaappaus ja rautalanka rinnakkain, commitit, tarkistuskyselyn tuloste, T09 sekä ketju 1:n kirjaus, jos aito bugi osui tälle viikolle.</p>
 </div>
 <div class="wk"><h2>Työviikko 9 / 18 – Haku ja suodatus</h2>
 <p class="feature">Pelilistaa voi hakea ja suodattaa nimen, laitteen ja tilan mukaan suoraan tietokantakyselyssä, ja toinen ulkoinen komponentti on tuotu perustellusti.</p>
@@ -138,7 +138,7 @@ th { background: #ede9fe; }
 <p class="task">☐&nbsp; Toteuta muutos feature-haarassa pienin commitein.</p>
 <p class="task">☐&nbsp; Avaa pull request, tee itsekatselmointi, yhdistä pääversioon ja ratkaise mahdollinen konflikti.</p>
 <p class="task">☐&nbsp; Päivitä suunnitelma ja arviot, tee kokoelmien laajennuspäätös ja kerro asiakkaalle mikä muuttui.</p>
-<p class="done"><strong>Valmis kun:</strong> PR:ssä on kuvaus, viittaus palautteeseen ja katselmointikommentti; muutos on tuotannossa; suunnitelman diff näyttää päivitetyt arviot.</p>
+<p class="done"><strong>Valmis kun:</strong> PR:ssä on kuvaus, viittaus palautteeseen ja katselmointikommentti; muutos on tuotannossa; suunnitelman muutosvertailu (diff) näyttää päivitetyt arviot.</p>
 <p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Pull requestin linkki ja commit-historia, suunnitelman diff kirjattuine kokoelmapäätöksineen sekä asiakasviesti.</p>
 </div>
 <div class="wk"><h2>Työviikko 12 / 18 – Responsiivisuus ja saavutettavuus</h2>
@@ -163,7 +163,7 @@ th { background: #ede9fe; }
 <p class="feature">Koodin rakenne ja nimeäminen on refaktoroitu pienin commitein ilman toiminnan muutosta, ja tietoturva-arvio on dokumentoitu ratkaisuineen.</p>
 <p class="task">☐&nbsp; Arvioi oma rakenne (komponenttien vastuut, moduulijako ja toisto) ja listaa refaktorointikohteet.</p>
 <p class="task">☐&nbsp; Refaktoroi lista pienin, kuvaavasti nimetyin commitein.</p>
-<p class="task">☐&nbsp; Kirjoita tietoturva-arvio: syötteet, salasanat, istunnot, tietojen näkyvyys, SQL-injektio ja XSS.</p>
+<p class="task">☐&nbsp; Kirjoita tietoturva-arvio: syötteet, salasanat, istunnot, tietojen näkyvyys, SQL-injektio ja XSS eli käyttäjän syöttämän koodin ajautuminen sivulla.</p>
 <p class="task">☐&nbsp; Aja testimatriisin ydinrivit uudelleen ennen ja jälkeen refaktoroinnin.</p>
 <p class="done"><strong>Valmis kun:</strong> Refaktorointicommitit ovat pieniä ja kuvaavasti nimettyjä; testimatriisin ydinrivit menevät läpi ennen ja jälkeen; `project-docs/tietoturva-arvio.md` kattaa vähintään viisi riskiä ratkaisuineen ja koodiviittauksineen.</p>
 <p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Commit-sarja, project-docs/tietoturva-arvio.md ja regressiokirjaus.</p>
@@ -211,6 +211,26 @@ th { background: #ede9fe; }
 <p class="task"><strong>Päivä 3</strong> · Harjoittelu: 8–10 min demo ja itsearviointi</p>
 <p class="task"><strong>Päivä 4</strong> · Puskuri: tarkistus toisen henkilön kanssa</p>
 <p class="task"><strong>Päivä 5</strong> · Luovutus ohjaajalle</p>
+<h1 class="page">Sanasto</h1><p class="muted">Projektin tunnukset ja ammattitermit siinä järjestyksessä, jossa ne tulevat vastaan. Jokainen on selitetty myös sivustolla ensimmäisen käytön kohdalla.</p><table>
+<tr><td style="width:24%"><strong>P0</strong></td><td><em>Pakollinen ydin.</em> Toiminnot, joiden on valmistuttava, tai palvelua ei ole: rekisteröityminen ja kirjautuminen, pelien lisäys ja muokkaus, tilanvaihto ja tilahistoria, julkinen profiili sekä julkaisu tuotantoon. P0 tehdään ensin, ennen P1:tä ja P2:ta.</td></tr>
+<tr><td style="width:24%"><strong>P1</strong></td><td><em>Tärkeä jatko.</em> Toiminnot, jotka tehdään sitten kun P0 toimii: haku ja suodatus, tähtiarvostelut ja kommentit sekä profiilikuva. Kokoelmat ovat P1-laajennus, josta päätetään erikseen työviikolla 11.</td></tr>
+<tr><td style="width:24%"><strong>P2</strong></td><td><em>Valinnainen lisä.</em> Toiminnot, jotka saavat jäädä kokonaan pois ilman että työ on kesken. Tässä projektissa P2 tarkoittaa viestejä toisten profiileihin: asiakas sanoi itse, että ne voivat jäädä.</td></tr>
+<tr><td style="width:24%"><strong>GitHub-issue</strong></td><td><em>Tehtäväkortti GitHubissa.</em> Yksi rajattu tehtävä GitHubin tehtävälistalla, esimerkiksi ”#23 Tilan vaihto kirjaa historiarivin”. Yksi issue on yleensä puolen tai yhden päivän työ.</td></tr>
+<tr><td style="width:24%"><strong>commit</strong></td><td><em>Tallennettu muutos.</em> Yksi nimetty muutos versionhallinnassa. Commitin viesti kertoo, mitä muutit; commit-tunniste on linkki, jolla työnäyte löytyy myöhemmin näyttömatriisista.</td></tr>
+<tr><td style="width:24%"><strong>repository</strong></td><td><em>Projektin koodivarasto.</em> Versionhallinnan säilytyspaikka, jossa ovat koodi, dokumentit ja koko muutoshistoria. Työnäyte on aina repositoryssa, ei tällä sivulla.</td></tr>
+<tr><td style="width:24%"><strong>haara</strong></td><td><em>Branch.</em> Erillinen kehityslinja, jossa muutoksen voi tehdä rauhassa ilman että pääversio rikkoutuu. Vaiheesta B alkaen isommat muutokset tehdään omassa haarassa.</td></tr>
+<tr><td style="width:24%"><strong>PR</strong></td><td><em>Pull request.</em> Pyyntö yhdistää oman haaran muutokset pääversioon. Pull requestin kuvaus kertoo mitä muutit, miksi ja miten testasit, ja muutos käydään läpi ennen yhdistämistä.</td></tr>
+<tr><td style="width:24%"><strong>API</strong></td><td><em>Rajapinta.</em> Osoitteisto, jonka kautta selain hakee ja tallentaa tietoa palvelimelta. Yksi osoite on API-reitti: esimerkiksi GET /api/games palauttaa pelilistan.</td></tr>
+<tr><td style="width:24%"><strong>JSON</strong><br><span class="muted">vko 2</span></td><td><em>Tiedon siirtomuoto.</em> Tekstimuoto, jossa tieto liikkuu selaimen ja palvelimen välillä. Samaa muotoa voi käyttää myös tiedostoon tallentamiseen, ja siksi JSON-tiedosto on yksi tietovarastovaihtoehto.</td></tr>
+<tr><td style="width:24%"><strong>tuotantobuild</strong><br><span class="muted">vko 3</span></td><td><em>Julkaisua varten koottu versio.</em> Kehitystiedostoista koottu paketti, joka viedään julkiseen osoitteeseen. Se ei ole sama kuin kehityspalvelimen versio, joten se testataan aina erikseen.</td></tr>
+<tr><td style="width:24%"><strong>T01</strong><br><span class="muted">vko 4</span></td><td><em>Testitapauksen tunnus.</em> T tarkoittaa testitapausta ja numero yksilöi sen: T01 on ensimmäinen testitapaus, T02 toinen. Odotettu tulos kirjataan aina ennen ajoa, ja sama tunnus seuraa testiä testimatriisiin asti.</td></tr>
+<tr><td style="width:24%"><strong>SQL</strong><br><span class="muted">vko 8</span></td><td><em>Tietokannan kyselykieli.</em> Kieli, jolla tietokannalta kysytään tietoa ja jolla sinne kirjoitetaan. SQLite ymmärtää SQL:ää: SELECT hakee rivejä ja GROUP BY laskee koosteita.</td></tr>
+<tr><td style="width:24%"><strong>XSS</strong><br><span class="muted">vko 14</span></td><td><em>Cross-site scripting.</em> Hyökkäys, jossa käyttäjän syöttämä teksti – esimerkiksi pelin kommentti – päätyy sivulle koodina ja ajautuu muiden selaimessa. Torjunta on syötteen käsittely tekstinä, ei koodina.</td></tr>
+<tr><td style="width:24%"><strong>CRUD</strong></td><td><em>Luonti, luku, muokkaus ja poisto.</em> Neljä perustoimintoa, joita tietoon kohdistetaan: uuden lisääminen, lukeminen, muokkaaminen ja poistaminen. PeliHyllyssä ne täydentyvät työviikkojen 4–9 aikana.</td></tr>
+<tr><td style="width:24%"><strong>REST</strong></td><td><em>Yleinen rajapinnan tyyli.</em> Tapa rakentaa API niin, että jokaisella tietokohteella on oma osoite ja pyynnön menetelmä kertoo mitä tehdään: GET hakee, POST lisää, PATCH muokkaa ja DELETE poistaa.</td></tr>
+<tr><td style="width:24%"><strong>RC</strong><br><span class="muted">vko 15</span></td><td><em>Release candidate, julkaisuehdokas.</em> Lähes valmis versio, joka julkaistaan testattavaksi ennen lopullista julkaisua. RC1 on ensimmäinen julkaisuehdokas; sen jälkeen korjataan vain estävät virheet.</td></tr>
+<tr><td style="width:24%"><strong>tag</strong><br><span class="muted">vko 16</span></td><td><em>Versiomerkintä.</em> Nimi, joka kiinnitetään tiettyyn commitiin, jotta juuri se versio löytyy myöhemmin: v1.0-rc1 on julkaisuehdokas ja v1.0 valmis julkaisu.</td></tr>
+</table>
 <h1 class="page">Näyttömatriisi – 32 osaamisvaatimusta</h1><p class="muted">Rasti vasta, kun vaatimukselle on täsmällinen työnäyte: linkki, commit, kuva, testirivi tai muistio. Sama työnäyte voi kelvata useaan kohtaan.</p>
 <h2>Ohjelmointi</h2>
 <p class="item">☐&nbsp; <strong>käyttää ohjelmointieditoria tai kehitysympäristöä</strong> – VS Code ja Viten kehityspalvelin käytössä koko projektin ajan; työkalutodennusten tulosteet työviikolta 1 ja kehittäjätyökalujen käyttö ketjukirjauksissa.</p>
@@ -233,8 +253,8 @@ th { background: #ede9fe; }
 <p class="item">☐&nbsp; <strong>suunnittelee ja arvioi kehitystiimin kanssa tehtävien toteuttamista</strong> – Työmääräarviot issueissa työviikolla 2; arvio vastaan toteuma päivitetty suunnitelmaan työviikolla 11.</p>
 <p class="item">☐&nbsp; <strong>kehittää ohjelmiston toimintalogiikkaa</strong> – Tilakone sallittuine siirtymineen ja historiakirjaus transaktiossa työviikolla 6; lisäksi omistajuustarkistukset (työviikko 7) ja suodatuslogiikka (työviikko 9).</p>
 <p class="item">☐&nbsp; <strong>valitsee ohjelmistoon sopivan tietovaraston</strong> – Vertailu SQLite, JSON-tiedosto ja palvelintietokanta datan rakenteen, käyttötilanteen ja laajuuden perusteella; kirjattu perustelu suunnitelmassa työviikolla 2.</p>
-<p class="item">☐&nbsp; <strong>toteuttaa yhteyden tietovarastoon</strong> – SQLite-yhteys Expressistä työviikolla 4: skeeman migraatio, siemendata sekä luku, lisäys ja muokkaus hallitusti; CRUD täydentyy työviikoilla 5–9.</p>
-<p class="item">☐&nbsp; <strong>hyödyntää rajapintoja ja käsittelee tietoa</strong> – Oma REST-rajapinta työviikolla 5: POST validointeineen ja virhevastauksineen sekä frontin fetch-käsittely virhetiloineen; kyselyparametrit työviikolla 9.</p>
+<p class="item">☐&nbsp; <strong>toteuttaa yhteyden tietovarastoon</strong> – SQLite-yhteys Expressistä työviikolla 4: skeeman migraatio, siemendata sekä luku, lisäys ja muokkaus hallitusti; koko CRUD eli luonti, luku, muokkaus ja poisto täydentyy työviikoilla 5–9.</p>
+<p class="item">☐&nbsp; <strong>hyödyntää rajapintoja ja käsittelee tietoa</strong> – Oma REST-tyylinen rajapinta työviikolla 5: POST validointeineen ja virhevastauksineen sekä selainpuolen fetch-käsittely virhetiloineen; kyselyparametrit työviikolla 9.</p>
 <p class="item">☐&nbsp; <strong>arvioi ohjelmiston tietoturvaa</strong> – Dokumentoitu tietoturva-arvio työviikolla 14: syötteet, salasanahashit, istunnot, tietojen näkyvyys, SQL-injektio ja XSS; riski, ratkaisu ja koodiviittaus (perusta työviikolla 7).</p>
 <p class="item">☐&nbsp; <strong>käyttää versionhallintaa</strong> – Git koko projektin ajan: etärepository työviikosta 1, kuvaavat commitit ja feature-haarat vaiheesta B alkaen.</p>
 <p class="item">☐&nbsp; <strong>liittää ohjelman osan olemassa olevaan versioon</strong> – Palautemuutos feature-haarassa ja pull request pääversioon työviikolla 11: kuvaus, itsekatselmointi, merge ja konfliktin ratkaisu.</p>

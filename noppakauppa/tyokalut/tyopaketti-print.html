@@ -41,16 +41,16 @@ th { background: #fbeee5; }
 </table><p class="muted">Palautus viimeistään 18. työviikon perjantai. Sivusto: tehtävien tarkat ohjeet, toteutusavut ja projektipäiväkirja.</p>
 <h1 class="page">Vaihe A – Kaupan ydin: toimeksianto, tietomalli ja julkaistu tuotelista</h1>
 <div class="wk"><h2>Työviikko 1 / 18 – Aloitus: toimeksianto ja työympäristö</h2>
-<p class="feature">Viikon jälkeen toimeksianto on luettu ja kysymyslista viety ohjaajalle: repository on GitHubissa ensimmäisellä commitilla, ja sekä Vue+Vite-frontti että FastAPI-backend käynnistyvät omalla koneellasi.</p>
+<p class="feature">Viikon jälkeen toimeksianto on luettu ja kysymyslista viety ohjaajalle: repository on GitHubissa ensimmäisellä commitilla, ja sekä Vue+Vite-frontend että FastAPI-backend käynnistyvät omalla koneellasi.</p>
 <p class="task">☐&nbsp; Lue toimeksianto ja kirjaa vähintään kuusi kysymystä ohjaajalle tai asiakkaalle.</p>
-<p class="task">☐&nbsp; Sovi julkisen repon asiat ja käynnistä ohjaajan kanssa katselmoijien etsintä viikkoja 10 ja 16 varten.</p>
+<p class="task">☐&nbsp; Sovi julkisen repositoryn asiat ja käynnistä ohjaajan kanssa katselmoijien etsintä viikkoja 10 ja 16 varten.</p>
 <p class="task">☐&nbsp; Luo repository ja kansiorakenne: frontend/, backend/ ja project-docs/.</p>
 <p class="task">☐&nbsp; Alusta Vite+Vue-projekti ja FastAPI-sovellus ja käynnistä molemmat kehityspalvelimet.</p>
-<p class="done"><strong>Valmis kun:</strong> Molemmat kehityspalvelimet käynnistyvät ohjeen komennoilla; repo on GitHubissa README:n ja ensimmäisen commitin kanssa; kysymyslista on ohjaajalla ja vastaukset tai avoimet asiat, mukaan lukien katselmoijien tilanne, on kirjattu.</p>
+<p class="done"><strong>Valmis kun:</strong> Molemmat kehityspalvelimet käynnistyvät ohjeen komennoilla; repository on GitHubissa README:n ja ensimmäisen commitin kanssa; kysymyslista on ohjaajalla ja vastaukset tai avoimet asiat, mukaan lukien katselmoijien tilanne, on kirjattu.</p>
 <p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> repositoryn linkki, ensimmäisen commitin tunnus ja kysymyslista project-docs-kansiossa.</p>
 </div>
 <div class="wk"><h2>Työviikko 2 / 18 – Suunnitelma ja tietomalli</h2>
-<p class="feature">Viikon jälkeen tekninen suunnitelma on olemassa: priorisoidut käyttäjätarinat, SQLite-tietomalli, tietovarastovertailu, rautalangat ja P0-tehtävät issueina, ja teemapäätös on lyöty lukkoon.</p>
+<p class="feature">Viikon jälkeen tekninen suunnitelma on olemassa: käyttäjätarinat priorisoituina pakolliseen ytimeen (P0) ja sen jatkoon (P1, P2), SQLite-tietomalli, tietovarastovertailu, rautalangat ja P0-tehtävät GitHub-issueina, ja teemapäätös on lyöty lukkoon.</p>
 <p class="task">☐&nbsp; Kirjoita käyttäjätarinat toimeksiannosta ja priorisoi ne P0-, P1- ja P2-tasoille.</p>
 <p class="task">☐&nbsp; Piirrä tietomalli: tuote, kategoria, käyttäjä rooleineen, tilaus ja tilausrivi.</p>
 <p class="task">☐&nbsp; Vertaa tietovarastovaihtoehdot (SQLite, JSON-tiedosto, PostgreSQL) ja perustele valinta.</p>
@@ -62,13 +62,13 @@ th { background: #fbeee5; }
 <p class="feature">Viikon jälkeen tuotelista tulee SQLite-kannasta FastAPI-rajapinnan kautta ja renderöityy itse rakennetuissa Vue-komponenteissa, lataus- ja virhetilat mukaan lukien.</p>
 <p class="task">☐&nbsp; Luo SQLite-kanta ja seed-skripti noin 20 oman teeman tuotteella.</p>
 <p class="task">☐&nbsp; Toteuta GET /api/tuotteet ja kokeile se FastAPI:n /docs-sivulla.</p>
-<p class="task">☐&nbsp; Rakenna TuoteLista- ja TuoteKortti-komponentit itse ilman valmista UI-komponenttikirjastoa.</p>
-<p class="task">☐&nbsp; Käsittele lataus-, tyhjä- ja virhetilat sekä kirjaa ja aja testit T01 ja T02.</p>
+<p class="task">☐&nbsp; Rakenna TuoteLista- ja TuoteKortti-komponentit itse ilman valmista käyttöliittymän komponenttikirjastoa.</p>
+<p class="task">☐&nbsp; Käsittele lataus-, tyhjä- ja virhetilat sekä kirjaa ja aja testitapaukset T01 ja T02.</p>
 <p class="done"><strong>Valmis kun:</strong> Kehityspalvelin näyttää kannasta tulevat tuotteet; API palauttaa JSONia, mikä on testattu /docs-sivulta; kun backend sammutetaan, käyttäjä näkee virheilmoituksen eikä tyhjää ruutua.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> commit-linkki, kuvakaappaus tuotelistasta ja testien T01–T02 tulokset päiväkirjassa.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> commit-linkki, kuvakaappaus tuotelistasta ja testitapausten T01–T02 tulokset päiväkirjassa.</p>
 </div>
 <div class="wk"><h2>Työviikko 4 / 18 – Kategoriat ja reititys</h2>
-<p class="feature">Viikon jälkeen vue-router on käytössä: kategorianäkymä, tuotesivu omalla URL:llaan ja 404-näkymä. Navigointi toimii puhelimella.</p>
+<p class="feature">Viikon jälkeen vue-router on käytössä: kategorianäkymä, tuotesivu omalla osoitteellaan (URL) ja 404-näkymä. Navigointi toimii puhelimella.</p>
 <p class="task">☐&nbsp; Asenna ja konfiguroi vue-router ja kirjaa, miksi ulkoinen reitityskomponentti tarvitaan.</p>
 <p class="task">☐&nbsp; Toteuta kategorialistaus ja kategoriakohtainen tuotenäkymä.</p>
 <p class="task">☐&nbsp; Toteuta tuotesivu reittiparametrilla ja 404-reitti.</p>
@@ -91,36 +91,36 @@ th { background: #fbeee5; }
 <p class="task">☐&nbsp; Toteuta haku-endpoint kyselyparametrilla parametrisoidulla SQL:llä ja kirjaa, miksi parametrisointi tehdään.</p>
 <p class="task">☐&nbsp; Rakenna hakukenttä ja tuloslista.</p>
 <p class="task">☐&nbsp; Käsittele tyhjä tulos opastavalla tekstillä ja backend-virhe omalla viestillään.</p>
-<p class="task">☐&nbsp; Kirjaa ja aja testit T04 ja T05.</p>
+<p class="task">☐&nbsp; Kirjaa ja aja testitapaukset T04 ja T05.</p>
 <p class="done"><strong>Valmis kun:</strong> Haku ”nop” löytää ”Nopanheitto”-tuotteen; haku merkkijonolla '; DROP TABLE palauttaa nolla osumaa eikä kaada mitään; tyhjä tulos opastaa käyttäjää.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> commit, testien T04–T05 tulokset ja kuvakaappaus hakudemosta.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> commit, testitapausten T04–T05 tulokset ja kuvakaappaus hakudemosta.</p>
 </div>
 <div class="wk"><h2>Työviikko 7 / 18 – Ostoskori</h2>
-<p class="feature">Viikon jälkeen Pinia-ostoskori toimii: lisää, poista, muuta määrää, summa laskee oikein ja kori säilyy sivun päivityksen yli, ja koko ominaisuus syntyi omassa haarassa ja yhdistyi pääversioon pull requestilla.</p>
+<p class="feature">Viikon jälkeen Pinia-ostoskori toimii: lisää, poista, muuta määrää, summa laskee oikein ja kori säilyy sivun päivityksen yli, ja koko ominaisuus syntyi omassa haarassa eli erillisessä kehityslinjassa ja yhdistyi pääversioon pull requestilla.</p>
 <p class="task">☐&nbsp; Vertaa korin tallennusvaihtoehdot ja tee päätös ohjaajan kanssa kirjaten.</p>
 <p class="task">☐&nbsp; Toteuta kori-store haarassa feature/ostoskori ja yhdistä se pull requestilla.</p>
 <p class="task">☐&nbsp; Rakenna korinäkymä määränmuutoksineen ja summineen.</p>
-<p class="task">☐&nbsp; Kirjaa ja aja testit T06 ja T07 sekä kirjaa virheenkorjausketju K1.</p>
+<p class="task">☐&nbsp; Kirjaa ja aja testitapaukset T06 ja T07 sekä kirjaa virheenkorjausketju K1.</p>
 <p class="done"><strong>Valmis kun:</strong> Tuotteita voi lisätä ja poistaa, määrää muuttaa ja summa täsmää; kori säilyy sivun päivityksessä; pull request on yhdistetty ja mahdollinen konflikti on ratkaistu.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> PR-linkki, päätösmuistio, testien T06–T07 tulokset ja K1-ketju päiväkirjassa.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> pull requestin linkki, päätösmuistio, testitapausten T06–T07 tulokset ja K1-ketju päiväkirjassa.</p>
 </div>
 <div class="wk"><h2>Työviikko 8 / 18 – Tunnukset ja istunto</h2>
 <p class="feature">Viikon jälkeen rekisteröityminen ja kirjautuminen toimivat: salasanat tallennetaan vain hashattuna, istunto hoidetaan perustellulla ratkaisulla, ja käyttäjällä on roolikenttä tulevia henkilökuntanäkymiä varten.</p>
 <p class="task">☐&nbsp; Vertaa istuntoratkaisut (JWT ja eväste-sessio) ja kirjaa päätös perusteluineen ohjaajan kommentilla.</p>
 <p class="task">☐&nbsp; Toteuta rekisteröityminen validointeineen ja salasanan hashaus.</p>
 <p class="task">☐&nbsp; Toteuta kirjautuminen, uloskirjautuminen ja auth-store Piniaan.</p>
-<p class="task">☐&nbsp; Kirjaa ja aja testit T08 ja T09.</p>
+<p class="task">☐&nbsp; Kirjaa ja aja testitapaukset T08 ja T09.</p>
 <p class="done"><strong>Valmis kun:</strong> Kannassa ei näy yhtään selkokielistä salasanaa; väärä salasana ja tuntematon tunnus antavat saman yleisen virheilmoituksen; kirjautumistila säilyy sivun päivityksessä ja uloskirjautuminen tyhjentää sen.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> päätösmuistio, kuvakaappaus kantariveistä (hash näkyy, salasana ei) ja testien T08–T09 tulokset.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> päätösmuistio, kuvakaappaus kantariveistä (hash näkyy, salasana ei) ja testitapausten T08–T09 tulokset.</p>
 </div>
 <div class="wk"><h2>Työviikko 9 / 18 – Tilaus ja tilaushistoria</h2>
 <p class="feature">Viikon jälkeen kirjautunut asiakas tilaa korin sisällön ilman maksunvälitystä: tilaus tallentuu riveineen tilaushetken hinnoilla, kori tyhjenee ja tilaus näkyy omassa tilaushistoriassa.</p>
 <p class="task">☐&nbsp; Toteuta tilauksen luonti transaktiona: tilaus ja rivit tallentuvat yhtenä kokonaisuutena.</p>
 <p class="task">☐&nbsp; Rakenna tilauslomake ja valitse validointiin perusteltu ulkoinen paketti tai perustele oma validointi.</p>
 <p class="task">☐&nbsp; Toteuta tilaushistorianäkymä, joka näyttää vain omat tilaukset.</p>
-<p class="task">☐&nbsp; Kirjaa ja aja testit T10 ja T11.</p>
+<p class="task">☐&nbsp; Kirjaa ja aja testitapaukset T10 ja T11.</p>
 <p class="done"><strong>Valmis kun:</strong> Tilaus näkyy kannassa riveineen ja tilaushetken hinnoilla; historia näyttää vain omat tilaukset; tyhjää koria ei voi tilata eikä kirjautumaton pääse tilaamaan.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> commit, lisäpaketin perustelu suunnitelmassa, testien T10–T11 tulokset ja kuvakaappaus historiasta.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> commit, lisäpaketin perustelu suunnitelmassa, testitapausten T10–T11 tulokset ja kuvakaappaus historiasta.</p>
 </div>
 <div class="wk"><h2>Työviikko 10 / 18 – Asiakaskatselmointi</h2>
 <p class="feature">Viikon jälkeen ulkopuolinen henkilö asiakkaan roolissa on kokeillut julkaistua kauppaa tehtäväradalla (löydä peli, koriin, tilaa), palaute on kirjattu hänen omin sanoin erillään omasta tulkinnasta, ja muutokset on sovittu issueiksi.</p>
@@ -142,18 +142,18 @@ th { background: #fbeee5; }
 <p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> ketju issuesta committiin ja tuotantolinkkiin, K2-ketju ja suunnitelman muutoshistoria.</p>
 </div>
 <div class="wk"><h2>Työviikko 12 / 18 – Tuotehallinta ja roolisuojaus</h2>
-<p class="feature">Viikon jälkeen henkilökuntarooli hallitsee tuotteita selaimessa (lisäys, muokkaus ja poisto), ja hallintareitit on suojattu kahdella tasolla: route guard frontissa ja roolitarkistus API:ssa.</p>
-<p class="task">☐&nbsp; Toteuta roolipohjainen pääsynhallinta: route guard frontissa ja roolitarkistus API:ssa.</p>
+<p class="feature">Viikon jälkeen henkilökuntarooli hallitsee tuotteita selaimessa (lisäys, muokkaus ja poisto), ja hallintareitit on suojattu kahdella tasolla: reitin vartija (route guard) frontendissä ja roolitarkistus API:ssa.</p>
+<p class="task">☐&nbsp; Toteuta roolipohjainen pääsynhallinta: reitin vartija (route guard) frontendissä ja roolitarkistus rajapinnassa.</p>
 <p class="task">☐&nbsp; Rakenna tuotehallintanäkymä lisäys-, muokkaus- ja poistolomakkeineen.</p>
-<p class="task">☐&nbsp; Validoi syötteet sekä frontissa että backendissä.</p>
-<p class="task">☐&nbsp; Kirjaa ja aja testit T12 ja T13, joissa asiakasrooli yrittää hallintaan myös suoralla API-kutsulla.</p>
-<p class="done"><strong>Valmis kun:</strong> Asiakasroolilla suora URL hallintanäkymään ohjaa pois ja suora API-kutsu palauttaa 401 tai 403; henkilökunnan lisäämä tuote näkyy heti kaupan puolella.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> testien T12–T13 tulokset curl-kutsun vastauksineen, commit ja kuvakaappaus hallintanäkymästä.</p>
+<p class="task">☐&nbsp; Validoi syötteet sekä frontendissä että backendissä.</p>
+<p class="task">☐&nbsp; Kirjaa ja aja testitapaukset T12 ja T13, joissa asiakasrooli yrittää hallintaan myös suoralla rajapintakutsulla.</p>
+<p class="done"><strong>Valmis kun:</strong> Asiakasroolilla suora URL hallintanäkymään ohjaa pois ja suora rajapintakutsu palauttaa virhekoodin 401 (ei kirjautunut) tai 403 (ei oikeuksia); henkilökunnan lisäämä tuote näkyy heti kaupan puolella.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> testitapausten T12–T13 tulokset curl-kutsun vastauksineen, commit ja kuvakaappaus hallintanäkymästä.</p>
 </div>
 <div class="wk"><h2>Työviikko 13 / 18 – Tilaukset ja saavutettavuus</h2>
 <p class="feature">Viikon jälkeen henkilökunta selaa kaikkia tilauksia uusimmat ensin ja merkitsee tilauksen käsitellyksi, ja tilan muutos näkyy asiakkaan tilaushistoriassa. Ominaisuuslista päättyy tähän; viikon toinen puolisko on koko sovelluksen saavutettavuustarkistus.</p>
 <p class="task">☐&nbsp; Toteuta henkilökunnan tilauslistaus suodatuksella: uudet ja käsitellyt.</p>
-<p class="task">☐&nbsp; Toteuta tilauksen tila ja sen muutos, näytä tila asiakkaan historiassa ja aja testi T14.</p>
+<p class="task">☐&nbsp; Toteuta tilauksen tila ja sen muutos, näytä tila asiakkaan historiassa ja aja testitapaus T14.</p>
 <p class="task">☐&nbsp; Tee saavutettavuustarkistus koko sovellukselle ja korjaa löydökset.</p>
 <p class="task">☐&nbsp; Aja Lighthouse ennen ja jälkeen korjausten ja tallenna raportit.</p>
 <p class="done"><strong>Valmis kun:</strong> Henkilökunta näkee kaikkien tilaukset ja asiakas vain omansa; käsitellyksi-merkintä näkyy asiakkaalle; ostopolun voi kulkea läpi pelkällä näppäimistöllä; Lighthouse-raportit ennen ja jälkeen on tallennettu ja vähintään yksi saavutettavuuspuute on korjattu.</p>
@@ -162,7 +162,7 @@ th { background: #fbeee5; }
 <div class="wk"><h2>Työviikko 14 / 18 – Tietoturvaviikko</h2>
 <p class="feature">Viikon jälkeen kirjallinen tietoturva-arvio on olemassa (uhkat, ratkaisut ja jäännösriskit), ja vähintään kaksi kovennusta on toteutettu omien hyökkäystestien löydösten perusteella.</p>
 <p class="task">☐&nbsp; Käy sovellus läpi tietoturvan tarkistuslistalla kohta kohdalta.</p>
-<p class="task">☐&nbsp; Testaa hyökkääjän silmin: SQL-injektio, XSS, IDOR ja hallinta-API ilman istuntoa.</p>
+<p class="task">☐&nbsp; Testaa hyökkääjän silmin: SQL-injektio, XSS, IDOR ja hallinnan rajapinta ilman istuntoa.</p>
 <p class="task">☐&nbsp; Korjaa löydökset ja kirjaa virheenkorjausketju K3.</p>
 <p class="task">☐&nbsp; Kirjoita tietoturva-arvio.md ja käy se läpi ohjaajan kanssa.</p>
 <p class="done"><strong>Valmis kun:</strong> tietoturva-arvio.md:ssä jokaisella tunnistetulla riskillä on ratkaisu tai perusteltu jäännösriski; vähintään yksi aito löydös on korjattu täydellisenä K3-ketjuna; ohjaajan läpikäynti on kirjattu.</p>
@@ -178,8 +178,8 @@ th { background: #fbeee5; }
 </div>
 <h1 class="page">Vaihe D – Julkaisu ja näyttö</h1>
 <div class="wk"><h2>Työviikko 16 / 18 – Julkaisuehdokas ja julkaisutestaus</h2>
-<p class="feature">Viikon jälkeen sisältö on jäädytetty ja julkaisuehdokas v1.0-rc1 on julkaistu, ja ulkopuolinen henkilö on ottanut kaupan käyttöön ja tehnyt testitilauksen puhtaassa ympäristössä pelkän kirjoitetun ohjeen avulla, ilman suullista apua.</p>
-<p class="task">☐&nbsp; Jäädytä sisältö, julkaise julkaisuehdokas ja merkitse git-tag v1.0-rc1.</p>
+<p class="feature">Viikon jälkeen sisältö on jäädytetty ja julkaisuehdokas (release candidate, RC) v1.0-rc1 on julkaistu, ja ulkopuolinen henkilö on ottanut kaupan käyttöön ja tehnyt testitilauksen puhtaassa ympäristössä pelkän kirjoitetun ohjeen avulla, ilman suullista apua.</p>
+<p class="task">☐&nbsp; Jäädytä sisältö, julkaise julkaisuehdokas (RC) ja merkitse git-tag v1.0-rc1.</p>
 <p class="task">☐&nbsp; Siivoa repository ja viimeistele käyttöönotto- ja käyttöohje.</p>
 <p class="task">☐&nbsp; Järjestä julkaisutestaus: nimetty ulkopuolinen ja puhdas ympäristö ilman suullista apua.</p>
 <p class="task">☐&nbsp; Kirjaa havainnot testaajan sanoin ja luokittele estävät ja ei-estävät löydökset.</p>
@@ -210,12 +210,44 @@ th { background: #fbeee5; }
 <p class="task"><strong>Päivä 3</strong> · Harjoittelu: 8–10 minuutin demo ja itsearviointi</p>
 <p class="task"><strong>Päivä 4</strong> · Puskuri ja tarkistus toisen henkilön kanssa</p>
 <p class="task"><strong>Päivä 5</strong> · Luovutus: näyttömatriisi linkitetty, demo harjoiteltu, aineisto luovutettu</p>
+<h1 class="page">Sanasto</h1><p class="muted">Projektin tunnukset ja ammattitermit siinä järjestyksessä, jossa ne tulevat vastaan. Jokainen on selitetty myös sivustolla ensimmäisen käytön kohdalla.</p><table>
+<tr><td style="width:24%"><strong>frontend</strong><br><span class="muted">vko 1</span></td><td><em>Selaimessa toimiva osa.</em> Se osa kaupasta, joka toimii asiakkaan selaimessa: näkymät, komponentit ja ulkoasu. Tässä projektissa frontend on kansiossa frontend/ ja se tehdään Vue 3:lla.</td></tr>
+<tr><td style="width:24%"><strong>backend</strong><br><span class="muted">vko 1</span></td><td><em>Palvelimella toimiva osa.</em> Se osa kaupasta, joka toimii palvelimella: tietokanta, rajapinta ja käyttöoikeudet. Tässä projektissa backend on kansiossa backend/ ja se tehdään FastAPI:lla.</td></tr>
+<tr><td style="width:24%"><strong>repository</strong><br><span class="muted">vko 1</span></td><td><em>Projektin Git-varasto.</em> Kansio, jota Git-versionhallinta seuraa ja joka viedään GitHubiin. Repositoryssä on koko projektin historia, ei vain uusin versio.</td></tr>
+<tr><td style="width:24%"><strong>commit</strong><br><span class="muted">vko 1</span></td><td><em>Yksi tallennettu muutos.</em> Yksi muutos tallennettuna Gitin historiaan: mitä muuttui, milloin ja kenen tekemänä. Tässä projektissa tehdään pieniä committeja usein, ei yhtä isoa viikon lopussa.</td></tr>
+<tr><td style="width:24%"><strong>GitHub-issue</strong><br><span class="muted">vko 2</span></td><td><em>Yksi rajattu tehtävä.</em> GitHubiin kirjattu tehtävä, jossa on otsikko, kuvaus ja valmis kun -ehto. Yksi issue on noin puolen tai yhden päivän työ, ja commit voi viitata siihen numerolla, esimerkiksi #12.</td></tr>
+<tr><td style="width:24%"><strong>P0</strong><br><span class="muted">vko 2</span></td><td><em>Pakollinen ydin.</em> Ominaisuudet, joiden on valmistuttava, tai kauppa ei ole valmis. P0 tehdään ensin ja kokonaan.</td></tr>
+<tr><td style="width:24%"><strong>P1</strong><br><span class="muted">vko 2</span></td><td><em>Tärkeä jatkosisältö.</em> Ominaisuudet, jotka tehdään vasta kun P0 toimii. P1 on tärkeä, mutta se ei estä julkaisua.</td></tr>
+<tr><td style="width:24%"><strong>P2</strong><br><span class="muted">vko 2</span></td><td><em>Valinnainen lisä.</em> Ominaisuudet, jotka voidaan jättää kokonaan pois. P2 tehdään vain, jos aikaa jää yli.</td></tr>
+<tr><td style="width:24%"><strong>JSON</strong><br><span class="muted">vko 2</span></td><td>Tekstimuoto, jossa tieto liikkuu selaimen ja palvelimen välillä ja jossa sen voi myös tallentaa tiedostoon. Rajapinta palauttaa tuotteet JSONina.</td></tr>
+<tr><td style="width:24%"><strong>API</strong><br><span class="muted">vko 3</span></td><td><em>Rajapinta.</em> Sovittu tapa, jolla frontend pyytää tietoa backendilta ja saa vastauksen. Tämän projektin rajapinta tehdään FastAPI:lla, ja sitä voi kokeilla selaimessa /docs-sivulta.</td></tr>
+<tr><td style="width:24%"><strong>endpoint</strong><br><span class="muted">vko 3</span></td><td><em>Rajapinnan yksittäinen osoite.</em> Yksi rajapinnan osoite, joka tekee yhden asian: esimerkiksi GET /api/tuotteet palauttaa tuotelistan. Rajapinta koostuu endpointeista.</td></tr>
+<tr><td style="width:24%"><strong>T01</strong><br><span class="muted">vko 3</span></td><td><em>Testitapauksen tunnus.</em> Testitapaukset numeroidaan: T01 on ensimmäinen ja T14 viimeinen. Jokaisesta kirjataan lähtötila, toiminta, odotettu tulos ennen ajoa ja toteutunut tulos ajon jälkeen.</td></tr>
+<tr><td style="width:24%"><strong>seed-data</strong><br><span class="muted">vko 3</span></td><td><em>Kannan aloitusdata.</em> Itse keksitty aloitustavara, joka ajetaan tyhjään tietokantaan, jotta sovelluksessa on jotain näytettävää. Tässä projektissa noin 20 oman teeman tuotetta.</td></tr>
+<tr><td style="width:24%"><strong>CORS</strong><br><span class="muted">vko 3</span></td><td>Selaimen sääntö, joka estää sivua hakemasta tietoa toisesta osoitteesta ilman lupaa. Backendiin kirjataan, mistä osoitteista kutsut hyväksytään – tämä on tavallisin syy siihen, että julkaistu kauppa ei saa dataa.</td></tr>
+<tr><td style="width:24%"><strong>SPA</strong><br><span class="muted">vko 4</span></td><td><em>Single-page application, yhden sivun sovellus.</em> Sovellus, jonka selain lataa kerran ja joka vaihtaa näkymää itse. Osoitteiden pitää silti toimia myös suoraan avattuna ja sivun päivityksellä.</td></tr>
+<tr><td style="width:24%"><strong>build</strong><br><span class="muted">vko 5</span></td><td><em>Tuotantoversion kääntäminen.</em> Komento, joka kääntää frontendin lähdekoodin valmiiksi tiedostoiksi julkaisua varten (Vitessä npm run build, tulos kansioon dist/). Kehityspalvelin ei tee tätä.</td></tr>
+<tr><td style="width:24%"><strong>SQL</strong><br><span class="muted">vko 6</span></td><td><em>Tietokannan kyselykieli.</em> Kieli, jolla tietokannasta haetaan ja siihen kirjoitetaan, esimerkiksi SELECT * FROM tuote. SQLite on tietokanta, joka ymmärtää SQL:ää.</td></tr>
+<tr><td style="width:24%"><strong>SQL-injektio</strong><br><span class="muted">vko 6</span></td><td>Hyökkäys, jossa käyttäjän syöte ujutetaan osaksi tietokantakyselyä ja pääsee muuttamaan sen merkitystä. Estetään parametrisoidulla kyselyllä, jossa syöte ei koskaan liity osaksi kyselytekstiä.</td></tr>
+<tr><td style="width:24%"><strong>haara</strong><br><span class="muted">vko 7</span></td><td><em>Branch.</em> Erillinen kehityslinja, jossa yhtä ominaisuutta tehdään rauhassa ilman että pääversio rikkoutuu. Valmis haara yhdistetään takaisin pääversioon.</td></tr>
+<tr><td style="width:24%"><strong>pull request</strong><br><span class="muted">vko 7</span></td><td><em>PR, pyyntö yhdistää haara.</em> Pyyntö yhdistää haara pääversioon. Siinä näkyy muutos rivi riviltä, ja se katselmoidaan ennen yhdistämistä. Yksin tehdessä katselmoit oman muutoksesi itse.</td></tr>
+<tr><td style="width:24%"><strong>K1</strong><br><span class="muted">vko 7</span></td><td><em>Virheenkorjausketjun tunnus.</em> Virheenkorjausketjut numeroidaan K1, K2 ja K3. Yksi ketju on kokonaisuus: havainto, toistamisohje, syy, korjauscommit, uusintatesti ja regressiotesti.</td></tr>
+<tr><td style="width:24%"><strong>regressiotesti</strong><br><span class="muted">vko 7</span></td><td>Testi, jolla varmistetaan, ettei korjaus rikkonut jotain, mikä toimi aiemmin. Se ajetaan korjatun kohdan vierestä, ei itse korjauksesta.</td></tr>
+<tr><td style="width:24%"><strong>JWT</strong><br><span class="muted">vko 8</span></td><td><em>JSON Web Token.</em> Allekirjoitettu tunnistetieto, jonka palvelin antaa kirjautumisen jälkeen ja jonka selain lähettää mukana jokaisessa pyynnössä. Vaihtoehto eväste-sessiolle.</td></tr>
+<tr><td style="width:24%"><strong>hash</strong><br><span class="muted">vko 8</span></td><td><em>Tiiviste.</em> Salasanasta laskettu merkkijono, josta alkuperäistä salasanaa ei saa takaisin. Kantaan tallennetaan vain hash, ei koskaan salasanaa sellaisenaan.</td></tr>
+<tr><td style="width:24%"><strong>XSS</strong><br><span class="muted">vko 14</span></td><td><em>Cross-site scripting.</em> Hyökkäys, jossa käyttäjän syöte päätyy sivulle koodina ja suoritetaan toisen käyttäjän selaimessa. Estetään sillä, ettei syötettä koskaan tulosteta raakana HTML:ksi.</td></tr>
+<tr><td style="width:24%"><strong>IDOR</strong><br><span class="muted">vko 14</span></td><td><em>Suojaamaton viittaus tietoon.</em> Aukko, jossa osoitteen tunnusta vaihtamalla näkee toisen käyttäjän tiedot. Estetään tarkistamalla jokaisessa haussa, kuuluuko rivi kirjautuneelle käyttäjälle.</td></tr>
+<tr><td style="width:24%"><strong>refaktorointi</strong><br><span class="muted">vko 15</span></td><td>Koodin selkeyttäminen niin, että toiminta pysyy täsmälleen ennallaan: parempi nimeäminen, toiston poisto, liian ison komponentin pilkkominen. Testit ajetaan ennen ja jälkeen.</td></tr>
+<tr><td style="width:24%"><strong>RC</strong><br><span class="muted">vko 16</span></td><td><em>Release candidate, julkaisuehdokas.</em> Lähes valmis versio, joka jäädytetään ja testataan ennen lopullista julkaisua. RC1 on ensimmäinen julkaisuehdokas; sen jälkeen korjataan vain estävät virheet.</td></tr>
+<tr><td style="width:24%"><strong>tagi</strong><br><span class="muted">vko 16</span></td><td><em>Git-tag.</em> Nimilappu, joka merkitsee yhden commitin historiasta, esimerkiksi v1.0-rc1. Tagista tiedetään myöhemmin, mikä versio oli testattavana.</td></tr>
+<tr><td style="width:24%"><strong>REST</strong></td><td>Tapa rakentaa rajapinta niin, että osoite kertoo kohteen ja pyynnön tyyppi tekemisen: GET hakee, POST luo, PUT muuttaa ja DELETE poistaa. Tämän projektin rajapinta noudattaa sitä.</td></tr>
+</table>
 <h1 class="page">Näyttömatriisi – 32 osaamisvaatimusta</h1><p class="muted">Rasti vasta, kun vaatimukselle on täsmällinen työnäyte: linkki, commit, kuva, testirivi tai muistio. Sama työnäyte voi kelvata useaan kohtaan.</p>
 <h2>Ohjelmointi</h2>
 <p class="item">☐&nbsp; <strong>käyttää ohjelmointieditoria tai kehitysympäristöä</strong> – Viikko 1: kehitysympäristö pystyssä (VS Code, Vite- ja FastAPI-kehityspalvelimet, selaimen kehittäjätyökalut); käynnistyskomennot READMEssä ja päiväkirjassa.</p>
 <p class="item">☐&nbsp; <strong>etsii ja korjaa virheitä ohjelmakoodista</strong> – Viikot 7, 11 ja 14: kolme täydellistä virheenkorjausketjua (K1 ostoskori, K2 palautemuutos, K3 tietoturvalöydös); havainto, toisto, syy, korjauscommit, uusintatesti ja regressiotesti.</p>
 <p class="item">☐&nbsp; <strong>testaa ohjelman toimintoja</strong> – Viikko 15: 14 tapauksen testimatriisi (odotetut tulokset kirjattu ennen ajoa) ajettuna julkaistua versiota vasten sekä uusintatestaukset korjausten jälkeen.</p>
-<p class="item">☐&nbsp; <strong>käyttää rakenteista ohjelmointia toteutuksissa</strong> – Viikko 9: tilauslogiikka jaettuna moduuleihin ja funktioihin (reitit, kantakerros, validointi); frontissa komponentti- ja store-jako, ei yhtä jättitiedostoa.</p>
+<p class="item">☐&nbsp; <strong>käyttää rakenteista ohjelmointia toteutuksissa</strong> – Viikko 9: tilauslogiikka jaettuna moduuleihin ja funktioihin (reitit, kantakerros, validointi); frontendissä komponentti- ja store-jako, ei yhtä jättitiedostoa.</p>
 <p class="item">☐&nbsp; <strong>kirjoittaa ylläpidettävää ohjelmakoodia</strong> – Viikko 15: refaktorointicommitit perusteluineen; nimeäminen, toisteisuuden poisto ja komponentin pilkkominen, testit vihreinä ennen ja jälkeen.</p>
 <p class="item">☐&nbsp; <strong>tulkitsee suunnitelmia ja toteuttaa käyttöliittymän tai sen osia</strong> – Viikko 4: näkymät toteutettu viikon 2 hyväksytyistä rautalangoista; responsiivisuuden taitekohdat ja mobiilitestaus oikealla puhelimella.</p>
 <p class="item">☐&nbsp; <strong>tulkitsee suunnitelmia ja toteuttaa ohjelmiston toimintoja</strong> – Viikko 9: tilaus ja tilaushistoria toteutettu käyttäjätarinoiden ja hyväksymiskriteerien mukaan; kytkentä tarina, issue ja commit.</p>
@@ -241,7 +273,7 @@ th { background: #fbeee5; }
 <h2>Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla</h2>
 <p class="item">☐&nbsp; <strong>ottaa käyttöön ja konfiguroi ohjelmistokomponenttikirjaston käyttöön soveltuvan kehittämisympäristön</strong> – Viikot 1 ja 5: Vue 3 - ja Vite-projektin luonti ja konfigurointi; kehitys- ja tuotantoasetusten ero (API-osoite, build) dokumentoituna.</p>
 <p class="item">☐&nbsp; <strong>selvittää ohjelmistokomponenttikirjaston tarjoamat mahdollisuudet ja rajoitteet</strong> – Viikko 2: selvitys suunnitelmassa siitä, mitä Vue ja Pinia ratkaisevat (komponentit, reaktiivisuus, tila) ja missä tarvitaan muuta (backend rooleille ja istunnoille, yksisivusovelluksen rajoitteet).</p>
-<p class="item">☐&nbsp; <strong>käyttää ohjelmistokomponenttikirjaston tärkeimpiä toimintoja ja työkaluja</strong> – Viikot 3 ja 7: komponentit, propsit, computed-arvot ja Pinia-store (kori, auth) käytössä; itse rakennettu tuotelistanäkymä ilman valmista UI-kirjastoa.</p>
+<p class="item">☐&nbsp; <strong>käyttää ohjelmistokomponenttikirjaston tärkeimpiä toimintoja ja työkaluja</strong> – Viikot 3 ja 7: komponentit, propsit, computed-arvot ja Pinia-store (kori, auth) käytössä; itse rakennettu tuotelistanäkymä ilman valmista käyttöliittymäkirjastoa.</p>
 <p class="item">☐&nbsp; <strong>tuo kehittämisympäristöön ulkoisia komponentteja</strong> – Viikot 4 ja 9: vue-router perusteltuna sekä yksi oma perusteltu lisäpaketti (käyttötarkoitus, konfigurointi ja riippuvuusvaikutus kirjattuna).</p>
 <p class="item">☐&nbsp; <strong>suunnittelee, toteuttaa ja testaa ohjelmiston ohjelmistokomponenttikirjastoa käyttäen</strong> – Viikko 15: komponenttirakenne ja vastuut suunnitelmassa, tarinoiden mukainen toteutus ja koko testimatriisi kirjastopohjaista sovellusta vasten.</p>
 <p class="item">☐&nbsp; <strong>julkaisee ohjelmiston asiakkaan ympäristöön</strong> – Viikko 17: tuotanto-build ja version 1.0 julkaisu sovittuun ympäristöön; luovutus asiakkaalle ohjeineen.</p>

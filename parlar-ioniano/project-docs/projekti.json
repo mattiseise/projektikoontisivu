@@ -3,8 +3,27 @@
   "nimi": "Parlar Ioniano",
   "kuvaus": "Guided demonstration-of-skills project: a hand-coded HTML, CSS and JavaScript site with Bootstrap and JSON data that presents Ionian (Lingua Ioniana), a constructed language, built page by page and published to GitHub Pages.",
   "vuosi": 2026,
-  "viikot": [36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49],
-  "lomaViikot": [41, 42, 43],
+  "viikot": [
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49
+  ],
+  "lomaViikot": [
+    41,
+    42,
+    43
+  ],
   "julkaisuviikko": 48,
   "tunnusmerkki": "Ι",
   "paletti": {
@@ -14,22 +33,85 @@
     "riviSavy": "#f3f7fc"
   },
   "vaiheet": [
-    { "tunnus": "A", "lyhyt": "Foundations", "otsikko": "Foundations: brief, toolchain, plan and a published shell", "viikot": [36, 37, 38], "vari": "#1e56a0" },
-    { "tunnus": "B", "lyhyt": "Grammar views", "otsikko": "Grammar views: data-driven tables and the client review", "viikot": [39, 40, 41, 42, 43, 44], "vari": "#a87b00" },
-    { "tunnus": "C", "lyhyt": "Finish", "otsikko": "Finish: feedback change, quality and testing", "viikot": [45, 46, 47], "vari": "#b0473a" },
-    { "tunnus": "D", "lyhyt": "Release", "otsikko": "Release and demonstration", "viikot": [48, 49], "vari": "#6d28d9" }
+    {
+      "tunnus": "A",
+      "lyhyt": "Foundations",
+      "otsikko": "Foundations: brief, toolchain, plan and a published shell",
+      "viikot": [
+        36,
+        37,
+        38
+      ],
+      "vari": "#1e56a0"
+    },
+    {
+      "tunnus": "B",
+      "lyhyt": "Grammar views",
+      "otsikko": "Grammar views: data-driven tables and the client review",
+      "viikot": [
+        39,
+        40,
+        41,
+        42,
+        43,
+        44
+      ],
+      "vari": "#a87b00"
+    },
+    {
+      "tunnus": "C",
+      "lyhyt": "Finish",
+      "otsikko": "Finish: feedback change, quality and testing",
+      "viikot": [
+        45,
+        46,
+        47
+      ],
+      "vari": "#b0473a"
+    },
+    {
+      "tunnus": "D",
+      "lyhyt": "Release",
+      "otsikko": "Release and demonstration",
+      "viikot": [
+        48,
+        49
+      ],
+      "vari": "#6d28d9"
+    }
   ],
   "kuvitukset": {
-    "tyokierto": ["Site map", "Component", "Data", "Test", "Publish"],
+    "tyokierto": [
+      "Site map",
+      "Component",
+      "Data",
+      "Test",
+      "Publish"
+    ],
     "tyokiertoOtsikko": "WORKFLOW",
     "tyokiertoAlt": "The weekly workflow: site map, component, data, test, publish",
     "vaiheetAlt": "The four phases of the project",
-    "suunnitelma": ["Goal & audience", "My decisions", "Site map"],
+    "suunnitelma": [
+      "Goal & audience",
+      "My decisions",
+      "Site map"
+    ],
     "suunnitelmaOtsikko": "THE PLAN COMES BEFORE THE CODE",
     "suunnitelmaAlt": "The parts of the technical plan",
-    "testaus": ["Plan the test", "Run in browser", "Find the bug", "Fix", "Re-test"],
+    "testaus": [
+      "Plan the test",
+      "Run in browser",
+      "Find the bug",
+      "Fix",
+      "Re-test"
+    ],
     "testausAlt": "The testing loop from planned test to re-test",
-    "tekoaly": ["Ask", "Verify", "Test", "Log"],
+    "tekoaly": [
+      "Ask",
+      "Verify",
+      "Test",
+      "Log"
+    ],
     "tekoalyAlt": "The four steps of AI use: ask, verify, test, log",
     "tekoalyMuistutus": "Every content line is checked against your own PDF.",
     "tunnus": "neliot"
@@ -107,21 +189,41 @@
   "koonti": {
     "tyyppi": "web",
     "tila": "kaynnissa",
-    "kuvaus": "Opiskelija esittelee itse luomansa kielen: käsin kirjoitettu HTML/CSS/JS-sivusto, jossa Bootstrap on komponenttikirjastona, kielioppitaulukot tulevat JSON-datasta fetchillä, numeromuunnin on rakennettu itse alusta ilman kirjastoa ja tuotos julkaistaan GitHub Pagesiin. Ei käännösvaihetta eikä bundleria. Koko projekti englanniksi.",
+    "kuvaus": "Opiskelija esittelee itse luomansa kielen: käsin kirjoitettu HTML/CSS/JS-sivusto, jossa Bootstrap on komponenttikirjastona, kielioppitaulukot ladataan JSON-datatiedostoista ja numeromuunnin rakennetaan itse ilman kirjastoa. Tuotos julkaistaan GitHub Pagesiin ilman erillisiä käännös- tai paketointityökaluja. Koko projekti englanniksi.",
     "ryhma": "Joustava",
     "kesto": "11 työviikkoa",
     "kieli": "en",
-    "tekniikat": ["HTML", "CSS", "JavaScript", "JSON", "Bootstrap", "Git", "GitHub Pages"],
+    "tekniikat": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "JSON",
+      "Bootstrap",
+      "Git",
+      "GitHub Pages"
+    ],
     "sivusto": "https://mattiseise.github.io/projektikoontisivu/parlar-ioniano/",
     "repo": "https://github.com/mattiseise/projektikoontisivu",
     "tutkinto": "Tieto- ja viestintätekniikan perustutkinto",
     "diaarinumero": "OPH-6216-2025",
     "vaatimuksia": 44,
     "tutkinnonOsat": [
-      { "nimi": "Tieto- ja viestintätekniikan perustehtävät", "vaatimuksia": 12 },
-      { "nimi": "Ohjelmointi", "vaatimuksia": 11 },
-      { "nimi": "Ohjelmistokehittäjänä toimiminen", "vaatimuksia": 14 },
-      { "nimi": "Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla", "vaatimuksia": 7 }
+      {
+        "nimi": "Tieto- ja viestintätekniikan perustehtävät",
+        "vaatimuksia": 12
+      },
+      {
+        "nimi": "Ohjelmointi",
+        "vaatimuksia": 11
+      },
+      {
+        "nimi": "Ohjelmistokehittäjänä toimiminen",
+        "vaatimuksia": 14
+      },
+      {
+        "nimi": "Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla",
+        "vaatimuksia": 7
+      }
     ]
   }
 }

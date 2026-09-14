@@ -58,6 +58,7 @@
           <a class="nav-row" href="#view-kaytto" data-view-nav="kaytto">Näin käytät sivua<span class="nav-meta">aloita tästä</span></a>
           <a class="nav-row" href="#view-toimeksianto" data-view-nav="toimeksianto">Toimeksianto<span class="nav-meta"></span></a>
           <a class="nav-row" href="#view-tyotapa" data-view-nav="tyotapa">Työtapa<span class="nav-meta"></span></a>
+          <a class="nav-row" href="#view-termit" data-view-nav="termit">Termit<span class="nav-meta" data-glossary-count></span></a>
           <a class="nav-row" href="#view-galleria" data-view-nav="galleria">Galleria<span class="nav-meta">vko 17</span></a>
         </nav>
 
@@ -93,8 +94,8 @@
         </figure>
 
         <div class="principle-grid">
-          <div class="card"><span class="num">1</span><h3>Yksi kauppa, monta viikkoa</h3><p>Jokainen viikko lisää samaan verkkokauppaan yhden havaittavan asian: näkymän, toiminnon tai laatuparannuksen.</p><small>Frontti kansiossa frontend/, backend kansiossa backend/, dokumentit kansiossa project-docs/.</small></div>
-          <div class="card"><span class="num">2</span><h3>Ohjaa työ Gitillä</h3><p>Tehtävät ovat GitHubin tehtäväkortteja (issueita). Valmis työ näkyy pieninä tallennettuina muutoksina (committeina).</p><small>Yksi tehtäväkortti = yleensä puolen tai yhden päivän työ.</small></div>
+          <div class="card"><span class="num">1</span><h3>Yksi kauppa, monta viikkoa</h3><p>Jokainen viikko lisää samaan verkkokauppaan yhden havaittavan asian: näkymän, toiminnon tai laatuparannuksen.</p><small>Frontend eli selaimessa toimiva osa on kansiossa frontend/, backend eli palvelimella toimiva osa kansiossa backend/ ja dokumentit kansiossa project-docs/.</small></div>
+          <div class="card"><span class="num">2</span><h3>Ohjaa työ Gitillä</h3><p>Koko projekti elää yhdessä repositoryssä eli GitHubiin viedyssä Git-varastossa. Tehtävät kirjataan sinne GitHub-issueiksi: issue on yksi rajattu tehtävä, jolla on valmis kun -ehto. Valmis työ tallennetaan committeina – yksi commit on yksi tallennettu muutos – ja push vie commitit GitHubiin.</p><small>Yksi issue on yleensä puolen tai yhden päivän työ.</small></div>
           <div class="card"><span class="num">3</span><h3>Kirjoita tällä sivulla</h3><p>Jokaisen viikon lopussa vastaat kolmeen kysymykseen: mitä ja miten, miksi sekä missä työnäyte on.</p><small>Kentät tallentuvat vain tähän selaimeen.</small></div>
           <div class="card"><span class="num">4</span><h3>Vie päiväkirja talteen</h3><p>Lataa koko projektipäiväkirja jokaisen viikon lopussa ja korvaa repositoryn vanha tiedosto.</p><small>Tiedosto: project-docs/projektipaivakirja.md. Sama commit-rytmi jatkuu koko projektin: pieni muutos, testi, commit.</small></div>
         </div>
@@ -129,7 +130,7 @@
         </details>
 
         <div class="download-card view-section" style="margin-top:20px">
-          <div><strong>Opiskelijan oma tila selaimessa</strong><p>Rastit, päiväkirja, suunnitelma ja AI-loki tallentuvat vain tähän selaimeen.</p></div>
+          <div><strong>Opiskelijan oma tila selaimessa</strong><p>Rastit, päiväkirja, suunnitelma ja AI-loki eli tekoälyn käyttöloki tallentuvat vain tähän selaimeen.</p></div>
           <button class="button button-ghost" type="button" data-reset>Nollaa oma eteneminen</button>
         </div>
 
@@ -168,7 +169,7 @@
               <li><strong>Ei tuotearvosteluja eikä tähtiä.</strong></li>
               <li><strong>Ei sähköposti-ilmoituksia.</strong> Tilaus näkyy henkilökunnan näkymässä.</li>
               <li><strong>Ei reaaliaikaista varastosaldoa.</strong></li>
-              <li><strong>Ei valmista UI-komponenttikirjastoa</strong> tuotelistanäkymään.</li>
+              <li><strong>Ei valmista käyttöliittymän komponenttikirjastoa</strong> tuotelistanäkymään.</li>
               <li><strong>Ei uusia ominaisuuksia viikon 13 jälkeen.</strong></li>
             </ul>
           </div>
@@ -177,7 +178,7 @@
         <div class="card card-tint decision-box view-section">
           <p class="section-label">Sovi ohjaajan kanssa — näitä ei päätetä itse eikä tekoälyllä</p>
           <ul>
-            <li>Millä lisenssillä työ julkaistaan? LICENSE-tiedosto repoon heti kun asia on sovittu.</li>
+            <li>Millä lisenssillä työ julkaistaan? LICENSE-tiedosto repositoryyn heti kun asia on sovittu.</li>
             <li>Onko repository julkinen ja millä tekijänimellä? Alaikäisellä huoltajan suostumus hoidetaan ohjaajan kautta.</li>
             <li>Mikä on oppilaitoksen linja julkaisualustasta: käyvätkö ilmaistasot vai käytetäänkö omaa palvelinta?</li>
             <li>Ketkä toimivat katselmoijina viikoilla 10 ja 16? Etsintä käynnistetään viikolla 1.</li>
@@ -202,16 +203,16 @@
         <p class="rule-note"><strong>Nyrkkisääntö:</strong> jos et pysty selittämään muutosta, työ ei ole vielä valmis.</p>
 
         <figure class="view-figure view-section">
-          <div class="image-stage"><img src="assets/tyokierto.svg" width="1672" height="941" alt="Infografiikka työkierrosta: tarina, komponentti, API, testi ja julkaisu peräkkäisinä askelina, joita terrakotanvärinen nuoli yhdistää."></div>
-          <figcaption><strong>Käyttäjätarinasta julkaistuksi kaupaksi</strong> Sama työkierto joka viikko: tarina, komponentti, rajapinta, testi, julkaisu.</figcaption>
+          <div class="image-stage"><img src="assets/tyokierto.svg" width="1672" height="941" alt="Infografiikka työkierrosta: tarina, komponentti, rajapinta, testi ja julkaisu peräkkäisinä askelina, joita terrakotanvärinen nuoli yhdistää."></div>
+          <figcaption><strong>Käyttäjätarinasta julkaistuksi kaupaksi</strong> Sama työkierto joka viikko: tarina, komponentti, rajapinta (API), testi, julkaisu. Rajapinta on se sovittu osoitteisto, jonka kautta selain hakee tiedot palvelimelta.</figcaption>
         </figure>
 
         <div class="view-section">
           <h2>Testaa kuin kehittäjä</h2>
           <p class="view-lead" style="margin-top:8px">Testaus ei ole pelkkää klikkailua ja toteamista että toimii. Kirjaa odotettu tulos, havaittu tulos, virheen syy, korjaus ja uusintatesti.</p>
           <div class="grid-2 test-grid">
-            <div class="card"><span class="num">T01–T14</span><p>Vähintään 14 suunniteltua testitapausta: 6 normaalia käyttöä, 4 rajatapausta, 4 virhetilannetta. Koko matriisi ajetaan viikolla 15 julkaistua versiota vasten.</p></div>
-            <div class="card"><span class="num">K1–K3</span><p>3 täydellistä virheenkorjausketjua: havainto → toisto → syy → korjauscommit → uusintatesti → regressiotesti. Viikoilla 7, 11 ja 14.</p></div>
+            <div class="card"><span class="num">T01–T14</span><p>Testitapaukset numeroidaan: T01 on ensimmäinen testitapaus ja T14 viimeinen. Vähintään 14 suunniteltua testitapausta: 6 normaalia käyttöä, 4 rajatapausta ja 4 virhetilannetta. Koko testimatriisi ajetaan viikolla 15 julkaistua versiota vasten.</p></div>
+            <div class="card"><span class="num">K1–K3</span><p>3 täydellistä virheenkorjausketjua, numeroituina K1, K2 ja K3: havainto → toisto → syy → korjauscommit → uusintatesti → regressiotesti eli varmistus siitä, että aiemmin toiminut toimii yhä. Viikoilla 7, 11 ja 14.</p></div>
           </div>
           <div class="card risk-box view-section">
             <p class="section-label">Riskikohdat</p>
@@ -219,7 +220,7 @@
               <li><strong>Käyttäjän syöte kantaan</strong> — haku erikoismerkeillä ei saa kaataa mitään eikä muuttaa kantaa.</li>
               <li><strong>Korin rajat</strong> — määrä 0, negatiivinen ja kohtuuttoman suuri estetään selkeällä viestillä.</li>
               <li><strong>Tunnukset</strong> — väärä salasana ja tuntematon tunnus antavat saman yleisen virheilmoituksen.</li>
-              <li><strong>Roolit kahdella tasolla</strong> — hallinta-API testataan myös suoralla kutsulla ilman istuntoa.</li>
+              <li><strong>Roolit kahdella tasolla</strong> — hallinnan rajapinta testataan myös suoralla kutsulla ilman istuntoa.</li>
               <li><strong>Tilaus</strong> — tyhjää koria ei voi tilata ja hinta säilyy tilaushetken mukaisena.</li>
             </ul>
           </div>
@@ -234,9 +235,9 @@
           <h2>Pidä punainen lanka näkyvissä</h2>
           <div class="lanka-row">
             <div><p class="section-label">Vaatimus</p><p>Arvioi ohjelmiston tietoturvaa (s11)</p></div>
-            <div><p class="section-label">Issue</p><p>#31: Estä toisen käyttäjän tilaushistorian katselu</p></div>
+            <div><p class="section-label">GitHub-issue</p><p>#31: Estä toisen käyttäjän tilaushistorian katselu</p></div>
             <div><p class="section-label">Toteutus</p><p>tietoturva-arvio.md + korjauscommit</p></div>
-            <div><p class="section-label">Testi ja työnäyte</p><p>T12 + IDOR-testi: vieras id → 403</p></div>
+            <div><p class="section-label">Testi ja työnäyte</p><p>Testitapaus T12 ja testi, jossa toisen käyttäjän tilaus haetaan vieraalla id:llä → virhekoodi 403 (ei oikeuksia)</p></div>
           </div>
         </div>
 
@@ -244,11 +245,19 @@
           <h2>Aineisto ja työkalut</h2>
           <ul class="tooling-list">
             <li><strong>Tuotedata</strong> keksitään itse omasta teemasta: noin 20 tuotetta. Älä kopioi oikeiden kauppojen tekstejä.</li>
-            <li><strong>Tuotekuviksi</strong> käyvät omat kuvat, placeholderit tai vapaat kuvapankit — lähde ja lisenssi CREDITS-tiedostoon.</li>
+            <li><strong>Tuotekuviksi</strong> käyvät omat kuvat, paikanpitäjäkuvat tai vapaat kuvapankit — lähde ja lisenssi CREDITS-tiedostoon.</li>
             <li><strong>Kirjastot</strong> npm:stä ja PyPI:stä, versiot lukittuina. Jokainen ulkoinen paketti perustellaan.</li>
             <li><strong>Tekoäly</strong> saa selittää virheitä ja ehdottaa testejä — ydin tehdään itse. Merkittävä käyttö AI-lokiin.</li>
           </ul>
         </div>
+      </section>
+
+      <!-- ============ TERMIT / SANASTO ============ -->
+      <section class="view" data-view="termit" id="view-termit">
+        <p class="view-eyebrow">Sanasto · kertausta varten</p>
+        <h1 class="view-title">Tämän projektin termit</h1>
+        <p class="view-lead">Jokainen termi selitetään myös siinä kohdassa, jossa se tulee ensimmäisen kerran vastaan. Tänne voit palata, kun tunnus tai lyhenne unohtuu. Sanastossa ovat vain ne termit, joita tässä projektissa oikeasti käytetään.</p>
+        <dl class="glossary view-section" data-termisto></dl>
       </section>
 
       <!-- ============ GALLERIA ============ -->
@@ -296,7 +305,7 @@
             <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 4</span></div>
             <div class="task-list">
             <label class="task-row"><input type="checkbox" data-task="1-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Lue toimeksianto ja kirjaa vähintään kuusi kysymystä ohjaajalle tai asiakkaalle.</span></label>
-            <label class="task-row"><input type="checkbox" data-task="1-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Sovi julkisen repon asiat ja käynnistä ohjaajan kanssa katselmoijien etsintä viikkoja 10 ja 16 varten.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="1-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Sovi julkisen repositoryn asiat ja käynnistä ohjaajan kanssa katselmoijien etsintä viikkoja 10 ja 16 varten.</span></label>
             <label class="task-row"><input type="checkbox" data-task="1-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Luo repository ja kansiorakenne: <code>frontend/</code>, <code>backend/</code> ja <code>project-docs/</code>.</span></label>
             <label class="task-row"><input type="checkbox" data-task="1-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Alusta Vite+Vue-projekti ja FastAPI-sovellus ja käynnistä molemmat kehityspalvelimet.</span></label>
             </div>
@@ -445,8 +454,8 @@
             <div class="task-list">
             <label class="task-row"><input type="checkbox" data-task="3-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Luo SQLite-kanta ja seed-skripti noin 20 oman teeman tuotteella.</span></label>
             <label class="task-row"><input type="checkbox" data-task="3-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta <code>GET /api/tuotteet</code> ja kokeile se FastAPI:n /docs-sivulla.</span></label>
-            <label class="task-row"><input type="checkbox" data-task="3-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Rakenna TuoteLista- ja TuoteKortti-komponentit itse ilman valmista UI-komponenttikirjastoa.</span></label>
-            <label class="task-row"><input type="checkbox" data-task="3-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Käsittele lataus-, tyhjä- ja virhetilat sekä kirjaa ja aja testit T01 ja T02.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="3-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Rakenna TuoteLista- ja TuoteKortti-komponentit itse ilman valmista käyttöliittymän komponenttikirjastoa.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="3-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Käsittele lataus-, tyhjä- ja virhetilat sekä kirjaa ja aja testitapaukset T01 ja T02.</span></label>
             </div>
           </section>
 
@@ -468,7 +477,7 @@
 
           <div class="outcome-grid">
             <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
-            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence">commit-linkki, kuvakaappaus tuotelistasta ja testien T01–T02 tulokset päiväkirjassa.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence">commit-linkki, kuvakaappaus tuotelistasta ja testitapausten T01–T02 tulokset päiväkirjassa.</p></div>
           </div>
 
           <section class="week-journal" data-week-journal="3">
@@ -668,7 +677,7 @@
             <label class="task-row"><input type="checkbox" data-task="6-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta haku-endpoint kyselyparametrilla parametrisoidulla SQL:llä ja kirjaa, miksi parametrisointi tehdään.</span></label>
             <label class="task-row"><input type="checkbox" data-task="6-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Rakenna hakukenttä ja tuloslista.</span></label>
             <label class="task-row"><input type="checkbox" data-task="6-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Käsittele tyhjä tulos opastavalla tekstillä ja backend-virhe omalla viestillään.</span></label>
-            <label class="task-row"><input type="checkbox" data-task="6-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjaa ja aja testit T04 ja T05.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="6-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjaa ja aja testitapaukset T04 ja T05.</span></label>
             </div>
           </section>
 
@@ -690,7 +699,7 @@
 
           <div class="outcome-grid">
             <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
-            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence">commit, testien T04–T05 tulokset ja kuvakaappaus hakudemosta.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence">commit, testitapausten T04–T05 tulokset ja kuvakaappaus hakudemosta.</p></div>
           </div>
 
           <section class="week-journal" data-week-journal="6">
@@ -742,7 +751,7 @@
             <label class="task-row"><input type="checkbox" data-task="7-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Vertaa korin tallennusvaihtoehdot ja tee päätös ohjaajan kanssa kirjaten.</span></label>
             <label class="task-row"><input type="checkbox" data-task="7-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta kori-store haarassa <code>feature/ostoskori</code> ja yhdistä se pull requestilla.</span></label>
             <label class="task-row"><input type="checkbox" data-task="7-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Rakenna korinäkymä määränmuutoksineen ja summineen.</span></label>
-            <label class="task-row"><input type="checkbox" data-task="7-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjaa ja aja testit T06 ja T07 sekä kirjaa virheenkorjausketju K1.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="7-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjaa ja aja testitapaukset T06 ja T07 sekä kirjaa virheenkorjausketju K1.</span></label>
             </div>
           </section>
 
@@ -764,7 +773,7 @@
 
           <div class="outcome-grid">
             <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
-            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence">PR-linkki, päätösmuistio, testien T06–T07 tulokset ja K1-ketju päiväkirjassa.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence">pull requestin linkki, päätösmuistio, testitapausten T06–T07 tulokset ja K1-ketju päiväkirjassa.</p></div>
           </div>
 
           <section class="week-journal" data-week-journal="7">
@@ -816,7 +825,7 @@
             <label class="task-row"><input type="checkbox" data-task="8-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Vertaa istuntoratkaisut (JWT ja eväste-sessio) ja kirjaa päätös perusteluineen ohjaajan kommentilla.</span></label>
             <label class="task-row"><input type="checkbox" data-task="8-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta rekisteröityminen validointeineen ja salasanan hashaus.</span></label>
             <label class="task-row"><input type="checkbox" data-task="8-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta kirjautuminen, uloskirjautuminen ja auth-store Piniaan.</span></label>
-            <label class="task-row"><input type="checkbox" data-task="8-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjaa ja aja testit T08 ja T09.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="8-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjaa ja aja testitapaukset T08 ja T09.</span></label>
             </div>
           </section>
 
@@ -838,7 +847,7 @@
 
           <div class="outcome-grid">
             <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
-            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence">päätösmuistio, kuvakaappaus kantariveistä (hash näkyy, salasana ei) ja testien T08–T09 tulokset.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence">päätösmuistio, kuvakaappaus kantariveistä (hash näkyy, salasana ei) ja testitapausten T08–T09 tulokset.</p></div>
           </div>
 
           <section class="week-journal" data-week-journal="8">
@@ -890,7 +899,7 @@
             <label class="task-row"><input type="checkbox" data-task="9-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta tilauksen luonti transaktiona: tilaus ja rivit tallentuvat yhtenä kokonaisuutena.</span></label>
             <label class="task-row"><input type="checkbox" data-task="9-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Rakenna tilauslomake ja valitse validointiin perusteltu ulkoinen paketti tai perustele oma validointi.</span></label>
             <label class="task-row"><input type="checkbox" data-task="9-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta tilaushistorianäkymä, joka näyttää vain omat tilaukset.</span></label>
-            <label class="task-row"><input type="checkbox" data-task="9-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjaa ja aja testit T10 ja T11.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="9-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjaa ja aja testitapaukset T10 ja T11.</span></label>
             </div>
           </section>
 
@@ -912,7 +921,7 @@
 
           <div class="outcome-grid">
             <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
-            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence">commit, lisäpaketin perustelu suunnitelmassa, testien T10–T11 tulokset ja kuvakaappaus historiasta.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence">commit, lisäpaketin perustelu suunnitelmassa, testitapausten T10–T11 tulokset ja kuvakaappaus historiasta.</p></div>
           </div>
 
           <section class="week-journal" data-week-journal="9">
@@ -1109,10 +1118,10 @@
           <section class="view-section">
             <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 4</span></div>
             <div class="task-list">
-            <label class="task-row"><input type="checkbox" data-task="12-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta roolipohjainen pääsynhallinta: route guard frontissa ja roolitarkistus API:ssa.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="12-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta roolipohjainen pääsynhallinta: reitin vartija (route guard) frontendissä ja roolitarkistus rajapinnassa.</span></label>
             <label class="task-row"><input type="checkbox" data-task="12-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Rakenna tuotehallintanäkymä lisäys-, muokkaus- ja poistolomakkeineen.</span></label>
-            <label class="task-row"><input type="checkbox" data-task="12-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Validoi syötteet sekä frontissa että backendissä.</span></label>
-            <label class="task-row"><input type="checkbox" data-task="12-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjaa ja aja testit T12 ja T13, joissa asiakasrooli yrittää hallintaan myös suoralla API-kutsulla.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="12-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Validoi syötteet sekä frontendissä että backendissä.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="12-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjaa ja aja testitapaukset T12 ja T13, joissa asiakasrooli yrittää hallintaan myös suoralla rajapintakutsulla.</span></label>
             </div>
           </section>
 
@@ -1134,7 +1143,7 @@
 
           <div class="outcome-grid">
             <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
-            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence">testien T12–T13 tulokset curl-kutsun vastauksineen, commit ja kuvakaappaus hallintanäkymästä.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence">testitapausten T12–T13 tulokset curl-kutsun vastauksineen, commit ja kuvakaappaus hallintanäkymästä.</p></div>
           </div>
 
           <section class="week-journal" data-week-journal="12">
@@ -1184,7 +1193,7 @@
             <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 4</span></div>
             <div class="task-list">
             <label class="task-row"><input type="checkbox" data-task="13-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta henkilökunnan tilauslistaus suodatuksella: uudet ja käsitellyt.</span></label>
-            <label class="task-row"><input type="checkbox" data-task="13-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta tilauksen tila ja sen muutos, näytä tila asiakkaan historiassa ja aja testi T14.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="13-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta tilauksen tila ja sen muutos, näytä tila asiakkaan historiassa ja aja testitapaus T14.</span></label>
             <label class="task-row"><input type="checkbox" data-task="13-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Tee saavutettavuustarkistus koko sovellukselle ja korjaa löydökset.</span></label>
             <label class="task-row"><input type="checkbox" data-task="13-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Aja Lighthouse ennen ja jälkeen korjausten ja tallenna raportit.</span></label>
             </div>
@@ -1258,7 +1267,7 @@
             <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 4</span></div>
             <div class="task-list">
             <label class="task-row"><input type="checkbox" data-task="14-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Käy sovellus läpi tietoturvan tarkistuslistalla kohta kohdalta.</span></label>
-            <label class="task-row"><input type="checkbox" data-task="14-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Testaa hyökkääjän silmin: SQL-injektio, XSS, IDOR ja hallinta-API ilman istuntoa.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="14-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Testaa hyökkääjän silmin: SQL-injektio, XSS, IDOR ja hallinnan rajapinta ilman istuntoa.</span></label>
             <label class="task-row"><input type="checkbox" data-task="14-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Korjaa löydökset ja kirjaa virheenkorjausketju K3.</span></label>
             <label class="task-row"><input type="checkbox" data-task="14-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjoita <code>tietoturva-arvio.md</code> ja käy se läpi ohjaajan kanssa.</span></label>
             </div>
@@ -1404,7 +1413,7 @@
           <section class="view-section">
             <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 4</span></div>
             <div class="task-list">
-            <label class="task-row"><input type="checkbox" data-task="16-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Jäädytä sisältö, julkaise julkaisuehdokas ja merkitse git-tag <code>v1.0-rc1</code>.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="16-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Jäädytä sisältö, julkaise julkaisuehdokas (RC) ja merkitse git-tag <code>v1.0-rc1</code>.</span></label>
             <label class="task-row"><input type="checkbox" data-task="16-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Siivoa repository ja viimeistele käyttöönotto- ja käyttöohje.</span></label>
             <label class="task-row"><input type="checkbox" data-task="16-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Järjestä julkaisutestaus: nimetty ulkopuolinen ja puhdas ympäristö ilman suullista apua.</span></label>
             <label class="task-row"><input type="checkbox" data-task="16-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjaa havainnot testaajan sanoin ja luokittele estävät ja ei-estävät löydökset.</span></label>
@@ -1617,7 +1626,7 @@
           <p class="section-label">Esitäytetty pohja · tulee mukaan tiedostoon</p>
           <article><h3>1. Tavoite</h3><p>Verkkokauppa, jossa asiakas selaa ja hakee tuotteita, kerää korin ja tilaa ilman maksunvälitystä; henkilökunta hallitsee tuotteita ja selaa tilauksia.</p></article>
           <article><h3>2. Asiakas ja kohderyhmä</h3><p>Nopan Nurkan yrittäjä ja myyjä (henkilökunta) sekä liikkeen asiakkaat, jotka käyttävät kauppaa ensisijaisesti puhelimella.</p></article>
-          <article><h3>3. Rajaus</h3><p><strong>P0:</strong> tuotteet kategorioittain, sanahaku, ostoskori, rekisteröityminen ja kirjautuminen, tilaus, tilaushistoria, omien tietojen muokkaus, tuotehallinta ja tilausten selaus.</p><p><strong>Pois rajattu:</strong> maksunvälitys, tuotearvostelut, sähköposti-ilmoitukset ja varastosaldon reaaliaikaseuranta.</p></article>
+          <article><h3>3. Rajaus</h3><p><strong>Rajauksen tasot:</strong> P0 on pakollinen ydin, jonka on valmistuttava. P1 on tärkeä jatkosisältö, joka tehdään vasta kun P0 toimii. P2 on valinnainen lisä, joka voidaan jättää pois.</p><p><strong>P0:</strong> tuotteet kategorioittain, sanahaku, ostoskori, rekisteröityminen ja kirjautuminen, tilaus, tilaushistoria, omien tietojen muokkaus, tuotehallinta ja tilausten selaus.</p><p><strong>Pois rajattu:</strong> maksunvälitys, tuotearvostelut, sähköposti-ilmoitukset ja varastosaldon reaaliaikaseuranta.</p></article>
           <article><h3>4. Teknologialinja</h3><p>Vue 3 + Vite + Pinia, FastAPI + SQLite, julkaisualusta oman vertailun mukaan.</p></article>
           <article><h3>5. Avoimet asiat – ohjaaja omistaa</h3><p>Lisenssi · repositoryn julkisuus ja tekijänimi · oppilaitoksen linja julkaisualustasta · katselmoijien nimeäminen viikoille 10 ja 16 · perusteversion siirtymäsääntö (OPH-6216-2025).</p><small class="plan-open-note">Näitä ei päätetä itse eikä tekoälyllä. Tyhjä kenttä on oikea tulos, kunnes asia on sovittu. Siihen asti tiedostoon tulostuu ”EI VIELÄ SOVITTU – avoin asia”.</small></article>
         </div>
@@ -1629,7 +1638,7 @@
           </div>
 
           <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Projektin nimi<input type="text" data-plan-field="nimi" placeholder="NoppaKauppa (tai oma nimi, jos vaihdat teeman)"></label><span class="plan-row-week">viikko 1</span></div>
-          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Tekijä<input type="text" data-plan-field="tekija" placeholder="Ohjaajan kanssa sovittu tekijänimi julkiseen repoon"></label><span class="plan-row-week">viikko 1</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Tekijä<input type="text" data-plan-field="tekija" placeholder="Ohjaajan kanssa sovittu tekijänimi julkiseen repositoryyn"></label><span class="plan-row-week">viikko 1</span></div>
           <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Tuoteteema ja perustelu<input type="text" data-plan-field="teema" placeholder="Lautapelit tai oma ala (ei ikärajatuotteita). Miksi juuri tämä?"></label><span class="plan-row-week">viikko 2</span></div>
           <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Tietomalli: taulut ja suhteet<input type="text" data-plan-field="tietomalli" placeholder="Esim. tuote, kategoria, kayttaja, tilaus, tilausrivi sekä se, mikä viittaa mihin"></label><span class="plan-row-week">viikko 2</span></div>
           <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Tietovarastovertailu ja valinta<input type="text" data-plan-field="tietovarastovertailu" placeholder="SQLite / JSON-tiedosto / PostgreSQL: mitä vertasit ja miksi valitsit valitsemasi"></label><span class="plan-row-week">viikko 2</span></div>
@@ -1692,8 +1701,8 @@
             <label>Päivä ja työkalu<input type="text" name="tool" required placeholder="vko 1 / ChatGPT"></label>
             <label>Mihin pyysit apua?<input type="text" name="question" required placeholder="Miksi FastAPI palauttaa 422 tilauslomakkeen lähetyksestä?"></label>
           </div>
-          <label>Mitä käytit, muutit tai hylkäsit — ja miten tarkistit?<textarea name="used" rows="2" required placeholder="Selitys auttoi: Pydantic-mallista puuttui kenttä. Korjasin mallin itse ja lisäsin testin T10. Vertasin FastAPI:n dokumentaatioon."></textarea></label>
-          <label>Aineistoviite<input type="text" name="reference" required placeholder="Issue #12 / commit abc123 / testi T05"></label>
+          <label>Mitä käytit, muutit tai hylkäsit — ja miten tarkistit?<textarea name="used" rows="2" required placeholder="Selitys auttoi: Pydantic-mallista puuttui kenttä. Korjasin mallin itse ja lisäsin testitapauksen T10. Vertasin FastAPI:n dokumentaatioon."></textarea></label>
+          <label>Aineistoviite<input type="text" name="reference" required placeholder="GitHub-issue #12 / commit abc123 / testitapaus T05"></label>
           <div class="privacy-row">
             <label class="privacy-confirm"><input type="checkbox" name="privacy" required> Vahvistan, etten syöttänyt henkilötietoja, salaisuuksia tai luottamuksellista aineistoa.</label>
             <button class="button button-primary" type="submit">Lisää lokiin</button>
@@ -1724,7 +1733,7 @@
 
             <label class="matrix-row"><input type="checkbox" data-evidence="p3"><span><strong>testaa ohjelman toimintoja</strong> Viikko 15: 14 tapauksen testimatriisi (odotetut tulokset kirjattu ennen ajoa) ajettuna julkaistua versiota vasten sekä uusintatestaukset korjausten jälkeen.</span></label>
 <p class="matrix-group">Opiskelija ohjelmoi</p>
-            <label class="matrix-row"><input type="checkbox" data-evidence="p4"><span><strong>käyttää rakenteista ohjelmointia toteutuksissa</strong> Viikko 9: tilauslogiikka jaettuna moduuleihin ja funktioihin (reitit, kantakerros, validointi); frontissa komponentti- ja store-jako, ei yhtä jättitiedostoa.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p4"><span><strong>käyttää rakenteista ohjelmointia toteutuksissa</strong> Viikko 9: tilauslogiikka jaettuna moduuleihin ja funktioihin (reitit, kantakerros, validointi); frontendissä komponentti- ja store-jako, ei yhtä jättitiedostoa.</span></label>
 
             <label class="matrix-row"><input type="checkbox" data-evidence="p5"><span><strong>kirjoittaa ylläpidettävää ohjelmakoodia</strong> Viikko 15: refaktorointicommitit perusteluineen; nimeäminen, toisteisuuden poisto ja komponentin pilkkominen, testit vihreinä ennen ja jälkeen.</span></label>
 
@@ -1782,7 +1791,7 @@
 
             <label class="matrix-row"><input type="checkbox" data-evidence="k2"><span><strong>selvittää ohjelmistokomponenttikirjaston tarjoamat mahdollisuudet ja rajoitteet</strong> Viikko 2: selvitys suunnitelmassa siitä, mitä Vue ja Pinia ratkaisevat (komponentit, reaktiivisuus, tila) ja missä tarvitaan muuta (backend rooleille ja istunnoille, yksisivusovelluksen rajoitteet).</span></label>
 
-            <label class="matrix-row"><input type="checkbox" data-evidence="k3"><span><strong>käyttää ohjelmistokomponenttikirjaston tärkeimpiä toimintoja ja työkaluja</strong> Viikot 3 ja 7: komponentit, propsit, computed-arvot ja Pinia-store (kori, auth) käytössä; itse rakennettu tuotelistanäkymä ilman valmista UI-kirjastoa.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="k3"><span><strong>käyttää ohjelmistokomponenttikirjaston tärkeimpiä toimintoja ja työkaluja</strong> Viikot 3 ja 7: komponentit, propsit, computed-arvot ja Pinia-store (kori, auth) käytössä; itse rakennettu tuotelistanäkymä ilman valmista käyttöliittymäkirjastoa.</span></label>
 
             <label class="matrix-row"><input type="checkbox" data-evidence="k4"><span><strong>tuo kehittämisympäristöön ulkoisia komponentteja</strong> Viikot 4 ja 9: vue-router perusteltuna sekä yksi oma perusteltu lisäpaketti (käyttötarkoitus, konfigurointi ja riippuvuusvaikutus kirjattuna).</span></label>
 <p class="matrix-group">Opiskelija toteuttaa ohjelmiston ohjelmistokomponenttikirjastolla</p>

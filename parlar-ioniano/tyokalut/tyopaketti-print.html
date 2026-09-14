@@ -36,7 +36,7 @@ th { background: #e7eef8; }
 <div class="wk"><h2>Week 36 · 31 Aug – 4 Sep — Kickoff, toolchain and the first deploy</h2>
 <p class="feature">After this week an empty but real site — plain index.html with Bootstrap loaded from a CDN — is live at your public GitHub Pages URL, the plan is drafted, and the P0 work is split into issues.</p>
 <p class="task">☐&nbsp; Hold the kickoff talk: bring your question list and record every answer as a decision, an open item or an assumption.</p>
-<p class="task">☐&nbsp; Set up VS Code, the site folder served over http://localhost and the public repository — privacy check first, 2FA on.</p>
+<p class="task">☐&nbsp; Set up VS Code, the site folder served over http://localhost and the public repository — privacy check first, two-factor authentication (2FA) on.</p>
 <p class="task">☐&nbsp; Create a hotspot on your phone, connect your computer to it, and publish the empty site to GitHub Pages over your own connection.</p>
 <p class="task">☐&nbsp; Draft the technical plan below and split the P0 pages into prioritised issues.</p>
 <p class="done"><strong>Done when:</strong> The public URL opens on a device that has never seen the project, and another person understands from the README and the plan what is being built and for whom.</p>
@@ -90,7 +90,7 @@ th { background: #e7eef8; }
 <p class="feature">The Numbers &amp; Comparison page is live with a number converter built from scratch: type 319, get "Trecentodecenove" — pure functions in js/numbers.js, unit-tested in the browser against the PDF before the code ran.</p>
 <p class="task">☐&nbsp; Write the converter tests first: expected values from PDF pages 42–45, committed while still red.</p>
 <p class="task">☐&nbsp; Implement numberToIonian and the ordinal helpers in js/numbers.js as small pure functions until tests/tests.html reports 0 failed.</p>
-<p class="task">☐&nbsp; Build the converter UI from scratch — no Bootstrap components — and ship the week-44 feedback change.</p>
+<p class="task">☐&nbsp; Build the converter's user interface (UI) from scratch — no Bootstrap components — and ship the week-44 feedback change.</p>
 <p class="done"><strong>Done when:</strong> On the public URL, at least 0–999 999 converts correctly including the separation and clipping rules, tests/tests.html reports 0 failed with at least 6 converter tests whose names cite PDF pages, and the feedback change is live.</p>
 <p class="ev"><strong>Work sample to the Git repository before ticking:</strong> tests/numbers.test.js with PDF-cited expectations, js/numbers.js, the Numbers page live, and the feedback-change commit linked to its finding.</p>
 </div>
@@ -115,7 +115,7 @@ th { background: #e7eef8; }
 <h1 class="page">Phase D — Release and demonstration</h1>
 <div class="wk"><h2>Week 48 · 23–27 Nov — Release candidate, user test and v1.0</h2>
 <p class="feature">Version 1.0 is released: content frozen, tested in a clean environment, verified by an external user who learned a café dialogue from the site alone — and the repository documentation lets a stranger run the project without asking you anything.</p>
-<p class="task">☐&nbsp; Freeze the content and tag the release candidate.</p>
+<p class="task">☐&nbsp; Freeze the content and tag the release candidate (RC).</p>
 <p class="task">☐&nbsp; Run the clean-environment test from a fresh clone using only the README, fixing the README where it fails.</p>
 <p class="task">☐&nbsp; Run the external user test with a written task card, recording the tester's words verbatim and separately.</p>
 <p class="task">☐&nbsp; Write the deployment-path description from your own artefacts and release v1.0.</p>
@@ -136,6 +136,36 @@ th { background: #e7eef8; }
 <p class="task"><strong>Wed 2 Dec</strong> · Rehearse the 8–10 min demo and the self-assessment</p>
 <p class="task"><strong>Thu 3 Dec</strong> · Buffer — final check with another person</p>
 <p class="task"><strong>Fri 4 Dec</strong> · Demonstration and handover</p>
+<h1 class="page">Glossary</h1><p class="muted">The identifiers and technical terms of this project in the order you meet them. Each one is also explained on the site where it first comes up.</p><table>
+<tr><td style="width:24%"><strong>repository</strong></td><td><em>Repo.</em> The project folder whose whole history Git stores. Your site lives here, and the public copy on GitHub is what GitHub Pages serves.</td></tr>
+<tr><td style="width:24%"><strong>commit</strong></td><td>One named, saved change in the repository's history. A commit is the smallest work sample you can point an assessor at.</td></tr>
+<tr><td style="width:24%"><strong>issue</strong></td><td><em>GitHub issue.</em> A numbered task card in the repository, with its own description and done-when condition. The work of this project is planned as issues and closed with commits.</td></tr>
+<tr><td style="width:24%"><strong>branch</strong></td><td>A named line of commits. This project publishes from the main branch and uses a short feature branch for the week-45 feedback change.</td></tr>
+<tr><td style="width:24%"><strong>JSON</strong></td><td><em>JavaScript Object Notation.</em> A plain-text format for structured data. Every grammar table on this site is stored as JSON under data/ and read while the page is running.</td></tr>
+<tr><td style="width:24%"><strong>fetch()</strong></td><td>The browser call that loads a file — here a JSON file — while the page is open. It works only over http://, which is why the site is always opened through a local web server.</td></tr>
+<tr><td style="width:24%"><strong>unit test</strong></td><td>A small automated check that runs one of your functions and compares the result with the value you wrote down beforehand. This project's unit tests run in the browser from tests/tests.html.</td></tr>
+<tr><td style="width:24%"><strong>CDN</strong></td><td><em>Content delivery network.</em> A public server that hosts a library's files, so you link to them instead of copying them into your repository. Bootstrap, the icons and the fonts are loaded this way, each with a pinned version.</td></tr>
+<tr><td style="width:24%"><strong>bundler</strong></td><td>A tool that packs many source files into one file for the browser. This project has none: the files you write are exactly the files that go live.</td></tr>
+<tr><td style="width:24%"><strong>URL</strong></td><td><em>Web address.</em> The address a page is opened from. "The public URL" in these instructions always means your GitHub Pages address — the one anyone can open.</td></tr>
+<tr><td style="width:24%"><strong>SVG</strong></td><td><em>Scalable Vector Graphics.</em> An image written as text and drawn from shapes, so it stays sharp at any size. The flag and column motif are drawn as your own SVG.</td></tr>
+<tr><td style="width:24%"><strong>P0</strong></td><td><em>Must-have core.</em> The pages and features that have to be finished before anything else is started. Here: Home, Alphabet, Pronouns, Nouns &amp; Articles, Numbers with the converter, and the Phrasebook.</td></tr>
+<tr><td style="width:24%"><strong>P1</strong></td><td><em>Important follow-up.</em> Work that is started only once every P0 item works. Here: the Verbs overview, and only if P0 is complete by the end of week 46.</td></tr>
+<tr><td style="width:24%"><strong>P2</strong></td><td><em>Optional extra.</em> Work that may be dropped without failing the project. Here: word-building.</td></tr>
+<tr><td style="width:24%"><strong>XSS</strong></td><td><em>Cross-site scripting.</em> An attack where text a visitor types is rendered as code by the page. Building every element with textContent instead of innerHTML is what stops it here.</td></tr>
+<tr><td style="width:24%"><strong>deploy</strong><br><span class="muted">week 36</span></td><td>Publishing the current version to the public address. In this project a deploy is a push to the main branch, which GitHub Pages then serves.</td></tr>
+<tr><td style="width:24%"><strong>2FA</strong><br><span class="muted">week 36</span></td><td><em>Two-factor authentication.</em> A second step on top of the password when you sign in to GitHub. Switched on in week 36 and part of the device-security evidence.</td></tr>
+<tr><td style="width:24%"><strong>backlog</strong><br><span class="muted">week 36</span></td><td>The ordered list of everything still to do, kept as issues and sorted P0 first. It is re-prioritised after the week-44 review.</td></tr>
+<tr><td style="width:24%"><strong>API</strong><br><span class="muted">week 37</span></td><td><em>Application programming interface.</em> The set of functions one piece of software offers another. The Fetch API is the browser's own interface for loading files; this project talks to no external service.</td></tr>
+<tr><td style="width:24%"><strong>DOM</strong><br><span class="muted">week 37</span></td><td><em>Document Object Model.</em> The browser's live tree of everything on the page. Your JavaScript renders the grammar tables by creating DOM elements, not by writing HTML strings.</td></tr>
+<tr><td style="width:24%"><strong>IPA</strong><br><span class="muted">week 37</span></td><td><em>International Phonetic Alphabet.</em> The standard symbols for speech sounds, written in square brackets. Every letter's IPA value is typed from the reference PDF and checked against it.</td></tr>
+<tr><td style="width:24%"><strong>tag</strong><br><span class="muted">week 40</span></td><td><em>Git tag.</em> A permanent name pinned to one exact commit, such as v0.5 or v1.0. A tag is how you can still show an assessor precisely what the reviewers saw.</td></tr>
+<tr><td style="width:24%"><strong>T01</strong><br><span class="muted">week 44</span></td><td><em>Test case identifier.</em> T means test case and the number identifies it: T01 is the first, T02 the second. The expected result is written down before the test is run.</td></tr>
+<tr><td style="width:24%"><strong>regression test</strong><br><span class="muted">week 44</span></td><td>A test added after a bug is fixed, so the same bug cannot come back unnoticed. Every debugging chain in this project ends in one.</td></tr>
+<tr><td style="width:24%"><strong>UI</strong><br><span class="muted">week 45</span></td><td><em>User interface.</em> The part of the site a visitor sees and operates: the input, the button, the result text. The number converter's UI is built by hand, without Bootstrap components.</td></tr>
+<tr><td style="width:24%"><strong>refactor</strong><br><span class="muted">week 47</span></td><td>Improving the structure of working code without changing what it does — renaming, extracting, deleting. The unit tests are what make it safe.</td></tr>
+<tr><td style="width:24%"><strong>RC</strong><br><span class="muted">week 48</span></td><td><em>Release candidate.</em> A version finished enough to be tested as if it were the release. RC1 is the first one; only blocking fixes go in after it.</td></tr>
+<tr><td style="width:24%"><strong>LAN</strong><br><span class="muted">week 48</span></td><td><em>Local area network.</em> The network your own devices share, for example your phone's hotspot. The deployment path runs localhost → LAN → GitHub Pages over HTTPS.</td></tr>
+</table>
 <h1 class="page">Evidence matrix — 44 competence requirements</h1><p class="muted">Tick only when the requirement has an exact work sample: a link, a commit, a screenshot, a test row or a memo. The same work sample can serve several requirements. Requirement names are shown in Finnish exactly as in the national qualification criteria (ePerusteet).</p>
 <h2>Tieto- ja viestintätekniikan perustehtävät</h2>
 <p class="item">☐&nbsp; <strong>Palveluasenne</strong> – How you receive and act on feedback in the review and the user test (wk 44, 48).</p>
@@ -146,7 +176,7 @@ th { background: #e7eef8; }
 <p class="item">☐&nbsp; <strong>Alan perussanasto</strong> – The comparison memo: field vocabulary and the library options with their trends (wk 38).</p>
 <p class="item">☐&nbsp; <strong>Englanninkielinen materiaali</strong> – English documentation sources cited in the journal and the AI log (wk 37–39).</p>
 <p class="item">☐&nbsp; <strong>Tiedonhaku ongelmissa</strong> – The information trail inside the debugging chains (wk 44–47).</p>
-<p class="item">☐&nbsp; <strong>Käyttöjärjestelmät</strong> – The development environment set up: OS tools, VS Code, a local web server, Git (wk 36).</p>
+<p class="item">☐&nbsp; <strong>Käyttöjärjestelmät</strong> – The development environment set up: operating-system tools, VS Code, a local web server, Git (wk 36).</p>
 <p class="item">☐&nbsp; <strong>Verkkoyhteyden jako</strong> – Your phone's connection shared to the computer by hotspot and the first deploy published over it, with the security notes (wk 36).</p>
 <p class="item">☐&nbsp; <strong>Verkon perusrakenne</strong> – The deployment-path description from your own artefacts: localhost → LAN → Pages/HTTPS (wk 48).</p>
 <p class="item">☐&nbsp; <strong>Laitteiden suojaus</strong> – Partial: environment hardening (wk 36), the checkpoint (wk 44) and the dependency audit (wk 47); the rest is an open item owned by the supervisor.</p>
@@ -174,7 +204,7 @@ th { background: #e7eef8; }
 <p class="item">☐&nbsp; <strong>Yhteys tietovarastoon</strong> – Fetch with loading and error states, implemented and tested (wk 37, 39).</p>
 <p class="item">☐&nbsp; <strong>Rajapinnat ja tiedon käsittely</strong> – The Fetch API plus the data transforms: grouping, filtering, search (wk 39, 46).</p>
 <p class="item">☐&nbsp; <strong>Tietoturvan arviointi</strong> – The textContent XSS proof, the CDN dependency review and the no-secrets check (wk 46–47).</p>
-<p class="item">☐&nbsp; <strong>Versionhallinta</strong> – The commit history, the v0.5 and v1.0 tags, the branches and PRs (wk 36–49).</p>
+<p class="item">☐&nbsp; <strong>Versionhallinta</strong> – The commit history, the v0.5 and v1.0 tags and the branches (wk 36–49).</p>
 <p class="item">☐&nbsp; <strong>Osan liittäminen versioon</strong> – The feedback change merged into the existing version from a feature branch (wk 45–46).</p>
 <p class="item">☐&nbsp; <strong>Julkaisu tuotantoon</strong> – The first deploy from the main branch and the v1.0 release on GitHub Pages (wk 36, 48).</p>
 <h2>Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla</h2>
