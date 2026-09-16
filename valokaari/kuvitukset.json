@@ -1,0 +1,68 @@
+{
+  "aksentti": "#c2410c",
+  "aksenttiTumma": "#9a3412",
+  "vaihevarit": [
+    "#a16207",
+    "#c2410c",
+    "#9f1239",
+    "#1e3a8a"
+  ],
+  "tyokierto": [
+    "Issue",
+    "Rajapinta",
+    "Komponentti",
+    "Testi",
+    "Julkaisu"
+  ],
+  "vaiheet": [
+    [
+      "A",
+      "Ydin"
+    ],
+    [
+      "B",
+      "Ominaisuudet"
+    ],
+    [
+      "C",
+      "Valmiiksi"
+    ],
+    [
+      "D",
+      "Julkaisu"
+    ]
+  ],
+  "suunnitelma": [
+    "Tarve ja rajaus",
+    "Omat päätökset",
+    "Rajapintasopimus"
+  ],
+  "testaus": [
+    "Hae odotusarvo",
+    "Aja testi",
+    "Löydä virhe",
+    "Korjaa",
+    "Uusintatesti"
+  ],
+  "tekoaly": [
+    "Kysy",
+    "Tarkista",
+    "Testaa",
+    "Kirjaa"
+  ],
+  "tunnus": "ympyra",
+  "tyokiertoOtsikko": "VIIKON TYÖKIERTO",
+  "suunnitelmaOtsikko": "SUUNNITELMA ENNEN KOODIA",
+  "tekoalyTekstit": [
+    "Selitä ratkaisu omin sanoin.",
+    "Vertaa PHP:n ja Reactin dokumentaatioon.",
+    "Aja testi itse omilla odotusarvoilla.",
+    "Merkitse käyttö AI-lokiin."
+  ],
+  "tekoalyMuistutus": "Päivänvalolaskenta, leikkauspisteet, komponenttirakenne ja saavutettavuus tehdään itse.",
+  "tyokiertoAlt": "Viisivaiheinen työkierto: issue, rajapinta, komponentti, testi ja julkaisu.",
+  "vaiheetAlt": "Aikajana neljästä vaiheesta: Ydin työviikot 1–5, Ominaisuudet 6–10, Valmiiksi 11–15, Julkaisu 16–18.",
+  "suunnitelmaAlt": "Kaavio suunnitelman kolmesta osasta: tarve ja rajaus, opiskelijan omat päätökset ja rajapintasopimus.",
+  "testausAlt": "Testauksen kierto: hae odotusarvo, aja testi, löydä virhe, korjaa ja uusintatestaa.",
+  "tekoalyAlt": "Tekoälyn käytön neljä sääntöä: kysy, tarkista, testaa ja kirjaa."
+}

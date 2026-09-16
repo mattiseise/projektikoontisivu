@@ -306,5 +306,46 @@ window.PROJEKTIT = [
         "vaatimuksia": 7
       }
     ]
+  },
+  {
+    "slug": "valokaari",
+    "nimi": "Valokaari",
+    "tyyppi": "web",
+    "tila": "kaynnissa",
+    "kieli": "",
+    "kuvaus": "Rakennat Lapin matkailuyritykselle sovelluksen, joka piirtää kaavioon päivän pituuden Suomen paikkakunnille vuoden jokaisena päivänä: kaamos, yötön yö ja paikkojen väliset leikkauspisteet näkyvät samassa kuvassa. PHP-rajapinta laskee datan, React-käyttöliittymä piirtää sen, ja sovellus julkaistaan julkiseen osoitteeseen.",
+    "lukuvuosi": "",
+    "viikot": "oma aikataulu",
+    "kesto": "18 työviikkoa",
+    "ryhma": "",
+    "tekniikat": [
+      "PHP",
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "Git"
+    ],
+    "sivusto": "https://mattiseise.github.io/projektikoontisivu/valokaari/",
+    "repo": "https://github.com/mattiseise/projektikoontisivu",
+    "kuva": "kuvat/valokaari.jpg",
+    "tutkinto": "Tieto- ja viestintätekniikan perustutkinto",
+    "diaarinumero": "OPH-6216-2025",
+    "vaatimuksia": 32,
+    "luovutus": "18. työviikon perjantai",
+    "tutkinnonOsat": [
+      {
+        "nimi": "Ohjelmointi",
+        "vaatimuksia": 11
+      },
+      {
+        "nimi": "Ohjelmistokehittäjänä toimiminen",
+        "vaatimuksia": 14
+      },
+      {
+        "nimi": "Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla",
+        "vaatimuksia": 7
+      }
+    ]
   }
 ];

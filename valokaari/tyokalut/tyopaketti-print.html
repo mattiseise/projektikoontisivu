@@ -1,0 +1,282 @@
+<!doctype html><html lang="fi"><head><meta charset="utf-8"><title>Valokaari – työpaketti</title><style>
+@page { size: A4; margin: 16mm; }
+body { font-family: -apple-system, 'Segoe UI', sans-serif; font-size: 10pt; line-height: 1.45; color: #1a1a1a; margin: 0; }
+h1 { color: #9a3412; font-size: 17pt; margin: 0 0 8pt; page-break-after: avoid; }
+h2 { color: #9a3412; font-size: 12pt; margin: 14pt 0 5pt; page-break-after: avoid; }
+.cover { text-align: center; padding-top: 70mm; page-break-after: always; }
+.cover h1 { font-size: 34pt; }
+.cover p { color: #555; }
+table { border-collapse: collapse; width: 100%; margin: 6pt 0; page-break-inside: avoid; }
+td, th { border: 0.5pt solid #bbb; padding: 3pt 5pt; text-align: left; vertical-align: top; font-size: 9pt; }
+th { background: #fdece3; }
+.wk { page-break-inside: avoid; margin-bottom: 8pt; }
+.feature { color: #555; font-style: italic; margin: 0 0 4pt; }
+.task { margin: 2pt 0; }
+.done { color: #9a3412; font-size: 9pt; margin: 3pt 0 0; }
+.ev { color: #555; font-size: 9pt; margin: 2pt 0 0; }
+.page { page-break-before: always; }
+.muted { color: #555; }
+.item { font-size: 9pt; margin: 2pt 0; }
+</style></head><body>
+<div class="cover"><h1>Valokaari</h1><p style="font-size:14pt">Paperinen työpaketti</p><p>Päivänvalon visualisointi Suomen paikkakunnille: PHP-rajapinta, React-käyttöliittymä ja julkaisu tuotantoon</p><p style="font-size:12pt"><strong>18 työviikkoa · päivätön aikataulu · luovutus 18. työviikon perjantai</strong></p><p style="max-width:120mm;margin:18pt auto 0">Tämä paketti on aikataulu ja tarkistuslista tilanteisiin, joissa sivusto ei ole auki. Projektipäiväkirja kirjoitetaan sivustolla ja viedään repositoryn project-docs-kansioon. Rasti tässä vihossa ei ole palautus: työ on aina Git-repositoryssa.</p><p style="max-width:120mm;margin:10pt auto 0">Aikataulu on päivätön: työviikko 1 on se viikko, jolla opiskelija aloittaa, ja projekti kestää 18 työviikkoa.</p><p style="max-width:120mm;margin:10pt auto 0">Julkiseen repositoryyn ei laiteta henkilötietoja, koulun tunnisteita eikä muiden nimiä. Tekijänimestä sovitaan ohjaajan kanssa.</p></div>
+<h1>Aikataulu</h1><table><tr><th>Vko</th><th>Ajoitus</th><th>Viikon aihe</th><th>Vaihe</th></tr>
+<tr><td><strong>1</strong></td><td>Työviikko 1 / 18</td><td>Aloitus</td><td>A</td></tr>
+<tr><td><strong>2</strong></td><td>Työviikko 2 / 18</td><td>Suunnitelma ja priorisointi</td><td>A</td></tr>
+<tr><td><strong>3</strong></td><td>Työviikko 3 / 18</td><td>Julkaistu runko</td><td>A</td></tr>
+<tr><td><strong>4</strong></td><td>Työviikko 4 / 18</td><td>Päivänvalolaskenta</td><td>A</td></tr>
+<tr><td><strong>5</strong></td><td>Työviikko 5 / 18</td><td>Paikkakuntahaku ja rajapinta</td><td>A</td></tr>
+<tr><td><strong>6</strong></td><td>Työviikko 6 / 18</td><td>Ensimmäinen kaavio</td><td>B</td></tr>
+<tr><td><strong>7</strong></td><td>Työviikko 7 / 18</td><td>Monta paikkaa: itse rakennettu näkymä</td><td>B</td></tr>
+<tr><td><strong>8</strong></td><td>Työviikko 8 / 18</td><td>Tooltip ja ääripäät</td><td>B</td></tr>
+<tr><td><strong>9</strong></td><td>Työviikko 9 / 18</td><td>Leikkauspisteet</td><td>B</td></tr>
+<tr><td><strong>10</strong></td><td>Työviikko 10 / 18</td><td>Asiakaskatselmointi</td><td>B</td></tr>
+<tr><td><strong>11</strong></td><td>Työviikko 11 / 18</td><td>Vuosivalinta ja palautemuutos kahdessa haarassa</td><td>C</td></tr>
+<tr><td><strong>12</strong></td><td>Työviikko 12 / 18</td><td>Mobiili ja saavutettavuus</td><td>C</td></tr>
+<tr><td><strong>13</strong></td><td>Työviikko 13 / 18</td><td>Tietoturva-arvio ja virheenkäsittely</td><td>C</td></tr>
+<tr><td><strong>14</strong></td><td>Työviikko 14 / 18</td><td>Testaus</td><td>C</td></tr>
+<tr><td><strong>15</strong></td><td>Työviikko 15 / 18</td><td>Laatu ja dokumentaatio</td><td>C</td></tr>
+<tr><td><strong>16</strong></td><td>Työviikko 16 / 18</td><td>Julkaisuehdokas ja julkaisutestaus</td><td>D</td></tr>
+<tr><td><strong>17</strong></td><td>Työviikko 17 / 18</td><td>Julkaisu v1.0 ja luovutus</td><td>D</td></tr>
+<tr><td><strong>18</strong></td><td>Työviikko 18 / 18</td><td>Näyttö</td><td>D</td></tr>
+</table><p class="muted">Palautus viimeistään 18. työviikon perjantai. Sivusto: tehtävien tarkat ohjeet, toteutusavut ja projektipäiväkirja.</p>
+<h1 class="page">Vaihe A – Ydin: työkalut, suunnitelma, julkaistu runko ja oikea päivänvalodata</h1>
+<div class="wk"><h2>Työviikko 1 / 18 – Aloitus</h2>
+<p class="feature">PHP:n sisäänrakennettu palvelin ja React + Vite -runko käynnistyvät omalla koneella, ja julkinen repository on olemassa ja tarkistettu.</p>
+<p class="task">☐&nbsp; Asenna työkalut (PHP 8.2 tai uudempi, Node LTS, Git, VS Code) ja kirjaa versiot README:hen.</p>
+<p class="task">☐&nbsp; Luo GitHub-repository ja tee julkisen repon tarkistukset: yksityisyys, tekijänimi ja alaikäisen huoltajan suostumus ohjaajan kautta.</p>
+<p class="task">☐&nbsp; Luo React + TypeScript -projekti Vitellä ja käynnistä kehityspalvelin. Käynnistä PHP:n sisäänrakennettu palvelin, joka palauttaa {"status":"ok"}.</p>
+<p class="task">☐&nbsp; Lue toimeksianto, kirjoita kysymyslista ohjaajalle (vähintään kuusi kysymystä) ja luo kansiorakenne. Sitten ensimmäinen commit ja push.</p>
+<p class="done"><strong>Valmis kun:</strong> Nimetty toinen henkilö (luokkakaveri tai ohjaaja) saa rungon käyntiin pelkän README:n avulla; ohjaaja on kuitannut julkisen repon tarkistuslistan ja hänet on lisätty repositoryn yhteistyökumppaniksi; kysymyslistassa on vähintään kuusi kysymystä.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: README:n versiotaulukko, kuvakaappaukset kehityspalvelimesta ja PHP-vastauksesta, kuitattu julkisuustarkistuslista, kysymyslista ja commit-historian alku (p1, k1; s12 alkaa).</p>
+</div>
+<div class="wk"><h2>Työviikko 2 / 18 – Suunnitelma ja priorisointi</h2>
+<p class="feature">Hyväksytty tekninen suunnitelma: ohjaajan vastaukset kysymyslistaan, priorisoidut käyttäjätarinat, kaksi vertailua omalla koeajolla, rautalangat, komponenttijako ja issue-taulu työmääräarvioineen.</p>
+<p class="task">☐&nbsp; Kirjaa ohjaajan vastaukset kysymyslistaan (nimi, päivä, vastaus omin sanoin) ja kirjoita käyttäjätarinat hyväksymiskriteereineen. Priorisoi ne P0/P1/P2 ohjaajan kanssa.</p>
+<p class="task">☐&nbsp; Vertaa laskentatapoja omalla koeajolla (date_sun_info Helsingille 21.6.) ja paikkakuntatiedon muotoja (JSON-tiedosto vai SQLite). Päätä ohjaajan kanssa ja perustele.</p>
+<p class="task">☐&nbsp; Piirrä rautalangat lomakkeesta, paikkalistasta ja kaaviosta sekä komponenttijako.</p>
+<p class="task">☐&nbsp; Pilko P0 issueiksi työmääräarvioineen ja täytä suunnitelma.</p>
+<p class="done"><strong>Valmis kun:</strong> project-docs/suunnitelma.md on repossa ja ohjaaja on hyväksynyt rajauksen kirjatulla kommentilla; ohjaajan vastaukset kysymyksiin on kirjattu nimellä ja päivällä; jokaisella P0-tarinalla on GitHub-issue, hyväksymiskriteerit ja arvio tunteina; koeajon tuloste on päiväkirjassa.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: project-docs/suunnitelma.md, ohjaajan vastaukset, koeajon tuloste päiväkirjassa, kaksi vertailutaulukkoa, rautalangat, issue-taulu ja ohjaajan kirjattu hyväksyntä (s1, s4, s5, s8, p8, p9; k5 ja s6 alkavat).</p>
+</div>
+<div class="wk"><h2>Työviikko 3 / 18 – Julkaistu runko</h2>
+<p class="feature">Sovellus, jossa on yksi oma React-komponentti, ja PHP-rajapinnan /api/health ovat julkisessa osoitteessa; kehityksessä Viten proxy ohjaa /api-kutsut PHP:hen; rajapintasopimus ja React-selvitys ovat repossa.</p>
+<p class="task">☐&nbsp; Toteuta GET /api/health PHP:llä ja ohjaa Viten kehityspalvelimen /api-kutsut PHP:hen. Kirjoita api-sopimus.md: osoite, parametrit, vastauksen JSON-muoto ja virhevastaukset.</p>
+<p class="task">☐&nbsp; Kirjoita ensimmäinen oma komponentti HealthStatus, joka hakee /api/health-vastauksen ja näyttää tilan.</p>
+<p class="task">☐&nbsp; Valitse julkaisumalli suunnitelman kriteereillä ja julkaise sovellus ja rajapinta ohjaajan antamaan alustaan. Jos julkaisu ei onnistu torstaihin mennessä, kirjaa virhe ja alustan loki päiväkirjaan ja jatka viikkoon 4.</p>
+<p class="task">☐&nbsp; Kirjoita selvitys taulukkona omista P0-tarinoista: mikä osa tehdään Reactilla ja Vitellä, mikä tulee ulkopuolelta ja mistä. Pyydä toista henkilöä avaamaan julkinen osoite omalla laitteellaan.</p>
+<p class="done"><strong>Valmis kun:</strong> Toinen henkilö avaa julkisen osoitteen ja /api/health omalla laitteellaan ja näkee HealthStatus-komponentin ilmoittavan ”ok”; alustan lokinäkymästä on kuvakaappaus; build tehdään alustalla ja client/dist on gitignoressa; api-sopimus.md ja selvitystaulukko ovat repossa.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: julkinen osoite, kuvakaappaus alustan lokinäkymästä, vite.config.ts:n proxy-asetus, HealthStatus.tsx, project-docs/api-sopimus.md ja react-vite-selvitys.md, julkaisuperustelu ja toisen henkilön kuittaus (k2; k1 täydentyy; k3, s10, s14 ja k6 alkavat).</p>
+</div>
+<div class="wk"><h2>Työviikko 4 / 18 – Päivänvalolaskenta</h2>
+<p class="feature">PHP-moduuli Daylight laskee yhden päivän päivänvalon minuutit koordinaateille ja koko vuoden listan; arvot pysyvät välillä 0–1440, karkausvuosi tuottaa 366 päivää, ja testit T01–T04 menevät läpi komennolla.</p>
+<p class="task">☐&nbsp; Hae odotusarvot ulkoisesta lähteestä ja kirjaa testitapaukset T01–T04 ennen koodia.</p>
+<p class="task">☐&nbsp; Toteuta Daylight-moduuli: yhden päivän minuutit koordinaateille, koko vuoden lista, rajat 0–1440 ja karkausvuosi.</p>
+<p class="task">☐&nbsp; Aja testit komennolla, vertaa PHP:n date_sun_info-referenssiin ja korjaa poikkeamat. Kirjaa jokainen löytynyt virhe heti bug-issueksi.</p>
+<p class="done"><strong>Valmis kun:</strong> Testit T01–T04 menevät läpi komennolla (`composer test` tai `php tests/run.php`); vuosi 2028 palauttaa 366 riviä ja 2027 365; mikään arvo ei ole alle 0 tai yli 1440; poikkeamat referenssiin on kirjattu ja selitetty; löydetyt virheet ovat bug-issueina.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: server/src/Daylight.php, testitiedosto ja testiajon tuloste (T01–T04 odotusarvoineen ja lähteineen), vertailu referenssiin, bug-issuet ja commitit (p4, s7; p3 alkaa; p2:n raaka-aine).</p>
+</div>
+<div class="wk"><h2>Työviikko 5 / 18 – Paikkakuntahaku ja rajapinta</h2>
+<p class="feature">GET /api/daylight?city=&amp;year= palauttaa sopimuksen mukaisen JSONin oikealle paikkakunnalle; tuntematon nimi antaa 404-virheen ja virheellinen syöte 400-virheen JSONina.</p>
+<p class="task">☐&nbsp; Ota paikkakuntadata käyttöön valitsemassasi muodossa (JSON tai SQLite) ja kirjaa tietolähteen lisenssi. Jos oma hankinta ei valmistu tiistaihin mennessä, käytä ohjaajan kuntaluetteloa.</p>
+<p class="task">☐&nbsp; Toteuta haku nimellä: isot ja pienet kirjaimet, ä ja ö sekä ylimääräiset välilyönnit.</p>
+<p class="task">☐&nbsp; Toteuta GET /api/daylight?city=&amp;year= sopimuksen mukaan. Validoi syötteet ja palauta virheet 400 ja 404 JSONina.</p>
+<p class="task">☐&nbsp; Aja T05–T07 curl-komennolla ja kirjaa odotettu ja saatu vastaus.</p>
+<p class="done"><strong>Valmis kun:</strong> T05 (Helsinki 2026 → 200, 365 riviä, nimi ja koordinaatit), T06 (”utsjoki” pienillä → 200 Utsjoki) ja T07 (”Tuntematonkylä” → 404 JSON-virhe) antavat curlilla kirjatut vastaukset; paikkakuntatiedoston lähde ja lisenssi ovat README:ssä; syötteiden pituus ja vuosiväli tarkistetaan.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: server/src/Geocoder.php ja rajapinnan reititys, paikkakuntatiedosto lisenssimerkintöineen, curl-tulosteet T05–T07 ja commitit (s9; s7 täydentyy; p7 alkaa; s10, jos käytät ulkoista rajapintaa).</p>
+</div>
+<h1 class="page">Vaihe B – Ominaisuudet: kaavio, monta paikkaa, tooltip, leikkauspisteet ja asiakaskatselmointi</h1>
+<div class="wk"><h2>Työviikko 6 / 18 – Ensimmäinen kaavio</h2>
+<p class="feature">Selain hakee Helsingin datan omasta rajapinnasta ja piirtää sen viivakaaviona; lataus- ja virhetila näkyvät; kaaviokirjasto on valittu vertailulla, ja työ tehtiin ensimmäisessä ominaisuushaarassa.</p>
+<p class="task">☐&nbsp; Vertaa kolmea kaaviokirjastoa (koko omasta npm-tulosteesta, lisenssi, React-tuki, tooltip- ja merkintätuki, näppäimistötuki), perustele valinta ja kirjaa se riippuvuustaulukkoon.</p>
+<p class="task">☐&nbsp; Luo ominaisuushaara, toteuta api.ts (rajapintakutsu fetchillä, vastauksen tyyppi, virheen käsittely) erillään kaaviosta ja piirrä Helsingin vuosi viivakaaviona lataus- ja virhetiloineen.</p>
+<p class="task">☐&nbsp; Avaa pull request, katselmoi se itse, yhdistä ja julkaise. Kirjaa ja aja T16: sammuta palvelin ja tarkista, että selain näyttää virheilmoituksen eikä tyhjää sivua.</p>
+<p class="done"><strong>Valmis kun:</strong> Kaavio näkyy julkaistussa versiossa; api.ts sisältää kaikki rajapintakutsut ja vastauksen TypeScript-tyypin; T16 on kirjattu ja ajettu: kun PHP-palvelin sammutetaan, selain näyttää virheilmoituksen eikä tyhjää sivua; ensimmäinen pull request on yhdistetty itsekatselmoinnin jälkeen.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: client/src/api.ts, DaylightChart-komponentti, kaaviokirjastovertailu kokeilusarakkeineen, ensimmäinen pull request, kuvakaappaus julkaistusta kaaviosta ja T16:n virhetilasta (k4, s10, k3, s12; p6 alkaa).</p>
+</div>
+<div class="wk"><h2>Työviikko 7 / 18 – Monta paikkaa: itse rakennettu näkymä</h2>
+<p class="feature">Lomake lisää paikan, lista näyttää mukana olevat paikat poistonapilla, sama paikka ei tule kahdesti, jokaisella sarjalla on oma väri ja kaikki paikat näkyvät samalla 0–24 h asteikolla. Lomake ja lista on rakennettu alusta itse Tailwindilla.</p>
+<p class="task">☐&nbsp; Ota Tailwind käyttöön perusteltuna ulkoisena komponenttina ja rakenna lomake ja paikkalista alusta ilman valmista komponenttikittiä.</p>
+<p class="task">☐&nbsp; Estä sama paikka kahdesti, anna jokaiselle sarjalle oma väri ja pidä asteikko 0–24 h kaikilla paikoilla.</p>
+<p class="task">☐&nbsp; Kirjaa ja aja T08 (neljä paikkaa samassa kaaviossa) ja T09 (sama paikka toistamiseen hylätään ilmoituksella).</p>
+<p class="task">☐&nbsp; Vertaa viikkopalaverien työmääräarvioita toteumaan ja päivitä suunnitelma, jos arvio petti.</p>
+<p class="done"><strong>Valmis kun:</strong> T08: Helsinki, Tampere, Rovaniemi ja Utsjoki näkyvät samassa kaaviossa eri väreillä ja yhteisellä asteikolla; T09: sama paikka toistamiseen hylätään ilmoituksella; paikan voi poistaa listasta; Tailwind on riippuvuustaulukossa perusteltuna; arvio vs. toteuma -taulukko on päiväkirjassa.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: useLocations-hook, LocationForm- ja LocationList-komponentit, Tailwind-perustelu riippuvuustaulukossa, T08–T09:n tulokset kuvakaappauksineen, arvio vs. toteuma -taulukko (p6, p7, k3, k4, s6).</p>
+</div>
+<div class="wk"><h2>Työviikko 8 / 18 – Tooltip ja ääripäät</h2>
+<p class="feature">Tooltip näyttää päivän, paikan ja keston luettavassa muodossa, ja kaamos (0 min) sekä yötön yö (1440 min) erottuvat kaaviosta.</p>
+<p class="task">☐&nbsp; Toteuta format.ts (minuutit → 23 h 59 min, päivä → 21. kesäkuuta) ja sen yksikkötestit T10–T11 ennen kaavioon kytkemistä.</p>
+<p class="task">☐&nbsp; Toteuta tooltip: päivä, paikka ja kesto luettavassa muodossa hiirellä ja kosketuksella. Kirjaa, mitä kirjasto tukee näppäimistöllä, ja suunnittele kiertoreitti viikolle 12.</p>
+<p class="task">☐&nbsp; Korosta kaamos (0 min) ja yötön yö (1440 min) kaaviossa Utsjoen ja Rovaniemen datalla.</p>
+<p class="done"><strong>Valmis kun:</strong> T10 ja T11 menevät läpi komennolla `npm test`; tooltip toimii hiirellä ja kosketuksella ja näyttää esimerkiksi ”21. kesäkuuta · Rovaniemi · 23 h 59 min”; Utsjoen kaamosjaksot ja yöttömän yön jaksot erottuvat kaaviosta; päiväkirjassa on kirjattu, mitä kirjasto tukee näppäimistöllä, ja päätös kiertoreitistä (datataulukko vai päivävalitsin) perusteluineen.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: client/src/format.ts ja sen testit, tooltip-komponentti, kirjattu näppäimistörajoite ja kiertoreitti, kuvakaappaus Utsjoen kaaviosta korostuksineen (p3, k3, k2; p4 täydentyy).</p>
+</div>
+<div class="wk"><h2>Työviikko 9 / 18 – Leikkauspisteet</h2>
+<p class="feature">Sovellus laskee ja merkitsee kaavioon päivät, joina kahden paikan päivänvalo on yhtä pitkä tai lähes yhtä pitkä, ja merkin tooltip nimeää päivän, molemmat paikat ja keston.</p>
+<p class="task">☐&nbsp; Kirjoita leikkauspisteen määritelmä ja toleranssi suunnitelmaan ja perustele se Utsjoki–Inari-esimerkillä.</p>
+<p class="task">☐&nbsp; Toteuta intersections.ts puhtaana funktiona, joka yhdistää peräkkäiset päivät yhdeksi merkiksi. Kirjaa testit T12–T13 ennen ajoa.</p>
+<p class="task">☐&nbsp; Piirrä merkit kaavioon ja anna niille oma tooltip: päivä, molemmat paikat ja kesto.</p>
+<p class="done"><strong>Valmis kun:</strong> T12: Helsinki–Rovaniemi antaa leikkauksen maalis- ja syyskuussa, ei kesäkuussa; T13: Utsjoki–Inari antaa yöttömän yön ajalta yhden merkin, ei kymmeniä; testit menevät läpi komennolla; kaaviossa on merkki, jonka tooltip nimeää molemmat paikat ja päivän; määritelmä ja toleranssi ovat suunnitelmassa perusteltuina.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: client/src/intersections.ts ja sen testit, suunnitelman päätöskohta, kuvakaappaus Helsinki–Rovaniemi-leikkauksesta maaliskuussa (s7, p4, p3).</p>
+</div>
+<div class="wk"><h2>Työviikko 10 / 18 – Asiakaskatselmointi</h2>
+<p class="feature">Nimetty ulkopuolinen henkilö on kokeillut julkaistua väliversiota asiakkaan roolissa, ja hänen havaintonsa ovat muistiossa sitaatteina erillään omasta tulkinnastasi, muutokset issueina.</p>
+<p class="task">☐&nbsp; Valmistele asiakaskielinen esittely ilman teknistä sanastoa ja kolmen paikan testitehtävä katselmoijalle. Herätä nukkuva julkaisualusta ennen tilaisuutta.</p>
+<p class="task">☐&nbsp; Pidä katselmointi nimetyn ulkopuolisen kanssa julkaistulla väliversiolla. Kirjaa hänen sanansa sitaatteina.</p>
+<p class="task">☐&nbsp; Kirjoita muistio: sitaatit, oma tulkinta erikseen ja priorisoidut muutokset issueiksi. Rajaa ohjaajan kanssa tärkein muutos enintään kahden päivän työksi.</p>
+<p class="done"><strong>Valmis kun:</strong> Katselmointimuistio on repossa: katselmoijan rooli ja ajankohta, vähintään viisi sitaattia, oma tulkinta erillään, priorisoidut muutokset issueina P-luokin; ohjaajan kanssa on rajattu tärkein muutos enintään kahden päivän työksi työviikolle 11.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: project-docs/katselmointi-vk10.md (rooli, ajankohta, sitaatit, tulkinta) ja muutosissuet P-luokin (s2, s3, p10; s1 täydentyy).</p>
+</div>
+<h1 class="page">Vaihe C – Valmiiksi: vuosivalinta ja palautemuutos, mobiili ja saavutettavuus, tietoturva, testaus ja laatu</h1>
+<div class="wk"><h2>Työviikko 11 / 18 – Vuosivalinta ja palautemuutos kahdessa haarassa</h2>
+<p class="feature">Käyttäjä valitsee vuoden ja kaikki paikat haetaan uudelleen; katselmoinnin tärkein muutos on toteutettu; molemmat tehtiin omissa haaroissa, ja niiden välinen merge-konflikti on ratkaistu hallitusti.</p>
+<p class="task">☐&nbsp; Luo maanantaina kaksi haaraa samasta main-commitista: vuosivalinta ja palautemuutos.</p>
+<p class="task">☐&nbsp; Toteuta ensin vuosivalitsin, joka hakee kaikkien paikkojen datan uudelleen, ja aja T14 (vuosi 2028 näyttää 366 pistettä). Yhdistä pull requestilla.</p>
+<p class="task">☐&nbsp; Toteuta palautemuutos toisessa haarassa, ratkaise syntyvä merge-konflikti hallitusti, yhdistä ja julkaise. Jos konfliktia ei synny, ohjaaja tekee sovitun commitin main-haaraan.</p>
+<p class="done"><strong>Valmis kun:</strong> Kaksi pull requestia on yhdistetty; konfliktin ratkaisun commit näkyy historiassa; T14: vuosi 2028 näyttää tuotannossa 366 pistettä ja 2027 365; katselmointimuistion päätös on kuitattu linkillä; jos konfliktia ei syntynyt, ohjaajan commit ja sen ratkaisu on kirjattu.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: kaksi pull requestia, konfliktin ratkaisun commit, YearSelect-komponentti, T14:n tulos ja muutokset julkaistussa versiossa (s13, s10, p7; s12 koonti; p10 täydentyy).</p>
+</div>
+<div class="wk"><h2>Työviikko 12 / 18 – Mobiili ja saavutettavuus</h2>
+<p class="feature">Sovellus toimii puhelimella ja näppäimistöllä: asettelu mukautuu, työviikon 8 kiertoreitti on toteutettu, ja Lighthouse-raportit ennen ja jälkeen osoittavat korjaukset.</p>
+<p class="task">☐&nbsp; Testaa sovellus oikealla puhelimella ja korjaa asettelu Tailwindin taitekohdilla. Kuvakaappaukset ennen ja jälkeen.</p>
+<p class="task">☐&nbsp; Toteuta viikolla 8 valittu näppäimistön kiertoreitti (datataulukko tai päivävalitsin) ja tarkista näppäinkäyttö, kontrasti, label-kytkennät ja otsikkohierarkia.</p>
+<p class="task">☐&nbsp; Aja Lighthouse ennen ja jälkeen korjausten ja kirjaa tulokset.</p>
+<p class="done"><strong>Valmis kun:</strong> Sovellus toimii oikealla puhelimella ilman vaakasuuntaista rullausta; jokainen lomakkeen kenttä on saavutettavissa Tab-näppäimellä ja sillä on label; kiertoreitti näyttää valitun päivän arvot kaikille paikoille ilman hiirtä; Lighthouse-saavutettavuuspisteet ennen ja jälkeen on kirjattu ja jälkeen-luku on korkeampi tai syy on selitetty.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: kuvakaappaukset omalta puhelimelta, kiertoreitin komponentti, Lighthouse-raportit ennen ja jälkeen (k3, k2; p6 täydentyy).</p>
+</div>
+<div class="wk"><h2>Työviikko 13 / 18 – Tietoturva-arvio ja virheenkäsittely</h2>
+<p class="feature">Oman sovelluksen uhkalista on kirjoitettu ja testattu: rajapinta hylkää huonot syötteet hallitusti, paikan nimi näytetään turvallisesti, yhden paikan virhe ei kaada muita, eikä repossa ole salaisuuksia.</p>
+<p class="task">☐&nbsp; Kirjoita oman sovelluksen uhkalista (5–8 riviä: uhka, testi, tulos, toimenpide) ja aja syötetaulukko T15 curlilla.</p>
+<p class="task">☐&nbsp; Tee XSS-testi: lisää paikka nimellä &lt;script>alert(1)&lt;/script> ja varmista, että nimi näkyy tekstinä eikä suoritu.</p>
+<p class="task">☐&nbsp; Käsittele yhden paikan virhe niin, että muut sarjat säilyvät (Promise.allSettled), ja varmista, ettei repossa ole salaisuuksia. Korjaa vain rivit, joilla saatu poikkeaa odotetusta; muut issueiksi.</p>
+<p class="done"><strong>Valmis kun:</strong> Uhkalistassa on 5–8 riviä omasta sovelluksesta muodossa uhka → testi → tulos → toimenpide; T15:n syötetaulukko on ajettu curlilla ja jokainen rivi, jolla saatu poikkesi odotetusta, on korjattu tai issueina; XSS-testi näyttää nimen tekstinä; tuntematon paikka listassa ei kaada muita sarjoja; git log ja tiedostot eivät sisällä avaimia tai salasanoja.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: project-docs/tietoturva-arvio.md uhkalistoineen ja syötetaulukkoineen, XSS-testin kuvakaappaus, korjauscommitit (s11, s7).</p>
+</div>
+<div class="wk"><h2>Työviikko 14 / 18 – Testaus</h2>
+<p class="feature">Testiraportti kokoaa 16 testitapausta kolmessa luokassa odotusarvoineen, testit ajetaan komennolla PHP:llä ja TypeScriptillä, ja vähintään kaksi täydellistä virheenkorjausketjua on kirjattu aidoista havainnoista.</p>
+<p class="task">☐&nbsp; Kokoa testiraportti: 16 testitapausta kolmessa luokassa, odotusarvot ja lähteet kirjattuina viikoilla 4–13 ennen ajoa; erottele komennolla ajettavat ja käsin ajettavat selaintestit.</p>
+<p class="task">☐&nbsp; Aja PHP-testit (composer test tai php tests/run.php) ja Vitest-testit (npm test) ja kirjaa tulokset.</p>
+<p class="task">☐&nbsp; Kirjaa vähintään kaksi täydellistä virheenkorjausketjua bug-issuelistan aidoista havainnoista.</p>
+<p class="done"><strong>Valmis kun:</strong> Raportissa on 16 tapausta luokiteltuina (normaali 6, rajat 6, virheet 4) odotusarvoin ja lähtein; komennolla ajettavat (T01–T07, T10–T13, T15) ja käsin ajettavat selaintestit (T08, T09, T14, T16) on eroteltu; `composer test` tai `php tests/run.php` ja `npm test` menevät läpi ja tulosteet ovat repossa; kaksi ketjua on kirjattu aidoista bug-issueista täydellisinä.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: project-docs/testiraportti.md, testiajojen tulosteet ja virheenkorjausketjut commit-linkein (p3, p2, k5).</p>
+</div>
+<div class="wk"><h2>Työviikko 15 / 18 – Laatu ja dokumentaatio</h2>
+<p class="feature">Ohjaajan koodikatselmoinnin kolme havaintoa on refaktoroitu ja dokumentoitu, README kertoo käyttöönoton ja rajapinnan, riippuvuustaulukko on tehty tulosteista ja LICENSE on repossa tai kirjattu avoimeksi.</p>
+<p class="task">☐&nbsp; Ota vastaan ohjaajan koodikatselmoinnin kolme nimettyä havaintoa, refaktoroi ne ja dokumentoi ennen ja jälkeen -diffit perusteluineen.</p>
+<p class="task">☐&nbsp; Kirjoita README: käyttöönotto tyhjään ympäristöön, kehityskomennot, rajapinnan kuvaus esimerkkivastauksella ja riippuvuustaulukko npm ls- ja composer show-tulosteista lisensseineen.</p>
+<p class="task">☐&nbsp; Lisää LICENSE ohjaajan päätöksen mukaan. Jos päätöstä ei ole, kirjaa avoin asia.</p>
+<p class="done"><strong>Valmis kun:</strong> Kolme ohjaajan nimeämää havaintoa on refaktoroitu, jokaisesta on diff-linkki, perustelu ja testiajo läpi; README sisältää käyttöönoton tyhjään ympäristöön, kehityskomennot, rajapinnan kuvauksen esimerkkivastauksella ja riippuvuustaulukon `npm ls --depth=0`- ja `composer show`-tulosteista lisensseineen; LICENSE on repossa tai suunnitelmassa on avoin asia päivämäärällä.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: refaktorointimuistio diff-linkein ja ohjaajan havainnot, README, riippuvuustaulukko ja LICENSE tai kirjattu avoin asia (p5, k7, s12).</p>
+</div>
+<h1 class="page">Vaihe D – Julkaisu: julkaisuehdokas ja julkaisutestaus, v1.0 ja näyttö</h1>
+<div class="wk"><h2>Työviikko 16 / 18 – Julkaisuehdokas ja julkaisutestaus</h2>
+<p class="feature">Sisältö on jäädytetty, julkaisuehdokas v1.0-rc1 on julkaistu ja merkitty Git-tagilla, ja nimetty ulkopuolinen henkilö on testannut sen pelkän kirjallisen ohjeen avulla.</p>
+<p class="task">☐&nbsp; Tee jäädytyspäätös ja luokittele jäljellä olevat issuet estäviksi tai v1.1-listalle.</p>
+<p class="task">☐&nbsp; Julkaise ja merkitse julkaisuehdokas Git-tagilla v1.0-rc1.</p>
+<p class="task">☐&nbsp; Asenna sovellus itse puhtaaseen ympäristöön (toinen kone tai tyhjä kansio) pelkän ohjeen avulla ja korjaa ohje pöytäkirjan perusteella.</p>
+<p class="task">☐&nbsp; Anna nimetylle ulkopuoliselle ohje ja osoite. Kirjaa hänen havaintonsa sitaatteina ja estävät virheet issueiksi.</p>
+<p class="done"><strong>Valmis kun:</strong> v1.0-rc1 on julkisessa osoitteessa ja merkitty tagilla; oma asennuspöytäkirja (toinen kone tai tyhjä kansio) ja ulkopuolisen testauspöytäkirja (nimetty rooli, ajankohta, testaajan omat sanat erillään tulkinnasta) ovat repossa; estävät virheet on kirjattu issueiksi, ei korjattu kiireellä tällä viikolla.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: tag v1.0-rc1, oma asennuspöytäkirja, julkaisutestauksen pöytäkirja ja estävien issueiden lista (s3, s14, k6).</p>
+</div>
+<div class="wk"><h2>Työviikko 17 / 18 – Julkaisu v1.0 ja luovutus</h2>
+<p class="feature">Julkaisutestauksen estävät virheet on korjattu täydellisenä virheenkorjausketjuna, v1.0 on julkaistu ja merkitty tagilla, ja sovellus on luovutettu asiakkaan roolissa toimivalle ohjaajalle, joka on vastannut kysymyksellä.</p>
+<p class="task">☐&nbsp; Korjaa estävät virheet täydellisenä virheenkorjausketjuna ja aja regressiotestit. Jos estäviä ei löytynyt, ota kolmas ketju bug-listalta.</p>
+<p class="task">☐&nbsp; Merkitse v1.0 Git-tagilla, tee release, julkaise ja aja savutesti tuotannossa.</p>
+<p class="task">☐&nbsp; Kirjoita julkaisutiedote ja luovutusviesti ohjaajalle asiakkaan roolissa. Vastaa hänen asiakaskysymykseensä.</p>
+<p class="done"><strong>Valmis kun:</strong> v1.0 on julkisessa osoitteessa ja merkitty tagilla; kolmas ketju on täydellisenä repossa (estävästä virheestä tai bug-listan aidosta havainnosta); regressioajo ja savutesti on kirjattu; julkaisutiedote ja luovutusviesti ovat repossa; ohjaajan asiakaskysymys ja vastauksesi on kirjattu; viikolle jäi puskuriaikaa eikä mitään uutta aloitettu.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: tag v1.0 ja release, kolmas virheenkorjausketju, savutestin kirjaus, julkaisutiedote.md, luovutusviesti.md ja asiakkaan kysymys vastauksineen (s14, k6, s2, p2).</p>
+</div>
+<div class="wk"><h2>Työviikko 18 / 18 – Näyttö</h2>
+<p class="feature">Mitään uutta ei rakenneta: näyttöaineisto on täsmälinkitetty kaikkiin 32 vaatimukseen, 8–10 minuutin demo on harjoiteltu toiselle henkilölle ja itsearviointi on kirjoitettu kolmesta nimetystä tilanteesta.</p>
+<p class="task">☐&nbsp; Täsmälinkitä näyttömatriisin 32 vaatimusta työnäytteisiin ja korjaa aukot.</p>
+<p class="task">☐&nbsp; Harjoittele 8–10 minuutin demo kellon kanssa toiselle henkilölle.</p>
+<p class="task">☐&nbsp; Kirjoita itsearviointi kolmesta nimetystä tilanteesta, pyydä ohjaajan vastakommentti ja luovuta näyttöpaketti.</p>
+<p class="done"><strong>Valmis kun:</strong> Jokainen matriisin 32 riviä osoittaa olemassa olevaan aineistoon ja linkki aukeaa; demo on ajettu kellon kanssa vähintään kerran toiselle henkilölle; itsearviointi käsittelee työviikon 10 palautteen, työviikon 16 testaajan epäröinnin ja yhden viikkopalaverin, jossa sovittu muuttui, ja ohjaaja on kirjannut lyhyen vastakommentin.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: täsmälinkitetty näyttömatriisi, demorunko, itsearviointi.md ohjaajan kommentilla (p11).</p>
+</div>
+<h1 class="page">Viimeiset viisi päivää</h1>
+<p class="task"><strong>Ma</strong> · Sisältöjäädytys: viimeinen hyväksytty versio, matriisin täsmälinkitys alkaa</p>
+<p class="task"><strong>Ti</strong> · Aineisto: päiväkirja, AI-loki, testiraportti ja linkkien tarkistus</p>
+<p class="task"><strong>Ke</strong> · Demoharjoitus kellon kanssa (8–10 min) toiselle henkilölle</p>
+<p class="task"><strong>To</strong> · Itsearviointi kolmesta tilanteesta ja ohjaajan vastakommentti</p>
+<p class="task"><strong>Pe</strong> · Luovutus: näyttömatriisi, projektipäiväkirja, AI-loki ja julkaistu v1.0</p>
+<h1 class="page">Sanasto</h1><p class="muted">Projektin tunnukset ja ammattitermit siinä järjestyksessä, jossa ne tulevat vastaan. Jokainen on selitetty myös sivustolla ensimmäisen käytön kohdalla.</p><table>
+<tr><td style="width:24%"><strong>repository</strong><br><span class="muted">vko 1</span></td><td><em>Git-repository, repo.</em> Projektin versionhallittu kansio GitHubissa. Kaikki työnäytteet ovat repositoryssa, eivät tällä sivulla.</td></tr>
+<tr><td style="width:24%"><strong>commit</strong><br><span class="muted">vko 1</span></td><td><em>Versionhallintaan tallennettu muutos.</em> Yksi nimetty muutoskokonaisuus, jolla on viesti ja tunnus. Pieni commit on helpompi lukea ja perua kuin suuri.</td></tr>
+<tr><td style="width:24%"><strong>push</strong><br><span class="muted">vko 1</span></td><td><em>Muutosten vienti etärepositoryyn.</em> Komento, joka siirtää omat commitit GitHubiin. Vasta pushin jälkeen työ on työnäyte.</td></tr>
+<tr><td style="width:24%"><strong>backend</strong><br><span class="muted">vko 1</span></td><td><em>Palvelinpuoli.</em> Se osa sovellusta, joka ajetaan palvelimella. Valokaaressa PHP-koodi, joka laskee päivänvalon ja palauttaa sen rajapinnan kautta.</td></tr>
+<tr><td style="width:24%"><strong>frontend</strong><br><span class="muted">vko 1</span></td><td><em>Selainpuoli.</em> Se osa sovellusta, joka ajetaan käyttäjän selaimessa. Valokaaressa React-sovellus, joka piirtää kaavion.</td></tr>
+<tr><td style="width:24%"><strong>API</strong><br><span class="muted">vko 1</span></td><td><em>Rajapinta (application programming interface).</em> Sovittu tapa, jolla selain pyytää tietoa palvelimelta. Valokaaren rajapinta on yksi osoite: GET /api/daylight?city=Helsinki&amp;year=2026.</td></tr>
+<tr><td style="width:24%"><strong>JSON</strong><br><span class="muted">vko 1</span></td><td><em>Tekstipohjainen tietomuoto.</em> Muoto, jossa rajapinta palauttaa tiedon: avaimia ja arvoja aaltosulkeissa. Sekä PHP että selain osaavat lukea ja kirjoittaa sitä.</td></tr>
+<tr><td style="width:24%"><strong>kehityspalvelin</strong><br><span class="muted">vko 1</span></td><td><em>Viten kehityspalvelin.</em> Paikallinen palvelin, joka näyttää React-sovelluksen selaimessa ja päivittää sen heti, kun tallennat tiedoston. Käynnistyy komennolla npm run dev.</td></tr>
+<tr><td style="width:24%"><strong>GitHub-issue</strong><br><span class="muted">vko 2</span></td><td><em>Tehtäväkortti GitHubissa.</em> Yksi rajattu työtehtävä, jolla on otsikko, kuvaus, hyväksymiskriteerit ja työmääräarvio. Bug-issue on tunnisteella bug merkitty virhehavainto.</td></tr>
+<tr><td style="width:24%"><strong>käyttäjätarina</strong><br><span class="muted">vko 2</span></td><td><em>Vaatimus käyttäjän näkökulmasta.</em> Muotoa ”Matkailijana haluan … jotta …”. Jokaisella tarinalla on 2–4 hyväksymiskriteeriä, joista tiedät, milloin se on valmis.</td></tr>
+<tr><td style="width:24%"><strong>P0</strong><br><span class="muted">vko 2</span></td><td><em>Pakollinen ydin.</em> Toiminnot, joiden on valmistuttava ennen mitään lisäominaisuuksia. Valokaaressa oikea päivänvalodata, usea paikka, virheilmoitus, tooltip ja ääripäiden korostus.</td></tr>
+<tr><td style="width:24%"><strong>P1</strong><br><span class="muted">vko 2</span></td><td><em>Tärkeä jatko.</em> Tehdään, kun P0 toimii ja on testattu. Valokaaressa leikkauspisteet, vuosivalinta, mobiili ja saavutettavuus.</td></tr>
+<tr><td style="width:24%"><strong>P2</strong><br><span class="muted">vko 2</span></td><td><em>Valinnainen lisä.</em> Saa jäädä projektin ulkopuolelle, jos aika ei riitä. Poisjättö on rajauspäätös, ei epäonnistuminen.</td></tr>
+<tr><td style="width:24%"><strong>rautalanka</strong><br><span class="muted">vko 2</span></td><td><em>Käyttöliittymän luonnos.</em> Yksinkertainen piirros siitä, mitä näkymässä on ja missä. Ei värejä, ei lopullista ulkoasua. Toteutus tarkistetaan sitä vasten.</td></tr>
+<tr><td style="width:24%"><strong>viikkopalaveri</strong><br><span class="muted">vko 2</span></td><td><em>Ohjaajan kanssa joka viikko.</em> 10 minuuttia: sovitut tehtävät, arviot ja edellisen viikon toteuma kirjataan issueihin, ohjaajan nimi ja päivä päiväkirjaan. Tämä on tiimissä sopimisen työnäyte.</td></tr>
+<tr><td style="width:24%"><strong>proxy</strong><br><span class="muted">vko 3</span></td><td><em>Välityspalvelin kehityksessä.</em> Viten asetus, joka ohjaa selaimen /api-pyynnöt kehityspalvelimelta PHP-palvelimelle. Selain näkee yhden osoitteen, vaikka palvelimia on kaksi.</td></tr>
+<tr><td style="width:24%"><strong>build</strong><br><span class="muted">vko 3</span></td><td><em>Tuotantobuild.</em> Komento npm run build kääntää React-sovelluksen valmiiksi tiedostoiksi client/dist-kansioon. Kansio ei mene Gitiin: build tehdään julkaisualustalla.</td></tr>
+<tr><td style="width:24%"><strong>fetch</strong><br><span class="muted">vko 3</span></td><td><em>Selaimen tapa hakea tietoa.</em> JavaScriptin funktio, joka lähettää pyynnön rajapintaan ja palauttaa vastauksen. Valokaaressa kaikki fetch-kutsut ovat api.ts-tiedostossa.</td></tr>
+<tr><td style="width:24%"><strong>komponentti</strong><br><span class="muted">vko 3</span></td><td><em>React-komponentti.</em> Itsenäinen käyttöliittymän pala, joka saa tietoa propseina ja voi pitää omaa tilaa. HealthStatus on ensimmäinen, DaylightChart ja LocationList seuraavat.</td></tr>
+<tr><td style="width:24%"><strong>T01</strong><br><span class="muted">vko 4</span></td><td><em>Testitapauksen tunnus.</em> T tarkoittaa testitapausta ja numero yksilöi sen: T01 on ensimmäinen, T16 viimeinen. Odotettu tulos kirjataan aina ennen ajoa.</td></tr>
+<tr><td style="width:24%"><strong>yksikkötesti</strong><br><span class="muted">vko 4</span></td><td><em>Yhden funktion testi.</em> Testi, joka kutsuu yhtä funktiota tunnetulla syötteellä ja vertaa tulosta odotettuun. Ajetaan komennolla ilman selainta. PHP:ssä PHPUnit tai oma testiskripti, TypeScriptissä Vitest.</td></tr>
+<tr><td style="width:24%"><strong>Composer</strong><br><span class="muted">vko 4</span></td><td><em>PHP:n paketinhallinta.</em> Työkalu, joka asentaa PHP-kirjastot (esimerkiksi PHPUnitin) ja ajaa skriptit komennolla composer test. Vastaa npm:ää PHP-puolella.</td></tr>
+<tr><td style="width:24%"><strong>bug-issue</strong><br><span class="muted">vko 4</span></td><td><em>Virhehavainto issueksi.</em> Jokainen havaittu virhe kirjataan heti GitHub-issueksi tunnisteella bug: mitä odotit, mitä tapahtui. Virheenkorjausketjut otetaan tältä listalta.</td></tr>
+<tr><td style="width:24%"><strong>geokoodaus</strong><br><span class="muted">vko 5</span></td><td><em>Nimestä koordinaateiksi.</em> Paikkakunnan nimen muuttaminen leveys- ja pituusasteiksi. Valokaaressa se tehdään omasta paikkakuntatiedostosta; ulkoinen geokoodausrajapinta on vaihtoehto.</td></tr>
+<tr><td style="width:24%"><strong>curl</strong><br><span class="muted">vko 5</span></td><td><em>Komentorivin osoitehakija.</em> Komento, joka hakee osoitteen ilman selainta ja tulostaa vastauksen. Sillä testataan rajapintaa suoraan: curl "http://localhost:8000/api/daylight?city=Helsinki&amp;year=2026".</td></tr>
+<tr><td style="width:24%"><strong>ominaisuushaara</strong><br><span class="muted">vko 6</span></td><td><em>Feature branch.</em> Oma Git-haara yhdelle ominaisuudelle. Työ tehdään haarassa ja yhdistetään main-haaraan pull requestilla, kun se on valmis.</td></tr>
+<tr><td style="width:24%"><strong>pull request</strong><br><span class="muted">vko 6</span></td><td><em>Yhdistämispyyntö.</em> GitHubin pyyntö yhdistää haara pääversioon. Siinä näkyvät muutokset ja kuvaus. Katselmoit sen itse ennen yhdistämistä. Työviikolla 11 kahden pull requestin yhdistäminen tuottaa merge-konfliktin, joka ratkaistaan käsin.</td></tr>
+<tr><td style="width:24%"><strong>hook</strong><br><span class="muted">vko 7</span></td><td><em>React-hook.</em> Funktio, jolla komponentti käyttää tilaa (useState) tai sivuvaikutuksia (useEffect). Oma hook useLocations kokoaa paikkojen tilan yhteen paikkaan.</td></tr>
+<tr><td style="width:24%"><strong>tooltip</strong><br><span class="muted">vko 8</span></td><td><em>Vihjeruutu.</em> Ruutu, joka avautuu hiiren tai kosketuksen alle kaaviossa ja näyttää päivän, paikan ja keston, esimerkiksi ”21. kesäkuuta · Rovaniemi · 23 h 59 min”.</td></tr>
+<tr><td style="width:24%"><strong>Vitest</strong><br><span class="muted">vko 8</span></td><td><em>TypeScript-testiajuri.</em> Viten kanssa toimiva testityökalu, joka ajaa format.ts- ja intersections.ts-moduulien yksikkötestit komennolla npm test.</td></tr>
+<tr><td style="width:24%"><strong>leikkauspiste</strong><br><span class="muted">vko 9</span></td><td><em>Kahden paikan yhtä pitkä päivä.</em> Päivä, jona kahden paikan päivänvalo on yhtä pitkä tai lähes yhtä pitkä (erotus alle toleranssin). Peräkkäiset osumat yhdistetään yhdeksi merkiksi.</td></tr>
+<tr><td style="width:24%"><strong>toleranssi</strong><br><span class="muted">vko 9</span></td><td><em>Sallittu erotus.</em> Kuinka monta minuuttia kahden paikan päivänvalo saa erota, jotta päivä lasketaan leikkauspisteeksi. Oma päätös, joka perustellaan ja testataan.</td></tr>
+<tr><td style="width:24%"><strong>merge-konflikti</strong><br><span class="muted">vko 11</span></td><td><em>Yhdistämisen ristiriita.</em> Syntyy, kun kaksi haaraa on muuttanut samaa kohtaa tiedostossa. Git pysähtyy ja pyytää valitsemaan, mikä versio jää. Ratkaisu tehdään käsin ja committataan.</td></tr>
+<tr><td style="width:24%"><strong>Lighthouse</strong><br><span class="muted">vko 12</span></td><td><em>Selaimen laatumittari.</em> Chromen kehittäjätyökalujen raportti, joka mittaa saavutettavuuden, suorituskyvyn ja parhaat käytännöt. Ajetaan ennen ja jälkeen korjausten.</td></tr>
+<tr><td style="width:24%"><strong>XSS</strong><br><span class="muted">vko 13</span></td><td><em>Cross-site scripting.</em> Hyökkäys, jossa käyttäjän syöte (esimerkiksi paikan nimi) suoritetaan koodina sivulla. Testataan syöttämällä script-tagi nimeksi ja tarkistamalla, että se näkyy tekstinä.</td></tr>
+<tr><td style="width:24%"><strong>CORS</strong><br><span class="muted">vko 13</span></td><td><em>Selaimen alkuperärajoitus.</em> Selain estää pyynnöt toiseen osoitteeseen, ellei palvelin salli niitä. Yhden palvelimen mallissa asetusta ei tarvita; kahden palvelimen mallissa PHP:n pitää sallia frontendin osoite.</td></tr>
+<tr><td style="width:24%"><strong>regressiotesti</strong><br><span class="muted">vko 14</span></td><td><em>Vanha testi uudelleen.</em> Korjauksen jälkeen aiemmat testit ajetaan uudelleen, jotta korjaus ei riko aiemmin toiminutta. Viimeinen askel jokaisessa virheenkorjausketjussa.</td></tr>
+<tr><td style="width:24%"><strong>refaktorointi</strong><br><span class="muted">vko 15</span></td><td><em>Rakenteen parannus ilman toiminnan muutosta.</em> Koodi järjestetään uudelleen niin, että se toimii samalla tavalla mutta on helpompi lukea ja ylläpitää. Testit todistavat, että toiminta ei muuttunut.</td></tr>
+<tr><td style="width:24%"><strong>RC</strong><br><span class="muted">vko 16</span></td><td><em>Release candidate, julkaisuehdokas.</em> Lähes valmis versio, jota ulkopuolinen testaa ennen lopullista julkaisua. v1.0-rc1 on ensimmäinen julkaisuehdokas.</td></tr>
+<tr><td style="width:24%"><strong>Git-tag</strong><br><span class="muted">vko 16</span></td><td><em>Nimetty versio historiassa.</em> Merkki, joka kiinnittää tietyn commitin versionumeroon, esimerkiksi v1.0-rc1 tai v1.0. Tagista tehdään GitHubissa release.</td></tr>
+<tr><td style="width:24%"><strong>savutesti</strong><br><span class="muted">vko 17</span></td><td><em>Nopea tarkistus julkaisun jälkeen.</em> Muutama tärkein testipolku ajetaan julkaistulle versiolle heti julkaisun jälkeen: paikan lisäys, tooltip, vuosivalinta.</td></tr>
+</table>
+<h1 class="page">Näyttömatriisi – 32 osaamisvaatimusta</h1><p class="muted">Rasti vasta, kun vaatimukselle on täsmällinen työnäyte: linkki, commit, kuva, testirivi tai muistio. Sama työnäyte voi kelvata useaan kohtaan.</p>
+<h2>Ohjelmointi</h2>
+<p class="item">☐&nbsp; <strong>käyttää ohjelmointieditoria tai kehitysympäristöä</strong> – VS Code, Viten kehityspalvelin, PHP:n sisäänrakennettu palvelin ja selaimen kehittäjätyökalut käytössä työviikolta 1: versiotaulukko, kuvakaappaukset ja käynnistyskomennot README:ssä.</p>
+<p class="item">☐&nbsp; <strong>etsii ja korjaa virheitä ohjelmakoodista</strong> – Kolme täydellistä virheenkorjausketjua (työviikot 14 ja 17; havainnot myös 4–5, 8–9 ja 16): havainto, toisto, syy, korjauscommit, uusintatesti ja regressiotesti.</p>
+<p class="item">☐&nbsp; <strong>testaa ohjelman toimintoja</strong> – Testiraportti työviikolta 14: 16 testitapausta odotusarvoineen ennen ajoa (T01–T16); laskenta, rajapinta, muotoilu, leikkauspisteet, karkausvuosi ja virhetilanteet testattuina; ajot työviikoilla 4–9, 11 ja 13.</p>
+<p class="item">☐&nbsp; <strong>käyttää rakenteista ohjelmointia toteutuksissa</strong> – Päivänvalolaskenta omana PHP-moduulina työviikolla 4 (funktiot, ehdot, rajatarkistus, karkausvuosi), muotoilu- ja leikkauspistemoduulit TypeScriptillä työviikoilla 8 ja 9; moduulijako client, server ja project-docs.</p>
+<p class="item">☐&nbsp; <strong>kirjoittaa ylläpidettävää ohjelmakoodia</strong> – Kolme refaktorointia työviikolla 15 ohjaajan koodikatselmoinnin nimetyistä havainnoista, ennen ja jälkeen -diffeineen ja perusteluineen.</p>
+<p class="item">☐&nbsp; <strong>tulkitsee suunnitelmia ja toteuttaa käyttöliittymän tai sen osia</strong> – Lomake, paikkalista ja kaavionäkymä toteutettu työviikolla 7 työviikon 2 rautalankojen mukaan Tailwindilla ilman valmista komponenttikirjastoa; mobiili ja saavutettavuus työviikolla 12.</p>
+<p class="item">☐&nbsp; <strong>tulkitsee suunnitelmia ja toteuttaa ohjelmiston toimintoja</strong> – Paikan lisäys, poisto ja duplikaatin esto työviikolla 7 sekä vuosivalinta työviikolla 11 käyttäjätarinoiden ja hyväksymiskriteerien perusteella; rajapinnan toiminnot työviikolla 5. Issue → commit -ketju näkyvissä.</p>
+<p class="item">☐&nbsp; <strong>sopii tehtävistä tiimin muiden jäsenten kanssa</strong> – Viikkopalaveri ohjaajan kanssa työviikoilta 2–17: sovitut tehtävät, arviot ja edellisen viikon toteuma kirjattuina issueihin, ohjaajan nimi ja päivä päiväkirjassa.</p>
+<p class="item">☐&nbsp; <strong>etsii ratkaisuvaihtoehtoja ja ratkoo ongelmia yhdessä tiimin kanssa</strong> – Kaksi vertailua työviikolla 2 (laskentatapa; paikkakuntatiedon muoto) ja yhteinen päätös ohjaajan kanssa kirjattuna; yhdessä ratkotut ongelmat nimettyinä työviikoilla 3 (julkaisu), 4 (napapiirin laskenta-ansat) ja 11 (merge-konflikti).</p>
+<p class="item">☐&nbsp; <strong>arvioi ratkaisujen toimivuuden yhdessä tiimin kanssa</strong> – Katselmointi työviikolla 10: ymmärtääkö asiakkaan roolissa oleva henkilö kaavion ilman selityksiä ja mitä muutetaan. Muistio ja priorisoitu muutoslista, todennus työviikolla 11.</p>
+<p class="item">☐&nbsp; <strong>arvioi omaa toimintaa tiimin jäsenenä</strong> – Itsearviointi työviikolla 18 kolmesta nimetystä tilanteesta (työviikon 10 palaute, työviikon 16 testaajan epäröinti, yksi viikkopalaveri, jossa sovittu muuttui) ja ohjaajan vastakommentti.</p>
+<h2>Ohjelmistokehittäjänä toimiminen</h2>
+<p class="item">☐&nbsp; <strong>selvittää kehitystiimin kanssa asiakkaan tarpeet</strong> – Toimeksianto purettu käyttäjätarinoiksi ja käyttäjäryhmiksi työviikolla 2; kysymyslista ja kirjatut vastaukset, rajaus sovittu ja täydennetty katselmoinnissa työviikolla 10.</p>
+<p class="item">☐&nbsp; <strong>viestii tekniset asiat asiakaslähtöisesti</strong> – Katselmointiesittely työviikolla 10 ja luovutusviesti ohjaajalle asiakkaan roolissa työviikolla 17 ilman teknistä sanastoa, sekä vastaus asiakkaan kysymykseen.</p>
+<p class="item">☐&nbsp; <strong>osallistuu version katselmointiin</strong> – Kaksi katselmointia: väliversion asiakaskatselmointi työviikolla 10 ja julkaisuehdokkaan julkaisutestaus työviikolla 16. Palaute ja sovitut muutokset kirjattuina.</p>
+<p class="item">☐&nbsp; <strong>asettaa kehitystiimin kanssa toteutettavat toiminnot tärkeysjärjestykseen</strong> – P0-, P1- ja P2-priorisointi ohjaajan kanssa työviikolla 2; P0-ydin eli oikea päivänvalodata, usea paikka ja virheilmoitus toteutettu ensin.</p>
+<p class="item">☐&nbsp; <strong>jakaa kehitystiimin kanssa toteutettavat toiminnot tehtäviksi</strong> – Käyttäjätarinat pilkottu issueiksi työviikolla 2 hyväksymiskriteereineen, noin puolen tai yhden päivän kokoisina; issue-taulu koko projektin ajan.</p>
+<p class="item">☐&nbsp; <strong>suunnittelee ja arvioi kehitystiimin kanssa tehtävien toteuttamista</strong> – Työmääräarviot ja toteumat issueissa jokaisen viikkopalaverin jälkeen työviikolta 2; arvio vs. toteuma -vertailu työviikolla 7 ja suunnitelman päivitys, kun arvio petti.</p>
+<p class="item">☐&nbsp; <strong>kehittää ohjelmiston toimintalogiikkaa</strong> – Päivänvalolaskenta rajoin 0–1440 ja karkausvuosin työviikolla 4, haun normalisointi ja syötteiden validointi työviikolla 5, leikkauspisteiden laskenta toleranssilla työviikolla 9, yhden paikan virheen käsittely työviikolla 13.</p>
+<p class="item">☐&nbsp; <strong>valitsee ohjelmistoon sopivan tietovaraston</strong> – Paikkakuntatiedon muodon vertailu työviikolla 2 (JSON-tiedosto vai SQLite; ulkoinen geokoodausrajapinta vain perustellusti) haun, kattavuuden, lisenssin ja verkkoriippuvuuden perusteella; perusteltu valinta suunnitelmassa.</p>
+<p class="item">☐&nbsp; <strong>toteuttaa yhteyden tietovarastoon</strong> – Paikkakuntatiedon luku ja haku nimellä työviikolla 5 (normalisointi, puuttuva paikka) omassa Geocoder-moduulissa; SQLite-polulla yhteyskerros, JSON-polulla latausmoduuli ja tiedoston rakenne; tietolähteen lisenssi kirjattuna.</p>
+<p class="item">☐&nbsp; <strong>hyödyntää rajapintoja ja käsittelee tietoa</strong> – Oman rajapinnan kutsu fetchillä työviikoilla 3 ja 6, JSON-vastauksen muunnos kaavion sarjaksi tyypitettynä, lataus- ja virhetilat käsiteltyinä; uudelleenhaku vuosivalinnalla työviikolla 11; ulkoinen geokoodausrajapinta työviikolla 5, jos käytössä.</p>
+<p class="item">☐&nbsp; <strong>arvioi ohjelmiston tietoturvaa</strong> – Tietoturva-arvio työviikolla 13 oman sovelluksen uhkalistana (uhka, testi, tulos, toimenpide): syötteiden rajat, XSS-testi paikan nimellä, ulkoisen palvelun aikakatkaisu, salaisuudet poissa repositorysta; ajettu syötetaulukko T15.</p>
+<p class="item">☐&nbsp; <strong>käyttää versionhallintaa</strong> – Git koko projektin ajan työviikolta 1: tarkoituksenmukaiset commitit, etärepository, ominaisuushaarat ja pull requestit työviikolta 6, tagit. Historia työnäytteenä, koonti työviikoilla 11 ja 15.</p>
+<p class="item">☐&nbsp; <strong>liittää ohjelman osan olemassa olevaan versioon</strong> – Palautemuutos ominaisuushaarassa työviikolla 11: pull request, itsekatselmointi, konfliktin ratkaisu ja merge pääversioon.</p>
+<p class="item">☐&nbsp; <strong>julkaisee ohjelman tuotantoympäristöön</strong> – Tuotantobuild ja julkaisu valittuun alustaan: ensijulkaisu työviikolla 3, julkaisuehdokas työviikolla 16 ja v1.0 työviikolla 17 julkisessa osoitteessa.</p>
+<h2>Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla</h2>
+<p class="item">☐&nbsp; <strong>ottaa käyttöön ja konfiguroi ohjelmistokomponenttikirjaston käyttöön soveltuvan kehittämisympäristön</strong> – React + TypeScript + Vite -projektin luonti työviikolla 1; Viten proxy PHP-rajapintaan ja tuotantobuildin asetukset työviikolla 3; Tailwindin konfigurointi työviikolla 7.</p>
+<p class="item">☐&nbsp; <strong>selvittää ohjelmistokomponenttikirjaston tarjoamat mahdollisuudet ja rajoitteet</strong> – Selvitys taulukkona omista P0-tarinoista työviikolla 3: mikä osa tehdään Reactilla ja Vitellä, mikä tulee ulkopuolelta ja mistä; kaaviokirjaston näppäimistörajoite ja kiertoreitti kirjattuina työviikoilla 8 ja 12.</p>
+<p class="item">☐&nbsp; <strong>käyttää ohjelmistokomponenttikirjaston tärkeimpiä toimintoja ja työkaluja</strong> – Komponentit, propsit, tila ja hookit (useState, useEffect, oma useLocations), ehdollinen renderöinti ja lomakkeen käsittely osoitettuina työviikoilla 3, 6–8 ja 11–12.</p>
+<p class="item">☐&nbsp; <strong>tuo kehittämisympäristöön ulkoisia komponentteja</strong> – Kaksi perusteltua ulkoista komponenttia: kaaviokirjasto työviikolla 6 (vertailu kokeilusarakkeella, koko, lisenssi, riippuvuudet) ja Tailwind CSS työviikolla 7 (mitä se ratkaisee lomakkeessa ja listassa, konfigurointi).</p>
+<p class="item">☐&nbsp; <strong>suunnittelee, toteuttaa ja testaa ohjelmiston ohjelmistokomponenttikirjastoa käyttäen</strong> – Komponenttijako ja vastuut suunnitelmassa työviikolla 2, sovellus toteutettu Reactilla käyttäjätarinoiden mukaan työviikoilla 6–9 ja 11–12, omat ja kirjastoon liittyvät ratkaisut testattuina työviikolla 14.</p>
+<p class="item">☐&nbsp; <strong>julkaisee ohjelmiston asiakkaan ympäristöön</strong> – Viten tuotantobuild ja PHP-rajapinta julkaistuna sovittuun alustaan: julkaisuehdokas tagilla v1.0-rc1 työviikolla 16 ja v1.0 työviikolla 17.</p>
+<p class="item">☐&nbsp; <strong>dokumentoi ohjelmiston sovitulla tavalla</strong> – README työviikolla 15: käyttöönotto tyhjään ympäristöön, kehityskomennot, rajapinnan kuvaus esimerkkivastauksella ja riippuvuustaulukko lisensseineen; lisäksi asiakkaan pikaohje.</p>
+<p class="muted" style="margin-top:10pt"><em>Muista: sivuston rastit ja kentät tallentuvat vain selaimeen. Ne eivät siirry opettajalle eivätkä korvaa Gitissä olevaa työtä.</em></p>
+</body></html>

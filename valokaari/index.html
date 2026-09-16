@@ -1,0 +1,1816 @@
+<!doctype html>
+<!--
+  Näyttöprojektin runko – kaksipalstainen layout (moottori v2.3).
+  Kaksi tapaa täyttää:
+    {{isot_kirjaimet}} = scripts/uusi_projekti.py korvaa automaattisesti
+    TÄYTÄ-kommenttilohko = Claude kirjoittaa projektikohtaisen sisällön
+    (älä kirjoita sisäkkäistä HTML-kommenttia tähän: se katkaisee tämän
+     lohkon ja loput tekstistä vuotaa näkyviin sivulle)
+  Rakennetta ei muuteta: app.js ja tyokalut/tee_lataukset.js luottavat
+  luokkanimiin, data-attribuutteihin ja näkymien/viikkokorttien muotoon.
+  Rakenteen tarkka kuvaus: skillin references/layout-rakenne.md.
+  Näkymät (data-view): kaytto, toimeksianto, tyotapa, termit, galleria,
+  viikko, suunnitelma, paivakirja, ailoki, naytto. Sivupalkki näyttää yhden
+  näkymän tai viikon kerrallaan; kaikki näkymät ovat HTML:ssä, app.js piilottaa.
+-->
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#9a3412">
+  <meta name="description" content="Ohjattu näyttöprojekti: päivänvalon pituuden visualisointi Suomen paikkakunnille rakennetaan PHP-rajapinnalla ja React-käyttöliittymällä 18 työviikossa ja julkaistaan tuotantoon.">
+  <title>Valokaari – ohjattu näyttöprojekti</title>
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <script src="sisalto.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#sisalto">Siirry sisältöön</a>
+
+  <div class="app-shell">
+    <!-- ============ SIVUPALKKI: eteneminen + navigaatio ============ -->
+    <aside class="sidebar" aria-label="Näyttöprojektin navigaatio" id="sivupalkki">
+      <div class="sidebar-header">
+        <span class="brand-mark" aria-hidden="true">☀</span>
+        <div>
+          <p class="sidebar-kicker">Näyttöprojekti · 18 työviikkoa</p>
+          <p class="sidebar-title">Valokaari</p>
+        </div>
+        <button class="mobile-menu-toggle" type="button" data-sidebar-toggle aria-expanded="false" aria-controls="sivupalkki">☰ Valikko</button>
+      </div>
+
+      <div class="sidebar-progress">
+        <div class="progress-row">
+          <span class="progress-pct" data-progress-number>0%</span>
+          <span class="progress-copy" data-progress-copy>0 / 0 tehtävää</span>
+        </div>
+        <div class="progress-bar" aria-hidden="true"><span data-progress-bar></span></div>
+        <button class="resume-button" type="button" data-continue><span>Aloita Valokaaren teko</span><span aria-hidden="true">→</span></button>
+        <p class="resume-note" data-continue-note>Viikko 1</p>
+      </div>
+
+      <div class="sidebar-scroll">
+        <nav class="nav-group" aria-label="Ohjeet ja tausta">
+          <p class="nav-group-title">Ohjeet ja tausta · lue ennen aloitusta</p>
+          <a class="nav-row" href="#view-kaytto" data-view-nav="kaytto">Näin käytät sivua<span class="nav-meta">aloita tästä</span></a>
+          <a class="nav-row" href="#view-toimeksianto" data-view-nav="toimeksianto">Toimeksianto<span class="nav-meta"></span></a>
+          <a class="nav-row" href="#view-tyotapa" data-view-nav="tyotapa">Työtapa<span class="nav-meta"></span></a>
+          <a class="nav-row" href="#view-termit" data-view-nav="termit">Termit<span class="nav-meta" data-glossary-count></span></a>
+          <a class="nav-row" href="#view-galleria" data-view-nav="galleria">Galleria<span class="nav-meta">vko 17</span></a>
+        </nav>
+
+        <!-- app.js rakentaa viikkorivit sisalto.js:n viikot/vaiheet/viikkoNimet-datasta. -->
+        <nav class="week-nav" aria-label="Viikot" data-week-links></nav>
+
+        <nav class="nav-group nav-group-docs" aria-label="Omat dokumentit">
+          <p class="nav-group-title">Omat dokumentit · kirjoitetaan työn aikana</p>
+          <a class="nav-row" href="#view-suunnitelma" data-view-nav="suunnitelma">Suunnitelma<span class="nav-meta" data-plan-status-meta>päivittyy</span></a>
+          <a class="nav-row" href="#view-paivakirja" data-view-nav="paivakirja">Projektipäiväkirja<span class="nav-meta" data-journal-summary>0 / 18</span></a>
+          <a class="nav-row" href="#view-ailoki" data-view-nav="ailoki">AI-loki<span class="nav-meta" data-log-count>0</span></a>
+          <a class="nav-row" href="#view-naytto" data-view-nav="naytto">Näyttömatriisi<span class="nav-meta" data-evidence-count>0 / 32</span></a>
+        </nav>
+      </div>
+    </aside>
+
+    <main class="view-main" id="sisalto">
+
+      <!-- ============ NÄIN KÄYTÄT SIVUA ============ -->
+      <section class="view" data-view="kaytto" id="view-kaytto">
+        <p class="view-eyebrow">Lue tämä ennen viikkoa 1</p>
+        <h1 class="view-title">Yksi projekti, yksi kirjoituspaikka</h1>
+        <p class="view-lead">Valokaari on 18 työviikon näyttöprojekti: rakennat Lapin matkailuyritykselle selainsovelluksen, joka näyttää kaaviona, kuinka pitkä päivä on Suomen eri paikkakunnilla vuoden jokaisena päivänä. Palvelinpuoli eli backend tehdään PHP:llä: se muuttaa paikkakunnan nimen koordinaateiksi, laskee päivänvalon minuutit ja palauttaa tuloksen selaimelle rajapinnan (API) kautta JSON-muodossa. JSON on tekstipohjainen tietomuoto, jota sekä palvelin että selain osaavat lukea. Selainpuoli eli frontend tehdään Reactilla, TypeScriptillä ja Tailwind CSS:llä, ja kaavio piirretään valitsemallasi kaaviokirjastolla. Etenet neljässä vaiheessa: ensin työkalut, suunnitelma, julkaistu runko ja oikea päivänvalodata, sitten kaavio ja sen ominaisuudet, sen jälkeen laatu ja testaus, lopuksi julkaisu ja näyttö. Näytössä arvioidaan se, minkä olet itse tehnyt ja osaat perustella: päivänvalolaskenta, leikkauspisteiden logiikka, komponenttirakenne ja saavutettavuus. Projektipäiväkirja kirjoitetaan tällä sivulla ja viedään joka viikko repositoryyn eli GitHubissa olevaan versionhallittuun projektikansioon.</p>
+
+        <section class="view-section">
+          <h2>Kolme tutkinnon osaa, yksi sovellus</h2>
+          <p class="view-lead" style="margin-top:10px">Projekti kattaa kolme tutkinnon osaa: Ohjelmointi (45 osp), Ohjelmistokehittäjänä toimiminen (45 osp) ja Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla (30 osp). Ohjelmoinnin osaaminen näkyy koodissa, jonka kirjoitat, testaat ja korjaat itse: päivänvalolaskennassa, leikkauspisteiden laskennassa ja virheenkorjausketjuissa. Ohjelmistokehittäjänä toimiminen on työtapa: puret toimeksiannon käyttäjätarinoiksi, priorisoit ne, sovit rajapinnan muodon ennen koodia, ohjaat työtä Gitillä ja issueilla, arvioit tietoturvan ja julkaiset sovelluksen. Komponenttikirjasto-osa todennetaan Reactilla: rakennat käyttöliittymän komponenteista, otat Tailwindin ja kaaviokirjaston käyttöön perustellusti ja julkaiset tuotantoversion asiakkaan käyttöön. Näyttömatriisin tunnukset p1–p11, s1–s14 ja k1–k7 viittaavat näihin kolmeen osaan: p = Ohjelmointi, s = Ohjelmistokehittäjänä toimiminen, k = komponenttikirjasto-osa. Kaikki 32 osaamisvaatimusta on avattu sivun näyttömatriisissa.</p>
+          <p class="view-lead" style="margin-top:10px">Tutkinnon osissa on myös tiimissä tehtäviä kokonaisuuksia. Siksi tehtävissä puhutaan tiimistä, katselmoinneista ja asiakkaasta, vaikka teet Valokaaren muuten yksin. Ohjaava opettaja toimii tarvittaessa asiakkaana ja ohjaajana, ja sopimiset, katselmoinnit ja yhteiset päätökset tehdään hänen tai muun nimetyn henkilön (esimerkiksi työviikkojen 10 ja 16 katselmoijien) kanssa. Ne ovat osa arvioitavaa osaamista, eivät muodollisuus.</p>
+        </section>
+
+        <figure class="view-figure view-section">
+          <div class="image-stage"><img src="assets/vaiheet.svg" width="1129" height="369" alt="Aikajana neljästä vaiheesta: Ydin työviikot 1–5, Ominaisuudet 6–10, Valmiiksi 11–15, Julkaisu 16–18."></div>
+          <figcaption><strong>18 työviikkoa, neljä vaihetta</strong> Ydin (1–5) tuottaa julkaistun rungon ja oikean päivänvalodatan; Ominaisuudet (6–10) kaavion, monen paikan vertailun, tooltipin, leikkauspisteet ja asiakaskatselmoinnin; Valmiiksi (11–15) palautemuutoksen, vuosivalinnan, tietoturvan, testauksen ja laadun; Julkaisu (16–18) julkaisuehdokkaan, v1.0:n ja näytön.</figcaption>
+        </figure>
+
+        <div class="card card-tint view-section">
+          <p class="section-label section-label-accent">Kolme prioriteettia: P0, P1 ja P2</p>
+          <p style="margin-top:8px">Toiminnot jaetaan kolmeen luokkaan heti viikolla 2, ja samat tunnukset toistuvat koko sivustolla. <strong>P0</strong> on pakollinen ydin: se on saatava valmiiksi, tai tuotosta ei ole. <strong>P1</strong> on tärkeä jatko, joka tehdään sitten, kun P0 toimii. <strong>P2</strong> on valinnainen lisä, joka saa jäädä kokonaan pois, ilman että työ on kesken.</p>
+          <p style="margin-top:8px">Järjestys on myös arvioinnin kannalta oikea: keskeneräinen P0 painaa enemmän kuin puuttuva P2.</p>
+        </div>
+
+        <div class="principle-grid">
+          <div class="card"><span class="num">1</span><h3>Työ tapahtuu repositoryssa</h3><p>Kaikki koodi, suunnitelma ja päiväkirja elävät GitHub-repositoryssa. Tämä sivusto ohjaa työtä, mutta työnäytteet syntyvät repoon.</p><small>Kansiot: client/ (React-sovellus), server/ (PHP-rajapinta) ja project-docs/ (suunnitelma, päiväkirja, muistiot ja raportit).</small></div>
+          <div class="card"><span class="num">2</span><h3>Ohjaa työ Gitillä</h3><p>Tehtävät pilkotaan <strong>GitHub-issueiksi</strong>: issue on tehtäväkortti, yksi rajattu tehtävä GitHubin tehtävälistalla. Jokainen valmis pala tallennetaan <strong>committina</strong> eli yhtenä nimettynä muutoksena, jolla on viesti ja tunnus.</p><small>Yksi issue = yleensä puolen tai yhden päivän työ.</small></div>
+          <div class="card"><span class="num">3</span><h3>Kirjoita tällä sivulla</h3><p>Jokaisen viikon lopussa vastaat kolmeen kysymykseen: mitä ja miten teit, miksi päädyit ratkaisuun ja missä työnäyte on. Suunnitelma ja AI-loki täytetään samalla sivulla.</p><small>Kentät tallentuvat vain tähän selaimeen.</small></div>
+          <div class="card"><span class="num">4</span><h3>Vie päiväkirja talteen</h3><p>Lataa koko projektipäiväkirja jokaisen viikon lopussa, korvaa repositoryn vanha tiedosto ja tee commit.</p><small>Tiedosto: <code>project-docs/projektipaivakirja.md</code>. Rasti tällä sivulla ei ole palautus: työnäyte on aina repositoryssa. Tee päiväkirjasta commit joka viikko. Se on osa näyttöaineistoa.</small></div>
+        </div>
+
+        <div class="card card-tint view-section checklist-box">
+          <p class="section-label section-label-accent">Tee kerran projektin alussa</p>
+          <ol>
+            <li>Luo repositoryyn kansiot <code>project-docs/</code>, <code>client/</code> ja <code>server/</code>.</li>
+            <li>Avaa viikko 1 ja tee yksi tehtävä kerrallaan.</li>
+            <li>Kirjoita viikon lopussa projektipäiväkirjan kolme kenttää.</li>
+            <li>Paina <strong>Lataa koko projektipäiväkirja</strong>, siirrä tiedosto <code>project-docs</code>-kansioon ja tee commit.</li>
+          </ol>
+        </div>
+
+        <div class="card view-section download-card">
+          <div>
+            <strong>Paperinen työpaketti</strong>
+            <p>Aikataulu ja tarkistuslista tilanteisiin, joissa sivu ei ole auki. Siihen ei tarvitse kirjoittaa samoja vastauksia uudelleen.</p>
+          </div>
+          <div class="download-actions">
+            <a class="button button-primary" href="downloads/valokaari-tyopaketti.pdf" download>Lataa PDF</a>
+            <a class="button button-secondary" href="downloads/valokaari-tyopaketti.docx" download>Lataa Word</a>
+          </div>
+        </div>
+
+        <p class="footnote view-section"><strong>Muista:</strong> sivuston rastit ja kirjoituskentät ovat oma työmuistisi. Ne tallentuvat vain tähän selaimeen, eivätkä ne siirry opettajalle. Rasti ei ole palautus eikä osa näyttöaineistoa. Rastita vasta, kun työ on testattu ja työnäyte on Git-repositoryssa.</p>
+
+        <details class="source-role">
+          <summary>Mitä paperinen työpaketti ja alkuperäinen Word-pohja tekevät?</summary>
+          <p><strong>Paperinen työpaketti</strong> on aikataulu ja tarkistuslista tilanteisiin, joissa sivu ei ole auki. Siihen ei tarvitse kirjoittaa samoja vastauksia uudelleen.</p>
+          <p><strong>Alkuperäinen Word-pohja</strong> on tämän polun lähdeaineisto. Sen aiheet on tuotu sivuston viikkotehtäviin ja projektipäiväkirjaan. Täytä Word-pohja erikseen vain, jos opettaja antaa siitä erillisen palautusohjeen.</p>
+        </details>
+
+        <div class="download-card view-section" style="margin-top:20px">
+          <div><strong>Opiskelijan oma tila selaimessa</strong><p>Rastit, päiväkirja, suunnitelma ja AI-loki tallentuvat vain tähän selaimeen.</p></div>
+          <button class="button button-ghost" type="button" data-reset>Nollaa oma eteneminen</button>
+        </div>
+
+        <details class="source-role">
+          <summary>Opettajan lähdeaineisto · ei erillistä täyttämistä ilman ohjetta</summary>
+          <div>
+            <a href="downloads/nayttosuunnitelma.docx" download>Näyttösuunnitelma (.docx)</a>
+            <a href="downloads/nayton-dokumentointipohjat.docx" download>Näytön dokumentointipohjat (.docx)</a>
+          </div>
+        </details>
+      </section>
+
+      <!-- ============ TOIMEKSIANTO ============ -->
+      <section class="view" data-view="toimeksianto" id="view-toimeksianto">
+        <p class="view-eyebrow">Alkuperäinen toimeksianto · annettu työviikolla 1</p>
+        <h1 class="view-title">Näytä asiakkaalle, miltä kaamos ja yötön yö näyttävät kaaviona</h1>
+        <div class="brief-text">
+          <p>Vedän Rovaniemellä pientä matkailuyritystä, Revontuli Travelia. Myymme Lapin-matkoja ulkomaalaisille ja eteläsuomalaisille, ja joka syksy käyn saman keskustelun: asiakas kysyy, onko joulukuussa Utsjoella täysin pimeää ja pitääkö kesäkuussa Rovaniemellä nukkua silmälaput päässä. Vastaan sanoilla ja taulukoilla, mutta kukaan ei hahmota numeroista, kuinka jyrkästi päivän pituus muuttuu, kun siirtyy Helsingistä napapiirin pohjoispuolelle.</p>
+          <p>Haluan verkkosivullemme kuvan, joka näyttää päivän pituuden vuoden jokaisena päivänä millä tahansa Suomen paikkakunnalla. Asiakkaan pitää voida kirjoittaa paikkakunnan nimi, lisätä se kaavioon ja verrata sitä toiseen paikkaan samassa kuvassa, vaikka Helsinkiä Utsjokeen. Kun hän vie hiiren kaavion päälle, hänen pitää nähdä tarkka päivä, paikka ja se, kuinka monta tuntia ja minuuttia valoa sinä päivänä on. Kaamos ja yötön yö ovat meidän myyntiargumenttimme: haluan, että ne erottuvat kuvasta yhdellä katseella.</p>
+          <p>Paikkakunnat eivät saa olla ennalta lukittu lista. Asiakkaat kysyvät Kilpisjärvestä, Inarista ja Kuusamosta, ja jos nimi kirjoitetaan väärin tai sitä ei tunneta, sovelluksen pitää sanoa se selvästi eikä jäädä tyhjäksi. Vuoden pitää olla valittavissa, koska teemme tarjoukset seuraavalle talvelle jo edellisenä keväänä, ja karkausvuoden pitää toimia oikein. Olisi hienoa, jos kuvassa näkyisivät myös ne päivät, joina kahdessa paikassa on yhtä pitkä päivä. Silloin voin sanoa asiakkaalle, että maaliskuun lopulla Rovaniemellä on yhtä valoisaa kuin Helsingissä.</p>
+          <p>Haluan kokeilla toimivaa väliversiota noin puolivälissä omilla käsilläni: en halua kalvoesitystä vaan oikean sovelluksen, johon lisään kolme paikkaa ja katson, ymmärränkö kuvan ilman selityksiä. Valmis tarkoittaa minulle tätä: sovellus on verkossa osoitteessa, jonka voin laittaa sivuillemme, se toimii myös puhelimella, se näyttää Suomen paikkakunnat oikein kaamoksesta yöttömään yöhön, ja mukana on ohje, jolla saan sen käyntiin kysymättä keneltäkään.</p>
+          <p class="assignment-note">Revontuli Travel ja sen yrittäjä ovat kuvitteellisia. Ohjaava opettaja toimii asiakkaan sijaisena rajaus- ja priorisointipäätöksissä. Työviikon 10 katselmoinnissa asiakkaan roolia esittää ohjaajan nimeämä ulkopuolinen henkilö, ei oma ohjaava opettajasi.</p>
+        </div>
+
+        <div class="grid-2 view-section">
+          <div class="card">
+            <p class="section-label section-label-accent">Sovittu toteutustapa</p>
+            <p style="margin-top:8px"><strong>Backend eli palvelinpuoli:</strong> PHP 8.2 tai uudempi ilman kehystä. Yksi rajapinta <code>GET /api/daylight?city=Helsinki&amp;year=2026</code> palauttaa paikan koordinaatit ja jokaisen päivän päivänvalon minuutteina JSON-muodossa. Rajapinnan muoto sovitaan kirjallisesti työviikolla 2 ennen koodia.</p>
+            <p style="margin-top:8px"><strong>Frontend eli selainpuoli:</strong> React + TypeScript + Vite. Kaavio piirretään kaaviokirjastolla, jonka valitset ja perustelet työviikolla 6; se on ainoa valmis käyttöliittymäkomponentti. Tailwind CSS otetaan käyttöön työviikolla 7, kun lomake ja paikkalista rakennetaan alusta itse. Rajapintakutsut ovat omassa moduulissaan erillään kaaviosta.</p>
+            <p style="margin-top:8px"><strong>Kansiot:</strong> <code>client/</code> (React-sovellus), <code>server/</code> (PHP-rajapinta ja sen testit) ja <code>project-docs/</code> (suunnitelma, rajapintasopimus, päiväkirja, muistiot ja raportit).</p>
+            <p style="margin-top:8px"><strong>P0-minimi:</strong> paikkakunnan nimi koordinaateiksi · päivänvalo joka päivälle rajoissa 0–1440 min · karkausvuosi oikein · usea paikka samassa kaaviossa yhteisellä asteikolla · paikan poisto · selkeä virheilmoitus tuntemattomasta paikasta · tooltip eli hiiren tai kosketuksen alle avautuva vihjeruutu (päivä, paikka, kesto) · kaamos ja yötön yö korostettuina.</p>
+            <p style="margin-top:8px"><strong>P1:</strong> leikkauspisteet, vuosivalinta, mobiilinäkymä ja saavutettavuus. <strong>P2:</strong> kuvan jako linkkinä, paikkojen tallennus selaimeen.</p>
+            <p style="margin-top:8px"><strong>Julkaisu:</strong> sovellus ja <code>/api/health</code> viedään julkiseen osoitteeseen jo työviikolla 3, ja samaa julkaisuputkea käytetään loppuun asti: julkaisuehdokas työviikolla 16 ja v1.0 työviikolla 17. Oletusmalli on yksi PHP-palvelin, joka tarjoilee sekä buildatun sovelluksen että rajapinnan samasta osoitteesta. Build tehdään alustalla, ja <code>client/dist</code> on gitignoressa. Ohjaaja on kokeillut alustan ennen projektin alkua.</p>
+            <p style="margin-top:8px"><strong>Viikkopalaveri:</strong> työviikoilla 2–17 pidetään ohjaajan kanssa 10 minuutin viikkopalaveri (voi olla 3–4 opiskelijan ryhmäkierros). Sovitut tehtävät, arviot ja edellisen viikon toteuma kirjataan issueihin, ohjaajan nimi ja päivä päiväkirjaan. Työviikolta 6 jokainen ominaisuus tehdään omassa haarassa ja yhdistetään pull requestilla eli yhdistämispyynnöllä, jonka katselmoit itse ennen yhdistämistä.</p>
+          </div>
+          <div class="card">
+            <p class="section-label">Pidä rajaus</p>
+            <p>Näitä <strong>ei</strong> toteuteta tässä projektissa, vaikka ne tuntuisivat helpoilta lisäyksiltä:</p>
+            <ul>
+              <li>Laravel tai muu PHP-kehys: yhden rajapinnan sovelluksessa kehys on ylimääräinen riippuvuus</li>
+              <li>käyttäjätunnukset, kirjautuminen ja tallennetut suosikit palvelimella</li>
+              <li>muiden maiden paikkakunnat tai maailmankartta</li>
+              <li>säätiedot, lämpötilat ja revontuliennusteet</li>
+              <li>auringonnousun ja -laskun kellonajat tooltipissa (vain päivän pituus)</li>
+              <li>valmis käyttöliittymäkomponenttikirjasto (MUI, Chakra tai vastaava): komponenttirakenne ja saavutettavuusratkaisut tehdään itse Tailwindilla</li>
+            </ul>
+            <p>Kuvan jako linkkinä ja paikkojen tallennus selaimeen ovat P2-listalla: ne tehdään vain, jos kaikki P0 ja P1 on valmiina. Älä vaihda tekniikkaa kesken projektin: React, TypeScript, Vite, Tailwind ja PHP lukitaan työviikolla 1.</p>
+          </div>
+        </div>
+
+        <div class="card view-section">
+          <p class="section-label">Aineisto, työkalut ja tekoälyn raja</p>
+            <ul>
+              <li><strong>Paikkakuntien koordinaatit:</strong> avoin aineisto, esimerkiksi GeoNames (lisenssi CC BY 4.0) tai Maanmittauslaitoksen paikannimirekisteri (CC BY 4.0), rajattuna Suomen kuntiin ja taajamiin. Vaihtoehtona ulkoinen geokoodausrajapinta (geokoodaus tarkoittaa nimen muuttamista koordinaateiksi), esimerkiksi Nominatim tai Open-Meteo Geocoding. Valinta ja lisenssi kirjataan suunnitelmaan työviikolla 2.</li>
+              <li><strong>Päivänvalon odotusarvot:</strong> Ilmatieteen laitoksen auringonnousu- ja laskuajat tai timeanddate.com. Näistä haetaan testitapausten odotetut tulokset, ennen kuin oma laskenta ajetaan.</li>
+              <li><strong>Laskentakaava:</strong> auringonnousuyhtälö (NOAA:n julkaisema) tai PHP:n sisäänrakennettu <code>date_sun_info</code>-funktio. Kumpaa käytät, on oma päätöksesi työviikolla 2, ja toista käytetään referenssinä.</li>
+              <li><strong>Dokumentaatio:</strong> PHP:n, Reactin, Viten, Tailwindin ja valitun kaaviokirjaston virallinen dokumentaatio on ensisijainen lähde. Jokainen asennettu paketti perustellaan ja kirjataan riippuvuustaulukkoon (paketti, rooli tässä projektissa, versio, lisenssi).</li>
+              <li><strong>Ei henkilötietoja:</strong> sovellus ei käsittele henkilötietoja, eikä testidataan tai repositoryyn kirjoiteta oikeiden ihmisten nimiä.</li>
+            </ul>
+            <p><strong>Tekoälyn raja:</strong> tekoäly saa selittää virheilmoituksia, ehdottaa testitapauksia ja tarkistaa koodiasi. Päivänvalolaskenta, leikkauspisteiden logiikka, komponenttirakenne ja saavutettavuusratkaisut tehdään itse. Jokainen merkittävä käyttö kirjataan AI-lokiin.</p>
+        </div>
+
+        <div class="card card-tint decision-box view-section">
+          <p class="section-label">Sovi ohjaajan kanssa: näitä ei päätetä itse eikä tekoälyllä</p>
+          <ul>
+            <li><strong>Lisenssi:</strong> mikä lisenssi työhön tulee? Kysy työviikolla 1, päätös viimeistään työviikolla 8, ja lisää LICENSE repositoryyn heti, kun asia on sovittu.</li>
+            <li><strong>Repositoryn julkisuus ja tekijänimi:</strong> saako repo olla julkinen ja millä nimellä esiinnyt? Alaikäisen huoltajan suostumus hoidetaan ohjaajan kautta.</li>
+            <li><strong>Katselmoijien roolit:</strong> kuka esittää asiakasta työviikolla 10 (ei oma ohjaava opettajasi) ja kuka toimii julkaisutestaajana työviikolla 16? Nimeäminen viimeistään työviikolla 8.</li>
+            <li><strong>Julkaisualusta:</strong> mihin alustaan sovellus julkaistaan? Ohjaaja valitsee alustan (PHP 8.2 ja staattinen build), kokeilee sen itse ja antaa testatun polun ennen työviikkoa 1, viimeistään työviikolla 2. Ilman tätä työviikkoa 3 ei voi tehdä.</li>
+            <li><strong>Perusteversion siirtymäsääntö:</strong> minkä perusteversion mukaan näyttö arvioidaan (OPH-6216-2025)?</li>
+            <li><strong>Arvioinnin järjestelyt:</strong> näytön ajankohta ja arvioijat työviikolle 18.</li>
+          </ul>
+          <p class="note">Näitä ei päätetä itse eikä tekoälyllä. Tyhjä kenttä suunnitelmassa on oikea tulos niin kauan kuin asia on sopimatta: merkitse se avoimeksi asiaksi.</p>
+        </div>
+
+        <div class="view-section">
+          <h2>Pidä punainen lanka näkyvissä</h2>
+          <div class="lanka-row">
+            <div><p class="section-label">Vaatimus</p><p>s7 · kehittää ohjelmiston toimintalogiikkaa</p></div>
+            <div><p class="section-label">Issue</p><p>#14 Päivänvalon minuutit rajataan välille 0–1440 napapiirin pohjoispuolella</p></div>
+            <div><p class="section-label">Valmis kun</p><p>Utsjoki 21.12. palauttaa 0 min ja 21.6. 1440 min; mikään päivä ei ylitä rajoja</p></div>
+            <div><p class="section-label">Testi ja työnäyte</p><p>testitapaus T03 · testiajon tuloste ja Utsjoen kaavion kuvakaappaus</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ TYÖTAPA ============ -->
+      <section class="view" data-view="tyotapa" id="view-tyotapa">
+        <p class="view-eyebrow">Jokainen työskentelykerta</p>
+        <h1 class="view-title">Kuusi askelta joka kerralla</h1>
+        <ol class="workflow-loop">
+          <li><span>1</span><strong>Valitse</strong><small>yksi pieni tehtävä</small></li>
+          <li><span>2</span><strong>Suunnittele</strong><small>hyväksymiskriteerit issueen</small></li>
+          <li><span>3</span><strong>Toteuta</strong><small>pala kerrallaan</small></li>
+          <li><span>4</span><strong>Testaa</strong><small>odotusarvo haettuna ennen ajoa</small></li>
+          <li><span>5</span><strong>Tallenna</strong><small>commit ja push</small></li>
+          <li><span>6</span><strong>Kirjaa</strong><small>työnäyte ja oppi</small></li>
+        </ol>
+        <p class="rule-note"><strong>Nyrkkisääntö:</strong> jos et pysty selittämään muutosta, työ ei ole vielä valmis.</p>
+
+        <figure class="view-figure view-section">
+          <div class="image-stage"><img src="assets/tyokierto.svg" width="1672" height="941" alt="Viisivaiheinen työkierto: issue, rajapinta, komponentti, testi ja julkaisu."></div>
+          <figcaption><strong>Viikon työkierto</strong> Jokainen viikko kulkee saman kierron: valitse issue, sovi tai toteuta rajapinnan pala, rakenna komponentti, testaa haetulla odotusarvolla ja vie julkaistuun versioon.</figcaption>
+        </figure>
+
+        <div class="view-section">
+          <h2>Testaa kuin kehittäjä</h2>
+          <p class="view-lead" style="margin-top:8px">Testaus ei ole pelkkää kaupunkien lisäilyä ja toteamista, että kaavio näyttää oikealta. Kirjaa odotettu tulos, havaittu tulos, virheen syy, korjaus ja uusintatesti.</p>
+          <ul class="check-list">
+            <li>Vähintään 12 suunniteltua testitapausta (tässä projektissa 16) kolmessa luokassa: normaali käyttö, rajat ja virhetilanteet. Testitapaukset numeroidaan T01, T02 ja niin edelleen: T tarkoittaa testitapausta ja numero yksilöi sen.</li>
+            <li>Odotettu tulos kirjataan jokaisesta tapauksesta ennen ajoa. Päivänvalon odotusarvot haetaan ulkoisesta lähteestä (Ilmatieteen laitos tai timeanddate), ei omasta koodista.</li>
+            <li>3 täydellistä virheenkorjausketjua aidoista havainnoista: havainto → toistamisohje → syy → korjauscommit → uusintatesti → regressiotesti. Regressiotesti tarkoittaa, että vanha testi ajetaan uudelleen, jotta korjaus ei riko aiemmin toiminutta.</li>
+            <li>Rajatapaukset: Utsjoki 21.12. (0 min) ja 21.6. (1440 min), Rovaniemen yöttömän yön ensimmäinen ja viimeinen päivä, karkausvuosi 2028 (366 päivää) ja 2027 (365), vuodenvaihde.</li>
+            <li>Virhetilanteet: tuntematon paikkakunta, tyhjä syöte, vuosi rajojen ulkopuolella, verkkovirhe (palvelin sammutettu) ja sama paikka kahdesti.</li>
+            <li>Jokainen havaittu virhe kirjataan heti GitHub-issueksi tunnisteella <code>bug</code>: mitä odotit, mitä tapahtui. Työviikkojen 14 ja 17 virheenkorjausketjut otetaan tältä listalta, ei keksitä.</li>
+            <li>Rajapinta testataan myös suoraan komentoriviltä curl-komennolla, joka hakee osoitteen ilman selainta, ei vain käyttöliittymän kautta.</li>
+            <li>Yksikkötestit (yhden funktion testi ilman käyttöliittymää) laskenta-, muotoilu- ja leikkauspistemoduuleille ajetaan komennolla ja toimivat regressiosuojana.</li>
+            <li>Julkaistu versio testataan puhtaassa ympäristössä: ensin itse, sitten ulkopuolinen pelkän kirjallisen ohjeen avulla.</li>
+          </ul>
+        </div>
+
+        <figure class="view-figure view-section">
+          <div class="image-stage"><img src="assets/testauskierros.svg" width="1500" height="1000" alt="Testauksen kierto: hae odotusarvo, aja testi, löydä virhe, korjaa ja uusintatestaa."></div>
+          <figcaption>Testi on valmis vasta onnistuneen uusintatestin jälkeen.</figcaption>
+        </figure>
+
+        <div class="view-section">
+          <h2>Aineisto ja työkalut</h2>
+          <ul class="tooling-list">
+            <li><strong>Työkalut:</strong> PHP 8.2 tai uudempi, Node LTS, Git ja VS Code. Selainpuolen runko syntyy komennolla <code>npm create vite@latest -- --template react-ts</code>, palvelin käynnistyy komennolla <code>php -S localhost:8000 -t server/public</code>.</li>
+            <li><strong>Kirjastot:</strong> Tailwind CSS ja yksi kaaviokirjasto. Jokainen asennettu paketti perustellaan ja kirjataan riippuvuustaulukkoon (paketti, rooli, versio, lisenssi). Tarkista lisenssi ennen asennusta.</li>
+            <li><strong>Aineisto:</strong> paikkakuntien koordinaatit avoimesta lähteestä lisenssi kirjattuna tai ulkoisesta geokoodausrajapinnasta; päivänvalon odotusarvot Ilmatieteen laitokselta tai timeanddate-sivulta. Ei henkilötietoja.</li>
+            <li><strong>Viikkopalaveri ja issuet:</strong> 10 minuuttia ohjaajan kanssa joka viikko työviikoilta 2–17. Sovitut tehtävät, arviot ja toteuma kirjataan issueihin, ohjaajan nimi ja päivä päiväkirjaan. Havaitut virheet kirjataan heti bug-issueiksi. Ohjaaja lisätään repositoryn yhteistyökumppaniksi (collaborator) työviikolla 1.</li>
+            <li><strong>Tekoälyn rajat:</strong> tekoäly saa selittää, ehdottaa ja tarkistaa. Päivänvalolaskenta, leikkauspisteiden logiikka, komponenttirakenne ja saavutettavuusratkaisut tehdään itse. Jokainen merkittävä käyttö kirjataan AI-lokiin.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ TERMIT / SANASTO ============ -->
+      <section class="view" data-view="termit" id="view-termit">
+        <p class="view-eyebrow">Sanasto · kertausta varten</p>
+        <h1 class="view-title">Tämän projektin termit</h1>
+        <p class="view-lead">Jokainen termi selitetään myös siinä kohdassa, jossa se tulee ensimmäisen kerran vastaan. Tänne voit palata, kun tunnus tai lyhenne unohtuu. Sanastossa ovat vain ne termit, joita tässä projektissa oikeasti käytetään.</p>
+        <!-- app.js täyttää sisalto.js:n termisto-kentästä. Muunkielinen sivusto: käännä otsikot tässä. -->
+        <dl class="glossary view-section" data-termisto></dl>
+      </section>
+
+      <!-- ============ GALLERIA ============ -->
+      <section class="view" data-view="galleria" id="view-galleria">
+        <p class="view-eyebrow">Julkaistut työt</p>
+        <h1 class="view-title">Galleria</h1>
+        <p class="view-lead">Valmiit v1.0-tuotokset nostetaan tänne viikolla 17: nimi, kuvakaappaus, lisenssi ja julkaisulinkki.</p>
+        <div class="gallery-grid" data-gallery>
+          <!-- Opettaja lisää kortin per julkaistu työ:
+          <a class="gallery-card" href="https://github.com/kayttaja/repo/releases/tag/v1.0">
+            <img src="assets/galleria/NIMI.png" width="640" height="360" alt="Kuvakaappaus" loading="lazy">
+            <strong>Nimi</strong><span>Tekijän etunimi · v1.0</span>
+          </a>
+          -->
+        </div>
+        <p class="gallery-empty" data-gallery-empty>Ensimmäiset työt julkaistaan viikolla 17.</p>
+      </section>
+
+      <!-- ============ VIIKKONÄKYMÄ ============ -->
+      <section class="view" data-view="viikko" id="view-viikko">
+        <article class="week-card" id="week-1" data-week="1">
+          <p class="view-eyebrow" data-week-label="Työviikko 1 / 18">Vaihe A · Ydin · Työviikko 1 / 18</p>
+          <h1 class="view-title">Aloitus</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta: tätä asiakkaan toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon tekniikka</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 4</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="1-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Asenna työkalut (PHP 8.2 tai uudempi, Node LTS, Git, VS Code) ja kirjaa versiot README:hen.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="1-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Luo GitHub-repository ja tee julkisen repon tarkistukset: yksityisyys, tekijänimi ja alaikäisen huoltajan suostumus ohjaajan kautta.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="1-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Luo React + TypeScript -projekti Vitellä ja käynnistä kehityspalvelin. Käynnistä PHP:n sisäänrakennettu palvelin, joka palauttaa <code>{"status":"ok"}</code>.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="1-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Lue toimeksianto, kirjoita kysymyslista ohjaajalle (vähintään kuusi kysymystä) ja luo kansiorakenne. Sitten ensimmäinen commit ja push.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain, jos jäät jumiin: kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> README:n versiotaulukko, kuvakaappaukset kehityspalvelimesta ja PHP-vastauksesta, kuitattu julkisuustarkistuslista, kysymyslista ja commit-historian alku (p1, k1; s12 alkaa).</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="1">
+            <div class="journal-heading">
+              <h2>Viikon projektipäiväkirja</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Tämä on päiväkirjan ainoa kirjoituspaikka: kolme kysymystä viikon lopussa. Kentät tallentuvat vain tähän selaimeen; lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä tein ja miten?</span><textarea rows="3" data-journal-field="work" placeholder="Kirjoita omin sanoin…"></textarea></label>
+              <label><span>Miksi tein näin?</span><textarea rows="2" data-journal-field="reason" placeholder="Perustelut ja vaihtoehdot, joita harkitsit"></textarea></label>
+              <label><span>Missä työnäyte on?</span><input type="text" data-journal-field="evidence" placeholder="Commit-linkki, kuvakaappaus tai tiedoston polku"></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+<article class="week-card" id="week-2" data-week="2">
+          <p class="view-eyebrow" data-week-label="Työviikko 2 / 18">Vaihe A · Ydin · Työviikko 2 / 18</p>
+          <h1 class="view-title">Suunnitelma ja priorisointi</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta: tätä asiakkaan toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon tekniikka</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 4</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="2-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjaa ohjaajan vastaukset kysymyslistaan (nimi, päivä, vastaus omin sanoin) ja kirjoita käyttäjätarinat hyväksymiskriteereineen. Priorisoi ne P0/P1/P2 ohjaajan kanssa.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="2-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Vertaa laskentatapoja omalla koeajolla (<code>date_sun_info</code> Helsingille 21.6.) ja paikkakuntatiedon muotoja (JSON-tiedosto vai SQLite). Päätä ohjaajan kanssa ja perustele.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="2-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Piirrä rautalangat lomakkeesta, paikkalistasta ja kaaviosta sekä komponenttijako.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="2-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Pilko P0 issueiksi työmääräarvioineen ja täytä suunnitelma.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain, jos jäät jumiin: kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> <code>project-docs/suunnitelma.md</code>, ohjaajan vastaukset, koeajon tuloste päiväkirjassa, kaksi vertailutaulukkoa, rautalangat, issue-taulu ja ohjaajan kirjattu hyväksyntä (s1, s4, s5, s8, p8, p9; k5 ja s6 alkavat).</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="2">
+            <div class="journal-heading">
+              <h2>Viikon projektipäiväkirja</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Tämä on päiväkirjan ainoa kirjoituspaikka: kolme kysymystä viikon lopussa. Kentät tallentuvat vain tähän selaimeen; lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä tein ja miten?</span><textarea rows="3" data-journal-field="work" placeholder="Kirjoita omin sanoin…"></textarea></label>
+              <label><span>Miksi tein näin?</span><textarea rows="2" data-journal-field="reason" placeholder="Perustelut ja vaihtoehdot, joita harkitsit"></textarea></label>
+              <label><span>Missä työnäyte on?</span><input type="text" data-journal-field="evidence" placeholder="Commit-linkki, kuvakaappaus tai tiedoston polku"></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+<article class="week-card" id="week-3" data-week="3">
+          <p class="view-eyebrow" data-week-label="Työviikko 3 / 18">Vaihe A · Ydin · Työviikko 3 / 18</p>
+          <h1 class="view-title">Julkaistu runko</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta: tätä asiakkaan toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon tekniikka</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 4</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="3-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta <code>GET /api/health</code> PHP:llä ja ohjaa Viten kehityspalvelimen <code>/api</code>-kutsut PHP:hen. Kirjoita <code>api-sopimus.md</code>: osoite, parametrit, vastauksen JSON-muoto ja virhevastaukset.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="3-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjoita ensimmäinen oma komponentti <code>HealthStatus</code>, joka hakee <code>/api/health</code>-vastauksen ja näyttää tilan.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="3-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Valitse julkaisumalli suunnitelman kriteereillä ja julkaise sovellus ja rajapinta ohjaajan antamaan alustaan. Jos julkaisu ei onnistu torstaihin mennessä, kirjaa virhe ja alustan loki päiväkirjaan ja jatka viikkoon 4.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="3-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjoita selvitys taulukkona omista P0-tarinoista: mikä osa tehdään Reactilla ja Vitellä, mikä tulee ulkopuolelta ja mistä. Pyydä toista henkilöä avaamaan julkinen osoite omalla laitteellaan.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain, jos jäät jumiin: kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> julkinen osoite, kuvakaappaus alustan lokinäkymästä, <code>vite.config.ts</code>:n proxy-asetus, <code>HealthStatus.tsx</code>, <code>project-docs/api-sopimus.md</code> ja <code>react-vite-selvitys.md</code>, julkaisuperustelu ja toisen henkilön kuittaus (k2; k1 täydentyy; k3, s10, s14 ja k6 alkavat).</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="3">
+            <div class="journal-heading">
+              <h2>Viikon projektipäiväkirja</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Tämä on päiväkirjan ainoa kirjoituspaikka: kolme kysymystä viikon lopussa. Kentät tallentuvat vain tähän selaimeen; lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä tein ja miten?</span><textarea rows="3" data-journal-field="work" placeholder="Kirjoita omin sanoin…"></textarea></label>
+              <label><span>Miksi tein näin?</span><textarea rows="2" data-journal-field="reason" placeholder="Perustelut ja vaihtoehdot, joita harkitsit"></textarea></label>
+              <label><span>Missä työnäyte on?</span><input type="text" data-journal-field="evidence" placeholder="Commit-linkki, kuvakaappaus tai tiedoston polku"></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+<article class="week-card" id="week-4" data-week="4">
+          <p class="view-eyebrow" data-week-label="Työviikko 4 / 18">Vaihe A · Ydin · Työviikko 4 / 18</p>
+          <h1 class="view-title">Päivänvalolaskenta</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta: tätä asiakkaan toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon tekniikka</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 3</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="4-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Hae odotusarvot ulkoisesta lähteestä ja kirjaa testitapaukset T01–T04 ennen koodia.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="4-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta <code>Daylight</code>-moduuli: yhden päivän minuutit koordinaateille, koko vuoden lista, rajat 0–1440 ja karkausvuosi.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="4-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Aja testit komennolla, vertaa PHP:n <code>date_sun_info</code>-referenssiin ja korjaa poikkeamat. Kirjaa jokainen löytynyt virhe heti bug-issueksi.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain, jos jäät jumiin: kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> <code>server/src/Daylight.php</code>, testitiedosto ja testiajon tuloste (T01–T04 odotusarvoineen ja lähteineen), vertailu referenssiin, bug-issuet ja commitit (p4, s7; p3 alkaa; p2:n raaka-aine).</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="4">
+            <div class="journal-heading">
+              <h2>Viikon projektipäiväkirja</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Tämä on päiväkirjan ainoa kirjoituspaikka: kolme kysymystä viikon lopussa. Kentät tallentuvat vain tähän selaimeen; lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä tein ja miten?</span><textarea rows="3" data-journal-field="work" placeholder="Kirjoita omin sanoin…"></textarea></label>
+              <label><span>Miksi tein näin?</span><textarea rows="2" data-journal-field="reason" placeholder="Perustelut ja vaihtoehdot, joita harkitsit"></textarea></label>
+              <label><span>Missä työnäyte on?</span><input type="text" data-journal-field="evidence" placeholder="Commit-linkki, kuvakaappaus tai tiedoston polku"></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+<article class="week-card" id="week-5" data-week="5">
+          <p class="view-eyebrow" data-week-label="Työviikko 5 / 18">Vaihe A · Ydin · Työviikko 5 / 18</p>
+          <h1 class="view-title">Paikkakuntahaku ja rajapinta</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta: tätä asiakkaan toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon tekniikka</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 4</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="5-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Ota paikkakuntadata käyttöön valitsemassasi muodossa (JSON tai SQLite) ja kirjaa tietolähteen lisenssi. Jos oma hankinta ei valmistu tiistaihin mennessä, käytä ohjaajan kuntaluetteloa.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="5-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta haku nimellä: isot ja pienet kirjaimet, ä ja ö sekä ylimääräiset välilyönnit.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="5-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta <code>GET /api/daylight?city=&amp;year=</code> sopimuksen mukaan. Validoi syötteet ja palauta virheet 400 ja 404 JSONina.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="5-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Aja T05–T07 curl-komennolla ja kirjaa odotettu ja saatu vastaus.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain, jos jäät jumiin: kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> <code>server/src/Geocoder.php</code> ja rajapinnan reititys, paikkakuntatiedosto lisenssimerkintöineen, curl-tulosteet T05–T07 ja commitit (s9; s7 täydentyy; p7 alkaa; s10, jos käytät ulkoista rajapintaa).</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="5">
+            <div class="journal-heading">
+              <h2>Viikon projektipäiväkirja</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Tämä on päiväkirjan ainoa kirjoituspaikka: kolme kysymystä viikon lopussa. Kentät tallentuvat vain tähän selaimeen; lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä tein ja miten?</span><textarea rows="3" data-journal-field="work" placeholder="Kirjoita omin sanoin…"></textarea></label>
+              <label><span>Miksi tein näin?</span><textarea rows="2" data-journal-field="reason" placeholder="Perustelut ja vaihtoehdot, joita harkitsit"></textarea></label>
+              <label><span>Missä työnäyte on?</span><input type="text" data-journal-field="evidence" placeholder="Commit-linkki, kuvakaappaus tai tiedoston polku"></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+<article class="week-card" id="week-6" data-week="6">
+          <p class="view-eyebrow" data-week-label="Työviikko 6 / 18">Vaihe B · Ominaisuudet · Työviikko 6 / 18</p>
+          <h1 class="view-title">Ensimmäinen kaavio</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta: tätä asiakkaan toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon tekniikka</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 3</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="6-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Vertaa kolmea kaaviokirjastoa (koko omasta npm-tulosteesta, lisenssi, React-tuki, tooltip- ja merkintätuki, näppäimistötuki), perustele valinta ja kirjaa se riippuvuustaulukkoon.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="6-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Luo ominaisuushaara, toteuta <code>api.ts</code> (rajapintakutsu fetchillä, vastauksen tyyppi, virheen käsittely) erillään kaaviosta ja piirrä Helsingin vuosi viivakaaviona lataus- ja virhetiloineen.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="6-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Avaa pull request, katselmoi se itse, yhdistä ja julkaise. Kirjaa ja aja T16: sammuta palvelin ja tarkista, että selain näyttää virheilmoituksen eikä tyhjää sivua.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain, jos jäät jumiin: kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> <code>client/src/api.ts</code>, <code>DaylightChart</code>-komponentti, kaaviokirjastovertailu kokeilusarakkeineen, ensimmäinen pull request, kuvakaappaus julkaistusta kaaviosta ja T16:n virhetilasta (k4, s10, k3, s12; p6 alkaa).</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="6">
+            <div class="journal-heading">
+              <h2>Viikon projektipäiväkirja</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Tämä on päiväkirjan ainoa kirjoituspaikka: kolme kysymystä viikon lopussa. Kentät tallentuvat vain tähän selaimeen; lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä tein ja miten?</span><textarea rows="3" data-journal-field="work" placeholder="Kirjoita omin sanoin…"></textarea></label>
+              <label><span>Miksi tein näin?</span><textarea rows="2" data-journal-field="reason" placeholder="Perustelut ja vaihtoehdot, joita harkitsit"></textarea></label>
+              <label><span>Missä työnäyte on?</span><input type="text" data-journal-field="evidence" placeholder="Commit-linkki, kuvakaappaus tai tiedoston polku"></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+<article class="week-card" id="week-7" data-week="7">
+          <p class="view-eyebrow" data-week-label="Työviikko 7 / 18">Vaihe B · Ominaisuudet · Työviikko 7 / 18</p>
+          <h1 class="view-title">Monta paikkaa: itse rakennettu näkymä</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta: tätä asiakkaan toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon tekniikka</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 4</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="7-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Ota Tailwind käyttöön perusteltuna ulkoisena komponenttina ja rakenna lomake ja paikkalista alusta ilman valmista komponenttikittiä.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="7-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Estä sama paikka kahdesti, anna jokaiselle sarjalle oma väri ja pidä asteikko 0–24 h kaikilla paikoilla.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="7-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjaa ja aja T08 (neljä paikkaa samassa kaaviossa) ja T09 (sama paikka toistamiseen hylätään ilmoituksella).</span></label>
+            <label class="task-row"><input type="checkbox" data-task="7-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Vertaa viikkopalaverien työmääräarvioita toteumaan ja päivitä suunnitelma, jos arvio petti.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain, jos jäät jumiin: kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> <code>useLocations</code>-hook, <code>LocationForm</code>- ja <code>LocationList</code>-komponentit, Tailwind-perustelu riippuvuustaulukossa, T08–T09:n tulokset kuvakaappauksineen, arvio vs. toteuma -taulukko (p6, p7, k3, k4, s6).</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="7">
+            <div class="journal-heading">
+              <h2>Viikon projektipäiväkirja</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Tämä on päiväkirjan ainoa kirjoituspaikka: kolme kysymystä viikon lopussa. Kentät tallentuvat vain tähän selaimeen; lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä tein ja miten?</span><textarea rows="3" data-journal-field="work" placeholder="Kirjoita omin sanoin…"></textarea></label>
+              <label><span>Miksi tein näin?</span><textarea rows="2" data-journal-field="reason" placeholder="Perustelut ja vaihtoehdot, joita harkitsit"></textarea></label>
+              <label><span>Missä työnäyte on?</span><input type="text" data-journal-field="evidence" placeholder="Commit-linkki, kuvakaappaus tai tiedoston polku"></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+<article class="week-card" id="week-8" data-week="8">
+          <p class="view-eyebrow" data-week-label="Työviikko 8 / 18">Vaihe B · Ominaisuudet · Työviikko 8 / 18</p>
+          <h1 class="view-title">Tooltip ja ääripäät</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta: tätä asiakkaan toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon tekniikka</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 3</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="8-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta <code>format.ts</code> (minuutit → <code>23 h 59 min</code>, päivä → <code>21. kesäkuuta</code>) ja sen yksikkötestit T10–T11 ennen kaavioon kytkemistä.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="8-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta tooltip: päivä, paikka ja kesto luettavassa muodossa hiirellä ja kosketuksella. Kirjaa, mitä kirjasto tukee näppäimistöllä, ja suunnittele kiertoreitti viikolle 12.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="8-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Korosta kaamos (0 min) ja yötön yö (1440 min) kaaviossa Utsjoen ja Rovaniemen datalla.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain, jos jäät jumiin: kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> <code>client/src/format.ts</code> ja sen testit, tooltip-komponentti, kirjattu näppäimistörajoite ja kiertoreitti, kuvakaappaus Utsjoen kaaviosta korostuksineen (p3, k3, k2; p4 täydentyy).</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="8">
+            <div class="journal-heading">
+              <h2>Viikon projektipäiväkirja</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Tämä on päiväkirjan ainoa kirjoituspaikka: kolme kysymystä viikon lopussa. Kentät tallentuvat vain tähän selaimeen; lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä tein ja miten?</span><textarea rows="3" data-journal-field="work" placeholder="Kirjoita omin sanoin…"></textarea></label>
+              <label><span>Miksi tein näin?</span><textarea rows="2" data-journal-field="reason" placeholder="Perustelut ja vaihtoehdot, joita harkitsit"></textarea></label>
+              <label><span>Missä työnäyte on?</span><input type="text" data-journal-field="evidence" placeholder="Commit-linkki, kuvakaappaus tai tiedoston polku"></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+<article class="week-card" id="week-9" data-week="9">
+          <p class="view-eyebrow" data-week-label="Työviikko 9 / 18">Vaihe B · Ominaisuudet · Työviikko 9 / 18</p>
+          <h1 class="view-title">Leikkauspisteet</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta: tätä asiakkaan toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon tekniikka</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 3</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="9-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjoita leikkauspisteen määritelmä ja toleranssi suunnitelmaan ja perustele se Utsjoki–Inari-esimerkillä.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="9-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta <code>intersections.ts</code> puhtaana funktiona, joka yhdistää peräkkäiset päivät yhdeksi merkiksi. Kirjaa testit T12–T13 ennen ajoa.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="9-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Piirrä merkit kaavioon ja anna niille oma tooltip: päivä, molemmat paikat ja kesto.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain, jos jäät jumiin: kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> <code>client/src/intersections.ts</code> ja sen testit, suunnitelman päätöskohta, kuvakaappaus Helsinki–Rovaniemi-leikkauksesta maaliskuussa (s7, p4, p3).</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="9">
+            <div class="journal-heading">
+              <h2>Viikon projektipäiväkirja</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Tämä on päiväkirjan ainoa kirjoituspaikka: kolme kysymystä viikon lopussa. Kentät tallentuvat vain tähän selaimeen; lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä tein ja miten?</span><textarea rows="3" data-journal-field="work" placeholder="Kirjoita omin sanoin…"></textarea></label>
+              <label><span>Miksi tein näin?</span><textarea rows="2" data-journal-field="reason" placeholder="Perustelut ja vaihtoehdot, joita harkitsit"></textarea></label>
+              <label><span>Missä työnäyte on?</span><input type="text" data-journal-field="evidence" placeholder="Commit-linkki, kuvakaappaus tai tiedoston polku"></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+<article class="week-card" id="week-10" data-week="10">
+          <p class="view-eyebrow" data-week-label="Työviikko 10 / 18">Vaihe B · Ominaisuudet · Työviikko 10 / 18</p>
+          <h1 class="view-title">Asiakaskatselmointi</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta: tätä asiakkaan toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon tekniikka</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 3</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="10-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Valmistele asiakaskielinen esittely ilman teknistä sanastoa ja kolmen paikan testitehtävä katselmoijalle. Herätä nukkuva julkaisualusta ennen tilaisuutta.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="10-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Pidä katselmointi nimetyn ulkopuolisen kanssa julkaistulla väliversiolla. Kirjaa hänen sanansa sitaatteina.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="10-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjoita muistio: sitaatit, oma tulkinta erikseen ja priorisoidut muutokset issueiksi. Rajaa ohjaajan kanssa tärkein muutos enintään kahden päivän työksi.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain, jos jäät jumiin: kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> <code>project-docs/katselmointi-vk10.md</code> (rooli, ajankohta, sitaatit, tulkinta) ja muutosissuet P-luokin (s2, s3, p10; s1 täydentyy).</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="10">
+            <div class="journal-heading">
+              <h2>Viikon projektipäiväkirja</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Tämä on päiväkirjan ainoa kirjoituspaikka: kolme kysymystä viikon lopussa. Kentät tallentuvat vain tähän selaimeen; lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä tein ja miten?</span><textarea rows="3" data-journal-field="work" placeholder="Kirjoita omin sanoin…"></textarea></label>
+              <label><span>Miksi tein näin?</span><textarea rows="2" data-journal-field="reason" placeholder="Perustelut ja vaihtoehdot, joita harkitsit"></textarea></label>
+              <label><span>Missä työnäyte on?</span><input type="text" data-journal-field="evidence" placeholder="Commit-linkki, kuvakaappaus tai tiedoston polku"></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+<article class="week-card" id="week-11" data-week="11">
+          <p class="view-eyebrow" data-week-label="Työviikko 11 / 18">Vaihe C · Valmiiksi · Työviikko 11 / 18</p>
+          <h1 class="view-title">Vuosivalinta ja palautemuutos kahdessa haarassa</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta: tätä asiakkaan toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon tekniikka</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 3</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="11-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Luo maanantaina kaksi haaraa samasta <code>main</code>-commitista: vuosivalinta ja palautemuutos.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="11-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta ensin vuosivalitsin, joka hakee kaikkien paikkojen datan uudelleen, ja aja T14 (vuosi 2028 näyttää 366 pistettä). Yhdistä pull requestilla.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="11-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta palautemuutos toisessa haarassa, ratkaise syntyvä merge-konflikti hallitusti, yhdistä ja julkaise. Jos konfliktia ei synny, ohjaaja tekee sovitun commitin <code>main</code>-haaraan.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain, jos jäät jumiin: kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> kaksi pull requestia, konfliktin ratkaisun commit, <code>YearSelect</code>-komponentti, T14:n tulos ja muutokset julkaistussa versiossa (s13, s10, p7; s12 koonti; p10 täydentyy).</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="11">
+            <div class="journal-heading">
+              <h2>Viikon projektipäiväkirja</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Tämä on päiväkirjan ainoa kirjoituspaikka: kolme kysymystä viikon lopussa. Kentät tallentuvat vain tähän selaimeen; lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä tein ja miten?</span><textarea rows="3" data-journal-field="work" placeholder="Kirjoita omin sanoin…"></textarea></label>
+              <label><span>Miksi tein näin?</span><textarea rows="2" data-journal-field="reason" placeholder="Perustelut ja vaihtoehdot, joita harkitsit"></textarea></label>
+              <label><span>Missä työnäyte on?</span><input type="text" data-journal-field="evidence" placeholder="Commit-linkki, kuvakaappaus tai tiedoston polku"></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+<article class="week-card" id="week-12" data-week="12">
+          <p class="view-eyebrow" data-week-label="Työviikko 12 / 18">Vaihe C · Valmiiksi · Työviikko 12 / 18</p>
+          <h1 class="view-title">Mobiili ja saavutettavuus</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta: tätä asiakkaan toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon tekniikka</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 3</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="12-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Testaa sovellus oikealla puhelimella ja korjaa asettelu Tailwindin taitekohdilla. Kuvakaappaukset ennen ja jälkeen.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="12-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta viikolla 8 valittu näppäimistön kiertoreitti (datataulukko tai päivävalitsin) ja tarkista näppäinkäyttö, kontrasti, <code>label</code>-kytkennät ja otsikkohierarkia.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="12-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Aja Lighthouse ennen ja jälkeen korjausten ja kirjaa tulokset.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain, jos jäät jumiin: kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> kuvakaappaukset omalta puhelimelta, kiertoreitin komponentti, Lighthouse-raportit ennen ja jälkeen (k3, k2; p6 täydentyy).</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="12">
+            <div class="journal-heading">
+              <h2>Viikon projektipäiväkirja</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Tämä on päiväkirjan ainoa kirjoituspaikka: kolme kysymystä viikon lopussa. Kentät tallentuvat vain tähän selaimeen; lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä tein ja miten?</span><textarea rows="3" data-journal-field="work" placeholder="Kirjoita omin sanoin…"></textarea></label>
+              <label><span>Miksi tein näin?</span><textarea rows="2" data-journal-field="reason" placeholder="Perustelut ja vaihtoehdot, joita harkitsit"></textarea></label>
+              <label><span>Missä työnäyte on?</span><input type="text" data-journal-field="evidence" placeholder="Commit-linkki, kuvakaappaus tai tiedoston polku"></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+<article class="week-card" id="week-13" data-week="13">
+          <p class="view-eyebrow" data-week-label="Työviikko 13 / 18">Vaihe C · Valmiiksi · Työviikko 13 / 18</p>
+          <h1 class="view-title">Tietoturva-arvio ja virheenkäsittely</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta: tätä asiakkaan toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon tekniikka</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 3</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="13-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjoita oman sovelluksen uhkalista (5–8 riviä: uhka, testi, tulos, toimenpide) ja aja syötetaulukko T15 curlilla.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="13-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Tee XSS-testi: lisää paikka nimellä <code>&lt;script&gt;alert(1)&lt;/script&gt;</code> ja varmista, että nimi näkyy tekstinä eikä suoritu.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="13-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Käsittele yhden paikan virhe niin, että muut sarjat säilyvät (<code>Promise.allSettled</code>), ja varmista, ettei repossa ole salaisuuksia. Korjaa vain rivit, joilla saatu poikkeaa odotetusta; muut issueiksi.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain, jos jäät jumiin: kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> <code>project-docs/tietoturva-arvio.md</code> uhkalistoineen ja syötetaulukkoineen, XSS-testin kuvakaappaus, korjauscommitit (s11, s7).</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="13">
+            <div class="journal-heading">
+              <h2>Viikon projektipäiväkirja</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Tämä on päiväkirjan ainoa kirjoituspaikka: kolme kysymystä viikon lopussa. Kentät tallentuvat vain tähän selaimeen; lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä tein ja miten?</span><textarea rows="3" data-journal-field="work" placeholder="Kirjoita omin sanoin…"></textarea></label>
+              <label><span>Miksi tein näin?</span><textarea rows="2" data-journal-field="reason" placeholder="Perustelut ja vaihtoehdot, joita harkitsit"></textarea></label>
+              <label><span>Missä työnäyte on?</span><input type="text" data-journal-field="evidence" placeholder="Commit-linkki, kuvakaappaus tai tiedoston polku"></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+<article class="week-card" id="week-14" data-week="14">
+          <p class="view-eyebrow" data-week-label="Työviikko 14 / 18">Vaihe C · Valmiiksi · Työviikko 14 / 18</p>
+          <h1 class="view-title">Testaus</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta: tätä asiakkaan toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon tekniikka</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 3</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="14-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kokoa testiraportti: 16 testitapausta kolmessa luokassa, odotusarvot ja lähteet kirjattuina viikoilla 4–13 ennen ajoa; erottele komennolla ajettavat ja käsin ajettavat selaintestit.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="14-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Aja PHP-testit (<code>composer test</code> tai <code>php tests/run.php</code>) ja Vitest-testit (<code>npm test</code>) ja kirjaa tulokset.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="14-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjaa vähintään kaksi täydellistä virheenkorjausketjua bug-issuelistan aidoista havainnoista.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain, jos jäät jumiin: kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> <code>project-docs/testiraportti.md</code>, testiajojen tulosteet ja virheenkorjausketjut commit-linkein (p3, p2, k5).</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="14">
+            <div class="journal-heading">
+              <h2>Viikon projektipäiväkirja</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Tämä on päiväkirjan ainoa kirjoituspaikka: kolme kysymystä viikon lopussa. Kentät tallentuvat vain tähän selaimeen; lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä tein ja miten?</span><textarea rows="3" data-journal-field="work" placeholder="Kirjoita omin sanoin…"></textarea></label>
+              <label><span>Miksi tein näin?</span><textarea rows="2" data-journal-field="reason" placeholder="Perustelut ja vaihtoehdot, joita harkitsit"></textarea></label>
+              <label><span>Missä työnäyte on?</span><input type="text" data-journal-field="evidence" placeholder="Commit-linkki, kuvakaappaus tai tiedoston polku"></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+<article class="week-card" id="week-15" data-week="15">
+          <p class="view-eyebrow" data-week-label="Työviikko 15 / 18">Vaihe C · Valmiiksi · Työviikko 15 / 18</p>
+          <h1 class="view-title">Laatu ja dokumentaatio</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta: tätä asiakkaan toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon tekniikka</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 3</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="15-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Ota vastaan ohjaajan koodikatselmoinnin kolme nimettyä havaintoa, refaktoroi ne ja dokumentoi ennen ja jälkeen -diffit perusteluineen.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="15-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjoita README: käyttöönotto tyhjään ympäristöön, kehityskomennot, rajapinnan kuvaus esimerkkivastauksella ja riippuvuustaulukko <code>npm ls</code>- ja <code>composer show</code>-tulosteista lisensseineen.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="15-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Lisää LICENSE ohjaajan päätöksen mukaan. Jos päätöstä ei ole, kirjaa avoin asia.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain, jos jäät jumiin: kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> refaktorointimuistio diff-linkein ja ohjaajan havainnot, README, riippuvuustaulukko ja LICENSE tai kirjattu avoin asia (p5, k7, s12).</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="15">
+            <div class="journal-heading">
+              <h2>Viikon projektipäiväkirja</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Tämä on päiväkirjan ainoa kirjoituspaikka: kolme kysymystä viikon lopussa. Kentät tallentuvat vain tähän selaimeen; lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä tein ja miten?</span><textarea rows="3" data-journal-field="work" placeholder="Kirjoita omin sanoin…"></textarea></label>
+              <label><span>Miksi tein näin?</span><textarea rows="2" data-journal-field="reason" placeholder="Perustelut ja vaihtoehdot, joita harkitsit"></textarea></label>
+              <label><span>Missä työnäyte on?</span><input type="text" data-journal-field="evidence" placeholder="Commit-linkki, kuvakaappaus tai tiedoston polku"></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+<article class="week-card" id="week-16" data-week="16">
+          <p class="view-eyebrow" data-week-label="Työviikko 16 / 18">Vaihe D · Julkaisu · Työviikko 16 / 18</p>
+          <h1 class="view-title">Julkaisuehdokas ja julkaisutestaus</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta: tätä asiakkaan toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon tekniikka</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 4</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="16-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Tee jäädytyspäätös ja luokittele jäljellä olevat issuet estäviksi tai v1.1-listalle.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="16-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Julkaise ja merkitse julkaisuehdokas Git-tagilla <code>v1.0-rc1</code>.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="16-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Asenna sovellus itse puhtaaseen ympäristöön (toinen kone tai tyhjä kansio) pelkän ohjeen avulla ja korjaa ohje pöytäkirjan perusteella.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="16-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Anna nimetylle ulkopuoliselle ohje ja osoite. Kirjaa hänen havaintonsa sitaatteina ja estävät virheet issueiksi.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain, jos jäät jumiin: kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> tag <code>v1.0-rc1</code>, oma asennuspöytäkirja, julkaisutestauksen pöytäkirja ja estävien issueiden lista (s3, s14, k6).</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="16">
+            <div class="journal-heading">
+              <h2>Viikon projektipäiväkirja</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Tämä on päiväkirjan ainoa kirjoituspaikka: kolme kysymystä viikon lopussa. Kentät tallentuvat vain tähän selaimeen; lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä tein ja miten?</span><textarea rows="3" data-journal-field="work" placeholder="Kirjoita omin sanoin…"></textarea></label>
+              <label><span>Miksi tein näin?</span><textarea rows="2" data-journal-field="reason" placeholder="Perustelut ja vaihtoehdot, joita harkitsit"></textarea></label>
+              <label><span>Missä työnäyte on?</span><input type="text" data-journal-field="evidence" placeholder="Commit-linkki, kuvakaappaus tai tiedoston polku"></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+<article class="week-card" id="week-17" data-week="17">
+          <p class="view-eyebrow" data-week-label="Työviikko 17 / 18">Vaihe D · Julkaisu · Työviikko 17 / 18</p>
+          <h1 class="view-title">Julkaisu v1.0 ja luovutus</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta: tätä asiakkaan toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon tekniikka</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 3</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="17-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Korjaa estävät virheet täydellisenä virheenkorjausketjuna ja aja regressiotestit. Jos estäviä ei löytynyt, ota kolmas ketju bug-listalta.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="17-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Merkitse v1.0 Git-tagilla, tee release, julkaise ja aja savutesti tuotannossa.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="17-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjoita julkaisutiedote ja luovutusviesti ohjaajalle asiakkaan roolissa. Vastaa hänen asiakaskysymykseensä.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain, jos jäät jumiin: kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> tag <code>v1.0</code> ja release, kolmas virheenkorjausketju, savutestin kirjaus, <code>julkaisutiedote.md</code>, <code>luovutusviesti.md</code> ja asiakkaan kysymys vastauksineen (s14, k6, s2, p2).</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="17">
+            <div class="journal-heading">
+              <h2>Viikon projektipäiväkirja</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Tämä on päiväkirjan ainoa kirjoituspaikka: kolme kysymystä viikon lopussa. Kentät tallentuvat vain tähän selaimeen; lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä tein ja miten?</span><textarea rows="3" data-journal-field="work" placeholder="Kirjoita omin sanoin…"></textarea></label>
+              <label><span>Miksi tein näin?</span><textarea rows="2" data-journal-field="reason" placeholder="Perustelut ja vaihtoehdot, joita harkitsit"></textarea></label>
+              <label><span>Missä työnäyte on?</span><input type="text" data-journal-field="evidence" placeholder="Commit-linkki, kuvakaappaus tai tiedoston polku"></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+<article class="week-card" id="week-18" data-week="18">
+          <p class="view-eyebrow" data-week-label="Työviikko 18 / 18">Vaihe D · Julkaisu · Työviikko 18 / 18</p>
+          <h1 class="view-title">Näyttö</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta: tätä asiakkaan toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon tekniikka</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 3</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="18-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Täsmälinkitä näyttömatriisin 32 vaatimusta työnäytteisiin ja korjaa aukot.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="18-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Harjoittele 8–10 minuutin demo kellon kanssa toiselle henkilölle.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="18-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjoita itsearviointi kolmesta nimetystä tilanteesta, pyydä ohjaajan vastakommentti ja luovuta näyttöpaketti.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain, jos jäät jumiin: kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> täsmälinkitetty näyttömatriisi, demorunko, <code>itsearviointi.md</code> ohjaajan kommentilla (p11).</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="18">
+            <div class="journal-heading">
+              <h2>Viikon projektipäiväkirja</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Tämä on päiväkirjan ainoa kirjoituspaikka: kolme kysymystä viikon lopussa. Kentät tallentuvat vain tähän selaimeen; lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä tein ja miten?</span><textarea rows="3" data-journal-field="work" placeholder="Kirjoita omin sanoin…"></textarea></label>
+              <label><span>Miksi tein näin?</span><textarea rows="2" data-journal-field="reason" placeholder="Perustelut ja vaihtoehdot, joita harkitsit"></textarea></label>
+              <label><span>Missä työnäyte on?</span><input type="text" data-journal-field="evidence" placeholder="Commit-linkki, kuvakaappaus tai tiedoston polku"></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+      </section>
+
+      <!-- ============ SUUNNITELMA ============ -->
+      <section class="view" data-view="suunnitelma" id="view-suunnitelma">
+        <p class="view-eyebrow">Ennen koodia · työviikko 2, ohjaajan hyväksyntä ennen viikkoa 3</p>
+        <h1 class="view-title">Tekninen suunnitelma ja rajapintasopimus</h1>
+        <p class="view-lead">Suunnitelma tehdään työviikolla 2 ja siihen palataan koko projektin ajan. Esitäytetyt osiot tulevat toimeksiannosta; päätökset ovat sinun, ja ne testataan omassa työssäsi nimetyillä viikoilla. <strong>Ajoitus:</strong> Täytä työviikolla 2, ohjaajan hyväksyntä ennen viikkoa 3. Päätöksiin palataan viikoilla 3, 4, 5, 6, 7, 9 ja 15.</p>
+
+        <figure class="view-figure">
+          <div class="image-stage"><img src="assets/suunnitelma-luonnos.svg" width="1128" height="540" alt="Kaavio suunnitelman kolmesta osasta: tarve ja rajaus, opiskelijan omat päätökset ja rajapintasopimus."></div>
+          <figcaption><strong>Suunnitelma ennen koodia</strong> Suunnitelmassa on kolme osaa: asiakkaan tarve ja rajaus, sinun omat perustellut päätöksesi sekä rajapintasopimus, jota vasten palvelin ja selain rakennetaan.</figcaption>
+        </figure>
+
+        <div class="plan-prefilled" aria-label="Suunnitelman esitäytetty pohja">
+          <p class="section-label">Esitäytetty pohja · tulee mukaan tiedostoon</p>
+          <article><h3>1 · Tavoite</h3><p>Lapin matkailuyrityksen verkkosivulle upotettava sovellus, joka näyttää kaaviona päivän pituuden Suomen paikkakunnilla vuoden jokaisena päivänä: käyttäjä kirjoittaa paikkakunnan, lisää sen kaavioon, vertaa useita paikkoja, näkee tooltipissa päivän ja keston ja erottaa kaamoksen ja yöttömän yön yhdellä katseella.</p></article>
+          <article><h3>2 · Asiakas ja käyttäjät</h3><p>Revontuli Travelin yrittäjä (tilaaja) ja yrityksen asiakkaat, jotka suunnittelevat Lapin-matkaa ja haluavat ymmärtää valoisan ajan määrän eri paikoissa ja vuodenaikoina. Käyttäjä ei ole tekninen eikä lue numerotaulukoita.</p></article>
+          <article><h3>3 · P0-rajaus</h3><p><strong>P0:</strong> paikkakunnan nimi koordinaateiksi · päivänvalo joka päivälle rajoissa 0–1440 min · karkausvuosi oikein · usea paikka yhteisellä asteikolla · paikan poisto · virheilmoitus tuntemattomasta paikasta · tooltip · kaamos ja yötön yö korostettuina.</p><p><strong>P1:</strong> leikkauspisteet, vuosivalinta, mobiilinäkymä ja saavutettavuus. <strong>P2:</strong> kuvan jako linkkinä, paikkojen tallennus selaimeen.</p></article>
+          <article><h3>4 · Rajapintasopimus</h3><p><code>GET /api/daylight?city=Helsinki&amp;year=2026</code> palauttaa JSON-olion, jossa on <code>location</code> (nimi, leveys- ja pituusaste), <code>year</code> ja <code>days</code>-lista (<code>date</code>, <code>daylightMinutes</code>). Virheet palautetaan JSONina: 400 kun syöte on virheellinen, 404 kun paikkaa ei löydy, 502 kun ulkoinen palvelu ei vastaa. Sopimus kirjoitetaan tiedostoon <code>project-docs/api-sopimus.md</code> ennen koodia.</p></article>
+          <article><h3>5 · Teknologia ja työtapa</h3><p>PHP 8.2+ ilman kehystä (backend), React + TypeScript + Vite (frontend), Tailwind CSS työviikolta 7, kaaviokirjasto oman vertailun mukaan. Laskenta, muotoilu ja leikkauspisteet omissa moduuleissaan erillään komponenteista. Lomake ja paikkalista rakennetaan alusta itse; valmista komponenttikittiä ei käytetä. Oletusjulkaisumalli on yksi PHP-palvelin, build alustalla. Viikkopalaveri ohjaajan kanssa joka viikko, bug-issuet työviikolta 4, ominaisuushaarat ja pull requestit työviikolta 6.</p></article>
+          <article><h3>6 · Avoimet asiat – ohjaaja omistaa</h3><p>Lisenssi · repositoryn julkisuus, tekijänimi ja alaikäisen huoltajan suostumus · katselmoijien roolit työviikoille 10 ja 16 · julkaisualusta ja ohjaajan testattu polku · perusteversion siirtymäsääntö (OPH-6216-2025) · arvioinnin järjestelyt työviikolle 18.</p><small class="plan-open-note">Näitä ei päätetä itse eikä tekoälyllä. Tyhjä kenttä on oikea tulos siihen asti, kun asia on sovittu ohjaajan kanssa.</small></article>
+        </div>
+
+        <form class="plan-form" data-plan-form>
+          <div class="plan-form-heading">
+            <div><p class="section-label section-label-accent">Omat päätökset</p><h3>Nämä päätät itse</h3><p>Laskentatapa, paikkakuntatietolähde, julkaisumalli ja -alusta, kaaviokirjasto, komponenttijako ja tilanhallinta, leikkauspisteen määritelmä sekä rajaus. Jokainen päätös perustellaan ja testataan omassa työssäsi nimetyllä viikolla.</p></div>
+            <span data-plan-status>Ei vielä aloitettu</span>
+          </div>
+
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Projektin nimi<input type="text" data-plan-field="nimi" placeholder="Valokaari – päivänvalon pituus Suomen paikkakunnilla"></label><span class="plan-row-week">viikko 1</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Tekijä (tekijänimi sovitaan ohjaajan kanssa)<input type="text" data-plan-field="tekija" placeholder="Etunimi tai sovittu tekijänimi"></label><span class="plan-row-week">viikko 1</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Tavoite omin sanoin: mistä tiedät onnistuneesi?<input type="text" data-plan-field="tavoite" placeholder="Matkailija näkee yhdellä katseella, milloin Utsjoella on kaamos ja milloin Helsingissä on yhtä valoisaa kuin Rovaniemellä"></label><span class="plan-row-week">viikko 2</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Käyttäjät ja heidän tärkein tarpeensa omin sanoin<input type="text" data-plan-field="kohde" placeholder="Matkailija: ymmärtää valon määrän ilman numeroita. Yrittäjä: upottaa kuvan sivuilleen"></label><span class="plan-row-week">viikko 2</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Laskentatapa ja perustelu: oma auringonnousuyhtälö / PHP:n date_sun_info / kirjasto<input type="text" data-plan-field="laskentatapa" placeholder="Valinta, referenssi jota vasten testataan, ja mitä valinnasta jää huonommaksi"></label><span class="plan-row-week">viikot 2 ja 4</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Paikkakuntatiedon muoto ja perustelu: JSON-tiedosto / SQLite (ulkoinen geokoodaus vain perustellusti)<input type="text" data-plan-field="tietolahde" placeholder="Muoto, haun toteutus, tietolähde ja lisenssi, mitä tapahtuu kun paikkaa ei löydy"></label><span class="plan-row-week">viikot 2 ja 5</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Julkaisumalli: yksi PHP-palvelin tarjoilee sekä sovelluksen että rajapinnan / frontend erillään<input type="text" data-plan-field="julkaisumalli" placeholder="Oletus: yksi palvelin tarjoilee sovelluksen ja rajapinnan. Jos kaksi, perustele lisätyö"></label><span class="plan-row-week">viikko 3</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Kaaviokirjasto ja perustelu<input type="text" data-plan-field="kaaviokirjasto" placeholder="Vertailu: koko, lisenssi, React-tuki, tooltip- ja merkintätuki, saavutettavuus"></label><span class="plan-row-week">viikko 6</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Komponenttijako ja tilanhallinta: komponentit ja niiden vastuut<input type="text" data-plan-field="komponenttijako" placeholder="LocationForm, LocationList, DaylightChart, YearSelect ja useLocations: kunkin vastuu yhdellä lauseella"></label><span class="plan-row-week">viikot 7 ja 15</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Leikkauspisteen määritelmä ja toleranssi<input type="text" data-plan-field="leikkauspiste" placeholder="Merkinvaihto vai erotus ≤ N min; miten peräkkäiset päivät yhdistetään yhdeksi merkiksi"></label><span class="plan-row-week">viikko 9</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Rajaus: mitä EI toteuteta<input type="text" data-plan-field="rajaus" placeholder="Esimerkiksi kirjautuminen, säätiedot, muiden maiden paikat"></label><span class="plan-row-week">viikot 10 ja 16</span></div>
+          <p class="plan-calibration"><strong>Ei riitä:</strong> &rdquo;Recharts, koska se on suosittu&rdquo; tai &rdquo;date_sun_info, koska se on valmis&rdquo;. <strong>Riittää:</strong> vaihtoehdot nimettyinä, kriteerit omasta datastasi ja käyttötilanteestasi (napapiirin pohjoispuoliset paikat, 366 pistettä sarjassa, tooltip kosketuksella), valinta ja se, mikä valinnasta jää huonommaksi.</p>
+
+          <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Lisenssi (kysytään työviikolla 1, päätös viimeistään työviikolla 8)<input type="text" data-plan-field="lisenssi" placeholder="Jätä tyhjäksi, kunnes ohjaaja on päättänyt"></label><span class="plan-row-week">avoin asia</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Repositoryn julkisuus, tekijänimi ja huoltajan suostumus<input type="text" data-plan-field="julkisuus" placeholder="Jätä tyhjäksi, kunnes ohjaaja on kuitannut"></label><span class="plan-row-week">avoin asia</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Katselmoijien roolit työviikoille 10 ja 16<input type="text" data-plan-field="katselmoijat" placeholder="Jätä tyhjäksi, kunnes ohjaaja on nimennyt"></label><span class="plan-row-week">avoin asia</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Julkaisualusta ja ohjaajan testattu polku (ennen työviikkoa 1, viimeistään työviikolla 2)<input type="text" data-plan-field="alustalinja" placeholder="Jätä tyhjäksi, kunnes ohjaaja on antanut alustan ja polun"></label><span class="plan-row-week">avoin asia</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Perusteversion siirtymäsääntö (OPH-6216-2025)<input type="text" data-plan-field="perusteversio" placeholder="Jätä tyhjäksi, kunnes ohjaaja on vahvistanut"></label><span class="plan-row-week">avoin asia</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Arvioinnin järjestelyt työviikolle 18<input type="text" data-plan-field="arviointi" placeholder="Jätä tyhjäksi, kunnes ajankohta ja arvioijat on sovittu"></label><span class="plan-row-week">avoin asia</span></div>
+
+          <div class="plan-actions">
+            <button class="button button-primary" type="button" data-plan-export>Lataa suunnitelma.md</button>
+            <small>Tallenna tiedosto polkuun <code>project-docs/suunnitelma.md</code> ja tee commit. Päivitä, kun ohjaaja vastaa avoimiin asioihin.</small>
+          </div>
+          <p class="plan-ai-note"><strong>Muista:</strong> älä anna tekoälyn päättää puolestasi. Ohjaajan omistamia asioita ei päätetä itse eikä tekoälyllä. Jos käytit tekoälyä ideointiin, kirjaa se AI-lokiin.</p>
+        </form>
+      </section>
+
+      <!-- ============ PROJEKTIPÄIVÄKIRJA (arkisto) ============ -->
+      <section class="view" data-view="paivakirja" id="view-paivakirja">
+        <p class="view-eyebrow">Yksi kirjoituspaikka · viedään Gitiin joka viikko</p>
+        <h1 class="view-title">Projektipäiväkirja</h1>
+        <p class="view-lead">Viikon merkintä kirjoitetaan viikkonäkymässä tehtävien alla. Tämä näkymä on arkisto: näet, mitkä viikot on kirjattu ja lataat koko päiväkirjan tiedostona.</p>
+
+        <div class="card card-tint journal-summary-card">
+          <div><span class="big" data-journal-count>0 / 18 viikkoa kirjattu</span><p>Tiedosto: <code>project-docs/projektipaivakirja.md</code></p></div>
+          <button class="button button-primary" type="button" data-export-journal>Lataa koko projektipäiväkirja (.md)</button>
+        </div>
+
+        <div class="journal-weeks-grid" data-journal-weeks></div>
+      </section>
+
+      <!-- ============ AI-LOKI ============ -->
+      <section class="view" data-view="ailoki" id="view-ailoki">
+        <p class="view-eyebrow">Tekoäly on sallittu apuväline</p>
+        <h1 class="view-title">Sinä teet päätökset. Tekoäly on apuväline.</h1>
+        <p class="view-lead">Tekoäly saa selittää virheilmoituksia, ehdottaa testitapauksia ja tarkistaa koodiasi. Ydin tehdään itse: päivänvalolaskenta, leikkauspisteiden logiikka, komponenttirakenne ja saavutettavuusratkaisut. Ne ovat se osaaminen, jonka näyttö arvioi. Jokainen merkittävä käyttö kirjataan AI-lokiin.</p>
+
+        <figure class="view-figure">
+          <div class="image-stage"><img src="assets/tekoalyapu.svg" width="1500" height="1000" alt="Tekoälyn käytön neljä sääntöä: kysy, tarkista, testaa ja kirjaa."></div>
+          <figcaption>Kysy → tarkista → testaa → kirjaa ja opi.</figcaption>
+        </figure>
+
+        <div class="ai-rules">
+          <div class="card"><span class="num">01</span><h3>Ymmärrä</h3><p>Selitä omin sanoin, mitä ratkaisu tekee ja miksi se sopii omaan rajapintasopimukseesi ja komponenttijakoosi.</p></div>
+          <div class="card"><span class="num">02</span><h3>Tarkista</h3><p>Vertaa PHP:n, Reactin, Viten ja kaaviokirjaston viralliseen dokumentaatioon. Tekoäly voi keksiä vääriä kenttiä ja komentoja.</p></div>
+          <div class="card"><span class="num">03</span><h3>Testaa</h3><p>Aja testit itse. Älä koskaan keksi testituloksia tai palautetta.</p></div>
+          <div class="card"><span class="num">04</span><h3>Kirjaa</h3><p>Merkitse merkittävä käyttö, omat muutokset ja se, mitä opit.</p></div>
+        </div>
+
+        <form class="ai-log-form" data-ai-form>
+          <div class="grid-2">
+            <label>Päivä ja työkalu<input type="text" name="tool" required placeholder="Työviikko 1 / ChatGPT"></label>
+            <label>Mihin pyysit apua?<input type="text" name="question" required placeholder="Miksi Utsjoen kesäkuun päivät antavat NaN-arvon eikä 1440 minuuttia?"></label>
+          </div>
+          <label>Mitä käytit, muutit tai hylkäsit, ja miten tarkistit?<textarea name="used" rows="2" required placeholder="Ymmärsin selityksen acos-funktion arvoalueesta; kirjoitin rajatarkistuksen itse omaan Daylight-moduuliin. Ajoin testit T03 ja T04 uudelleen ja vertasin Utsjoen arvoja timeanddate-sivun tietoihin."></textarea></label>
+          <!-- Placeholderissa vain termejä, jotka projekti käyttää ja jotka on opetettu. -->
+          <label>Aineistoviite<input type="text" name="reference" required placeholder="GitHub-issue #12 / commit abc123 / testitapaus T05"></label>
+          <div class="privacy-row">
+            <label class="privacy-confirm"><input type="checkbox" name="privacy" required> Vahvistan, etten syöttänyt henkilötietoja, salaisuuksia tai luottamuksellista aineistoa.</label>
+            <button class="button button-primary" type="submit">Lisää lokiin</button>
+          </div>
+        </form>
+        <div class="ai-log-meta">
+          <span><span data-log-count>0 merkintää</span> · loki tulee mukaan koko projektipäiväkirjan lataukseen. Älä syötä henkilötietoja, salaisuuksia tai muuta luottamuksellista aineistoa.</span>
+          <button class="button button-secondary" type="button" data-export-log>Lataa vain AI-loki (.md)</button>
+        </div>
+        <div class="log-entries" data-ai-entries aria-live="polite"><p class="empty-state">Ei merkintöjä vielä.</p></div>
+      </section>
+
+      <!-- ============ NÄYTTÖMATRIISI ============ -->
+      <section class="view" data-view="naytto" id="view-naytto">
+        <p class="view-eyebrow">Näyttöaineisto syntyy työn aikana</p>
+        <h1 class="view-title">Näyttömatriisi</h1>
+        <p class="view-lead">Pelkkä valmis tuotos ei näytä koko osaamista. Työnäyte on yksi tuotos, joka osoittaa osaamisesi: commit, kuva, testitapaus tai muistio. Näyttöaineisto on kaikki työnäytteesi yhdessä. Sama työnäyte voi kelvata useaan kohtaan. Kokoa jokaisesta kohdasta linkki, commit, kuva, lokimerkintä tai päätösmuistio.</p>
+
+        <div class="card card-tint evidence-summary"><strong data-evidence-count>0 / 32</strong><span>osaamisvaatimuksen työnäyte merkitty</span></div>
+
+        <details class="matrix" open>
+          <summary><span class="matrix-title">Ohjelmointi</span><span class="matrix-count">11 vaatimusta</span></summary>
+          <div class="matrix-list">
+            <p class="matrix-group">Opiskelija käyttää ohjelmistokehitysympäristöä</p>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p1"><span><strong>käyttää ohjelmointieditoria tai kehitysympäristöä</strong> VS Code, Viten kehityspalvelin, PHP:n sisäänrakennettu palvelin ja selaimen kehittäjätyökalut käytössä työviikolta 1: versiotaulukko, kuvakaappaukset ja käynnistyskomennot README:ssä.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p2"><span><strong>etsii ja korjaa virheitä ohjelmakoodista</strong> Kolme täydellistä virheenkorjausketjua (työviikot 14 ja 17; havainnot myös 4–5, 8–9 ja 16): havainto, toisto, syy, korjauscommit, uusintatesti ja regressiotesti.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p3"><span><strong>testaa ohjelman toimintoja</strong> Testiraportti työviikolta 14: 16 testitapausta odotusarvoineen ennen ajoa (T01–T16); laskenta, rajapinta, muotoilu, leikkauspisteet, karkausvuosi ja virhetilanteet testattuina; ajot työviikoilla 4–9, 11 ja 13.</span></label>
+            <p class="matrix-group">Opiskelija ohjelmoi</p>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p4"><span><strong>käyttää rakenteista ohjelmointia toteutuksissa</strong> Päivänvalolaskenta omana PHP-moduulina työviikolla 4 (funktiot, ehdot, rajatarkistus, karkausvuosi), muotoilu- ja leikkauspistemoduulit TypeScriptillä työviikoilla 8 ja 9; moduulijako client, server ja project-docs.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p5"><span><strong>kirjoittaa ylläpidettävää ohjelmakoodia</strong> Kolme refaktorointia työviikolla 15 ohjaajan koodikatselmoinnin nimetyistä havainnoista, ennen ja jälkeen -diffeineen ja perusteluineen.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p6"><span><strong>tulkitsee suunnitelmia ja toteuttaa käyttöliittymän tai sen osia</strong> Lomake, paikkalista ja kaavionäkymä toteutettu työviikolla 7 työviikon 2 rautalankojen mukaan Tailwindilla ilman valmista komponenttikirjastoa; mobiili ja saavutettavuus työviikolla 12.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p7"><span><strong>tulkitsee suunnitelmia ja toteuttaa ohjelmiston toimintoja</strong> Paikan lisäys, poisto ja duplikaatin esto työviikolla 7 sekä vuosivalinta työviikolla 11 käyttäjätarinoiden ja hyväksymiskriteerien perusteella; rajapinnan toiminnot työviikolla 5. Issue → commit -ketju näkyvissä.</span></label>
+            <p class="matrix-group">Opiskelija toimii ohjelmistokehitystiimin jäsenenä</p>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p8"><span><strong>sopii tehtävistä tiimin muiden jäsenten kanssa</strong> Viikkopalaveri ohjaajan kanssa työviikoilta 2–17: sovitut tehtävät, arviot ja edellisen viikon toteuma kirjattuina issueihin, ohjaajan nimi ja päivä päiväkirjassa.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p9"><span><strong>etsii ratkaisuvaihtoehtoja ja ratkoo ongelmia yhdessä tiimin kanssa</strong> Kaksi vertailua työviikolla 2 (laskentatapa; paikkakuntatiedon muoto) ja yhteinen päätös ohjaajan kanssa kirjattuna; yhdessä ratkotut ongelmat nimettyinä työviikoilla 3 (julkaisu), 4 (napapiirin laskenta-ansat) ja 11 (merge-konflikti).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p10"><span><strong>arvioi ratkaisujen toimivuuden yhdessä tiimin kanssa</strong> Katselmointi työviikolla 10: ymmärtääkö asiakkaan roolissa oleva henkilö kaavion ilman selityksiä ja mitä muutetaan. Muistio ja priorisoitu muutoslista, todennus työviikolla 11.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p11"><span><strong>arvioi omaa toimintaa tiimin jäsenenä</strong> Itsearviointi työviikolla 18 kolmesta nimetystä tilanteesta (työviikon 10 palaute, työviikon 16 testaajan epäröinti, yksi viikkopalaveri, jossa sovittu muuttui) ja ohjaajan vastakommentti.</span></label>
+          </div>
+        </details>
+
+        <details class="matrix">
+          <summary><span class="matrix-title">Ohjelmistokehittäjänä toimiminen</span><span class="matrix-count">14 vaatimusta</span></summary>
+          <div class="matrix-list">
+            <p class="matrix-group">Opiskelija kommunikoi asiakkaan kanssa</p>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s1"><span><strong>selvittää kehitystiimin kanssa asiakkaan tarpeet</strong> Toimeksianto purettu käyttäjätarinoiksi ja käyttäjäryhmiksi työviikolla 2; kysymyslista ja kirjatut vastaukset, rajaus sovittu ja täydennetty katselmoinnissa työviikolla 10.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s2"><span><strong>viestii tekniset asiat asiakaslähtöisesti</strong> Katselmointiesittely työviikolla 10 ja luovutusviesti ohjaajalle asiakkaan roolissa työviikolla 17 ilman teknistä sanastoa, sekä vastaus asiakkaan kysymykseen.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s3"><span><strong>osallistuu version katselmointiin</strong> Kaksi katselmointia: väliversion asiakaskatselmointi työviikolla 10 ja julkaisuehdokkaan julkaisutestaus työviikolla 16. Palaute ja sovitut muutokset kirjattuina.</span></label>
+            <p class="matrix-group">Opiskelija suunnittelee ohjelmiston toteutuksen</p>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s4"><span><strong>asettaa kehitystiimin kanssa toteutettavat toiminnot tärkeysjärjestykseen</strong> P0-, P1- ja P2-priorisointi ohjaajan kanssa työviikolla 2; P0-ydin eli oikea päivänvalodata, usea paikka ja virheilmoitus toteutettu ensin.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s5"><span><strong>jakaa kehitystiimin kanssa toteutettavat toiminnot tehtäviksi</strong> Käyttäjätarinat pilkottu issueiksi työviikolla 2 hyväksymiskriteereineen, noin puolen tai yhden päivän kokoisina; issue-taulu koko projektin ajan.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s6"><span><strong>suunnittelee ja arvioi kehitystiimin kanssa tehtävien toteuttamista</strong> Työmääräarviot ja toteumat issueissa jokaisen viikkopalaverin jälkeen työviikolta 2; arvio vs. toteuma -vertailu työviikolla 7 ja suunnitelman päivitys, kun arvio petti.</span></label>
+            <p class="matrix-group">Opiskelija kehittää ohjelmiston toimintalogiikkaa ja tietovarastoyhteyksiä</p>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s7"><span><strong>kehittää ohjelmiston toimintalogiikkaa</strong> Päivänvalolaskenta rajoin 0–1440 ja karkausvuosin työviikolla 4, haun normalisointi ja syötteiden validointi työviikolla 5, leikkauspisteiden laskenta toleranssilla työviikolla 9, yhden paikan virheen käsittely työviikolla 13.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s8"><span><strong>valitsee ohjelmistoon sopivan tietovaraston</strong> Paikkakuntatiedon muodon vertailu työviikolla 2 (JSON-tiedosto vai SQLite; ulkoinen geokoodausrajapinta vain perustellusti) haun, kattavuuden, lisenssin ja verkkoriippuvuuden perusteella; perusteltu valinta suunnitelmassa.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s9"><span><strong>toteuttaa yhteyden tietovarastoon</strong> Paikkakuntatiedon luku ja haku nimellä työviikolla 5 (normalisointi, puuttuva paikka) omassa Geocoder-moduulissa; SQLite-polulla yhteyskerros, JSON-polulla latausmoduuli ja tiedoston rakenne; tietolähteen lisenssi kirjattuna.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s10"><span><strong>hyödyntää rajapintoja ja käsittelee tietoa</strong> Oman rajapinnan kutsu fetchillä työviikoilla 3 ja 6, JSON-vastauksen muunnos kaavion sarjaksi tyypitettynä, lataus- ja virhetilat käsiteltyinä; uudelleenhaku vuosivalinnalla työviikolla 11; ulkoinen geokoodausrajapinta työviikolla 5, jos käytössä.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s11"><span><strong>arvioi ohjelmiston tietoturvaa</strong> Tietoturva-arvio työviikolla 13 oman sovelluksen uhkalistana (uhka, testi, tulos, toimenpide): syötteiden rajat, XSS-testi paikan nimellä, ulkoisen palvelun aikakatkaisu, salaisuudet poissa repositorysta; ajettu syötetaulukko T15.</span></label>
+            <p class="matrix-group">Opiskelija versioi ja julkaisee ohjelman</p>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s12"><span><strong>käyttää versionhallintaa</strong> Git koko projektin ajan työviikolta 1: tarkoituksenmukaiset commitit, etärepository, ominaisuushaarat ja pull requestit työviikolta 6, tagit. Historia työnäytteenä, koonti työviikoilla 11 ja 15.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s13"><span><strong>liittää ohjelman osan olemassa olevaan versioon</strong> Palautemuutos ominaisuushaarassa työviikolla 11: pull request, itsekatselmointi, konfliktin ratkaisu ja merge pääversioon.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s14"><span><strong>julkaisee ohjelman tuotantoympäristöön</strong> Tuotantobuild ja julkaisu valittuun alustaan: ensijulkaisu työviikolla 3, julkaisuehdokas työviikolla 16 ja v1.0 työviikolla 17 julkisessa osoitteessa.</span></label>
+          </div>
+        </details>
+
+        <details class="matrix">
+          <summary><span class="matrix-title">Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla</span><span class="matrix-count">7 vaatimusta</span></summary>
+          <div class="matrix-list">
+            <p class="matrix-group">Opiskelija käyttää kehitysympäristöä</p>
+            <label class="matrix-row"><input type="checkbox" data-evidence="k1"><span><strong>ottaa käyttöön ja konfiguroi ohjelmistokomponenttikirjaston käyttöön soveltuvan kehittämisympäristön</strong> React + TypeScript + Vite -projektin luonti työviikolla 1; Viten proxy PHP-rajapintaan ja tuotantobuildin asetukset työviikolla 3; Tailwindin konfigurointi työviikolla 7.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="k2"><span><strong>selvittää ohjelmistokomponenttikirjaston tarjoamat mahdollisuudet ja rajoitteet</strong> Selvitys taulukkona omista P0-tarinoista työviikolla 3: mikä osa tehdään Reactilla ja Vitellä, mikä tulee ulkopuolelta ja mistä; kaaviokirjaston näppäimistörajoite ja kiertoreitti kirjattuina työviikoilla 8 ja 12.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="k3"><span><strong>käyttää ohjelmistokomponenttikirjaston tärkeimpiä toimintoja ja työkaluja</strong> Komponentit, propsit, tila ja hookit (useState, useEffect, oma useLocations), ehdollinen renderöinti ja lomakkeen käsittely osoitettuina työviikoilla 3, 6–8 ja 11–12.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="k4"><span><strong>tuo kehittämisympäristöön ulkoisia komponentteja</strong> Kaksi perusteltua ulkoista komponenttia: kaaviokirjasto työviikolla 6 (vertailu kokeilusarakkeella, koko, lisenssi, riippuvuudet) ja Tailwind CSS työviikolla 7 (mitä se ratkaisee lomakkeessa ja listassa, konfigurointi).</span></label>
+            <p class="matrix-group">Opiskelija toteuttaa ohjelmiston ohjelmistokomponenttikirjastolla</p>
+            <label class="matrix-row"><input type="checkbox" data-evidence="k5"><span><strong>suunnittelee, toteuttaa ja testaa ohjelmiston ohjelmistokomponenttikirjastoa käyttäen</strong> Komponenttijako ja vastuut suunnitelmassa työviikolla 2, sovellus toteutettu Reactilla käyttäjätarinoiden mukaan työviikoilla 6–9 ja 11–12, omat ja kirjastoon liittyvät ratkaisut testattuina työviikolla 14.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="k6"><span><strong>julkaisee ohjelmiston asiakkaan ympäristöön</strong> Viten tuotantobuild ja PHP-rajapinta julkaistuna sovittuun alustaan: julkaisuehdokas tagilla v1.0-rc1 työviikolla 16 ja v1.0 työviikolla 17.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="k7"><span><strong>dokumentoi ohjelmiston sovitulla tavalla</strong> README työviikolla 15: käyttöönotto tyhjään ympäristöön, kehityskomennot, rajapinnan kuvaus esimerkkivastauksella ja riippuvuustaulukko lisensseineen; lisäksi asiakkaan pikaohje.</span></label>
+          </div>
+        </details>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="view" style="max-width:var(--main-max);margin:0 auto;padding:0 40px 40px">
+    <div class="site-footnote">
+      <span><strong>Valokaari</strong> · Ohjattu näyttöprojekti · PHP 8 · React + TypeScript + Vite · Tailwind CSS · 2026 · Revontuli Travel on kuvitteellinen asiakas. Sivusto on oppilaitoksen näyttöprojekti.</span>
+      <img class="ai-modified-badge" src="assets/ai-modified-badge.svg" width="84" height="28" alt="Sisältöä on muokattu tekoälyllä">
+    </div>
+  </footer>
+</body>
+</html>

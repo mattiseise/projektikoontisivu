@@ -1,0 +1,530 @@
+<!doctype html>
+<!--
+  Näyttöprojektin runko – kaksipalstainen layout (moottori v2.3).
+  Kaksi tapaa täyttää:
+    {{isot_kirjaimet}} = scripts/uusi_projekti.py korvaa automaattisesti
+    TÄYTÄ-kommenttilohko = Claude kirjoittaa projektikohtaisen sisällön
+    (älä kirjoita sisäkkäistä HTML-kommenttia tähän: se katkaisee tämän
+     lohkon ja loput tekstistä vuotaa näkyviin sivulle)
+  Rakennetta ei muuteta: app.js ja tyokalut/tee_lataukset.js luottavat
+  luokkanimiin, data-attribuutteihin ja näkymien/viikkokorttien muotoon.
+  Rakenteen tarkka kuvaus: skillin references/layout-rakenne.md.
+  Näkymät (data-view): kaytto, toimeksianto, tyotapa, termit, galleria,
+  viikko, suunnitelma, paivakirja, ailoki, naytto. Sivupalkki näyttää yhden
+  näkymän tai viikon kerrallaan; kaikki näkymät ovat HTML:ssä, app.js piilottaa.
+-->
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#9a3412">
+  <meta name="description" content="Ohjattu näyttöprojekti: päivänvalon pituuden visualisointi Suomen paikkakunnille rakennetaan PHP-rajapinnalla ja React-käyttöliittymällä 18 työviikossa ja julkaistaan tuotantoon.">
+  <title>Valokaari – ohjattu näyttöprojekti</title>
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <script src="sisalto.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#sisalto">Siirry sisältöön</a>
+
+  <div class="app-shell">
+    <!-- ============ SIVUPALKKI: eteneminen + navigaatio ============ -->
+    <aside class="sidebar" aria-label="Näyttöprojektin navigaatio" id="sivupalkki">
+      <div class="sidebar-header">
+        <span class="brand-mark" aria-hidden="true">☀</span>
+        <div>
+          <p class="sidebar-kicker">Näyttöprojekti · 18 työviikkoa</p>
+          <p class="sidebar-title">Valokaari</p>
+        </div>
+        <button class="mobile-menu-toggle" type="button" data-sidebar-toggle aria-expanded="false" aria-controls="sivupalkki">☰ Valikko</button>
+      </div>
+
+      <div class="sidebar-progress">
+        <div class="progress-row">
+          <span class="progress-pct" data-progress-number>0%</span>
+          <span class="progress-copy" data-progress-copy>0 / 0 tehtävää</span>
+        </div>
+        <div class="progress-bar" aria-hidden="true"><span data-progress-bar></span></div>
+        <button class="resume-button" type="button" data-continue><span>Aloita Valokaaren teko</span><span aria-hidden="true">→</span></button>
+        <p class="resume-note" data-continue-note>Viikko 1</p>
+      </div>
+
+      <div class="sidebar-scroll">
+        <nav class="nav-group" aria-label="Ohjeet ja tausta">
+          <p class="nav-group-title">Ohjeet ja tausta · lue ennen aloitusta</p>
+          <a class="nav-row" href="#view-kaytto" data-view-nav="kaytto">Näin käytät sivua<span class="nav-meta">aloita tästä</span></a>
+          <a class="nav-row" href="#view-toimeksianto" data-view-nav="toimeksianto">Toimeksianto<span class="nav-meta"></span></a>
+          <a class="nav-row" href="#view-tyotapa" data-view-nav="tyotapa">Työtapa<span class="nav-meta"></span></a>
+          <a class="nav-row" href="#view-termit" data-view-nav="termit">Termit<span class="nav-meta" data-glossary-count></span></a>
+          <a class="nav-row" href="#view-galleria" data-view-nav="galleria">Galleria<span class="nav-meta">vko 17</span></a>
+        </nav>
+
+        <!-- app.js rakentaa viikkorivit sisalto.js:n viikot/vaiheet/viikkoNimet-datasta. -->
+        <nav class="week-nav" aria-label="Viikot" data-week-links></nav>
+
+        <nav class="nav-group nav-group-docs" aria-label="Omat dokumentit">
+          <p class="nav-group-title">Omat dokumentit · kirjoitetaan työn aikana</p>
+          <a class="nav-row" href="#view-suunnitelma" data-view-nav="suunnitelma">Suunnitelma<span class="nav-meta" data-plan-status-meta>päivittyy</span></a>
+          <a class="nav-row" href="#view-paivakirja" data-view-nav="paivakirja">Projektipäiväkirja<span class="nav-meta" data-journal-summary>0 / 18</span></a>
+          <a class="nav-row" href="#view-ailoki" data-view-nav="ailoki">AI-loki<span class="nav-meta" data-log-count>0</span></a>
+          <a class="nav-row" href="#view-naytto" data-view-nav="naytto">Näyttömatriisi<span class="nav-meta" data-evidence-count>0 / 32</span></a>
+        </nav>
+      </div>
+    </aside>
+
+    <main class="view-main" id="sisalto">
+
+      <!-- ============ NÄIN KÄYTÄT SIVUA ============ -->
+      <section class="view" data-view="kaytto" id="view-kaytto">
+        <p class="view-eyebrow">Lue tämä ennen viikkoa 1</p>
+        <h1 class="view-title">Yksi projekti, yksi kirjoituspaikka</h1>
+        <!-- TÄYTÄ: lead — 3–5 virkettä. Mitä tehdään, missä järjestyksessä, mitä
+             arvioidaan näytössä ja missä projektipäiväkirja kirjoitetaan. Avaa
+             ensimmäiset ammattitermit (repository, commit) samassa virkkeessä. -->
+        <p class="view-lead">Valokaari on 18 työviikon näyttöprojekti: rakennat Lapin matkailuyritykselle selainsovelluksen, joka näyttää kaaviona, kuinka pitkä päivä on Suomen eri paikkakunnilla vuoden jokaisena päivänä. Palvelinpuoli eli backend tehdään PHP:llä: se muuttaa paikkakunnan nimen koordinaateiksi, laskee päivänvalon minuutit ja palauttaa tuloksen selaimelle rajapinnan (API) kautta JSON-muodossa. JSON on tekstipohjainen tietomuoto, jota sekä palvelin että selain osaavat lukea. Selainpuoli eli frontend tehdään Reactilla, TypeScriptillä ja Tailwind CSS:llä, ja kaavio piirretään valitsemallasi kaaviokirjastolla. Etenet neljässä vaiheessa: ensin työkalut, suunnitelma, julkaistu runko ja oikea päivänvalodata, sitten kaavio ja sen ominaisuudet, sen jälkeen laatu ja testaus, lopuksi julkaisu ja näyttö. Näytössä arvioidaan se, minkä olet itse tehnyt ja osaat perustella: päivänvalolaskenta, leikkauspisteiden logiikka, komponenttirakenne ja saavutettavuus. Projektipäiväkirja kirjoitetaan tällä sivulla ja viedään joka viikko repositoryyn eli GitHubissa olevaan versionhallittuun projektikansioon.</p>
+
+        <section class="view-section">
+          <!-- TÄYTÄ: osaamistavoitteiden avaus (~1 kappale): mitkä tutkinnon osat
+               näytetään, mikä osaaminen näkyy missäkin, ja mitä p1/s1/k1-tunnukset
+               tarkoittavat. Toinen kappale AINA: tutkinnon osissa on tiimissä
+               tehtäviä kokonaisuuksia, siksi tehtävissä puhutaan tiimistä ja
+               asiakkaasta vaikka projekti tehdään yksin — opettaja on tarvittaessa
+               asiakas ja ohjaaja. -->
+          <h2>Kolme tutkinnon osaa, yksi sovellus</h2>
+          <p class="view-lead" style="margin-top:10px">Projekti kattaa kolme tutkinnon osaa: Ohjelmointi (45 osp), Ohjelmistokehittäjänä toimiminen (45 osp) ja Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla (30 osp). Ohjelmoinnin osaaminen näkyy koodissa, jonka kirjoitat, testaat ja korjaat itse: päivänvalolaskennassa, leikkauspisteiden laskennassa ja virheenkorjausketjuissa. Ohjelmistokehittäjänä toimiminen on työtapa: puret toimeksiannon käyttäjätarinoiksi, priorisoit ne, sovit rajapinnan muodon ennen koodia, ohjaat työtä Gitillä ja issueilla, arvioit tietoturvan ja julkaiset sovelluksen. Komponenttikirjasto-osa todennetaan Reactilla: rakennat käyttöliittymän komponenteista, otat Tailwindin ja kaaviokirjaston käyttöön perustellusti ja julkaiset tuotantoversion asiakkaan käyttöön. Näyttömatriisin tunnukset p1–p11, s1–s14 ja k1–k7 viittaavat näihin kolmeen osaan: p = Ohjelmointi, s = Ohjelmistokehittäjänä toimiminen, k = komponenttikirjasto-osa. Kaikki 32 osaamisvaatimusta on avattu sivun näyttömatriisissa.</p>
+          <p class="view-lead" style="margin-top:10px">Tutkinnon osissa on myös tiimissä tehtäviä kokonaisuuksia. Siksi tehtävissä puhutaan tiimistä, katselmoinneista ja asiakkaasta, vaikka teet Valokaaren muuten yksin: ohjaava opettaja toimii tarvittaessa asiakkaana ja ohjaajana, ja sopimiset, katselmoinnit ja yhteiset päätökset käydään hänen tai muun nimetyn henkilön kanssa (esimerkiksi työviikkojen 10 ja 16 katselmoijien). Ne ovat osa arvioitavaa osaamista, eivät muodollisuus.</p>
+        </section>
+
+        <figure class="view-figure view-section">
+          <div class="image-stage"><img src="assets/vaiheet.svg" width="1129" height="369" alt="Aikajana neljästä vaiheesta: Ydin työviikot 1–5, Ominaisuudet 6–10, Valmiiksi 11–15, Julkaisu 16–18."></div>
+          <figcaption><strong>18 työviikkoa, neljä vaihetta</strong> Ydin (1–5) tuottaa julkaistun rungon ja oikean päivänvalodatan, Ominaisuudet (6–10) kaavion, monen paikan vertailun, tooltipin, leikkauspisteet ja asiakaskatselmoinnin, Valmiiksi (11–15) palautemuutoksen, vuosivalinnan, tietoturvan, testauksen ja laadun, Julkaisu (16–18) julkaisuehdokkaan, v1.0:n ja näytön.</figcaption>
+        </figure>
+
+        <div class="card card-tint view-section">
+          <!-- TÄYTÄ: P0/P1/P2 määritellään näkyvästi ENNEN ensimmäistä käyttöä
+               (SKILL.md: Pedagoginen kieli). Jos projekti ei käytä P-luokkia,
+               poista tämä kortti. -->
+          <p class="section-label section-label-accent">Kolme prioriteettia: P0, P1 ja P2</p>
+          <p style="margin-top:8px">Toiminnot jaetaan kolmeen luokkaan heti viikolla 2, ja samat tunnukset toistuvat koko sivustolla. <strong>P0</strong> on pakollinen ydin: se on saatava valmiiksi, tai tuotosta ei ole. <strong>P1</strong> on tärkeä jatko, joka tehdään sitten kun P0 toimii. <strong>P2</strong> on valinnainen lisä, joka saa jäädä kokonaan pois ilman että työ on kesken.</p>
+          <p style="margin-top:8px">Järjestys on myös arvioinnin kannalta oikea: keskeneräinen P0 painaa enemmän kuin puuttuva P2.</p>
+        </div>
+
+        <div class="principle-grid">
+          <!-- TÄYTÄ: 4 korttia. 1 = missä varsinainen työ tehdään (projektin kansiot),
+               2 = miten työtä ohjataan (issuet ja commitit, termit avattuna),
+               3 = mitä kirjoitetaan tällä sivulla, 4 = miten päiväkirja viedään
+               repositoryyn. Pidä <small>-rivit. -->
+          <div class="card"><span class="num">1</span><h3>Työ tapahtuu repositoryssa</h3><p>Kaikki koodi, suunnitelma ja päiväkirja elävät GitHub-repositoryssa. Tämä sivusto ohjaa työtä, mutta työnäytteet syntyvät repoon.</p><small>Kansiot: client/ (React-sovellus), server/ (PHP-rajapinta) ja project-docs/ (suunnitelma, päiväkirja, muistiot ja raportit).</small></div>
+          <div class="card"><span class="num">2</span><h3>Ohjaa työ Gitillä</h3><p>Tehtävät pilkotaan <strong>GitHub-issueiksi</strong>: issue on tehtäväkortti, yksi rajattu tehtävä GitHubin tehtävälistalla. Jokainen valmis pala tallennetaan <strong>committina</strong> eli yhtenä nimettynä muutoksena, jolla on viesti ja tunnus.</p><small>Yksi issue = yleensä puolen tai yhden päivän työ.</small></div>
+          <div class="card"><span class="num">3</span><h3>Kirjoita tällä sivulla</h3><p>Jokaisen viikon lopussa vastaat kolmeen kysymykseen: mitä ja miten teit, miksi päädyit ratkaisuun ja missä työnäyte on. Suunnitelma ja AI-loki täytetään samalla sivulla.</p><small>Kentät tallentuvat vain tähän selaimeen.</small></div>
+          <div class="card"><span class="num">4</span><h3>Vie päiväkirja talteen</h3><p>Lataa koko projektipäiväkirja jokaisen viikon lopussa, korvaa repositoryn vanha tiedosto ja tee commit.</p><small>Tiedosto: <code>project-docs/projektipaivakirja.md</code>. Rasti tällä sivulla ei ole palautus: työnäyte on aina repositoryssa. Tee päiväkirjasta commit joka viikko. Se on osa näyttöaineistoa.</small></div>
+        </div>
+
+        <div class="card card-tint view-section checklist-box">
+          <p class="section-label section-label-accent">Tee kerran projektin alussa</p>
+          <ol>
+            <li>Luo repositoryyn kansiot <code>project-docs/</code>, <code>client/</code> ja <code>server/</code>.</li>
+            <li>Avaa viikko 1 ja tee yksi tehtävä kerrallaan.</li>
+            <li>Kirjoita viikon lopussa projektipäiväkirjan kolme kenttää.</li>
+            <li>Paina <strong>Lataa koko projektipäiväkirja</strong>, siirrä tiedosto <code>project-docs</code>-kansioon ja tee commit.</li>
+          </ol>
+        </div>
+
+        <div class="card view-section download-card">
+          <div>
+            <strong>Paperinen työpaketti</strong>
+            <p>Aikataulu ja tarkistuslista tilanteisiin, joissa sivu ei ole auki. Siihen ei tarvitse kirjoittaa samoja vastauksia uudelleen.</p>
+          </div>
+          <div class="download-actions">
+            <a class="button button-primary" href="downloads/valokaari-tyopaketti.pdf" download>Lataa PDF</a>
+            <a class="button button-secondary" href="downloads/valokaari-tyopaketti.docx" download>Lataa Word</a>
+          </div>
+        </div>
+
+        <p class="footnote view-section"><strong>Muista:</strong> sivuston rastit ja kirjoituskentät ovat oma työmuistisi. Ne tallentuvat vain tähän selaimeen, eivätkä ne siirry opettajalle. Rasti ei ole palautus eikä osa näyttöaineistoa. Rastita vasta, kun työ on testattu ja työnäyte on Git-repositoryssa.</p>
+
+        <details class="source-role">
+          <summary>Mitä paperinen työpaketti ja alkuperäinen Word-pohja tekevät?</summary>
+          <p><strong>Paperinen työpaketti</strong> on aikataulu ja tarkistuslista tilanteisiin, joissa sivu ei ole auki. Siihen ei tarvitse kirjoittaa samoja vastauksia uudelleen.</p>
+          <p><strong>Alkuperäinen Word-pohja</strong> on tämän polun lähdeaineisto. Sen aiheet on tuotu sivuston viikkotehtäviin ja projektipäiväkirjaan. Täytä Word-pohja erikseen vain, jos opettaja antaa siitä erillisen palautusohjeen.</p>
+        </details>
+
+        <div class="download-card view-section" style="margin-top:20px">
+          <div><strong>Opiskelijan oma tila selaimessa</strong><p>Rastit, päiväkirja, suunnitelma ja AI-loki tallentuvat vain tähän selaimeen.</p></div>
+          <button class="button button-ghost" type="button" data-reset>Nollaa oma eteneminen</button>
+        </div>
+
+        <details class="source-role">
+          <summary>Opettajan lähdeaineisto · ei erillistä täyttämistä ilman ohjetta</summary>
+          <div>
+            <!-- TÄYTÄ: linkit generoituihin opettaja-docxeihin (tee_lataukset.js tuottaa). -->
+            <a href="downloads/nayttosuunnitelma.docx" download>Näyttösuunnitelma (.docx)</a>
+            <a href="downloads/nayton-dokumentointipohjat.docx" download>Näytön dokumentointipohjat (.docx)</a>
+          </div>
+        </details>
+      </section>
+
+      <!-- ============ TOIMEKSIANTO ============ -->
+      <section class="view" data-view="toimeksianto" id="view-toimeksianto">
+        <p class="view-eyebrow">Alkuperäinen toimeksianto · annettu työviikolla 1</p>
+        <h1 class="view-title">Näytä asiakkaalle, miltä kaamos ja yötön yö näyttävät kaaviona</h1>
+        <div class="brief-text">
+          <!-- TÄYTÄ: toimeksianto asiakkaan äänellä, 4 kappaletta, minä-muodossa
+               ("Haluan…"). Ei tekniikkaa, vain tarve, reunaehdot, väliversio ja
+               julkaisuvaatimus. Viikkokortit lainaavat tästä otteita (guide.excerpt),
+               joten kirjoita kappaleet niin että niistä voi poimia yhden virkkeen.
+               Loppuun <p class="assignment-note">: asiakas on kuvitteellinen ja kuka
+               esittää asiakkaan roolia. -->
+        </div>
+
+        <div class="grid-2 view-section">
+          <div class="card">
+            <p class="section-label section-label-accent">Sovittu toteutustapa</p>
+            <!-- TÄYTÄ: teknologiavalinnat (termi avattuna: "Frontend eli selainpuoli"),
+                 kansiorakenne, työkalut, P0-minimisisältö ja julkaisutapa.
+                 <p style="margin-top:8px"><strong>Otsikko:</strong> teksti</p> per rivi. -->
+          </div>
+          <div class="card">
+            <p class="section-label">Pidä rajaus</p>
+            <!-- TÄYTÄ: mitä EI tehdä. Nimeä konkreettiset houkutukset, älä yleistä.
+                 Viimeinen rivi aina: älä vaihda tekniikkaa kesken projektin. -->
+          </div>
+        </div>
+
+        <div class="card view-section">
+          <p class="section-label">Aineisto, työkalut ja tekoälyn raja</p>
+          <!-- TÄYTÄ: <ul> — mistä opiskelija saa tarvitsemansa aineiston tai työkalut
+               (grafiikka, data, kirjastot), lisenssisäännöt; sen jälkeen
+               <p><strong>Tekoälyn raja:</strong> …</p> — mikä tehdään itse. -->
+        </div>
+
+        <div class="card card-tint decision-box view-section">
+          <p class="section-label">Sovi ohjaajan kanssa — näitä ei päätetä itse eikä tekoälyllä</p>
+          <!-- TÄYTÄ: <ul> 4–6 kysymystä joita opiskelija EI päätä itse (lisenssi,
+               repon julkisuus ja tekijänimi, perusteversio, katselmoijat, tilit). -->
+          <p class="note">Näitä ei päätetä itse eikä tekoälyllä. Tyhjä kenttä suunnitelmassa on oikea tulos niin kauan kuin asia on sopimatta: merkitse se avoimeksi asiaksi.</p>
+        </div>
+
+        <div class="view-section">
+          <h2>Pidä punainen lanka näkyvissä</h2>
+          <div class="lanka-row">
+            <!-- TÄYTÄ: yksi aito ketju tästä projektista. -->
+            <div><p class="section-label">Vaatimus</p><p>s7 · kehittää ohjelmiston toimintalogiikkaa</p></div>
+            <div><p class="section-label">Issue</p><p>#14 Päivänvalon minuutit rajataan välille 0–1440 napapiirin pohjoispuolella</p></div>
+            <div><p class="section-label">Valmis kun</p><p>Utsjoki 21.12. palauttaa 0 min ja 21.6. 1440 min; mikään päivä ei ylitä rajoja</p></div>
+            <div><p class="section-label">Testi ja työnäyte</p><p>T03 · testiajon tuloste ja Utsjoen kaavion kuvakaappaus</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ TYÖTAPA ============ -->
+      <section class="view" data-view="tyotapa" id="view-tyotapa">
+        <p class="view-eyebrow">Jokainen työskentelykerta</p>
+        <h1 class="view-title">Kuusi askelta joka kerralla</h1>
+        <ol class="workflow-loop">
+          <li><span>1</span><strong>Valitse</strong><small>yksi pieni tehtävä</small></li>
+          <li><span>2</span><strong>Suunnittele</strong><small>hyväksymiskriteerit issueen</small></li>
+          <li><span>3</span><strong>Toteuta</strong><small>pala kerrallaan</small></li>
+          <li><span>4</span><strong>Testaa</strong><small>odotusarvo haettuna ennen ajoa</small></li>
+          <li><span>5</span><strong>Tallenna</strong><small>commit ja push</small></li>
+          <li><span>6</span><strong>Kirjaa</strong><small>työnäyte ja oppi</small></li>
+        </ol>
+        <p class="rule-note"><strong>Nyrkkisääntö:</strong> jos et pysty selittämään muutosta, työ ei ole vielä valmis.</p>
+
+        <figure class="view-figure view-section">
+          <div class="image-stage"><img src="assets/tyokierto.svg" width="1672" height="941" alt="Viisivaiheinen työkierto: issue, rajapinta, komponentti, testi ja julkaisu."></div>
+          <figcaption><strong>Viikon työkierto</strong> Jokainen viikko kulkee saman kierron: valitse issue, sovi tai toteuta rajapinnan pala, rakenna komponentti, testaa haetulla odotusarvolla ja vie julkaistuun versioon.</figcaption>
+        </figure>
+
+        <div class="view-section">
+          <h2>Testaa kuin kehittäjä</h2>
+          <p class="view-lead" style="margin-top:8px">Testaus ei ole pelkkää kaupunkien lisäilyä ja toteamista, että kaavio näyttää oikealta. Kirjaa odotettu tulos, havaittu tulos, virheen syy, korjaus ja uusintatesti.</p>
+          <ul class="check-list">
+            <!-- TÄYTÄ: testauksen vähimmäistavoitteet lukuina (mitoitus: pedagoginen-runko.md
+                 § 11). Ensimmäinen rivi "Vähintään N suunniteltua testitapausta",
+                 toinen "N täydellistä virheenkorjausketjua" ankkuriviikoin; loput
+                 nimeävät tämän projektin riskikohdat ja reunatapaukset. Avaa termit
+                 (regressiotesti, curl) samassa rivissä. -->
+          </ul>
+        </div>
+
+        <figure class="view-figure view-section">
+          <div class="image-stage"><img src="assets/testauskierros.svg" width="1500" height="1000" alt="Testauksen kierto: hae odotusarvo, aja testi, löydä virhe, korjaa ja uusintatestaa."></div>
+          <figcaption>Testi on valmis vasta onnistuneen uusintatestin jälkeen.</figcaption>
+        </figure>
+
+        <div class="view-section">
+          <h2>Aineisto ja työkalut</h2>
+          <ul class="tooling-list">
+            <!-- TÄYTÄ: 3–5 riviä: työkalut, aineisto/data, kuvat ja lisenssit,
+                 tekoälyn raja (sama kuin toimeksiannossa, tiivistettynä). -->
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ TERMIT / SANASTO ============ -->
+      <section class="view" data-view="termit" id="view-termit">
+        <p class="view-eyebrow">Sanasto · kertausta varten</p>
+        <h1 class="view-title">Tämän projektin termit</h1>
+        <p class="view-lead">Jokainen termi selitetään myös siinä kohdassa, jossa se tulee ensimmäisen kerran vastaan. Tänne voit palata, kun tunnus tai lyhenne unohtuu. Sanastossa ovat vain ne termit, joita tässä projektissa oikeasti käytetään.</p>
+        <!-- app.js täyttää sisalto.js:n termisto-kentästä. Muunkielinen sivusto: käännä otsikot tässä. -->
+        <dl class="glossary view-section" data-termisto></dl>
+      </section>
+
+      <!-- ============ GALLERIA ============ -->
+      <section class="view" data-view="galleria" id="view-galleria">
+        <p class="view-eyebrow">Julkaistut työt</p>
+        <h1 class="view-title">Galleria</h1>
+        <p class="view-lead">Valmiit v1.0-tuotokset nostetaan tänne viikolla 17: nimi, kuvakaappaus, lisenssi ja julkaisulinkki.</p>
+        <div class="gallery-grid" data-gallery>
+          <!-- Opettaja lisää kortin per julkaistu työ:
+          <a class="gallery-card" href="https://github.com/kayttaja/repo/releases/tag/v1.0">
+            <img src="assets/galleria/NIMI.png" width="640" height="360" alt="Kuvakaappaus" loading="lazy">
+            <strong>Nimi</strong><span>Tekijän etunimi · v1.0</span>
+          </a>
+          -->
+        </div>
+        <p class="gallery-empty" data-gallery-empty>Ensimmäiset työt julkaistaan viikolla 17.</p>
+      </section>
+
+      <!-- ============ VIIKKONÄKYMÄ ============ -->
+      <section class="view" data-view="viikko" id="view-viikko">
+        <!-- TÄYTÄ: yksi <article class="week-card"> per työviikko (sisalto.js:n viikot
+             miinus lomaViikot), nousevassa järjestyksessä, ja <article class="holiday-card">
+             per lomaviikko. Kortin kiinteä osa on alla; app.js täyttää data-attribuutein
+             merkityt kohdat sisalto.js:n viikkoOhjeet-datasta (kärki, toimeksiantoote,
+             tuotos/miksi, tekniikkatagit, uudet termit, askeleet, resurssit, toteutusapu,
+             päivärytmi, esimerkki/ei riitä, valmis kun, päiväkirjan tallennusrivi).
+             Käsin kirjoitetaan VAIN: data-week-label + eyebrow-teksti, <h1>, tehtävät
+             (2–4 kpl, verbi edellä), week-status "0 / N" ja Näytä-rivi.
+
+             data-week-label:
+               päivätty projekti  → ISO-viikon päivät, esim. "17.–21.8." (tarkista.js vertaa)
+               päivätön projekti  → "Työviikko 3 / 18" (viikon numero pakollinen)
+             Eyebrow: "Vaihe A · Lyhyt · Työviikko 3 / 18"  tai  "Vaihe A · Lyhyt · Viikko 34 · 17.–21.8."
+
+             Lomaviikko (vain päivätty projekti):
+             <article class="holiday-card" id="week-NN" data-week="NN">
+               <p class="view-eyebrow" data-week-label="12.–16.10.">Vaihe B · Lyhyt · Viikko NN · 12.–16.10.</p>
+               <h1 class="view-title">Syysloma</h1>
+               <p>Ei projektityötä eikä korvaavia tehtäviä. Jatka viikolla 43 viimeisimmästä toimivasta <code>main</code>-versiosta.</p>
+             </article>
+        -->
+        <article class="week-card" id="week-1" data-week="1">
+          <p class="view-eyebrow" data-week-label="Työviikko 1 / 18">Vaihe A · Ydin · Työviikko 1 / 18</p>
+          <h1 class="view-title">Aloitus</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta – tätä asiakkaan toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon tekniikka</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 3</span></div>
+            <div class="task-list">
+            <!-- TÄYTÄ: tehtävät. data-task="VIIKKO-N". Ensimmäisen viikon tehtävissä
+                 aina: toimeksiannon luku + kysymyslista, työkalut, repository. -->
+            <label class="task-row"><input type="checkbox" data-task="1-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Lue toimeksianto ja kirjaa kysymyslista ohjaajalle.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="1-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Asenna ja todenna työkalut.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="1-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Luo etärepository, tee ensimmäiset commitit ja push.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain jos jäät jumiin – kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <!-- TÄYTÄ: Näytä-rivi — mitä työnäytettä viikolta jää (konkreettiset tiedostot,
+                 linkit, tunnukset). Termit joita ei ole vielä opetettu eivät kuulu tähän. -->
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> Repositoryn osoite, ensimmäisen commitin tunniste ja <code>project-docs/kysymykset.md</code>.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="1">
+            <div class="journal-heading">
+              <h2>Viikon projektipäiväkirja</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Tämä on päiväkirjan ainoa kirjoituspaikka: kolme kysymystä viikon lopussa. Kentät tallentuvat vain tähän selaimeen — lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä tein ja miten?</span><textarea rows="3" data-journal-field="work" placeholder="Kirjoita omin sanoin…"></textarea></label>
+              <label><span>Miksi tein näin?</span><textarea rows="2" data-journal-field="reason" placeholder="Perustelut ja vaihtoehdot, joita harkitsit"></textarea></label>
+              <label><span>Missä työnäyte on?</span><input type="text" data-journal-field="evidence" placeholder="Commit-linkki, kuvakaappaus tai tiedoston polku"></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+        <!-- TÄYTÄ: loput viikkokortit samalla rungolla (kopioi yllä oleva article). -->
+      </section>
+
+      <!-- ============ SUUNNITELMA ============ -->
+      <section class="view" data-view="suunnitelma" id="view-suunnitelma">
+        <p class="view-eyebrow">Ennen koodia · työviikko 2, ohjaajan hyväksyntä ennen viikkoa 3</p>
+        <h1 class="view-title">Tekninen suunnitelma ja rajapintasopimus</h1>
+        <p class="view-lead">Suunnitelma tehdään työviikolla 2 ja siihen palataan koko projektin ajan. Esitäytetyt osiot tulevat toimeksiannosta; päätökset ovat sinun, ja ne testataan omassa työssäsi nimetyillä viikoilla. <strong>Ajoitus:</strong> Täytä työviikolla 2, ohjaajan hyväksyntä ennen viikkoa 3. Päätöksiin palataan viikoilla 3, 4, 5, 6, 7, 9 ja 15.</p>
+
+        <figure class="view-figure">
+          <div class="image-stage"><img src="assets/suunnitelma-luonnos.svg" width="1128" height="540" alt="Kaavio suunnitelman kolmesta osasta: tarve ja rajaus, opiskelijan omat päätökset ja rajapintasopimus."></div>
+          <figcaption><strong>Suunnitelma ennen koodia</strong> Suunnitelmassa on kolme osaa: asiakkaan tarve ja rajaus, sinun omat perustellut päätöksesi sekä rajapintasopimus, jota vasten palvelin ja selain rakennetaan.</figcaption>
+        </figure>
+
+        <div class="plan-prefilled" aria-label="Suunnitelman esitäytetty pohja">
+          <p class="section-label">Esitäytetty pohja · tulee mukaan tiedostoon</p>
+          <!-- TÄYTÄ: 5–6 <article><h3>N · Otsikko</h3><p>…</p></article>-lohkoa, jotka
+               vastaavat sisalto.js:n suunnitelma.markdown-funktion esitäytettyjä
+               osioita 1:1. Viimeinen on aina "Avoimet asiat – ohjaaja omistaa" ja
+               päättyy <small class="plan-open-note">-huomautukseen. -->
+        </div>
+
+        <form class="plan-form" data-plan-form>
+          <div class="plan-form-heading">
+            <div><p class="section-label section-label-accent">Omat päätökset</p><h3>Nämä päätät itse</h3><p>Laskentatapa, paikkakuntatietolähde, julkaisumalli ja -alusta, kaaviokirjasto, komponenttijako ja tilanhallinta, leikkauspisteen määritelmä sekä rajaus. Jokainen päätös perustellaan ja testataan omassa työssäsi nimetyllä viikolla.</p></div>
+            <span data-plan-status>Ei vielä aloitettu</span>
+          </div>
+
+          <!-- TÄYTÄ: kenttärivit. Ensin opiskelijan omat (OMA), sitten
+               <p class="plan-calibration"> (mikä ei riitä, mikä riittää), sitten
+               ohjaajan päätökset (OHJAAJA) placeholderilla "Jätä tyhjäksi, kunnes …".
+               Rivin muoto:
+               <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Otsikko<input type="text" data-plan-field="kentanNimi" placeholder="…"></label><span class="plan-row-week">viikko N</span></div>
+               <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Otsikko<input type="text" data-plan-field="kentanNimi" placeholder="Jätä tyhjäksi, kunnes ohjaaja on päättänyt"></label><span class="plan-row-week">avoin asia</span></div>
+               Kenttien nimien pitää täsmätä sisalto.js:n suunnitelma.pakolliset-listaan
+               ja markdown-funktion arvo()-kutsuihin. Aina mukana: nimi, tekija. -->
+
+          <div class="plan-actions">
+            <button class="button button-primary" type="button" data-plan-export>Lataa suunnitelma.md</button>
+            <small>Tallenna tiedosto polkuun <code>project-docs/suunnitelma.md</code> ja tee commit. Päivitä, kun ohjaaja vastaa avoimiin asioihin.</small>
+          </div>
+          <p class="plan-ai-note"><strong>Muista:</strong> älä anna tekoälyn päättää puolestasi. Ohjaajan omistamia asioita ei päätetä itse eikä tekoälyllä. Jos käytit tekoälyä ideointiin, kirjaa se AI-lokiin.</p>
+        </form>
+      </section>
+
+      <!-- ============ PROJEKTIPÄIVÄKIRJA (arkisto) ============ -->
+      <section class="view" data-view="paivakirja" id="view-paivakirja">
+        <p class="view-eyebrow">Yksi kirjoituspaikka · viedään Gitiin joka viikko</p>
+        <h1 class="view-title">Projektipäiväkirja</h1>
+        <p class="view-lead">Viikon merkintä kirjoitetaan viikkonäkymässä tehtävien alla. Tämä näkymä on arkisto: näet mitkä viikot on kirjattu ja lataat koko päiväkirjan tiedostona.</p>
+
+        <div class="card card-tint journal-summary-card">
+          <div><span class="big" data-journal-count>0 / 18 viikkoa kirjattu</span><p>Tiedosto: <code>project-docs/projektipaivakirja.md</code></p></div>
+          <button class="button button-primary" type="button" data-export-journal>Lataa koko projektipäiväkirja (.md)</button>
+        </div>
+
+        <div class="journal-weeks-grid" data-journal-weeks></div>
+      </section>
+
+      <!-- ============ AI-LOKI ============ -->
+      <section class="view" data-view="ailoki" id="view-ailoki">
+        <p class="view-eyebrow">Tekoäly on sallittu apuväline</p>
+        <h1 class="view-title">Sinä teet päätökset. Tekoäly on apuväline.</h1>
+        <!-- TÄYTÄ: mihin tekoälyä saa käyttää tässä projektissa ja mikä on se ydin,
+             joka on tehtävä itse (se osa jota näyttö nimenomaan arvioi). -->
+        <p class="view-lead">Tekoäly saa selittää virheilmoituksia, ehdottaa testitapauksia ja tarkistaa koodiasi. Ydin tehdään itse: päivänvalolaskenta, leikkauspisteiden logiikka, komponenttirakenne ja saavutettavuusratkaisut. Ne ovat se osaaminen, jonka näyttö arvioi. Jokainen merkittävä käyttö kirjataan AI-lokiin.</p>
+
+        <figure class="view-figure">
+          <div class="image-stage"><img src="assets/tekoalyapu.svg" width="1500" height="1000" alt="{{AI_KUVA_ALT}}"></div>
+          <figcaption>Kysy → tarkista → testaa → kirjaa ja opi.</figcaption>
+        </figure>
+
+        <div class="ai-rules">
+          <div class="card"><span class="num">01</span><h3>Ymmärrä</h3><p>Selitä omin sanoin, mitä ratkaisu tekee ja miksi se sopii omaan rajapintasopimukseesi ja komponenttijakoosi.</p></div>
+          <div class="card"><span class="num">02</span><h3>Tarkista</h3><p>Vertaa PHP:n, Reactin, Viten ja kaaviokirjaston viralliseen dokumentaatioon. Tekoäly voi keksiä vääriä kenttiä ja komentoja.</p></div>
+          <div class="card"><span class="num">03</span><h3>Testaa</h3><p>Aja testit itse. Älä koskaan keksi testituloksia tai palautetta.</p></div>
+          <div class="card"><span class="num">04</span><h3>Kirjaa</h3><p>Merkitse merkittävä käyttö, omat muutokset ja se, mitä opit.</p></div>
+        </div>
+
+        <form class="ai-log-form" data-ai-form>
+          <div class="grid-2">
+            <label>Päivä ja työkalu<input type="text" name="tool" required placeholder="Työviikko 1 / ChatGPT"></label>
+            <label>Mihin pyysit apua?<input type="text" name="question" required placeholder="Miksi Utsjoen kesäkuun päivät antavat NaN-arvon eikä 1440 minuuttia?"></label>
+          </div>
+          <label>Mitä käytit, muutit tai hylkäsit — ja miten tarkistit?<textarea name="used" rows="2" required placeholder="Ymmärsin selityksen acos-funktion arvoalueesta; kirjoitin rajatarkistuksen itse omaan Daylight-moduuliin. Ajoin testit T03 ja T04 uudelleen ja vertasin Utsjoen arvoja timeanddate-sivun tietoihin."></textarea></label>
+          <!-- Placeholderissa vain termejä, jotka projekti käyttää ja jotka on opetettu. -->
+          <label>Aineistoviite<input type="text" name="reference" required placeholder="GitHub-issue #12 / commit abc123 / testitapaus T05"></label>
+          <div class="privacy-row">
+            <label class="privacy-confirm"><input type="checkbox" name="privacy" required> Vahvistan, etten syöttänyt henkilötietoja, salaisuuksia tai luottamuksellista aineistoa.</label>
+            <button class="button button-primary" type="submit">Lisää lokiin</button>
+          </div>
+        </form>
+        <div class="ai-log-meta">
+          <span><span data-log-count>0 merkintää</span> · loki tulee mukaan koko projektipäiväkirjan lataukseen.</span>
+          <button class="button button-secondary" type="button" data-export-log>Lataa vain AI-loki (.md)</button>
+        </div>
+        <div class="log-entries" data-ai-entries aria-live="polite"><p class="empty-state">Ei merkintöjä vielä.</p></div>
+      </section>
+
+      <!-- ============ NÄYTTÖMATRIISI ============ -->
+      <section class="view" data-view="naytto" id="view-naytto">
+        <p class="view-eyebrow">Näyttöaineisto syntyy työn aikana</p>
+        <h1 class="view-title">Näyttömatriisi</h1>
+        <p class="view-lead">Pelkkä valmis tuotos ei näytä koko osaamista. Työnäyte on yksi tuotos, joka osoittaa osaamisesi: commit, kuva, testitapaus tai muistio. Näyttöaineisto on kaikki työnäytteesi yhdessä. Sama työnäyte voi kelvata useaan kohtaan. Kokoa jokaisesta kohdasta linkki, commit, kuva, lokimerkintä tai päätösmuistio.</p>
+
+        <div class="card card-tint evidence-summary"><strong data-evidence-count>0 / 32</strong><span>osaamisvaatimuksen työnäyte merkitty</span></div>
+
+        <!-- TÄYTÄ: yksi <details class="matrix"> per tutkinnon osa, ePerusteista.
+             Ensimmäinen saa open-attribuutin. Otsikon muoto on kiinteä (tarkista.js):
+
+             <details class="matrix" open>
+               <summary><span class="matrix-title">Tutkinnon osan nimi</span><span class="matrix-count">N vaatimusta</span></summary>
+               <div class="matrix-list">
+                 <p class="matrix-group">ePerusteiden osa-alueen otsikko (vain jos osassa on osa-alueita)</p>
+                 <label class="matrix-row"><input type="checkbox" data-evidence="p1"><span><strong>Vaatimuksen lyhyt nimi</strong> Mikä työnäyte tämän todentaa tässä projektissa (viikko mainittuna).</span></label>
+               </div>
+             </details>
+
+             data-evidence-tunnus on uniikki koko sivulla (esim. p1…p11, s1…s14, k1…k7).
+             Vaatimuksen nimi tulee ePerusteista, työnäyte tästä projektista.
+             Jos projektissa ei ole näyttömatriisia, poista tämä näkymä ja sivupalkin
+             Näyttömatriisi-rivi. -->
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="view" style="max-width:var(--main-max);margin:0 auto;padding:0 40px 40px">
+    <div class="site-footnote">
+      <span><strong>Valokaari</strong> · Ohjattu näyttöprojekti · PHP 8 · React + TypeScript + Vite · Tailwind CSS · 2026 · Revontuli Travel on kuvitteellinen asiakas. Sivusto on oppilaitoksen näyttöprojekti.</span>
+      <img class="ai-modified-badge" src="assets/ai-modified-badge.svg" width="84" height="28" alt="Sisältöä on muokattu tekoälyllä">
+    </div>
+  </footer>
+</body>
+</html>
