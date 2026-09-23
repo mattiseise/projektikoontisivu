@@ -347,5 +347,47 @@ window.PROJEKTIT = [
         "vaatimuksia": 7
       }
     ]
+  },
+  {
+    "slug": "vektoripaja",
+    "nimi": "Vektoripaja",
+    "tyyppi": "web",
+    "tila": "kaynnissa",
+    "kieli": "",
+    "kuvaus": "Selaimessa toimiva 3D-mallinnin, joka tekee Inkscapella piirretystä kuvasta low-poly-mallin eli yksinkertaisen, kulmikkaan 3D-mallin: pyörähdyskappaleita, putkia ja osia, jotka liikkuvat yhdessä. Malli viedään .obj-tiedostoksi. Tekoäly kirjoittaa suuren osan koodista, mutta suunnittelu, testit ja päätökset ovat omia.",
+    "lukuvuosi": "2026–27",
+    "viikot": "vko 40–9",
+    "kesto": "18 työviikkoa",
+    "ryhma": "Joustava",
+    "tekniikat": [
+      "Vite",
+      "React",
+      "Three.js",
+      "Vitest",
+      "GitHub Copilot",
+      "Microsoft 365 Copilot",
+      "GitHub Pages"
+    ],
+    "sivusto": "https://mattiseise.github.io/projektikoontisivu/vektoripaja/",
+    "repo": "https://github.com/mattiseise/projektikoontisivu",
+    "kuva": "kuvat/vektoripaja.jpg",
+    "tutkinto": "Tieto- ja viestintätekniikan perustutkinto",
+    "diaarinumero": "OPH-6216-2025",
+    "vaatimuksia": 31,
+    "luovutus": "pe 5.3.2027",
+    "tutkinnonOsat": [
+      {
+        "nimi": "Ohjelmointi",
+        "vaatimuksia": 10
+      },
+      {
+        "nimi": "Ohjelmistokehittäjänä toimiminen",
+        "vaatimuksia": 14
+      },
+      {
+        "nimi": "Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla",
+        "vaatimuksia": 7
+      }
+    ]
   }
 ];

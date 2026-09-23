@@ -1,0 +1,43 @@
+{
+  "slug": "vektoripaja",
+  "nimi": "Vektoripaja",
+  "kuvaus": "Ohjattu näyttöprojekti: selainpohjainen low-poly 3D-mallinnin, joka tekee Inkscapen SVG-piirroksesta 3D-mallin ja vie sen .obj-tiedostoksi. Työ tehdään tekoälyavusteisesti: Copilot suunnittelee, GitHub Copilot toteuttaa.",
+  "vuosi": [2026, 2027],
+  "viikot": [40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+  "lomaViikot": [42, 52, 53, 1, 8],
+  "julkaisuviikko": 7,
+  "tunnusmerkki": "◇",
+  "aloitusNappi": "Aloita viikosta 40",
+  "paletti": {
+    "aksentti": "#1fa4e3",
+    "aksenttiTumma": "#0e6f9e",
+    "taulukkoSavy": "#e6f4fb",
+    "riviSavy": "#f3fafd"
+  },
+  "vaiheet": [
+    { "tunnus": "A", "lyhyt": "Työkalut", "otsikko": "Työkalut ja harjoitussykli", "viikot": [40, 41, 42], "vari": "#1fa4e3" },
+    { "tunnus": "B", "lyhyt": "MVP-ydin", "otsikko": "MVP-ydin: SVG:stä muotoja", "viikot": [43, 44, 45, 46, 47], "vari": "#1fa4e3" },
+    { "tunnus": "C", "lyhyt": "MVP valmiiksi", "otsikko": "MVP valmiiksi ja katselmointi", "viikot": [48, 49, 50, 51, 52, 53, 1], "vari": "#1fa4e3" },
+    { "tunnus": "D", "lyhyt": "Jatkokehitys", "otsikko": "Jatkokehitys katselmoinnin pohjalta", "viikot": [2, 3, 4, 5], "vari": "#1fa4e3" },
+    { "tunnus": "E", "lyhyt": "Julkaisu ja näyttö", "otsikko": "Julkaisu ja näyttö", "viikot": [6, 7, 8, 9], "vari": "#1fa4e3" }
+  ],
+  "kuvitukset": {
+    "tunnus": "kolmio"
+  },
+  "koonti": {
+    "tyyppi": "web",
+    "tila": "kaynnissa",
+    "kuvaus": "Selaimessa toimiva 3D-mallinnin, joka tekee Inkscapella piirretystä kuvasta low-poly-mallin eli yksinkertaisen, kulmikkaan 3D-mallin: pyörähdyskappaleita, putkia ja osia, jotka liikkuvat yhdessä. Malli viedään .obj-tiedostoksi. Tekoäly kirjoittaa suuren osan koodista, mutta suunnittelu, testit ja päätökset ovat omia.",
+    "ryhma": "Joustava",
+    "kesto": "18 työviikkoa",
+    "tekniikat": ["Vite", "React", "Three.js", "Vitest", "GitHub Copilot", "Microsoft 365 Copilot", "GitHub Pages"],
+    "tutkinto": "Tieto- ja viestintätekniikan perustutkinto",
+    "diaarinumero": "OPH-6216-2025",
+    "vaatimuksia": 31,
+    "tutkinnonOsat": [
+      { "nimi": "Ohjelmointi", "vaatimuksia": 10 },
+      { "nimi": "Ohjelmistokehittäjänä toimiminen", "vaatimuksia": 14 },
+      { "nimi": "Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla", "vaatimuksia": 7 }
+    ]
+  }
+}

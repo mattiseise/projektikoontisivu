@@ -1,0 +1,327 @@
+<!doctype html><html lang="fi"><head><meta charset="utf-8"><title>Vektoripaja – työpaketti</title><style>
+@page { size: A4; margin: 0; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; background: #000000; }
+body { font-family: Arial, sans-serif; font-size: 18pt; line-height: 1.6; letter-spacing: 1px; word-spacing: 0.3rem;
+  color: #1fa4e3; background: #000000; margin: 0; padding: 14mm; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+* { font-style: normal !important; }
+h1 { color: #1fa4e3; font-size: 1.5em; line-height: 1.2; margin: 0 0 .5em; page-break-after: avoid; }
+h2 { color: #1fa4e3; font-size: 1.2em; line-height: 1.25; margin: 1em 0 .35em; page-break-after: avoid; }
+p { margin: 0 0 .4em; max-width: 60ch; }
+.cover { padding-top: 40mm; page-break-after: always; }
+.cover h1 { font-size: 2.2em; }
+table { border-collapse: collapse; width: 100%; margin: .4em 0; }
+tr { page-break-inside: avoid; }
+td, th { border: 2px solid #1fa4e3; padding: .25em .4em; text-align: left; vertical-align: top; font-size: 1em; }
+th { font-weight: 700; }
+.wk { margin-bottom: .8em; padding-bottom: .4em; border-bottom: 2px solid #1fa4e3; }
+.feature { margin: 0 0 .3em; }
+.task { margin: .2em 0; }
+.done, .ev { margin: .3em 0 0; }
+.page { page-break-before: always; }
+.muted, .item { }
+strong { font-weight: 700; }
+code { font-family: Consolas, "Courier New", monospace; font-size: 1em; }
+</style></head><body>
+<div class="cover"><h1>Vektoripaja</h1><p style="font-size:1.2em">Paperinen työpaketti</p><p>Low-poly 3D-mallinnin selaimessa: Inkscapen SVG → 3D-malli → .obj. Tekoälyavusteinen työtapa: Copilot suunnittelee, GitHub Copilot toteuttaa.</p><p><strong>Vk 40/2026–vk 9/2027 · syysloma vk 42 · joululoma 18.12.–10.1. · talviloma vk 8 · luovutus pe 5.3.2027</strong></p><p style="margin-top:1em">Tämä paketti on aikataulu ja tarkistuslista tilanteisiin, joissa sivusto ei ole auki. Projektipäiväkirja kirjoitetaan sivustolla ja viedään repositoryn project-docs-kansioon. Rasti tässä vihossa ei ole palautus: työ on aina Git-repositoryssa.</p><p style="margin-top:.6em">Repository on julkinen. Sinne ei laiteta henkilötietoja, testaajien nimiä eikä itsearviointia. Ne lähetetään ohjaajalle Teamsissa.</p><p style="margin-top:.6em">Viikkopalaveri ohjaajan kanssa on maanantaina tai tiistaina. Päivä sovitaan viikolla 40.</p></div>
+<h1>Aikataulu</h1><table><tr><th>Vko</th><th>Pvm</th><th>Viikon aihe</th><th>Vaihe</th></tr>
+<tr><td><strong>40</strong></td><td>28.9.–2.10.</td><td>Aloitus: työkalut, repository ja oma MVP</td><td>A</td></tr>
+<tr><td><strong>41</strong></td><td>5.–9.10.</td><td>Harjoitussykli: pyörivä kuutio julki</td><td>A</td></tr>
+<tr><td>42</td><td>12.–16.10.</td><td>Syysloma – ei projektityötä</td><td>–</td></tr>
+<tr><td><strong>43</strong></td><td>19.–23.10.</td><td>SVG-tuonti: polut näkyviin</td><td>B</td></tr>
+<tr><td><strong>44</strong></td><td>26.–30.10.</td><td>Hierarkia: layerit ja ryhmät osiksi</td><td>B</td></tr>
+<tr><td><strong>45</strong></td><td>2.–6.11.</td><td>Revolve: profiilista pyörähdyskappale</td><td>B</td></tr>
+<tr><td><strong>46</strong></td><td>9.–13.11.</td><td>Inflate ja kamera: putki ja suorat näkymät</td><td>B</td></tr>
+<tr><td><strong>47</strong></td><td>16.–20.11.</td><td>Transformit: valitse, siirrä, kierrä ja skaalaa</td><td>B</td></tr>
+<tr><td><strong>48</strong></td><td>23.–27.11.</td><td>Pivot: kiertopiste prosentteina</td><td>C</td></tr>
+<tr><td><strong>49</strong></td><td>30.11.–4.12.</td><td>OBJ-vienti: osat erillisinä Blenderiin</td><td>C</td></tr>
+<tr><td><strong>50</strong></td><td>7.–11.12.</td><td>Tallennus ja MVP: versio v0.1 julki</td><td>C</td></tr>
+<tr><td><strong>51</strong></td><td>14.–17.12.</td><td>Katselmointi: asiakkaat kokeilevat MVP:tä</td><td>C</td></tr>
+<tr><td>52</td><td>21.–25.12.</td><td>Joululoma – ei projektityötä</td><td>–</td></tr>
+<tr><td>53</td><td>28.12.–1.1.</td><td>Joululoma – ei projektityötä</td><td>–</td></tr>
+<tr><td>1</td><td>4.–8.1.</td><td>Joululoma – ei projektityötä</td><td>–</td></tr>
+<tr><td><strong>2</strong></td><td>11.–15.1.</td><td>Paluuviikko: testit läpi ja P1-järjestys</td><td>D</td></tr>
+<tr><td><strong>3</strong></td><td>18.–22.1.</td><td>Päivitä SVG: muokattu piirros malliksi</td><td>D</td></tr>
+<tr><td><strong>4</strong></td><td>25.–29.1.</td><td>Jousto ja P1: rästit tai seuraava toiminto</td><td>D</td></tr>
+<tr><td><strong>5</strong></td><td>1.–5.2.</td><td>Saavutettavuus: isot kahvat ja näppäimistö</td><td>D</td></tr>
+<tr><td><strong>6</strong></td><td>8.–12.2.</td><td>Julkaisutesti: julkaisuehdokas v1.0-rc1</td><td>E</td></tr>
+<tr><td><strong>7</strong></td><td>15.–19.2.</td><td>v1.0: julkaisu ja asiakkaiden vahvistus</td><td>E</td></tr>
+<tr><td>8</td><td>22.–26.2.</td><td>Talviloma – ei projektityötä</td><td>–</td></tr>
+<tr><td><strong>9</strong></td><td>1.–5.3.</td><td>Näyttö: demo ja luovutus</td><td>E</td></tr>
+</table><p class="muted">Palautus viimeistään pe 5.3.2027. Sivusto: tehtävien tarkat ohjeet, toteutusavut ja projektipäiväkirja.</p>
+<h1 class="page">Vaihe A – Työkalut ja harjoitussykli</h1>
+<div class="wk"><h2>Vko 40 · 28.9.–2.10. – Aloitus: työkalut, repository ja oma MVP</h2>
+<p class="feature">VS Code ja GitHub ovat korkean kontrastin teemassa. Komennot <code>git --version</code> ja <code>node --version</code> tulostavat versiot. Julkinen repository on kloonattu VS Codeen ja jaettu ohjaajalle. <code>project-docs/mvp.md</code> on pushattu.</p>
+<p class="task">☐&nbsp; Asenna VS Code, Git, Node.js, Inkscape ja Blender. Vaihda VS Codeen ja GitHubiin korkean kontrastin teema.</p>
+<p class="task">☐&nbsp; Luo julkinen repository README-tiedoston kanssa. Kloonaa se VS Codeen. Jaa se ohjaajalle.</p>
+<p class="task">☐&nbsp; Kirjoita MVP omin sanoin tiedostoon project-docs/mvp.md. Tee commit ja push. Lähetä kysymyslista asiakkaille.</p>
+<p class="task">☐&nbsp; Mittaa yhden agenttipyynnön hinta viestipohjalla. Kirjaa hinta päiväkirjaan.</p>
+<p class="done"><strong>Valmis kun:</strong> Ohjaaja näkee repositoryn, <code>mvp.md</code> on GitHubissa, kysymyslista on lähetetty, ja päiväkirjassa on agenttipyynnön hinta tai merkintä "odottaa käyttönäkymää".</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: repositoryn osoite, project-docs/mvp.md GitHubissa ja agenttipyynnön hinta päiväkirjassa.</p>
+</div>
+<div class="wk"><h2>Vko 41 · 5.–9.10. – Harjoitussykli: pyörivä kuutio julki</h2>
+<p class="feature">Selaimessa pyörii Three.js-kuutio omassa Pages-osoitteessasi. Testitapaukset T01 ja T02 menevät läpi.</p>
+<p class="task">☐&nbsp; Päätä, hyväksytkö teknisen ehdotuksen. Perustele päätös suunnitelmaan. Luo sitten tekninen pohja itse komennoilla.</p>
+<p class="task">☐&nbsp; Kirjoita testitapaus T01 ennen koodia. Mitä odotat, kun kiertokulma saa ajan 0 ja nopeuden 0,5? Entä kun aika on 3?</p>
+<p class="task">☐&nbsp; Tee kortti #1 (kuutio) työsyklillä mallikortin avulla. Aja T01.</p>
+<p class="task">☐&nbsp; Tee kortti #2 (Pages-julkaisu) työsyklillä. Aja T02.</p>
+<p class="done"><strong>Valmis kun:</strong> Pages-osoite näyttää pyörivän kuution myös toisella laitteella, esimerkiksi puhelimella. <code>npm test</code> näyttää, että T01 menee läpi. Issuet #1 ja #2 on suljettu commitilla.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Pages-osoite, issuet #1 ja #2 suljettuina sekä T01:n ja T02:n tulokset issueissa.</p>
+</div>
+<div class="wk"><h2>Vko 42 · 12.–16.10. – Syysloma</h2><p>Ei projektityötä eikä korvaavia tehtäviä. Jatka viikolla 43 tilatiedoston Seuraavana-kohdasta.</p></div>
+<h1 class="page">Vaihe B – MVP-ydin: SVG:stä muotoja</h1>
+<div class="wk"><h2>Vko 43 · 19.–23.10. – SVG-tuonti: polut näkyviin</h2>
+<p class="feature">Inkscapessa piirretty SVG avautuu sovellukseen. Sen polut näkyvät 3D-näkymässä viivoina.</p>
+<p class="task">☐&nbsp; Piirrä Inkscapessa testitiedosto, jossa on nimetyt layerit ja kolme sisäkkäistä ryhmää.</p>
+<p class="task">☐&nbsp; Kirjoita testitapaukset T03–T05 ennen toteutusta: kolme polkua, SVG, jossa on &lt;script>, ja tiedosto, joka ei ole SVG.</p>
+<p class="task">☐&nbsp; Kirjaa kansiorakenne ja moduulien rajat suunnitelmaan.</p>
+<p class="task">☐&nbsp; Toteuta tuonti työsyklillä kaistalla A, tiedosto kerrallaan.</p>
+<p class="task">☐&nbsp; Kokeile SVGLoaderin rajoitteita omalla tiedostollasi. Kirjaa ne kirjastot.md:hen.</p>
+<p class="done"><strong>Valmis kun:</strong> Oma SVG avautuu tiedostonvalinnalla, T03–T05 menevät läpi, ja <code>project-docs/kirjastot.md</code>:ssä on kaksi SVGLoaderin rajoitetta omalla tiedostolla kokeiltuna.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: oma SVG-tiedosto, T03–T05 issueissa ja project-docs/kirjastot.md.</p>
+</div>
+<div class="wk"><h2>Vko 44 · 26.–30.10. – Hierarkia: layerit ja ryhmät osiksi</h2>
+<p class="feature">SVG:n layerit ja ryhmät muuttuvat scene graphiksi eli 3D-näkymän vanhempi–lapsi-puuksi. Hierarkiapaneeli näyttää osien nimet sisennettyinä.</p>
+<p class="task">☐&nbsp; Kirjoita hierarkian muunnoksen rajapinta ja testitapaukset T06–T08 ennen toteutusta.</p>
+<p class="task">☐&nbsp; Toteuta muunnos puhtaana funktiona ja hierarkiapaneeli kaistalla C.</p>
+<p class="task">☐&nbsp; Päätä valinnan toiminta. Kirjaa se suunnitelmaan.</p>
+<p class="task">☐&nbsp; Vertaa kahta tapaa valita revolve. Tuo suositus ensi viikon palaveriin.</p>
+<p class="done"><strong>Valmis kun:</strong> Oman tiedostosi kolme ryhmätasoa näkyvät paneelissa sisennettyinä, T06–T08 menevät läpi, ja suunnitelmassa on valinnan toiminta perusteluineen.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: rajapinta ja T06–T08 issueissa, hierarkiapaneeli Pages-osoitteessa ja valinnan päätös suunnitelmassa.</p>
+</div>
+<div class="wk"><h2>Vko 45 · 2.–6.11. – Revolve: profiilista pyörähdyskappale</h2>
+<p class="feature">Puoliprofiilista syntyy pyörähdyskappale. Segmenttien määrää voi säätää välillä 3–32. Kappaletta voi kiertää hiirellä joka puolelta.</p>
+<p class="task">☐&nbsp; Sovi palaverissa revolven valintatapa. Kirjaa, mitä profiilille tehdään akselin väärällä puolella.</p>
+<p class="task">☐&nbsp; Kirjoita testitapaukset T09–T11 ennen toteutusta. Kysy tarvittaessa kysymystilasta, miten LatheGeometry lukee pisteet.</p>
+<p class="task">☐&nbsp; Toteuta revolve, segmenttisäädin ja orbit työsyklillä.</p>
+<p class="done"><strong>Valmis kun:</strong> Oma profiilisi pyörähtää kappaleeksi, segmenttisäädin muuttaa särmien määrää välillä 3–32, ja T09–T11 menevät läpi.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: T09–T11 issueissa, pyörähdyskappale Pages-osoitteessa ja sovittu valintatapa issue-kommenttina.</p>
+</div>
+<div class="wk"><h2>Vko 46 · 9.–13.11. – Inflate ja kamera: putki ja suorat näkymät</h2>
+<p class="feature">Viivapolusta syntyy putki, jossa on 3–8 sivua. Orientaatiokuutiolla kamera kääntyy katsomaan suoraan edestä, sivulta tai ylhäältä. View lock -painike lukitsee kierron.</p>
+<p class="task">☐&nbsp; Kirjoita testitapaukset T12–T14 ennen toteutusta.</p>
+<p class="task">☐&nbsp; Toteuta inflate ja sivumäärän säädin työsyklillä. Kirjaa TubeGeometryn rajoitteet.</p>
+<p class="task">☐&nbsp; Toteuta orientaatiokuutio ja view lock -painike työsyklillä.</p>
+<p class="done"><strong>Valmis kun:</strong> Inflate on valmis, kun oma polkusi muuttuu putkeksi, sivumäärän voi valita väliltä 3–8 ja T12–T13 menevät läpi. Kamera on valmis, kun kuution sivua klikkaamalla kamera kääntyy suoraan akselin suuntaan, view lock estää kierron ja T14 menee läpi. Jos kamera siirtyy viikolle 47, se on sovittu vaihtoehto eikä virhe.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: T12–T14 issueissa, putki ja suorat näkymät Pages-osoitteessa ja TubeGeometryn rajoitteet kirjastot.md:ssä.</p>
+</div>
+<div class="wk"><h2>Vko 47 · 16.–20.11. – Transformit: valitse, siirrä, kierrä ja skaalaa</h2>
+<p class="feature">Osan voi valita, siirtää, kiertää ja skaalata. Lapset seuraavat vanhempaa.</p>
+<p class="task">☐&nbsp; Kirjoita testitapaus T15 ennen toteutusta. Mitä odotat lapsen paikalle, kun vanhempaa siirretään 10 yksikköä?</p>
+<p class="task">☐&nbsp; Toteuta valinta suunnitelmasi mukaan. Toteuta siirto, kierto ja skaalaus työsyklillä.</p>
+<p class="task">☐&nbsp; Aja T15. Jos se ei mene läpi kahdella yrityksellä, avaa havaintoissue.</p>
+<p class="done"><strong>Valmis kun:</strong> Osan voi valita suunnitelmasi mukaan. Siirto, kierto ja skaalaus toimivat. T15 menee läpi, tai siitä on havaintoissue.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: T15 issuessa, transformit Pages-osoitteessa ja P0-tilanne palaverin issue-kommentissa.</p>
+</div>
+<h1 class="page">Vaihe C – MVP valmiiksi ja katselmointi</h1>
+<div class="wk"><h2>Vko 48 · 23.–27.11. – Pivot: kiertopiste prosentteina</h2>
+<p class="feature">Pivot on oletuksena kappaleen keskipisteessä. Sen voi asettaa transformivalikossa prosentteina X/Y/Z.</p>
+<p class="task">☐&nbsp; Kirjoita pivotin syötteen tarkistuksen rajapinta ja testitapaukset T16–T18 ennen toteutusta.</p>
+<p class="task">☐&nbsp; Toteuta pivot ja syötteen tarkistus työsyklillä.</p>
+<p class="task">☐&nbsp; Lisää transformivalikko prosenttisyötöllä käyttöliittymävaatimuksesi mukaan.</p>
+<p class="done"><strong>Valmis kun:</strong> Pivot 50/50/50 on keskipisteessä, prosentit muuttavat pivotin paikkaa, virheellinen syöte käsitellään kriteerisi mukaan, ja T16–T18 menevät läpi.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: rajapinta ja T16–T18 issueissa sekä transformivalikko Pages-osoitteessa.</p>
+</div>
+<div class="wk"><h2>Vko 49 · 30.11.–4.12. – OBJ-vienti: osat erillisinä Blenderiin</h2>
+<p class="feature">Malli tallentuu .obj-tiedostoksi, jossa jokainen osa on oma objektinsa. Tiedosto aukeaa Blenderissä.</p>
+<p class="task">☐&nbsp; Kirjoita objektijaon rajapinta ja testitapaukset T19–T20 ennen toteutusta.</p>
+<p class="task">☐&nbsp; Toteuta vienti niin, että osien nimet säilyvät.</p>
+<p class="task">☐&nbsp; Laske o-rivit VS Codessa. Avaa tiedosto Blenderissä kuvaohjeen mukaan.</p>
+<p class="task">☐&nbsp; Kirjoita ensimmäinen virheenkorjausketju havaintoissueistasi. Kirjoita sille regressiotesti.</p>
+<p class="done"><strong>Valmis kun:</strong> Kolmen osan mallista syntyy .obj-tiedosto, jossa on kolme o-riviä osien nimillä. Tiedosto aukeaa Blenderissä. T19–T20 menevät läpi. Virheenkorjausketjun kuusi osaa ovat havaintoissuessa.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: T19–T20 issueissa, viety .obj-tiedosto, kuva Blenderistä ja virheenkorjausketju 1 havaintoissuessa.</p>
+</div>
+<div class="wk"><h2>Vko 50 · 7.–11.12. – Tallennus ja MVP: versio v0.1 julki</h2>
+<p class="feature">Projektin voi tallentaa JSON-tiedostoksi ja avata samassa tilassa. MVP on julkaistu versiona v0.1.</p>
+<p class="task">☐&nbsp; Vertaa tallennustapoja oman suunnitelmasi kriteereillä. Kirjaa valinta suunnitelmaan.</p>
+<p class="task">☐&nbsp; Kirjoita testitapaukset T21–T22 ennen toteutusta.</p>
+<p class="task">☐&nbsp; Toteuta tallennus ja avaus työsyklillä. Kirjoita tietoturva-arvio tuonnista ja avauksesta.</p>
+<p class="task">☐&nbsp; Julkaise MVP. Merkitse versio tagilla v0.1.</p>
+<p class="done"><strong>Valmis kun:</strong> Tallennettu projekti avautuu samassa tilassa, rikottu tiedosto antaa virheilmoituksen, <code>project-docs/tietoturva.md</code> on repositoryssa, ja tagi v0.1 näkyy GitHubissa.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: tallennusvertailu suunnitelmassa, T21–T22 issueissa, project-docs/tietoturva.md ja tagi v0.1.</p>
+</div>
+<div class="wk"><h2>Vko 51 · 14.–17.12. – Katselmointi: asiakkaat kokeilevat MVP:tä</h2>
+<p class="feature">Asiakkaat ovat kokeilleet MVP:tä. Jokaisesta havainnosta on issue, jossa on asiakkaan antama prioriteetti.</p>
+<p class="task">☐&nbsp; Valmistele viiden minuutin demo omalla Inkscape-tiedostolla.</p>
+<p class="task">☐&nbsp; Pidä katselmointi asiakkaiden kanssa. Pidä heidän havaintonsa erillään omasta tulkinnastasi.</p>
+<p class="task">☐&nbsp; Tee havainnoista issuet. Kirjaa niihin asiakkaan prioriteetti.</p>
+<p class="task">☐&nbsp; Kirjoita tilatiedoston Seuraavana-kohtaan viikon 2 ensimmäinen tehtävä issue-numeroineen.</p>
+<p class="done"><strong>Valmis kun:</strong> Katselmointiloki on tiedostossa <code>project-docs/katselmointi.md</code>, jokaisesta havainnosta on issue prioriteetteineen, ja tilatiedoston Seuraavana-kohdassa on viikon 2 ensimmäinen tehtävä issue-numeroineen.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: project-docs/katselmointi.md, havaintoissuet prioriteetteineen ja tilatiedoston Seuraavana-kohta.</p>
+</div>
+<div class="wk"><h2>Vko 52 · 21.–25.12. – Joululoma</h2><p>Joululoma alkaa pe 18.12. Ei projektityötä eikä korvaavia tehtäviä.</p></div>
+<div class="wk"><h2>Vko 53 · 28.12.–1.1. – Joululoma</h2><p>Joululoma jatkuu. Ei projektityötä eikä korvaavia tehtäviä.</p></div>
+<div class="wk"><h2>Vko 1 · 4.–8.1. – Joululoma</h2><p>Joululoma päättyy su 10.1. Jatka ma 11.1. viikolla 2 tilatiedoston Seuraavana-kohdasta.</p></div>
+<h1 class="page">Vaihe D – Jatkokehitys katselmoinnin pohjalta</h1>
+<div class="wk"><h2>Vko 2 · 11.–15.1. – Paluuviikko: testit läpi ja P1-järjestys</h2>
+<p class="feature">Kaikki testit menevät läpi. P1-järjestys on sovittu tuntiarvioineen. Yksi pieni korjaus katselmoinnista on GitHubissa.</p>
+<p class="task">☐&nbsp; Aja npm install, npm run dev ja npm test. Kirjaa tulos.</p>
+<p class="task">☐&nbsp; Ehdota P1-järjestys ja tuntiarviot asiakkaiden prioriteettien pohjalta. Sovi järjestys palaverissa.</p>
+<p class="task">☐&nbsp; Tee yksi pieni korjaus katselmoinnin havainnoista kaistalla B.</p>
+<p class="done"><strong>Valmis kun:</strong> <code>npm test</code> näyttää, että kaikki testit menevät läpi, P1-järjestys on sovittu palaverissa, ja korjauksen commit on GitHubissa.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: testiajon tulos päiväkirjassa, P1-järjestys issueissa ja korjauksen commit.</p>
+</div>
+<div class="wk"><h2>Vko 3 · 18.–22.1. – Päivitä SVG: muokattu piirros malliksi</h2>
+<p class="feature">Päivitä SVG -toiminto rakentaa mallin uudelleen muokatusta tiedostosta. Osien transformit säilyvät.</p>
+<p class="task">☐&nbsp; Sovi palaverissa, miten osat tunnistetaan uudesta tiedostosta.</p>
+<p class="task">☐&nbsp; Kirjoita testitapaus T23 ennen toteutusta.</p>
+<p class="task">☐&nbsp; Toteuta toiminto omassa haarassa. Aja kaikki testit. Liitä haara päähaaraan pull requestilla.</p>
+<p class="done"><strong>Valmis kun:</strong> Muokattu SVG päivittyy malliin, transformit säilyvät, kaikki testit menevät läpi, ja pull request on yhdistetty päähaaraan.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: T23 issuessa ja yhdistetty pull request.</p>
+</div>
+<div class="wk"><h2>Vko 4 · 25.–29.1. – Jousto ja P1: rästit tai seuraava toiminto</h2>
+<p class="feature">Jos P0-rästejä on, ne ovat valmiit. Muuten seuraava sovittu P1-toiminto toimii.</p>
+<p class="task">☐&nbsp; Tee ensin P0-rästit omassa haarassa, jos niitä on.</p>
+<p class="task">☐&nbsp; Kirjoita seuraavan P1-toiminnon testitapaus T24 ennen toteutusta.</p>
+<p class="task">☐&nbsp; Toteuta toiminto työsyklillä. Kirjoita toinen virheenkorjausketju.</p>
+<p class="done"><strong>Valmis kun:</strong> P0-rästit on liitetty päähaaraan pull requestilla, tai P1-toiminto toimii ja T24 menee läpi. Virheenkorjausketjun kuusi osaa ovat havaintoissuessa.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: T24 issuessa, valmis toiminto Pages-osoitteessa ja virheenkorjausketju 2 havaintoissuessa.</p>
+</div>
+<div class="wk"><h2>Vko 5 · 1.–5.2. – Saavutettavuus: isot kahvat ja näppäimistö</h2>
+<p class="feature">Sovelluksessa on isot kahvat ja näppäimistökäyttö. Lighthousen tulokset ennen ja jälkeen on kirjattu. Mikään kohta ei heikentynyt, ja löydetyt puutteet on korjattu.</p>
+<p class="task">☐&nbsp; Aja Lighthouse. Kirjaa perusmittaus.</p>
+<p class="task">☐&nbsp; Tarkista käyttöliittymävaatimuksesi. Kirjoita testitapaukset T25–T26 ennen toteutusta.</p>
+<p class="task">☐&nbsp; Toteuta isot kahvat ja näppäimistökäyttö työsyklillä.</p>
+<p class="task">☐&nbsp; Aja T25–T26 ja Lighthouse uudelleen. Vertaa tuloksia.</p>
+<p class="done"><strong>Valmis kun:</strong> Lighthousen tulokset ennen ja jälkeen on kirjattu, mikään kohta ei heikentynyt, T25–T26 menevät läpi, ja löydetyt puutteet on korjattu tai kirjattu issueiksi.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Lighthousen tulokset ennen ja jälkeen, T25–T26 issueissa ja korjausten commitit.</p>
+</div>
+<h1 class="page">Vaihe E – Julkaisu ja näyttö</h1>
+<div class="wk"><h2>Vko 6 · 8.–12.2. – Julkaisutesti: julkaisuehdokas v1.0-rc1</h2>
+<p class="feature">Julkaisuehdokas v1.0-rc1 on jäädytetty. Toinen opiskelija on kulkenut README:n avulla koko polun Inkscape-piirroksesta .obj-tiedostoon.</p>
+<p class="task">☐&nbsp; Jäädytä sisältö. Merkitse julkaisuehdokas tagilla v1.0-rc1.</p>
+<p class="task">☐&nbsp; Täydennä README ja käyttöohje. Kerro ohjeessa Inkscapen nimeämissäännöt.</p>
+<p class="task">☐&nbsp; Pyydä julkaisutestaajaa kulkemaan koko polku puhtaassa ympäristössä. Pidä hänen havaintonsa erillään omasta tulkinnastasi.</p>
+<p class="done"><strong>Valmis kun:</strong> Julkaisutestaajan .obj-tiedosto aukeaa, ja epäröinnit on listattu pöytäkirjaan. Testaajan nimi ja sanatarkat lausumat on lähetetty ohjaajalle Teamsissa. Repositoryyn on kirjattu vain rooli.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: tagi v1.0-rc1, README ja käyttöohje sekä project-docs/julkaisutesti.md.</p>
+</div>
+<div class="wk"><h2>Vko 7 · 15.–19.2. – v1.0: julkaisu ja asiakkaiden vahvistus</h2>
+<p class="feature">Julkaisutestin estävät havainnot on korjattu. Versio v1.0 on julki. Asiakkaat ovat vahvistaneet, että se toimii heidän koneellaan. Näyttömatriisin jokaisella rivillä on linkki työnäytteeseen.</p>
+<p class="task">☐&nbsp; Korjaa estävät havainnot. Kirjoita kolmas virheenkorjausketju.</p>
+<p class="task">☐&nbsp; Julkaise v1.0 tagilla. Pyydä asiakkaita vahvistamaan, että se toimii heidän koneellaan.</p>
+<p class="task">☐&nbsp; Linkitä näyttömatriisin rivit päiväkirjan tunnusten avulla.</p>
+<p class="done"><strong>Valmis kun:</strong> Estävät issuet on suljettu, tagi v1.0 näkyy GitHubissa, asiakkaat ovat vahvistaneet toimivuuden, ja jokaisella matriisin rivillä on linkki.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: tagi v1.0, virheenkorjausketju 3, asiakkaiden vahvistus ja linkitetty näyttömatriisi.</p>
+</div>
+<div class="wk"><h2>Vko 8 · 22.–26.2. – Talviloma</h2><p>Ei projektityötä eikä korvaavia tehtäviä. Jatka viikolla 9 näytön valmistelulla.</p></div>
+<div class="wk"><h2>Vko 9 · 1.–5.3. – Näyttö: demo ja luovutus</h2>
+<p class="feature">Ajastettu 8–10 minuutin demo on pidetty. Kaikki viisi osaa on näytetty. Aineisto on luovutettu pe 5.3.2027.</p>
+<p class="task">☐&nbsp; Jäädytä sisältö maanantaina. Tarkista, että jokainen työnäyte on repositoryssa.</p>
+<p class="task">☐&nbsp; Harjoittele demo ajastettuna: tuotos, yksi tekninen ratkaisu omin sanoin, korjattu virhe, Git-historia ja työnkulku yhdellä kortilla.</p>
+<p class="task">☐&nbsp; Kirjoita itsearviointi kolmesta tilanteesta. Lähetä se ohjaajalle Teamsissa.</p>
+<p class="done"><strong>Valmis kun:</strong> Demo on pidetty 8–10 minuutissa, kaikki viisi osaa on näytetty, itsearviointi on lähetetty ohjaajalle, ja aineisto on luovutettu perjantaina.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: demo, linkitetty näyttömatriisi ja itsearvioinnin lähetyspäivä päiväkirjassa.</p>
+</div>
+<h1 class="page">Viimeiset viisi päivää</h1>
+<p class="task"><strong>Ma 1.3.</strong> · Sisältöjäädytys: työnäytteet repositoryssa</p>
+<p class="task"><strong>Ti 2.3.</strong> · Aineisto: päiväkirja, AI-loki ja näyttömatriisin linkit</p>
+<p class="task"><strong>Ke 3.3.</strong> · Demon harjoittelu ajastettuna toiselle henkilölle</p>
+<p class="task"><strong>To 4.3.</strong> · Puskuri ja itsearviointi Teamsissa ohjaajalle</p>
+<p class="task"><strong>Pe 5.3.</strong> · Demo ja luovutus</p>
+<h1 class="page">Sanasto</h1><p class="muted">Projektin tunnukset ja ammattitermit siinä järjestyksessä, jossa ne tulevat vastaan. Jokainen on selitetty myös sivustolla ensimmäisen käytön kohdalla.</p><table>
+<tr><td style="width:24%"><strong>Copilot</strong><br><span class="muted">vko 40</span></td><td><strong>Microsoft 365 Copilot.</strong> Tekoäly selaimessa BC:n tunnuksella. Suunnittelee ja pilkkoo viikon tavoitteen tehtäväkorteiksi. Tässä projektissa sana Copilot tarkoittaa aina tätä.</td></tr>
+<tr><td style="width:24%"><strong>GitHub Copilot</strong><br><span class="muted">vko 40</span></td><td><strong>koodityökalu VS Codessa.</strong> Tekoäly, joka toteuttaa tehtäväkortin VS Codessa. Tässä projektissa sana GitHub Copilot tarkoittaa aina tätä.</td></tr>
+<tr><td style="width:24%"><strong>MVP</strong><br><span class="muted">vko 40</span></td><td><strong>Minimum Viable Product.</strong> Pienin käytettävä versio. Tässä projektissa MVP on sama kuin P0 ja valmistuu ennen joulua.</td></tr>
+<tr><td style="width:24%"><strong>P0</strong><br><span class="muted">vko 40</span></td><td><strong>Pakollinen ydin.</strong> Toiminnot, joiden pitää valmistua ennen joulua. Ilman niitä tuotosta ei ole.</td></tr>
+<tr><td style="width:24%"><strong>P1</strong><br><span class="muted">vko 40</span></td><td><strong>Tärkeä jatko.</strong> Toiminnot, jotka tehdään joululoman jälkeen, kun P0 toimii.</td></tr>
+<tr><td style="width:24%"><strong>P2</strong><br><span class="muted">vko 40</span></td><td><strong>Jatkolista.</strong> Toiminnot, jotka jäävät tämän näytön jälkeen tehtäviksi. Ne eivät ole hylättyjä.</td></tr>
+<tr><td style="width:24%"><strong>SVG</strong><br><span class="muted">vko 40</span></td><td><strong>vektorikuva.</strong> Kuvan tiedostomuoto, jossa kuva koostuu poluista. Inkscape tallentaa piirrokset SVG-tiedostoiksi.</td></tr>
+<tr><td style="width:24%"><strong>low-poly</strong><br><span class="muted">vko 40</span></td><td>3D-malli, jossa on vähän monikulmioita. Pinnat näkyvät tasaisina, kulmikkaina paloina.</td></tr>
+<tr><td style="width:24%"><strong>repository</strong><br><span class="muted">vko 40</span></td><td><strong>Git-repository.</strong> Projektin kansio GitHubissa. Siellä on koodi, historia ja issuet. Kaikki työnäytteet ovat repositoryssa.</td></tr>
+<tr><td style="width:24%"><strong>README</strong><br><span class="muted">vko 40</span></td><td>Repositoryn etusivun ohje. Kertoo, mikä työkalu on ja miten sen saa käyttöön.</td></tr>
+<tr><td style="width:24%"><strong>kloonaus</strong><br><span class="muted">vko 40</span></td><td>Repositoryn kopiointi omalle koneelle. VS Code ja GitHub Copilot käsittelevät kloonattua kansiota.</td></tr>
+<tr><td style="width:24%"><strong>commit</strong><br><span class="muted">vko 40</span></td><td>Yksi nimetty muutos Gitissä. Commitilla on viesti ja tunnus.</td></tr>
+<tr><td style="width:24%"><strong>push</strong><br><span class="muted">vko 40</span></td><td>Commitien lähetys omalta koneelta GitHubiin.</td></tr>
+<tr><td style="width:24%"><strong>Collaborator</strong><br><span class="muted">vko 40</span></td><td>Henkilö, jolle repository on jaettu. Ohjaaja näkee ja voi kommentoida repositorya.</td></tr>
+<tr><td style="width:24%"><strong>tilatiedosto</strong><br><span class="muted">vko 40</span></td><td><strong>PROJEKTIN-TILA.md.</strong> Tiedosto, jossa on kohdat Valmista, Seuraavana, Tehdyt päätökset ja Avoimet kysymykset. Liität sen Copilotiin. Älä anna sitä GitHub Copilotille.</td></tr>
+<tr><td style="width:24%"><strong>viestipohja</strong><br><span class="muted">vko 40</span></td><td>Valmis viesti, jonka kopioit ja täydennät. Sivun Kopioi-nappi kopioi sen.</td></tr>
+<tr><td style="width:24%"><strong>krediitti</strong><br><span class="muted">vko 40</span></td><td><strong>GitHub Copilotin käyttöraha.</strong> 200 krediittiä kuukaudessa. Yksi krediitti on 0,01 USD. Agenttitila kuluttaa niitä. Täydennykset ovat ilmaisia. Budjetti nollautuu kuun 1. päivänä, eikä käyttämätön osuus siirry.</td></tr>
+<tr><td style="width:24%"><strong>agenttitila</strong><br><span class="muted">vko 40</span></td><td><strong>Agent.</strong> GitHub Copilotin tila, joka muokkaa useaa tiedostoa. Kuluttaa krediittejä.</td></tr>
+<tr><td style="width:24%"><strong>käyttönäkymä</strong><br><span class="muted">vko 40</span></td><td>GitHubin sivu, jolla krediittien kulutus näkyy.</td></tr>
+<tr><td style="width:24%"><strong>projektipäiväkirja</strong><br><span class="muted">vko 40</span></td><td>Tämän sivun viikkokirjaus: mitä teit, miksi ja missä työnäyte on. Ladataan kansioon project-docs joka viikko.</td></tr>
+<tr><td style="width:24%"><strong>AI-loki</strong><br><span class="muted">vko 40</span></td><td>Tämän sivun loki tekoälyn käytöstä: mihin pyysit apua, hyväksyitkö, korjautitko vai hylkäsitkö ja miksi.</td></tr>
+<tr><td style="width:24%"><strong>viikkopalaveri</strong><br><span class="muted">vko 40</span></td><td>Viikon tapaaminen ohjaajan kanssa maanantaina tai tiistaina. Tiimi tarkoittaa tässä projektissa sinua ja ohjaajaa.</td></tr>
+<tr><td style="width:24%"><strong>työsykli</strong><br><span class="muted">vko 41</span></td><td><strong>kuusi askelta.</strong> Suunnittele, Siirrä, Rakenna, Tarkista, Raportoi ja Kirjaa. Sama jokaisessa tehtäväkortissa.</td></tr>
+<tr><td style="width:24%"><strong>tehtäväkortti</strong><br><span class="muted">vko 41</span></td><td>Yksi rajattu tehtävä: tavoite, kaista, tiedostot, Älä tee -kohta, hyväksymiskriteerit ja testi.</td></tr>
+<tr><td style="width:24%"><strong>hyväksymiskriteeri</strong><br><span class="muted">vko 41</span></td><td>Havaittava ehto, jonka pitää toteutua, jotta kortti on valmis. Esimerkiksi: kuutio näkyy ja pyörii.</td></tr>
+<tr><td style="width:24%"><strong>issue</strong><br><span class="muted">vko 41</span></td><td><strong>GitHub-issue.</strong> Tehtäväkortti GitHubissa, label tehtäväkortti. Suljetaan commit-viestin rivillä <code>Closes #N</code>.</td></tr>
+<tr><td style="width:24%"><strong>mallikortti</strong><br><span class="muted">vko 41</span></td><td>Valmis esimerkkikortti, johon omaa korttia verrataan. Viikolla 41 siinä on myös testipohja.</td></tr>
+<tr><td style="width:24%"><strong>kaista</strong><br><span class="muted">vko 41</span></td><td><strong>A, B tai C.</strong> Toteutustapa. A: Copilot kirjoittaa koodin yksi tiedosto kerrallaan. B (viikolta 43): kommentti ja täydennys VS Codessa, myös testit. C (viikolta 44): GitHub Copilotin agenttitila useaan tiedostoon.</td></tr>
+<tr><td style="width:24%"><strong>T01</strong><br><span class="muted">vko 41</span></td><td><strong>Testitapauksen tunnus.</strong> T tarkoittaa testitapausta. Numero yksilöi sen: T01 on ensimmäinen, T02 toinen. Odotettu tulos kirjataan, ennen kuin koodi tehdään. Lisätesti on ylimääräinen testi ilman numeroa.</td></tr>
+<tr><td style="width:24%"><strong>tekninen pohja</strong><br><span class="muted">vko 41</span></td><td><strong>Vite, React, Three.js ja Vitest.</strong> Sovelluksen perusta. Vite käynnistää ja rakentaa sovelluksen. React tekee näkymät. Three.js piirtää 3D:n. Vitest ajaa testit.</td></tr>
+<tr><td style="width:24%"><strong>GitHub Pages</strong><br><span class="muted">vko 41</span></td><td>Julkaisupaikka. GitHub Actions on automaatio, joka julkaisee sovelluksen jokaisen pushin jälkeen.</td></tr>
+<tr><td style="width:24%"><strong>main</strong><br><span class="muted">vko 41</span></td><td><strong>päähaara.</strong> Repositoryn päälinja. Julkaisu tehdään päähaarasta.</td></tr>
+<tr><td style="width:24%"><strong>kahden yrityksen sääntö</strong><br><span class="muted">vko 41</span></td><td>Kun sama asia epäonnistuu kahdesti, lopetetaan yrittäminen ja palataan Copilotille.</td></tr>
+<tr><td style="width:24%"><strong>täydennys</strong><br><span class="muted">vko 43</span></td><td>GitHub Copilotin harmaa koodiehdotus VS Codessa. Hyväksytään Tab-näppäimellä. Ei kuluta krediittejä.</td></tr>
+<tr><td style="width:24%"><strong>moduuli</strong><br><span class="muted">vko 43</span></td><td>Kansio tai tiedosto, jolla on yksi vastuu. Esimerkiksi tuonti on eri moduuli kuin vienti.</td></tr>
+<tr><td style="width:24%"><strong>havaintoissue</strong><br><span class="muted">vko 43</span></td><td><strong>label havainto.</strong> Issue, johon kirjataan virhe: mitä odotit, mitä tapahtui ja miten virheen saa toistettua. Suljetaan korjauscommitilla.</td></tr>
+<tr><td style="width:24%"><strong>layer</strong><br><span class="muted">vko 43</span></td><td><strong>Inkscapen taso.</strong> Inkscapen piirroksen taso. Layerin nimestä tulee mallin osan nimi.</td></tr>
+<tr><td style="width:24%"><strong>scene graph</strong><br><span class="muted">vko 44</span></td><td><strong>vanhempi–lapsi-puu.</strong> 3D-näkymän rakenne, jossa osat ovat vanhempi–lapsi-suhteessa. Kun vanhempi liikkuu, lapset liikkuvat mukana.</td></tr>
+<tr><td style="width:24%"><strong>hierarkiapaneeli</strong><br><span class="muted">vko 44</span></td><td>Sovelluksen paneeli, joka näyttää scene graphin osat sisennettyinä.</td></tr>
+<tr><td style="width:24%"><strong>puhdas funktio</strong><br><span class="muted">vko 44</span></td><td>Funktio, joka ei muuta mitään itsensä ulkopuolella. Sama syöte antaa aina saman tuloksen.</td></tr>
+<tr><td style="width:24%"><strong>rajapinta</strong><br><span class="muted">vko 44</span></td><td>Funktion nimi, syöte ja paluuarvo. Rajapinta kirjoitetaan korttiin ennen toteutusta.</td></tr>
+<tr><td style="width:24%"><strong>revolve</strong><br><span class="muted">vko 45</span></td><td><strong>pyörähdyskappale.</strong> Puoliprofiili pyörähtää akselin ympäri, ja siitä syntyy kappale, esimerkiksi maljakko.</td></tr>
+<tr><td style="width:24%"><strong>orbit</strong><br><span class="muted">vko 45</span></td><td>Näkymän kierto hiirellä mallin ympäri.</td></tr>
+<tr><td style="width:24%"><strong>kysymystila</strong><br><span class="muted">vko 45</span></td><td><strong>Ask.</strong> GitHub Copilotin tila, joka vastaa kysymyksiin mutta ei muuta tiedostoja.</td></tr>
+<tr><td style="width:24%"><strong>inflate</strong><br><span class="muted">vko 46</span></td><td><strong>polusta putki.</strong> Viivapolusta tulee putki, jossa on 3–8 sivua. Esimerkiksi johto tai sarvi.</td></tr>
+<tr><td style="width:24%"><strong>orientaatiokuutio</strong><br><span class="muted">vko 46</span></td><td><strong>Orientation Gizmo.</strong> Kuutio näkymän kulmassa. Kun klikkaat sen sivua, kamera kääntyy katsomaan mallia suoraan sivun suunnasta.</td></tr>
+<tr><td style="width:24%"><strong>suora näkymä</strong><br><span class="muted">vko 46</span></td><td>Katsot mallia tasan yhden akselin suunnasta, kuin pöydän reunalta tai ylhäältä. Suunnitelmassasi tämä on osa Orthographic Plane Snapia.</td></tr>
+<tr><td style="width:24%"><strong>ortografinen näkymä</strong><br><span class="muted">vko 46</span></td><td><strong>P1.</strong> Näkymä, jossa kaukana olevat osat eivät pienene kuten valokuvassa. Tehdään P1:ssä. P0:ssa kaukana olevat osat näyttävät pienemmiltä, ja se on oikein.</td></tr>
+<tr><td style="width:24%"><strong>view lock</strong><br><span class="muted">vko 46</span></td><td>Painike, joka estää kameran kiertymisen, kun teet tarkkaa työtä.</td></tr>
+<tr><td style="width:24%"><strong>transformi</strong><br><span class="muted">vko 47</span></td><td>Osan siirto, kierto ja skaalaus.</td></tr>
+<tr><td style="width:24%"><strong>pivot</strong><br><span class="muted">vko 48</span></td><td>Piste, jonka ympäri kappale kiertää ja skaalautuu. Oletuksena keskipisteessä.</td></tr>
+<tr><td style="width:24%"><strong>transformivalikko</strong><br><span class="muted">vko 48</span></td><td>Valikko, jossa pivot syötetään prosentteina X, Y ja Z.</td></tr>
+<tr><td style="width:24%"><strong>OBJ</strong><br><span class="muted">vko 49</span></td><td><strong>.obj-tiedosto.</strong> 3D-tiedostomuoto. Jokainen osa alkaa rivillä, jonka alussa on o-kirjain.</td></tr>
+<tr><td style="width:24%"><strong>virheenkorjausketju</strong><br><span class="muted">vko 49</span></td><td>Havainto → toistamisohje → syy → korjauscommit → uusintatesti → regressiotesti. Projektissa tehdään kolme ketjua.</td></tr>
+<tr><td style="width:24%"><strong>regressiotesti</strong><br><span class="muted">vko 49</span></td><td>Testi, joka toistaa korjatun virheen ja jää testeihin. Se varmistaa, ettei virhe palaa.</td></tr>
+<tr><td style="width:24%"><strong>vikatehtävä</strong><br><span class="muted">vko 49</span></td><td>Ohjaajan tekemä tarkoituksellinen virhe. Siitä tehdään virheenkorjausketju, jos aitoa havaintoa ei ole.</td></tr>
+<tr><td style="width:24%"><strong>JSON</strong><br><span class="muted">vko 50</span></td><td><strong>tallennusmuoto.</strong> Tekstimuotoinen tiedosto, johon projektin tiedot tallennetaan ja josta ne avataan uudelleen.</td></tr>
+<tr><td style="width:24%"><strong>tagi</strong><br><span class="muted">vko 50</span></td><td>Nimetty versio Gitissä, esimerkiksi v0.1 tai v1.0.</td></tr>
+<tr><td style="width:24%"><strong>tietoturva-arvio</strong><br><span class="muted">vko 50</span></td><td>Taulukko: uhka, testi, tulos ja toimenpide. Tässä projektissa uhkia ovat esimerkiksi haitallinen SVG ja rikottu JSON.</td></tr>
+<tr><td style="width:24%"><strong>katselmointi</strong><br><span class="muted">vko 51</span></td><td>Asiakas kokeilee versiota ja kertoo, mitä muutetaan. Asiakkaan sanat kirjataan erillään omasta tulkinnasta.</td></tr>
+<tr><td style="width:24%"><strong>haara</strong><br><span class="muted">vko 3</span></td><td>Oma työlinja. Muutokset eivät vaikuta päähaaraan, ennen kuin haara liitetään.</td></tr>
+<tr><td style="width:24%"><strong>pull request</strong><br><span class="muted">vko 3</span></td><td><strong>PR.</strong> Muutospyyntö, jolla haara liitetään päähaaraan. Luet muutokset ennen liittämistä.</td></tr>
+<tr><td style="width:24%"><strong>merge</strong><br><span class="muted">vko 3</span></td><td>Haaran liittäminen päähaaraan.</td></tr>
+<tr><td style="width:24%"><strong>kahva</strong><br><span class="muted">vko 5</span></td><td>Tartuntakohta 3D-näkymässä. Kahvasta vetämällä osaa siirretään, kierretään tai skaalataan.</td></tr>
+<tr><td style="width:24%"><strong>Lighthouse</strong><br><span class="muted">vko 5</span></td><td>Chromen kehittäjätyökalujen mittari. Se mittaa sivun saavutettavuuden pisteinä 0–100.</td></tr>
+<tr><td style="width:24%"><strong>RC</strong><br><span class="muted">vko 6</span></td><td><strong>julkaisuehdokas, release candidate.</strong> Versio, jossa sisältö on jäädytetty ja joka testataan ennen v1.0:aa. Tagi on v1.0-rc1.</td></tr>
+<tr><td style="width:24%"><strong>sisältöjäädytys</strong><br><span class="muted">vko 6</span></td><td>Uusia ominaisuuksia ei enää lisätä. Vain estävät virheet korjataan.</td></tr>
+<tr><td style="width:24%"><strong>työnäyte</strong><br><span class="muted">vko 7</span></td><td>Yksi tuotos, joka osoittaa osaamisesi: commit, issue, testi, kuva tai muistio.</td></tr>
+<tr><td style="width:24%"><strong>näyttömatriisi</strong><br><span class="muted">vko 7</span></td><td>Tämän sivun lista tutkinnon vaatimuksista. Jokaisella rivillä on linkki työnäytteeseen.</td></tr>
+</table>
+<h1 class="page">Näyttömatriisi – 31 osaamisvaatimusta</h1><p class="muted">Rasti vasta, kun vaatimukselle on täsmällinen työnäyte: linkki, commit, kuva, testirivi tai muistio. Sama työnäyte voi kelvata useaan kohtaan.</p>
+<h2>Ohjelmointi</h2>
+<p class="item">☐&nbsp; <strong>käyttää ohjelmointieditoria tai kehitysympäristöä</strong> – VS Code, GitHub Copilot, Viten kehityspalvelin ja Vitest käytössä viikoilta 40 ja 41. Versiot README:ssä. Paluuviikon ajo viikolla 2.</p>
+<p class="item">☐&nbsp; <strong>etsii ja korjaa virheitä ohjelmakoodista</strong> – Kolme virheenkorjausketjua havaintoissueista viikoilla 49, 4 ja 7: havainto, toistamisohje, syy omin sanoin, korjauscommit, uusintatesti ja regressiotesti.</p>
+<p class="item">☐&nbsp; <strong>testaa ohjelman toimintoja</strong> – Testitapaukset T01–T26 ja lisätestit viikoilta 41–5. Kirjoitat odotetun tuloksen itse testikoodiin ennen toteutusta. Tulokset issueissa.</p>
+<p class="item">☐&nbsp; <strong>käyttää rakenteista ohjelmointia toteutuksissa</strong> – Kolme funktiota selityspohjalla: hierarkian muunnos (viikko 44), pivotin syötteen tarkistus (48) ja OBJ-objektijako (49). Rajapinta ennen toteutusta. Selitys ääneen seuraavan viikon palaverissa.</p>
+<p class="item">☐&nbsp; <strong>tulkitsee suunnitelmia ja toteuttaa käyttöliittymän tai sen osia</strong> – Hierarkiapaneeli (44), view lock (46), transformivalikko (48) sekä isot kahvat ja näppäimistökäyttö (5) käyttöliittymävaatimuksesi mukaan. Lighthouse ennen ja jälkeen.</p>
+<p class="item">☐&nbsp; <strong>tulkitsee suunnitelmia ja toteuttaa ohjelmiston toimintoja</strong> – MVP-kuvauksesta tehtäväkortit ja toiminnot: tuonti (43), revolve (45), inflate (46) ja transformit (47) hyväksymiskriteerien mukaan.</p>
+<p class="item">☐&nbsp; <strong>sopii tehtävistä tiimin muiden jäsenten kanssa</strong> – Issue-kommentit "Sovittu viikkopalaverissa pp.kk." joka viikolta 41–7.</p>
+<p class="item">☐&nbsp; <strong>etsii ratkaisuvaihtoehtoja ja ratkoo ongelmia yhdessä tiimin kanssa</strong> – Revolven valintatavan vertailu ja yhteinen päätös (44–45). Osien tunnistustapa Päivitä SVG -toimintoon (3).</p>
+<p class="item">☐&nbsp; <strong>arvioi ratkaisujen toimivuuden yhdessä tiimin kanssa</strong> – Katselmointi asiakkaiden kanssa (51). Palaverin arvio MVP:n ratkaisuista P1:tä varten (2).</p>
+<p class="item">☐&nbsp; <strong>arvioi omaa toimintaa tiimin jäsenenä</strong> – Itsearviointi kolmesta tilanteesta viikolla 9. Se lähetetään ohjaajalle Teamsissa. Päiväkirjaan kirjataan vain tilanteiden päivät ja issue-numerot.</p>
+<h2>Ohjelmistokehittäjänä toimiminen</h2>
+<p class="item">☐&nbsp; <strong>selvittää kehitystiimin kanssa asiakkaan tarpeet</strong> – Kysymyslista asiakkaille (40). Vastaukset tiedostossa project-docs/kysymykset.md (41). MVP omin sanoin.</p>
+<p class="item">☐&nbsp; <strong>viestii tekniset asiat asiakaslähtöisesti</strong> – Viiden minuutin demo katselmoinnissa (51). README ja käyttöohje käyttäjälle (6).</p>
+<p class="item">☐&nbsp; <strong>osallistuu version katselmointiin</strong> – project-docs/katselmointi.md: asiakkaiden sanat, oma tulkinta ja sovitut muutokset (51).</p>
+<p class="item">☐&nbsp; <strong>asettaa kehitystiimin kanssa toteutettavat toiminnot tärkeysjärjestykseen</strong> – P0/P1/P2-karsinta perusteluineen (40). Asiakkaiden prioriteetit (51). P1-järjestys palaverissa (2).</p>
+<p class="item">☐&nbsp; <strong>jakaa kehitystiimin kanssa toteutettavat toiminnot tehtäviksi</strong> – Tehtäväkortit hyväksymiskriteereineen viikolta 41 alkaen. Oma rajausehdotus ja tarkistusrivi issueissa.</p>
+<p class="item">☐&nbsp; <strong>suunnittelee ja arvioi kehitystiimin kanssa tehtävien toteuttamista</strong> – Kaistan valinta ja toteuman vertailu Raportoi-askeleessa. Krediittimittaus (40). P1-tuntiarviot (2).</p>
+<p class="item">☐&nbsp; <strong>kehittää ohjelmiston toimintalogiikkaa</strong> – Hierarkia, revolve, inflate, transformit ja pivot (44–48) sekä Päivitä SVG (3).</p>
+<p class="item">☐&nbsp; <strong>valitsee ohjelmistoon sopivan tietovaraston</strong> – Tallennustapojen vertailu oman suunnitelman kriteereillä ja oman mallin JSON-tiedoston koko (50).</p>
+<p class="item">☐&nbsp; <strong>toteuttaa yhteyden tietovarastoon</strong> – Tallennus ja avaus JSON-tiedostona. Versionumero ja rakenteen tarkistus (50).</p>
+<p class="item">☐&nbsp; <strong>hyödyntää rajapintoja ja käsittelee tietoa</strong> – Selaimen tiedostojen luku, SVGLoader (43), OBJExporter (49) ja JSON (50).</p>
+<p class="item">☐&nbsp; <strong>arvioi ohjelmiston tietoturvaa</strong> – T04 haitallinen SVG (43), T22 rikottu JSON (50) ja project-docs/tietoturva.md: uhka, testi, tulos ja toimenpide.</p>
+<p class="item">☐&nbsp; <strong>käyttää versionhallintaa</strong> – Commitit rivillä Closes #N koko projektin ajan. Tagit v0.1, v1.0-rc1 ja v1.0.</p>
+<p class="item">☐&nbsp; <strong>liittää ohjelman osan olemassa olevaan versioon</strong> – Päivitä SVG omassa haarassa, pull request ja merge päähaaraan, kun kaikki testit menevät läpi (3).</p>
+<p class="item">☐&nbsp; <strong>julkaisee ohjelman tuotantoympäristöön</strong> – GitHub Pages -julkaisu GitHub Actionsilla: harjoitus (41), MVP v0.1 (50) ja v1.0 (7).</p>
+<h2>Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla</h2>
+<p class="item">☐&nbsp; <strong>ottaa käyttöön ja konfiguroi ohjelmistokomponenttikirjaston käyttöön soveltuvan kehittämisympäristön</strong> – Vite + React + Three.js + Vitest -pohja omin komennoin ja vite.config.js:n base-asetus (41).</p>
+<p class="item">☐&nbsp; <strong>selvittää ohjelmistokomponenttikirjaston tarjoamat mahdollisuudet ja rajoitteet</strong> – project-docs/kirjastot.md: SVGLoaderin (43) ja TubeGeometryn (46) rajoitteet omilla tiedostoilla kokeiltuina.</p>
+<p class="item">☐&nbsp; <strong>käyttää ohjelmistokomponenttikirjaston tärkeimpiä toimintoja ja työkaluja</strong> – LatheGeometry, TubeGeometry, drein TransformControls, OrbitControls ja orientaatiokuutio (45–48).</p>
+<p class="item">☐&nbsp; <strong>tuo kehittämisympäristöön ulkoisia komponentteja</strong> – npm-paketit three, @react-three/fiber, @react-three/drei ja vitest omin komennoin (41).</p>
+<p class="item">☐&nbsp; <strong>suunnittelee, toteuttaa ja testaa ohjelmiston ohjelmistokomponenttikirjastoa käyttäen</strong> – MVP v0.1 komponenttikirjastolla testeineen (43–50).</p>
+<p class="item">☐&nbsp; <strong>julkaisee ohjelmiston asiakkaan ympäristöön</strong> – MVP asiakkaiden kokeiltavaksi (50). Asiakkaiden vahvistus v1.0:sta omalla koneellaan (7).</p>
+<p class="item">☐&nbsp; <strong>dokumentoi ohjelmiston sovitulla tavalla</strong> – Dokumentointitapa sovittu palaverissa (43). README ja käyttöohje, joiden avulla julkaisutestaaja kulkee koko polun (6).</p>
+<p class="muted" style="margin-top:1em">Muista: sivuston rastit ja kentät tallentuvat vain selaimeen. Ne eivät siirry opettajalle eivätkä korvaa Gitissä olevaa työtä.</p>
+</body></html>

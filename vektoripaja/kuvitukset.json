@@ -1,0 +1,58 @@
+{
+  "aksentti": "#1fa4e3",
+  "aksenttiTumma": "#0e6f9e",
+  "vaihevarit": [
+    "#1fa4e3",
+    "#1fa4e3",
+    "#1fa4e3",
+    "#1fa4e3",
+    "#1fa4e3"
+  ],
+  "tyokierto": [
+    "Suunnittele",
+    "Toteuta",
+    "Testaa",
+    "Committaa"
+  ],
+  "vaiheet": [
+    [
+      "A",
+      "Työkalut"
+    ],
+    [
+      "B",
+      "MVP-ydin"
+    ],
+    [
+      "C",
+      "MVP valmiiksi"
+    ],
+    [
+      "D",
+      "Jatkokehitys"
+    ],
+    [
+      "E",
+      "Julkaisu ja näyttö"
+    ]
+  ],
+  "suunnitelma": [
+    "Tavoite ja kohde",
+    "Omat päätökset",
+    "Sisältölista"
+  ],
+  "testaus": [
+    "Suunnittele testi",
+    "Aja testi",
+    "Löydä virhe",
+    "Korjaa",
+    "Uusintatesti"
+  ],
+  "tekoaly": [
+    "Kysy",
+    "Tarkista",
+    "Testaa",
+    "Kirjaa"
+  ],
+  "tunnus": "kolmio"
+}

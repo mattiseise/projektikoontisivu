@@ -1,0 +1,336 @@
+{
+  "ohje": "Kuvaohjeiden lähde (moottori v2.4). alue = [x, y, leveys, korkeus] prosentteina kuvasta. Kuvat otetaan GitHubin Dark high contrast- ja VS Coden Dark High Contrast -teemassa, rajattuna yhteen kohtaan. Kun kuva lisätään: täytä tiedosto, leveys, korkeus ja pvm, tarkista kohtien tekstit kuvaa vasten ja lisää jokaiselle kohdalle alue. tarkista.js varoittaa puuttuvista kuvista.",
+  "kuvat": [
+    {
+      "tunnus": "github-noreply",
+      "otsikko": "Piilota sähköpostiosoite",
+      "kuvaa": "GitHubin Settings → Emails -sivu",
+      "missa": "GitHub → profiilikuva → Settings → Emails",
+      "tiedosto": "",
+      "leveys": 1200,
+      "korkeus": 700,
+      "alt": "Kuvakaappaus GitHubin Emails-asetuksista tummassa teemassa. Keskellä valintaruutu Keep my email addresses private ja sen alla noreply-osoite, jonka lopussa on users.noreply.github.com.",
+      "kohdat": [
+        { "n": 1, "teksti": "Avaa profiilikuvasta Settings. Valitse vasemmasta valikosta Emails." },
+        { "n": 2, "teksti": "Valitse ruutu Keep my email addresses private." },
+        { "n": 3, "teksti": "Kopioi ruudun alla näkyvä osoite. Sen lopussa on users.noreply.github.com." },
+        { "n": 4, "teksti": "Kirjoita VS Coden terminaaliin `git config --global user.email \"osoite\"`. Liitä kopioitu osoite lainausmerkkien sisään. Paina Enter." }
+      ],
+      "pvm": "",
+      "teema": "GitHub Dark high contrast"
+    },
+    {
+      "tunnus": "vscode-kloonaus",
+      "otsikko": "Kloonaa repository VS Codeen",
+      "kuvaa": "VS Coden Source Control -näkymä ja Clone Repository -painike",
+      "missa": "VS Code → vasen palkki → Source Control",
+      "tiedosto": "",
+      "leveys": 1200,
+      "korkeus": 700,
+      "alt": "Kuvakaappaus VS Codesta korkean kontrastin teemassa. Vasemmassa palkissa Source Control -kuvake valittuna ja paneelissa sininen Clone Repository -painike.",
+      "kohdat": [
+        { "n": 1, "teksti": "Valitse vasemmasta palkista Source Control." },
+        { "n": 2, "teksti": "Valitse Clone Repository. Valitse sitten Clone from GitHub." },
+        { "n": 3, "teksti": "Valitse listasta oma repositorysi vektoripaja." },
+        { "n": 4, "teksti": "Valitse kansio omalta koneeltasi. Valitse lopuksi Open." }
+      ],
+      "pvm": "",
+      "teema": "VS Code Dark High Contrast"
+    },
+    {
+      "tunnus": "github-collaborators",
+      "otsikko": "Jaa repository ohjaajalle",
+      "kuvaa": "GitHubin Settings → Collaborators -sivu",
+      "missa": "GitHub → oma repository → Settings → Collaborators",
+      "tiedosto": "",
+      "leveys": 1200,
+      "korkeus": 700,
+      "alt": "Kuvakaappaus GitHubin Collaborators-sivusta tummassa teemassa. Ylhäällä Settings-välilehti, vasemmassa valikossa Collaborators ja oikealla Add people -painike.",
+      "kohdat": [
+        { "n": 1, "teksti": "Avaa repositoryn Settings-välilehti." },
+        { "n": 2, "teksti": "Valitse vasemmasta valikosta Collaborators." },
+        { "n": 3, "teksti": "Valitse Add people. Kirjoita ohjaajan GitHub-tunnus." },
+        { "n": 4, "teksti": "Valitse ohjaaja listasta. Vahvista kutsu." }
+      ],
+      "pvm": "",
+      "teema": "GitHub Dark high contrast"
+    },
+    {
+      "tunnus": "vscode-commit-push",
+      "otsikko": "Tee commit ja push",
+      "kuvaa": "VS Coden Source Control -näkymä: viestikenttä, Commit ja Sync Changes",
+      "missa": "VS Code → vasen palkki → Source Control",
+      "tiedosto": "",
+      "leveys": 1200,
+      "korkeus": 700,
+      "alt": "Kuvakaappaus VS Coden Source Control -paneelista korkean kontrastin teemassa. Ylhäällä viestikenttä, sen alla Commit-painike ja muuttuneiden tiedostojen lista.",
+      "kohdat": [
+        { "n": 1, "teksti": "Tarkista listasta, että muuttuneet tiedostot ovat oikeat." },
+        { "n": 2, "teksti": "Kirjoita viestikenttään commit-viesti. Aloita verbillä. Lisää loppuun rivi `Closes #N`, jos commit sulkee issuen." },
+        { "n": 3, "teksti": "Valitse Commit. Jos VS Code kysyy, lisätäänkö kaikki muutokset, valitse Yes." },
+        { "n": 4, "teksti": "Valitse Sync Changes. Nyt commit on GitHubissa." }
+      ],
+      "pvm": "",
+      "teema": "VS Code Dark High Contrast"
+    },
+    {
+      "tunnus": "github-kayttonakyma",
+      "otsikko": "Katso krediittien kulutus",
+      "kuvaa": "GitHubin käyttönäkymä, jossa näkyy GitHub Copilotin kulutus",
+      "missa": "GitHub → profiilikuva → Settings → Billing and licensing → Usage",
+      "tiedosto": "",
+      "leveys": 1200,
+      "korkeus": 700,
+      "alt": "Kuvakaappaus GitHubin käyttönäkymästä tummassa teemassa. Keskellä GitHub Copilotin kuukauden kulutus ja taulukko päivittäisestä käytöstä.",
+      "kohdat": [
+        { "n": 1, "teksti": "Avaa profiilikuvasta Settings. Valitse Billing and licensing ja sitten Usage." },
+        { "n": 2, "teksti": "Rajaa näkymä tuotteeseen Copilot." },
+        { "n": 3, "teksti": "Lue tämän kuun kulutus. Kirjaa luku päiväkirjaan." },
+        { "n": 4, "teksti": "Jos luku ei ole muuttunut, päivitä sivu myöhemmin. Luvun päivittyminen voi kestää tunteja." }
+      ],
+      "pvm": "",
+      "teema": "GitHub Dark high contrast"
+    },
+    {
+      "tunnus": "copilot-uusi-keskustelu",
+      "otsikko": "Aloita uusi keskustelu Copilotissa",
+      "kuvaa": "Microsoft 365 Copilotin chat-näkymä ja New chat -painike",
+      "missa": "Selain → Microsoft 365 Copilot BC:n tunnuksella → Chat",
+      "tiedosto": "",
+      "leveys": 1200,
+      "korkeus": 700,
+      "alt": "Kuvakaappaus Microsoft 365 Copilotista selaimessa. Vasemmassa reunassa New chat -painike ja keskellä tyhjä viestikenttä.",
+      "kohdat": [
+        { "n": 1, "teksti": "Kirjaudu BC:n tunnuksella. Avaa Chat." },
+        { "n": 2, "teksti": "Valitse New chat. Aloita jokainen tehtäväkortti uudessa keskustelussa." },
+        { "n": 3, "teksti": "Liitä viestipohja viestikenttään. Täydennä omat kohdat ennen lähettämistä." }
+      ],
+      "pvm": "",
+      "teema": "Microsoft 365 Copilot, BC"
+    },
+    {
+      "tunnus": "copilot-tilatiedosto",
+      "otsikko": "Liitä tilatiedosto Copilotiin",
+      "kuvaa": "Microsoft 365 Copilotin liitetoiminto ja liitetty tiedosto viestikentän yläpuolella",
+      "missa": "Microsoft 365 Copilot → viestikenttä → liitä tiedosto",
+      "tiedosto": "",
+      "leveys": 1200,
+      "korkeus": 700,
+      "alt": "Kuvakaappaus Microsoft 365 Copilotin viestikentästä. Kentän vasemmalla puolella liitepainike ja kentän yläpuolella liitetty tiedosto PROJEKTIN-TILA.md.",
+      "kohdat": [
+        { "n": 1, "teksti": "Valitse viestikentän liitepainike." },
+        { "n": 2, "teksti": "Valitse tiedoston lataus omalta koneeltasi. Valitse PROJEKTIN-TILA.md repositorysi kansiosta." },
+        { "n": 3, "teksti": "Tarkista, että tiedoston nimi näkyy viestikentän yläpuolella. Lähetä viesti vasta sitten." }
+      ],
+      "pvm": "",
+      "teema": "Microsoft 365 Copilot, BC"
+    },
+    {
+      "tunnus": "github-uusi-issue",
+      "otsikko": "Luo issue tehtäväkorttipohjalla",
+      "kuvaa": "GitHubin Create new issue -näkymä, pohja Tehtäväkortti",
+      "missa": "GitHub → oma repository → Issues → New issue → Tehtäväkortti",
+      "tiedosto": "assets/kuvakaappaukset/github-uusi-issue-malli.png",
+      "leveys": 1200,
+      "korkeus": 760,
+      "alt": "Mallikuva GitHubin Create new issue -näkymästä tummassa teemassa. Ylhäällä otsikkokenttä, jossa lukee \"Lisää pyörivä kuutio etusivulle\". Sen alla kuvauskenttä, jossa on tehtäväkortin kuusi otsikkoa. Oikeassa alakulmassa vihreä Create-painike.",
+      "kohdat": [
+        { "n": 1, "teksti": "Kirjoita otsikkokenttään kortin otsikko. Aloita verbillä.", "alue": [3.3, 33.5, 93.4, 6.8] },
+        { "n": 2, "teksti": "Liitä Copilotin kortti kuvauskenttään pohjan otsikoiden alle.", "alue": [3.3, 45.8, 93.4, 36.2] },
+        { "n": 3, "teksti": "Valitse Create. Katso issuen numero sivun otsikosta.", "alue": [77.3, 85.4, 19.6, 7.2] }
+      ],
+      "pvm": "2026-09-23",
+      "teema": "GitHub Dark high contrast · mallikuva, ei oikea kuvakaappaus"
+    },
+    {
+      "tunnus": "vscode-taydennys",
+      "otsikko": "Hyväksy tai hylkää täydennys",
+      "kuvaa": "VS Coden editori, jossa GitHub Copilotin harmaa täydennys näkyy kommentin alla",
+      "missa": "VS Code → testitiedosto → kommenttirivin alla",
+      "tiedosto": "",
+      "leveys": 1200,
+      "korkeus": 600,
+      "alt": "Kuvakaappaus VS Coden editorista korkean kontrastin teemassa. Ylimpänä kommenttirivi, joka kuvaa testin, ja sen alla harmaana GitHub Copilotin ehdottama testikoodi.",
+      "kohdat": [
+        { "n": 1, "teksti": "Kirjoita kommenttirivi: testin tunnus, syöte ja odotettu tulos. Paina Enter." },
+        { "n": 2, "teksti": "Lue harmaa ehdotus. Onko odotettu tulos sama kuin kommentissa?" },
+        { "n": 3, "teksti": "Paina Tab, jos ehdotus on oikein. Paina Esc, jos se on väärin, ja kirjoita rivi itse." }
+      ],
+      "pvm": "",
+      "teema": "VS Code Dark High Contrast"
+    },
+    {
+      "tunnus": "vscode-hyvaksy-muutos",
+      "otsikko": "Hyväksy tai hylkää GitHub Copilotin muutos",
+      "kuvaa": "VS Coden muutosnäkymä: poistetut ja lisätyt rivit sekä Keep- ja Undo-painikkeet",
+      "missa": "VS Code → Chat → muuttunut tiedosto",
+      "tiedosto": "",
+      "leveys": 1200,
+      "korkeus": 700,
+      "alt": "Kuvakaappaus VS Coden muutosnäkymästä korkean kontrastin teemassa. Poistetut rivit on merkitty punaisella ja lisätyt vihreällä. Ylhäällä painikkeet Keep ja Undo.",
+      "kohdat": [
+        { "n": 1, "teksti": "Avaa muuttunut tiedosto chatin tiedostolistasta." },
+        { "n": 2, "teksti": "Lue jokainen punainen ja vihreä rivi. Muuttuiko jokin tiedosto, jota kortissa ei ollut?" },
+        { "n": 3, "teksti": "Valitse Keep, jos muutos on kortin mukainen. Valitse Undo, jos se ei ole. Kirjaa päätös AI-lokiin." }
+      ],
+      "pvm": "",
+      "teema": "VS Code Dark High Contrast"
+    },
+    {
+      "tunnus": "vscode-terminaali",
+      "otsikko": "Aja testit terminaalissa",
+      "kuvaa": "VS Coden terminaali, jossa näkyy komennon npm test tulos",
+      "missa": "VS Code → Terminal → New Terminal",
+      "tiedosto": "",
+      "leveys": 1200,
+      "korkeus": 600,
+      "alt": "Kuvakaappaus VS Coden terminaalista korkean kontrastin teemassa. Terminaalissa on komento npm test ja sen alla testien tulos: rivit, joissa lukee passed tai failed.",
+      "kohdat": [
+        { "n": 1, "teksti": "Valitse ylävalikosta Terminal ja sitten New Terminal." },
+        { "n": 2, "teksti": "Kirjoita `npm test`. Paina Enter." },
+        { "n": 3, "teksti": "Lue tulos. Sana passed tarkoittaa, että testi meni läpi. Sana failed tarkoittaa, että testi ei mennyt läpi." }
+      ],
+      "pvm": "",
+      "teema": "VS Code Dark High Contrast"
+    },
+    {
+      "tunnus": "copilot-kopioi-vastaus",
+      "otsikko": "Kopioi Copilotin vastaus",
+      "kuvaa": "Microsoft 365 Copilotin vastaus ja sen alla oleva kopiointipainike",
+      "missa": "Microsoft 365 Copilot → vastauksen alareuna",
+      "tiedosto": "",
+      "leveys": 1200,
+      "korkeus": 600,
+      "alt": "Kuvakaappaus Microsoft 365 Copilotin vastauksesta. Vastauksen alla on rivi pieniä painikkeita, ja niistä ensimmäinen on Copy.",
+      "kohdat": [
+        { "n": 1, "teksti": "Vieritä vastauksen loppuun." },
+        { "n": 2, "teksti": "Valitse vastauksen alta Copy." },
+        { "n": 3, "teksti": "Liitä vastaus issueen tai AI-lokiin. Lue se, ennen kuin tallennat." }
+      ],
+      "pvm": "",
+      "teema": "Microsoft 365 Copilot, BC"
+    },
+    {
+      "tunnus": "github-issue-sulkeutuu",
+      "otsikko": "Tarkista, että issue sulkeutui",
+      "kuvaa": "GitHubin suljettu issue, jonka historiassa näkyy sulkeva commit",
+      "missa": "GitHub → oma repository → Issues → Closed",
+      "tiedosto": "",
+      "leveys": 1200,
+      "korkeus": 700,
+      "alt": "Kuvakaappaus suljetusta GitHub-issuesta tummassa teemassa. Otsikon alla violetti merkki Closed ja historiassa rivi, joka kertoo, että commit sulki issuen.",
+      "kohdat": [
+        { "n": 1, "teksti": "Avaa Issues-välilehti. Valitse Closed." },
+        { "n": 2, "teksti": "Avaa issue. Tarkista, että otsikon alla lukee Closed." },
+        { "n": 3, "teksti": "Tarkista historiasta, että commit sulki issuen. Jos issue on yhä auki, commit-viestistä puuttui rivi `Closes #N`." }
+      ],
+      "pvm": "",
+      "teema": "GitHub Dark high contrast"
+    },
+    {
+      "tunnus": "inkscape-layerit",
+      "otsikko": "Nimeä layerit ja ryhmät Inkscapessa",
+      "kuvaa": "Inkscapen Layers and Objects -paneeli, jossa on nimetyt layerit ja sisäkkäiset ryhmät",
+      "missa": "Inkscape → Layer → Layers and Objects",
+      "tiedosto": "",
+      "leveys": 1200,
+      "korkeus": 700,
+      "alt": "Kuvakaappaus Inkscapesta. Oikealla Layers and Objects -paneeli, jossa on kaksi nimettyä layeria ja niiden alla sisennettyinä kolme sisäkkäistä ryhmää.",
+      "kohdat": [
+        { "n": 1, "teksti": "Avaa paneeli valitsemalla Layer ja sitten Layers and Objects." },
+        { "n": 2, "teksti": "Kaksoisklikkaa layerin nimeä. Kirjoita nimi, esimerkiksi vartalo. Paina Enter." },
+        { "n": 3, "teksti": "Valitse muodot. Ryhmittele ne näppäimillä Ctrl+G. Nimeä ryhmä samalla tavalla." },
+        { "n": 4, "teksti": "Tarkista, että ryhmät näkyvät sisennettyinä layerin alla." }
+      ],
+      "pvm": "",
+      "teema": "Inkscape, tumma teema"
+    },
+    {
+      "tunnus": "vscode-chat-tilat",
+      "otsikko": "Valitse GitHub Copilotin tila",
+      "kuvaa": "VS Coden Chat-näkymän tilavalikko: Ask ja Agent",
+      "missa": "VS Code → Chat → tilavalikko viestikentän alla",
+      "tiedosto": "",
+      "leveys": 1200,
+      "korkeus": 600,
+      "alt": "Kuvakaappaus VS Coden Chat-näkymästä korkean kontrastin teemassa. Viestikentän alla avattu tilavalikko, jossa ovat vaihtoehdot Ask ja Agent.",
+      "kohdat": [
+        { "n": 1, "teksti": "Avaa Chat VS Coden yläreunan Copilot-kuvakkeesta." },
+        { "n": 2, "teksti": "Avaa tilavalikko viestikentän alta." },
+        { "n": 3, "teksti": "Valitse Ask, kun kysyt. Valitse Agent vain kaistalla C. Agent kuluttaa krediittejä." }
+      ],
+      "pvm": "",
+      "teema": "VS Code Dark High Contrast"
+    },
+    {
+      "tunnus": "vscode-liita-tiedosto",
+      "otsikko": "Liitä tiedosto GitHub Copilotin keskusteluun",
+      "kuvaa": "VS Coden Chat-näkymä, jossa tiedosto on liitetty viestikentän yläpuolelle",
+      "missa": "VS Code → Chat → Add Context",
+      "tiedosto": "",
+      "leveys": 1200,
+      "korkeus": 600,
+      "alt": "Kuvakaappaus VS Coden Chat-näkymästä korkean kontrastin teemassa. Viestikentän yläpuolella Add Context -painike ja sen vieressä liitetyn tiedoston nimi.",
+      "kohdat": [
+        { "n": 1, "teksti": "Valitse viestikentän yläpuolelta Add Context." },
+        { "n": 2, "teksti": "Valitse Files & Folders. Valitse kortin tiedostot." },
+        { "n": 3, "teksti": "Tarkista, että vain kortin tiedostot näkyvät liitteinä." }
+      ],
+      "pvm": "",
+      "teema": "VS Code Dark High Contrast"
+    },
+    {
+      "tunnus": "blender-obj",
+      "otsikko": "Avaa .obj-tiedosto Blenderissä",
+      "kuvaa": "Blenderin tuontivalikko ja Outliner-paneeli, jossa mallin osat ovat erillisiä objekteja",
+      "missa": "Blender → File → Import → Wavefront (.obj)",
+      "tiedosto": "",
+      "leveys": 1200,
+      "korkeus": 700,
+      "alt": "Kuvakaappaus Blenderistä. Keskellä tuotu low-poly-malli ja oikeassa yläkulmassa Outliner-paneeli, jossa jokainen mallin osa on oma rivinsä.",
+      "kohdat": [
+        { "n": 1, "teksti": "Valitse File, sitten Import ja sitten Wavefront (.obj)." },
+        { "n": 2, "teksti": "Valitse viemäsi tiedosto. Valitse Import Wavefront OBJ." },
+        { "n": 3, "teksti": "Katso oikeaa yläkulmaa. Outlinerissa jokaisen osan pitää olla oma rivinsä." }
+      ],
+      "pvm": "",
+      "teema": "Blender, oletusteema"
+    },
+    {
+      "tunnus": "github-pull-request",
+      "otsikko": "Tee pull request ja liitä haara",
+      "kuvaa": "GitHubin pull request -sivu: base main, compare oma haara ja Merge pull request -painike",
+      "missa": "GitHub → oma repository → Pull requests → New pull request",
+      "tiedosto": "",
+      "leveys": 1200,
+      "korkeus": 700,
+      "alt": "Kuvakaappaus GitHubin pull request -sivusta tummassa teemassa. Ylhäällä valinnat base: main ja compare: oma haara, alhaalla vihreä Merge pull request -painike.",
+      "kohdat": [
+        { "n": 1, "teksti": "Avaa Pull requests. Valitse New pull request." },
+        { "n": 2, "teksti": "Valitse base-kohtaan main ja compare-kohtaan oma haarasi." },
+        { "n": 3, "teksti": "Valitse Create pull request. Lue Files changed -välilehden muutokset." },
+        { "n": 4, "teksti": "Kun olet ajanut kaikki testit ja ne ovat menneet läpi, valitse Merge pull request ja vahvista." }
+      ],
+      "pvm": "",
+      "teema": "GitHub Dark high contrast"
+    },
+    {
+      "tunnus": "chrome-lighthouse",
+      "otsikko": "Mittaa saavutettavuus Lighthousella",
+      "kuvaa": "Chromen kehittäjätyökalujen Lighthouse-välilehti ja saavutettavuuden pisteet",
+      "missa": "Chrome → F12 → Lighthouse",
+      "tiedosto": "",
+      "leveys": 1200,
+      "korkeus": 700,
+      "alt": "Kuvakaappaus Chromen kehittäjätyökaluista. Lighthouse-välilehdellä valittuna vain Accessibility, ja tuloksena ympyrä, jonka keskellä on pistemäärä väliltä 0–100.",
+      "kohdat": [
+        { "n": 1, "teksti": "Avaa oma Pages-osoitteesi Chromessa. Paina F12. Valitse Lighthouse-välilehti." },
+        { "n": 2, "teksti": "Valitse kohdasta Categories vain Accessibility." },
+        { "n": 3, "teksti": "Valitse Analyze page load." },
+        { "n": 4, "teksti": "Kirjaa pisteet ja kolme ensimmäistä havaintoa päiväkirjaan." }
+      ],
+      "pvm": "",
+      "teema": "Chrome, tumma teema"
+    }
+  ]
+}
