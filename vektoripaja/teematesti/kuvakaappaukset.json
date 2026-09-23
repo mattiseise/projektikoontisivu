@@ -1,0 +1,40 @@
+{
+  "ohje": "Kuvaohjeiden lähde (moottori v2.4). alue = [x, y, leveys, korkeus] prosentteina kuvasta. Kuvat otetaan GitHubin Dark high contrast- ja VS Coden Dark High Contrast -teemassa, rajattuna yhteen kohtaan. tarkista.js varoittaa puuttuvista kuvista.",
+  "kuvat": [
+    {
+      "tunnus": "github-uusi-issue",
+      "otsikko": "Uusi issue tehtäväkorttipohjalla",
+      "kuvaa": "GitHubin Create new issue -näkymä, pohja Tehtäväkortti",
+      "missa": "GitHub → oma repository → Issues → New issue → Tehtäväkortti",
+      "tiedosto": "assets/kuvakaappaukset/github-uusi-issue-malli.png",
+      "leveys": 1200,
+      "korkeus": 760,
+      "alt": "Mallikuva GitHubin Create new issue -näkymästä tummassa teemassa. Ylhäällä otsikkokenttä, jossa lukee Lisää pyörivä kuutio etusivulle. Sen alla kuvauskenttä, jossa on tehtäväkortin kuusi otsikkoa. Oikeassa alakulmassa vihreä Create-painike.",
+      "kohdat": [
+        { "n": 1, "teksti": "Kirjoita otsikkokenttään kortin otsikko. Aloita verbillä.", "alue": [3.3, 33.5, 93.4, 6.8] },
+        { "n": 2, "teksti": "Liitä Copilotin kortti kuvauskenttään pohjan otsikoiden alle.", "alue": [3.3, 45.8, 93.4, 36.2] },
+        { "n": 3, "teksti": "Valitse Create. Katso issuen numero sivun otsikosta.", "alue": [77.3, 85.4, 19.6, 7.2] }
+      ],
+      "pvm": "",
+      "teema": "GitHub Dark high contrast · mallikuva, ei oikea kuvakaappaus"
+    },
+    {
+      "tunnus": "github-collaborators",
+      "otsikko": "Jaa repository ohjaajalle",
+      "kuvaa": "GitHubin Settings → Collaborators -sivu",
+      "missa": "GitHub → oma repository → Settings → Collaborators",
+      "tiedosto": "",
+      "leveys": 1200,
+      "korkeus": 700,
+      "alt": "Kuvakaappaus GitHubin Collaborators-sivusta tummassa teemassa. Ylhäällä Settings-välilehti, vasemmassa valikossa Collaborators ja oikealla Add people -painike.",
+      "kohdat": [
+        { "n": 1, "teksti": "Avaa repositoryn Settings-välilehti.", "alue": [62, 8, 12, 6] },
+        { "n": 2, "teksti": "Valitse vasemmasta valikosta Collaborators.", "alue": [2, 30, 22, 6] },
+        { "n": 3, "teksti": "Valitse Add people. Kirjoita ohjaajan GitHub-tunnus.", "alue": [70, 48, 20, 8] },
+        { "n": 4, "teksti": "Valitse ohjaaja listasta. Vahvista kutsu.", "alue": [30, 62, 40, 8] }
+      ],
+      "pvm": "",
+      "teema": "GitHub Dark high contrast"
+    }
+  ]
+}

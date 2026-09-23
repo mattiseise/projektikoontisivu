@@ -1,0 +1,398 @@
+<!doctype html>
+<!--
+  Vektoripaja – teematestisivu (briefin kohta 6.6). Moottori v2.4.
+  Opiskelijan teema on päällä staattisesti (data-teema, data-teema-asettelu),
+  jotta sivu ei välähdä oletusteemassa. Ei Instrument-fontteja.
+-->
+<html lang="fi" data-teema="oma" data-teema-asettelu="yksi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="Vektoripajan teematesti: viikkokortti, työsykli, kuvaohje ja lomakekenttä opiskelijan teemassa.">
+  <title>Teematesti – Vektoripaja</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="teematesti.css">
+  <script src="sisalto.js" defer></script>
+  <script src="app.js" defer></script>
+  <script src="teematesti.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#sisalto">Siirry sisältöön</a>
+
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Sivun valikko" id="sivupalkki">
+      <div class="sidebar-header">
+        <span class="brand-mark" aria-hidden="true">◇</span>
+        <div>
+          <p class="sidebar-kicker">Näyttöprojekti · teematesti</p>
+          <p class="sidebar-title">Vektoripaja</p>
+        </div>
+        <button class="mobile-menu-toggle" type="button" data-sidebar-toggle aria-expanded="false" aria-controls="valikko">☰ Valikko</button>
+      </div>
+
+      <div class="sidebar-progress">
+        <div class="progress-row">
+          <span class="progress-pct" data-progress-number>0%</span>
+          <span class="progress-copy" data-progress-copy>0 / 0 tehtävää</span>
+        </div>
+        <div class="progress-bar" aria-hidden="true"><span data-progress-bar></span></div>
+        <button class="resume-button" type="button" data-continue><span>Aloita viikosta 40</span><span aria-hidden="true">→</span></button>
+        <p class="resume-note" data-continue-note>Viikko 40</p>
+      </div>
+
+      <div class="sidebar-scroll" id="valikko">
+        <nav class="nav-group" aria-label="Ohjeet">
+          <p class="nav-group-title">Ohjeet</p>
+          <a class="nav-row" href="#view-kaytto" data-view-nav="kaytto">Näin testaat<span class="nav-meta">aloita tästä</span></a>
+          <a class="nav-row" href="#view-termit" data-view-nav="termit">Termit<span class="nav-meta" data-glossary-count></span></a>
+        </nav>
+
+        <nav class="week-nav" aria-label="Viikot" data-week-links></nav>
+
+        <nav class="nav-group nav-group-docs" aria-label="Omat dokumentit">
+          <p class="nav-group-title">Omat dokumentit</p>
+          <a class="nav-row" href="#view-suunnitelma" data-view-nav="suunnitelma">Suunnitelma<span class="nav-meta" data-plan-status-meta>päivittyy</span></a>
+          <a class="nav-row" href="#view-paivakirja" data-view-nav="paivakirja">Projektipäiväkirja<span class="nav-meta" data-journal-summary>0 / 3</span></a>
+          <a class="nav-row" href="#view-ailoki" data-view-nav="ailoki">AI-loki<span class="nav-meta" data-log-count>0</span></a>
+        </nav>
+      </div>
+    </aside>
+
+    <main class="view-main" id="sisalto">
+
+      <!-- ============ NÄIN TESTAAT ============ -->
+      <section class="view" data-view="kaytto" id="view-kaytto">
+        <p class="view-eyebrow">Teematesti · ennen koko sivuston rakentamista</p>
+        <h1 class="view-title">Kokeile, toimiiko tämä sivu sinulle</h1>
+        <p class="view-lead">Tämä on testisivu. Siinä on yksi viikkokortti, työsykli kopiointinappeineen, kuvaohje ja lomakekenttiä. Koko projektisivusto tehdään samalla ulkoasulla, kun olet antanut palautteen.</p>
+
+        <section class="view-section">
+          <h2>Näin testaat</h2>
+          <ol class="test-steps">
+            <li>Avaa valikko. Valitse viikko 41.</li>
+            <li>Lue työsyklin seuraava askel. Kopioi viestipohja Kopioi-napilla. Liitä se johonkin tekstikenttään.</li>
+            <li>Siirry syklissä eteenpäin napilla Tein tämän.</li>
+            <li>Avaa askeleessa 2 kuvaohjeen kuva isona. Sulje se.</li>
+            <li>Avaa Olen jumissa. Avaa sitten yksi sen kysymyksistä.</li>
+            <li>Avaa viikolla 41 myös Jos et tiedä, mitä tehdä.</li>
+            <li>Rastita viikon 40 tehtävät. Katso, miten tila muuttuu valikossa.</li>
+            <li>Kirjoita jotain suunnitelman kenttään ja viikon päiväkirjaan.</li>
+            <li>Kokeile sivua 200 %:n ja 400 %:n zoomilla, näppäimistöllä ja ruudunlukijalla.</li>
+          </ol>
+        </section>
+
+        <section class="view-section">
+          <h2>Vertaa: yksi väri vai kaksi</h2>
+          <p>Nyt kaikki teksti on sinistä. Tilat erotetaan tekstillä ja symbolilla: ✓ Valmis, → Nyt ja ○ Tulossa. Kokeile, auttaako toinen väri.</p>
+          <fieldset class="compare-box" data-vertailu>
+            <legend>Valitse vertailu</legend>
+            <label class="compare-option"><input type="radio" name="vari" value="yksi" checked> Kaikki sinisenä</label>
+            <label class="compare-option"><input type="radio" name="vari" value="otsikot"> Otsikot valkoisena</label>
+            <label class="compare-option"><input type="radio" name="vari" value="otsikot-nyt"> Otsikot ja nykyinen askel valkoisena</label>
+          </fieldset>
+          <p class="compare-note">Valinta koskee vain tätä testisivua ja tätä selainta.</p>
+        </section>
+
+        <section class="view-section">
+          <h2>Palautekysymykset</h2>
+          <p>Kerro vastaukset Matille. Omin sanoin riittää.</p>
+          <ol class="test-steps">
+            <li>Erotatko tilat ✓ Valmis, → Nyt ja ○ Tulossa toisistaan? Auttoiko valkoinen väri?</li>
+            <li>Onko teksti sopivan kokoista? Onko rivi sopivan pituinen?</li>
+            <li>Löydätkö seuraavan askeleen heti, kun avaat viikon?</li>
+            <li>Toimiiko Kopioi-nappi? Kuuluuko ruudunlukijalla, että teksti kopioitiin?</li>
+            <li>Ovatko kuvan numeroidut kehykset tarpeeksi paksuja? Löydätkö kohdat 1–3?</li>
+            <li>Toimiiko sivu 200 %:n ja 400 %:n zoomilla ilman sivuttaisvieritystä?</li>
+            <li>Toimiiko kaikki näppäimistöllä: Tab, Enter ja välilyönti?</li>
+            <li>Onko jokin teksti vaikea lukea tai ymmärtää? Mikä?</li>
+          </ol>
+        </section>
+
+        <div class="card view-section download-card">
+          <div>
+            <strong>Työpaketti PDF-tiedostona</strong>
+            <p>Sama sisältö kahtena versiona. Kerro, kumpi toimii sinulle paremmin.</p>
+          </div>
+          <div class="download-actions">
+            <a class="button button-primary" href="downloads/vektoripaja-teematesti-tyopaketti.pdf">PDF näytölle (oma teema)</a>
+            <a class="button button-secondary" href="downloads/vektoripaja-teematesti-tyopaketti-tuloste.pdf">PDF tulostettavaksi (vaalea)</a>
+          </div>
+        </div>
+
+        <p class="footnote view-section"><strong>Huomaa:</strong> sisältö on luonnos. Kuvaohjeen kuva on mallikuva. Oikeat kuvakaappaukset lisätään myöhemmin. Rastit, sykli ja kentät tallentuvat vain tähän selaimeen.</p>
+
+        <div class="download-card view-section">
+          <div><strong>Aloita alusta</strong><p>Tyhjentää rastit, syklin, päiväkirjan, suunnitelman ja AI-lokin tästä selaimesta.</p></div>
+          <button class="button button-ghost" type="button" data-reset>Nollaa testin tila</button>
+        </div>
+      </section>
+
+      <!-- ============ TERMIT ============ -->
+      <section class="view" data-view="termit" id="view-termit">
+        <p class="view-eyebrow">Sanasto · kertausta varten</p>
+        <h1 class="view-title">Termit</h1>
+        <p class="view-lead">Jokainen termi selitetään myös siinä kohdassa, jossa se tulee ensimmäisen kerran vastaan. Tänne voit palata, kun termi unohtuu.</p>
+        <dl class="glossary view-section" data-termisto></dl>
+      </section>
+
+      <!-- ============ VIIKOT ============ -->
+      <section class="view" data-view="viikko" id="view-viikko">
+
+        <article class="week-card" id="week-40" data-week="40">
+          <p class="view-eyebrow" data-week-label="28.9.–2.10.">Vaihe A · Työkalut · Viikko 40 · 28.9.–2.10.</p>
+          <h1 class="view-title">Aloitus: työkalut, repository ja oma MVP</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon osaaminen</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 4</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="40-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Asenna VS Code, Git, Node.js, Inkscape ja Blender. Vaihda VS Codeen ja GitHubiin korkean kontrastin teema.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="40-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Luo julkinen repository README-tiedoston kanssa. Kloonaa se VS Codeen. Jaa se ohjaajalle.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="40-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjoita MVP omin sanoin tiedostoon <code>project-docs/mvp.md</code>. Tee commit ja push. Lähetä kysymyslista asiakkaille.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="40-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Mittaa yhden agenttipyynnön hinta viestipohjalla. Kirjaa hinta päiväkirjaan.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat"></nav>
+            <ol data-lesson-list></ol>
+          </section>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint"></p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> repositoryn osoite, <code>project-docs/mvp.md</code> GitHubissa ja agenttipyynnön hinta päiväkirjassa.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="40">
+            <div class="journal-heading">
+              <h2>Viikon projektipäiväkirja</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Vastaa viikon lopussa kolmeen kysymykseen. Kentät tallentuvat vain tähän selaimeen.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä tein ja miten?</span><textarea rows="3" data-journal-field="work"></textarea></label>
+              <label><span>Miksi tein näin?</span><textarea rows="2" data-journal-field="reason"></textarea></label>
+              <label><span>Missä työnäyte on? Lisää vaatimuksen tunnus, esimerkiksi s12.</span><input type="text" data-journal-field="evidence"></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Siirtyminen viikkojen välillä"></nav>
+        </article>
+
+        <article class="week-card" id="week-41" data-week="41">
+          <p class="view-eyebrow" data-week-label="5.–9.10.">Vaihe A · Työkalut · Viikko 41 · 5.–9.10.</p>
+          <h1 class="view-title">Harjoitussykli: pyörivä kuutio julki</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <section data-week-cycle hidden></section>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta: viikko toteuttaa tätä asiakkaan toivetta</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon osaaminen</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 4</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="41-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Päätä, hyväksytkö teknisen ehdotuksen. Perustele päätös suunnitelmaan. Luo sitten tekninen pohja itse komennoilla.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="41-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjoita testitapaus T01 ennen koodia. Mitä odotat, kun kiertokulma saa ajan 0 ja nopeuden 0,5? Entä kun aika on 3?</span></label>
+            <label class="task-row"><input type="checkbox" data-task="41-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Tee kortti #1 (kuutio) työsyklillä mallikortin avulla. Aja T01.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="41-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Tee kortti #2 (Pages-julkaisu) työsyklillä. Aja T02.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat"></nav>
+            <ol data-lesson-list></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>mallikortti ja kansiorakenne</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint"></p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> Pages-osoite, issuet #1 ja #2 suljettuina sekä T01:n ja T02:n tulokset issueissa.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="41">
+            <div class="journal-heading">
+              <h2>Viikon projektipäiväkirja</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Vastaa viikon lopussa kolmeen kysymykseen. Kentät tallentuvat vain tähän selaimeen.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä tein ja miten?</span><textarea rows="3" data-journal-field="work"></textarea></label>
+              <label><span>Miksi tein näin?</span><textarea rows="2" data-journal-field="reason"></textarea></label>
+              <label><span>Missä työnäyte on? Lisää vaatimuksen tunnus, esimerkiksi s12.</span><input type="text" data-journal-field="evidence"></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Siirtyminen viikkojen välillä"></nav>
+        </article>
+
+        <article class="holiday-card" id="week-42" data-week="42">
+          <p class="view-eyebrow" data-week-label="12.–16.10.">Vaihe A · Työkalut · Viikko 42 · 12.–16.10.</p>
+          <h1 class="view-title">Syysloma</h1>
+          <p>Ei projektityötä eikä korvaavia tehtäviä. Jatka viikolla 43 tilatiedoston Seuraavana-kohdasta.</p>
+        </article>
+
+        <article class="week-card" id="week-43" data-week="43">
+          <p class="view-eyebrow" data-week-label="19.–23.10.">Vaihe B · MVP-ydin · Viikko 43 · 19.–23.10.</p>
+          <h1 class="view-title">SVG-tuonti: polut näkyviin</h1>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <section data-week-cycle hidden></section>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon osaaminen</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 5</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="43-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Piirrä Inkscapessa testitiedosto, jossa on nimetyt layerit ja kolme sisäkkäistä ryhmää.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="43-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjoita testitapaukset T03–T05 ennen toteutusta: kolme polkua, SVG, jossa on <code>&lt;script&gt;</code>, ja tiedosto, joka ei ole SVG.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="43-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjaa kansiorakenne ja moduulirajat suunnitelmaan.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="43-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta tuonti työsyklillä kaistalla A, tiedosto kerrallaan.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="43-5"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kokeile SVGLoaderin rajoitteita omalla tiedostollasi. Kirjaa ne <code>kirjastot.md</code>:hen.</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat"></nav>
+            <ol data-lesson-list></ol>
+          </section>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint"></p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> oma SVG-tiedosto, T03–T05 issueissa ja <code>project-docs/kirjastot.md</code>.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="43">
+            <div class="journal-heading">
+              <h2>Viikon projektipäiväkirja</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Vastaa viikon lopussa kolmeen kysymykseen. Kentät tallentuvat vain tähän selaimeen.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä tein ja miten?</span><textarea rows="3" data-journal-field="work"></textarea></label>
+              <label><span>Miksi tein näin?</span><textarea rows="2" data-journal-field="reason"></textarea></label>
+              <label><span>Missä työnäyte on? Lisää vaatimuksen tunnus, esimerkiksi s12.</span><input type="text" data-journal-field="evidence"></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Siirtyminen viikkojen välillä"></nav>
+        </article>
+      </section>
+
+      <!-- ============ SUUNNITELMA ============ -->
+      <section class="view" data-view="suunnitelma" id="view-suunnitelma">
+        <p class="view-eyebrow">Suunnitelma · lomakekentän testi</p>
+        <h1 class="view-title">Suunnitelma</h1>
+        <p class="view-lead">Oikeassa sivustossa suunnitelmassa on kolme osaa: A perustiedot, B omat päätökset ja C ohjaajan päätökset. Tässä on yksi kenttä kumpaakin tyyppiä.</p>
+
+        <form class="plan-form" data-plan-form>
+          <div class="plan-form-heading">
+            <div><p class="section-label section-label-accent">Omat päätökset</p><h2>B · Sinun päätöksesi</h2><p>Kirjoita perustelu omin sanoin.</p></div>
+            <span data-plan-status>Ei vielä aloitettu</span>
+          </div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Tallennustapa ja perustelu<input type="text" data-plan-field="tallennus"></label><span class="plan-row-week">viikko 50</span></div>
+          <p class="plan-calibration"><strong>Ei riitä:</strong> "JSON, koska se on yleinen." <strong>Riittää:</strong> "JSON eli tekstimuotoinen tallennustiedosto, koska polut, parametrit ja vanhempi–lapsi-suhteet mahtuvat siihen ja tiedoston voi avata toisella koneella."</p>
+          <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Lisenssi<input type="text" data-plan-field="lisenssi"></label><span class="plan-row-week">avoin asia</span></div>
+          <div class="plan-actions">
+            <button class="button button-primary" type="button" data-plan-export>Lataa suunnitelma.md</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- ============ PÄIVÄKIRJA ============ -->
+      <section class="view" data-view="paivakirja" id="view-paivakirja">
+        <p class="view-eyebrow">Arkisto</p>
+        <h1 class="view-title">Projektipäiväkirja</h1>
+        <p class="view-lead">Viikon merkintä kirjoitetaan viikkokortissa. Täällä näet, mitkä viikot on kirjattu, ja lataat koko päiväkirjan.</p>
+        <div class="card card-tint journal-summary-card">
+          <div><span class="big" data-journal-count>0 / 3 viikkoa kirjattu</span><p>Tiedosto: <code>project-docs/projektipaivakirja.md</code></p></div>
+          <button class="button button-primary" type="button" data-export-journal>Lataa koko projektipäiväkirja</button>
+        </div>
+        <div class="journal-weeks-grid" data-journal-weeks></div>
+      </section>
+
+      <!-- ============ AI-LOKI ============ -->
+      <section class="view" data-view="ailoki" id="view-ailoki">
+        <p class="view-eyebrow">Tekoäly on työkalu</p>
+        <h1 class="view-title">AI-loki</h1>
+        <p class="view-lead">Kirjaa jokaisesta tekoälyn tuotoksesta päätös: hyväksyn, korjautan tai hylkään. Kirjaa myös yksi peruste.</p>
+        <form class="ai-log-form" data-ai-form>
+          <label>Päivä ja työkalu<input type="text" name="tool" required></label>
+          <label>Mihin pyysit apua?<input type="text" name="question" required></label>
+          <label>Päätös ja peruste: hyväksyn, korjautan tai hylkään<textarea name="used" rows="2" required></textarea></label>
+          <label>Aineistoviite, esimerkiksi issue #1<input type="text" name="reference" required></label>
+          <div class="privacy-row">
+            <label class="privacy-confirm"><input type="checkbox" name="privacy" required> Vahvistan, etten syöttänyt henkilötietoja, salaisuuksia tai luottamuksellista aineistoa.</label>
+            <button class="button button-primary" type="submit">Lisää lokiin</button>
+          </div>
+        </form>
+        <div class="ai-log-meta"><span><span data-log-count>0 merkintää</span></span><button class="button button-secondary" type="button" data-export-log>Lataa AI-loki</button></div>
+        <div class="log-entries" data-ai-entries aria-live="polite"><p class="empty-state">Ei merkintöjä vielä.</p></div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!doctype html><html lang="fi"><head><meta charset="utf-8"><title>Vektoripaja – työpaketti</title><style>
+@page { size: A4; margin: 0; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; background: #000000; }
+body { font-family: Arial, sans-serif; font-size: 18pt; line-height: 1.6; letter-spacing: 1px; word-spacing: 0.3rem;
+  color: #1fa4e3; background: #000000; margin: 0; padding: 14mm; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+* { font-style: normal !important; }
+h1 { color: #1fa4e3; font-size: 1.5em; line-height: 1.2; margin: 0 0 .5em; page-break-after: avoid; }
+h2 { color: #1fa4e3; font-size: 1.2em; line-height: 1.25; margin: 1em 0 .35em; page-break-after: avoid; }
+p { margin: 0 0 .4em; max-width: 60ch; }
+.cover { padding-top: 40mm; page-break-after: always; }
+.cover h1 { font-size: 2.2em; }
+table { border-collapse: collapse; width: 100%; margin: .4em 0; }
+tr { page-break-inside: avoid; }
+td, th { border: 2px solid #1fa4e3; padding: .25em .4em; text-align: left; vertical-align: top; font-size: 1em; }
+th { font-weight: 700; }
+.wk { margin-bottom: .8em; padding-bottom: .4em; border-bottom: 2px solid #1fa4e3; }
+.feature { margin: 0 0 .3em; }
+.task { margin: .2em 0; }
+.done, .ev { margin: .3em 0 0; }
+.page { page-break-before: always; }
+.muted, .item { }
+strong { font-weight: 700; }
+code { font-family: Consolas, "Courier New", monospace; font-size: 1em; }
+</style></head><body>
+<div class="cover"><h1>Vektoripaja</h1><p style="font-size:1.2em">Paperinen työpaketti</p><p></p><p><strong>Viikot 40–43</strong></p><p style="margin-top:1em">Tämä paketti on aikataulu ja tarkistuslista tilanteisiin, joissa sivusto ei ole auki. Projektipäiväkirja kirjoitetaan sivustolla ja viedään repositoryn project-docs-kansioon. Rasti tässä vihossa ei ole palautus: työ on aina Git-repositoryssa.</p></div>
+<h1>Aikataulu</h1><table><tr><th>Vko</th><th>Pvm</th><th>Viikon aihe</th><th>Vaihe</th></tr>
+<tr><td><strong>40</strong></td><td>28.9.–2.10.</td><td>Aloitus: työkalut, repository ja oma MVP</td><td>A</td></tr>
+<tr><td><strong>41</strong></td><td>5.–9.10.</td><td>Harjoitussykli: pyörivä kuutio julki</td><td>A</td></tr>
+<tr><td>42</td><td>12.–16.10.</td><td>Syysloma – ei projektityötä</td><td>–</td></tr>
+<tr><td><strong>43</strong></td><td>19.–23.10.</td><td>SVG-tuonti: polut näkyviin</td><td>B</td></tr>
+</table>
+<h1 class="page">Vaihe A – Työkalut ja harjoitussykli</h1>
+<div class="wk"><h2>Vko 40 · 28.9.–2.10. – Aloitus: työkalut, repository ja oma MVP</h2>
+<p class="feature">VS Code ja GitHub ovat korkean kontrastin teemassa. Komennot <code>git --version</code> ja <code>node --version</code> tulostavat versiot. Julkinen repository on kloonattu VS Codeen ja jaettu ohjaajalle. <code>project-docs/mvp.md</code> on pushattu.</p>
+<p class="task">☐&nbsp; Asenna VS Code, Git, Node.js, Inkscape ja Blender. Vaihda VS Codeen ja GitHubiin korkean kontrastin teema.</p>
+<p class="task">☐&nbsp; Luo julkinen repository README-tiedoston kanssa. Kloonaa se VS Codeen. Jaa se ohjaajalle.</p>
+<p class="task">☐&nbsp; Kirjoita MVP omin sanoin tiedostoon project-docs/mvp.md. Tee commit ja push. Lähetä kysymyslista asiakkaille.</p>
+<p class="task">☐&nbsp; Mittaa yhden agenttipyynnön hinta viestipohjalla. Kirjaa hinta päiväkirjaan.</p>
+<p class="done"><strong>Valmis kun:</strong> Ohjaaja näkee repositoryn, <code>mvp.md</code> on GitHubissa, kysymyslista on lähetetty, ja päiväkirjassa on agenttipyynnön hinta tai merkintä "odottaa käyttönäkymää".</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: repositoryn osoite, project-docs/mvp.md GitHubissa ja agenttipyynnön hinta päiväkirjassa.</p>
+</div>
+<div class="wk"><h2>Vko 41 · 5.–9.10. – Harjoitussykli: pyörivä kuutio julki</h2>
+<p class="feature">Selaimessa pyörii Three.js-kuutio omassa Pages-osoitteessasi. Testitapaukset T01 ja T02 menevät läpi.</p>
+<p class="task">☐&nbsp; Päätä, hyväksytkö teknisen ehdotuksen. Perustele päätös suunnitelmaan. Luo sitten tekninen pohja itse komennoilla.</p>
+<p class="task">☐&nbsp; Kirjoita testitapaus T01 ennen koodia. Mitä odotat, kun kiertokulma saa ajan 0 ja nopeuden 0,5? Entä kun aika on 3?</p>
+<p class="task">☐&nbsp; Tee kortti #1 (kuutio) työsyklillä mallikortin avulla. Aja T01.</p>
+<p class="task">☐&nbsp; Tee kortti #2 (Pages-julkaisu) työsyklillä. Aja T02.</p>
+<p class="done"><strong>Valmis kun:</strong> Pages-osoite näyttää pyörivän kuution myös toisella koneella, <code>npm test</code> näyttää, että T01 menee läpi, ja issuet #1 ja #2 on suljettu commitilla.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Pages-osoite, issuet #1 ja #2 suljettuina sekä T01:n ja T02:n tulokset issueissa.</p>
+</div>
+<div class="wk"><h2>Vko 42 · 12.–16.10. – Syysloma</h2><p>Ei projektityötä eikä korvaavia tehtäviä. Jatka viikolla 43 tilatiedoston Seuraavana-kohdasta.</p></div>
+<h1 class="page">Vaihe B – MVP-ydin: SVG:stä muotoja</h1>
+<div class="wk"><h2>Vko 43 · 19.–23.10. – SVG-tuonti: polut näkyviin</h2>
+<p class="feature">Inkscapessa piirretty SVG avautuu sovellukseen. Sen polut näkyvät 3D-näkymässä viivoina.</p>
+<p class="task">☐&nbsp; Piirrä Inkscapessa testitiedosto, jossa on nimetyt layerit ja kolme sisäkkäistä ryhmää.</p>
+<p class="task">☐&nbsp; Kirjoita testitapaukset T03–T05 ennen toteutusta: kolme polkua, SVG, jossa on &lt;script>, ja tiedosto, joka ei ole SVG.</p>
+<p class="task">☐&nbsp; Kirjaa kansiorakenne ja moduulirajat suunnitelmaan.</p>
+<p class="task">☐&nbsp; Toteuta tuonti työsyklillä kaistalla A, tiedosto kerrallaan.</p>
+<p class="task">☐&nbsp; Kokeile SVGLoaderin rajoitteita omalla tiedostollasi. Kirjaa ne kirjastot.md:hen.</p>
+<p class="done"><strong>Valmis kun:</strong> Oma SVG avautuu tiedostonvalinnalla, T03–T05 menevät läpi, ja <code>project-docs/kirjastot.md</code>:ssä on kaksi SVGLoaderin rajoitetta omalla tiedostolla kokeiltuna.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: oma SVG-tiedosto, T03–T05 issueissa ja project-docs/kirjastot.md.</p>
+</div>
+<h1 class="page">Sanasto</h1><p class="muted">Projektin tunnukset ja ammattitermit siinä järjestyksessä, jossa ne tulevat vastaan. Jokainen on selitetty myös sivustolla ensimmäisen käytön kohdalla.</p><table>
+<tr><td style="width:24%"><strong>MVP</strong><br><span class="muted">vko 40</span></td><td><strong>Minimum Viable Product.</strong> Pienin käytettävä versio. Tässä projektissa MVP on sama kuin P0.</td></tr>
+<tr><td style="width:24%"><strong>P0</strong><br><span class="muted">vko 40</span></td><td><strong>Pakollinen ydin.</strong> Toiminnot, joiden pitää valmistua ennen joulua.</td></tr>
+<tr><td style="width:24%"><strong>P1</strong><br><span class="muted">vko 40</span></td><td><strong>Tärkeä jatko.</strong> Toiminnot, jotka tehdään joululoman jälkeen, kun P0 toimii.</td></tr>
+<tr><td style="width:24%"><strong>P2</strong><br><span class="muted">vko 40</span></td><td><strong>Jatkolista.</strong> Toiminnot, jotka jäävät tämän näytön jälkeen tehtäviksi. Ne eivät ole hylättyjä.</td></tr>
+<tr><td style="width:24%"><strong>repository</strong><br><span class="muted">vko 40</span></td><td><strong>Git-repository.</strong> Projektin kansio GitHubissa. Siellä on koodi, historia ja issuet.</td></tr>
+<tr><td style="width:24%"><strong>kloonaus</strong><br><span class="muted">vko 40</span></td><td>Repositoryn kopio omalle koneelle. VS Code ja GitHub Copilot käsittelevät kloonattua kansiota.</td></tr>
+<tr><td style="width:24%"><strong>tilatiedosto</strong><br><span class="muted">vko 40</span></td><td><strong>PROJEKTIN-TILA.md.</strong> Valmista, seuraavana, tehdyt päätökset ja avoimet kysymykset. Liität sen Copilotiin. Älä anna sitä GitHub Copilotille.</td></tr>
+<tr><td style="width:24%"><strong>krediitti</strong><br><span class="muted">vko 40</span></td><td><strong>GitHub Copilotin käyttöraha.</strong> 200 krediittiä kuukaudessa. Agenttitila kuluttaa niitä. Budjetti nollautuu kuun 1. päivänä.</td></tr>
+<tr><td style="width:24%"><strong>Copilot</strong></td><td>Microsoft 365 Copilot BC:n tunnuksella, selaimessa. Suunnittelee ja pilkkoo tehtävät tehtäväkorteiksi.</td></tr>
+<tr><td style="width:24%"><strong>GitHub Copilot</strong></td><td>VS Coden koodityökalu. Toteuttaa tehtäväkortin.</td></tr>
+<tr><td style="width:24%"><strong>työsykli</strong><br><span class="muted">vko 41</span></td><td><strong>Kuusi askelta.</strong> Suunnittele, Siirrä, Rakenna, Tarkista, Raportoi ja Kirjaa. Sama jokaisessa tehtäväkortissa.</td></tr>
+<tr><td style="width:24%"><strong>tehtäväkortti</strong><br><span class="muted">vko 41</span></td><td>Yksi rajattu tehtävä: tavoite, kaista, tiedostot, älä tee, hyväksymiskriteerit ja testi.</td></tr>
+<tr><td style="width:24%"><strong>issue</strong><br><span class="muted">vko 41</span></td><td><strong>GitHub-issue.</strong> Tehtäväkortti GitHubissa, label tehtäväkortti. Suljetaan commit-viestin rivillä <code>Closes #N</code>.</td></tr>
+<tr><td style="width:24%"><strong>kaista</strong><br><span class="muted">vko 41</span></td><td><strong>A, B tai C.</strong> Toteutustapa. A: Copilot kirjoittaa koodin yksi tiedosto kerrallaan. B (viikolta 43): kommentti ja täydennys VS Codessa, myös testit. C (viikolta 44): GitHub Copilotin agenttitila useaan tiedostoon.</td></tr>
+<tr><td style="width:24%"><strong>T01</strong><br><span class="muted">vko 41</span></td><td><strong>Testitapauksen tunnus.</strong> T tarkoittaa testitapausta. Numero yksilöi sen. Odotettu tulos kirjataan ennen kuin koodi tehdään. Lisätesti on ylimääräinen testi ilman numeroa.</td></tr>
+<tr><td style="width:24%"><strong>tekninen pohja</strong><br><span class="muted">vko 41</span></td><td><strong>Vite, React, Three.js ja Vitest.</strong> Sovelluksen perusta. Vite käynnistää ja rakentaa sovelluksen. React tekee näkymät. Three.js piirtää 3D:n. Vitest ajaa testit.</td></tr>
+<tr><td style="width:24%"><strong>GitHub Pages</strong><br><span class="muted">vko 41</span></td><td>Julkaisupaikka. GitHub Actions julkaisee sovelluksen automaattisesti jokaisen pushin jälkeen.</td></tr>
+<tr><td style="width:24%"><strong>täydennys</strong><br><span class="muted">vko 43</span></td><td>GitHub Copilotin harmaa koodiehdotus VS Codessa. Hyväksytään Tab-näppäimellä. Ei kuluta krediittejä.</td></tr>
+<tr><td style="width:24%"><strong>moduuli</strong><br><span class="muted">vko 43</span></td><td>Kansio tai tiedosto, jolla on yksi vastuu. Esimerkiksi tuonti on eri moduuli kuin vienti.</td></tr>
+<tr><td style="width:24%"><strong>havaintoissue</strong><br><span class="muted">vko 43</span></td><td><strong>label havainto.</strong> Issue, johon kirjataan virhe: mitä odotit, mitä tapahtui ja miten virheen saa toistettua. Suljetaan korjauscommitilla.</td></tr>
+<tr><td style="width:24%"><strong>JSON</strong><br><span class="muted">vko 43</span></td><td><strong>tallennusmuoto.</strong> Tekstimuotoinen tiedosto, johon projektin tiedot tallennetaan ja josta ne avataan uudelleen.</td></tr>
+</table>
+<p class="muted" style="margin-top:1em">Muista: sivuston rastit ja kentät tallentuvat vain selaimeen. Ne eivät siirry opettajalle eivätkä korvaa Gitissä olevaa työtä.</p>
+</body></html>
