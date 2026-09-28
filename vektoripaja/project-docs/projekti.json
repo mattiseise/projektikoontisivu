@@ -1,7 +1,7 @@
 {
   "slug": "vektoripaja",
   "nimi": "Vektoripaja",
-  "kuvaus": "Ohjattu näyttöprojekti: selainpohjainen low-poly 3D-mallinnin, joka tekee Inkscapen SVG-piirroksesta 3D-mallin ja vie sen .obj-tiedostoksi. Työ tehdään tekoälyavusteisesti: Copilot suunnittelee, GitHub Copilot toteuttaa.",
+  "kuvaus": "Ohjattu näyttöprojekti: Windowsilla toimiva low-poly 3D-mallinnin (Python-työpöytäsovellus), joka tekee Inkscapen SVG-piirroksesta 3D-mallin ja vie sen .obj-tiedostoksi. Työ tehdään tekoälyavusteisesti: Copilot suunnittelee, GitHub Copilot toteuttaa.",
   "vuosi": [2026, 2027],
   "viikot": [40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 1, 2, 3, 4, 5, 6, 7, 8, 9],
   "lomaViikot": [42, 52, 53, 1, 8],
@@ -25,12 +25,12 @@
     "tunnus": "kolmio"
   },
   "koonti": {
-    "tyyppi": "web",
+    "tyyppi": "ohjelmointi",
     "tila": "kaynnissa",
-    "kuvaus": "Selaimessa toimiva 3D-mallinnin, joka tekee Inkscapella piirretystä kuvasta low-poly-mallin eli yksinkertaisen, kulmikkaan 3D-mallin: pyörähdyskappaleita, putkia ja osia, jotka liikkuvat yhdessä. Malli viedään .obj-tiedostoksi. Tekoäly kirjoittaa suuren osan koodista, mutta suunnittelu, testit ja päätökset ovat omia.",
+    "kuvaus": "Windowsilla toimiva työpöytäsovellus, joka tekee Inkscapella piirretystä kuvasta low-poly-mallin eli yksinkertaisen, kulmikkaan 3D-mallin: pyörähdyskappaleita, putkia ja osia, jotka liikkuvat yhdessä. Malli viedään .obj-tiedostoksi. Tekoäly kirjoittaa suuren osan koodista, mutta suunnittelu, testit ja päätökset ovat omia.",
     "ryhma": "Joustava",
     "kesto": "18 työviikkoa",
-    "tekniikat": ["Vite", "React", "Three.js", "Vitest", "GitHub Copilot", "Microsoft 365 Copilot", "GitHub Pages"],
+    "tekniikat": ["Python", "PySide6 (Qt)", "PyVista", "trimesh", "pytest", "PyInstaller", "GitHub Actions", "GitHub Copilot", "Microsoft 365 Copilot"],
     "tutkinto": "Tieto- ja viestintätekniikan perustutkinto",
     "diaarinumero": "OPH-6216-2025",
     "vaatimuksia": 31,

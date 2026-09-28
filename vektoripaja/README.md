@@ -1,7 +1,7 @@
 # Vektoripaja – ohjattu näyttöprojekti
 
-Ohjattu näyttöprojekti: selaimessa toimiva low-poly 3D-mallinnin, joka tekee Inkscapen
-SVG-piirroksesta 3D-mallin ja vie sen .obj-tiedostoksi. Työ tehdään tekoälyavusteisesti:
+Ohjattu näyttöprojekti: Windowsilla toimiva low-poly 3D-mallinnin (Python-työpöytäsovellus), joka
+tekee Inkscapen SVG-piirroksesta 3D-mallin ja vie sen .obj-tiedostoksi. Työ tehdään tekoälyavusteisesti:
 Copilot (Microsoft 365) suunnittelee, GitHub Copilot toteuttaa, opiskelija päättää ja tarkistaa.
 
 - Aikataulu: vk 40/2026 (ma 28.9.) – vk 9/2027 (pe 5.3.), 18 työviikkoa.
@@ -28,6 +28,7 @@ Sivusto on staattinen ja julkaistaan koontisivun repositoryn mukana GitHub Pages
 | `sisalto.js` | viikkojen ohjeet, työsykli, sanasto, suunnitelmapohja ja opettaja-aineisto |
 | `kuvakaappaukset.json` | kuvaohjeiden lähde: mitä kuvataan, alt-tekstit ja numeroidut kohdat |
 | `pohjat/` | opiskelijan repositoryn pohjatiedostot (ladataan viikoilla 40 ja 43) |
+| `pohjat/python-pohja/` | viikon 41 Python-pohja: julkaisu (`release.yml`, `vektoripaja.spec`, `rakenna_exe.bat`), itsetesti, teema, `requirements.txt` ja `tarkista_ymparisto.py`; pakataan tiedostoksi `pohjat/vektoripaja-pohja.zip` |
 | `app.js` | geneerinen moottori — **ei muokata projektikohtaisesti** |
 | `styles.css` | ulkoasu; projektikohtaista vain `:root`-lohkon paletti |
 | `kuvitukset.json` | faviconin ja AI-merkin lähde (sivun SVG-kuvitukset on jätetty pois) |
@@ -38,6 +39,7 @@ Sivusto on staattinen ja julkaistaan koontisivun repositoryn mukana GitHub Pages
 ```
 python tyokalut/rakenna_index.py      # index.html pohjasta ja taulukoista
 node tyokalut/tee_pohjat.js           # pohjat/*.md viikon 40 kopioitavista pohjista
+python tyokalut/tee_python_pohja.py   # pohjat/vektoripaja-pohja.zip kansiosta pohjat/python-pohja/
 npm install docx
 node tyokalut/tee_lataukset.js        # docx-tiedostot + tyopaketti-print.html ja -tuloste.html
 python tyokalut/tee_kuvitukset.py     # faviconit ja AI-merkki (vaatii Pillow'n); poista syntyvät kuvitus-SVG:t
@@ -53,7 +55,7 @@ chrome --headless --no-pdf-header-footer --print-to-pdf=downloads/vektoripaja-ty
 
 ## Kuvaohjeiden kuvat
 
-`kuvakaappaukset.json` listaa 20 kuvaohjetta. Yksi (`github-uusi-issue`) on mallikuva, muut
+`kuvakaappaukset.json` listaa 28 kuvaohjetta. Yksi (`github-uusi-issue`) on mallikuva, muut
 näkyvät paikanpitäjinä, kunnes kuva lisätään. Kuva otetaan GitHubin Dark high contrast-,
 VS Coden Dark High Contrast- tai M365 Copilotin näkymästä demorepositoryssa, rajattuna yhteen
 kohtaan. Tallenna kuva kansioon `assets/kuvakaappaukset/`, täytä `tiedosto`, `leveys`, `korkeus`

@@ -110,6 +110,147 @@
       "teema": "GitHub Dark high contrast"
     },
     {
+      "tunnus": "vscode-create-environment",
+      "otsikko": "Luo virtuaaliympäristö",
+      "kuvaa": "VS Coden komentopaletti, jossa on valittuna Python: Create Environment, ja sen jälkeen valinta Venv",
+      "missa": "VS Code → Ctrl+Shift+P → Python: Create Environment",
+      "tiedosto": "",
+      "leveys": 1200,
+      "korkeus": 700,
+      "alt": "Kuvakaappaus VS Codesta korkean kontrastin teemassa. Ylhäällä komentopaletti, jossa lukee Python: Create Environment. Sen alla valinnat Venv ja Conda.",
+      "kohdat": [
+        { "n": 1, "teksti": "Avaa repositoryn kansio VS Codessa. Paina Ctrl+Shift+P." },
+        { "n": 2, "teksti": "Kirjoita Create Environment. Valitse Python: Create Environment." },
+        { "n": 3, "teksti": "Valitse Venv. Valitse sitten Python 3.13." },
+        { "n": 4, "teksti": "Jos VS Code tarjoaa kirjastojen asennusta, älä valitse listasta mitään. Valitse OK. Odota, että oikeaan alakulmaan tulee ilmoitus valmiista ympäristöstä." }
+      ],
+      "pvm": "",
+      "teema": "VS Code Dark High Contrast"
+    },
+    {
+      "tunnus": "vscode-tulkki",
+      "otsikko": "Valitse projektin tulkki",
+      "kuvaa": "VS Coden Python: Select Interpreter -lista, jossa .venv-tulkki on ensimmäisenä",
+      "missa": "VS Code → Ctrl+Shift+P → Python: Select Interpreter",
+      "tiedosto": "",
+      "leveys": 1200,
+      "korkeus": 600,
+      "alt": "Kuvakaappaus VS Codesta korkean kontrastin teemassa. Komentopaletissa tulkkilista. Ensimmäisellä rivillä Python 3.13 ja polku, jossa on .venv.",
+      "kohdat": [
+        { "n": 1, "teksti": "Paina Ctrl+Shift+P. Valitse Python: Select Interpreter." },
+        { "n": 2, "teksti": "Valitse rivi, jonka polussa on `.venv`. Rivillä lukee Python 3.13." },
+        { "n": 3, "teksti": "Avaa uusi terminaali. Tarkista, että terminaalin rivin alussa lukee (.venv)." }
+      ],
+      "pvm": "",
+      "teema": "VS Code Dark High Contrast"
+    },
+    {
+      "tunnus": "tarkista-ymparisto",
+      "otsikko": "Tarkista ympäristö",
+      "kuvaa": "VS Coden terminaali, jossa näkyy komennon python tarkista_ymparisto.py tuloste",
+      "missa": "VS Code → Terminal → New Terminal",
+      "tiedosto": "",
+      "leveys": 1200,
+      "korkeus": 600,
+      "alt": "Kuvakaappaus VS Coden terminaalista korkean kontrastin teemassa. Terminaalin rivin alussa lukee (.venv). Alla rivejä, jotka alkavat sanalla OK, ja viimeisellä rivillä lukee Ympäristö on kunnossa.",
+      "kohdat": [
+        { "n": 1, "teksti": "Tarkista, että terminaalin rivin alussa lukee (.venv)." },
+        { "n": 2, "teksti": "Kirjoita `python tarkista_ymparisto.py`. Paina Enter." },
+        { "n": 3, "teksti": "Lue rivit. Tarkistusrivien pitää alkaa sanalla OK. Viimeisellä rivillä pitää lukea Ympäristö on kunnossa." },
+        { "n": 4, "teksti": "Jos rivi alkaa sanalla KORJAA, tee sen alla oleva ohje. Aja sitten tarkistus uudelleen." }
+      ],
+      "pvm": "",
+      "teema": "VS Code Dark High Contrast"
+    },
+    {
+      "tunnus": "vscode-testing",
+      "otsikko": "Aja testit Testing-paneelista",
+      "kuvaa": "VS Coden Testing-paneeli, jossa pytestin testit näkyvät listana",
+      "missa": "VS Code → vasen palkki → Testing",
+      "tiedosto": "",
+      "leveys": 1200,
+      "korkeus": 600,
+      "alt": "Kuvakaappaus VS Coden Testing-paneelista korkean kontrastin teemassa. Listassa tests-kansio ja testi test_t01_kiertokulma. Testin vieressä vihreä merkki.",
+      "kohdat": [
+        { "n": 1, "teksti": "Valitse vasemmasta palkista Testing. Kuvake on laboratoriopullo." },
+        { "n": 2, "teksti": "Jos VS Code kysyy testikehystä eli testien ajotyökalua, valitse pytest. Valitse sitten kansio tests." },
+        { "n": 3, "teksti": "Valitse listan yläpuolelta Run Tests." },
+        { "n": 4, "teksti": "Vihreä merkki tarkoittaa, että testi meni läpi. Punainen merkki tarkoittaa, että testi ei mennyt läpi." }
+      ],
+      "pvm": "",
+      "teema": "VS Code Dark High Contrast"
+    },
+    {
+      "tunnus": "github-actions-ajo",
+      "otsikko": "Katso julkaisun ajo",
+      "kuvaa": "GitHubin Actions-välilehti, jossa näkyy julkaisuajon askeleet ja niiden tila",
+      "missa": "GitHub → oma repository → Actions → Julkaisu",
+      "tiedosto": "",
+      "leveys": 1200,
+      "korkeus": 700,
+      "alt": "Kuvakaappaus GitHubin Actions-näkymästä tummassa teemassa. Vasemmalla työnkulku Julkaisu. Keskellä ajon askeleet, joiden vieressä on vihreä valintamerkki.",
+      "kohdat": [
+        { "n": 1, "teksti": "Avaa repositoryn Actions-välilehti. Valitse vasemmalta Julkaisu." },
+        { "n": 2, "teksti": "Avaa ylin ajo. Ajon nimi on Julkaisu ja tagisi, esimerkiksi Julkaisu v0.0.1." },
+        { "n": 3, "teksti": "Odota, että jokaisen askeleen vieressä on vihreä valintamerkki. Ajo kestää noin 10 minuuttia." },
+        { "n": 4, "teksti": "Avaa askel, jonka nimi on Aja itsetesti valmiille .exe:lle. Viimeisellä rivillä pitää lukea ITSETESTI LÄPI." }
+      ],
+      "pvm": "",
+      "teema": "GitHub Dark high contrast"
+    },
+    {
+      "tunnus": "github-release-lataus",
+      "otsikko": "Lataa zip releasesta",
+      "kuvaa": "GitHubin Releases-sivu, jossa julkaisun alla on zip-tiedosto",
+      "missa": "GitHub → oma repository → Releases",
+      "tiedosto": "",
+      "leveys": 1200,
+      "korkeus": 700,
+      "alt": "Kuvakaappaus GitHubin Releases-sivusta tummassa teemassa. Ylhäällä julkaisun nimi Vektoripaja v0.0.1. Kohdassa Assets tiedosto Vektoripaja-v0.0.1-windows.zip.",
+      "kohdat": [
+        { "n": 1, "teksti": "Avaa repositoryn etusivu. Valitse oikealta Releases." },
+        { "n": 2, "teksti": "Tarkista, että ylimmän julkaisun nimessä on oma tagisi." },
+        { "n": 3, "teksti": "Valitse kohdasta Assets tiedosto, jonka nimen lopussa on windows.zip. Lataus alkaa." }
+      ],
+      "pvm": "",
+      "teema": "GitHub Dark high contrast"
+    },
+    {
+      "tunnus": "windows-pura-kaikki",
+      "otsikko": "Pura zip",
+      "kuvaa": "Windowsin Resurssienhallinta: zip-tiedoston pikavalikko ja Pura kaikki -ikkuna",
+      "missa": "Resurssienhallinta → Lataukset → zip-tiedosto → hiiren oikea painike",
+      "tiedosto": "",
+      "leveys": 1200,
+      "korkeus": 700,
+      "alt": "Kuvakaappaus Windowsin Resurssienhallinnasta. Zip-tiedoston pikavalikossa on valittuna Pura kaikki. Vieressä Pura pakatut kansiot -ikkuna, jossa on kohdekansio ja Pura-painike.",
+      "kohdat": [
+        { "n": 1, "teksti": "Avaa Lataukset-kansio. Napsauta zip-tiedostoa hiiren oikealla painikkeella." },
+        { "n": 2, "teksti": "Valitse Pura kaikki." },
+        { "n": 3, "teksti": "Tarkista kohdekansio. Valitse Pura." },
+        { "n": 4, "teksti": "Avaa purettu kansio. Sen sisällä on kansio Vektoripaja. Siellä ovat Vektoripaja.exe, LUE_MINUT.txt ja kansio _internal." }
+      ],
+      "pvm": "",
+      "teema": "Windows 11, tumma teema"
+    },
+    {
+      "tunnus": "windows-smartscreen",
+      "otsikko": "Käynnistä SmartScreen-varoituksen jälkeen",
+      "kuvaa": "Microsoft Defender SmartScreenin ikkuna Windows suojasi tietokonettasi",
+      "missa": "Vektoripaja.exe → kaksoisnapsautus",
+      "tiedosto": "",
+      "leveys": 1200,
+      "korkeus": 600,
+      "alt": "Kuvakaappaus Windowsin sinisestä varoitusikkunasta, jonka otsikko on Windows suojasi tietokonettasi. Tekstin alla linkki Lisätietoja ja alareunassa painike Suorita silti.",
+      "kohdat": [
+        { "n": 1, "teksti": "Kaksoisnapsauta tiedostoa Vektoripaja.exe. Jos näet sinisen ikkunan, jatka tästä." },
+        { "n": 2, "teksti": "Valitse Lisätietoja." },
+        { "n": 3, "teksti": "Valitse Suorita silti. Varoitus tulee, koska sovellusta ei ole allekirjoitettu." }
+      ],
+      "pvm": "",
+      "teema": "Windows 11, SmartScreen"
+    },
+    {
       "tunnus": "copilot-uusi-keskustelu",
       "otsikko": "Aloita uusi keskustelu Copilotissa",
       "kuvaa": "Microsoft 365 Copilotin chat-näkymä ja New chat -painike",

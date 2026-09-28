@@ -38,11 +38,11 @@ VIIKOT = {
         "Mittaa yhden agenttipyynnön hinta viestipohjalla. Kirjaa hinta päiväkirjaan."],
         "repositoryn osoite, <code>project-docs/mvp.md</code> GitHubissa ja agenttipyynnön hinta päiväkirjassa."),
     41: ("Harjoitussykli: pyörivä kuutio julki", [
-        "Päätä, hyväksytkö teknisen ehdotuksen. Perustele päätös suunnitelmaan. Luo sitten tekninen pohja itse komennoilla.",
+        "Päätä, hyväksytkö teknisen ehdotuksen. Perustele päätös suunnitelmaan. Pura pohja. Luo virtuaaliympäristö ja asenna kirjastot itse komennoilla.",
         "Kirjoita testitapaus T01 ennen koodia. Mitä odotat, kun kiertokulma saa ajan 0 ja nopeuden 0,5? Entä kun aika on 3?",
         "Tee kortti #1 (kuutio) työsyklillä mallikortin avulla. Aja T01.",
-        "Tee kortti #2 (Pages-julkaisu) työsyklillä. Aja T02."],
-        "Pages-osoite, issuet #1 ja #2 suljettuina sekä T01:n ja T02:n tulokset issueissa."),
+        "Tee kortti #2 (release) työsyklillä. Aja T02 releasen zipistä puretulla sovelluksella."],
+        "releasen osoite, issuet #1 ja #2 suljettuina sekä T01:n ja T02:n tulokset issueissa."),
     43: ("SVG-tuonti: polut näkyviin", [
         "Piirrä Inkscapessa testitiedosto, jossa on nimetyt layerit ja kolme sisäkkäistä ryhmää.",
         "Kirjoita testitapaukset T03–T05 ennen toteutusta: kolme polkua, SVG, jossa on <code>&lt;script&gt;</code>, ja tiedosto, joka ei ole SVG.",
@@ -132,7 +132,7 @@ VIIKOT = {
         "demo, linkitetty näyttömatriisi ja itsearvioinnin lähetyspäivä päiväkirjassa."),
 }
 
-HELP_SMALL = {41: "mallikortti ja kansiorakenne"}
+HELP_SMALL = {41: "mallikortti, kansiorakenne ja julkaisu"}
 JARJESTYS = [40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 
@@ -240,12 +240,12 @@ tehtavia = sum(len(v[1]) for v in VIIKOT.values())
 MATRIISI = [
     ("Ohjelmointi", [
         ("Opiskelija käyttää ohjelmistokehitysympäristöä", [
-            ("p1", "käyttää ohjelmointieditoria tai kehitysympäristöä", "VS Code, GitHub Copilot, Viten kehityspalvelin ja Vitest käytössä viikoilta 40 ja 41. Versiot README:ssä. Paluuviikon ajo viikolla 2."),
+            ("p1", "käyttää ohjelmointieditoria tai kehitysympäristöä", "VS Code, GitHub Copilot, Pythonin virtuaaliympäristö ja pytest käytössä viikoilta 40 ja 41. Versiot README:ssä. Paluuviikon ajo viikolla 2."),
             ("p2", "etsii ja korjaa virheitä ohjelmakoodista", "Kolme virheenkorjausketjua havaintoissueista viikoilla 49, 4 ja 7: havainto, toistamisohje, syy omin sanoin, korjauscommit, uusintatesti ja regressiotesti."),
             ("p3", "testaa ohjelman toimintoja", "Testitapaukset T01–T26 ja lisätestit viikoilta 41–5. Kirjoitat odotetun tuloksen itse testikoodiin ennen toteutusta. Tulokset issueissa.")]),
         ("Opiskelija ohjelmoi", [
             ("p4", "käyttää rakenteista ohjelmointia toteutuksissa", "Kolme funktiota selityspohjalla: hierarkian muunnos (viikko 44), pivotin syötteen tarkistus (48) ja OBJ-objektijako (49). Rajapinta ennen toteutusta. Selitys ääneen seuraavan viikon palaverissa."),
-            ("p6", "tulkitsee suunnitelmia ja toteuttaa käyttöliittymän tai sen osia", "Hierarkiapaneeli (44), view lock (46), transformivalikko (48) sekä isot kahvat ja näppäimistökäyttö (5) käyttöliittymävaatimuksesi mukaan. Lighthouse ennen ja jälkeen."),
+            ("p6", "tulkitsee suunnitelmia ja toteuttaa käyttöliittymän tai sen osia", "Hierarkiapaneeli (44), view lock (46), transformivalikko (48) sekä isot kahvat ja näppäimistökäyttö (5) käyttöliittymävaatimuksesi mukaan. Accessibility Insights ennen ja jälkeen."),
             ("p7", "tulkitsee suunnitelmia ja toteuttaa ohjelmiston toimintoja", "MVP-kuvauksesta tehtäväkortit ja toiminnot: tuonti (43), revolve (45), inflate (46) ja transformit (47) hyväksymiskriteerien mukaan.")]),
         ("Opiskelija toimii ohjelmistokehitystiimin jäsenenä", [
             ("p8", "sopii tehtävistä tiimin muiden jäsenten kanssa", "Issue-kommentit \"Sovittu viikkopalaverissa pp.kk.\" joka viikolta 41–7."),
@@ -266,22 +266,22 @@ MATRIISI = [
             ("s7", "kehittää ohjelmiston toimintalogiikkaa", "Hierarkia, revolve, inflate, transformit ja pivot (44–48) sekä Päivitä SVG (3)."),
             ("s8", "valitsee ohjelmistoon sopivan tietovaraston", "Tallennustapojen vertailu oman suunnitelman kriteereillä ja oman mallin JSON-tiedoston koko (50)."),
             ("s9", "toteuttaa yhteyden tietovarastoon", "Tallennus ja avaus JSON-tiedostona. Versionumero ja rakenteen tarkistus (50)."),
-            ("s10", "hyödyntää rajapintoja ja käsittelee tietoa", "Selaimen tiedostojen luku, SVGLoader (43), OBJExporter (49) ja JSON (50)."),
+            ("s10", "hyödyntää rajapintoja ja käsittelee tietoa", "Tiedoston avaus QFileDialogilla ja SVG:n luku svgelementsillä (43), .obj-vienti trimeshillä (49) ja JSON (50)."),
             ("s11", "arvioi ohjelmiston tietoturvaa", "T04 haitallinen SVG (43), T22 rikottu JSON (50) ja <code>project-docs/tietoturva.md</code>: uhka, testi, tulos ja toimenpide.")]),
         ("Opiskelija versioi ja julkaisee ohjelman", [
-            ("s12", "käyttää versionhallintaa", "Commitit rivillä <code>Closes #N</code> koko projektin ajan. Tagit v0.1, v1.0-rc1 ja v1.0."),
+            ("s12", "käyttää versionhallintaa", "Commitit rivillä <code>Closes #N</code> koko projektin ajan. Tagit v0.0.1, v0.1, v1.0-rc1 ja v1.0."),
             ("s13", "liittää ohjelman osan olemassa olevaan versioon", "Päivitä SVG omassa haarassa, pull request ja merge päähaaraan, kun kaikki testit menevät läpi (3)."),
-            ("s14", "julkaisee ohjelman tuotantoympäristöön", "GitHub Pages -julkaisu GitHub Actionsilla: harjoitus (41), MVP v0.1 (50) ja v1.0 (7).")]),
+            ("s14", "julkaisee ohjelman tuotantoympäristöön", "Release GitHub Actionsilla: Windows-versio, itsetesti ja zip. Harjoitus (41), MVP v0.1 (50) ja v1.0 (7).")]),
     ], None),
     ("Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla", [
         ("Opiskelija käyttää kehitysympäristöä", [
-            ("k1", "ottaa käyttöön ja konfiguroi ohjelmistokomponenttikirjaston käyttöön soveltuvan kehittämisympäristön", "Vite + React + Three.js + Vitest -pohja omin komennoin ja <code>vite.config.js</code>:n <code>base</code>-asetus (41)."),
-            ("k2", "selvittää ohjelmistokomponenttikirjaston tarjoamat mahdollisuudet ja rajoitteet", "<code>project-docs/kirjastot.md</code>: SVGLoaderin (43) ja TubeGeometryn (46) rajoitteet omilla tiedostoilla kokeiltuina."),
-            ("k3", "käyttää ohjelmistokomponenttikirjaston tärkeimpiä toimintoja ja työkaluja", "LatheGeometry, TubeGeometry, drein TransformControls, OrbitControls ja orientaatiokuutio (45–48)."),
-            ("k4", "tuo kehittämisympäristöön ulkoisia komponentteja", "npm-paketit three, @react-three/fiber, @react-three/drei ja vitest omin komennoin (41).")]),
+            ("k1", "ottaa käyttöön ja konfiguroi ohjelmistokomponenttikirjaston käyttöön soveltuvan kehittämisympäristön", "PySide6 + PyVista + trimesh + pytest -pohja omin komennoin: virtuaaliympäristö, kirjastojen asennus ja <code>tarkista_ymparisto.py</code> (41)."),
+            ("k2", "selvittää ohjelmistokomponenttikirjaston tarjoamat mahdollisuudet ja rajoitteet", "<code>project-docs/kirjastot.md</code>: svgelementsin (43) ja putkigeometrian (46) rajoitteet omilla tiedostoilla kokeiltuina."),
+            ("k3", "käyttää ohjelmistokomponenttikirjaston tärkeimpiä toimintoja ja työkaluja", "trimeshin revolve, PyVistan tube-suodatin, kamera ja orientaatiowidget sekä Qt:n transformipaneeli (45–48)."),
+            ("k4", "tuo kehittämisympäristöön ulkoisia komponentteja", "pip-paketit omin komennoin ja <code>requirements.txt</code> (41).")]),
         ("Opiskelija toteuttaa ohjelmiston ohjelmistokomponenttikirjastolla", [
             ("k5", "suunnittelee, toteuttaa ja testaa ohjelmiston ohjelmistokomponenttikirjastoa käyttäen", "MVP v0.1 komponenttikirjastolla testeineen (43–50)."),
-            ("k6", "julkaisee ohjelmiston asiakkaan ympäristöön", "MVP asiakkaiden kokeiltavaksi (50). Asiakkaiden vahvistus v1.0:sta omalla koneellaan (7)."),
+            ("k6", "julkaisee ohjelmiston asiakkaan ympäristöön", "MVP-release asiakkaiden kokeiltavaksi (50). Antti vahvistaa v1.0-releasen omalla Windows-koneellaan, Matti demon tai opiskelijan koneen kautta (7)."),
             ("k7", "dokumentoi ohjelmiston sovitulla tavalla", "Dokumentointitapa sovittu palaverissa (43). README ja käyttöohje, joiden avulla julkaisutestaaja kulkee koko polun (6).")]),
     ], None),
 ]

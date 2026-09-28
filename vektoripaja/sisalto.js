@@ -235,6 +235,7 @@ window.NAYTTOPROJEKTI = {
           { kysymys: "Muutos koskisi testitiedostoa?", ohje: "Hylkää muutos. Testi on sinun odotettu tuloksesi. Sitä ei muuteta koodin mukaan. Kirjaa hylkäys AI-lokiin." },
           { kysymys: "Korjaus vaatisi muutoksia kortin ulkopuolelle?", ohje: "Älä hyväksy muutosta. Vie asia Copilotille askeleessa 5. Pyydä uusi kortti." },
           { kysymys: "Sovellus ei käynnisty ollenkaan?", ohje: "Tarkista ensin, että terminaalin rivin alussa lukee (.venv). Jos ei lue, toimi kuten kohdassa \"Terminaalissa lukee `ModuleNotFoundError`?\" Aja sitten `pip install -r requirements.txt` ja `python main.py`. Jos tulee virhe, toimi kuten kohdassa \"Tuliko virheilmoitus?\"" },
+          { kysymys: "Terminaali sanoo `running scripts is disabled`?", ohje: "Windows estää PowerShellissä virtuaaliympäristön käynnistyksen. Avaa terminaali komentokehotteena. Valitse terminaalin +-painikkeen vierestä nuoli. Valitse sitten Command Prompt. Tarkista, että terminaalin rivin alussa lukee (.venv)." },
           { kysymys: "Terminaalissa lukee `ModuleNotFoundError`?", ohje: "Python ei löydä kirjastoa. Syy on yleensä se, että tulkki on väärä tai virtuaaliympäristö ei ole päällä. Paina VS Codessa Ctrl+Shift+P. Valitse Python: Select Interpreter. Valitse sitten tulkki, jonka polussa on `.venv`. Avaa uusi terminaali. Tarkista, että terminaalin rivin alussa lukee (.venv). Aja komento uudelleen." },
           { kysymys: "Krediittejä on jäljellä alle 25 prosenttia?", ohje: "Käytä kaistoja A ja B kuun loppuun asti. Kerro asiasta ohjaajalle viikkopalaverissa." }
         ]
@@ -251,7 +252,7 @@ window.NAYTTOPROJEKTI = {
           "Kirjaa tulos issueen: läpi tai ei läpi, ja mitä näit."
         ],
         pohja: { otsikko: "Testin kirjaus issueen", teksti: "Testi T__\nOdotettu tulos (löytyi testikoodista rivillä __): \nHavaittu tulos: \nTulos: läpi / ei läpi" },
-        kuvaohjeet: ["vscode-terminaali"],
+        kuvaohjeet: ["vscode-terminaali", "vscode-testing"],
         valmis: "issuessa on odotettu ja havaittu tulos jokaisesta kortin testistä.",
         jumissa: [
           { kysymys: "Testi ei mennyt läpi?", ohje: "Palaa kohtaan 3b. Korjaa toteutus. Älä muuta testiä. Jos sama testi epäonnistuu toisen kerran, avaa havaintoissue ja siirry askeleeseen 5." },
@@ -365,58 +366,67 @@ window.NAYTTOPROJEKTI = {
     },
     41: {
       type: "feature",
-      feature: "Selaimessa pyörii Three.js-kuutio omassa Pages-osoitteessasi. Testitapaukset T01 ja T02 menevät läpi.",
-      excerpt: "Haluamme nähdä jokaisen välivaiheen verkossa, emme vain kuvakaappauksina.",
+      feature: "Sovelluksen ikkunassa pyörii kuutio. Testitapaukset T01 ja T02 menevät läpi. GitHubin releasessa on zip, jonka itsetesti meni läpi.",
+      excerpt: "Haluamme kokeilla jokaista välivaihetta, emme vain katsoa kuvakaappauksia.",
       connection: "Viikolla 40 asensit työkalut. Nyt käyt työsyklin läpi vaarattomalla tehtävällä. Kuutio poistetaan myöhemmin, mutta sama sykli toistuu joka viikko.",
-      deliverable: "Julkaistu sivu, jossa kuutio pyörii · testitapaukset T01 ja T02 · kaksi issueta suljettuna commit-viestillä · päätös teknisestä pohjasta suunnitelmassa.",
+      deliverable: "Ikkuna, jossa kuutio pyörii · testitapaukset T01 ja T02 · release-zip GitHubissa · kaksi issueta suljettuna commit-viestillä · päätös teknisestä pohjasta suunnitelmassa.",
       why: "Jos sykli opitaan vasta SVG-tuonnin kanssa, uusi työtapa ja vaikea tehtävä tulevat yhtä aikaa. Silloin et tiedä, johtuuko ongelma työtavasta vai tehtävästä.",
-      done: "Pages-osoite näyttää pyörivän kuution myös toisella laitteella, esimerkiksi puhelimella. `npm test` näyttää, että T01 menee läpi. Issuet #1 ja #2 on suljettu commitilla.",
-      record: "Pages-osoite, issueiden numerot, T01:n odotettu ja havaittu tulos, kiertokulma-funktio selityspohjalla ja vaatimustunnukset k1, k4 ja s14.",
-      skills: ["Tehtäväkortti ja hyväksymiskriteerit", "Tekninen pohja: Vite, React, Three.js ja Vitest", "Testi ennen koodia", "Julkaisu GitHub Pagesiin"],
-      termit: ["työsykli", "tehtäväkortti", "issue", "kaista", "T01", "tekninen pohja", "GitHub Pages"],
+      done: "Releasen zipistä purettu sovellus käynnistyy, ja kuutio pyörii. Actionsin ajo on vihreä, eli itsetesti meni läpi. `pytest` näyttää, että T01 menee läpi. Issuet #1 ja #2 on suljettu commitilla.",
+      record: "Releasen osoite, issueiden numerot, T01:n odotettu ja havaittu tulos, kiertokulma-funktio selityspohjalla ja vaatimustunnukset k1, k4 ja s14.",
+      skills: ["Tehtäväkortti ja hyväksymiskriteerit", "Tekninen pohja: PySide6, PyVista, trimesh ja pytest", "Testi ennen koodia", "Julkaisu releasena GitHub Actionsilla"],
+      termit: ["työsykli", "tehtäväkortti", "issue", "kaista", "T01", "tekninen pohja", "requirements.txt", "tagi", "GitHub Actions", "paketointi", "itsetesti", "release", "zip"],
       steps: [
         ["Käy viikkopalaveri.", "Käy läpi asiakkaiden vastaukset kysymyslistaasi. Kirjaa ne tiedostoon <code>project-docs/kysymykset.md</code>. Viikkopalaveri on viikon tapaaminen ohjaajan kanssa."],
         ["Päätä ensin.", "Lue tekninen ehdotus suunnitelmasta. Kirjaa suunnitelmaan, hyväksytkö sen. Perustele päätös P0-toiminnoilla."],
         ["Kirjaa käyttöliittymävaatimus.", "Kirjoita suunnitelmaan, millainen sovelluksesi ulkoasun pitää olla: taustaväri, tekstin väri, tekstin koko ja painikkeiden koko. Kortin #1 hyväksymiskriteeri tulee tästä."],
-        ["Luo tekninen pohja itse.", "Avaa repositoryn kansio VS Codessa. Aja <code>npm create vite@latest . -- --template react</code> ja <code>npm install</code>."],
-        ["Lisää kirjastot itse.", "Aja <code>npm install three @react-three/fiber @react-three/drei</code> ja <code>npm install -D vitest</code>."],
+        ["Pura pohja repositoryyn.", "Lataa alta <code>vektoripaja-pohja.zip</code>. Napsauta sitä hiiren oikealla painikkeella. Valitse Pura kaikki. Valitse kohteeksi repositorysi kansio. Pohjassa ovat valmiina julkaisun ja itsetestin tiedostot. Mukana on myös lista kirjastoista versioineen. Sen nimi on <code>requirements.txt</code>."],
+        ["Luo virtuaaliympäristö itse.", "Avaa repositoryn kansio VS Codessa. Paina Ctrl+Shift+P. Valitse Python: Create Environment. Valitse sitten Venv. Valitse lopuksi Python 3.13. Jos VS Code tarjoaa kirjastojen asennusta, älä valitse listasta mitään. Valitse OK. Asennat kirjastot itse seuraavassa askeleessa. Katso kuvaohje alta."],
+        ["Asenna kirjastot itse.", "Avaa uusi terminaali. Tarkista, että terminaalin rivin alussa lukee (.venv). Aja <code>pip install -r requirements.txt</code>. Aja sitten <code>python tarkista_ymparisto.py</code>. Rivien alussa pitää lukea OK. Viimeisellä rivillä lukee Ympäristö on kunnossa."],
+        ["Kirjaa kirjastot README:hen.", "Kirjoita README:hen kirjastojen nimet ja lisenssit. Lisenssin näet komennolla <code>pip show</code>. Kirjoita komennon perään kirjaston nimi, esimerkiksi <code>pip show PySide6</code>."],
         ["Kirjoita T01 ennen koodia.", "Funktio <code>kiertokulma(aika, nopeus)</code> saa ajan 0 ja nopeuden 0,5. Mitä odotat? Entä kun aika on 3? Kirjaa vastaukset ennen ajoa."],
-        ["Tee kortti #1 työsyklillä.", "Kortti: kuutio pyörii etusivulla. Vertaa Copilotin korttia toteutusavun mallikorttiin."],
-        ["Tee kortti #2 työsyklillä.", "Kortti: sovellus julkaistaan GitHub Pagesiin. Testi T02: avaa osoite toisella laitteella, esimerkiksi puhelimella."],
+        ["Tee kortti #1 työsyklillä.", "Kortti: kuutio pyörii sovelluksen ikkunassa. Vertaa Copilotin korttia toteutusavun mallikorttiin."],
+        ["Tee kortti #2 työsyklillä.", "Kortti: sovellus julkaistaan releasena. Release on GitHubin julkaisusivu, josta valmiin version voi ladata zip-tiedostona. Julkaisu alkaa nimetystä versiosta Gitissä. Sitä kutsutaan tagiksi. Katso toteutusavusta, miten julkaiset."],
+        ["Tee T02 puretusta kansiosta.", "Lataa zip releasesta. Pura se valitsemalla Pura kaikki. Käynnistä <code>Vektoripaja.exe</code> puretusta kansiosta, älä VS Codesta. Kuution pitää pyöriä."],
         ["Tee lisätehtävä.", "Lisätesti: mitä odotat, kun aika on negatiivinen? Kirjaa vastaus ennen ajoa. Lisätesti on ylimääräinen testi ilman T-numeroa."]
       ],
-      example: "Perustelu suunnitelmaan: \"Hyväksyn ehdotuksen. SVGLoader lukee Inkscapen SVG:n, LatheGeometry tekee revolven ja Vitest testaa puhtaat funktiot.\"",
+      resources: [
+        ["Lataa vektoripaja-pohja.zip", "pohjat/vektoripaja-pohja.zip", true]
+      ],
+      kuvaohjeet: ["vscode-create-environment", "vscode-tulkki", "tarkista-ymparisto", "github-actions-ajo", "github-release-lataus", "windows-pura-kaikki", "windows-smartscreen"],
+      example: "Perustelu suunnitelmaan: \"Hyväksyn ehdotuksen. svgelements lukee Inkscapen SVG:n, trimesh tekee revolven ja .obj-viennin, ja pytest testaa puhtaat funktiot.\"",
       notEnough: "\"Hyväksyn, koska Copilot suositteli tätä.\" Perustelussa ei ole yhtään P0-toimintoa.",
       help: {
-        title: "Mallikortti, testipohja ja kansiorakenne",
-        tree: "vektoripaja/\n├─ .github/\n│  ├─ ISSUE_TEMPLATE/tehtavakortti.md\n│  ├─ copilot-instructions.md\n│  └─ workflows/pages.yml\n├─ project-docs/\n│  ├─ mvp.md\n│  └─ kysymykset.md\n├─ src/\n│  ├─ App.jsx\n│  ├─ index.css\n│  ├─ kierto.js\n│  └─ kierto.test.js\n├─ PROJEKTIN-TILA.md\n├─ README.md\n├─ package.json\n└─ vite.config.js",
+        title: "Mallikortti, testipohja, kansiorakenne ja julkaisu",
+        tree: "vektoripaja/\n├─ .github/\n│  ├─ ISSUE_TEMPLATE/tehtavakortti.md\n│  ├─ copilot-instructions.md\n│  └─ workflows/release.yml     (pohja)\n├─ .venv/                        (oma, ei GitHubiin)\n├─ esimerkit/esimerkki.svg       (pohja)\n├─ project-docs/\n│  ├─ mvp.md\n│  └─ kysymykset.md\n├─ tests/\n│  └─ test_kierto.py\n├─ vektoripaja/                  (paketin kansio: sovelluksen koodi)\n│  ├─ __init__.py                (pohja)\n│  ├─ ikkuna.py\n│  ├─ itsetesti.py               (pohja)\n│  ├─ kierto.py\n│  ├─ teema.py                   (pohja)\n│  └─ teema.qss                  (pohja)\n├─ .gitignore                    (pohja)\n├─ LUE_MINUT.txt                 (pohja)\n├─ PROJEKTIN-TILA.md\n├─ README.md\n├─ main.py                       (pohja)\n├─ pytest.ini                    (pohja)\n├─ rakenna_exe.bat               (pohja)\n├─ requirements.txt              (pohja)\n├─ tarkista_ymparisto.py         (pohja)\n└─ vektoripaja.spec              (pohja)",
         actions: [
-          "Kopioi testipohja tiedostoon `src/kierto.test.js`. Kirjoita omat odotetut tuloksesi `___`-kohtiin (työsyklin kohta 3a).",
-          "Pyydä kaistalla A tiedostot yksi kerrallaan: `src/kierto.js`, `src/App.jsx` ja `src/index.css`.",
-          "Lisää tiedostoon `package.json` skripti `\"test\": \"vitest run\"`.",
-          "Lisää tiedostoon `vite.config.js` rivi `base: \"/vektoripaja/\"`. Valitse GitHubissa Settings → Pages → Source: GitHub Actions."
+          "Kopioi testipohja tiedostoon `tests/test_kierto.py`. Kirjoita omat odotetut tuloksesi `___`-kohtiin (työsyklin kohta 3a).",
+          "Pyydä kaistalla A tiedostot yksi kerrallaan: ensin `vektoripaja/kierto.py`, sitten `vektoripaja/ikkuna.py`. Pohjan `main.py` kutsuu funktiota `kaynnista()` tiedostosta `vektoripaja/ikkuna.py`. Älä muuta tiedostoa `main.py`.",
+          "Kortti #2: tee ensin commit ja push. Aja sitten terminaalissa `git tag v0.0.1`. Aja sen jälkeen `git push origin v0.0.1`. Tagin push käynnistää GitHub Actionsin. Se ajaa testit ja tekee Windows-version. Windows-version tekemistä kutsutaan paketoinniksi. Lopuksi se ajaa Windows-versiolle itsetestin.",
+          "Avaa GitHubissa Actions-välilehti. Kun ajo on vihreä, avaa Releases. Siellä on zip `Vektoripaja-v0.0.1-windows.zip`.",
+          "Jos korjaat jotain ja julkaiset uudelleen, tee uusi tagi: `v0.0.2`. Samaa tagia ei käytetä kahdesti."
         ],
-        code: "MALLIKORTTI #1\n## Tavoite\nKuutio pyörii etusivulla.\n## Kaista ja perustelu\nA. Kolme tiedostoa, pyydetään yksi kerrallaan.\n## Tiedostot\nsrc/kierto.js, src/App.jsx, src/index.css\n## Älä tee\nÄlä lisää muita kirjastoja. Älä muuta tiedostoa src/kierto.test.js.\n## Hyväksymiskriteerit\n- [ ] Kuutio näkyy ja pyörii tasaisesti.\n- [ ] Tausta on musta ja teksti #1fa4e3.\n## Testi\nT01: kiertokulma(0, 0.5) → (oma odotettu tuloksesi) ja kiertokulma(3, 0.5) → (oma odotettu tuloksesi)\n## Sykli\n- [ ] 1 Suunniteltu  - [ ] 2 Siirretty\n- [ ] 3a Testi kirjoitettu  - [ ] 3b Toteutettu\n- [ ] 4 Tarkistettu  - [ ] 5 Raportoitu  - [ ] 6 Kirjattu\n\nTESTIPOHJA src/kierto.test.js\nimport { test, expect } from \"vitest\";\nimport { kiertokulma } from \"./kierto.js\";\n\ntest(\"T01 kiertokulma\", () => {\n  expect(kiertokulma(0, 0.5)).toBe(___);\n  expect(kiertokulma(3, 0.5)).toBe(___);\n});",
-        test: "Avaa Pages-osoite puhelimella tai toisella laitteella. Kuution pitää pyöriä."
+        code: "MALLIKORTTI #1\n## Tavoite\nKuutio pyörii sovelluksen ikkunassa.\n## Kaista ja perustelu\nA. Kaksi tiedostoa, pyydetään yksi kerrallaan.\n## Tiedostot\nvektoripaja/kierto.py, vektoripaja/ikkuna.py\n## Älä tee\nÄlä lisää muita kirjastoja. Älä muuta tiedostoja main.py ja tests/test_kierto.py.\n## Hyväksymiskriteerit\n- [ ] Komento python main.py avaa ikkunan, jossa kuutio pyörii tasaisesti.\n- [ ] Tausta on musta ja teksti #1fa4e3 (vektoripaja/teema.py).\n- [ ] Funktio kiertokulma ei käytä Qt:ta.\n## Testi\nT01: kiertokulma(0, 0.5) → (oma odotettu tuloksesi) ja kiertokulma(3, 0.5) → (oma odotettu tuloksesi)\n## Sykli\n- [ ] 1 Suunniteltu  - [ ] 2 Siirretty\n- [ ] 3a Testi kirjoitettu  - [ ] 3b Toteutettu\n- [ ] 4 Tarkistettu  - [ ] 5 Raportoitu  - [ ] 6 Kirjattu\n\nTESTIPOHJA tests/test_kierto.py\nfrom vektoripaja.kierto import kiertokulma\n\n\ndef test_t01_kiertokulma():\n    assert kiertokulma(0, 0.5) == ___\n    assert kiertokulma(3, 0.5) == ___",
+        test: "T02: lataa zip releasesta. Pura se valitsemalla Pura kaikki. Käynnistä Vektoripaja.exe puretusta kansiosta. Kuution pitää pyöriä. Jos Windows sanoo \"Windows suojasi tietokonettasi\", valitse Lisätietoja. Valitse sitten Suorita silti."
       },
       sykli: {
         pohjat: {
           1: {
             otsikko: "Viikon 41 kortti #1: täytä ja liitä Copilotiin",
-            teksti: "Teen projektia Vektoripaja. Liitin tilatiedoston PROJEKTIN-TILA.md.\n\nViikko 41: Harjoitussykli\nViikon tavoite: {feature}\n\nMinun ehdotukseni kortiksi: Tämä kortti tekee vain pyörivän kuution etusivulle.\nMinun odotettu tulokseni: Kun syöte on kiertokulma(0, 0.5), tuloksen pitää olla ___. Kun syöte on kiertokulma(3, 0.5), tuloksen pitää olla ___.\nRajapinta: kiertokulma(aika, nopeus) palauttaa luvun.\n\nKirjoita tästä yksi tehtäväkortti tässä muodossa:\n\n## Tavoite\n## Kaista (A, B tai C) ja perustelu\n## Tiedostot\n## Älä tee (testitiedostot aina tässä)\n## Hyväksymiskriteerit\n## Testi: tunnus, syöte ja odotettu tulos\n\nKäytä minun odotettua tulostani sellaisenaan. Älä kirjoita koodia."
+            teksti: "Teen projektia Vektoripaja. Liitin tilatiedoston PROJEKTIN-TILA.md.\n\nViikko 41: Harjoitussykli\nViikon tavoite: {feature}\n\nMinun ehdotukseni kortiksi: Tämä kortti tekee vain pyörivän kuution sovelluksen ikkunaan.\nMinun odotettu tulokseni: Kun syöte on kiertokulma(0, 0.5), tuloksen pitää olla ___. Kun syöte on kiertokulma(3, 0.5), tuloksen pitää olla ___.\nRajapinta: kiertokulma(aika, nopeus) palauttaa luvun.\n\nKirjoita tästä yksi tehtäväkortti tässä muodossa:\n\n## Tavoite\n## Kaista (A, B tai C) ja perustelu\n## Tiedostot\n## Älä tee (testitiedostot aina tässä)\n## Hyväksymiskriteerit\n## Testi: tunnus, syöte ja odotettu tulos\n\nKäytä minun odotettua tulostani sellaisenaan. Älä kirjoita koodia."
           },
           3: {
             otsikko: "Kaista A: liitä tämä Copilotiin",
-            teksti: "Toteuta tämä tehtäväkortti yhteen tiedostoon.\nTiedosto: (kirjoita polku, esimerkiksi src/App.jsx)\n\nSäännöt:\n- Muuta vain tätä tiedostoa.\n- Älä muuta testejä.\n- Anna koko muutettu tiedosto yhtenä koodilohkona.\n- Älä lisää uusia kirjastoja.\n- Jos kortti on epäselvä, kysy, ennen kuin kirjoitat koodia.\n\nTehtäväkortti:\n(liitä kortti tähän)\n\nTiedoston nykyinen sisältö:\n(liitä tiedosto tähän)"
+            teksti: "Toteuta tämä tehtäväkortti yhteen tiedostoon.\nTiedosto: (kirjoita polku, esimerkiksi vektoripaja/ikkuna.py)\n\nSäännöt:\n- Muuta vain tätä tiedostoa.\n- Älä muuta testejä.\n- Anna koko muutettu tiedosto yhtenä koodilohkona.\n- Älä lisää uusia kirjastoja.\n- Jos kortti on epäselvä, kysy, ennen kuin kirjoitat koodia.\n\nTehtäväkortti:\n(liitä kortti tähän)\n\nTiedoston nykyinen sisältö:\n(liitä tiedosto tähän)"
           }
         },
         ohjeet: {
           3: [
-            "Kirjoita testi ensin (3a). Kortissa #1 kopioi toteutusavun testipohja tiedostoon `src/kierto.test.js`. Kirjoita omat arvosi `___`-kohtiin.",
+            "Kirjoita testi ensin (3a). Kortissa #1 kopioi toteutusavun testipohja tiedostoon `tests/test_kierto.py`. Kirjoita omat arvosi `___`-kohtiin.",
             "Kirjoita kortin #2 testin T02 odotettu tulos issueen. T02 tehdään käsin. Siirry sitten suoraan kohtaan 3b.",
-            "Toteuta kortti sitten kaistalla A (3b). Kaista A tarkoittaa, että Copilot kirjoittaa koodin yksi tiedosto kerrallaan. Pyydä ensin `src/kierto.js`, sitten `src/App.jsx`, sitten `src/index.css`.",
+            "Toteuta kortti sitten kaistalla A (3b). Kaista A tarkoittaa, että Copilot kirjoittaa koodin yksi tiedosto kerrallaan. Pyydä ensin `vektoripaja/kierto.py`, sitten `vektoripaja/ikkuna.py`.",
+            "Kortissa #2 et kirjoita koodia. Julkaisun tiedostot ovat pohjassa. Toteutat kortin tekemällä tagin ja pushaamalla sen. Katso toteutusapu.",
             "Lue jokainen tiedosto, ennen kuin hyväksyt sen. Älä hyväksy muutoksia testitiedostoon.",
-            "Tallenna tiedostot. Aja terminaalissa `npm run dev`."
+            "Tallenna tiedostot. Aja terminaalissa `python main.py`."
           ]
         },
         lisa: {
@@ -424,10 +434,13 @@ window.NAYTTOPROJEKTI = {
         },
         jumissa: {
           3: [
-            { kysymys: "`npm create vite` kysyy kysymyksiä?", ohje: "Valitse framework React. Valitse variant JavaScript. Jos se kysyy kansion tyhjentämisestä, valitse Ignore files and continue." }
+            { kysymys: "Python: Create Environment ei näy, tai listassa ei ole Python 3.13:a?", ohje: "Tarkista, että VS Coden Python-laajennus on asennettu (viikko 40). Sulje VS Code ja avaa se uudelleen. Jos Python 3.13 puuttuu yhä, aja terminaalissa `python --version`. Lähetä tuloste ohjaajalle Teamsissa." },
+            { kysymys: "`python main.py` sanoo, ettei `vektoripaja.ikkuna`-moduulia löydy?", ohje: "Tiedosto `vektoripaja/ikkuna.py` tehdään kortissa #1. Jos olet jo tehnyt sen, tarkista, että se on kansiossa `vektoripaja` eikä repositoryn juuressa." }
           ],
           4: [
-            { kysymys: "Pages-sivu on tyhjä tai valkoinen?", ohje: "Avaa `vite.config.js`. Viten `base` puuttuu tai on väärä. Tarkista rivi `base: \"/vektoripaja/\"`. Nimen pitää olla sama kuin repositoryn nimi." }
+            { kysymys: "Actions-ajo on punainen?", ohje: "Avaa Actions-välilehdeltä punainen ajo. Avaa sitten sen punainen askel. Lue viimeiset rivit. Jos punaisen askeleen nimi on Aja testit (pytest), aja `pytest` omalla koneellasi. Korjaa virhe ennen uutta tagia. Muuten kopioi rivit Copilotille työsyklin pohjalla \"Kysy virheestä Copilotilta\"." },
+            { kysymys: "Releases-sivulla ei ole zipiä?", ohje: "Pelkkä commit ei tee releasea. Tarkista, että ajoit `git push origin v0.0.1`. Katso Actions-välilehdeltä, onko ajo vielä kesken. Ajo kestää noin 10 minuuttia." },
+            { kysymys: "Windows sanoo \"Windows suojasi tietokonettasi\"?", ohje: "Tämä on Microsoft Defender SmartScreen. Se varoittaa, koska sovellusta ei ole allekirjoitettu. Valitse Lisätietoja ja sitten Suorita silti." }
           ]
         }
       }
@@ -435,7 +448,7 @@ window.NAYTTOPROJEKTI = {
     43: {
       type: "feature",
       feature: "Inkscapessa piirretty SVG avautuu sovellukseen. Sen polut näkyvät 3D-näkymässä viivoina.",
-      excerpt: "Tarvitsemme selaimessa toimivan työkalun, joka avaa Inkscapessa piirretyn SVG-tiedoston ja tekee siitä low-poly-mallin.",
+      excerpt: "Tarvitsemme Windowsilla toimivan työpöytäsovelluksen, joka avaa Inkscapessa piirretyn SVG-tiedoston ja tekee siitä low-poly-mallin.",
       connection: "Nyt sykli on tuttu. Ensimmäinen oikea ominaisuus on tuonti. Ilman sitä mallista ei synny mitään.",
       deliverable: "Oma testitiedosto Inkscapesta · testitapaukset T03–T05 · kansiorakenne suunnitelmassa · polut näkymässä · `project-docs/kirjastot.md`.",
       why: "Kaikki myöhemmät viikot tarvitsevat tuodut polut. Jos tuonti on epävarma, myös revolve ja inflate ovat epävarmoja.",
@@ -846,7 +859,7 @@ window.NAYTTOPROJEKTI = {
     6: {
       type: "julkaisu",
       feature: "Julkaisuehdokas v1.0-rc1 on jäädytetty. Toinen opiskelija on kulkenut README:n avulla koko polun Inkscape-piirroksesta .obj-tiedostoon.",
-      excerpt: "Valmis tarkoittaa meille tätä: työkalu on verkossa, oma piirroksemme muuttuu malliksi, .obj aukeaa toisessa ohjelmassa, ja mukana on ohje, jolla joku muu saa työkalun käyttöön kysymättä meiltä.",
+      excerpt: "Valmis tarkoittaa meille tätä: työkalun voi ladata GitHubista ja käynnistää Windows-koneella ilman Pythonia, oma piirroksemme muuttuu malliksi, .obj aukeaa toisessa ohjelmassa, ja mukana on ohje, jolla joku muu saa työkalun käyttöön kysymättä meiltä.",
       connection: "Julkaisuehdokas (RC) on versio, jossa sisältö on jäädytetty. Sisältöjäädytys tarkoittaa, että uusia ominaisuuksia ei enää lisätä. Tällä viikolla testataan, saako joku muu työkalun käyttöön pelkällä ohjeella.",
       deliverable: "Tagi v1.0-rc1 · README ja käyttöohje · julkaisutestin epäröintilista.",
       why: "Jos ohje toimii vain sinulle, asiakas ei saa työkalua käyttöön. Jokainen epäröinti on ohjeen korjauslista.",
@@ -871,7 +884,7 @@ window.NAYTTOPROJEKTI = {
     7: {
       type: "julkaisu",
       feature: "Julkaisutestin estävät havainnot on korjattu. Versio v1.0 on julki. Asiakkaat ovat vahvistaneet, että se toimii heidän koneellaan. Näyttömatriisin jokaisella rivillä on linkki työnäytteeseen.",
-      excerpt: "Valmis tarkoittaa meille tätä: työkalu on verkossa, oma piirroksemme muuttuu malliksi, .obj aukeaa toisessa ohjelmassa, ja mukana on ohje, jolla joku muu saa työkalun käyttöön kysymättä meiltä.",
+      excerpt: "Valmis tarkoittaa meille tätä: työkalun voi ladata GitHubista ja käynnistää Windows-koneella ilman Pythonia, oma piirroksemme muuttuu malliksi, .obj aukeaa toisessa ohjelmassa, ja mukana on ohje, jolla joku muu saa työkalun käyttöön kysymättä meiltä.",
       connection: "Viikolla 6 löytyivät viimeiset esteet. Nyt ne korjataan, ja v1.0 julkaistaan. Samalla näyttöaineisto linkitetään valmiiksi.",
       deliverable: "Virheenkorjausketju 3 · tagi v1.0 ja release-teksti · asiakkaiden vahvistus · linkitetty näyttömatriisi.",
       why: "Julkaisu ilman korjauksia jättää asiakkaalle tunnetut viat. Ilman linkitystä arvioija ei löydä työnäytteitä.",
@@ -961,8 +974,14 @@ window.NAYTTOPROJEKTI = {
     { termi: "mallikortti", selite: "Valmis esimerkkikortti, johon omaa korttia verrataan. Viikolla 41 siinä on myös testipohja.", viikko: 41 },
     { termi: "kaista", nimi: "A, B tai C", selite: "Toteutustapa. A: Copilot kirjoittaa koodin yksi tiedosto kerrallaan. B (viikolta 43): kommentti ja täydennys VS Codessa, myös testit. C (viikolta 44): GitHub Copilotin agenttitila useaan tiedostoon.", viikko: 41 },
     { termi: "T01", nimi: "Testitapauksen tunnus", selite: "T tarkoittaa testitapausta. Numero yksilöi sen: T01 on ensimmäinen, T02 toinen. Odotettu tulos kirjataan, ennen kuin koodi tehdään. Lisätesti on ylimääräinen testi ilman numeroa.", viikko: 41 },
-    { termi: "tekninen pohja", nimi: "Vite, React, Three.js ja Vitest", selite: "Sovelluksen perusta. Vite käynnistää ja rakentaa sovelluksen. React tekee näkymät. Three.js piirtää 3D:n. Vitest ajaa testit.", viikko: 41 },
-    { termi: "GitHub Pages", selite: "Julkaisupaikka. GitHub Actions on automaatio, joka julkaisee sovelluksen jokaisen pushin jälkeen.", viikko: 41 },
+    { termi: "tekninen pohja", nimi: "PySide6, PyVista, trimesh ja pytest", selite: "Sovelluksen perusta. PySide6 (Qt) tekee ikkunan ja painikkeet. PyVista piirtää 3D-näkymän. trimesh tekee 3D-kappaleet ja .obj-tiedoston. pytest ajaa testit.", viikko: 41 },
+    { termi: "requirements.txt", nimi: "kirjastolista", selite: "Tiedosto, jossa ovat projektin kirjastot versioineen. Kirjastot asennetaan komennolla `pip install -r requirements.txt`. Uusi kirjasto lisätään tänne vain ohjaajan luvalla.", viikko: 41 },
+    { termi: "tagi", selite: "Nimetty versio Gitissä, esimerkiksi v0.0.1, v0.1 tai v1.0. Tagin push käynnistää julkaisun.", viikko: 41 },
+    { termi: "GitHub Actions", selite: "GitHubin automaatio. Kun pushaat tagin, automaatio ajaa testit ja tekee Windows-version. Sitten se ajaa Windows-versiolle itsetestin ja lisää zipin releaseen.", viikko: 41 },
+    { termi: "paketointi", selite: "Sovellus ja sen kirjastot kootaan kansioksi, joka toimii ilman Pythonia. Tässä projektissa paketoinnin tekee PyInstaller tiedoston `vektoripaja.spec` ohjeilla.", viikko: 41 },
+    { termi: "itsetesti", selite: "Sovelluksen oma tarkistus: `Vektoripaja.exe --itsetesti`. Se lukee esimerkki-SVG:n ja tekee siitä 3D-kappaleet ja .obj-tiedoston. Ikkunaa ei avata. GitHub Actions ajaa sen jokaiselle julkaisulle.", viikko: 41 },
+    { termi: "release", nimi: "julkaisusivu", selite: "GitHubin sivu, josta valmiin version voi ladata. Tässä projektissa releasessa on zip, jossa on Windows-versio.", viikko: 41 },
+    { termi: "zip", nimi: "pakattu kansio", selite: "Yksi tiedosto, jonka sisällä on kansio. Pura zip ennen käyttöä: hiiren oikea painike ja Pura kaikki.", viikko: 41 },
     { termi: "main", nimi: "päähaara", selite: "Repositoryn päälinja. Julkaisu tehdään päähaarasta.", viikko: 41 },
     { termi: "kahden yrityksen sääntö", selite: "Kun sama asia epäonnistuu kahdesti, lopetetaan yrittäminen ja palataan Copilotille.", viikko: 41 },
     { termi: "täydennys", selite: "GitHub Copilotin harmaa koodiehdotus VS Codessa. Hyväksytään Tab-näppäimellä. Ei kuluta krediittejä.", viikko: 43 },
@@ -989,7 +1008,6 @@ window.NAYTTOPROJEKTI = {
     { termi: "regressiotesti", selite: "Testi, joka toistaa korjatun virheen ja jää testeihin. Se varmistaa, ettei virhe palaa.", viikko: 49 },
     { termi: "vikatehtävä", selite: "Ohjaajan tekemä tarkoituksellinen virhe. Siitä tehdään virheenkorjausketju, jos aitoa havaintoa ei ole.", viikko: 49 },
     { termi: "JSON", nimi: "tallennusmuoto", selite: "Tekstimuotoinen tiedosto, johon projektin tiedot tallennetaan ja josta ne avataan uudelleen.", viikko: 50 },
-    { termi: "tagi", selite: "Nimetty versio Gitissä, esimerkiksi v0.1 tai v1.0.", viikko: 50 },
     { termi: "tietoturva-arvio", selite: "Taulukko: uhka, testi, tulos ja toimenpide. Tässä projektissa uhkia ovat esimerkiksi haitallinen SVG ja rikottu JSON.", viikko: 50 },
     { termi: "katselmointi", selite: "Asiakas kokeilee versiota ja kertoo, mitä muutetaan. Asiakkaan sanat kirjataan erillään omasta tulkinnasta.", viikko: 51 },
     { termi: "haara", selite: "Oma työlinja. Muutokset eivät vaikuta päähaaraan, ennen kuin haara liitetään.", viikko: 3 },
@@ -1032,7 +1050,7 @@ window.NAYTTOPROJEKTI = {
       "",
       "## 1 · Tavoite (esitäytetty toimeksiannosta)",
       "",
-      "Selaimessa toimiva työkalu, joka avaa Inkscapessa piirretyn SVG-tiedoston ja tekee",
+      "Windowsilla toimiva työpöytäsovellus, joka avaa Inkscapessa piirretyn SVG-tiedoston ja tekee",
       "siitä low-poly-mallin. Layerit ja ryhmät muuttuvat mallin osiksi, puoliprofiilista",
       "syntyy pyörähdyskappale ja viivasta putki. Malli viedään .obj-tiedostoksi niin, että",
       "jokainen osa on oma objektinsa.",
@@ -1064,11 +1082,15 @@ window.NAYTTOPROJEKTI = {
       "",
       "## 4 · Tekninen ehdotus (esitäytetty, päätös on sinun viikolla 41)",
       "",
-      "Vite + React + Three.js (@react-three/fiber, @react-three/drei), testit Vitestillä,",
-      "julkaisu GitHub Pagesiin GitHub Actionsilla. P0 rakentuu valmiista komponenteista:",
-      "SVGLoader lukee SVG:n, LatheGeometry tekee revolven, TubeGeometry tekee inflaten,",
-      "OBJExporter tekee viennin ja drein komponentit hoitavat transformit, kameran ja",
-      "orientaatiokuution. Testit kohdistuvat puhtaisiin funktioihin.",
+      "Työpöytäsovellus Python 3.13:lla ja PySide6:lla (Qt), 3D-näkymä PyVistalla (pyvistaqt),",
+      "geometria ja .obj trimeshillä, SVG:n luku svgelementsillä ja testit pytestillä.",
+      "Julkaisu: GitHub Actions tekee tagista Windows-version PyInstallerilla, ajaa sille",
+      "itsetestin ja lisää zipin GitHubin releaseen. P0 rakentuu valmiista osista.",
+      "svgelements lukee SVG:n. trimesh tekee revolven ja .obj-viennin. PyVistan",
+      "tube-suodatin tekee inflaten. PyVistan kamera ja orientaatiowidget näyttävät",
+      "suorat näkymät. Transformit tehdään Qt:n numerokentillä ja pikanäppäimillä.",
+      "Vanhempi–lapsi-muunnokset lasketaan omalla puhtaalla funktiolla. Testit",
+      "kohdistuvat puhtaisiin funktioihin.",
       "",
       "### Hyväksynkö ehdotuksen ja miksi (viikko 41)",
       "",
@@ -1117,7 +1139,7 @@ window.NAYTTOPROJEKTI = {
   opettaja: {
     jakso: "Vk 40/2026–vk 9/2027 · syysloma vk 42 · joululoma 18.12.–10.1. · talviloma vk 8",
     deadline: "pe 5.3.2027",
-    kansiKuvaus: "Low-poly 3D-mallinnin selaimessa: Inkscapen SVG → 3D-malli → .obj. Tekoälyavusteinen työtapa: Copilot suunnittelee, GitHub Copilot toteuttaa.",
+    kansiKuvaus: "Low-poly 3D-mallinnin Windows-työpöytäsovelluksena (Python): Inkscapen SVG → 3D-malli → .obj. Tekoälyavusteinen työtapa: Copilot suunnittelee, GitHub Copilot toteuttaa.",
     kansiHuomiot: [
       "Repository on julkinen. Sinne ei laiteta henkilötietoja, testaajien nimiä eikä itsearviointia. Ne lähetetään ohjaajalle Teamsissa.",
       "Viikkopalaveri ohjaajan kanssa on maanantaina tai tiistaina. Päivä sovitaan viikolla 40."
@@ -1147,26 +1169,26 @@ window.NAYTTOPROJEKTI = {
       johdanto: "Opettajan lähdeaineisto. Vaatimukset on luettu sivuston näyttömatriisista, joten tämä asiakirja pysyy sivuston kanssa yhdenmukaisena. Peruste: Tieto- ja viestintätekniikan perustutkinto, diaarinumero OPH-6216-2025 (perusteId 9816282). Viikkorunko on hyväksytty pedagogisessa tarkistuksessa (Linnea-portti, kierros 3, 23.9.2026) ennen sisällön kirjoittamista.",
       kohdeOtsikko: "1 · Näytön kohde ja ympäristö",
       kohde: [
-        "Näyttö suoritetaan ohjattuna oppilaitosprojektina. Opiskelija toteuttaa selainpohjaisen low-poly 3D-mallintimen, joka tekee Inkscapen SVG-piirroksesta 3D-mallin (revolve ja inflate), muuntaa layerit ja ryhmät vanhempi–lapsi-puuksi, tukee transformeja ja pivotia, näyttää mallin orientaatiokuution suorista näkymistä ja vie mallin .obj-tiedostoksi osat erillisinä. Toimeksiantajat ovat Matti Seise ja Antti Honkasalo. Matti Seise on myös ohjaaja.",
+        "Näyttö suoritetaan ohjattuna oppilaitosprojektina. Opiskelija toteuttaa low-poly 3D-mallintimen Windows-työpöytäsovelluksena, joka tekee Inkscapen SVG-piirroksesta 3D-mallin (revolve ja inflate), muuntaa layerit ja ryhmät vanhempi–lapsi-puuksi, tukee transformeja ja pivotia, näyttää mallin suorista näkymistä ja vie mallin .obj-tiedostoksi osat erillisinä. Toimeksiantajat ovat Matti Seise ja Antti Honkasalo. Matti Seise on myös ohjaaja.",
         "Näyttö kattaa kolme tutkinnon osaa: Ohjelmointi (45 osp, 10 vaatimusta tässä näytössä), Ohjelmistokehittäjänä toimiminen (45 osp, 14 vaatimusta) ja Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla (30 osp, 7 vaatimusta). Yhteensä 31 osaamisvaatimusta. Ohjelmoinnin vaatimus \"kirjoittaa ylläpidettävää ohjelmakoodia\" (p5) osoitetaan muulla tavalla ohjaajan päätöksellä 23.9.2026, koska koodin kirjoittaa tässä työtavassa pääosin tekoäly.",
-        "Tekninen ympäristö: Vite + React + Three.js (@react-three/fiber, @react-three/drei), testit Vitestillä, julkaisu GitHub Pagesiin GitHub Actionsilla. Tekoälytyökalut: Microsoft 365 Copilot (BC, suunnittelu ja pilkkominen) ja GitHub Copilot (Student, toteutus VS Codessa). GitHub Copilotin budjetti on 200 krediittiä kuukaudessa.",
+        "Tekninen ympäristö: Python 3.13, PySide6 (Qt), PyVista ja pyvistaqt (VTK), trimesh ja numpy, svgelements, testit pytestillä. Julkaisu: GitHub Actions (windows-latest) tekee versiotagista PyInstallerilla Windows-version (onedir), ajaa pytestin ja valmiille .exe:lle itsetestin (--itsetesti) ja lisää zipin GitHubin releaseen. Valmis versio toimii ilman Pythonia. macOS-versiota ei tehdä. Opiskelija saa julkaisun, itsetestin ja kirjastolistan tiedostot viikon 41 pohjana (pohjat/vektoripaja-pohja.zip). Saavutettavuus mitataan Accessibility Insights for Windowsilla (FastPass), näppäimistötestillä ja Windowsin Lukijalla. Tekoälytyökalut: Microsoft 365 Copilot (BC, suunnittelu ja pilkkominen) ja GitHub Copilot (Student, toteutus VS Codessa). GitHub Copilotin budjetti on 200 krediittiä kuukaudessa.",
         "Aikataulu on päivätty: vk 40/2026 (ma 28.9.) – vk 9/2027 (pe 5.3.), 18 työviikkoa. Lomat vk 42, joululoma 18.12.–10.1. (vk 51 on neljä työpäivää) ja talviloma vk 8."
       ],
       p0: "Pakollinen perusversio (P0, ennen joulua): SVG-tuonti · layerit ja ryhmät scene graphiksi · revolve 3–32 segmenttiä · inflate 3–8 sivua · valinta, siirto, kierto ja skaalaus, lapset seuraavat, pivot keskipisteessä ja prosentteina · orbit, suorat näkymät orientaatiokuutiosta ja view lock -painike · .obj-vienti osat erillisinä · tallennus ja avaus JSONina. P1: Päivitä SVG, kulmasnappaus, PiP, kierron kohderajaukset, oma teema ja isot kahvat, ortografinen näkymä, view lockin pikanäppäin.",
       roolit: [
         ["Opiskelija", "Pilkkoo tavoitteet tehtäväkorteiksi, tekee arkkitehtuuripäätökset, kirjoittaa testien odotetut arvot ennen toteutusta, hyväksyy, korjauttaa tai hylkää tekoälyn tuotoksen perustellen, selittää virheen syyn ja funktiot omin sanoin sekä kokoaa näyttöaineiston. Koodin kirjoittaa pääosin tekoäly."],
         ["Ohjaaja (Matti Seise)", "Viikkopalaveri ma tai ti (sovitut kortit issue-kommentteina, edellisen viikon funktio ääneen), P0-tarkistuspiste vk 47, vikatehtävä tarvittaessa, ohjaajan päätökset (tekijänimi, lisenssi, krediitit, katselmoinnin kirjaustapa, julkaisutestaaja, arviointi). Toimii tiimin jäsenen roolissa vk 2:n ratkaisuarviossa."],
-        ["Asiakkaat (Matti Seise ja Antti Honkasalo)", "Vastaavat kysymyslistaan vk 40–41, katselmoivat MVP:n vk 51 ja antavat P1-prioriteetit sekä vahvistavat v1.0:n toimivuuden omalla koneellaan vk 7. Kun Matti toimii asiakkaana, se kerrotaan tehtävässä."],
+        ["Asiakkaat (Matti Seise ja Antti Honkasalo)", "Vastaavat kysymyslistaan vk 40–41, katselmoivat MVP:n vk 51 ja antavat P1-prioriteetit. Vk 7 Antti vahvistaa, että v1.0-release toimii hänen Windows-koneellaan; Matti (Mac) vahvistaa demon tai opiskelijan koneen kautta. Kun Matti toimii asiakkaana, se kerrotaan tehtävässä."],
         ["Julkaisutestaaja (toinen opiskelija, vk 6)", "Kulkee README:n avulla koko polun Inkscape-piirroksesta .obj-tiedostoon ilman suullista apua. Nimi ja sanat toimitetaan ohjaajalle Teamsissa; repositoryyn kirjataan rooli. Nimetään viimeistään vk 5."],
         ["Arvioijat (vk 9)", "Ottavat vastaan demon ja näyttöaineiston. Ajankohta ja arvioijat sovitaan ohjaajan kanssa."]
       ],
       tarkistuspisteet: [
         [40, "Ympäristö ja repository", "Versiot, julkinen repository noreply-sähköpostilla, ohjaaja Collaboratorina, kolme pohjatiedostoa, mvp.md omin sanoin, kysymyslista lähetetty, agenttipyynnön hinta kirjattu."],
-        [41, "Harjoitussykli", "Kaksi issueta syklin tarkistuslistoineen, T01:n oma arvo testikoodissa ennen toteutusta, Pages-osoite toimii toisella laitteella, päätös teknisestä pohjasta B-osiossa."],
+        [41, "Harjoitussykli", "Kaksi issueta syklin tarkistuslistoineen, T01:n oma arvo testikoodissa ennen toteutusta, tarkista_ymparisto.py läpi, release-zip v0.0.1 purettuna käynnistyy (T02) ja itsetesti läpi Actionsissa, päätös teknisestä pohjasta B-osiossa."],
         [44, "Hierarkia ja kaista C", "T06–T08, puhdas muunnosfunktio rajapintoineen, hierarkiapaneeli, valinnan toiminta B-osiossa. Kaista C:n krediittikulutus kirjattuna."],
         [47, "P0-tarkistuspiste", "Onko P0 aikataulussa? Jos ei, ohjaaja päättää, mikä katselmoidaan keskeneräisenä ja mikä tehdään vk 4:llä omassa haarassa pull requestilla."],
         [49, "Vienti ja ketju 1", "T19–T20, o-rivit ja Blender, ensimmäinen virheenkorjausketju kuudella osalla ja regressiotestillä. Vikatehtävä, jos aitoa havaintoa ei ole."],
-        [50, "MVP v0.1", "Tallennusvertailu omilla kriteereillä, T21–T22, tietoturva-arvio, tagi v0.1 ja Pages-julkaisu."],
+        [50, "MVP v0.1", "Tallennusvertailu omilla kriteereillä, T21–T22, tietoturva-arvio, tagi v0.1 ja release-zip, itsetesti läpi."],
         [51, "Katselmointi", "Katselmointiloki rooleilla, asiakkaiden sanat erillään tulkinnasta, havainnot issueina prioriteetein, tilatiedosto lomaa varten."],
         [3, "Pull request", "Päivitä SVG omassa haarassa, T23, kaikki testit läpi ennen mergeä, pull request yhdistetty."],
         [6, "Julkaisuehdokas", "v1.0-rc1, README ja käyttöohje, julkaisutestaajan pöytäkirja epäröinteineen."],
@@ -1174,11 +1196,11 @@ window.NAYTTOPROJEKTI = {
         [9, "Näyttö", "Demo 8–10 min viidellä osalla (mukana työnkulku yhdellä kortilla), itsearviointi Teamsissa, aineisto luovutettu."]
       ],
       tyonaytteet: {
-        p1: ["40, 41, 2", "VS Code, GitHub Copilot, Vite ja Vitest käytössä: versiot README:ssä, kehityspalvelin ja testiajot, paluuviikon ajo"],
+        p1: ["40, 41, 2", "VS Code, GitHub Copilot, Python-virtuaaliympäristö ja pytest käytössä: versiot README:ssä, sovelluksen käynnistys ja testiajot, paluuviikon ajo"],
         p2: ["49, 4, 7 (havainnot 43→)", "Kolme virheenkorjausketjua havaintoissueista: havainto, toistamisohje, syy omin sanoin, korjauscommit, uusintatesti ja regressiotesti"],
         p3: ["41, 43–50, 3–5", "T01–T26 ja lisätestit: odotettu tulos kirjoitettu itse testikoodiin ennen toteutusta, tulokset issueissa"],
         p4: ["44→45, 48→49, 49→50", "Rajapinta ennen toteutusta, selityspohja kolmesta funktiosta (hierarkian muunnos, pivotin syötteen tarkistus, OBJ-objektijako), selitys ääneen seuraavan viikon palaverissa (ohjaajan päätös 23.9.2026)"],
-        p6: ["41, 44, 46, 48, 5", "Hierarkiapaneeli, view lock, transformivalikko ja isot kahvat käyttöliittymävaatimuksen mukaan; Lighthouse ennen ja jälkeen"],
+        p6: ["41, 44, 46, 48, 5", "Hierarkiapaneeli, view lock, transformivalikko ja isot kahvat käyttöliittymävaatimuksen mukaan; Accessibility Insights ennen ja jälkeen"],
         p7: ["43, 45, 46, 47", "MVP-kuvauksesta kortit ja toiminnot: tuonti, revolve, inflate ja transformit hyväksymiskriteerien mukaan"],
         p8: ["41→7", "Issue-kommentit \"Sovittu viikkopalaverissa pp.kk.\" joka viikolta"],
         p9: ["44–45, 3", "Revolven valintatavan vertailu ja yhteinen päätös, osien tunnistustapa päivityksessä"],
@@ -1193,17 +1215,17 @@ window.NAYTTOPROJEKTI = {
         s7: ["44–48, 3", "Hierarkia, revolve, inflate, transformit, pivot ja päivitys"],
         s8: ["50", "Tallennustapojen vertailu oman suunnitelman kriteereillä ja oman mallin JSON-koko"],
         s9: ["50", "JSON-tallennus ja avaus, versionumero ja rakenteen tarkistus"],
-        s10: ["43, 49, 50", "Selaimen tiedostorajapinta, SVGLoader, OBJExporter ja JSON"],
+        s10: ["43, 49, 50", "QFileDialog, svgelements, trimesh-vienti ja JSON"],
         s11: ["43, 50", "T04 haitallinen SVG, T22 rikottu JSON, tietoturva-arvio uhka–testi–tulos–toimenpide"],
         s12: ["40→7", "Commitit rivillä Closes #N, tagit v0.1, v1.0-rc1 ja v1.0"],
         s13: ["3 (rästit 4)", "Haara, pull request ja merge päähaaraan kaikki testit läpi"],
-        s14: ["41, 50, 7", "Pages-julkaisu GitHub Actionsilla: harjoitus, MVP v0.1 ja v1.0"],
-        k1: ["41", "Vite + React + Three.js + Vitest -pohja opiskelijan omin komennoin"],
-        k2: ["43, 46", "kirjastot.md: SVGLoaderin ja TubeGeometryn rajoitteet omilla tiedostoilla kokeiltuina"],
-        k3: ["45–48", "LatheGeometry, TubeGeometry, drein TransformControls, OrbitControls ja GizmoViewcube"],
-        k4: ["41", "npm-paketit three, @react-three/fiber, @react-three/drei ja vitest omin komennoin"],
+        s14: ["41, 50, 7", "Releasen rakentaminen ja julkaisu GitHub Actionsilla (PyInstaller, itsetesti, zip): harjoitus, MVP v0.1 ja v1.0"],
+        k1: ["41", "PySide6 + PyVista + trimesh + pytest -pohja opiskelijan omin komennoin"],
+        k2: ["43, 46", "kirjastot.md: svgelementsin ja putkigeometrian rajoitteet omilla tiedostoilla kokeiltuina"],
+        k3: ["45–48", "trimeshin revolve, PyVistan tube-suodatin, kamera ja orientaatiowidget, Qt:n transformipaneeli"],
+        k4: ["41", "pip-paketit omin komennoin, requirements.txt"],
         k5: ["43–50", "MVP v0.1 komponenttikirjastolla testeineen"],
-        k6: ["50, 7", "Julkaisu asiakkaiden käyttöön ja asiakkaiden vahvistus v1.0:sta"],
+        k6: ["50, 7", "Release asiakkaiden käyttöön; Antti vahvistaa v1.0:n omalla Windows-koneellaan, Matti demon tai opiskelijan koneen kautta"],
         k7: ["43, 6", "Dokumentointitapa sovittu vk 43, README ja käyttöohje vk 6"]
       },
       dokumentaatio: {
@@ -1217,15 +1239,15 @@ window.NAYTTOPROJEKTI = {
         "Viikot on rakennettu niin, ettei niitä voi suorittaa kopioimalla tehtävänantoa kielimalliin: joka viikko viikkopalaveri ohjaajan kanssa, oma Inkscape-tiedosto ja omat päätökset B-osiossa, omat testiarvot, issuet ja commitit GitHubissa, katselmointi asiakkaiden kanssa vk 51 ja julkaisutesti toisella opiskelijalla vk 6."
       ],
       palautuspaketti: [
-        ["Julkaistu tuotos", "v1.0 GitHub Pagesissa, tagi v1.0 ja release-teksti."],
+        ["Julkaistu tuotos", "v1.0-release: zip, itsetesti läpi, release-teksti ja tagi v1.0."],
         ["Repository", "Julkinen repository: koodi, testit, issuet syklin tarkistuslistoineen, pull request ja tagit v0.1, v1.0-rc1 ja v1.0."],
         ["Suunnitelma ja päiväkirja", "project-docs/suunnitelma.md, mvp.md, kysymykset.md, projektipaivakirja.md ja AI-loki. Päiväkirjasta commit joka viikolta."],
-        ["Laatuaineisto", "T01–T26 issueissa, kolme virheenkorjausketjua, kirjastot.md, tietoturva.md, Lighthouse ennen ja jälkeen."],
+        ["Laatuaineisto", "T01–T26 issueissa, kolme virheenkorjausketjua, kirjastot.md, tietoturva.md, Accessibility Insights ennen ja jälkeen."],
         ["Katselmoinnit", "katselmointi.md (vk 51) ja julkaisutesti.md (vk 6) rooleilla; nimet ja sanatarkat lausumat Teamsissa ohjaajalla."],
         ["Näyttöaineisto", "Linkitetty näyttömatriisi 31 vaatimukselle, demo ja itsearviointi (Teams)."]
       ],
       huomiot: [
-        ["Ennen 28.9.2026", "GitHub Education -vahvistus ja Copilot Student -tilaus (vahvistus voi kestää päiviä), opiskelijan GitHub-tunnus ja tekijänimi, asennusoikeudet (VS Code, Git, Node.js, Inkscape, Blender), demorepository kuvaohjeiden kuvakaappauksia varten."],
+        ["Ennen 28.9.2026", "GitHub Education -vahvistus ja Copilot Student -tilaus (vahvistus voi kestää päiviä), opiskelijan GitHub-tunnus ja tekijänimi, asennusoikeudet (VS Code ja Python-laajennus, Git, Python 3.13, Inkscape, Blender; Windowsissa myös Accessibility Insights for Windows), demorepository kuvaohjeiden kuvakaappauksia varten."],
         ["Kuvaohjeiden kuvakaappaukset", "kuvakaappaukset.json listaa kuvattavat näkymät, alt-tekstit ja numeroidut kohdat. Kuvat otetaan GitHubin Dark high contrast- ja VS Coden Dark High Contrast -teemassa, M365 Copilot BC:n tenantista, rajattuina yhteen kohtaan. Kuvan lisäämisen jälkeen kohtien alueet (alue: x, y, leveys, korkeus prosentteina) asetetaan kuvan mukaan. tarkista.js varoittaa puuttuvista kuvista."],
         ["p5 osoitetaan muulla tavalla", "Vaatimus \"kirjoittaa ylläpidettävää ohjelmakoodia\" ei ole matriisissa rastina (ohjaajan päätös 23.9.2026). Osoitustapa sovitaan erikseen."],
         ["Krediitit", "200 krediittiä kuukaudessa ei välttämättä riitä agenttitilaan. Lisärahoitus (lisäkrediitit vai BC:n organisaatiolisenssi) on avoin ohjaajan päätös, takaraja lokakuun loppu. Alle 25 % jäljellä → kaistat A ja B kuun loppuun."],

@@ -22,7 +22,7 @@ th { font-weight: 700; }
 strong { font-weight: 700; }
 code { font-family: Consolas, "Courier New", monospace; font-size: 1em; }
 </style></head><body>
-<div class="cover"><h1>Vektoripaja</h1><p style="font-size:1.2em">Paperinen työpaketti</p><p>Low-poly 3D-mallinnin selaimessa: Inkscapen SVG → 3D-malli → .obj. Tekoälyavusteinen työtapa: Copilot suunnittelee, GitHub Copilot toteuttaa.</p><p><strong>Vk 40/2026–vk 9/2027 · syysloma vk 42 · joululoma 18.12.–10.1. · talviloma vk 8 · luovutus pe 5.3.2027</strong></p><p style="margin-top:1em">Tämä paketti on aikataulu ja tarkistuslista tilanteisiin, joissa sivusto ei ole auki. Projektipäiväkirja kirjoitetaan sivustolla ja viedään repositoryn project-docs-kansioon. Rasti tässä vihossa ei ole palautus: työ on aina Git-repositoryssa.</p><p style="margin-top:.6em">Repository on julkinen. Sinne ei laiteta henkilötietoja, testaajien nimiä eikä itsearviointia. Ne lähetetään ohjaajalle Teamsissa.</p><p style="margin-top:.6em">Viikkopalaveri ohjaajan kanssa on maanantaina tai tiistaina. Päivä sovitaan viikolla 40.</p></div>
+<div class="cover"><h1>Vektoripaja</h1><p style="font-size:1.2em">Paperinen työpaketti</p><p>Low-poly 3D-mallinnin Windows-työpöytäsovelluksena (Python): Inkscapen SVG → 3D-malli → .obj. Tekoälyavusteinen työtapa: Copilot suunnittelee, GitHub Copilot toteuttaa.</p><p><strong>Vk 40/2026–vk 9/2027 · syysloma vk 42 · joululoma 18.12.–10.1. · talviloma vk 8 · luovutus pe 5.3.2027</strong></p><p style="margin-top:1em">Tämä paketti on aikataulu ja tarkistuslista tilanteisiin, joissa sivusto ei ole auki. Projektipäiväkirja kirjoitetaan sivustolla ja viedään repositoryn project-docs-kansioon. Rasti tässä vihossa ei ole palautus: työ on aina Git-repositoryssa.</p><p style="margin-top:.6em">Repository on julkinen. Sinne ei laiteta henkilötietoja, testaajien nimiä eikä itsearviointia. Ne lähetetään ohjaajalle Teamsissa.</p><p style="margin-top:.6em">Viikkopalaveri ohjaajan kanssa on maanantaina tai tiistaina. Päivä sovitaan viikolla 40.</p></div>
 <h1>Aikataulu</h1><table><tr><th>Vko</th><th>Pvm</th><th>Viikon aihe</th><th>Vaihe</th></tr>
 <tr><td><strong>40</strong></td><td>28.9.–2.10.</td><td>Aloitus: työkalut, repository ja oma MVP</td><td>A</td></tr>
 <tr><td><strong>41</strong></td><td>5.–9.10.</td><td>Harjoitussykli: pyörivä kuutio julki</td><td>A</td></tr>
@@ -59,13 +59,13 @@ code { font-family: Consolas, "Courier New", monospace; font-size: 1em; }
 <p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: repositoryn osoite, project-docs/mvp.md GitHubissa ja agenttipyynnön hinta päiväkirjassa.</p>
 </div>
 <div class="wk"><h2>Vko 41 · 5.–9.10. – Harjoitussykli: pyörivä kuutio julki</h2>
-<p class="feature">Selaimessa pyörii Three.js-kuutio omassa Pages-osoitteessasi. Testitapaukset T01 ja T02 menevät läpi.</p>
-<p class="task">☐&nbsp; Päätä, hyväksytkö teknisen ehdotuksen. Perustele päätös suunnitelmaan. Luo sitten tekninen pohja itse komennoilla.</p>
+<p class="feature">Sovelluksen ikkunassa pyörii kuutio. Testitapaukset T01 ja T02 menevät läpi. GitHubin releasessa on zip, jonka itsetesti meni läpi.</p>
+<p class="task">☐&nbsp; Päätä, hyväksytkö teknisen ehdotuksen. Perustele päätös suunnitelmaan. Pura pohja. Luo virtuaaliympäristö ja asenna kirjastot itse komennoilla.</p>
 <p class="task">☐&nbsp; Kirjoita testitapaus T01 ennen koodia. Mitä odotat, kun kiertokulma saa ajan 0 ja nopeuden 0,5? Entä kun aika on 3?</p>
 <p class="task">☐&nbsp; Tee kortti #1 (kuutio) työsyklillä mallikortin avulla. Aja T01.</p>
-<p class="task">☐&nbsp; Tee kortti #2 (Pages-julkaisu) työsyklillä. Aja T02.</p>
-<p class="done"><strong>Valmis kun:</strong> Pages-osoite näyttää pyörivän kuution myös toisella laitteella, esimerkiksi puhelimella. <code>npm test</code> näyttää, että T01 menee läpi. Issuet #1 ja #2 on suljettu commitilla.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Pages-osoite, issuet #1 ja #2 suljettuina sekä T01:n ja T02:n tulokset issueissa.</p>
+<p class="task">☐&nbsp; Tee kortti #2 (release) työsyklillä. Aja T02 releasen zipistä puretulla sovelluksella.</p>
+<p class="done"><strong>Valmis kun:</strong> Releasen zipistä purettu sovellus käynnistyy, ja kuutio pyörii. Actionsin ajo on vihreä, eli itsetesti meni läpi. <code>pytest</code> näyttää, että T01 menee läpi. Issuet #1 ja #2 on suljettu commitilla.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: releasen osoite, issuet #1 ja #2 suljettuina sekä T01:n ja T02:n tulokset issueissa.</p>
 </div>
 <div class="wk"><h2>Vko 42 · 12.–16.10. – Syysloma</h2><p>Ei projektityötä eikä korvaavia tehtäviä. Jatka viikolla 43 tilatiedoston Seuraavana-kohdasta.</p></div>
 <h1 class="page">Vaihe B – MVP-ydin: SVG:stä muotoja</h1>
@@ -250,8 +250,14 @@ code { font-family: Consolas, "Courier New", monospace; font-size: 1em; }
 <tr><td style="width:24%"><strong>mallikortti</strong><br><span class="muted">vko 41</span></td><td>Valmis esimerkkikortti, johon omaa korttia verrataan. Viikolla 41 siinä on myös testipohja.</td></tr>
 <tr><td style="width:24%"><strong>kaista</strong><br><span class="muted">vko 41</span></td><td><strong>A, B tai C.</strong> Toteutustapa. A: Copilot kirjoittaa koodin yksi tiedosto kerrallaan. B (viikolta 43): kommentti ja täydennys VS Codessa, myös testit. C (viikolta 44): GitHub Copilotin agenttitila useaan tiedostoon.</td></tr>
 <tr><td style="width:24%"><strong>T01</strong><br><span class="muted">vko 41</span></td><td><strong>Testitapauksen tunnus.</strong> T tarkoittaa testitapausta. Numero yksilöi sen: T01 on ensimmäinen, T02 toinen. Odotettu tulos kirjataan, ennen kuin koodi tehdään. Lisätesti on ylimääräinen testi ilman numeroa.</td></tr>
-<tr><td style="width:24%"><strong>tekninen pohja</strong><br><span class="muted">vko 41</span></td><td><strong>Vite, React, Three.js ja Vitest.</strong> Sovelluksen perusta. Vite käynnistää ja rakentaa sovelluksen. React tekee näkymät. Three.js piirtää 3D:n. Vitest ajaa testit.</td></tr>
-<tr><td style="width:24%"><strong>GitHub Pages</strong><br><span class="muted">vko 41</span></td><td>Julkaisupaikka. GitHub Actions on automaatio, joka julkaisee sovelluksen jokaisen pushin jälkeen.</td></tr>
+<tr><td style="width:24%"><strong>tekninen pohja</strong><br><span class="muted">vko 41</span></td><td><strong>PySide6, PyVista, trimesh ja pytest.</strong> Sovelluksen perusta. PySide6 (Qt) tekee ikkunan ja painikkeet. PyVista piirtää 3D-näkymän. trimesh tekee 3D-kappaleet ja .obj-tiedoston. pytest ajaa testit.</td></tr>
+<tr><td style="width:24%"><strong>requirements.txt</strong><br><span class="muted">vko 41</span></td><td><strong>kirjastolista.</strong> Tiedosto, jossa ovat projektin kirjastot versioineen. Kirjastot asennetaan komennolla <code>pip install -r requirements.txt</code>. Uusi kirjasto lisätään tänne vain ohjaajan luvalla.</td></tr>
+<tr><td style="width:24%"><strong>tagi</strong><br><span class="muted">vko 41</span></td><td>Nimetty versio Gitissä, esimerkiksi v0.0.1, v0.1 tai v1.0. Tagin push käynnistää julkaisun.</td></tr>
+<tr><td style="width:24%"><strong>GitHub Actions</strong><br><span class="muted">vko 41</span></td><td>GitHubin automaatio. Kun pushaat tagin, automaatio ajaa testit ja tekee Windows-version. Sitten se ajaa Windows-versiolle itsetestin ja lisää zipin releaseen.</td></tr>
+<tr><td style="width:24%"><strong>paketointi</strong><br><span class="muted">vko 41</span></td><td>Sovellus ja sen kirjastot kootaan kansioksi, joka toimii ilman Pythonia. Tässä projektissa paketoinnin tekee PyInstaller tiedoston <code>vektoripaja.spec</code> ohjeilla.</td></tr>
+<tr><td style="width:24%"><strong>itsetesti</strong><br><span class="muted">vko 41</span></td><td>Sovelluksen oma tarkistus: <code>Vektoripaja.exe --itsetesti</code>. Se lukee esimerkki-SVG:n ja tekee siitä 3D-kappaleet ja .obj-tiedoston. Ikkunaa ei avata. GitHub Actions ajaa sen jokaiselle julkaisulle.</td></tr>
+<tr><td style="width:24%"><strong>release</strong><br><span class="muted">vko 41</span></td><td><strong>julkaisusivu.</strong> GitHubin sivu, josta valmiin version voi ladata. Tässä projektissa releasessa on zip, jossa on Windows-versio.</td></tr>
+<tr><td style="width:24%"><strong>zip</strong><br><span class="muted">vko 41</span></td><td><strong>pakattu kansio.</strong> Yksi tiedosto, jonka sisällä on kansio. Pura zip ennen käyttöä: hiiren oikea painike ja Pura kaikki.</td></tr>
 <tr><td style="width:24%"><strong>main</strong><br><span class="muted">vko 41</span></td><td><strong>päähaara.</strong> Repositoryn päälinja. Julkaisu tehdään päähaarasta.</td></tr>
 <tr><td style="width:24%"><strong>kahden yrityksen sääntö</strong><br><span class="muted">vko 41</span></td><td>Kun sama asia epäonnistuu kahdesti, lopetetaan yrittäminen ja palataan Copilotille.</td></tr>
 <tr><td style="width:24%"><strong>täydennys</strong><br><span class="muted">vko 43</span></td><td>GitHub Copilotin harmaa koodiehdotus VS Codessa. Hyväksytään Tab-näppäimellä. Ei kuluta krediittejä.</td></tr>
@@ -278,7 +284,6 @@ code { font-family: Consolas, "Courier New", monospace; font-size: 1em; }
 <tr><td style="width:24%"><strong>regressiotesti</strong><br><span class="muted">vko 49</span></td><td>Testi, joka toistaa korjatun virheen ja jää testeihin. Se varmistaa, ettei virhe palaa.</td></tr>
 <tr><td style="width:24%"><strong>vikatehtävä</strong><br><span class="muted">vko 49</span></td><td>Ohjaajan tekemä tarkoituksellinen virhe. Siitä tehdään virheenkorjausketju, jos aitoa havaintoa ei ole.</td></tr>
 <tr><td style="width:24%"><strong>JSON</strong><br><span class="muted">vko 50</span></td><td><strong>tallennusmuoto.</strong> Tekstimuotoinen tiedosto, johon projektin tiedot tallennetaan ja josta ne avataan uudelleen.</td></tr>
-<tr><td style="width:24%"><strong>tagi</strong><br><span class="muted">vko 50</span></td><td>Nimetty versio Gitissä, esimerkiksi v0.1 tai v1.0.</td></tr>
 <tr><td style="width:24%"><strong>tietoturva-arvio</strong><br><span class="muted">vko 50</span></td><td>Taulukko: uhka, testi, tulos ja toimenpide. Tässä projektissa uhkia ovat esimerkiksi haitallinen SVG ja rikottu JSON.</td></tr>
 <tr><td style="width:24%"><strong>katselmointi</strong><br><span class="muted">vko 51</span></td><td>Asiakas kokeilee versiota ja kertoo, mitä muutetaan. Asiakkaan sanat kirjataan erillään omasta tulkinnasta.</td></tr>
 <tr><td style="width:24%"><strong>haara</strong><br><span class="muted">vko 3</span></td><td>Oma työlinja. Muutokset eivät vaikuta päähaaraan, ennen kuin haara liitetään.</td></tr>
@@ -293,11 +298,11 @@ code { font-family: Consolas, "Courier New", monospace; font-size: 1em; }
 </table>
 <h1 class="page">Näyttömatriisi – 31 osaamisvaatimusta</h1><p class="muted">Rasti vasta, kun vaatimukselle on täsmällinen työnäyte: linkki, commit, kuva, testirivi tai muistio. Sama työnäyte voi kelvata useaan kohtaan.</p>
 <h2>Ohjelmointi</h2>
-<p class="item">☐&nbsp; <strong>käyttää ohjelmointieditoria tai kehitysympäristöä</strong> – VS Code, GitHub Copilot, Viten kehityspalvelin ja Vitest käytössä viikoilta 40 ja 41. Versiot README:ssä. Paluuviikon ajo viikolla 2.</p>
+<p class="item">☐&nbsp; <strong>käyttää ohjelmointieditoria tai kehitysympäristöä</strong> – VS Code, GitHub Copilot, Pythonin virtuaaliympäristö ja pytest käytössä viikoilta 40 ja 41. Versiot README:ssä. Paluuviikon ajo viikolla 2.</p>
 <p class="item">☐&nbsp; <strong>etsii ja korjaa virheitä ohjelmakoodista</strong> – Kolme virheenkorjausketjua havaintoissueista viikoilla 49, 4 ja 7: havainto, toistamisohje, syy omin sanoin, korjauscommit, uusintatesti ja regressiotesti.</p>
 <p class="item">☐&nbsp; <strong>testaa ohjelman toimintoja</strong> – Testitapaukset T01–T26 ja lisätestit viikoilta 41–5. Kirjoitat odotetun tuloksen itse testikoodiin ennen toteutusta. Tulokset issueissa.</p>
 <p class="item">☐&nbsp; <strong>käyttää rakenteista ohjelmointia toteutuksissa</strong> – Kolme funktiota selityspohjalla: hierarkian muunnos (viikko 44), pivotin syötteen tarkistus (48) ja OBJ-objektijako (49). Rajapinta ennen toteutusta. Selitys ääneen seuraavan viikon palaverissa.</p>
-<p class="item">☐&nbsp; <strong>tulkitsee suunnitelmia ja toteuttaa käyttöliittymän tai sen osia</strong> – Hierarkiapaneeli (44), view lock (46), transformivalikko (48) sekä isot kahvat ja näppäimistökäyttö (5) käyttöliittymävaatimuksesi mukaan. Lighthouse ennen ja jälkeen.</p>
+<p class="item">☐&nbsp; <strong>tulkitsee suunnitelmia ja toteuttaa käyttöliittymän tai sen osia</strong> – Hierarkiapaneeli (44), view lock (46), transformivalikko (48) sekä isot kahvat ja näppäimistökäyttö (5) käyttöliittymävaatimuksesi mukaan. Accessibility Insights ennen ja jälkeen.</p>
 <p class="item">☐&nbsp; <strong>tulkitsee suunnitelmia ja toteuttaa ohjelmiston toimintoja</strong> – MVP-kuvauksesta tehtäväkortit ja toiminnot: tuonti (43), revolve (45), inflate (46) ja transformit (47) hyväksymiskriteerien mukaan.</p>
 <p class="item">☐&nbsp; <strong>sopii tehtävistä tiimin muiden jäsenten kanssa</strong> – Issue-kommentit "Sovittu viikkopalaverissa pp.kk." joka viikolta 41–7.</p>
 <p class="item">☐&nbsp; <strong>etsii ratkaisuvaihtoehtoja ja ratkoo ongelmia yhdessä tiimin kanssa</strong> – Revolven valintatavan vertailu ja yhteinen päätös (44–45). Osien tunnistustapa Päivitä SVG -toimintoon (3).</p>
@@ -313,18 +318,18 @@ code { font-family: Consolas, "Courier New", monospace; font-size: 1em; }
 <p class="item">☐&nbsp; <strong>kehittää ohjelmiston toimintalogiikkaa</strong> – Hierarkia, revolve, inflate, transformit ja pivot (44–48) sekä Päivitä SVG (3).</p>
 <p class="item">☐&nbsp; <strong>valitsee ohjelmistoon sopivan tietovaraston</strong> – Tallennustapojen vertailu oman suunnitelman kriteereillä ja oman mallin JSON-tiedoston koko (50).</p>
 <p class="item">☐&nbsp; <strong>toteuttaa yhteyden tietovarastoon</strong> – Tallennus ja avaus JSON-tiedostona. Versionumero ja rakenteen tarkistus (50).</p>
-<p class="item">☐&nbsp; <strong>hyödyntää rajapintoja ja käsittelee tietoa</strong> – Selaimen tiedostojen luku, SVGLoader (43), OBJExporter (49) ja JSON (50).</p>
+<p class="item">☐&nbsp; <strong>hyödyntää rajapintoja ja käsittelee tietoa</strong> – Tiedoston avaus QFileDialogilla ja SVG:n luku svgelementsillä (43), .obj-vienti trimeshillä (49) ja JSON (50).</p>
 <p class="item">☐&nbsp; <strong>arvioi ohjelmiston tietoturvaa</strong> – T04 haitallinen SVG (43), T22 rikottu JSON (50) ja project-docs/tietoturva.md: uhka, testi, tulos ja toimenpide.</p>
-<p class="item">☐&nbsp; <strong>käyttää versionhallintaa</strong> – Commitit rivillä Closes #N koko projektin ajan. Tagit v0.1, v1.0-rc1 ja v1.0.</p>
+<p class="item">☐&nbsp; <strong>käyttää versionhallintaa</strong> – Commitit rivillä Closes #N koko projektin ajan. Tagit v0.0.1, v0.1, v1.0-rc1 ja v1.0.</p>
 <p class="item">☐&nbsp; <strong>liittää ohjelman osan olemassa olevaan versioon</strong> – Päivitä SVG omassa haarassa, pull request ja merge päähaaraan, kun kaikki testit menevät läpi (3).</p>
-<p class="item">☐&nbsp; <strong>julkaisee ohjelman tuotantoympäristöön</strong> – GitHub Pages -julkaisu GitHub Actionsilla: harjoitus (41), MVP v0.1 (50) ja v1.0 (7).</p>
+<p class="item">☐&nbsp; <strong>julkaisee ohjelman tuotantoympäristöön</strong> – Release GitHub Actionsilla: Windows-versio, itsetesti ja zip. Harjoitus (41), MVP v0.1 (50) ja v1.0 (7).</p>
 <h2>Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla</h2>
-<p class="item">☐&nbsp; <strong>ottaa käyttöön ja konfiguroi ohjelmistokomponenttikirjaston käyttöön soveltuvan kehittämisympäristön</strong> – Vite + React + Three.js + Vitest -pohja omin komennoin ja vite.config.js:n base-asetus (41).</p>
-<p class="item">☐&nbsp; <strong>selvittää ohjelmistokomponenttikirjaston tarjoamat mahdollisuudet ja rajoitteet</strong> – project-docs/kirjastot.md: SVGLoaderin (43) ja TubeGeometryn (46) rajoitteet omilla tiedostoilla kokeiltuina.</p>
-<p class="item">☐&nbsp; <strong>käyttää ohjelmistokomponenttikirjaston tärkeimpiä toimintoja ja työkaluja</strong> – LatheGeometry, TubeGeometry, drein TransformControls, OrbitControls ja orientaatiokuutio (45–48).</p>
-<p class="item">☐&nbsp; <strong>tuo kehittämisympäristöön ulkoisia komponentteja</strong> – npm-paketit three, @react-three/fiber, @react-three/drei ja vitest omin komennoin (41).</p>
+<p class="item">☐&nbsp; <strong>ottaa käyttöön ja konfiguroi ohjelmistokomponenttikirjaston käyttöön soveltuvan kehittämisympäristön</strong> – PySide6 + PyVista + trimesh + pytest -pohja omin komennoin: virtuaaliympäristö, kirjastojen asennus ja tarkista_ymparisto.py (41).</p>
+<p class="item">☐&nbsp; <strong>selvittää ohjelmistokomponenttikirjaston tarjoamat mahdollisuudet ja rajoitteet</strong> – project-docs/kirjastot.md: svgelementsin (43) ja putkigeometrian (46) rajoitteet omilla tiedostoilla kokeiltuina.</p>
+<p class="item">☐&nbsp; <strong>käyttää ohjelmistokomponenttikirjaston tärkeimpiä toimintoja ja työkaluja</strong> – trimeshin revolve, PyVistan tube-suodatin, kamera ja orientaatiowidget sekä Qt:n transformipaneeli (45–48).</p>
+<p class="item">☐&nbsp; <strong>tuo kehittämisympäristöön ulkoisia komponentteja</strong> – pip-paketit omin komennoin ja requirements.txt (41).</p>
 <p class="item">☐&nbsp; <strong>suunnittelee, toteuttaa ja testaa ohjelmiston ohjelmistokomponenttikirjastoa käyttäen</strong> – MVP v0.1 komponenttikirjastolla testeineen (43–50).</p>
-<p class="item">☐&nbsp; <strong>julkaisee ohjelmiston asiakkaan ympäristöön</strong> – MVP asiakkaiden kokeiltavaksi (50). Asiakkaiden vahvistus v1.0:sta omalla koneellaan (7).</p>
+<p class="item">☐&nbsp; <strong>julkaisee ohjelmiston asiakkaan ympäristöön</strong> – MVP-release asiakkaiden kokeiltavaksi (50). Antti vahvistaa v1.0-releasen omalla Windows-koneellaan, Matti demon tai opiskelijan koneen kautta (7).</p>
 <p class="item">☐&nbsp; <strong>dokumentoi ohjelmiston sovitulla tavalla</strong> – Dokumentointitapa sovittu palaverissa (43). README ja käyttöohje, joiden avulla julkaisutestaaja kulkee koko polun (6).</p>
 <p class="muted" style="margin-top:1em">Muista: sivuston rastit ja kentät tallentuvat vain selaimeen. Ne eivät siirry opettajalle eivätkä korvaa Gitissä olevaa työtä.</p>
 </body></html>
