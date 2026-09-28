@@ -53,7 +53,7 @@ chrome --headless --no-pdf-header-footer --print-to-pdf=downloads/vektoripaja-ty
 
 ## Kuvaohjeiden kuvat
 
-`kuvakaappaukset.json` listaa 19 kuvaohjetta. Yksi (`github-uusi-issue`) on mallikuva, muut
+`kuvakaappaukset.json` listaa 20 kuvaohjetta. Yksi (`github-uusi-issue`) on mallikuva, muut
 näkyvät paikanpitäjinä, kunnes kuva lisätään. Kuva otetaan GitHubin Dark high contrast-,
 VS Coden Dark High Contrast- tai M365 Copilotin näkymästä demorepositoryssa, rajattuna yhteen
 kohtaan. Tallenna kuva kansioon `assets/kuvakaappaukset/`, täytä `tiedosto`, `leveys`, `korkeus`

@@ -32,7 +32,7 @@ LOMAT = {
 
 VIIKOT = {
     40: ("Aloitus: työkalut, repository ja oma MVP", [
-        "Asenna VS Code, Git, Node.js, Inkscape ja Blender. Vaihda VS Codeen ja GitHubiin korkean kontrastin teema.",
+        "Tarkista, mitä on jo asennettu. Asenna näistä puuttuvat: VS Code, Git, Python 3.13, VS Coden Python-laajennus, Inkscape ja Blender. Vaihda VS Codeen ja GitHubiin korkean kontrastin teema.",
         "Luo julkinen repository README-tiedoston kanssa. Kloonaa se VS Codeen. Jaa se ohjaajalle.",
         "Kirjoita MVP omin sanoin tiedostoon <code>project-docs/mvp.md</code>. Tee commit ja push. Lähetä kysymyslista asiakkaille.",
         "Mittaa yhden agenttipyynnön hinta viestipohjalla. Kirjaa hinta päiväkirjaan."],

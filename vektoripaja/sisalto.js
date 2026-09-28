@@ -165,7 +165,7 @@ window.NAYTTOPROJEKTI = {
         jumissa: [
           { kysymys: "Copilot kirjoitti koodia eikä korttia?", ohje: "Kopioi tämä Copilotille:", pohja: { otsikko: "Pyydä korttia uudelleen", teksti: "Älä kirjoita koodia. Kirjoita vain tehtäväkortti pyytämässäni muodossa." } },
           { kysymys: "Copilot muutti odotetun tulokseni?", ohje: "Kopioi tämä Copilotille:", pohja: { otsikko: "Palauta oma odotettu tulos", teksti: "Käytä testissä minun odotettua tulostani sanatarkasti: (liitä tähän)." } },
-          { kysymys: "En osaa kirjoittaa odotettua tulosta?", ohje: "Kirjoita, mitä ruudulla pitää näkyä, kun kortti on valmis. Esimerkiksi: \"Kun avaan sivun, kuutio pyörii.\" Luku tai näkyvä asia riittää." },
+          { kysymys: "En osaa kirjoittaa odotettua tulosta?", ohje: "Kirjoita, mitä ruudulla pitää näkyä, kun kortti on valmis. Esimerkiksi: \"Kun käynnistän sovelluksen, kuutio pyörii.\" Luku tai näkyvä asia riittää." },
           { kysymys: "Kortti tuntuu liian isolta?", ohje: "Kopioi tämä Copilotille:", pohja: { otsikko: "Pyydä pienempi kortti", teksti: "Kortti on liian iso. Jaa se kahteen korttiin ja anna nyt vain ensimmäinen." } },
           { kysymys: "Copilot ei aukea tai tunnus ei toimi?", ohje: "Lähetä ohjaajalle Teams-viesti: mikä ei toimi ja mitä näet ruudulla. Tee sillä välin viikon tehtävä, joka ei tarvitse Copilotia." }
         ]
@@ -201,16 +201,16 @@ window.NAYTTOPROJEKTI = {
         oma: "kirjoitat testiin oman odotetun tuloksesi. Päätät jokaisesta tekoälyn vastauksesta: hyväksyn, korjautan tai hylkään. Kirjaat päätöksen ja perusteen AI-lokiin. Yhden kortin täydennykset kirjataan yhtenä merkintänä. Rastita 3a issuessa, kun testi on kirjoitettu. Rastita 3b, kun toteutus on valmis.",
         ohje: [
           "Kirjoita testi ensin (3a). Avaa testitiedosto. Kirjoita kommentti, jossa on syöte ja sinun odotettu tuloksesi. Hyväksy täydennys Tab-näppäimellä.",
-          "Kirjoita tulos testiin tekstinä tai muodossa tosi tai epätosi, jos tulos ei ole luku. Riittää: `virheilmoitus = \"Tiedosto ei ole SVG.\"`. Ei riitä: \"virhe tulee\".",
-          "Kirjoita odotettu tulos issueen, jos kortin testi tehdään käsin selaimessa. Siirry silloin suoraan kohtaan 3b.",
+          "Jos tulos ei ole luku, kirjoita se testiin tekstinä tai muodossa `True` tai `False`. Riittää: `virheilmoitus = \"Tiedosto ei ole SVG.\"`. Ei riitä: \"virhe tulee\".",
+          "Jos kortin testi tehdään käsin sovelluksessa, kirjoita odotettu tulos issueen. Siirry silloin suoraan kohtaan 3b.",
           "Toteuta kortti sitten kortin kaistalla (3b). Kaistalla A pyydä Copilotilta yksi tiedosto kerrallaan. Kaistalla C käytä GitHub Copilotin agenttitilaa.",
           "Lue muutos, ennen kuin hyväksyt sen. Älä hyväksy muutoksia testitiedostoon.",
-          "Tallenna tiedostot. Aja terminaalissa `npm run dev`."
+          "Tallenna tiedostot. Aja terminaalissa `python main.py`."
         ],
         pohja: [
           {
             otsikko: "Kaista A: liitä tämä Copilotiin",
-            teksti: "Toteuta tämä tehtäväkortti yhteen tiedostoon.\nTiedosto: (kirjoita polku, esimerkiksi src/App.jsx)\n\nSäännöt:\n- Muuta vain tätä tiedostoa.\n- Älä muuta testejä.\n- Anna koko muutettu tiedosto yhtenä koodilohkona.\n- Älä lisää uusia kirjastoja.\n- Jos kortti on epäselvä, kysy, ennen kuin kirjoitat koodia.\n\nTehtäväkortti:\n(liitä kortti tähän)\n\nTiedoston nykyinen sisältö:\n(liitä tiedosto tähän)"
+            teksti: "Toteuta tämä tehtäväkortti yhteen tiedostoon.\nTiedosto: (kirjoita polku, esimerkiksi vektoripaja/ikkuna.py)\n\nSäännöt:\n- Muuta vain tätä tiedostoa.\n- Älä muuta testejä.\n- Anna koko muutettu tiedosto yhtenä koodilohkona.\n- Älä lisää uusia kirjastoja.\n- Jos kortti on epäselvä, kysy, ennen kuin kirjoitat koodia.\n\nTehtäväkortti:\n(liitä kortti tähän)\n\nTiedoston nykyinen sisältö:\n(liitä tiedosto tähän)"
           },
           {
             otsikko: "Kaista C: liitä tämä GitHub Copilotiin (agenttitila)",
@@ -218,7 +218,7 @@ window.NAYTTOPROJEKTI = {
           }
         ],
         kuvaohjeet: ["vscode-taydennys", "vscode-hyvaksy-muutos"],
-        valmis: "muutos on tallennettu, sovellus käynnistyy komennolla `npm run dev`, ja AI-lokissa on päätös.",
+        valmis: "muutos on tallennettu, sovellus käynnistyy komennolla `python main.py`, ja AI-lokissa on päätös.",
         jumissa: [
           {
             kysymys: "Tuliko virheilmoitus?",
@@ -234,19 +234,20 @@ window.NAYTTOPROJEKTI = {
           { kysymys: "GitHub Copilot kysyy, miten jokin pitäisi suunnitella?", ohje: "Älä päätä sitä GitHub Copilotissa. Vie kysymys Copilotille askeleessa 5. Pyydä päivitetty kortti." },
           { kysymys: "Muutos koskisi testitiedostoa?", ohje: "Hylkää muutos. Testi on sinun odotettu tuloksesi. Sitä ei muuteta koodin mukaan. Kirjaa hylkäys AI-lokiin." },
           { kysymys: "Korjaus vaatisi muutoksia kortin ulkopuolelle?", ohje: "Älä hyväksy muutosta. Vie asia Copilotille askeleessa 5. Pyydä uusi kortti." },
-          { kysymys: "Sovellus ei käynnisty ollenkaan?", ohje: "Aja terminaalissa `npm install` ja sitten `npm run dev`. Jos tulee virhe, toimi kuten kohdassa \"Tuliko virheilmoitus?\"" },
+          { kysymys: "Sovellus ei käynnisty ollenkaan?", ohje: "Tarkista ensin, että terminaalin rivin alussa lukee (.venv). Jos ei lue, toimi kuten kohdassa \"Terminaalissa lukee `ModuleNotFoundError`?\" Aja sitten `pip install -r requirements.txt` ja `python main.py`. Jos tulee virhe, toimi kuten kohdassa \"Tuliko virheilmoitus?\"" },
+          { kysymys: "Terminaalissa lukee `ModuleNotFoundError`?", ohje: "Python ei löydä kirjastoa. Syy on yleensä se, että tulkki on väärä tai virtuaaliympäristö ei ole päällä. Paina VS Codessa Ctrl+Shift+P. Valitse Python: Select Interpreter. Valitse sitten tulkki, jonka polussa on `.venv`. Avaa uusi terminaali. Tarkista, että terminaalin rivin alussa lukee (.venv). Aja komento uudelleen." },
           { kysymys: "Krediittejä on jäljellä alle 25 prosenttia?", ohje: "Käytä kaistoja A ja B kuun loppuun asti. Kerro asiasta ohjaajalle viikkopalaverissa." }
         ]
       },
       {
         nimi: "Tarkista",
         paikka: "VS Code",
-        tyokalu: "sinä itse: VS Coden terminaali ja selain",
+        tyokalu: "sinä itse: VS Coden terminaali ja sovellus",
         oma: "etsit testikoodista oman odotetun tuloksesi, ennen kuin ajat testin. Jos tulosta ei löydy tai se on muuttunut, palaa kohtaan 3a ja kirjoita testi uudelleen. Rastita askel 4 issuessa.",
         ohje: [
-          "Avaa testitiedosto. Etsi `expect`-rivi, joka tarkistaa oman odotetun tuloksesi. Tulos voi olla luku, teksti tai tosi tai epätosi.",
-          "Aja terminaalissa `npm test`.",
-          "Tee kortin käsin tehtävät testit selaimessa. Vertaa havaittua tulosta odotettuun tulokseen. Kirjaa molemmat.",
+          "Avaa testitiedosto. Etsi `assert`-rivi, joka tarkistaa oman odotetun tuloksesi. Tulos voi olla luku, teksti, `True` tai `False`.",
+          "Aja terminaalissa `pytest`. Voit myös valita VS Coden Testing-paneelista Run Tests.",
+          "Jos kortin testejä tehdään käsin, tee ne sovelluksessa. Vertaa havaittua tulosta odotettuun tulokseen. Kirjaa molemmat.",
           "Kirjaa tulos issueen: läpi tai ei läpi, ja mitä näit."
         ],
         pohja: { otsikko: "Testin kirjaus issueen", teksti: "Testi T__\nOdotettu tulos (löytyi testikoodista rivillä __): \nHavaittu tulos: \nTulos: läpi / ei läpi" },
@@ -255,7 +256,7 @@ window.NAYTTOPROJEKTI = {
         jumissa: [
           { kysymys: "Testi ei mennyt läpi?", ohje: "Palaa kohtaan 3b. Korjaa toteutus. Älä muuta testiä. Jos sama testi epäonnistuu toisen kerran, avaa havaintoissue ja siirry askeleeseen 5." },
           { kysymys: "En löydä omaa odotettua tulostani testikoodista?", ohje: "Palaa kohtaan 3a, koska testi ei silloin tarkista sinun tulostasi. Kirjoita testi uudelleen kommentista, jossa on oma odotettu tuloksesi. Kirjaa tämä AI-lokiin." },
-          { kysymys: "`npm test` ei löydä testejä?", ohje: "Tarkista, että testitiedoston nimen lopussa on `.test.js`. Jos syy ei löydy, lähetä ohjaajalle Teams-viesti." }
+          { kysymys: "`pytest` ei löydä testejä?", ohje: "Tarkista, että testitiedosto on `tests/`-kansiossa. Tiedoston nimen pitää alkaa `test_`. Myös testifunktion nimen pitää alkaa `test_`. Jos terminaali ei tunne komentoa `pytest`, tarkista, että terminaalin rivin alussa lukee (.venv). Jos syytä ei löydy, lähetä ohjaajalle Teams-viesti." }
         ]
       },
       {
@@ -308,14 +309,14 @@ window.NAYTTOPROJEKTI = {
       type: "pohjustus",
       rutiini: false,
       josJumissa: false,
-      feature: "VS Code ja GitHub ovat korkean kontrastin teemassa. Komennot `git --version` ja `node --version` tulostavat versiot. Julkinen repository on kloonattu VS Codeen ja jaettu ohjaajalle. `project-docs/mvp.md` on pushattu.",
+      feature: "VS Code ja GitHub ovat korkean kontrastin teemassa. Komennot `git --version` ja `python --version` tulostavat versiot. Julkinen repository on kloonattu VS Codeen ja jaettu ohjaajalle. `project-docs/mvp.md` on pushattu.",
       connection: "Tällä viikolla ei vielä rakenneta sovellusta. Laitat työkalut kuntoon. Kirjoitat omin sanoin, mitä MVP:hen kuuluu. Seuraavan viikon työsykli tarvitsee kaiken tämän.",
       deliverable: "Versiotulosteet · kloonattu ja jaettu repository · kolme pohjatiedostoa · `project-docs/mvp.md` GitHubissa · lähetetty kysymyslista · agenttipyynnön hinta päiväkirjassa.",
       why: "Ilman omaa MVP-kuvausta Copilot pilkkoo väärää asiaa. Ilman mittausta et tiedä, montako agenttipyyntöä voit tehdä kuukauden krediiteillä.",
       done: "Ohjaaja näkee repositoryn, `mvp.md` on GitHubissa, kysymyslista on lähetetty, ja päiväkirjassa on agenttipyynnön hinta tai merkintä \"odottaa käyttönäkymää\".",
       record: "MVP:n perustelu omin sanoin, repositoryn osoite, agenttipyynnön hinta ja vaatimustunnukset p1 ja s4.",
       skills: ["Asiakkaan tarpeiden selvittäminen", "Tärkeysjärjestys P0, P1 ja P2", "Kehitysympäristön käyttöönotto", "Versionhallinnan aloitus"],
-      termit: ["MVP", "P0", "P1", "P2", "repository", "kloonaus", "commit", "push", "tilatiedosto", "krediitti"],
+      termit: ["MVP", "P0", "P1", "P2", "tulkki", "pip", "virtuaaliympäristö", "repository", "kloonaus", "commit", "push", "tilatiedosto", "krediitti"],
       paivat: [
         ["Sopiminen ja asennus", "Sovi tekijänimi ja palaveripäivä. Asenna työkalut ja vaihda teemat."],
         ["Repository", "Aseta Git. Luo repository, kloonaa se ja lisää pohjat."],
@@ -325,7 +326,10 @@ window.NAYTTOPROJEKTI = {
       ],
       steps: [
         ["Sovi ohjaajan kanssa.", "Sovi Teamsissa tekijänimi ja viikkopalaverin päivä, maanantai tai tiistai. Tee tämä ennen Gitin asetuksia."],
-        ["Asenna työkalut.", "Asenna VS Code, Git, Node.js, Inkscape ja Blender. Aja terminaalissa <code>git --version</code> ja <code>node --version</code>."],
+        ["Asenna VS Code, Git, Inkscape ja Blender.", "Onko tämä jo tehty? Tarkista ohjelmat yksi kerrallaan. Asenna vain puuttuvat. Aja VS Coden terminaalissa <code>git --version</code>. Node.js:ää ei tarvita. Jos asensit sen jo, voit jättää sen koneelle."],
+        ["Asenna Python 3.13.", "Onko tämä jo tehty? Aja terminaalissa <code>python --version</code>. Jos tuloste alkaa <code>Python 3.13</code>, siirry seuraavaan askeleeseen. Muuten lataa Python 3.13:n Windows installer (64-bit) python.org-sivulta, ei Microsoft Storesta. Rastita asennuksen ensimmäisessä ikkunassa Add python.exe to PATH. Katso kuvaohje alta."],
+        ["Tarkista tulkki ja pip.", "Python-tulkki on ohjelma, joka ajaa Python-koodin. pip on Pythonin paketinhallinta. Se asentaa kirjastoja ja tulee Pythonin mukana. Sulje VS Code ja avaa se uudelleen. Aja <code>python --version</code>. Tulosteen pitää alkaa <code>Python 3.13</code>. Aja sitten <code>python -m pip --version</code>. Tulosteen lopussa pitää lukea <code>(python 3.13)</code>. Jos näkyy muu versio, lähetä ohjaajalle Teams-viesti."],
+        ["Asenna VS Coden Python-laajennus.", "Onko tämä jo tehty? Avaa VS Codessa Extensions. Hae Python. Julkaisija on Microsoft. Jos laajennuksen kohdalla lukee Uninstall, laajennus on jo asennettu. Muuten valitse Install. Ensi viikolla luot laajennuksella virtuaaliympäristön (.venv). Se on projektin oma kansio, johon projektin kirjastot asennetaan."],
         ["Vaihda teemat.", "Valitse VS Codessa teema Dark High Contrast. Valitse GitHubin asetuksissa teema Dark high contrast."],
         ["Aseta Git.", "Aseta Gitin nimeksi sovittu tekijänimi. Aseta sähköpostiksi GitHubin noreply-osoite. Näin omaa sähköpostiosoitettasi ei julkaista. Katso kuvaohje alta."],
         ["Luo repository.", "Luo GitHubissa julkinen repository nimellä <code>vektoripaja</code>. Valitse Add a README file. README on repositoryn etusivun ohje."],
@@ -347,7 +351,7 @@ window.NAYTTOPROJEKTI = {
         { otsikko: "Mittauksen viestipohja GitHub Copilotille (agenttitila)", teksti: "Lue README.md ja ehdota sen alkuun yksi lause, joka kertoo, mikä Vektoripaja on. Älä muuta muita tiedostoja." },
         { otsikko: "PROJEKTIN-TILA.md (repositoryn juureen)", teksti: "# PROJEKTIN-TILA – Vektoripaja\nTämä tiedosto annetaan vain Copilotille (Microsoft 365). Älä liitä sitä GitHub Copilotiin.\n\nPäivitetty: pp.kk.vvvv · Viikko: __\n\n## Valmista\n- \n\n## Seuraavana\n- (seuraava tehtävä ja issue-numero)\n\n## Tehdyt päätökset\n- (päätös · peruste · viikko)\n\n## Avoimet kysymykset\n- (kysymys · kenelle · mihin mennessä)\n\n## Krediitit\nKäytetty tässä kuussa: __ / 200\nKaista C sallittu: kyllä / ei (alle 25 % jäljellä → ei)" },
         { otsikko: "Tehtäväkorttipohja (.github/ISSUE_TEMPLATE/tehtavakortti.md)", teksti: "---\nname: Tehtäväkortti\nabout: Yksi rajattu tehtävä työsyklin mukaan\ntitle: \"\"\nlabels: tehtäväkortti\n---\n\n## Tavoite\n\n## Kaista (A, B tai C) ja perustelu\n\n## Tiedostot\n\n## Älä tee\n- Älä muuta testitiedostoja.\n\n## Hyväksymiskriteerit\n- [ ] \n\n## Testi: tunnus, syöte ja odotettu tulos\nT__: \nOma odotettu tulokseni: \n\n## Oma tarkistus\nMuutin kortista ___ / En muuttanut, koska ___\n\n## Sykli\n- [ ] 1 Suunniteltu\n- [ ] 2 Siirretty\n- [ ] 3a Testi kirjoitettu\n- [ ] 3b Toteutettu\n- [ ] 4 Tarkistettu\n- [ ] 5 Raportoitu\n- [ ] 6 Kirjattu" },
-        { otsikko: "Ohjeet GitHub Copilotille (.github/copilot-instructions.md)", teksti: "# Vektoripaja – ohjeet GitHub Copilotille\n\n## Projekti\nSelainpohjainen low-poly 3D-mallinnin.\nInkscapen SVG → 3D-malli → .obj-tiedosto.\nTekninen pohja: Vite, React, Three.js\n(@react-three/fiber, @react-three/drei) ja Vitest.\n\n## Rakenne\n(Täydennä viikolla 43: kansiot ja moduulien rajat.)\nTestit ovat tiedoston vieressä: nimi.test.js.\n\n## Säännöt\n- Toteuta vain tehtäväkortin tehtävä.\n- Muuta vain kortin Tiedostot-kohdassa lueteltuja tiedostoja.\n- Älä muuta testejä. Testit kirjoittaa opiskelija.\n- Älä refaktoroi pyytämättä.\n- Älä lisää npm-paketteja ilman lupaa.\n- Kysy, jos kortti on epäselvä. Älä arvaa.\n- Kun kortti pyytää funktiota, kirjoita puhdas funktio.\n- Koodin ja commitien kieli: ___ (oma valintasi).\n- Vastaa suomeksi." },
+        { otsikko: "Ohjeet GitHub Copilotille (.github/copilot-instructions.md)", teksti: "# Vektoripaja – ohjeet GitHub Copilotille\n\n## Projekti\nWindows-työpöytäsovellus (Python): low-poly 3D-mallinnin.\nInkscapen SVG → 3D-malli → .obj-tiedosto.\nTekninen pohja: Python 3.13, PySide6 (Qt), PyVista ja pyvistaqt\n(3D-näkymä), trimesh ja numpy (geometria ja OBJ), svgelements (SVG)\nja pytest (testit).\nKäynnistys: python main.py\nJulkaisu: PyInstaller tekee Windows-version, joka toimii ilman Pythonia.\n\n## Rakenne\n(Täydennä viikolla 43: kansiot ja moduulien rajat.)\nTestit ovat kansiossa tests/: tests/test_nimi.py.\n\n## Säännöt\n- Toteuta vain tehtäväkortin tehtävä.\n- Muuta vain kortin Tiedostot-kohdassa lueteltuja tiedostoja.\n- Älä muuta testejä. Testit kirjoittaa opiskelija.\n- Älä refaktoroi pyytämättä.\n- Älä lisää pip-paketteja ilman lupaa. Uusi paketti menee requirements.txt:hen.\n- Geometria- ja muunnosfunktiot ovat puhtaita funktioita ilman Qt:ta.\n- Kysy, jos kortti on epäselvä. Älä arvaa.\n- Kun kortti pyytää funktiota, kirjoita puhdas funktio.\n- Koodin ja commitien kieli: ___ (oma valintasi).\n- Vastaa suomeksi." },
         { otsikko: "Jos jäät jumiin: viesti ohjaajalle (Teams)", teksti: "Hei, olen jumissa viikolla 40.\nYritin: \nJäin kohtaan: \nRuudulla näkyy: " }
       ],
       resources: [
@@ -355,7 +359,7 @@ window.NAYTTOPROJEKTI = {
         ["Lataa tehtavakortti.md", "pohjat/tehtavakortti.md", true],
         ["Lataa copilot-instructions.md", "pohjat/copilot-instructions.md", true]
       ],
-      kuvaohjeet: ["github-noreply", "vscode-kloonaus", "github-collaborators", "vscode-commit-push", "github-kayttonakyma"],
+      kuvaohjeet: ["python-asennus", "github-noreply", "vscode-kloonaus", "github-collaborators", "vscode-commit-push", "github-kayttonakyma"],
       example: "`mvp.md`: \"Revolve on P0, koska maljakko ja pyörä tehdään sillä. Boolean-toiminnot ovat P2-jatkolistalla, koska malli toimii ilman niitä.\"",
       notEnough: "\"MVP on kaikki [MVP]-merkityt asiat.\" Lista on kopioitu suunnitelmasta. Siinä ei kerrota, miksi jokin jää pois."
     },
@@ -933,6 +937,9 @@ window.NAYTTOPROJEKTI = {
     { termi: "P2", nimi: "Jatkolista", selite: "Toiminnot, jotka jäävät tämän näytön jälkeen tehtäviksi. Ne eivät ole hylättyjä.", viikko: 40 },
     { termi: "SVG", nimi: "vektorikuva", selite: "Kuvan tiedostomuoto, jossa kuva koostuu poluista. Inkscape tallentaa piirrokset SVG-tiedostoiksi.", viikko: 40 },
     { termi: "low-poly", selite: "3D-malli, jossa on vähän monikulmioita. Pinnat näkyvät tasaisina, kulmikkaina paloina.", viikko: 40 },
+    { termi: "tulkki", nimi: "Python-tulkki", selite: "Ohjelma, joka ajaa Python-koodin. Komento `python` käynnistää tulkin. Tässä projektissa käytetään Python 3.13:a.", viikko: 40 },
+    { termi: "pip", nimi: "Pythonin paketinhallinta", selite: "Työkalu, joka asentaa Python-kirjastoja. Se tulee Pythonin mukana. Kirjastot asennetaan komennolla `pip install` virtuaaliympäristöön.", viikko: 40 },
+    { termi: "virtuaaliympäristö", nimi: ".venv", selite: "Projektin oma Python-kansio `.venv`. Projektin kirjastot asennetaan sinne, joten ne eivät sekoitu koneen muihin Python-projekteihin. Kun virtuaaliympäristö on päällä, terminaalin rivin alussa lukee (.venv). Se luodaan viikolla 41.", viikko: 40 },
     { termi: "repository", nimi: "Git-repository", selite: "Projektin kansio GitHubissa. Siellä on koodi, historia ja issuet. Kaikki työnäytteet ovat repositoryssa.", viikko: 40 },
     { termi: "README", selite: "Repositoryn etusivun ohje. Kertoo, mikä työkalu on ja miten sen saa käyttöön.", viikko: 40 },
     { termi: "kloonaus", selite: "Repositoryn kopiointi omalle koneelle. VS Code ja GitHub Copilot käsittelevät kloonattua kansiota.", viikko: 40 },

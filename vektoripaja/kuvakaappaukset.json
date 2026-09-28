@@ -2,6 +2,24 @@
   "ohje": "Kuvaohjeiden lähde (moottori v2.4). alue = [x, y, leveys, korkeus] prosentteina kuvasta. Kuvat otetaan GitHubin Dark high contrast- ja VS Coden Dark High Contrast -teemassa, rajattuna yhteen kohtaan. Kun kuva lisätään: täytä tiedosto, leveys, korkeus ja pvm, tarkista kohtien tekstit kuvaa vasten ja lisää jokaiselle kohdalle alue. tarkista.js varoittaa puuttuvista kuvista.",
   "kuvat": [
     {
+      "tunnus": "python-asennus",
+      "otsikko": "Asenna Python ja lisää se PATHiin",
+      "kuvaa": "Python 3.13:n Windows-asennusohjelman ensimmäinen ikkuna",
+      "missa": "python.org → Downloads → Windows → Python 3.13 → Windows installer (64-bit)",
+      "tiedosto": "",
+      "leveys": 1200,
+      "korkeus": 700,
+      "alt": "Kuvakaappaus Pythonin asennusohjelman ensimmäisestä ikkunasta. Ylhäällä painike Install Now ja alareunassa kaksi valintaruutua, joista alempi on Add python.exe to PATH.",
+      "kohdat": [
+        { "n": 1, "teksti": "Avaa ladattu tiedosto. Sen nimi alkaa python-3.13 ja loppuu amd64.exe." },
+        { "n": 2, "teksti": "Rastita alareunasta Add python.exe to PATH. Ilman rastia komento `python` ei toimi terminaalissa." },
+        { "n": 3, "teksti": "Valitse Install Now. Kun asennus on valmis, valitse Close." },
+        { "n": 4, "teksti": "Sulje VS Code ja avaa se uudelleen. Aja terminaalissa `python --version`. Tulosteen pitää alkaa Python 3.13." }
+      ],
+      "pvm": "",
+      "teema": "Windows, Pythonin asennusohjelma"
+    },
+    {
       "tunnus": "github-noreply",
       "otsikko": "Piilota sähköpostiosoite",
       "kuvaa": "GitHubin Settings → Emails -sivu",
@@ -179,15 +197,15 @@
     {
       "tunnus": "vscode-terminaali",
       "otsikko": "Aja testit terminaalissa",
-      "kuvaa": "VS Coden terminaali, jossa näkyy komennon npm test tulos",
+      "kuvaa": "VS Coden terminaali, jossa näkyy komennon pytest tulos",
       "missa": "VS Code → Terminal → New Terminal",
       "tiedosto": "",
       "leveys": 1200,
       "korkeus": 600,
-      "alt": "Kuvakaappaus VS Coden terminaalista korkean kontrastin teemassa. Terminaalissa on komento npm test ja sen alla testien tulos: rivit, joissa lukee passed tai failed.",
+      "alt": "Kuvakaappaus VS Coden terminaalista korkean kontrastin teemassa. Terminaalin rivin alussa lukee (.venv). Rivillä on komento pytest ja sen alla testien tulos: rivi, jossa lukee passed tai failed.",
       "kohdat": [
-        { "n": 1, "teksti": "Valitse ylävalikosta Terminal ja sitten New Terminal." },
-        { "n": 2, "teksti": "Kirjoita `npm test`. Paina Enter." },
+        { "n": 1, "teksti": "Valitse ylävalikosta Terminal ja sitten New Terminal. Tarkista, että terminaalin rivin alussa lukee (.venv)." },
+        { "n": 2, "teksti": "Kirjoita `pytest`. Paina Enter." },
         { "n": 3, "teksti": "Lue tulos. Sana passed tarkoittaa, että testi meni läpi. Sana failed tarkoittaa, että testi ei mennyt läpi." }
       ],
       "pvm": "",
