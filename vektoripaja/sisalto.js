@@ -93,7 +93,7 @@ window.NAYTTOPROJEKTI = {
     1: "Joululoma",
     2: "Paluuviikko",
     3: "Päivitä SVG",
-    4: "Jousto ja jatko",
+    4: "Jousto ja tärkeä jatko",
     5: "Saavutettavuus",
     6: "Julkaisutesti",
     7: "v1.0",
@@ -372,7 +372,7 @@ window.NAYTTOPROJEKTI = {
       deliverable: "Ikkuna, jossa kuutio pyörii · testit 1 ja 2 · release-zip GitHubissa · kaksi issueta suljettuna commit-viestillä · päätös teknisestä pohjasta suunnitelmassa.",
       why: "Jos sykli opitaan vasta SVG-tuonnin kanssa, uusi työtapa ja vaikea tehtävä tulevat yhtä aikaa. Silloin et tiedä, johtuuko ongelma työtavasta vai tehtävästä.",
       done: "Releasen zipistä purettu sovellus käynnistyy, ja kuutio pyörii. Actionsin ajo on vihreä, eli itsetesti meni läpi. `pytest` näyttää, että testi 1 menee läpi. Issuet #1 ja #2 on suljettu commitilla.",
-      record: "Releasen osoite, issueiden numerot, testin 1 odotettu ja havaittu tulos, kiertokulma-funktio selityspohjalla ja näyttömatriisin vaatimukset: kehitysympäristön käyttöönotto, ulkoiset komponentit ja julkaisu.",
+      record: "Releasen osoite, issueiden numerot, testin 1 odotettu ja havaittu tulos, kiertokulma-funktio selityspohjalla ja näyttömatriisin vaatimukset: kehitysympäristön käyttöönotto, ulkoiset komponentit ja julkaisu tuotantoon.",
       skills: ["Tehtäväkortti ja hyväksymiskriteerit", "Tekninen pohja: PySide6, PyVista, trimesh ja pytest", "Testi ennen koodia", "Julkaisu releasena GitHub Actionsilla"],
       termit: ["työsykli", "tehtäväkortti", "issue", "kaista", "testi", "tekninen pohja", "requirements.txt", "tagi", "GitHub Actions", "paketointi", "itsetesti", "release", "zip"],
       steps: [
@@ -403,7 +403,7 @@ window.NAYTTOPROJEKTI = {
           "Pyydä Tiedosto-kaistalla tiedostot yksi kerrallaan: ensin `vektoripaja/kierto.py`, sitten `vektoripaja/ikkuna.py`. Pohjan `main.py` kutsuu funktiota `kaynnista()` tiedostosta `vektoripaja/ikkuna.py`. Älä muuta tiedostoa `main.py`.",
           "Kortti #2: tee ensin commit ja push. Aja sitten terminaalissa `git tag v0.0.41`. Aja sen jälkeen `git push origin v0.0.41`. Tagin push käynnistää GitHub Actionsin. Se ajaa testit ja tekee Windows-version. Windows-version tekemistä kutsutaan paketoinniksi. Lopuksi se ajaa Windows-versiolle itsetestin.",
           "Avaa GitHubissa Actions-välilehti. Kun ajo on vihreä, avaa Releases. Siellä on zip `Vektoripaja-v0.0.41-windows.zip`.",
-          "Tagin numero on viikon numero: viikolla 41 `v0.0.41`, viikolla 43 `v0.0.43`. Jos julkaiset saman viikon uudelleen, lisää loppuun `-2`, esimerkiksi `v0.0.41-2`. Samaa tagia ei käytetä kahdesti."
+          "Tagin numero on viikon numero: viikolla 41 `v0.0.41`, viikolla 43 `v0.0.43`. Jos julkaiset saman viikon version uudelleen, lisää loppuun `-2`, esimerkiksi `v0.0.41-2`. Samaa tagia ei käytetä kahdesti."
         ],
         code: "MALLIKORTTI #1\n## Tavoite\nKuutio pyörii sovelluksen ikkunassa.\n## Kaista ja perustelu\nTiedosto. Kaksi tiedostoa, pyydetään yksi kerrallaan.\n## Tiedostot\nvektoripaja/kierto.py, vektoripaja/ikkuna.py\n## Älä tee\nÄlä lisää muita kirjastoja. Älä muuta tiedostoja main.py ja tests/test_kierto.py.\n## Hyväksymiskriteerit\n- [ ] Komento python main.py avaa ikkunan, jossa kuutio pyörii tasaisesti.\n- [ ] Tausta on musta ja teksti #1fa4e3 (vektoripaja/teema.py).\n- [ ] Funktio kiertokulma ei käytä Qt:ta.\n## Testi\nTesti 1 (kiertokulma): kiertokulma(0, 0.5) → (oma odotettu tuloksesi) ja kiertokulma(3, 0.5) → (oma odotettu tuloksesi)\n## Sykli\n- [ ] 1 Suunniteltu  - [ ] 2 Siirretty\n- [ ] 3a Testi kirjoitettu  - [ ] 3b Toteutettu\n- [ ] 4 Tarkistettu  - [ ] 5 Raportoitu  - [ ] 6 Kirjattu\n\nTESTIPOHJA tests/test_kierto.py\nfrom vektoripaja.kierto import kiertokulma\n\n\ndef test_1_kiertokulma():\n    assert kiertokulma(0, 0.5) == ___\n    assert kiertokulma(3, 0.5) == ___",
         test: "Testi 2 (julkaisu): lataa zip releasesta. Pura se valitsemalla Pura kaikki. Käynnistä Vektoripaja.exe puretusta kansiosta. Kuution pitää pyöriä. Jos Windows sanoo \"Windows suojasi tietokonettasi\", valitse Lisätietoja. Valitse sitten Suorita silti."
@@ -422,7 +422,7 @@ window.NAYTTOPROJEKTI = {
         ohjeet: {
           3: [
             "Kirjoita testi ensin (3a). Kortissa #1 kopioi toteutusavun testipohja tiedostoon `tests/test_kierto.py`. Kirjoita omat arvosi `___`-kohtiin.",
-            "Kirjoita kortin #2 testin 2 odotettu tulos issueen. Testi 2 tehdään käsin. Siirry sitten suoraan kohtaan 3b.",
+            "Kortissa #2 kirjoita testin 2 odotettu tulos issueen. Testi 2 tehdään käsin. Siirry sitten suoraan kohtaan 3b.",
             "Toteuta kortti sitten Tiedosto-kaistalla (3b). Tiedosto-kaista tarkoittaa, että Copilot kirjoittaa koodin yksi tiedosto kerrallaan. Pyydä ensin `vektoripaja/kierto.py`, sitten `vektoripaja/ikkuna.py`.",
             "Kortissa #2 et kirjoita koodia. Julkaisun tiedostot ovat pohjassa. Toteutat kortin tekemällä tagin ja pushaamalla sen. Katso toteutusapu.",
             "Lue jokainen tiedosto, ennen kuin hyväksyt sen. Älä hyväksy muutoksia testitiedostoon.",
@@ -430,7 +430,7 @@ window.NAYTTOPROJEKTI = {
           ]
         },
         lisa: {
-          3: "Tällä viikolla testi kirjoitetaan testipohjaan. Kommentista kirjoitettava testi (Täydennys-kaista) otetaan käyttöön viikolla 43. Agentti-kaista otetaan käyttöön viikolla 44."
+          3: "Tällä viikolla testi kirjoitetaan testipohjaan. Täydennys-kaista otetaan käyttöön viikolla 43. Silloin testi kirjoitetaan kommentista. Agentti-kaista otetaan käyttöön viikolla 44."
         },
         jumissa: {
           3: [
@@ -453,7 +453,7 @@ window.NAYTTOPROJEKTI = {
       deliverable: "Oma testitiedosto Inkscapesta · testit 3–5 · kansiorakenne suunnitelmassa · polut näkymässä · `project-docs/kirjastot.md` · viikon release.",
       why: "Kaikki myöhemmät viikot tarvitsevat tuodut polut. Jos tuonti on epävarma, myös revolve ja inflate ovat epävarmoja.",
       done: "Oma SVG avautuu tiedostoikkunasta, testit 3–5 menevät läpi, ja `project-docs/kirjastot.md`:ssä on kaksi svgelementsin rajoitetta omalla tiedostolla kokeiltuna.",
-      record: "Kansiorakenne ja moduulien rajat, yksi svgelementsin rajoite omalla tiedostolla kokeiltuna, viikon funktio selityspohjalla ja näyttömatriisin vaatimukset: kirjaston rajoitteet sekä rajapinnat ja tiedon käsittely.",
+      record: "Kansiorakenne ja moduulien rajat, yksi svgelementsin rajoite omalla tiedostolla kokeiltuna, viikon funktio selityspohjalla ja näyttömatriisin vaatimukset: kirjaston rajoitteet ja tiedon käsittely.",
       skills: ["SVG-tiedoston tuonti", "Moduulien rajat", "Komponenttikirjaston rajoitteet", "Ulkoinen tiedosto turvallisesti"],
       termit: ["täydennys", "moduuli", "havaintoissue", "layer"],
       steps: [
@@ -480,8 +480,8 @@ window.NAYTTOPROJEKTI = {
           "Lue SVG svgelementsillä: `SVG.parse(polku)`. Käy läpi `svg.elements()` ja ota talteen `Path`-elementit.",
           "svgelements lukee SVG:n datana. Se ei suorita `<script>`-elementtiä. Tämä on testin 4 syy.",
           "SVG:n y-akseli kasvaa alaspäin, 3D-näkymän ylöspäin. Käännä y-arvot: `-y`.",
-          "Piirrä polku viivana: `pyvista.lines_from_points(pisteet)` ja sitten `plotter.add_mesh(viiva)`.",
-          "Tarkista tiedoston pääte ja sisältö ennen lukemista. Näin testi 5 saa selkeän virheilmoituksen."
+          "Tee polun pisteistä viiva: `pyvista.lines_from_points(pisteet)`. Piirrä viiva näkymään: `plotter.add_mesh(viiva)`.",
+          "Tarkista tiedoston pääte ja sisältö ennen lukemista. Näin väärä tiedosto antaa selkeän virheilmoituksen (testi 5)."
         ],
         code: "TUONNIN TARKISTUSLISTA\n[ ] tiedostoikkuna näyttää vain .svg-tiedostot\n[ ] SVG luetaan svgelementsillä, ei omalla tekstinkäsittelyllä\n[ ] y-arvot käännetään\n[ ] muu tiedosto antaa selkeän virheilmoituksen\n[ ] testit 3–5 ovat testitiedostossa omina funktioinaan",
         test: "Avaa oma SVG, testitiedosto, jossa on script-elementti, ja tekstitiedosto. Kirjaa jokaisen tulos.",
@@ -517,7 +517,7 @@ window.NAYTTOPROJEKTI = {
       steps: [
         ["Kirjoita rajapinta.", "Kirjoita korttiin funktion nimi, mitä se saa (SVG:n ryhmä) ja mitä se palauttaa (solmu, jolla on nimi, lapset ja oma muunnos). Rajapinta on funktion nimi, syöte ja paluuarvo."],
         ["Kirjoita testit 6–8.", "Testi 6: kolme tasoa. Ryhmät ovat kolmessa tasossa. Testi 7: tyhjä ryhmä. Testi 8: nimetön ryhmä. Kirjaa jokaiselle, mitä odotat."],
-        ["Kirjoita maailmamuunnos.", "Maailmamuunnos kertoo osan lopullisen paikan näkymässä. Se lasketaan näin: vanhemman maailmamuunnos kertaa osan oma muunnos. Kirjoita siitä puhdas funktio ilman Qt:ta. Kirjoita ensin lisätesti: kun vanhempi on paikallaan, lapsen maailmamuunnos on sama kuin sen oma muunnos."],
+        ["Kirjoita maailmamuunnos.", "Maailmamuunnos kertoo osan lopullisen paikan näkymässä. Se lasketaan näin: vanhemman maailmamuunnos kertaa osan oma muunnos. Kirjoita siitä puhdas funktio ilman Qt:ta. Kirjoita ensin lisätesti: kun vanhempaa ei ole siirretty, kierretty eikä skaalattu, lapsen maailmamuunnos on sama kuin sen oma muunnos."],
         ["Tee kortti Agentti-kaistalla.", "Kortti koskee funktiota ja paneelia eli useaa tiedostoa. Agentti-kaista tarkoittaa GitHub Copilotin agenttitilaa. Katso kuvaohjeet alta."],
         ["Päätä valinnan toiminta.", "Kun käyttäjä klikkaa osaa, valitaanko lapsi vai koko kappale? Kirjaa päätös ja peruste suunnitelmaan."],
         ["Vertaa revolven valintatapoja.", "Vertaa kahta tapaa: valinta ja painike sovelluksessa, tai nimimerkintä Inkscapessa, esimerkiksi layerin nimen perässä <code>[revolve]</code>. Kirjaa hyvät ja huonot puolet. Tuo suositus ensi viikon palaveriin."],
@@ -561,9 +561,9 @@ window.NAYTTOPROJEKTI = {
       steps: [
         ["Sovi valintatapa palaverissa.", "Esitä vertailusi. Sovi valintatapa ohjaajan kanssa. Kirjaa sovittu tapa issue-kommenttina ja suunnitelmaan."],
         ["Päätä akselin väärän puolen käsittely.", "Mitä tehdään, jos profiilin piste on akselin väärällä puolella? Kirjaa oma hyväksymiskriteeri suunnitelmaan. Se on testin 11 odotettu tulos."],
-        ["Kirjoita testit 9–11.", "Testi 9: profiilin pisteet. Testi 10: segmenttien rajat, kun määrä on 2 ja 33. Testi 11: akselin väärä puoli, kun piste on akselin väärällä puolella. Kirjaa odotukset ennen koodia."],
-        ["Kysy kysymystilassa.", "Avaa GitHub Copilotin chat Ask-tilassa. Kysy, miten <code>trimesh.creation.revolve</code> lukee pisteet. Kysymystila vastaa, mutta ei muuta tiedostoja."],
-        ["Tee kortit työsyklillä.", "Tee revolve, segmenttisäädin ja orbit. Orbit tarkoittaa, että näkymää kierretään hiirellä. PyVistan kamera tekee sen valmiiksi."],
+        ["Kirjoita testit 9–11.", "Testi 9: profiilin pisteet. Testi 10: segmenttien rajat, kun määrä on 2 ja 33. Testi 11: akselin väärä puoli. Profiilin piste on akselin väärällä puolella. Kirjaa odotukset ennen koodia."],
+        ["Kysy kysymystilassa.", "Avaa GitHub Copilotin chat kysymystilassa eli Ask-tilassa. Kysy, miten <code>trimesh.creation.revolve</code> lukee pisteet. Kysymystila vastaa, mutta ei muuta tiedostoja."],
+        ["Tee kortit työsyklillä.", "Tee revolve, segmenttisäädin ja orbit. Orbit tarkoittaa, että näkymää kierretään hiirellä. PyVistan kamerassa se on valmiina."],
         ["Julkaise viikon versio.", "Tee tagi <code>v0.0.45</code> ja pushaa se. Kun Actions-ajo on vihreä, viikon versio on releasessa."]
       ],
       example: "Testin 11 hyväksymiskriteeri: \"Jos piste on akselin väärällä puolella, se siirretään akselille ja käyttäjä näkee huomautuksen.\"",
@@ -577,7 +577,7 @@ window.NAYTTOPROJEKTI = {
           "Piste x = 0 on akselilla. Profiili piirretään akselin toiselle puolelle.",
           "Tuloksena on trimesh-kappale. Näytä se PyVistassa: `plotter.add_mesh(pyvista.wrap(kappale))`.",
           "Segmenttisäädin on Qt:n `QSpinBox`. Tee rajaus 3–32 puhtaana funktiona, jotta testi 10 voi tarkistaa sen.",
-          "Orbit: PyVistan näkymää voi kiertää hiirellä valmiiksi. Sinun ei tarvitse tehdä sitä itse."
+          "Orbit on PyVistassa valmiina: näkymää voi kiertää hiirellä. Sinun ei tarvitse tehdä sitä itse."
         ],
         code: "REVOLVEN TARKISTUSLISTA\n[ ] valintatapa sovittu ja kirjattu\n[ ] testin 11 kriteeri kirjattu ennen koodia\n[ ] segmenttien määrä rajataan 3–32 (testi 10)\n[ ] kappale näkyy oikein päin\n[ ] orbit toimii hiirellä",
         test: "Piirrä maljakon puoliprofiili. Kokeile segmenttimääriä 3, 8 ja 32. Kappaleen pitää muuttua kulmikkaasta pyöreäksi.",
@@ -590,20 +590,20 @@ window.NAYTTOPROJEKTI = {
     },
     46: {
       type: "feature",
-      feature: "Viivapolusta syntyy putki, jossa on 3–8 sivua. Orientaatiowidgetillä kamera kääntyy katsomaan suoraan edestä, sivulta tai ylhäältä. View lock -painike lukitsee kierron.",
+      feature: "Viivapolusta syntyy putki, jossa on 3–8 sivua. Orientaatiowidgetillä kameran voi kääntää katsomaan suoraan edestä, sivulta tai ylhäältä. View lock -painike lukitsee kierron.",
       excerpt: "Mallia pitää voida katsoa suoraan edestä, sivulta ja ylhäältä.",
-      connection: "Inflate toistaa revolven kaavan: polku, geometria, säädin ja testit. Inflate tarkoittaa, että viivasta tulee putki. Toinen osa on kamera. Suunnitelmasi Orthographic Plane Snap tehdään kahdessa osassa. Pakollisessa ytimessä kamera kääntyy suoraan akselin suuntaan eli suoraan näkymään. Tärkeässä jatkossa lisätään ortografinen näkymä.",
+      connection: "Inflate tarkoittaa, että viivasta tulee putki. Se toistaa revolven kaavan: polku, geometria, säädin ja testit. Toinen osa on kamera. Suunnitelmasi Orthographic Plane Snap tehdään kahdessa vaiheessa. Pakollisessa ytimessä kamera kääntyy suoraan akselin suuntaan. Tätä kutsutaan suoraksi näkymäksi. Tärkeässä jatkossa lisätään ortografinen näkymä.",
       deliverable: "Testit 12–14 · inflate ja sivumäärän säädin · putkigeometrian rajoitteet `kirjastot.md`:ssä · orientaatiowidget ja view lock -painike · viikon release.",
       why: "Putkella tehdään johdot, sarvet ja raajat. Suora näkymä ja view lock tarvitaan tarkkaan työhön: ilman niitä kamera kääntyy vahingossa, kun siirrät osia viikolla 47.",
-      done: "Inflate on valmis, kun oma polkusi muuttuu putkeksi, sivumäärän voi valita väliltä 3–8 ja testit 12–13 menevät läpi. Kamera on valmis, kun orientaatiowidgetin akselia klikkaamalla kamera kääntyy suoraan akselin suuntaan, view lock estää kierron ja testi 14 menee läpi. Jos kamera siirtyy viikolle 47, se on sovittu vaihtoehto eikä virhe.",
+      done: "Inflate on valmis, kun oma polkusi muuttuu putkeksi, sivumäärän voi valita väliltä 3–8 ja testit 12–13 menevät läpi. Kamera on valmis, kun orientaatiowidgetin akselin klikkaus kääntää kameran suoraan akselin suuntaan, view lock estää kierron ja testi 14 menee läpi. Jos kamera siirtyy viikolle 47, se on sovittu vaihtoehto eikä virhe.",
       record: "Kumpi osa valmistui ensin, putkigeometrian rajoitteet, viikon funktio selityspohjalla ja näyttömatriisin vaatimukset: toimintalogiikka, kirjaston rajoitteet, kirjaston toiminnot ja käyttöliittymä.",
       skills: ["Toimintalogiikka: polku putkeksi", "Komponenttikirjaston rajoitteet", "Valmiit komponentit: orientaatiowidget", "Käyttöliittymän tila: view lock"],
       termit: ["inflate", "orientaatiowidget", "suora näkymä", "view lock"],
       steps: [
         ["Tee ensin inflate.", "Inflate on pakollisen ytimen kohta 4 ja kamera kohta 6. Tee inflate ensin. Jos aika loppuu, kamera siirtyy viikon 47 alkuun. Siitä sovitaan palaverissa. Se on suunniteltu vaihtoehto."],
         ["Kirjoita testit 12–14.", "Testi 12: sivujen rajat, kun määrä on 2 ja 9. Testi 13: suljettu polku. Testi 14: view lock. View lock on päällä, ja yrität kiertää näkymää. Kirjaa odotukset ennen koodia."],
-        ["Tee inflate työsyklillä.", "Tee putki PyVistan tube-suodattimella ja sivumäärän säädin. Kokeile omilla poluillasi. Kirjaa putkigeometrian rajoitteet <code>project-docs/kirjastot.md</code>:hen."],
-        ["Tee kamera työsyklillä.", "Orientaatiowidget on pieni akselikuvio näkymän kulmassa. Kun klikkaat sen akselia, kamera kääntyy katsomaan mallia suoraan sen suunnasta. View lock on painike, joka estää kameran kiertymisen."],
+        ["Tee inflate työsyklillä.", "Tee putki PyVistan tube-suodattimella. Tee myös sivumäärän säädin. Kokeile omilla poluillasi. Kirjaa putkigeometrian rajoitteet <code>project-docs/kirjastot.md</code>:hen."],
+        ["Tee kamera työsyklillä.", "Orientaatiowidget on pieni akselikuvio näkymän kulmassa. Kun klikkaat sen akselia, kamera kääntyy katsomaan mallia suoraan akselin suunnasta. View lock on painike, joka estää kameran kiertymisen."],
         ["Julkaise viikon versio.", "Tee tagi <code>v0.0.46</code> ja pushaa se. Kun Actions-ajo on vihreä, viikon versio on releasessa."]
       ],
       example: "Kameran hyväksymiskriteeri: \"Kun klikkaan orientaatiowidgetin Z-akselia, kamera katsoo mallia suoraan ylhäältä. Kaukana olevat osat näyttävät edelleen pienemmiltä. Se on oikein, koska ortografinen näkymä kuuluu tärkeään jatkoon.\"",
@@ -614,7 +614,7 @@ window.NAYTTOPROJEKTI = {
         actions: [
           "Tee polun pisteistä viiva: `pyvista.lines_from_points(pisteet)`. Suljetulle polulle lisää `close=True` (testi 13).",
           "Tee viivasta putki: `viiva.tube(radius=säde, n_sides=sivut, capping=True)`. Rajaa sivujen määrä välille 3–8 puhtaalla funktiolla (testi 12).",
-          "Muunna putki trimesh-kappaleeksi, jotta vienti viikolla 49 toimii kaikille osille samalla tavalla: `trimesh.Trimesh(vertices=putki.points, faces=putki.triangulate().regular_faces)`.",
+          "Muunna putki trimesh-kappaleeksi: `trimesh.Trimesh(vertices=putki.points, faces=putki.triangulate().regular_faces)`. Näin vienti viikolla 49 toimii kaikille osille samalla tavalla.",
           "Orientaatiowidget: `plotter.add_camera_orientation_widget()`. Valmiit kuvakulmat saat myös painikkeisiin: `plotter.view_xy()`, `plotter.view_xz()` ja `plotter.view_yz()`.",
           "View lock vaihtaa hiiren ohjaustavan: `plotter.enable_2d_style()` sallii siirron ja zoomin mutta ei kiertoa. `plotter.enable_trackball_style()` palauttaa kierron."
         ],
@@ -629,7 +629,7 @@ window.NAYTTOPROJEKTI = {
     },
     47: {
       type: "feature",
-      feature: "Osan voi valita, siirtää, kiertää ja skaalata transformipaneelin numerokentillä ja näppäimistöllä. Lapset seuraavat vanhempaa.",
+      feature: "Osan voi valita. Sen voi siirtää, kiertää ja skaalata transformipaneelin numerokentillä ja näppäimistöllä. Lapset seuraavat vanhempaa.",
       excerpt: "Osia pitää voida valita, siirtää, kiertää ja skaalata.",
       connection: "Nyt muodot ovat valmiit ja kamera pysyy paikallaan view lockilla. Seuraavaksi osia muokataan. Viikon 44 maailmamuunnos hoitaa sen, että lapset seuraavat vanhempaa.",
       deliverable: "Pakollisen ytimen tilanne käsitelty palaverissa · testi 15 · valinta, siirto, kierto ja skaalaus transformipaneelissa · viikon release.",
@@ -651,9 +651,9 @@ window.NAYTTOPROJEKTI = {
         title: "Transformipaneeli ja lapset",
         tree: "Solmu \"Vartalo\"      ← transformipaneeli muuttaa tämän omaa muunnosta\n  └─ Solmu \"Pää\"        maailmamuunnos = Vartalon maailma @ Pään oma\n       └─ Solmu \"Korvat\"",
         actions: [
-          "Tee paneeliin numerokentät Qt:n `QDoubleSpinBox`-kentillä: siirto X, Y ja Z, kierto ja skaalaus. Anna jokaiselle kentälle nimi `QLabel`illa.",
-          "Kun kentän arvo muuttuu, päivitä valitun solmun oma muunnos. Laske sitten koko puun maailmamuunnokset uudelleen ja aseta ne PyVistan kappaleille: `aktori.user_matrix = maailma`.",
-          "Lapsi ei liiku mukana itsestään, koska PyVistan kappaleet eivät ole sisäkkäin. Siksi lapsen paikka lasketaan viikon 44 maailmamuunnoksella. Sillä tarkistetaan myös testi 15.",
+          "Tee paneeliin numerokentät Qt:n `QDoubleSpinBox`-elementeillä: siirto X, Y ja Z, kierto ja skaalaus. Anna jokaiselle kentälle nimi `QLabel`illa.",
+          "Kun kentän arvo muuttuu, päivitä valitun solmun oma muunnos. Laske sitten koko puun maailmamuunnokset uudelleen. Aseta ne PyVistan kappaleille: `aktori.user_matrix = maailma`.",
+          "Lapsi ei liiku mukana itsestään, koska PyVistan kappaleet eivät ole sisäkkäin. Siksi lapsen paikka lasketaan viikon 44 maailmamuunnoksella. Myös testi 15 käyttää sitä.",
           "Pikanäppäin: `QShortcut(QKeySequence(\"Ctrl+Right\"), self)`. Kirjaa pikanäppäimet README:hen.",
           "Raahattavat kahvat 3D-näkymässä kuuluvat tärkeään jatkoon (viikko 5)."
         ],
@@ -691,7 +691,7 @@ window.NAYTTOPROJEKTI = {
           "Laske osan rajat: trimesh-kappaleen `kappale.bounds` antaa kaksi riviä, min ja max.",
           "Laske pivot kaikille akseleille kerralla numpylla: `pivot = min + (max - min) * prosentit / 100`.",
           "Kierto pivotin ympäri: siirrä pivot origoon, kierrä ja siirrä takaisin. Matriiseina: `siirto(pivot) @ kierto @ siirto(-pivot)`. Tämä kuuluu osan omaan muunnokseen.",
-          "Käytä kentissä `QDoubleSpinBox`- ja `QLabel`-elementtejä. Kytke nimi kenttään `label.setBuddy(kentta)`, jotta ruudunlukija lukee kentän nimen."
+          "Käytä kentissä `QDoubleSpinBox`- ja `QLabel`-elementtejä. Kytke nimi kenttään: `label.setBuddy(kentta)`. Näin ruudunlukija lukee kentän nimen."
         ],
         code: "PIVOTIN TARKISTUSLISTA\n[ ] rajapinta korttiin ennen toteutusta\n[ ] tarkistus on puhdas funktio\n[ ] 50/50/50 on keskipiste (testi 16)\n[ ] 0 ja 100 ovat reunat (testi 17)\n[ ] virheellinen syöte kriteerin mukaan (testi 18)\n[ ] kentillä on nimi",
         test: "Aseta korvalle pivot 50/0/50. Kierrä korvaa. Sen pitää kiertyä alareunansa ympäri.",
@@ -709,7 +709,7 @@ window.NAYTTOPROJEKTI = {
       deliverable: "Objektijaon rajapinta · testit 19–20 · .obj-vienti · tarkistus VS Codessa ja Blenderissä · virheenkorjausketju 1 ja sen regressiotesti · viikon release.",
       why: "Ilman vientiä malli jää sovellukseen. Asiakas haluaa jatkaa mallia toisessa ohjelmassa.",
       done: "Kolmen osan mallista syntyy .obj-tiedosto, jossa on kolme o-riviä osien nimillä. Tiedosto aukeaa Blenderissä. Testit 19–20 menevät läpi. Virheenkorjausketjun kuusi osaa ovat havaintoissuessa.",
-      record: "Objektijako selityspohjalla (tämä on viikon funktio), virheenkorjausketju 1 ja näyttömatriisin vaatimukset: virheiden korjaus, rajapinnat ja tiedon käsittely sekä kirjaston toiminnot.",
+      record: "Objektijako selityspohjalla (tämä on viikon funktio), virheenkorjausketju 1 ja näyttömatriisin vaatimukset: virheiden korjaus, tiedon käsittely ja kirjaston toiminnot.",
       skills: ["Tiedon käsittely: malli tiedostoksi", "Toisto: osat objekteiksi", "Virheen syy omin sanoin", "Regressiotesti"],
       termit: ["OBJ", "virheenkorjausketju", "regressiotesti", "vikatehtävä"],
       steps: [
@@ -749,11 +749,11 @@ window.NAYTTOPROJEKTI = {
       type: "feature",
       feature: "Projektin voi tallentaa JSON-tiedostoksi ja avata samassa tilassa. MVP on julkaistu versiona v0.1.",
       excerpt: "Keskeneräinen työ pitää voida tallentaa ja avata myöhemmin samassa tilassa.",
-      connection: "Tämä on MVP:n viimeinen pakollisen ytimen kohta. JSON on tekstimuotoinen tiedosto, johon projektin tiedot tallennetaan. Viikon lopussa MVP julkaistaan katselmointia varten.",
+      connection: "Tämä on pakollisen ytimen viimeinen kohta. JSON on tekstimuoto, jolla projektin tiedot tallennetaan tiedostoon. Viikon lopussa MVP julkaistaan katselmointia varten.",
       deliverable: "Tallennustapojen vertailu suunnitelmassa · testit 21–22 · tallennus ja avaus · tietoturva-arvio · release v0.1.",
       why: "Ilman tallennusta keskeneräinen malli katoaa, kun sovellus suljetaan. Ilman julkaisua asiakkaat eivät voi kokeilla MVP:tä viikolla 51.",
       done: "Tallennettu projekti avautuu samassa tilassa, rikottu tiedosto antaa virheilmoituksen, `project-docs/tietoturva.md` on repositoryssa, ja releasen v0.1 zipistä purettu sovellus käynnistyy.",
-      record: "Tallennustavan valinta perusteluineen, oman mallisi JSON-koko, tietoturva-arvion tärkein uhka ja näyttömatriisin vaatimukset: tietovaraston valinta, yhteys tietovarastoon, tietoturva ja julkaisu.",
+      record: "Tallennustavan valinta perusteluineen, oman mallisi JSON-koko, tietoturva-arvion tärkein uhka ja näyttömatriisin vaatimukset: tietovaraston valinta, yhteys tietovarastoon, tietoturva ja julkaisu tuotantoon.",
       skills: ["Tietovaraston valinta", "Yhteys tietovarastoon", "Tietoturvan arviointi", "Julkaisu ja versiointi"],
       termit: ["JSON", "tietoturva-arvio"],
       steps: [
@@ -771,7 +771,7 @@ window.NAYTTOPROJEKTI = {
         actions: [
           "Tallenna oma data, älä trimesh- tai PyVista-olioita: `json.dumps(data, indent=2)`.",
           "Muunnokset ovat numpyn matriiseja. Tallenna ne listoina: `muunnos.tolist()`.",
-          "Kysy tiedosto Qt:n tiedostoikkunalla kuten viikolla 43: `getOpenFileName` avaukseen ja `getSaveFileName` tallennukseen.",
+          "Kysy tiedosto Qt:n tiedostoikkunalla kuten viikolla 43. Käytä avaukseen `getOpenFileName`. Käytä tallennukseen `getSaveFileName`.",
           "Lue JSON `try`–`except json.JSONDecodeError` -lohkossa. Rikottu tiedosto antaa silloin virheilmoituksen eikä kaada sovellusta (testi 22).",
           "Tarkista, että tiedostossa on `versio` ja `osat`, ennen kuin rakennat mallin."
         ],
@@ -834,7 +834,7 @@ window.NAYTTOPROJEKTI = {
       type: "feature",
       feature: "Päivitä SVG -toiminto rakentaa mallin uudelleen muokatusta tiedostosta. Osien transformit säilyvät.",
       excerpt: "Kun piirrosta muokataan Inkscapessa, mallin pitää päivittyä ilman, että kaikki tehdään alusta.",
-      connection: "Tämä on asiakkaiden tärkein tärkeän jatkon toiminto. Tällä viikolla työ tehdään ensimmäisen kerran omassa haarassa ja liitetään päähaaraan pull requestilla.",
+      connection: "Asiakkaat pitävät tätä tärkeän jatkon toimintoa tärkeimpänä. Tällä viikolla työ tehdään ensimmäisen kerran omassa haarassa ja liitetään päähaaraan pull requestilla.",
       deliverable: "Sovittu tunnistustapa · testi 23 · toiminto omassa haarassa · pull request ja merge.",
       why: "Ilman päivitystä jokainen Inkscape-muutos pakottaa tekemään transformit uudelleen. Silloin vektoripohjaisuus menettää hyötynsä.",
       done: "Muokattu SVG päivittyy malliin, transformit säilyvät, kaikki testit menevät läpi, ja pull request on yhdistetty päähaaraan.",
@@ -843,7 +843,7 @@ window.NAYTTOPROJEKTI = {
       termit: ["haara", "pull request", "merge"],
       steps: [
         ["Sovi tunnistustapa.", "Sovi palaverissa, miten osa tunnistetaan uudesta tiedostosta: nimellä vai tunnisteella. Kirjaa päätös suunnitelmaan."],
-        ["Kirjoita testi 23.", "Testi 23: Päivitä SVG. Muokkaa testitiedostoa Inkscapessa ja päivitä malli Päivitä SVG -toiminnolla. Mitä odotat transformeille? Kirjaa ennen koodia."],
+        ["Kirjoita testi 23.", "Testi 23: Päivitä SVG. Muokkaa testitiedostoa Inkscapessa ja päivitä malli Päivitä SVG -toiminnolla. Mitä odotat transformeille? Kirjaa odotus ennen koodia."],
         ["Tee oma haara.", "Haara on oma työlinja. Muutokset eivät vaikuta päähaaraan <code>main</code>, ennen kuin liität ne."],
         ["Tee toiminto työsyklillä haarassa.", "Tee kortit tavalliseen tapaan. Tee commitit haaraan."],
         ["Aja kaikki testit.", "Aja <code>npm test</code>. Kaikkien vanhojen testien pitää mennä läpi."],
@@ -864,9 +864,9 @@ window.NAYTTOPROJEKTI = {
       record: "Mitä tehtiin ja miksi juuri se, testin 24 tulos, virheenkorjausketju 2 ja näyttömatriisin vaatimukset: virheiden korjaus ja toimintalogiikka.",
       skills: ["Priorisointi", "Toimintalogiikka", "Virheenkorjaus"],
       steps: [
-        ["Tarkista rästit.", "Katso palaverissa, jäikö pakollisesta ytimestä jotain kesken. Jos jäi, tee se ensin omassa haarassa ja liitä pull requestilla."],
+        ["Tarkista rästit.", "Katso palaverissa, jäikö pakollisesta ytimestä jotain kesken. Jos jäi, tee se ensin omassa haarassa. Liitä se päähaaraan pull requestilla."],
         ["Valitse tärkeän jatkon toiminto.", "Jos rästejä ei ole, ota järjestyksen seuraava toiminto."],
-        ["Kirjoita testi 24.", "Testi 24: jatkotoiminto. Kirjoita toiminnon testi ennen toteutusta. Esimerkiksi kulmasnappauksessa: mitä odotat, kun kulma on 22° ja kun se on 23°?"],
+        ["Kirjoita testi 24.", "Testi 24: seuraava toiminto. Kirjoita toiminnon testi ennen toteutusta. Esimerkiksi kulmasnappauksessa: mitä odotat, kun kulma on 22° ja kun se on 23°?"],
         ["Tee toiminto työsyklillä.", "Käytä haaraa, jos muutos koskee useaa tiedostoa."],
         ["Kirjoita virheenkorjausketju 2.", "Valitse havaintoissue ja kirjaa kuusi osaa kuten viikolla 49. Kirjoita regressiotesti Täydennys-kaistalla."]
       ],
@@ -908,7 +908,7 @@ window.NAYTTOPROJEKTI = {
       deliverable: "Tagi v1.0-rc1 · README ja käyttöohje · julkaisutestin epäröintilista.",
       why: "Jos ohje toimii vain sinulle, asiakas ei saa työkalua käyttöön. Jokainen epäröinti on ohjeen korjauslista.",
       done: "Julkaisutestaajan .obj-tiedosto aukeaa, ja epäröinnit on listattu pöytäkirjaan. Testaajan nimi ja sanatarkat lausumat on lähetetty ohjaajalle Teamsissa. Repositoryyn on kirjattu vain rooli.",
-      record: "Julkaisutestin tärkein epäröintikohta roolilla kirjattuna, ohjeeseen tehty korjaus ja näyttömatriisin vaatimukset: dokumentointi, viestintä asiakkaalle ja julkaisu.",
+      record: "Julkaisutestin tärkein epäröintikohta roolilla kirjattuna, ohjeeseen tehty korjaus ja näyttömatriisin vaatimukset: dokumentointi, viestintä asiakkaalle ja julkaisu tuotantoon.",
       skills: ["Dokumentointi sovitulla tavalla", "Julkaisuehdokas", "Asiakaslähtöinen viestintä"],
       termit: ["RC", "sisältöjäädytys"],
       steps: [
@@ -933,7 +933,7 @@ window.NAYTTOPROJEKTI = {
       deliverable: "Virheenkorjausketju 3 · tagi v1.0 ja release-teksti · asiakkaiden vahvistus · linkitetty näyttömatriisi.",
       why: "Julkaisu ilman korjauksia jättää asiakkaalle tunnetut viat. Ilman linkitystä arvioija ei löydä työnäytteitä.",
       done: "Estävät issuet on suljettu, tagi v1.0 näkyy GitHubissa, asiakkaat ovat vahvistaneet toimivuuden, ja jokaisella matriisin rivillä on linkki.",
-      record: "Virheenkorjausketju 3, asiakkaiden vahvistus ja näyttömatriisin vaatimukset: virheiden korjaus, versionhallinta, julkaisu ja julkaisu asiakkaalle.",
+      record: "Virheenkorjausketju 3, asiakkaiden vahvistus ja näyttömatriisin vaatimukset: virheiden korjaus, versionhallinta, julkaisu tuotantoon ja julkaisu asiakkaalle.",
       skills: ["Virheenkorjaus", "Julkaisu tuotantoon", "Näyttöaineiston kokoaminen"],
       termit: ["työnäyte", "näyttömatriisi"],
       steps: [
@@ -943,7 +943,7 @@ window.NAYTTOPROJEKTI = {
         ["Pyydä asiakkaiden vahvistus.", "Lähetä asiakkaille linkki viestipohjalla. Pyydä vahvistus, että työkalu toimii heidän koneellaan."],
         ["Linkitä näyttömatriisi.", "Työnäyte on yksi tuotos, joka osoittaa osaamisesi. Päiväkirjassa on jokaisen viikon kohdalla näyttömatriisin vaatimukset. Kopioi päiväkirjasta linkit näyttömatriisin oikeille riveille."]
       ],
-      example: "Matriisin rivi osan liittäminen versioon: \"pull request #24 (viikko 3), merge-commit a1b2c3d.\"",
+      example: "Matriisin rivillä \"liittää ohjelman osan olemassa olevaan versioon\": pull request #24 (viikko 3), merge-commit a1b2c3d.",
       notEnough: "\"Tehty.\" Rivistä puuttuu linkki työnäytteeseen.",
       pohjat: [
         { otsikko: "Viesti asiakkaille (Teams)", teksti: "Hei Matti ja Antti,\nVektoripaja v1.0 on julkaistu: (osoite)\nOhje: (README-linkki)\nVoitteko vahvistaa, että työkalu toimii teidän koneellanne?" }
@@ -958,7 +958,7 @@ window.NAYTTOPROJEKTI = {
       deliverable: "Jäädytetty repository · harjoiteltu demo · itsearviointi ohjaajalle · luovutettu näyttöaineisto.",
       why: "Arvioija näkee osaamisesi vain, jos työnäytteet löytyvät ja osaat selittää ne.",
       done: "Demo on pidetty 8–10 minuutissa, kaikki viisi osaa on näytetty, itsearviointi on lähetetty ohjaajalle, ja aineisto on luovutettu perjantaina.",
-      record: "Demon viisi osaa ja kesto, itsearvioinnin kolmen tilanteen päivät ja issue-numerot sekä näyttömatriisin vaatimus oman toiminnan arviointi.",
+      record: "Demon viisi osaa ja kesto, itsearvioinnin kolmen tilanteen päivät ja issue-numerot sekä näyttömatriisin vaatimus: oman toiminnan arviointi.",
       skills: ["Oman toiminnan arviointi", "Teknisen ratkaisun selittäminen", "Näyttöaineiston luovutus"],
       paivat: [
         ["Jäädytys", "Jäädytä sisältö. Tarkista, että jokainen työnäyte on repositoryssa."],
@@ -1041,9 +1041,9 @@ window.NAYTTOPROJEKTI = {
     { termi: "orbit", selite: "Näkymän kierto hiirellä mallin ympäri.", viikko: 45 },
     { termi: "kysymystila", nimi: "Ask", selite: "GitHub Copilotin tila, joka vastaa kysymyksiin mutta ei muuta tiedostoja.", viikko: 45 },
     { termi: "inflate", nimi: "polusta putki", selite: "Viivapolusta tulee putki, jossa on 3–8 sivua. Esimerkiksi johto tai sarvi.", viikko: 46 },
-    { termi: "orientaatiowidget", nimi: "kameran suuntakuvio", selite: "Pieni akselikuvio näkymän kulmassa. Kun klikkaat sen akselia, kamera kääntyy katsomaan mallia suoraan sen suunnasta.", viikko: 46 },
+    { termi: "orientaatiowidget", nimi: "kameran suuntakuvio", selite: "Pieni akselikuvio näkymän kulmassa. Kun klikkaat sen akselia, kamera kääntyy katsomaan mallia suoraan akselin suunnasta.", viikko: 46 },
     { termi: "suora näkymä", selite: "Katsot mallia tasan yhden akselin suunnasta, kuin pöydän reunalta tai ylhäältä. Suunnitelmassasi tämä on osa Orthographic Plane Snapia.", viikko: 46 },
-    { termi: "ortografinen näkymä", nimi: "tärkeä jatko", selite: "Näkymä, jossa kaukana olevat osat eivät pienene kuten valokuvassa. Tehdään tärkeässä jatkossa. Pakollisessa ytimessä kaukana olevat osat näyttävät pienemmiltä, ja se on oikein.", viikko: 46 },
+    { termi: "ortografinen näkymä", selite: "Näkymä, jossa kaukana olevat osat eivät pienene kuten valokuvassa. Tehdään tärkeässä jatkossa. Pakollisessa ytimessä kaukana olevat osat näyttävät pienemmiltä, ja se on oikein.", viikko: 46 },
     { termi: "view lock", selite: "Painike, joka estää kameran kiertymisen, kun teet tarkkaa työtä.", viikko: 46 },
     { termi: "transformi", selite: "Osan siirto, kierto ja skaalaus.", viikko: 47 },
     { termi: "transformipaneeli", selite: "Paneeli, jossa osan siirto, kierto, skaalaus ja pivot syötetään numerokenttiin X, Y ja Z. Toimii myös näppäimistöllä.", viikko: 47 },
@@ -1219,7 +1219,7 @@ window.NAYTTOPROJEKTI = {
         "Tekninen ympäristö: Python 3.13, PySide6 (Qt), PyVista ja pyvistaqt (VTK), trimesh ja numpy, svgelements, testit pytestillä. Julkaisu: GitHub Actions (windows-latest) tekee versiotagista PyInstallerilla Windows-version (onedir), ajaa pytestin ja valmiille .exe:lle itsetestin (--itsetesti) ja lisää zipin GitHubin releaseen. Valmis versio toimii ilman Pythonia. macOS-versiota ei tehdä. Opiskelija saa julkaisun, itsetestin ja kirjastolistan tiedostot viikon 41 pohjana (pohjat/vektoripaja-pohja.zip). Saavutettavuus mitataan Accessibility Insights for Windowsilla (FastPass), näppäimistötestillä ja Windowsin Lukijalla. Tekoälytyökalut: Microsoft 365 Copilot (BC, suunnittelu ja pilkkominen) ja GitHub Copilot (Student, toteutus VS Codessa). GitHub Copilotin budjetti on 200 krediittiä kuukaudessa.",
         "Aikataulu on päivätty: vk 40/2026 (ma 28.9.) – vk 9/2027 (pe 5.3.), 18 työviikkoa. Lomat vk 42, joululoma 18.12.–10.1. (vk 51 on neljä työpäivää) ja talviloma vk 8."
       ],
-      p0: "Pakollinen perusversio eli pakollinen ydin (P0, ennen joulua): SVG-tuonti · layerit ja ryhmät solmupuuksi · revolve 3–32 segmenttiä · inflate 3–8 sivua · valinta, siirto, kierto ja skaalaus, lapset seuraavat, pivot keskipisteessä ja prosentteina · orbit, suorat näkymät orientaatiowidgetistä ja view lock -painike · .obj-vienti osat erillisinä · tallennus ja avaus JSONina. Tärkeä jatko (P1): Päivitä SVG, kulmasnappaus, pieni esikatseluikkuna (PiP), kierron kohderajaukset, oma teema ja isot kahvat, ortografinen näkymä, view lockin pikanäppäin.",
+      p0: "Pakollinen ydin (P0, ennen joulua): SVG-tuonti · layerit ja ryhmät solmupuuksi · revolve 3–32 segmenttiä · inflate 3–8 sivua · valinta, siirto, kierto ja skaalaus, lapset seuraavat, pivot keskipisteessä ja prosentteina · orbit, suorat näkymät orientaatiowidgetistä ja view lock -painike · .obj-vienti osat erillisinä · tallennus ja avaus JSONina. Tärkeä jatko (P1): Päivitä SVG, kulmasnappaus, pieni esikatseluikkuna (PiP), kierron kohderajaukset, oma teema ja isot kahvat, ortografinen näkymä, view lockin pikanäppäin.",
       roolit: [
         ["Opiskelija", "Pilkkoo tavoitteet tehtäväkorteiksi, tekee arkkitehtuuripäätökset, kirjoittaa testien odotetut arvot ennen toteutusta, hyväksyy, korjauttaa tai hylkää tekoälyn tuotoksen perustellen, selittää virheen syyn ja funktiot omin sanoin sekä kokoaa näyttöaineiston. Koodin kirjoittaa pääosin tekoäly."],
         ["Ohjaaja (Matti Seise)", "Viikkopalaveri ma tai ti (sovitut kortit issue-kommentteina, edellisen viikon funktio ääneen), pakollisen ytimen (P0) tarkistuspiste vk 47, vikatehtävä tarvittaessa, ohjaajan päätökset (tekijänimi, lisenssi, krediitit, katselmoinnin kirjaustapa, julkaisutestaaja, arviointi). Toimii tiimin jäsenen roolissa vk 2:n ratkaisuarviossa."],
@@ -1230,9 +1230,9 @@ window.NAYTTOPROJEKTI = {
       tarkistuspisteet: [
         [40, "Ympäristö ja repository", "Versiot, julkinen repository noreply-sähköpostilla, ohjaaja Collaboratorina, kolme pohjatiedostoa, mvp.md omin sanoin, kysymyslista lähetetty, agenttipyynnön hinta kirjattu."],
         [41, "Harjoitussykli", "Kaksi issueta syklin tarkistuslistoineen, testin 1 (T01) oma arvo testikoodissa ennen toteutusta, tarkista_ymparisto.py läpi, release-zip v0.0.41 purettuna käynnistyy (testi 2, T02) ja itsetesti läpi Actionsissa, päätös teknisestä pohjasta B-osiossa."],
-        [44, "Hierarkia ja Agentti-kaista (C)", "Testit 6–8 (T06–T08), puhdas muunnosfunktio rajapintoineen, maailmamuunnos puhtaana funktiona lisätesteineen, hierarkiapaneeli (QTreeWidget), valinnan toiminta B-osiossa. Kaista C:n krediittikulutus kirjattuna."],
+        [44, "Hierarkia ja Agentti-kaista (C)", "Testit 6–8 (T06–T08), puhdas muunnosfunktio rajapintoineen, maailmamuunnos puhtaana funktiona lisätesteineen, hierarkiapaneeli (QTreeWidget), valinnan toiminta B-osiossa. Agentti-kaistan (C) krediittikulutus kirjattuna."],
         [47, "Pakollisen ytimen (P0) tarkistuspiste", "Onko pakollinen ydin aikataulussa? Jos ei, ohjaaja päättää, mikä katselmoidaan keskeneräisenä ja mikä tehdään vk 4:llä omassa haarassa pull requestilla."],
-        [49, "Vienti ja ketju 1", "Testit 19–20 (T19–T20), o-rivit trimeshin viennistä ja Blender, ensimmäinen virheenkorjausketju kuudella osalla ja regressiotestillä. Vikatehtävä, jos aitoa havaintoa ei ole."],
+        [49, "Vienti ja ketju 1", "Testit 19–20 (T19–T20), o-rivit trimeshin viennistä ja tarkistus Blenderissä, ensimmäinen virheenkorjausketju kuudella osalla ja regressiotestillä. Vikatehtävä, jos aitoa havaintoa ei ole."],
         [50, "MVP v0.1", "Tallennusvertailu omilla kriteereillä, testit 21–22 (T21–T22), tietoturva-arvio, tagi v0.1 ja release-zip, itsetesti läpi."],
         [51, "Katselmointi", "Katselmointiloki rooleilla, asiakkaiden sanat erillään tulkinnasta, havainnot issueina prioriteetein, tilatiedosto lomaa varten."],
         [3, "Pull request", "Päivitä SVG omassa haarassa, testi 23 (T23), kaikki testit läpi ennen mergeä, pull request yhdistetty."],
@@ -1245,7 +1245,7 @@ window.NAYTTOPROJEKTI = {
         p2: ["49, 4, 7 (havainnot 43→)", "Kolme virheenkorjausketjua havaintoissueista: havainto, toistamisohje, syy omin sanoin, korjauscommit, uusintatesti ja regressiotesti"],
         p3: ["41, 43–50, 3–5", "Testit 1–26 (T01–T26) ja lisätestit, myös maailmamuunnoksen lisätesti vk 44: odotettu tulos kirjoitettu itse testikoodiin ennen toteutusta, tulokset issueissa"],
         p4: ["44→45, 48→49, 49→50", "Rajapinta ennen toteutusta, selityspohja kolmesta funktiosta (hierarkian muunnos, pivotin syötteen tarkistus, OBJ-objektijako) sekä maailmamuunnos puhtaana funktiona (vk 44), selitys ääneen seuraavan viikon palaverissa (ohjaajan päätös 23.9.2026)"],
-        p6: ["41, 44, 46, 48, 5", "Hierarkiapaneeli, view lock, transformipaneeli (QDoubleSpinBox ja pikanäppäimet) ja isot kahvat käyttöliittymävaatimuksen mukaan; Accessibility Insights ennen ja jälkeen"],
+        p6: ["41, 44, 46, 47–48, 5", "Hierarkiapaneeli, view lock, transformipaneeli (QDoubleSpinBox ja pikanäppäimet) ja isot kahvat käyttöliittymävaatimuksen mukaan; Accessibility Insights ennen ja jälkeen"],
         p7: ["43, 45, 46, 47", "MVP-kuvauksesta kortit ja toiminnot: tuonti, revolve, inflate ja transformit hyväksymiskriteerien mukaan"],
         p8: ["41→7", "Issue-kommentit \"Sovittu viikkopalaverissa pp.kk.\" joka viikolta"],
         p9: ["44–45, 3", "Revolven valintatavan vertailu ja yhteinen päätös, osien tunnistustapa päivityksessä"],
@@ -1261,8 +1261,8 @@ window.NAYTTOPROJEKTI = {
         s8: ["50", "Tallennustapojen vertailu oman suunnitelman kriteereillä ja oman mallin JSON-koko"],
         s9: ["50", "JSON-tallennus ja avaus, versionumero ja rakenteen tarkistus"],
         s10: ["43, 49, 50", "QFileDialog, svgelements, trimesh-vienti ja JSON"],
-        s11: ["43, 50", "Testi 4 (T04) haitallinen SVG, testi 22 (T22) rikottu tallennus, tietoturva-arvio uhka–testi–tulos–toimenpide"],
-        s12: ["40→7", "Commitit rivillä Closes #N, tagit: viikkoversiot v0.0.41–v0.0.49, v0.1, v1.0-rc1 ja v1.0"],
+        s11: ["43, 50", "Testi 4 (T04): haitallinen SVG, testi 22 (T22): rikottu tallennus, tietoturva-arvio uhka–testi–tulos–toimenpide"],
+        s12: ["40→7", "Commitit rivillä Closes #N, tagit: harjoitus v0.0.41, viikkoversiot v0.0.43–v0.0.49, v0.1, v1.0-rc1 ja v1.0"],
         s13: ["3 (rästit 4)", "Haara, pull request ja merge päähaaraan kaikki testit läpi"],
         s14: ["41, 43–50, 7", "Releasen rakentaminen ja julkaisu GitHub Actionsilla (PyInstaller, itsetesti, zip): harjoitus v0.0.41, viikkoversiot v0.0.43–v0.0.49, MVP v0.1 ja v1.0"],
         k1: ["41", "PySide6 + PyVista + trimesh + pytest -pohja opiskelijan omin komennoin"],

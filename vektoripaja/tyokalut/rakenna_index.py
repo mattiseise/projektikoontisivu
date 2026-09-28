@@ -39,9 +39,9 @@ VIIKOT = {
         "repositoryn osoite, <code>project-docs/mvp.md</code> GitHubissa ja agenttipyynnön hinta päiväkirjassa."),
     41: ("Harjoitussykli: pyörivä kuutio julki", [
         "Päätä, hyväksytkö teknisen ehdotuksen. Perustele päätös suunnitelmaan. Pura pohja. Luo virtuaaliympäristö ja asenna kirjastot itse komennoilla.",
-        "Kirjoita testi 1: kiertokulma ennen koodia. Mitä odotat, kun kiertokulma saa ajan 0 ja nopeuden 0,5? Entä kun aika on 3?",
+        "Kirjoita ennen koodia testi 1: kiertokulma. Mitä odotat, kun kiertokulma saa ajan 0 ja nopeuden 0,5? Entä kun aika on 3?",
         "Tee kortti #1 (kuutio) työsyklillä mallikortin avulla. Aja testi 1.",
-        "Tee kortti #2 (release) työsyklillä. Aja testi 2: julkaisu releasen zipistä puretulla sovelluksella."],
+        "Tee kortti #2 (release) työsyklillä. Aja testi 2: julkaisu. Käytä releasen zipistä purettua sovellusta."],
         "releasen v0.0.41 osoite, issuet #1 ja #2 suljettuina sekä testien 1 ja 2 tulokset issueissa."),
     43: ("SVG-tuonti: polut näkyviin", [
         "Piirrä Inkscapessa testitiedosto, jossa on nimetyt layerit ja kolme sisäkkäistä ryhmää.",
@@ -52,22 +52,22 @@ VIIKOT = {
         "oma SVG-tiedosto, testit 3–5 issueissa, <code>project-docs/kirjastot.md</code> ja release v0.0.43."),
     44: ("Hierarkia: layerit ja ryhmät osiksi", [
         "Kirjoita hierarkian muunnoksen rajapinta ja testit 6–8 ennen toteutusta.",
-        "Toteuta muunnos ja maailmamuunnos puhtaina funktioina ja hierarkiapaneeli Agentti-kaistalla.",
+        "Toteuta Agentti-kaistalla muunnos ja maailmamuunnos puhtaina funktioina sekä hierarkiapaneeli.",
         "Päätä valinnan toiminta. Kirjaa se suunnitelmaan.",
         "Vertaa kahta tapaa valita revolve. Tuo suositus ensi viikon palaveriin. Julkaise viikon versio tagilla v0.0.44."],
         "rajapinta, testit 6–8 ja maailmamuunnoksen lisätesti issueissa, hierarkiapaneeli releasessa v0.0.44 ja valinnan päätös suunnitelmassa."),
     45: ("Revolve: profiilista pyörähdyskappale", [
         "Sovi palaverissa revolven valintatapa. Kirjaa, mitä profiilille tehdään akselin väärällä puolella.",
-        "Kirjoita testit 9–11 ennen toteutusta. Kysy tarvittaessa kysymystilasta, miten trimeshin revolve lukee pisteet.",
+        "Kirjoita testit 9–11 ennen toteutusta. Kysy tarvittaessa kysymystilassa, miten trimeshin revolve lukee pisteet.",
         "Toteuta revolve, segmenttisäädin ja orbit työsyklillä. Julkaise viikon versio tagilla v0.0.45."],
         "testit 9–11 issueissa, pyörähdyskappale releasessa v0.0.45 ja sovittu valintatapa issue-kommenttina."),
     46: ("Inflate ja kamera: putki ja suorat näkymät", [
         "Kirjoita testit 12–14 ennen toteutusta.",
-        "Toteuta inflate PyVistan tube-suodattimella ja sivumäärän säädin työsyklillä. Kirjaa putkigeometrian rajoitteet.",
+        "Toteuta inflate ja sivumäärän säädin työsyklillä. Tee putki PyVistan tube-suodattimella. Kirjaa putkigeometrian rajoitteet.",
         "Toteuta orientaatiowidget ja view lock -painike työsyklillä. Julkaise viikon versio tagilla v0.0.46."],
         "testit 12–14 issueissa, putki ja suorat näkymät releasessa v0.0.46 ja putkigeometrian rajoitteet <code>kirjastot.md</code>:ssä."),
     47: ("Transformit: valitse, siirrä, kierrä ja skaalaa", [
-        "Kirjoita testi 15: lapsi seuraa ennen toteutusta. Mitä odotat lapsen paikalle, kun vanhempaa siirretään 10 yksikköä?",
+        "Kirjoita ennen toteutusta testi 15: lapsi seuraa. Mitä odotat lapsen paikalle, kun vanhempaa siirretään 10 yksikköä?",
         "Toteuta valinta suunnitelmasi mukaan. Toteuta siirto, kierto ja skaalaus transformipaneeliin työsyklillä.",
         "Aja testi 15. Jos se ei mene läpi kahdella yrityksellä, avaa havaintoissue. Julkaise viikon versio tagilla v0.0.47."],
         "testi 15 issuessa, transformit releasessa v0.0.47 ja pakollisen ytimen tilanne palaverin issue-kommentissa."),
@@ -94,19 +94,19 @@ VIIKOT = {
         "Tee havainnoista issuet. Kirjaa niihin asiakkaan prioriteetti.",
         "Kirjoita tilatiedoston Seuraavana-kohtaan viikon 2 ensimmäinen tehtävä issue-numeroineen."],
         "<code>project-docs/katselmointi.md</code>, havaintoissuet prioriteetteineen ja tilatiedoston Seuraavana-kohta."),
-    2: ("Paluuviikko: testit läpi ja jatkon järjestys", [
+    2: ("Paluuviikko: testit läpi ja tärkeän jatkon järjestys", [
         "Aja <code>npm install</code>, <code>npm run dev</code> ja <code>npm test</code>. Kirjaa tulos.",
         "Ehdota tärkeän jatkon järjestys ja tuntiarviot asiakkaiden prioriteettien pohjalta. Sovi järjestys palaverissa.",
         "Tee yksi pieni korjaus katselmoinnin havainnoista Täydennys-kaistalla."],
         "testiajon tulos päiväkirjassa, tärkeän jatkon järjestys issueissa ja korjauksen commit."),
     3: ("Päivitä SVG: muokattu piirros malliksi", [
         "Sovi palaverissa, miten osat tunnistetaan uudesta tiedostosta.",
-        "Kirjoita testi 23: Päivitä SVG ennen toteutusta.",
+        "Kirjoita ennen toteutusta testi 23: Päivitä SVG.",
         "Toteuta toiminto omassa haarassa. Aja kaikki testit. Liitä haara päähaaraan pull requestilla."],
         "testi 23 issuessa ja yhdistetty pull request."),
-    4: ("Jousto ja jatko: rästit tai seuraava toiminto", [
+    4: ("Jousto ja tärkeä jatko: rästit tai seuraava toiminto", [
         "Tee ensin pakollisen ytimen rästit omassa haarassa, jos niitä on.",
-        "Kirjoita seuraavan tärkeän jatkon toiminnon testi 24 ennen toteutusta.",
+        "Kirjoita ennen toteutusta testi 24: seuraava toiminto. Testi koskee seuraavaa tärkeän jatkon toimintoa.",
         "Toteuta toiminto työsyklillä. Kirjoita toinen virheenkorjausketju."],
         "testi 24 issuessa, valmis toiminto Pages-osoitteessa ja virheenkorjausketju 2 havaintoissuessa."),
     5: ("Saavutettavuus: isot kahvat ja näppäimistö", [
@@ -242,7 +242,7 @@ MATRIISI = [
         ("Opiskelija käyttää ohjelmistokehitysympäristöä", [
             ("p1", "käyttää ohjelmointieditoria tai kehitysympäristöä", "VS Code, GitHub Copilot, Pythonin virtuaaliympäristö ja pytest käytössä viikoilta 40 ja 41. Versiot README:ssä. Paluuviikon ajo viikolla 2."),
             ("p2", "etsii ja korjaa virheitä ohjelmakoodista", "Kolme virheenkorjausketjua havaintoissueista viikoilla 49, 4 ja 7: havainto, toistamisohje, syy omin sanoin, korjauscommit, uusintatesti ja regressiotesti."),
-            ("p3", "testaa ohjelman toimintoja", "Testit 1–26 ja lisätestit viikoilta 41–5, myös maailmamuunnoksen lisätesti (44). Kirjoitat odotetun tuloksen itse testikoodiin ennen toteutusta. Tulokset issueissa.")]),
+            ("p3", "testaa ohjelman toimintoja", "Testit 1–26 ja lisätestit viikoilta 41, 43–50 ja 3–5, myös maailmamuunnoksen lisätesti (44). Kirjoitat odotetun tuloksen itse testikoodiin ennen toteutusta. Tulokset issueissa.")]),
         ("Opiskelija ohjelmoi", [
             ("p4", "käyttää rakenteista ohjelmointia toteutuksissa", "Kolme funktiota selityspohjalla: hierarkian muunnos (viikko 44), pivotin syötteen tarkistus (48) ja OBJ-objektijako (49). Lisäksi maailmamuunnos puhtaana funktiona (44). Rajapinta ennen toteutusta. Selitys ääneen seuraavan viikon palaverissa."),
             ("p6", "tulkitsee suunnitelmia ja toteuttaa käyttöliittymän tai sen osia", "Hierarkiapaneeli (44), view lock (46), transformipaneeli (47–48) sekä isot kahvat ja näppäimistökäyttö (5) käyttöliittymävaatimuksesi mukaan. Accessibility Insights ennen ja jälkeen."),
@@ -267,9 +267,9 @@ MATRIISI = [
             ("s8", "valitsee ohjelmistoon sopivan tietovaraston", "Tallennustapojen vertailu oman suunnitelman kriteereillä ja oman mallin JSON-tiedoston koko (50)."),
             ("s9", "toteuttaa yhteyden tietovarastoon", "Tallennus ja avaus JSON-tiedostona. Versionumero ja rakenteen tarkistus (50)."),
             ("s10", "hyödyntää rajapintoja ja käsittelee tietoa", "Tiedoston avaus QFileDialogilla ja SVG:n luku svgelementsillä (43), .obj-vienti trimeshillä (49) ja JSON (50)."),
-            ("s11", "arvioi ohjelmiston tietoturvaa", "Testi 4: haitallinen SVG (43), testi 22: rikottu tallennus (50) ja <code>project-docs/tietoturva.md</code>: uhka, testi, tulos ja toimenpide.")]),
+            ("s11", "arvioi ohjelmiston tietoturvaa", "Testi 4: haitallinen SVG (43). Testi 22: rikottu tallennus (50). Tietoturva-arvio <code>project-docs/tietoturva.md</code>: uhka, testi, tulos ja toimenpide.")]),
         ("Opiskelija versioi ja julkaisee ohjelman", [
-            ("s12", "käyttää versionhallintaa", "Commitit rivillä <code>Closes #N</code> koko projektin ajan. Tagit: viikkoversiot v0.0.41–v0.0.49, v0.1, v1.0-rc1 ja v1.0."),
+            ("s12", "käyttää versionhallintaa", "Commitit rivillä <code>Closes #N</code> koko projektin ajan. Tagit: harjoitus v0.0.41, viikkoversiot v0.0.43–v0.0.49, v0.1, v1.0-rc1 ja v1.0."),
             ("s13", "liittää ohjelman osan olemassa olevaan versioon", "Päivitä SVG omassa haarassa, pull request ja merge päähaaraan, kun kaikki testit menevät läpi (3)."),
             ("s14", "julkaisee ohjelman tuotantoympäristöön", "Release GitHub Actionsilla: Windows-versio, itsetesti ja zip. Harjoitus (41), viikkoversiot (43–49), MVP v0.1 (50) ja v1.0 (7).")]),
     ], None),
