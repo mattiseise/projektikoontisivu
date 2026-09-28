@@ -89,40 +89,40 @@ VIIKOT = {
         "Julkaise MVP tagilla v0.1. Lataa zip releasesta ja käynnistä sovellus puretusta kansiosta."],
         "tallennusvertailu suunnitelmassa, testit 21–22 issueissa, <code>project-docs/tietoturva.md</code> ja release v0.1."),
     51: ("Katselmointi: asiakkaat kokeilevat MVP:tä", [
-        "Valmistele viiden minuutin demo omalla Inkscape-tiedostolla.",
-        "Pidä katselmointi asiakkaiden kanssa. Pidä heidän havaintonsa erillään omasta tulkinnastasi.",
+        "Valmistele viiden minuutin demo omalla Inkscape-tiedostolla. Lähetä Antille releasen v0.1 osoite.",
+        "Pidä katselmointi. Antti kokeilee zipiä omalla Windows-koneellaan. Matti kokeilee sovellusta sinun koneellasi. Pidä heidän havaintonsa erillään omasta tulkinnastasi.",
         "Tee havainnoista issuet. Kirjaa niihin asiakkaan prioriteetti.",
         "Kirjoita tilatiedoston Seuraavana-kohtaan viikon 2 ensimmäinen tehtävä issue-numeroineen."],
         "<code>project-docs/katselmointi.md</code>, havaintoissuet prioriteetteineen ja tilatiedoston Seuraavana-kohta."),
     2: ("Paluuviikko: testit läpi ja tärkeän jatkon järjestys", [
-        "Aja <code>npm install</code>, <code>npm run dev</code> ja <code>npm test</code>. Kirjaa tulos.",
+        "Tarkista, että terminaalin rivin alussa lukee (.venv). Aja <code>python tarkista_ymparisto.py</code>, <code>python main.py</code> ja <code>pytest</code>. Kirjaa tulos.",
         "Ehdota tärkeän jatkon järjestys ja tuntiarviot asiakkaiden prioriteettien pohjalta. Sovi järjestys palaverissa.",
         "Tee yksi pieni korjaus katselmoinnin havainnoista Täydennys-kaistalla."],
         "testiajon tulos päiväkirjassa, tärkeän jatkon järjestys issueissa ja korjauksen commit."),
     3: ("Päivitä SVG: muokattu piirros malliksi", [
         "Sovi palaverissa, miten osat tunnistetaan uudesta tiedostosta.",
         "Kirjoita ennen toteutusta testi 23: Päivitä SVG.",
-        "Toteuta toiminto omassa haarassa. Aja kaikki testit. Liitä haara päähaaraan pull requestilla."],
+        "Toteuta toiminto omassa haarassa. Aja kaikki testit <code>pytest</code>-komennolla. Liitä haara päähaaraan pull requestilla."],
         "testi 23 issuessa ja yhdistetty pull request."),
     4: ("Jousto ja tärkeä jatko: rästit tai seuraava toiminto", [
         "Tee ensin pakollisen ytimen rästit omassa haarassa, jos niitä on.",
         "Kirjoita ennen toteutusta testi 24: seuraava toiminto. Testi koskee seuraavaa tärkeän jatkon toimintoa.",
         "Toteuta toiminto työsyklillä. Kirjoita toinen virheenkorjausketju."],
-        "testi 24 issuessa, valmis toiminto Pages-osoitteessa ja virheenkorjausketju 2 havaintoissuessa."),
-    5: ("Saavutettavuus: isot kahvat ja näppäimistö", [
-        "Aja Lighthouse. Kirjaa perusmittaus.",
+        "testi 24 issuessa, valmis toiminto päähaarassa ja virheenkorjausketju 2 havaintoissuessa."),
+    5: ("Saavutettavuus: isot säätimet ja näppäimistö", [
+        "Aja Accessibility Insightsin FastPass sovelluksen ikkunalle. Kirjaa perusmittaus.",
         "Tarkista käyttöliittymävaatimuksesi. Kirjoita testit 25–26 ennen toteutusta.",
-        "Toteuta isot kahvat ja näppäimistökäyttö työsyklillä.",
-        "Aja testit 25–26 ja Lighthouse uudelleen. Vertaa tuloksia."],
-        "Lighthousen tulokset ennen ja jälkeen, testit 25–26 issueissa ja korjausten commitit."),
+        "Toteuta isot säätimet ja näppäimistökäyttö työsyklillä. Tee raahattavat kahvat vain, jos ne kuuluvat tärkeän jatkon järjestykseesi.",
+        "Aja testit 25–26 näppäimistöllä ja Lukijalla. Aja FastPass uudelleen. Vertaa tuloksia."],
+        "FastPassin tulokset ennen ja jälkeen, testit 25–26 issueissa ja korjausten commitit."),
     6: ("Julkaisutesti: julkaisuehdokas v1.0-rc1", [
         "Jäädytä sisältö. Merkitse julkaisuehdokas tagilla v1.0-rc1.",
         "Täydennä README ja käyttöohje. Kerro ohjeessa Inkscapen nimeämissäännöt.",
-        "Pyydä julkaisutestaajaa kulkemaan koko polku puhtaassa ympäristössä. Pidä hänen havaintonsa erillään omasta tulkinnastasi."],
+        "Pyydä julkaisutestaajaa lataamaan zip ja kulkemaan koko polku Windows-koneella, jossa ei ole Pythonia. Pidä hänen havaintonsa erillään omasta tulkinnastasi."],
         "tagi v1.0-rc1, README ja käyttöohje sekä <code>project-docs/julkaisutesti.md</code>."),
     7: ("v1.0: julkaisu ja asiakkaiden vahvistus", [
         "Korjaa estävät havainnot. Kirjoita kolmas virheenkorjausketju.",
-        "Julkaise v1.0 tagilla. Pyydä asiakkaita vahvistamaan, että se toimii heidän koneellaan.",
+        "Julkaise v1.0 tagilla. Pyydä Anttia vahvistamaan, että zip toimii hänen Windows-koneellaan. Näytä sovellus Matille omalla koneellasi.",
         "Linkitä näyttömatriisin rivit päiväkirjan tunnusten avulla."],
         "tagi v1.0, virheenkorjausketju 3, asiakkaiden vahvistus ja linkitetty näyttömatriisi."),
     9: ("Näyttö: demo ja luovutus", [

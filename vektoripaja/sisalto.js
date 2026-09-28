@@ -785,9 +785,9 @@ window.NAYTTOPROJEKTI = {
     },
     51: {
       type: "katselmointi",
-      feature: "Asiakkaat ovat kokeilleet MVP:tä. Jokaisesta havainnosta on issue, jossa on asiakkaan antama prioriteetti.",
+      feature: "Asiakkaat ovat kokeilleet MVP:tä. Antti on kokeillut releasen v0.1 zipiä omalla Windows-koneellaan. Matti on kokeillut sovellusta katselmoinnissa sinun koneellasi. Jokaisesta havainnosta on issue, jossa on asiakkaan antama prioriteetti.",
       excerpt: "Ennen joulua kokeilemme itse ensimmäistä toimivaa versiota ja kerromme, mitä muutetaan.",
-      connection: "Viikolla 50 julkaisit MVP:n. Nyt asiakkaat kokeilevat sitä. Katselmointi tarkoittaa, että asiakas kokeilee versiota ja kertoo, mitä muutetaan. Viikolla on neljä työpäivää.",
+      connection: "Viikolla 50 julkaisit MVP:n. Nyt asiakkaat kokeilevat sitä. Katselmointi tarkoittaa, että asiakas kokeilee versiota ja kertoo, mitä muutetaan. Antti lataa releasen v0.1 zipin. Hän käyttää sovellusta omalla Windows-koneellaan. Matilla on Mac, joten hän kokeilee sovellusta katselmoinnissa sinun koneellasi. Viikolla on neljä työpäivää.",
       deliverable: "Viiden minuutin demo · katselmointiloki rooleilla · havainnot issueina prioriteetteineen · tilatiedoston Seuraavana-kohta viikolle 2.",
       why: "Ilman katselmointia jatkokehitys perustuu arvaukseen. Asiakkaiden prioriteetit ohjaavat, mitkä tärkeän jatkon toiminnot tehdään ensin.",
       done: "Katselmointiloki on tiedostossa `project-docs/katselmointi.md`, jokaisesta havainnosta on issue prioriteetteineen, ja tilatiedoston Seuraavana-kohdassa on viikon 2 ensimmäinen tehtävä issue-numeroineen.",
@@ -795,15 +795,15 @@ window.NAYTTOPROJEKTI = {
       skills: ["Version katselmointi", "Asiakaslähtöinen viestintä", "Palautteen priorisointi"],
       termit: ["katselmointi"],
       steps: [
-        ["Varaa katselmointiaika.", "Varaa aika asiakkaiden kanssa Teamsissa. Tarkista ohjaajalta, miten katselmointi kirjataan."],
+        ["Varaa katselmointiaika.", "Varaa aika asiakkaiden kanssa Teamsissa. Lähetä Antille releasen v0.1 osoite etukäteen, jotta hän ehtii ladata zipin omalle Windows-koneelleen. Tarkista ohjaajalta, miten katselmointi kirjataan."],
         ["Valmistele demo.", "Näytä viidessä minuutissa omalla Inkscape-tiedostollasi: tuonti, revolve, inflate, transformit ja vienti. Harjoittele kerran ajastettuna."],
-        ["Pidä katselmointi.", "Anna asiakkaiden kokeilla itse. Kirjaa havainnot lokiin omin sanoin tiivistettynä. Älä kirjoita julkiseen repositoryyn nimiä tai sanatarkkoja lausumia."],
+        ["Pidä katselmointi.", "Anna asiakkaiden kokeilla itse. Antti kokeilee releasen zipiä omalla koneellaan. Matti kokeilee sovellusta sinun koneellasi. Kirjaa havainnot lokiin omin sanoin tiivistettynä. Älä kirjoita julkiseen repositoryyn nimiä tai sanatarkkoja lausumia."],
         ["Kirjoita tulkinta erikseen.", "Kirjoita oma tulkintasi lokin kohtaan Oma tulkinta. Älä sekoita sitä asiakkaiden havaintoihin."],
         ["Tee havainnoista issuet.", "Tee jokaisesta havainnosta issue. Kirjaa siihen asiakkaan antama prioriteetti."],
         ["Päivitä tilatiedosto.", "Kirjoita Seuraavana-kohtaan viikon 2 ensimmäinen tehtävä ja sen issue-numero. Tee commit ennen lomaa."]
       ],
       pohjat: [
-        { otsikko: "Katselmointiloki (project-docs/katselmointi.md)", teksti: "# Katselmointi pp.kk.vvvv\nVersio: v0.1 (commit ___)\nOsallistujat: asiakas 1, asiakas 2 (roolit, ei nimiä)\n\n## Asiakkaiden havainnot tiivistettynä (ei nimiä, ei sanatarkkoja lausumia)\n- \n\n## Oma tulkinta\n- \n\n## Sovitut muutokset\n- issue #__ · prioriteetti __" },
+        { otsikko: "Katselmointiloki (project-docs/katselmointi.md)", teksti: "# Katselmointi pp.kk.vvvv\nVersio: v0.1 (commit ___)\nOsallistujat: asiakas 1, asiakas 2 (roolit, ei nimiä)\nMissä kokeiltiin: asiakas 1 omalla Windows-koneella releasen zipistä, asiakas 2 opiskelijan koneella\n\n## Asiakkaiden havainnot tiivistettynä (ei nimiä, ei sanatarkkoja lausumia)\n- \n\n## Oma tulkinta\n- \n\n## Sovitut muutokset\n- issue #__ · prioriteetti __" },
         { otsikko: "Demon runko (5 min)", teksti: "1. Tavoite yhdellä lauseella\n2. Tuonti omasta Inkscape-tiedostosta\n3. Revolve ja inflate\n4. Transformit ja pivot\n5. Vienti .obj-tiedostoksi\n6. Kysymys asiakkaille: mitä muutetaan ensin?" }
       ],
       example: "Loki: \"Havainto (asiakas 1): segmenttien määrän säädintä ei löytynyt. Oma tulkinta: säädin on liian pieni ja väärässä paikassa.\"",
@@ -815,11 +815,11 @@ window.NAYTTOPROJEKTI = {
       connection: "Loma on ohi. Tilatiedosto kertoo, mihin jäit. Tällä viikolla ei tehdä uusia ominaisuuksia.",
       deliverable: "Testiajon tulos päiväkirjassa · tärkeän jatkon järjestys tuntiarvioineen issueissa · yksi pieni korjaus Täydennys-kaistalla.",
       why: "Loman jälkeen ympäristö voi olla rikki ja asiat unohtuneet. Kun kaikki testit menevät läpi, tiedät, että lähtötaso on kunnossa.",
-      done: "`npm test` näyttää, että kaikki testit menevät läpi, tärkeän jatkon järjestys on sovittu palaverissa, ja korjauksen commit on GitHubissa.",
+      done: "`python tarkista_ymparisto.py` tulostaa joka rivin alkuun OK, `pytest` näyttää, että kaikki testit menevät läpi, tärkeän jatkon järjestys on sovittu palaverissa, ja korjauksen commit on GitHubissa.",
       record: "Testiajon tulos, tärkeän jatkon järjestys ja arviot, palaverin arvio MVP:n ratkaisuista ja näyttömatriisin vaatimukset: kehitysympäristö, tärkeysjärjestys, toteutuksen suunnittelu ja ratkaisujen arviointi.",
       skills: ["Kehitysympäristön käyttö", "Tärkeysjärjestys", "Työmäärän arviointi"],
       steps: [
-        ["Käynnistä ympäristö.", "Aja <code>npm install</code>, <code>npm run dev</code> ja <code>npm test</code>. Kirjaa tulos päiväkirjaan."],
+        ["Käynnistä ympäristö.", "Avaa projekti VS Codessa. Avaa uusi terminaali. Tarkista, että terminaalin rivin alussa lukee (.venv). Aja <code>python tarkista_ymparisto.py</code>, sitten <code>python main.py</code> ja lopuksi <code>pytest</code>. Jos jokin ei toimi, katso työsyklin kohta Olen jumissa. Kirjaa tulos päiväkirjaan."],
         ["Lue tilatiedosto.", "Avaa <code>PROJEKTIN-TILA.md</code>. Aloita uusi Copilot-keskustelu tilatiedostolla."],
         ["Ehdota tärkeän jatkon järjestys.", "Asiakkaat antoivat prioriteetit katselmoinnissa. Ehdota järjestys. Arvioi jokaiselle toiminnolle tunnit."],
         ["Arvioi MVP palaverissa.", "Käy palaverissa läpi, mikä MVP:n ratkaisu kestää tärkeän jatkon toiminnot ja mikä ei. Ohjaaja on tässä tiimin jäsenen roolissa. Sovi järjestys."],
@@ -846,12 +846,29 @@ window.NAYTTOPROJEKTI = {
         ["Kirjoita testi 23.", "Testi 23: Päivitä SVG. Muokkaa testitiedostoa Inkscapessa ja päivitä malli Päivitä SVG -toiminnolla. Mitä odotat transformeille? Kirjaa odotus ennen koodia."],
         ["Tee oma haara.", "Haara on oma työlinja. Muutokset eivät vaikuta päähaaraan <code>main</code>, ennen kuin liität ne."],
         ["Tee toiminto työsyklillä haarassa.", "Tee kortit tavalliseen tapaan. Tee commitit haaraan."],
-        ["Aja kaikki testit.", "Aja <code>npm test</code>. Kaikkien vanhojen testien pitää mennä läpi."],
-        ["Tee pull request ja merge.", "Pull request on pyyntö liittää haara päähaaraan. Lue muutokset itse. Tee sitten merge eli liitä haara päähaaraan."]
+        ["Aja kaikki testit.", "Aja <code>pytest</code>. Kaikkien vanhojen testien pitää mennä läpi."],
+        ["Tee pull request ja merge.", "Pull request on pyyntö liittää haara päähaaraan. Lue muutokset itse. Tee sitten merge eli liitä haara päähaaraan."],
+        ["Lisää halutessasi automaattinen päivitys.", "Tämä on valinnainen. Tee se vasta, kun painikkeella toimiva päivitys on päähaarassa. Qt:n <code>QFileSystemWatcher</code> huomaa, kun tallennat SVG:n Inkscapessa. Silloin se käynnistää Päivitä SVG -toiminnon itse. Tee siitä oma kortti."]
       ],
       example: "Tunnistustavan perustelu: \"Tunnistan osat inkscape:label-nimellä, koska nimet näkyvät hierarkiapaneelissa ja pysyvät, kun polkua muokataan.\"",
       notEnough: "\"Tunnistan osat nimellä.\" Perustelusta puuttuu, miksi nimi on parempi kuin tunniste omassa työssäsi.",
       kuvaohjeet: ["github-pull-request"],
+      help: {
+        title: "Päivitä SVG ja tiedoston seuranta",
+        tree: "Päivitä SVG\n  lue tiedosto samalla tuonnilla kuin viikolla 43\n  → uusi solmupuu\n  → sama osa löytyy?   kopioi vanha oma muunnos\n  → uusi osa?          oletusmuunnos\n  → osa puuttuu?       pois puusta",
+        actions: [
+          "Lue muokattu tiedosto samalla tuontifunktiolla kuin viikolla 43. Älä tee toista tuontia.",
+          "Rakenna uusi solmupuu. Etsi jokaiselle uudelle osalle vastine vanhasta puusta. Käytä tunnistustapaa, jonka kirjasit suunnitelmaan. Jos vastine löytyy, kopioi sen oma muunnos uuteen solmuun.",
+          "Osa, jolle ei löydy vastinetta, saa oletusmuunnoksen. Osa, joka puuttuu uudesta tiedostosta, poistuu puusta. Kirjaa molemmat tilanteet testin 23 odotuksiin.",
+          "Tee tunnistuksesta puhdas funktio. Syöte on vanha ja uusi puu. Paluuarvo on uusi puu muunnoksineen. Silloin testi 23 ei tarvitse ikkunaa.",
+          "Valinnainen automaattinen päivitys: `self.vahti = QFileSystemWatcher([polku])` ja `self.vahti.fileChanged.connect(self.paivita_svg)`. Inkscape voi tallentaa korvaamalla tiedoston. Silloin seuranta katkeaa. Lisää polku uudelleen: `if polku not in self.vahti.files(): self.vahti.addPath(polku)`."
+        ],
+        code: "PÄIVITYKSEN TARKISTUSLISTA\n[ ] tunnistustapa kirjattu suunnitelmaan\n[ ] testi 23: odotus kirjattu ennen koodia\n[ ] transformit säilyvät, uusi osa saa oletuksen\n[ ] kaikki vanhat testit läpi haarassa\n[ ] pull request luettu ja yhdistetty",
+        test: "Siirrä yhtä osaa sovelluksessa. Muokkaa sen polkua Inkscapessa. Tallenna tiedosto. Valitse Päivitä SVG. Osan pitää pysyä siirretyssä paikassa, ja polun muutoksen pitää näkyä.",
+        links: [
+          ["Qt for Python: QFileSystemWatcher", "https://doc.qt.io/qtforpython-6/PySide6/QtCore/QFileSystemWatcher.html"]
+        ]
+      },
       sykli: true
     },
     4: {
@@ -879,30 +896,47 @@ window.NAYTTOPROJEKTI = {
     },
     5: {
       type: "feature",
-      feature: "Sovelluksessa on isot kahvat ja näppäimistökäyttö. Lighthousen tulokset ennen ja jälkeen on kirjattu. Mikään kohta ei heikentynyt, ja löydetyt puutteet on korjattu.",
+      feature: "Sovelluksessa on isot säätimet ja näppäimistökäyttö. Lukija lukee jokaisen painikkeen nimen. Accessibility Insightsin tulokset ennen ja jälkeen on kirjattu. Jälkimittauksessa ei ole uusia virheitä, ja löydetyt puutteet on korjattu.",
       excerpt: "Työkalun pitää olla selkeä: iso tila piirtämiselle, isot painikkeet ja hyvä kontrasti.",
-      connection: "Perusteema tuli sovellukseen jo viikolla 41. Nyt teet saavutettavuuden loppuun: isot kahvat, näppäimistökäyttö ja ruudunlukijan tuki. Kahva on tartuntakohta, josta osaa siirretään, kierretään tai skaalataan. Lighthouse on Chromen työkalu, joka mittaa sivun saavutettavuuden.",
-      deliverable: "Lighthouse-perusmittaus · testit 25–26 · isot kahvat ja näppäimistökäyttö · Lighthouse-jälkimittaus.",
+      connection: "Perusteema tuli sovellukseen jo viikolla 41. Nyt teet saavutettavuuden loppuun: isot säätimet, näppäimistökäyttö ja ruudunlukijan tuki. Ruudunlukija on ohjelma, joka lukee näytön sisällön ääneen. Windowsin oma ruudunlukija on Lukija. Accessibility Insights for Windows on Microsoftin ilmainen työkalu, joka tarkistaa sovelluksen ikkunan saavutettavuuden. Sen pikatarkistus on nimeltään FastPass. Kahva on 3D-näkymän tartuntakohta, josta osaa vedetään hiirellä. Raahattavat kahvat tehdään vain, jos ne kuuluvat tärkeän jatkon järjestykseesi.",
+      deliverable: "FastPass-perusmittaus · testit 25–26 · isot säätimet ja näppäimistökäyttö · FastPass-jälkimittaus.",
       why: "Saavutettavuus on asiakkaan vaatimus. Ilman mittausta et voi näyttää, mikä parani.",
-      done: "Lighthousen tulokset ennen ja jälkeen on kirjattu, mikään kohta ei heikentynyt, testit 25–26 menevät läpi, ja löydetyt puutteet on korjattu tai kirjattu issueiksi.",
-      record: "Lighthousen tulokset ennen ja jälkeen, testit 25–26 ja näyttömatriisin vaatimukset: käyttöliittymä ja testaus.",
+      done: "FastPassin tulokset ennen ja jälkeen on kirjattu, jälkimittauksessa ei ole uusia virheitä, testit 25–26 menevät läpi näppäimistöllä ja Lukijalla, ja löydetyt puutteet on korjattu tai kirjattu issueiksi.",
+      record: "Accessibility Insightsin tulokset ennen ja jälkeen, testit 25–26 ja näyttömatriisin vaatimukset: käyttöliittymä ja testaus.",
       skills: ["Käyttöliittymä vaatimuksen mukaan", "Saavutettavuuden testaus", "Mittaaminen ennen ja jälkeen"],
-      termit: ["kahva", "Lighthouse"],
+      termit: ["ruudunlukija", "Accessibility Insights", "kahva"],
       steps: [
-        ["Aja Lighthouse ensin.", "Avaa sovellus Chromessa. Avaa kehittäjätyökalut ja Lighthouse. Aja saavutettavuusmittaus. Kirjaa tulos."],
+        ["Mittaa ensin.", "Käynnistä sovellus. Avaa Accessibility Insights for Windows. Valitse FastPass. Valitse kohteeksi Vektoripajan ikkuna. Aja tarkistus kuvaohjeen mukaan. Kirjaa virheiden määrä ja kolme ensimmäistä havaintoa päiväkirjaan."],
         ["Tarkista vaatimus.", "Lue käyttöliittymävaatimuksesi suunnitelmasta. Mitä vielä puuttuu?"],
-        ["Kirjoita testit 25–26.", "Testi 25: näppäimistö. Käytä kaikkia painikkeita näppäimistöllä. Testi 26: painikkeiden nimet. Testaa ruudunlukijalla, onko jokaisella painikkeella nimi. Kirjaa, mitä odotat."],
-        ["Tee kahvat ja näppäimistö työsyklillä.", "Tee transformikahvoista isot. Tarkista, että Tab-järjestys on looginen."],
-        ["Mittaa uudelleen.", "Aja testit 25–26 ja Lighthouse uudelleen. Vertaa tuloksia. Kirjaa, mikä parani ja mikä jäi."]
+        ["Kirjoita testit 25–26.", "Testi 25: näppäimistö. Käytä kaikkia painikkeita näppäimistöllä. Testi 26: painikkeiden nimet. Käynnistä Lukija näppäimillä Ctrl + Windows-näppäin + Enter. Siirry Tab-näppäimellä painikkeesta toiseen. Lukeeko Lukija jokaisen painikkeen nimen? Kirjaa, mitä odotat."],
+        ["Tee isot säätimet ja näppäimistö työsyklillä.", "Suurenna painikkeet ja transformipaneelin kentät. Anna jokaiselle painikkeelle nimi, jonka Lukija lukee. Tarkista, että Tab-järjestys on looginen. Tee raahattavat kahvat vain, jos ne kuuluvat tärkeän jatkon järjestykseesi."],
+        ["Mittaa uudelleen.", "Aja testit 25–26 ja FastPass uudelleen. Vertaa tuloksia. Kirjaa, mikä parani ja mikä jäi."]
       ],
-      example: "Kirjaus: \"Lighthouse ennen 86, jälkeen 97. Korjattu: kahdelta painikkeelta puuttui nimi. Jäi: view lockin tila ei vaihdu ruudunlukijalle, issue #31.\"",
+      example: "Kirjaus: \"FastPass ennen: 7 virhettä, jälkeen: 0. Korjattu: kahdelta painikkeelta puuttui nimi, ja Lukija sanoi niistä vain sanan painike. Jäi: Lukija ei kerro, kun view lockin tila vaihtuu, issue #31.\"",
       notEnough: "\"Saavutettavuus parani.\" Kirjauksesta puuttuvat luvut ja se, mikä muuttui.",
-      kuvaohjeet: ["chrome-lighthouse"],
+      kuvaohjeet: ["accessibility-insights-fastpass"],
+      help: {
+        title: "Saavutettavuus Qt:ssa",
+        tree: "Ikkuna\n├─ painikkeet            nimi Lukijalle: setAccessibleName\n├─ transformipaneeli     kentät Tab-järjestyksessä: setTabOrder\n├─ view lock             tila näkyy: setCheckable(True)\n└─ vektoripaja/teema.qss isommat säätimet ja fontti",
+        actions: [
+          "Anna jokaiselle kuvakepainikkeelle nimi: `painike.setAccessibleName(\"View lock\")`. Lukija lukee tämän nimen.",
+          "Aseta Tab-järjestys: `QWidget.setTabOrder(kentta_x, kentta_y)`. Tab-näppäimen pitää kulkea kentästä toiseen samassa järjestyksessä kuin paneeli luetaan.",
+          "Suurenna säätimet teemassa. Lisää tiedostoon `vektoripaja/teema.qss` esimerkiksi `QPushButton, QDoubleSpinBox { min-height: 40px; font-size: 16px; }`.",
+          "Jos painikkeella on kaksi tilaa, päällä ja pois, tee siitä valintapainike: `painike.setCheckable(True)`. Silloin Lukija kertoo myös tilan.",
+          "Accessibility Insights tarkistaa Qt:n säätimet, mutta ei 3D-näkymän sisältöä. Siksi näppäimistötesti ja Lukija ovat yhtä tärkeitä kuin FastPass."
+        ],
+        code: "SAAVUTETTAVUUDEN TARKISTUSLISTA\n[ ] FastPass ennen ja jälkeen kirjattu\n[ ] kaikki toiminnot näppäimistöllä (testi 25)\n[ ] jokaisella painikkeella nimi (testi 26)\n[ ] Tab-järjestys looginen\n[ ] säätimet isot teemassa",
+        test: "Laita hiiri sivuun. Tee koko polku pelkällä näppäimistöllä: tuo SVG, tee revolve, siirrä osaa transformipaneelissa ja vie .obj.",
+        links: [
+          ["Accessibility Insights for Windows", "https://accessibilityinsights.io/docs/windows/overview/"],
+          ["Qt for Python: QWidget", "https://doc.qt.io/qtforpython-6/PySide6/QtWidgets/QWidget.html"]
+        ]
+      },
       sykli: true
     },
     6: {
       type: "julkaisu",
-      feature: "Julkaisuehdokas v1.0-rc1 on jäädytetty. Toinen opiskelija on kulkenut README:n avulla koko polun Inkscape-piirroksesta .obj-tiedostoon.",
+      feature: "Julkaisuehdokas v1.0-rc1 on jäädytetty. Toinen opiskelija on ladannut sen zipin GitHubista. Hän on kulkenut README:n avulla koko polun Inkscape-piirroksesta .obj-tiedostoon Windows-koneella, jossa ei ole Pythonia.",
       excerpt: "Valmis tarkoittaa meille tätä: työkalun voi ladata GitHubista ja käynnistää Windows-koneella ilman Pythonia, oma piirroksemme muuttuu malliksi, .obj aukeaa toisessa ohjelmassa, ja mukana on ohje, jolla joku muu saa työkalun käyttöön kysymättä meiltä.",
       connection: "Julkaisuehdokas (RC) on versio, jossa sisältö on jäädytetty. Sisältöjäädytys tarkoittaa, että uusia ominaisuuksia ei enää lisätä. Tällä viikolla testataan, saako joku muu työkalun käyttöön pelkällä ohjeella.",
       deliverable: "Tagi v1.0-rc1 · README ja käyttöohje · julkaisutestin epäröintilista.",
@@ -912,41 +946,41 @@ window.NAYTTOPROJEKTI = {
       skills: ["Dokumentointi sovitulla tavalla", "Julkaisuehdokas", "Asiakaslähtöinen viestintä"],
       termit: ["RC", "sisältöjäädytys"],
       steps: [
-        ["Varaa testiaika ja kone.", "Sovi julkaisutestaajan kanssa aika. Varmista, että hänen koneellaan on Inkscape."],
-        ["Jäädytä ja tee tagi.", "Jäädytä sisältö. Tee tagi v1.0-rc1 ja release."],
-        ["Täydennä README.", "Kirjoita README ja käyttöohje. Kerro Inkscapen nimeämissäännöt: layerit, ryhmät ja mahdolliset nimimerkinnät."],
-        ["Pidä julkaisutesti.", "Anna testaajalle vain README. Seuraa, älä neuvo. Testaaja kulkee polun: piirros, tuonti, revolve tai inflate ja vienti."],
+        ["Varaa testiaika ja kone.", "Sovi julkaisutestaajan kanssa aika. Varmista, että hänen Windows-koneellaan on Inkscape. Varmista myös, ettei koneelle ole asennettu Pythonia. Silloin näet, toimiiko zip ilman Pythonia."],
+        ["Jäädytä ja tee tagi.", "Jäädytä sisältö. Tee tagi <code>v1.0-rc1</code> ja pushaa se. Kun Actions-ajo on vihreä, release ja sen zip ovat GitHubissa."],
+        ["Täydennä README.", "Kirjoita README ja käyttöohje. Kerro, mistä zip ladataan, miten se puretaan ja mitä SmartScreen-varoituksessa valitaan. Kerro Inkscapen nimeämissäännöt: layerit, ryhmät ja mahdolliset nimimerkinnät."],
+        ["Pidä julkaisutesti.", "Anna testaajalle vain README:n osoite. Seuraa, älä neuvo. Testaaja lataa zipin releasesta ja purkaa sen. Sitten hän kulkee polun: piirros, tuonti, revolve tai inflate ja vienti."],
         ["Listaa epäröinnit.", "Kirjaa pöytäkirjaan jokainen kohta, jossa testaaja epäröi. Kirjoita se omin sanoin ja roolilla \"julkaisutestaaja\". Lähetä testaajan nimi ja sanatarkat lausumat ohjaajalle Teamsissa."],
         ["Korjaa ohje.", "Korjaa README jokaisen epäröinnin kohdalta. Tee estävistä virheistä issuet viikolle 7."]
       ],
       pohjat: [
-        { otsikko: "Julkaisutestin pöytäkirja (project-docs/julkaisutesti.md)", teksti: "# Julkaisutesti pp.kk.vvvv\nVersio: v1.0-rc1\nTestaaja: julkaisutestaaja (rooli)\nLaite ja selain: \n\n## Polku\n1. Piirros Inkscapessa: \n2. Tuonti: \n3. Revolve tai inflate: \n4. Vienti .obj: \n\n## Epäröinnit omin sanoin (ei sanatarkkoja lausumia)\n- \n\n## Korjaukset ohjeeseen\n- " }
+        { otsikko: "Julkaisutestin pöytäkirja (project-docs/julkaisutesti.md)", teksti: "# Julkaisutesti pp.kk.vvvv\nVersio: v1.0-rc1\nTestaaja: julkaisutestaaja (rooli)\nKone: Windows, Python asennettuna (kyllä/ei): \n\n## Polku\n0. Zipin lataus releasesta ja purku: \n1. Piirros Inkscapessa: \n2. Tuonti: \n3. Revolve tai inflate: \n4. Vienti .obj: \n\n## Epäröinnit omin sanoin (ei sanatarkkoja lausumia)\n- \n\n## Korjaukset ohjeeseen\n- " }
       ],
       example: "Epäröinti: \"Julkaisutestaaja ei tiennyt, tuleeko merkintä layerin nimen eteen vai perään. Korjaus: README:hen esimerkki nimestä.\"",
       notEnough: "\"Testi meni hyvin.\" Pöytäkirjasta ei näe, missä testaaja epäröi."
     },
     7: {
       type: "julkaisu",
-      feature: "Julkaisutestin estävät havainnot on korjattu. Versio v1.0 on julki. Asiakkaat ovat vahvistaneet, että se toimii heidän koneellaan. Näyttömatriisin jokaisella rivillä on linkki työnäytteeseen.",
+      feature: "Julkaisutestin estävät havainnot on korjattu. Versio v1.0 on julki. Antti on vahvistanut, että releasen zip toimii hänen Windows-koneellaan. Matti on nähnyt sovelluksen toimivan. Näyttömatriisin jokaisella rivillä on linkki työnäytteeseen.",
       excerpt: "Valmis tarkoittaa meille tätä: työkalun voi ladata GitHubista ja käynnistää Windows-koneella ilman Pythonia, oma piirroksemme muuttuu malliksi, .obj aukeaa toisessa ohjelmassa, ja mukana on ohje, jolla joku muu saa työkalun käyttöön kysymättä meiltä.",
       connection: "Viikolla 6 löytyivät viimeiset esteet. Nyt ne korjataan, ja v1.0 julkaistaan. Samalla näyttöaineisto linkitetään valmiiksi.",
       deliverable: "Virheenkorjausketju 3 · tagi v1.0 ja release-teksti · asiakkaiden vahvistus · linkitetty näyttömatriisi.",
       why: "Julkaisu ilman korjauksia jättää asiakkaalle tunnetut viat. Ilman linkitystä arvioija ei löydä työnäytteitä.",
-      done: "Estävät issuet on suljettu, tagi v1.0 näkyy GitHubissa, asiakkaat ovat vahvistaneet toimivuuden, ja jokaisella matriisin rivillä on linkki.",
+      done: "Estävät issuet on suljettu, release v1.0 ja sen zip näkyvät GitHubissa, Antti on vahvistanut toimivuuden omalla Windows-koneellaan, Matti on nähnyt sovelluksen demossa tai sinun koneellasi, ja jokaisella matriisin rivillä on linkki.",
       record: "Virheenkorjausketju 3, asiakkaiden vahvistus ja näyttömatriisin vaatimukset: virheiden korjaus, versionhallinta, julkaisu tuotantoon ja julkaisu asiakkaalle.",
       skills: ["Virheenkorjaus", "Julkaisu tuotantoon", "Näyttöaineiston kokoaminen"],
       termit: ["työnäyte", "näyttömatriisi"],
       steps: [
         ["Korjaa estävät havainnot.", "Korjaa viikon 6 estävät issuet työsyklillä."],
         ["Kirjoita virheenkorjausketju 3.", "Valitse yksi korjauksista. Kirjaa ketjun kuusi osaa kuten viikolla 49."],
-        ["Julkaise v1.0.", "Tee tagi v1.0 ja release. Kirjoita release-tekstiin, mitä versiossa on."],
-        ["Pyydä asiakkaiden vahvistus.", "Lähetä asiakkaille linkki viestipohjalla. Pyydä vahvistus, että työkalu toimii heidän koneellaan."],
+        ["Julkaise v1.0.", "Tee tagi <code>v1.0</code> ja pushaa se. Kun Actions-ajo on vihreä, kirjoita release-tekstiin, mitä versiossa on."],
+        ["Pyydä asiakkaiden vahvistus.", "Lähetä asiakkaille releasen osoite viestipohjalla. Antti lataa zipin. Hän kokeilee sovellusta omalla Windows-koneellaan. Matilla on Mac, joten näytä sovellus hänelle palaverissa omalla koneellasi tai demossa. Mac-versiota ei tehdä."],
         ["Linkitä näyttömatriisi.", "Työnäyte on yksi tuotos, joka osoittaa osaamisesi. Päiväkirjassa on jokaisen viikon kohdalla näyttömatriisin vaatimukset. Kopioi päiväkirjasta linkit näyttömatriisin oikeille riveille."]
       ],
       example: "Matriisin rivillä \"liittää ohjelman osan olemassa olevaan versioon\": pull request #24 (viikko 3), merge-commit a1b2c3d.",
       notEnough: "\"Tehty.\" Rivistä puuttuu linkki työnäytteeseen.",
       pohjat: [
-        { otsikko: "Viesti asiakkaille (Teams)", teksti: "Hei Matti ja Antti,\nVektoripaja v1.0 on julkaistu: (osoite)\nOhje: (README-linkki)\nVoitteko vahvistaa, että työkalu toimii teidän koneellanne?" }
+        { otsikko: "Viesti asiakkaille (Teams)", teksti: "Hei Matti ja Antti,\nVektoripaja v1.0 on julkaistu: (releasen osoite)\nOhje: (README-linkki)\nAntti: voitko vahvistaa, että zipistä purettu sovellus toimii Windows-koneellasi?\nMatti: näytän sovelluksen palaverissa pp.kk." }
       ],
       sykli: true
     },
@@ -979,7 +1013,7 @@ window.NAYTTOPROJEKTI = {
         { otsikko: "Itsearviointi (lähetetään ohjaajalle Teamsissa)", teksti: "# Itsearviointi\n## Tilanne 1 (pp.kk., issue #__)\nMitä tapahtui: \nMitä tein: \nMitä tekisin toisin: \n\n## Tilanne 2 (pp.kk., issue #__)\n\n## Tilanne 3 (pp.kk., issue #__)" }
       ],
       example: "Tekninen ratkaisu omin sanoin: \"Hierarkian muunnos kutsuu itseään jokaiselle ryhmälle. Siksi korvat pysyvät pään lapsina, ja .obj-tiedostossa ne ovat omia objektejaan.\"",
-      notEnough: "\"Tein 3D-mallintimen Reactilla.\" Demosta puuttuvat ratkaisu, korjattu virhe, historia ja työnkulku."
+      notEnough: "\"Tein 3D-mallintimen Pythonilla.\" Demosta puuttuvat ratkaisu, korjattu virhe, historia ja työnkulku."
     }
   },
 
@@ -1059,7 +1093,8 @@ window.NAYTTOPROJEKTI = {
     { termi: "pull request", nimi: "muutospyyntö", selite: "Muutospyyntö, jolla haara liitetään päähaaraan. Luet muutokset ennen liittämistä.", viikko: 3 },
     { termi: "merge", selite: "Haaran liittäminen päähaaraan.", viikko: 3 },
     { termi: "kahva", selite: "Tartuntakohta 3D-näkymässä. Kahvasta vetämällä osaa siirretään, kierretään tai skaalataan.", viikko: 5 },
-    { termi: "Lighthouse", selite: "Chromen kehittäjätyökalujen mittari. Se mittaa sivun saavutettavuuden pisteinä 0–100.", viikko: 5 },
+    { termi: "ruudunlukija", nimi: "Lukija", selite: "Ohjelma, joka lukee näytön sisällön ääneen. Windowsin oma ruudunlukija on Lukija (Narrator). Se käynnistyy ja sammuu näppäimillä Ctrl + Windows-näppäin + Enter.", viikko: 5 },
+    { termi: "Accessibility Insights", nimi: "Accessibility Insights for Windows", selite: "Microsoftin ilmainen työkalu, joka tarkistaa Windows-sovelluksen ikkunan saavutettavuuden. Sen pikatarkistus FastPass listaa löydetyt virheet, esimerkiksi painikkeen, jolta puuttuu nimi.", viikko: 5 },
     { termi: "RC", nimi: "julkaisuehdokas, release candidate", selite: "Versio, jossa sisältö on jäädytetty ja joka testataan ennen v1.0:aa. Tagi on v1.0-rc1.", viikko: 6 },
     { termi: "sisältöjäädytys", selite: "Uusia ominaisuuksia ei enää lisätä. Vain estävät virheet korjataan.", viikko: 6 },
     { termi: "työnäyte", selite: "Yksi tuotos, joka osoittaa osaamisesi: commit, issue, testi, kuva tai muistio.", viikko: 7 },
@@ -1223,7 +1258,7 @@ window.NAYTTOPROJEKTI = {
       roolit: [
         ["Opiskelija", "Pilkkoo tavoitteet tehtäväkorteiksi, tekee arkkitehtuuripäätökset, kirjoittaa testien odotetut arvot ennen toteutusta, hyväksyy, korjauttaa tai hylkää tekoälyn tuotoksen perustellen, selittää virheen syyn ja funktiot omin sanoin sekä kokoaa näyttöaineiston. Koodin kirjoittaa pääosin tekoäly."],
         ["Ohjaaja (Matti Seise)", "Viikkopalaveri ma tai ti (sovitut kortit issue-kommentteina, edellisen viikon funktio ääneen), pakollisen ytimen (P0) tarkistuspiste vk 47, vikatehtävä tarvittaessa, ohjaajan päätökset (tekijänimi, lisenssi, krediitit, katselmoinnin kirjaustapa, julkaisutestaaja, arviointi). Toimii tiimin jäsenen roolissa vk 2:n ratkaisuarviossa."],
-        ["Asiakkaat (Matti Seise ja Antti Honkasalo)", "Vastaavat kysymyslistaan vk 40–41, katselmoivat MVP:n vk 51 ja antavat tärkeän jatkon (P1) prioriteetit. Vk 7 Antti vahvistaa, että v1.0-release toimii hänen Windows-koneellaan; Matti (Mac) vahvistaa demon tai opiskelijan koneen kautta. Kun Matti toimii asiakkaana, se kerrotaan tehtävässä."],
+        ["Asiakkaat (Matti Seise ja Antti Honkasalo)", "Vastaavat kysymyslistaan vk 40–41, katselmoivat MVP:n vk 51 (Antti release-zipistä omalla Windows-koneellaan, Matti opiskelijan koneella) ja antavat tärkeän jatkon (P1) prioriteetit. Vk 7 Antti vahvistaa, että v1.0-release toimii hänen Windows-koneellaan; Matti (Mac) vahvistaa demon tai opiskelijan koneen kautta. Kun Matti toimii asiakkaana, se kerrotaan tehtävässä."],
         ["Julkaisutestaaja (toinen opiskelija, vk 6)", "Kulkee README:n avulla koko polun Inkscape-piirroksesta .obj-tiedostoon ilman suullista apua. Nimi ja sanat toimitetaan ohjaajalle Teamsissa; repositoryyn kirjataan rooli. Nimetään viimeistään vk 5."],
         ["Arvioijat (vk 9)", "Ottavat vastaan demon ja näyttöaineiston. Ajankohta ja arvioijat sovitaan ohjaajan kanssa."]
       ],
@@ -1234,7 +1269,7 @@ window.NAYTTOPROJEKTI = {
         [47, "Pakollisen ytimen (P0) tarkistuspiste", "Onko pakollinen ydin aikataulussa? Jos ei, ohjaaja päättää, mikä katselmoidaan keskeneräisenä ja mikä tehdään vk 4:llä omassa haarassa pull requestilla."],
         [49, "Vienti ja ketju 1", "Testit 19–20 (T19–T20), o-rivit trimeshin viennistä ja tarkistus Blenderissä, ensimmäinen virheenkorjausketju kuudella osalla ja regressiotestillä. Vikatehtävä, jos aitoa havaintoa ei ole."],
         [50, "MVP v0.1", "Tallennusvertailu omilla kriteereillä, testit 21–22 (T21–T22), tietoturva-arvio, tagi v0.1 ja release-zip, itsetesti läpi."],
-        [51, "Katselmointi", "Katselmointiloki rooleilla, asiakkaiden sanat erillään tulkinnasta, havainnot issueina prioriteetein, tilatiedosto lomaa varten."],
+        [51, "Katselmointi", "Antti kokeillut v0.1-zipiä omalla Windows-koneellaan, katselmointiloki rooleilla, asiakkaiden sanat erillään tulkinnasta, havainnot issueina prioriteetein, tilatiedosto lomaa varten."],
         [3, "Pull request", "Päivitä SVG omassa haarassa, testi 23 (T23), kaikki testit läpi ennen mergeä, pull request yhdistetty."],
         [6, "Julkaisuehdokas", "v1.0-rc1, README ja käyttöohje, julkaisutestaajan pöytäkirja epäröinteineen."],
         [7, "v1.0", "Estävät korjattu, ketju 3, tagi v1.0, asiakkaiden vahvistus, näyttömatriisi linkitetty."],

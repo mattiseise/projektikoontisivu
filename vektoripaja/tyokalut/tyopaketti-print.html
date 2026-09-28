@@ -42,7 +42,7 @@ code { font-family: Consolas, "Courier New", monospace; font-size: 1em; }
 <tr><td><strong>2</strong></td><td>11.–15.1.</td><td>Paluuviikko: testit läpi ja tärkeän jatkon järjestys</td><td>D</td></tr>
 <tr><td><strong>3</strong></td><td>18.–22.1.</td><td>Päivitä SVG: muokattu piirros malliksi</td><td>D</td></tr>
 <tr><td><strong>4</strong></td><td>25.–29.1.</td><td>Jousto ja tärkeä jatko: rästit tai seuraava toiminto</td><td>D</td></tr>
-<tr><td><strong>5</strong></td><td>1.–5.2.</td><td>Saavutettavuus: isot kahvat ja näppäimistö</td><td>D</td></tr>
+<tr><td><strong>5</strong></td><td>1.–5.2.</td><td>Saavutettavuus: isot säätimet ja näppäimistö</td><td>D</td></tr>
 <tr><td><strong>6</strong></td><td>8.–12.2.</td><td>Julkaisutesti: julkaisuehdokas v1.0-rc1</td><td>E</td></tr>
 <tr><td><strong>7</strong></td><td>15.–19.2.</td><td>v1.0: julkaisu ja asiakkaiden vahvistus</td><td>E</td></tr>
 <tr><td>8</td><td>22.–26.2.</td><td>Talviloma – ei projektityötä</td><td>–</td></tr>
@@ -140,9 +140,9 @@ code { font-family: Consolas, "Courier New", monospace; font-size: 1em; }
 <p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: tallennusvertailu suunnitelmassa, testit 21–22 issueissa, project-docs/tietoturva.md ja release v0.1.</p>
 </div>
 <div class="wk"><h2>Vko 51 · 14.–17.12. – Katselmointi: asiakkaat kokeilevat MVP:tä</h2>
-<p class="feature">Asiakkaat ovat kokeilleet MVP:tä. Jokaisesta havainnosta on issue, jossa on asiakkaan antama prioriteetti.</p>
-<p class="task">☐&nbsp; Valmistele viiden minuutin demo omalla Inkscape-tiedostolla.</p>
-<p class="task">☐&nbsp; Pidä katselmointi asiakkaiden kanssa. Pidä heidän havaintonsa erillään omasta tulkinnastasi.</p>
+<p class="feature">Asiakkaat ovat kokeilleet MVP:tä. Antti on kokeillut releasen v0.1 zipiä omalla Windows-koneellaan. Matti on kokeillut sovellusta katselmoinnissa sinun koneellasi. Jokaisesta havainnosta on issue, jossa on asiakkaan antama prioriteetti.</p>
+<p class="task">☐&nbsp; Valmistele viiden minuutin demo omalla Inkscape-tiedostolla. Lähetä Antille releasen v0.1 osoite.</p>
+<p class="task">☐&nbsp; Pidä katselmointi. Antti kokeilee zipiä omalla Windows-koneellaan. Matti kokeilee sovellusta sinun koneellasi. Pidä heidän havaintonsa erillään omasta tulkinnastasi.</p>
 <p class="task">☐&nbsp; Tee havainnoista issuet. Kirjaa niihin asiakkaan prioriteetti.</p>
 <p class="task">☐&nbsp; Kirjoita tilatiedoston Seuraavana-kohtaan viikon 2 ensimmäinen tehtävä issue-numeroineen.</p>
 <p class="done"><strong>Valmis kun:</strong> Katselmointiloki on tiedostossa <code>project-docs/katselmointi.md</code>, jokaisesta havainnosta on issue prioriteetteineen, ja tilatiedoston Seuraavana-kohdassa on viikon 2 ensimmäinen tehtävä issue-numeroineen.</p>
@@ -154,17 +154,17 @@ code { font-family: Consolas, "Courier New", monospace; font-size: 1em; }
 <h1 class="page">Vaihe D – Jatkokehitys katselmoinnin pohjalta</h1>
 <div class="wk"><h2>Vko 2 · 11.–15.1. – Paluuviikko: testit läpi ja tärkeän jatkon järjestys</h2>
 <p class="feature">Kaikki testit menevät läpi. Tärkeän jatkon järjestys on sovittu tuntiarvioineen. Yksi pieni korjaus katselmoinnista on GitHubissa.</p>
-<p class="task">☐&nbsp; Aja npm install, npm run dev ja npm test. Kirjaa tulos.</p>
+<p class="task">☐&nbsp; Tarkista, että terminaalin rivin alussa lukee (.venv). Aja python tarkista_ymparisto.py, python main.py ja pytest. Kirjaa tulos.</p>
 <p class="task">☐&nbsp; Ehdota tärkeän jatkon järjestys ja tuntiarviot asiakkaiden prioriteettien pohjalta. Sovi järjestys palaverissa.</p>
 <p class="task">☐&nbsp; Tee yksi pieni korjaus katselmoinnin havainnoista Täydennys-kaistalla.</p>
-<p class="done"><strong>Valmis kun:</strong> <code>npm test</code> näyttää, että kaikki testit menevät läpi, tärkeän jatkon järjestys on sovittu palaverissa, ja korjauksen commit on GitHubissa.</p>
+<p class="done"><strong>Valmis kun:</strong> <code>python tarkista_ymparisto.py</code> tulostaa joka rivin alkuun OK, <code>pytest</code> näyttää, että kaikki testit menevät läpi, tärkeän jatkon järjestys on sovittu palaverissa, ja korjauksen commit on GitHubissa.</p>
 <p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: testiajon tulos päiväkirjassa, tärkeän jatkon järjestys issueissa ja korjauksen commit.</p>
 </div>
 <div class="wk"><h2>Vko 3 · 18.–22.1. – Päivitä SVG: muokattu piirros malliksi</h2>
 <p class="feature">Päivitä SVG -toiminto rakentaa mallin uudelleen muokatusta tiedostosta. Osien transformit säilyvät.</p>
 <p class="task">☐&nbsp; Sovi palaverissa, miten osat tunnistetaan uudesta tiedostosta.</p>
 <p class="task">☐&nbsp; Kirjoita ennen toteutusta testi 23: Päivitä SVG.</p>
-<p class="task">☐&nbsp; Toteuta toiminto omassa haarassa. Aja kaikki testit. Liitä haara päähaaraan pull requestilla.</p>
+<p class="task">☐&nbsp; Toteuta toiminto omassa haarassa. Aja kaikki testit pytest-komennolla. Liitä haara päähaaraan pull requestilla.</p>
 <p class="done"><strong>Valmis kun:</strong> Muokattu SVG päivittyy malliin, transformit säilyvät, kaikki testit menevät läpi, ja pull request on yhdistetty päähaaraan.</p>
 <p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: testi 23 issuessa ja yhdistetty pull request.</p>
 </div>
@@ -174,32 +174,32 @@ code { font-family: Consolas, "Courier New", monospace; font-size: 1em; }
 <p class="task">☐&nbsp; Kirjoita ennen toteutusta testi 24: seuraava toiminto. Testi koskee seuraavaa tärkeän jatkon toimintoa.</p>
 <p class="task">☐&nbsp; Toteuta toiminto työsyklillä. Kirjoita toinen virheenkorjausketju.</p>
 <p class="done"><strong>Valmis kun:</strong> Pakollisen ytimen rästit on liitetty päähaaraan pull requestilla, tai tärkeän jatkon toiminto toimii ja testi 24 menee läpi. Virheenkorjausketjun kuusi osaa ovat havaintoissuessa.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: testi 24 issuessa, valmis toiminto Pages-osoitteessa ja virheenkorjausketju 2 havaintoissuessa.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: testi 24 issuessa, valmis toiminto päähaarassa ja virheenkorjausketju 2 havaintoissuessa.</p>
 </div>
-<div class="wk"><h2>Vko 5 · 1.–5.2. – Saavutettavuus: isot kahvat ja näppäimistö</h2>
-<p class="feature">Sovelluksessa on isot kahvat ja näppäimistökäyttö. Lighthousen tulokset ennen ja jälkeen on kirjattu. Mikään kohta ei heikentynyt, ja löydetyt puutteet on korjattu.</p>
-<p class="task">☐&nbsp; Aja Lighthouse. Kirjaa perusmittaus.</p>
+<div class="wk"><h2>Vko 5 · 1.–5.2. – Saavutettavuus: isot säätimet ja näppäimistö</h2>
+<p class="feature">Sovelluksessa on isot säätimet ja näppäimistökäyttö. Lukija lukee jokaisen painikkeen nimen. Accessibility Insightsin tulokset ennen ja jälkeen on kirjattu. Jälkimittauksessa ei ole uusia virheitä, ja löydetyt puutteet on korjattu.</p>
+<p class="task">☐&nbsp; Aja Accessibility Insightsin FastPass sovelluksen ikkunalle. Kirjaa perusmittaus.</p>
 <p class="task">☐&nbsp; Tarkista käyttöliittymävaatimuksesi. Kirjoita testit 25–26 ennen toteutusta.</p>
-<p class="task">☐&nbsp; Toteuta isot kahvat ja näppäimistökäyttö työsyklillä.</p>
-<p class="task">☐&nbsp; Aja testit 25–26 ja Lighthouse uudelleen. Vertaa tuloksia.</p>
-<p class="done"><strong>Valmis kun:</strong> Lighthousen tulokset ennen ja jälkeen on kirjattu, mikään kohta ei heikentynyt, testit 25–26 menevät läpi, ja löydetyt puutteet on korjattu tai kirjattu issueiksi.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Lighthousen tulokset ennen ja jälkeen, testit 25–26 issueissa ja korjausten commitit.</p>
+<p class="task">☐&nbsp; Toteuta isot säätimet ja näppäimistökäyttö työsyklillä. Tee raahattavat kahvat vain, jos ne kuuluvat tärkeän jatkon järjestykseesi.</p>
+<p class="task">☐&nbsp; Aja testit 25–26 näppäimistöllä ja Lukijalla. Aja FastPass uudelleen. Vertaa tuloksia.</p>
+<p class="done"><strong>Valmis kun:</strong> FastPassin tulokset ennen ja jälkeen on kirjattu, jälkimittauksessa ei ole uusia virheitä, testit 25–26 menevät läpi näppäimistöllä ja Lukijalla, ja löydetyt puutteet on korjattu tai kirjattu issueiksi.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: FastPassin tulokset ennen ja jälkeen, testit 25–26 issueissa ja korjausten commitit.</p>
 </div>
 <h1 class="page">Vaihe E – Julkaisu ja näyttö</h1>
 <div class="wk"><h2>Vko 6 · 8.–12.2. – Julkaisutesti: julkaisuehdokas v1.0-rc1</h2>
-<p class="feature">Julkaisuehdokas v1.0-rc1 on jäädytetty. Toinen opiskelija on kulkenut README:n avulla koko polun Inkscape-piirroksesta .obj-tiedostoon.</p>
+<p class="feature">Julkaisuehdokas v1.0-rc1 on jäädytetty. Toinen opiskelija on ladannut sen zipin GitHubista. Hän on kulkenut README:n avulla koko polun Inkscape-piirroksesta .obj-tiedostoon Windows-koneella, jossa ei ole Pythonia.</p>
 <p class="task">☐&nbsp; Jäädytä sisältö. Merkitse julkaisuehdokas tagilla v1.0-rc1.</p>
 <p class="task">☐&nbsp; Täydennä README ja käyttöohje. Kerro ohjeessa Inkscapen nimeämissäännöt.</p>
-<p class="task">☐&nbsp; Pyydä julkaisutestaajaa kulkemaan koko polku puhtaassa ympäristössä. Pidä hänen havaintonsa erillään omasta tulkinnastasi.</p>
+<p class="task">☐&nbsp; Pyydä julkaisutestaajaa lataamaan zip ja kulkemaan koko polku Windows-koneella, jossa ei ole Pythonia. Pidä hänen havaintonsa erillään omasta tulkinnastasi.</p>
 <p class="done"><strong>Valmis kun:</strong> Julkaisutestaajan .obj-tiedosto aukeaa, ja epäröinnit on listattu pöytäkirjaan. Testaajan nimi ja sanatarkat lausumat on lähetetty ohjaajalle Teamsissa. Repositoryyn on kirjattu vain rooli.</p>
 <p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: tagi v1.0-rc1, README ja käyttöohje sekä project-docs/julkaisutesti.md.</p>
 </div>
 <div class="wk"><h2>Vko 7 · 15.–19.2. – v1.0: julkaisu ja asiakkaiden vahvistus</h2>
-<p class="feature">Julkaisutestin estävät havainnot on korjattu. Versio v1.0 on julki. Asiakkaat ovat vahvistaneet, että se toimii heidän koneellaan. Näyttömatriisin jokaisella rivillä on linkki työnäytteeseen.</p>
+<p class="feature">Julkaisutestin estävät havainnot on korjattu. Versio v1.0 on julki. Antti on vahvistanut, että releasen zip toimii hänen Windows-koneellaan. Matti on nähnyt sovelluksen toimivan. Näyttömatriisin jokaisella rivillä on linkki työnäytteeseen.</p>
 <p class="task">☐&nbsp; Korjaa estävät havainnot. Kirjoita kolmas virheenkorjausketju.</p>
-<p class="task">☐&nbsp; Julkaise v1.0 tagilla. Pyydä asiakkaita vahvistamaan, että se toimii heidän koneellaan.</p>
+<p class="task">☐&nbsp; Julkaise v1.0 tagilla. Pyydä Anttia vahvistamaan, että zip toimii hänen Windows-koneellaan. Näytä sovellus Matille omalla koneellasi.</p>
 <p class="task">☐&nbsp; Linkitä näyttömatriisin rivit päiväkirjan tunnusten avulla.</p>
-<p class="done"><strong>Valmis kun:</strong> Estävät issuet on suljettu, tagi v1.0 näkyy GitHubissa, asiakkaat ovat vahvistaneet toimivuuden, ja jokaisella matriisin rivillä on linkki.</p>
+<p class="done"><strong>Valmis kun:</strong> Estävät issuet on suljettu, release v1.0 ja sen zip näkyvät GitHubissa, Antti on vahvistanut toimivuuden omalla Windows-koneellaan, Matti on nähnyt sovelluksen demossa tai sinun koneellasi, ja jokaisella matriisin rivillä on linkki.</p>
 <p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: tagi v1.0, virheenkorjausketju 3, asiakkaiden vahvistus ja linkitetty näyttömatriisi.</p>
 </div>
 <div class="wk"><h2>Vko 8 · 22.–26.2. – Talviloma</h2><p>Ei projektityötä eikä korvaavia tehtäviä. Jatka viikolla 9 näytön valmistelulla.</p></div>
@@ -291,7 +291,8 @@ code { font-family: Consolas, "Courier New", monospace; font-size: 1em; }
 <tr><td style="width:24%"><strong>pull request</strong><br><span class="muted">vko 3</span></td><td><strong>muutospyyntö.</strong> Muutospyyntö, jolla haara liitetään päähaaraan. Luet muutokset ennen liittämistä.</td></tr>
 <tr><td style="width:24%"><strong>merge</strong><br><span class="muted">vko 3</span></td><td>Haaran liittäminen päähaaraan.</td></tr>
 <tr><td style="width:24%"><strong>kahva</strong><br><span class="muted">vko 5</span></td><td>Tartuntakohta 3D-näkymässä. Kahvasta vetämällä osaa siirretään, kierretään tai skaalataan.</td></tr>
-<tr><td style="width:24%"><strong>Lighthouse</strong><br><span class="muted">vko 5</span></td><td>Chromen kehittäjätyökalujen mittari. Se mittaa sivun saavutettavuuden pisteinä 0–100.</td></tr>
+<tr><td style="width:24%"><strong>ruudunlukija</strong><br><span class="muted">vko 5</span></td><td><strong>Lukija.</strong> Ohjelma, joka lukee näytön sisällön ääneen. Windowsin oma ruudunlukija on Lukija (Narrator). Se käynnistyy ja sammuu näppäimillä Ctrl + Windows-näppäin + Enter.</td></tr>
+<tr><td style="width:24%"><strong>Accessibility Insights</strong><br><span class="muted">vko 5</span></td><td><strong>Accessibility Insights for Windows.</strong> Microsoftin ilmainen työkalu, joka tarkistaa Windows-sovelluksen ikkunan saavutettavuuden. Sen pikatarkistus FastPass listaa löydetyt virheet, esimerkiksi painikkeen, jolta puuttuu nimi.</td></tr>
 <tr><td style="width:24%"><strong>RC</strong><br><span class="muted">vko 6</span></td><td><strong>julkaisuehdokas, release candidate.</strong> Versio, jossa sisältö on jäädytetty ja joka testataan ennen v1.0:aa. Tagi on v1.0-rc1.</td></tr>
 <tr><td style="width:24%"><strong>sisältöjäädytys</strong><br><span class="muted">vko 6</span></td><td>Uusia ominaisuuksia ei enää lisätä. Vain estävät virheet korjataan.</td></tr>
 <tr><td style="width:24%"><strong>työnäyte</strong><br><span class="muted">vko 7</span></td><td>Yksi tuotos, joka osoittaa osaamisesi: commit, issue, testi, kuva tai muistio.</td></tr>

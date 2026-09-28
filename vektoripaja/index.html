@@ -1011,8 +1011,8 @@
           <section class="view-section">
             <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 4</span></div>
             <div class="task-list">
-            <label class="task-row"><input type="checkbox" data-task="51-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Valmistele viiden minuutin demo omalla Inkscape-tiedostolla.</span></label>
-            <label class="task-row"><input type="checkbox" data-task="51-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Pidä katselmointi asiakkaiden kanssa. Pidä heidän havaintonsa erillään omasta tulkinnastasi.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="51-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Valmistele viiden minuutin demo omalla Inkscape-tiedostolla. Lähetä Antille releasen v0.1 osoite.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="51-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Pidä katselmointi. Antti kokeilee zipiä omalla Windows-koneellaan. Matti kokeilee sovellusta sinun koneellasi. Pidä heidän havaintonsa erillään omasta tulkinnastasi.</span></label>
             <label class="task-row"><input type="checkbox" data-task="51-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Tee havainnoista issuet. Kirjaa niihin asiakkaan prioriteetti.</span></label>
             <label class="task-row"><input type="checkbox" data-task="51-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjoita tilatiedoston Seuraavana-kohtaan viikon 2 ensimmäinen tehtävä issue-numeroineen.</span></label>
             </div>
@@ -1090,7 +1090,7 @@
           <section class="view-section">
             <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 3</span></div>
             <div class="task-list">
-            <label class="task-row"><input type="checkbox" data-task="2-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Aja <code>npm install</code>, <code>npm run dev</code> ja <code>npm test</code>. Kirjaa tulos.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="2-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Tarkista, että terminaalin rivin alussa lukee (.venv). Aja <code>python tarkista_ymparisto.py</code>, <code>python main.py</code> ja <code>pytest</code>. Kirjaa tulos.</span></label>
             <label class="task-row"><input type="checkbox" data-task="2-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Ehdota tärkeän jatkon järjestys ja tuntiarviot asiakkaiden prioriteettien pohjalta. Sovi järjestys palaverissa.</span></label>
             <label class="task-row"><input type="checkbox" data-task="2-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Tee yksi pieni korjaus katselmoinnin havainnoista Täydennys-kaistalla.</span></label>
             </div>
@@ -1156,7 +1156,7 @@
             <div class="task-list">
             <label class="task-row"><input type="checkbox" data-task="3-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Sovi palaverissa, miten osat tunnistetaan uudesta tiedostosta.</span></label>
             <label class="task-row"><input type="checkbox" data-task="3-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjoita ennen toteutusta testi 23: Päivitä SVG.</span></label>
-            <label class="task-row"><input type="checkbox" data-task="3-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta toiminto omassa haarassa. Aja kaikki testit. Liitä haara päähaaraan pull requestilla.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="3-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta toiminto omassa haarassa. Aja kaikki testit <code>pytest</code>-komennolla. Liitä haara päähaaraan pull requestilla.</span></label>
             </div>
           </section>
 
@@ -1165,6 +1165,11 @@
             <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat"></nav>
             <ol data-lesson-list></ol>
           </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa, jos jäät jumiin – kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
 
           <div class="outcome-grid">
             <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint"></p></div>
@@ -1228,7 +1233,7 @@
 
           <div class="outcome-grid">
             <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint"></p></div>
-            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> testi 24 issuessa, valmis toiminto Pages-osoitteessa ja virheenkorjausketju 2 havaintoissuessa.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> testi 24 issuessa, valmis toiminto päähaarassa ja virheenkorjausketju 2 havaintoissuessa.</p></div>
           </div>
 
           <section class="week-journal" data-week-journal="4">
@@ -1254,7 +1259,7 @@
 
         <article class="week-card" id="week-5" data-week="5">
           <p class="view-eyebrow" data-week-label="1.–5.2.">Vaihe D · Jatkokehitys · Viikko 5 · 1.–5.2.</p>
-          <h1 class="view-title">Saavutettavuus: isot kahvat ja näppäimistö</h1>
+          <h1 class="view-title">Saavutettavuus: isot säätimet ja näppäimistö</h1>
 
           <div class="week-kicker" data-week-kicker hidden>
             <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
@@ -1278,10 +1283,10 @@
           <section class="view-section">
             <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 4</span></div>
             <div class="task-list">
-            <label class="task-row"><input type="checkbox" data-task="5-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Aja Lighthouse. Kirjaa perusmittaus.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="5-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Aja Accessibility Insightsin FastPass sovelluksen ikkunalle. Kirjaa perusmittaus.</span></label>
             <label class="task-row"><input type="checkbox" data-task="5-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Tarkista käyttöliittymävaatimuksesi. Kirjoita testit 25–26 ennen toteutusta.</span></label>
-            <label class="task-row"><input type="checkbox" data-task="5-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta isot kahvat ja näppäimistökäyttö työsyklillä.</span></label>
-            <label class="task-row"><input type="checkbox" data-task="5-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Aja testit 25–26 ja Lighthouse uudelleen. Vertaa tuloksia.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="5-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta isot säätimet ja näppäimistökäyttö työsyklillä. Tee raahattavat kahvat vain, jos ne kuuluvat tärkeän jatkon järjestykseesi.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="5-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Aja testit 25–26 näppäimistöllä ja Lukijalla. Aja FastPass uudelleen. Vertaa tuloksia.</span></label>
             </div>
           </section>
 
@@ -1291,9 +1296,14 @@
             <ol data-lesson-list></ol>
           </section>
 
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa, jos jäät jumiin – kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
           <div class="outcome-grid">
             <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint"></p></div>
-            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> Lighthousen tulokset ennen ja jälkeen, testit 25–26 issueissa ja korjausten commitit.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> FastPassin tulokset ennen ja jälkeen, testit 25–26 issueissa ja korjausten commitit.</p></div>
           </div>
 
           <section class="week-journal" data-week-journal="5">
@@ -1344,7 +1354,7 @@
             <div class="task-list">
             <label class="task-row"><input type="checkbox" data-task="6-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Jäädytä sisältö. Merkitse julkaisuehdokas tagilla v1.0-rc1.</span></label>
             <label class="task-row"><input type="checkbox" data-task="6-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Täydennä README ja käyttöohje. Kerro ohjeessa Inkscapen nimeämissäännöt.</span></label>
-            <label class="task-row"><input type="checkbox" data-task="6-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Pyydä julkaisutestaajaa kulkemaan koko polku puhtaassa ympäristössä. Pidä hänen havaintonsa erillään omasta tulkinnastasi.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="6-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Pyydä julkaisutestaajaa lataamaan zip ja kulkemaan koko polku Windows-koneella, jossa ei ole Pythonia. Pidä hänen havaintonsa erillään omasta tulkinnastasi.</span></label>
             </div>
           </section>
 
@@ -1407,7 +1417,7 @@
             <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 3</span></div>
             <div class="task-list">
             <label class="task-row"><input type="checkbox" data-task="7-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Korjaa estävät havainnot. Kirjoita kolmas virheenkorjausketju.</span></label>
-            <label class="task-row"><input type="checkbox" data-task="7-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Julkaise v1.0 tagilla. Pyydä asiakkaita vahvistamaan, että se toimii heidän koneellaan.</span></label>
+            <label class="task-row"><input type="checkbox" data-task="7-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Julkaise v1.0 tagilla. Pyydä Anttia vahvistamaan, että zip toimii hänen Windows-koneellaan. Näytä sovellus Matille omalla koneellasi.</span></label>
             <label class="task-row"><input type="checkbox" data-task="7-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Linkitä näyttömatriisin rivit päiväkirjan tunnusten avulla.</span></label>
             </div>
           </section>

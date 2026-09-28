@@ -474,22 +474,22 @@
       "teema": "GitHub Dark high contrast"
     },
     {
-      "tunnus": "chrome-lighthouse",
-      "otsikko": "Mittaa saavutettavuus Lighthousella",
-      "kuvaa": "Chromen kehittäjätyökalujen Lighthouse-välilehti ja saavutettavuuden pisteet",
-      "missa": "Chrome → F12 → Lighthouse",
+      "tunnus": "accessibility-insights-fastpass",
+      "otsikko": "Tarkista saavutettavuus FastPassilla",
+      "kuvaa": "Accessibility Insights for Windowsin FastPass: kohteena Vektoripajan ikkuna ja automaattisten tarkistusten tulos",
+      "missa": "Käynnistä-valikko → Accessibility Insights for Windows → FastPass",
       "tiedosto": "",
       "leveys": 1200,
       "korkeus": 700,
-      "alt": "Kuvakaappaus Chromen kehittäjätyökaluista. Lighthouse-välilehdellä valittuna vain Accessibility, ja tuloksena ympyrä, jonka keskellä on pistemäärä väliltä 0–100.",
+      "alt": "Kuvakaappaus Accessibility Insights for Windowsista. FastPass on valittuna, ja kohteena on Vektoripajan ikkuna. Alla on lista virheistä, jotka automaattiset tarkistukset löysivät.",
       "kohdat": [
-        { "n": 1, "teksti": "Avaa oma Pages-osoitteesi Chromessa. Paina F12. Valitse Lighthouse-välilehti." },
-        { "n": 2, "teksti": "Valitse kohdasta Categories vain Accessibility." },
-        { "n": 3, "teksti": "Valitse Analyze page load." },
-        { "n": 4, "teksti": "Kirjaa pisteet ja kolme ensimmäistä havaintoa päiväkirjaan." }
+        { "n": 1, "teksti": "Käynnistä Vektoripaja. Avaa Accessibility Insights for Windows. Valitse FastPass." },
+        { "n": 2, "teksti": "Valitse kohteeksi Vektoripajan ikkuna. Käynnistä tarkistus." },
+        { "n": 3, "teksti": "Lue automaattisten tarkistusten tulos. Kirjaa virheiden määrä ja kolme ensimmäistä havaintoa päiväkirjaan." },
+        { "n": 4, "teksti": "Käy läpi myös Tab stops -vaihe. Se näyttää, missä järjestyksessä Tab-näppäin kulkee säätimestä toiseen." }
       ],
       "pvm": "",
-      "teema": "Chrome, tumma teema"
+      "teema": "Windows, tumma teema"
     }
   ]
 }
