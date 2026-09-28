@@ -17,4 +17,4 @@ Päivitetty: pp.kk.vvvv · Viikko: __
 
 ## Krediitit
 Käytetty tässä kuussa: __ / 200
-Kaista C sallittu: kyllä / ei (alle 25 % jäljellä → ei)
+Agentti-kaista sallittu: kyllä / ei (alle 25 % jäljellä → ei)

@@ -7,7 +7,7 @@ labels: tehtäväkortti
 
 ## Tavoite
 
-## Kaista (A, B tai C) ja perustelu
+## Kaista (Tiedosto, Täydennys tai Agentti) ja perustelu
 
 ## Tiedostot
 
@@ -17,8 +17,8 @@ labels: tehtäväkortti
 ## Hyväksymiskriteerit
 - [ ] 
 
-## Testi: tunnus, syöte ja odotettu tulos
-T__: 
+## Testi: numero ja nimi, syöte ja odotettu tulos
+Testi __: 
 Oma odotettu tulokseni: 
 
 ## Oma tarkistus

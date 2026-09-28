@@ -14,8 +14,8 @@ labels: havainto
 2. 
 3. 
 
-## Testitapaus
-T__ tai "ei vielä testiä"
+## Testi
+Testi __: (nimi) tai "ei vielä testiä"
 
 ## Syy omin sanoin
 (Täytä, kun olet selvittänyt syyn.)

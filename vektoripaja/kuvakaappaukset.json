@@ -191,7 +191,7 @@
       "alt": "Kuvakaappaus GitHubin Actions-näkymästä tummassa teemassa. Vasemmalla työnkulku Julkaisu. Keskellä ajon askeleet, joiden vieressä on vihreä valintamerkki.",
       "kohdat": [
         { "n": 1, "teksti": "Avaa repositoryn Actions-välilehti. Valitse vasemmalta Julkaisu." },
-        { "n": 2, "teksti": "Avaa ylin ajo. Ajon nimi on Julkaisu ja tagisi, esimerkiksi Julkaisu v0.0.1." },
+        { "n": 2, "teksti": "Avaa ylin ajo. Ajon nimi on Julkaisu ja tagisi, esimerkiksi Julkaisu v0.0.41." },
         { "n": 3, "teksti": "Odota, että jokaisen askeleen vieressä on vihreä valintamerkki. Ajo kestää noin 10 minuuttia." },
         { "n": 4, "teksti": "Avaa askel, jonka nimi on Aja itsetesti valmiille .exe:lle. Viimeisellä rivillä pitää lukea ITSETESTI LÄPI." }
       ],
@@ -206,7 +206,7 @@
       "tiedosto": "",
       "leveys": 1200,
       "korkeus": 700,
-      "alt": "Kuvakaappaus GitHubin Releases-sivusta tummassa teemassa. Ylhäällä julkaisun nimi Vektoripaja v0.0.1. Kohdassa Assets tiedosto Vektoripaja-v0.0.1-windows.zip.",
+      "alt": "Kuvakaappaus GitHubin Releases-sivusta tummassa teemassa. Ylhäällä julkaisun nimi Vektoripaja v0.0.41. Kohdassa Assets tiedosto Vektoripaja-v0.0.41-windows.zip.",
       "kohdat": [
         { "n": 1, "teksti": "Avaa repositoryn etusivu. Valitse oikealta Releases." },
         { "n": 2, "teksti": "Tarkista, että ylimmän julkaisun nimessä on oma tagisi." },
@@ -416,7 +416,7 @@
       "kohdat": [
         { "n": 1, "teksti": "Avaa Chat VS Coden yläreunan Copilot-kuvakkeesta." },
         { "n": 2, "teksti": "Avaa tilavalikko viestikentän alta." },
-        { "n": 3, "teksti": "Valitse Ask, kun kysyt. Valitse Agent vain kaistalla C. Agent kuluttaa krediittejä." }
+        { "n": 3, "teksti": "Valitse Ask, kun kysyt. Valitse Agent vain Agentti-kaistalla. Agent kuluttaa krediittejä." }
       ],
       "pvm": "",
       "teema": "VS Code Dark High Contrast"
