@@ -1,0 +1,863 @@
+{
+  "skeema": 1,
+  "slug": "noppakauppa",
+  "nimi": "NoppaKauppa",
+  "kieli": "fi",
+  "paivaton": true,
+  "generoitu": "2026-09-28",
+  "lahde": {
+    "sisalto.js": "c4d5542e918934a2",
+    "index.html": "d9c2cf628377af7e"
+  },
+  "viikot": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+  ],
+  "lomaViikot": [],
+  "tyoviikot": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+  ],
+  "paivakirja": {
+    "polku": "project-docs/projektipaivakirja.md",
+    "tiedostonimi": "projektipaivakirja.md",
+    "viikkotiedosto": "projektipaivakirja-vko-{n}.md",
+    "viikkoOtsikko": "## Vko {n}",
+    "kentat": [
+      "### Mitä tein ja miten?",
+      "### Miksi tein näin?",
+      "### Missä työnäyte on?"
+    ],
+    "tyhja": "Ei vielä kirjattu."
+  },
+  "aiLoki": {
+    "otsikko": "## AI-loki",
+    "tiedosto": "AI-loki.md"
+  },
+  "suunnitelma": {
+    "tiedostonimi": "suunnitelma.md",
+    "polku": "project-docs/suunnitelma.md"
+  },
+  "viikko": {
+    "1": {
+      "jarjestys": 1,
+      "tyyppi": "pohjustus",
+      "vaihe": "A",
+      "otsikko": "Aloitus: toimeksianto ja työympäristö",
+      "tehtavat": [
+        {
+          "id": "1-1",
+          "teksti": "Lue toimeksianto ja kirjaa vähintään kuusi kysymystä ohjaajalle tai asiakkaalle."
+        },
+        {
+          "id": "1-2",
+          "teksti": "Sovi julkisen repositoryn asiat ja käynnistä ohjaajan kanssa katselmoijien etsintä viikkoja 10 ja 16 varten."
+        },
+        {
+          "id": "1-3",
+          "teksti": "Luo repository ja kansiorakenne: `frontend/`, `backend/` ja `project-docs/`."
+        },
+        {
+          "id": "1-4",
+          "teksti": "Alusta Vite+Vue-projekti ja FastAPI-sovellus ja käynnistä molemmat kehityspalvelimet."
+        }
+      ],
+      "nayta": "repositoryn linkki, ensimmäisen commitin tunnus ja kysymyslista `project-docs`-kansiossa.",
+      "tuotos": "Kysymyslista ohjaajalle, repository kansiorakenteineen sekä käynnistyvät Vite- ja FastAPI-kehityspalvelimet.",
+      "valmis": "Molemmat kehityspalvelimet käynnistyvät ohjeen komennoilla; repository on GitHubissa README:n ja ensimmäisen commitin kanssa; kysymyslista on ohjaajalla ja vastaukset tai avoimet asiat, mukaan lukien katselmoijien tilanne, on kirjattu.",
+      "tarkistukset": [
+        {
+          "id": "tiedosto:README.md",
+          "tyyppi": "tiedosto",
+          "polku": "README.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:1",
+          "tyyppi": "paivakirja",
+          "viikko": 1,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:1",
+          "tyyppi": "commitit",
+          "viikko": 1,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "2": {
+      "jarjestys": 2,
+      "tyyppi": "pohjustus",
+      "vaihe": "A",
+      "otsikko": "Suunnitelma ja tietomalli",
+      "tehtavat": [
+        {
+          "id": "2-1",
+          "teksti": "Kirjoita käyttäjätarinat toimeksiannosta ja priorisoi ne P0-, P1- ja P2-tasoille."
+        },
+        {
+          "id": "2-2",
+          "teksti": "Piirrä tietomalli: tuote, kategoria, käyttäjä rooleineen, tilaus ja tilausrivi."
+        },
+        {
+          "id": "2-3",
+          "teksti": "Vertaa tietovarastovaihtoehdot (SQLite, JSON-tiedosto, PostgreSQL) ja perustele valinta."
+        },
+        {
+          "id": "2-4",
+          "teksti": "Luonnostele rautalangat, hyväksytä ne ja pilko P0 vähintään kahdeksaksi issueksi."
+        }
+      ],
+      "nayta": "`suunnitelma.md`, tietomallikuva, issue-listan linkki ja hyväksyntämerkintä.",
+      "tuotos": "suunnitelma.md tarinoineen, tietomallikaavio, tietovarastovertailu, hyväksytyt rautalangat ja vähintään kahdeksan issueta.",
+      "valmis": "suunnitelma.md:ssä on tarinat prioriteetteineen, tietomallikaavio, tietovarastoperustelu ja teemapäätös; issueita on vähintään kahdeksan ja P0 on merkitty; rautalankojen hyväksyntä on kirjattu: kuka hyväksyi ja mitä hän sanoi. Hyväksyjäksi käy ohjaaja asiakkaan äänenä, jos katselmoijaa ei ole vielä nimetty.",
+      "tarkistukset": [
+        {
+          "id": "tiedosto:suunnitelma.md",
+          "tyyppi": "tiedosto",
+          "polku": "suunnitelma.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:2",
+          "tyyppi": "paivakirja",
+          "viikko": 2,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:2",
+          "tyyppi": "commitit",
+          "viikko": 2,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "3": {
+      "jarjestys": 3,
+      "tyyppi": "feature",
+      "vaihe": "A",
+      "otsikko": "Tuotelista kannasta",
+      "tehtavat": [
+        {
+          "id": "3-1",
+          "teksti": "Luo SQLite-kanta ja seed-skripti noin 20 oman teeman tuotteella."
+        },
+        {
+          "id": "3-2",
+          "teksti": "Toteuta `GET /api/tuotteet` ja kokeile se FastAPI:n /docs-sivulla."
+        },
+        {
+          "id": "3-3",
+          "teksti": "Rakenna TuoteLista- ja TuoteKortti-komponentit itse ilman valmista käyttöliittymän komponenttikirjastoa."
+        },
+        {
+          "id": "3-4",
+          "teksti": "Käsittele lataus-, tyhjä- ja virhetilat sekä kirjaa ja aja testitapaukset T01 ja T02."
+        }
+      ],
+      "nayta": "commit-linkki, kuvakaappaus tuotelistasta ja testitapausten T01–T02 tulokset päiväkirjassa.",
+      "tuotos": "SQLite-kanta seed-datalla, GET /api/tuotteet, TuoteLista- ja TuoteKortti-komponentit sekä testitapaukset T01–T02.",
+      "valmis": "Kehityspalvelin näyttää kannasta tulevat tuotteet; API palauttaa JSONia, mikä on testattu /docs-sivulta; kun backend sammutetaan, käyttäjä näkee virheilmoituksen eikä tyhjää ruutua.",
+      "tarkistukset": [
+        {
+          "id": "paivakirja:3",
+          "tyyppi": "paivakirja",
+          "viikko": 3,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:3",
+          "tyyppi": "commitit",
+          "viikko": 3,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "4": {
+      "jarjestys": 4,
+      "tyyppi": "feature",
+      "vaihe": "A",
+      "otsikko": "Kategoriat ja reititys",
+      "tehtavat": [
+        {
+          "id": "4-1",
+          "teksti": "Asenna ja konfiguroi vue-router ja kirjaa, miksi ulkoinen reitityskomponentti tarvitaan."
+        },
+        {
+          "id": "4-2",
+          "teksti": "Toteuta kategorialistaus ja kategoriakohtainen tuotenäkymä."
+        },
+        {
+          "id": "4-3",
+          "teksti": "Toteuta tuotesivu reittiparametrilla ja 404-reitti."
+        },
+        {
+          "id": "4-4",
+          "teksti": "Päätä responsiivisuuden taitekohdat, rakenna saavutettavuuden perusta sisään ja testaa oikealla puhelimella."
+        }
+      ],
+      "nayta": "commit, reittikartta suunnitelmassa ja kuvakaappaus omalta puhelimelta.",
+      "tuotos": "vue-router konfiguroituna, kategorialistaus, kategoriakohtainen näkymä, tuotesivu reittiparametrilla, 404-reitti ja mobiilinavigaatio.",
+      "valmis": "Jokaisella tuotteella ja kategorialla on oma URL, joka toimii myös selaimen päivityksellä; tuntematon osoite näyttää 404-näkymän; navigointi toimii omalla puhelimella ja perusnäkymissä pääsee liikkumaan näppäimistöllä.",
+      "tarkistukset": [
+        {
+          "id": "paivakirja:4",
+          "tyyppi": "paivakirja",
+          "viikko": 4,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:4",
+          "tyyppi": "commitit",
+          "viikko": 4,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "5": {
+      "jarjestys": 5,
+      "tyyppi": "feature",
+      "vaihe": "A",
+      "otsikko": "Ensijulkaisu",
+      "tehtavat": [
+        {
+          "id": "5-1",
+          "teksti": "Vertaa vähintään kolme julkaisuvaihtoehtoa ja valitse perustellen."
+        },
+        {
+          "id": "5-2",
+          "teksti": "Konfiguroi tuotanto-build ja ympäristömuuttujat; `.env` ei mene repositoryyn."
+        },
+        {
+          "id": "5-3",
+          "teksti": "Julkaise kauppa ja savutestaa julkinen osoite toisella laitteella (T03)."
+        },
+        {
+          "id": "5-4",
+          "teksti": "Aloita käyttöönotto-ohje READMEen."
+        }
+      ],
+      "nayta": "julkinen URL, julkaisulokin kuvakaappaus, vertailutaulukko suunnitelmassa ja T03:n tulos.",
+      "tuotos": "Julkaistu frontend ja backend, alustavertailu suunnitelmassa, ympäristömuuttujat kunnossa, käyttöönotto-ohjeen alku READMEssä ja testi T03.",
+      "valmis": "Julkinen URL näyttää tuotelistan kannasta; osoite toimii puhelimella ja toisella koneella; salaisuudet ja .env-tiedosto eivät ole repositoryssä.",
+      "tarkistukset": [
+        {
+          "id": "paivakirja:5",
+          "tyyppi": "paivakirja",
+          "viikko": 5,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:5",
+          "tyyppi": "commitit",
+          "viikko": 5,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "6": {
+      "jarjestys": 6,
+      "tyyppi": "feature",
+      "vaihe": "B",
+      "otsikko": "Sanahaku",
+      "tehtavat": [
+        {
+          "id": "6-1",
+          "teksti": "Toteuta haku-endpoint kyselyparametrilla parametrisoidulla SQL:llä ja kirjaa, miksi parametrisointi tehdään."
+        },
+        {
+          "id": "6-2",
+          "teksti": "Rakenna hakukenttä ja tuloslista."
+        },
+        {
+          "id": "6-3",
+          "teksti": "Käsittele tyhjä tulos opastavalla tekstillä ja backend-virhe omalla viestillään."
+        },
+        {
+          "id": "6-4",
+          "teksti": "Kirjaa ja aja testitapaukset T04 ja T05."
+        }
+      ],
+      "nayta": "commit, testitapausten T04–T05 tulokset ja kuvakaappaus hakudemosta.",
+      "tuotos": "Haku-endpoint parametrisoidulla SQL-kyselyllä, hakukenttä ja tuloslista, tyhjän tuloksen ja virheen käsittely sekä testitapaukset T04–T05.",
+      "valmis": "Haku ”nop” löytää ”Nopanheitto”-tuotteen; haku merkkijonolla '; DROP TABLE palauttaa nolla osumaa eikä kaada mitään; tyhjä tulos opastaa käyttäjää.",
+      "tarkistukset": [
+        {
+          "id": "paivakirja:6",
+          "tyyppi": "paivakirja",
+          "viikko": 6,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:6",
+          "tyyppi": "commitit",
+          "viikko": 6,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "7": {
+      "jarjestys": 7,
+      "tyyppi": "feature",
+      "vaihe": "B",
+      "otsikko": "Ostoskori",
+      "tehtavat": [
+        {
+          "id": "7-1",
+          "teksti": "Vertaa korin tallennusvaihtoehdot ja tee päätös ohjaajan kanssa kirjaten."
+        },
+        {
+          "id": "7-2",
+          "teksti": "Toteuta kori-store haarassa `feature/ostoskori` ja yhdistä se pull requestilla."
+        },
+        {
+          "id": "7-3",
+          "teksti": "Rakenna korinäkymä määränmuutoksineen ja summineen."
+        },
+        {
+          "id": "7-4",
+          "teksti": "Kirjaa ja aja testitapaukset T06 ja T07 sekä kirjaa virheenkorjausketju K1."
+        }
+      ],
+      "nayta": "pull requestin linkki, päätösmuistio, testitapausten T06–T07 tulokset ja K1-ketju päiväkirjassa.",
+      "tuotos": "Kori-store, korinäkymä määränmuutoksineen ja summineen, yhdistetty pull request, päätösmuistio korin tallennuksesta, testitapaukset T06–T07 ja virheenkorjausketju K1.",
+      "valmis": "Tuotteita voi lisätä ja poistaa, määrää muuttaa ja summa täsmää; kori säilyy sivun päivityksessä; pull request on yhdistetty ja mahdollinen konflikti on ratkaistu.",
+      "tarkistukset": [
+        {
+          "id": "pr:yhdistetty",
+          "tyyppi": "pr",
+          "min": 1,
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:7",
+          "tyyppi": "paivakirja",
+          "viikko": 7,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:7",
+          "tyyppi": "commitit",
+          "viikko": 7,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "8": {
+      "jarjestys": 8,
+      "tyyppi": "feature",
+      "vaihe": "B",
+      "otsikko": "Tunnukset ja istunto",
+      "tehtavat": [
+        {
+          "id": "8-1",
+          "teksti": "Vertaa istuntoratkaisut (JWT ja eväste-sessio) ja kirjaa päätös perusteluineen ohjaajan kommentilla."
+        },
+        {
+          "id": "8-2",
+          "teksti": "Toteuta rekisteröityminen validointeineen ja salasanan hashaus."
+        },
+        {
+          "id": "8-3",
+          "teksti": "Toteuta kirjautuminen, uloskirjautuminen ja auth-store Piniaan."
+        },
+        {
+          "id": "8-4",
+          "teksti": "Kirjaa ja aja testitapaukset T08 ja T09."
+        }
+      ],
+      "nayta": "päätösmuistio, kuvakaappaus kantariveistä (hash näkyy, salasana ei) ja testitapausten T08–T09 tulokset.",
+      "tuotos": "Users-taulu roolikenttineen, rekisteröityminen ja kirjautuminen, auth-store, päätösmuistio istuntoratkaisusta ja testitapaukset T08–T09.",
+      "valmis": "Kannassa ei näy yhtään selkokielistä salasanaa; väärä salasana ja tuntematon tunnus antavat saman yleisen virheilmoituksen; kirjautumistila säilyy sivun päivityksessä ja uloskirjautuminen tyhjentää sen.",
+      "tarkistukset": [
+        {
+          "id": "paivakirja:8",
+          "tyyppi": "paivakirja",
+          "viikko": 8,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:8",
+          "tyyppi": "commitit",
+          "viikko": 8,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "9": {
+      "jarjestys": 9,
+      "tyyppi": "feature",
+      "vaihe": "B",
+      "otsikko": "Tilaus ja tilaushistoria",
+      "tehtavat": [
+        {
+          "id": "9-1",
+          "teksti": "Toteuta tilauksen luonti transaktiona: tilaus ja rivit tallentuvat yhtenä kokonaisuutena."
+        },
+        {
+          "id": "9-2",
+          "teksti": "Rakenna tilauslomake ja valitse validointiin perusteltu ulkoinen paketti tai perustele oma validointi."
+        },
+        {
+          "id": "9-3",
+          "teksti": "Toteuta tilaushistorianäkymä, joka näyttää vain omat tilaukset."
+        },
+        {
+          "id": "9-4",
+          "teksti": "Kirjaa ja aja testitapaukset T10 ja T11."
+        }
+      ],
+      "nayta": "commit, lisäpaketin perustelu suunnitelmassa, testitapausten T10–T11 tulokset ja kuvakaappaus historiasta.",
+      "tuotos": "Tilauksen luonti transaktiona, tilauslomake validointeineen, tilaushistorianäkymä, perustelu k4-lisäpaketista ja testitapaukset T10–T11.",
+      "valmis": "Tilaus näkyy kannassa riveineen ja tilaushetken hinnoilla; historia näyttää vain omat tilaukset; tyhjää koria ei voi tilata eikä kirjautumaton pääse tilaamaan.",
+      "tarkistukset": [
+        {
+          "id": "paivakirja:9",
+          "tyyppi": "paivakirja",
+          "viikko": 9,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:9",
+          "tyyppi": "commitit",
+          "viikko": 9,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "10": {
+      "jarjestys": 10,
+      "tyyppi": "katselmointi",
+      "vaihe": "B",
+      "otsikko": "Asiakaskatselmointi",
+      "tehtavat": [
+        {
+          "id": "10-1",
+          "teksti": "Kutsu nimetty ulkopuolinen asiakkaan rooliin ja laadi kolmen tehtävän tehtävärata."
+        },
+        {
+          "id": "10-2",
+          "teksti": "Vedä katselmointi julkisessa osoitteessa ja kirjaa sitaatit ja oma tulkinta erikseen."
+        },
+        {
+          "id": "10-3",
+          "teksti": "Muuta palaute issueiksi ja priorisoi ne ohjaajan kanssa."
+        },
+        {
+          "id": "10-4",
+          "teksti": "Kirjoita asiakkaalle yhteenveto ilman teknistä jargonia."
+        }
+      ],
+      "nayta": "katselmointimuistio `project-docs`-kansiossa ja palauteissueiden linkit.",
+      "tuotos": "Katselmointimuistio rooleineen ja sitaatteineen, vähintään kolme palauteissueta prioriteetteineen ja asiakaskielinen yhteenveto.",
+      "valmis": "Katselmointimuistiossa on nimetty rooli, testaajan omat sanat ja niistä erillään oma tulkinta; vähintään kolme palautekohtaa on issueina prioriteetteineen; asiakasyhteenveto on kirjoitettu.",
+      "tarkistukset": [
+        {
+          "id": "paivakirja:10",
+          "tyyppi": "paivakirja",
+          "viikko": 10,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:10",
+          "tyyppi": "commitit",
+          "viikko": 10,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "11": {
+      "jarjestys": 11,
+      "tyyppi": "feature",
+      "vaihe": "C",
+      "otsikko": "Palautemuutos ja omat tiedot",
+      "tehtavat": [
+        {
+          "id": "11-1",
+          "teksti": "Toteuta katselmoinnin tärkein muutos ketjuna: issue, haara, commit ja tuotanto."
+        },
+        {
+          "id": "11-2",
+          "teksti": "Toteuta omien asiakastietojen muokkaus; käyttäjätunnusta ei voi vaihtaa."
+        },
+        {
+          "id": "11-3",
+          "teksti": "Päivitä suunnitelma ja työmääräarviot toteutuneen perusteella."
+        },
+        {
+          "id": "11-4",
+          "teksti": "Kirjaa virheenkorjausketju K2 aidosta havainnosta."
+        }
+      ],
+      "nayta": "ketju issuesta committiin ja tuotantolinkkiin, K2-ketju ja suunnitelman muutoshistoria.",
+      "tuotos": "Palautemuutos issuesta tuotantoon, omien tietojen muokkauslomake, päivitetyt työmääräarviot suunnitelmassa ja virheenkorjausketju K2.",
+      "valmis": "Muutos näkyy julkaistussa versiossa ja issue sulkeutuu committiin viitaten; omia tietoja voi muokata mutta käyttäjätunnusta ei; suunnitelmassa näkyy päivitetty arvio perusteluineen.",
+      "tarkistukset": [
+        {
+          "id": "paivakirja:11",
+          "tyyppi": "paivakirja",
+          "viikko": 11,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:11",
+          "tyyppi": "commitit",
+          "viikko": 11,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "12": {
+      "jarjestys": 12,
+      "tyyppi": "feature",
+      "vaihe": "C",
+      "otsikko": "Tuotehallinta ja roolisuojaus",
+      "tehtavat": [
+        {
+          "id": "12-1",
+          "teksti": "Toteuta roolipohjainen pääsynhallinta: reitin vartija (route guard) frontendissä ja roolitarkistus rajapinnassa."
+        },
+        {
+          "id": "12-2",
+          "teksti": "Rakenna tuotehallintanäkymä lisäys-, muokkaus- ja poistolomakkeineen."
+        },
+        {
+          "id": "12-3",
+          "teksti": "Validoi syötteet sekä frontendissä että backendissä."
+        },
+        {
+          "id": "12-4",
+          "teksti": "Kirjaa ja aja testitapaukset T12 ja T13, joissa asiakasrooli yrittää hallintaan myös suoralla rajapintakutsulla."
+        }
+      ],
+      "nayta": "testitapausten T12–T13 tulokset curl-kutsun vastauksineen, commit ja kuvakaappaus hallintanäkymästä.",
+      "tuotos": "Roolipohjainen pääsynhallinta kahdella tasolla, tuotehallintanäkymä lomakkeineen, validoinnit molemmilla puolilla ja testitapaukset T12–T13.",
+      "valmis": "Asiakasroolilla suora URL hallintanäkymään ohjaa pois ja suora rajapintakutsu palauttaa virhekoodin 401 (ei kirjautunut) tai 403 (ei oikeuksia); henkilökunnan lisäämä tuote näkyy heti kaupan puolella.",
+      "tarkistukset": [
+        {
+          "id": "paivakirja:12",
+          "tyyppi": "paivakirja",
+          "viikko": 12,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:12",
+          "tyyppi": "commitit",
+          "viikko": 12,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "13": {
+      "jarjestys": 13,
+      "tyyppi": "feature",
+      "vaihe": "C",
+      "otsikko": "Tilaukset ja saavutettavuus",
+      "tehtavat": [
+        {
+          "id": "13-1",
+          "teksti": "Toteuta henkilökunnan tilauslistaus suodatuksella: uudet ja käsitellyt."
+        },
+        {
+          "id": "13-2",
+          "teksti": "Toteuta tilauksen tila ja sen muutos, näytä tila asiakkaan historiassa ja aja testitapaus T14."
+        },
+        {
+          "id": "13-3",
+          "teksti": "Tee saavutettavuustarkistus koko sovellukselle ja korjaa löydökset."
+        },
+        {
+          "id": "13-4",
+          "teksti": "Aja Lighthouse ennen ja jälkeen korjausten ja tallenna raportit."
+        }
+      ],
+      "nayta": "n tulos, kuvakaappaukset molemmilla rooleilla ja Lighthouse-raportit ennen ja jälkeen.",
+      "tuotos": "Henkilökunnan tilauslistaus suodatuksineen, tilan muutos ja sen näkyminen asiakkaalle, testitapaus T14 sekä Lighthouse-raportit ennen ja jälkeen korjausten.",
+      "valmis": "Henkilökunta näkee kaikkien tilaukset ja asiakas vain omansa; käsitellyksi-merkintä näkyy asiakkaalle; ostopolun voi kulkea läpi pelkällä näppäimistöllä; Lighthouse-raportit ennen ja jälkeen on tallennettu ja vähintään yksi saavutettavuuspuute on korjattu.",
+      "tarkistukset": [
+        {
+          "id": "paivakirja:13",
+          "tyyppi": "paivakirja",
+          "viikko": 13,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:13",
+          "tyyppi": "commitit",
+          "viikko": 13,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "14": {
+      "jarjestys": 14,
+      "tyyppi": "laatu",
+      "vaihe": "C",
+      "otsikko": "Tietoturvaviikko",
+      "tehtavat": [
+        {
+          "id": "14-1",
+          "teksti": "Käy sovellus läpi tietoturvan tarkistuslistalla kohta kohdalta."
+        },
+        {
+          "id": "14-2",
+          "teksti": "Testaa hyökkääjän silmin: SQL-injektio, XSS, IDOR ja hallinnan rajapinta ilman istuntoa."
+        },
+        {
+          "id": "14-3",
+          "teksti": "Korjaa löydökset ja kirjaa virheenkorjausketju K3."
+        },
+        {
+          "id": "14-4",
+          "teksti": "Kirjoita `tietoturva-arvio.md` ja käy se läpi ohjaajan kanssa."
+        }
+      ],
+      "nayta": "`tietoturva-arvio.md`, hyökkäystestien kirjaukset, K3-ketju ja korjauscommitit.",
+      "tuotos": "tietoturva-arvio.md, hyökkäystestien kirjaukset, vähintään kaksi kovennusta, virheenkorjausketju K3 ja ohjaajan läpikäynti.",
+      "valmis": "tietoturva-arvio.md:ssä jokaisella tunnistetulla riskillä on ratkaisu tai perusteltu jäännösriski; vähintään yksi aito löydös on korjattu täydellisenä K3-ketjuna; ohjaajan läpikäynti on kirjattu.",
+      "tarkistukset": [
+        {
+          "id": "tiedosto:tietoturva-arvio.md",
+          "tyyppi": "tiedosto",
+          "polku": "tietoturva-arvio.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:14",
+          "tyyppi": "paivakirja",
+          "viikko": 14,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:14",
+          "tyyppi": "commitit",
+          "viikko": 14,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "15": {
+      "jarjestys": 15,
+      "tyyppi": "laatu",
+      "vaihe": "C",
+      "otsikko": "Testaus ja regressio",
+      "tehtavat": [
+        {
+          "id": "15-1",
+          "teksti": "Aja koko testimatriisi T01–T14 julkaistua versiota vasten ja kirjaa jokaisen rivin toteutunut tulos."
+        },
+        {
+          "id": "15-2",
+          "teksti": "Aja viikkojen 13 ja 14 korjausten regressiotestit."
+        },
+        {
+          "id": "15-3",
+          "teksti": "Refaktoroi vähintään yksi, enintään kaksi kohdetta ja aja matriisin osumat uudelleen."
+        }
+      ],
+      "nayta": "testimatriisin tulostaulukko `project-docs`-kansiossa, refaktorointicommitit ja poikkeamaissuet.",
+      "tuotos": "Testimatriisin tulostaulukko project-docs-kansiossa, regressioajojen tulokset, refaktorointicommitit perusteluineen ja poikkeamaissuet.",
+      "valmis": "Matriisin jokaisella rivillä on odotettu ja toteutunut tulos julkaistua versiota vasten; refaktorointicommiteissa testit on ajettu uudelleen ja tulos kirjattu; poikkeamat ovat issueina.",
+      "tarkistukset": [
+        {
+          "id": "paivakirja:15",
+          "tyyppi": "paivakirja",
+          "viikko": 15,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:15",
+          "tyyppi": "commitit",
+          "viikko": 15,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "16": {
+      "jarjestys": 16,
+      "tyyppi": "katselmointi",
+      "vaihe": "D",
+      "otsikko": "Julkaisuehdokas ja julkaisutestaus",
+      "tehtavat": [
+        {
+          "id": "16-1",
+          "teksti": "Jäädytä sisältö, julkaise julkaisuehdokas (RC) ja merkitse git-tag `v1.0-rc1`."
+        },
+        {
+          "id": "16-2",
+          "teksti": "Siivoa repository ja viimeistele käyttöönotto- ja käyttöohje."
+        },
+        {
+          "id": "16-3",
+          "teksti": "Järjestä julkaisutestaus: nimetty ulkopuolinen ja puhdas ympäristö ilman suullista apua."
+        },
+        {
+          "id": "16-4",
+          "teksti": "Kirjaa havainnot testaajan sanoin ja luokittele estävät ja ei-estävät löydökset."
+        }
+      ],
+      "nayta": "`v1.0-rc1`-tag, julkaisutestin pöytäkirja ja ohjeen korjauslista.",
+      "tuotos": "Tagi v1.0-rc1, siivottu repository, valmis käyttöönotto- ja käyttöohje, julkaisutestin pöytäkirja ja ohjeen korjauslista.",
+      "valmis": "Testaaja pääsi ohjeen avulla rekisteröitymisestä testitilaukseen asti ilman suullista apua, tai jokainen epäröintikohta on kirjattu ohjeen korjauslistaksi; estävät virheet on listattu erikseen.",
+      "tarkistukset": [
+        {
+          "id": "tagi:v1.0-rc1",
+          "tyyppi": "tagi",
+          "nimi": "v1.0-rc1",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:16",
+          "tyyppi": "paivakirja",
+          "viikko": 16,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:16",
+          "tyyppi": "commitit",
+          "viikko": 16,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "17": {
+      "jarjestys": 17,
+      "tyyppi": "julkaisu",
+      "vaihe": "D",
+      "otsikko": "Julkaisu v1.0",
+      "tehtavat": [
+        {
+          "id": "17-1",
+          "teksti": "Korjaa julkaisutestauksen estävät löydökset; ei-estävät kirjataan tunnetuiksi puutteiksi."
+        },
+        {
+          "id": "17-2",
+          "teksti": "Julkaise versio 1.0 ja merkitse git-tag."
+        },
+        {
+          "id": "17-3",
+          "teksti": "Viimeistele dokumentaatio: käyttöönotto, käynnistys, riippuvuudet, ympäristömuuttujat ja tunnetut puutteet."
+        },
+        {
+          "id": "17-4",
+          "teksti": "Kirjoita asiakkaan luovutusviesti selkokielellä."
+        }
+      ],
+      "nayta": "`v1.0`-tag ja julkaisumuistio, tuotanto-URL sekä luovutusviesti `project-docs`-kansiossa.",
+      "tuotos": "Tagi v1.0, julkaisumuistio, valmis dokumentaatio ja asiakkaan luovutusviesti.",
+      "valmis": "Tagi v1.0 on olemassa; julkinen osoite toimii; README:n avulla ulkopuolinen saa kehitysympäristön käyntiin; luovutusviesti ja tunnetut puutteet on kirjattu.",
+      "tarkistukset": [
+        {
+          "id": "tagi:v1.0",
+          "tyyppi": "tagi",
+          "nimi": "v1.0",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:17",
+          "tyyppi": "paivakirja",
+          "viikko": 17,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:17",
+          "tyyppi": "commitit",
+          "viikko": 17,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "18": {
+      "jarjestys": 18,
+      "tyyppi": "naytto",
+      "vaihe": "D",
+      "otsikko": "Näyttö",
+      "tehtavat": [
+        {
+          "id": "18-1",
+          "teksti": "Linkitä kaikkien 32 vaatimuksen työnäytteet näyttömatriisiin."
+        },
+        {
+          "id": "18-2",
+          "teksti": "Harjoittele 8–10 minuutin demo ja aja se kellon kanssa."
+        },
+        {
+          "id": "18-3",
+          "teksti": "Kirjoita itsearviointi konkreettisin esimerkein."
+        },
+        {
+          "id": "18-4",
+          "teksti": "Luovuta aineisto sovitulla tavalla."
+        }
+      ],
+      "nayta": "täytetty näyttömatriisi, demorunko ja itsearviointi päiväkirjan viimeisenä merkintänä.",
+      "tuotos": "Täytetty näyttömatriisi toimivine linkkeineen, harjoiteltu demorunko ja itsearviointi päiväkirjan viimeisenä merkintänä.",
+      "valmis": "Matriisin jokaisella rivillä on toimiva linkki; demo on ajettu kellon kanssa vähintään kerran toiselle ihmiselle; itsearviointi nimeää konkreettisia tilanteita.",
+      "tarkistukset": [
+        {
+          "id": "paivakirja:18",
+          "tyyppi": "paivakirja",
+          "viikko": 18,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:18",
+          "tyyppi": "commitit",
+          "viikko": 18,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    }
+  }
+}

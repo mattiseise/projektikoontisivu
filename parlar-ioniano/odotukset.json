@@ -1,0 +1,715 @@
+{
+  "skeema": 1,
+  "slug": "parlar-ioniano",
+  "nimi": "Parlar Ioniano",
+  "kieli": "en",
+  "paivaton": false,
+  "generoitu": "2026-09-28",
+  "lahde": {
+    "sisalto.js": "0d20e7f5fa088c42",
+    "index.html": "1603e76302c1d1d7"
+  },
+  "viikot": [
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49
+  ],
+  "lomaViikot": [
+    41,
+    42,
+    43
+  ],
+  "tyoviikot": [
+    36,
+    37,
+    38,
+    39,
+    40,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49
+  ],
+  "paivakirja": {
+    "polku": "project-docs/project-journal.md",
+    "tiedostonimi": "project-journal.md",
+    "viikkotiedosto": "project-journal-week-{n}.md",
+    "viikkoOtsikko": "## Week {n}",
+    "kentat": [
+      "### What did I do and how?",
+      "### Why did I do it this way?",
+      "### Exact location of the work sample"
+    ],
+    "tyhja": "Not recorded yet."
+  },
+  "aiLoki": {
+    "otsikko": "## AI log",
+    "tiedosto": "AI-log.md"
+  },
+  "suunnitelma": {
+    "tiedostonimi": "technical-plan.md",
+    "polku": "project-docs/technical-plan.md"
+  },
+  "viikko": {
+    "36": {
+      "jarjestys": 1,
+      "tyyppi": "pohjustus",
+      "vaihe": "A",
+      "otsikko": "Kickoff, toolchain and the first deploy",
+      "tehtavat": [
+        {
+          "id": "36-1",
+          "teksti": "Hold the kickoff talk: bring your question list and record every answer as a decision, an open item or an assumption."
+        },
+        {
+          "id": "36-2",
+          "teksti": "Set up VS Code, the site folder served over http://localhost and the public repository — privacy check first, two-factor authentication (2FA) on."
+        },
+        {
+          "id": "36-3",
+          "teksti": "Create a hotspot on your phone, connect your computer to it, and publish the empty site to GitHub Pages over your own connection."
+        },
+        {
+          "id": "36-4",
+          "teksti": "Draft the technical plan below and split the P0 pages into prioritised issues."
+        }
+      ],
+      "nayta": "Kickoff notes with the question list, the repository with its README, the first deploy live at the public URL, the plan draft, the P0 backlog — and the phone screenshot in project-docs/evidence/week-36/.",
+      "tuotos": "Kickoff notes with a question list, a public repository with a privacy check done, the site folder served by a local web server on your computer, the first deploy published over your phone hotspot and live at the public URL, the technical plan drafted and the P0 backlog — the ordered list of what is still to do — as issues.",
+      "valmis": "The public URL opens on a device that has never seen the project, and another person understands from the README and the plan what is being built and for whom.",
+      "tarkistukset": [
+        {
+          "id": "tiedosto:README.md",
+          "tyyppi": "tiedosto",
+          "polku": "README.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "kansio:project-docs/evidence/week-36/",
+          "tyyppi": "kansio",
+          "polku": "project-docs/evidence/week-36/",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:36",
+          "tyyppi": "paivakirja",
+          "viikko": 36,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:36",
+          "tyyppi": "commitit",
+          "viikko": 36,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ],
+      "vuosi": 2026,
+      "alku": "2026-08-31",
+      "loppu": "2026-09-06",
+      "erapaiva": "2026-09-04",
+      "label": "31 Aug – 4 Sep"
+    },
+    "37": {
+      "jarjestys": 2,
+      "tyyppi": "feature",
+      "vaihe": "A",
+      "otsikko": "Content becomes data: the Alphabet view",
+      "tehtavat": [
+        {
+          "id": "37-1",
+          "teksti": "Type data/letters.json and the first records of data/words.json from your PDF (pages 7, 9–11, 12 and 41) and document the data-store decision in the plan."
+        },
+        {
+          "id": "37-2",
+          "teksti": "Build js/data.js as the shared loader and the Alphabet & Pronunciation page on a runtime fetch with loading and error states."
+        },
+        {
+          "id": "37-3",
+          "teksti": "Run tools/check-data.html, add one check of your own and prove it fails on a planted error."
+        }
+      ],
+      "nayta": "data/letters.json and data/words.json, js/data.js, the Alphabet page live at the public URL, and the tools/check-data.html report pass/fail in the journal.",
+      "tuotos": "data/letters.json and the first records of data/words.json typed from the PDF (pages 7, 9–11, 12 and 41), a documented data-store decision in the plan, js/data.js as the one loader every page uses, the Alphabet & Pronunciation page live with real loading and error states, and tools/check-data.html reporting on every data file.",
+      "valmis": "The public URL shows the alphabet table rendered from data/letters.json, and tools/check-data.html reports \"content OK\" — and reports an error when you deliberately break one line.",
+      "tarkistukset": [
+        {
+          "id": "tiedosto:data/letters.json",
+          "tyyppi": "tiedosto",
+          "polku": "data/letters.json",
+          "lahde": "auto"
+        },
+        {
+          "id": "tiedosto:data/words.json",
+          "tyyppi": "tiedosto",
+          "polku": "data/words.json",
+          "lahde": "auto"
+        },
+        {
+          "id": "tiedosto:js/data.js",
+          "tyyppi": "tiedosto",
+          "polku": "js/data.js",
+          "lahde": "auto"
+        },
+        {
+          "id": "tiedosto:tools/check-data.html",
+          "tyyppi": "tiedosto",
+          "polku": "tools/check-data.html",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:37",
+          "tyyppi": "paivakirja",
+          "viikko": 37,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:37",
+          "tyyppi": "commitit",
+          "viikko": 37,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ],
+      "vuosi": 2026,
+      "alku": "2026-09-07",
+      "loppu": "2026-09-13",
+      "erapaiva": "2026-09-11",
+      "label": "7–11 Sep"
+    },
+    "38": {
+      "jarjestys": 3,
+      "tyyppi": "feature",
+      "vaihe": "A",
+      "otsikko": "Bootstrap shell and the component decision",
+      "tehtavat": [
+        {
+          "id": "38-1",
+          "teksti": "Write the comparison memo: Bootstrap, one other component library and the no-library option, with your own transferred-KB and Lighthouse measurements."
+        },
+        {
+          "id": "38-2",
+          "teksti": "Load Bootstrap from the CDN with a pinned version, configure the theme in css/style.css, and build the navbar, the grid and the Home page."
+        },
+        {
+          "id": "38-3",
+          "teksti": "Measure again from the DevTools Network panel and record the before/after numbers in the memo."
+        }
+      ],
+      "nayta": "The comparison memo with your own measured numbers is in project-docs/, the navbar works from every page on the public URL and collapses correctly on a phone, and the Home page shows the credit and terms.",
+      "tuotos": "A comparison memo of Bootstrap against one other component library and the no-library option — with your own measurements (transferred KB from the DevTools Network panel, Lighthouse scores) — Bootstrap loaded from the CDN with a pinned version, a theme configured by overriding its CSS variables in css/style.css, the navbar and the grid on every page, and the Home page with the classification, the credit and the terms of use.",
+      "valmis": "The comparison memo with your own measured numbers is in project-docs/, the navbar works from every page on the public URL and collapses correctly on a phone, and the Home page shows the credit and terms.",
+      "tarkistukset": [
+        {
+          "id": "tiedosto:css/style.css",
+          "tyyppi": "tiedosto",
+          "polku": "css/style.css",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:38",
+          "tyyppi": "paivakirja",
+          "viikko": 38,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:38",
+          "tyyppi": "commitit",
+          "viikko": 38,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ],
+      "vuosi": 2026,
+      "alku": "2026-09-14",
+      "loppu": "2026-09-20",
+      "erapaiva": "2026-09-18",
+      "label": "14–18 Sep"
+    },
+    "39": {
+      "jarjestys": 4,
+      "tyyppi": "feature",
+      "vaihe": "B",
+      "otsikko": "Pronouns: one function, eight tables",
+      "tehtavat": [
+        {
+          "id": "39-1",
+          "teksti": "Design the pronouns section of data/grammar.json so one shape serves all eight tables, and type the data from PDF pages 13–18 and 22–26."
+        },
+        {
+          "id": "39-2",
+          "teksti": "Write the reusable renderTable() in js/render.js and wire the eight tables into Bootstrap tabs."
+        },
+        {
+          "id": "39-3",
+          "teksti": "Make the loading and error states real and capture both as screenshots."
+        }
+      ],
+      "nayta": "All eight pronoun tables render on the public URL from data/grammar.json, the tabs can be operated with the keyboard alone, wide tables scroll horizontally on a phone, and renaming the JSON shows your error state.",
+      "tuotos": "The pronouns section of data/grammar.json (eight datasets typed from PDF pages 13–18 and 22–26), a reusable renderTable() in js/render.js that builds a Bootstrap table, Bootstrap tabs between pronoun types, working loading/error states, and horizontal scrolling for wide tables on a phone.",
+      "valmis": "All eight pronoun tables render on the public URL from data/grammar.json, the tabs can be operated with the keyboard alone, wide tables scroll horizontally on a phone instead of breaking the layout, and renaming the JSON shows your error state.",
+      "tarkistukset": [
+        {
+          "id": "tiedosto:data/grammar.json",
+          "tyyppi": "tiedosto",
+          "polku": "data/grammar.json",
+          "lahde": "auto"
+        },
+        {
+          "id": "tiedosto:js/render.js",
+          "tyyppi": "tiedosto",
+          "polku": "js/render.js",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:39",
+          "tyyppi": "paivakirja",
+          "viikko": 39,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:39",
+          "tyyppi": "commitit",
+          "viikko": 39,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ],
+      "vuosi": 2026,
+      "alku": "2026-09-21",
+      "loppu": "2026-09-27",
+      "erapaiva": "2026-09-25",
+      "label": "21–25 Sep"
+    },
+    "40": {
+      "jarjestys": 5,
+      "tyyppi": "feature",
+      "vaihe": "B",
+      "otsikko": "Nouns, articles and gender — and v0.5",
+      "tehtavat": [
+        {
+          "id": "40-1",
+          "teksti": "Add the nouns and articles sections to data/grammar.json from PDF pages 8 and 19–21, including the elision rules."
+        },
+        {
+          "id": "40-2",
+          "teksti": "Render the gender-by-number matrices with the reused renderTable() inside a Bootstrap accordion, and add the example sentences."
+        },
+        {
+          "id": "40-3",
+          "teksti": "Tag v0.5 and deploy it."
+        },
+        {
+          "id": "40-4",
+          "teksti": "Book the week-44 review in writing: names, date and tasks into project-docs/review-agreement.md."
+        }
+      ],
+      "nayta": "The four grammar pages render correctly on the public URL, the accordion opens and closes with the keyboard alone, v0.5 is tagged, and the review agreement (names + date) is committed in project-docs/.",
+      "tuotos": "The nouns and articles sections added to data/grammar.json from the PDF, the gender×number matrices rendered by the week-39 function, the rule sections wrapped in a Bootstrap accordion built from the same data, example sentences from the PDF, the v0.5 git tag, and a written agreement of the review: client's and tester's names, date and place for week 44.",
+      "valmis": "The four grammar pages render correctly on the public URL, the accordion opens and closes with the keyboard alone, v0.5 is tagged, and the review agreement (names + date) is committed in project-docs/.",
+      "tarkistukset": [
+        {
+          "id": "tiedosto:project-docs/review-agreement.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/review-agreement.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "tagi:v0.5",
+          "tyyppi": "tagi",
+          "nimi": "v0.5",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:40",
+          "tyyppi": "paivakirja",
+          "viikko": 40,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:40",
+          "tyyppi": "commitit",
+          "viikko": 40,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ],
+      "vuosi": 2026,
+      "alku": "2026-09-28",
+      "loppu": "2026-10-04",
+      "erapaiva": "2026-10-02",
+      "label": "28 Sep – 2 Oct"
+    },
+    "44": {
+      "jarjestys": 6,
+      "tyyppi": "katselmointi",
+      "vaihe": "B",
+      "otsikko": "Client review and re-plan",
+      "tehtavat": [
+        {
+          "id": "44-1",
+          "teksti": "Run the review session and record the tester's findings verbatim, separated from your interpretation."
+        },
+        {
+          "id": "44-2",
+          "teksti": "Turn the client's decisions into issues and re-prioritise the backlog, comparing estimates with reality."
+        },
+        {
+          "id": "44-3",
+          "teksti": "Fix a small batch and document debugging chain 1/3 end to end."
+        },
+        {
+          "id": "44-4",
+          "teksti": "Check the t12 open item (device-security policy) with the supervisor and update the plan."
+        }
+      ],
+      "nayta": "project-docs/review-2026-w44.md with the two voices separated, the updated backlog, the fix commits, and chain 1 in debugging-chains.md.",
+      "tuotos": "A review log with the tester's findings verbatim and your interpretation separately, the client's decisions on each finding, an updated P0/P1/P2 backlog with new issues, a small fix batch deployed, and debugging chain 1/3 (observation → reproduction → cause → fix commit → re-test → regression test). The t12 open item is checked with the supervisor.",
+      "valmis": "The review log is committed with the two voices clearly separated, every finding has a decision (fix / won't fix / P2), and chain 1/3 is complete from a real finding, with its regression test in the matrix.",
+      "tarkistukset": [
+        {
+          "id": "tiedosto:project-docs/review-2026-w44.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/review-2026-w44.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "tiedosto:debugging-chains.md",
+          "tyyppi": "tiedosto",
+          "polku": "debugging-chains.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:44",
+          "tyyppi": "paivakirja",
+          "viikko": 44,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:44",
+          "tyyppi": "commitit",
+          "viikko": 44,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ],
+      "vuosi": 2026,
+      "alku": "2026-10-26",
+      "loppu": "2026-11-01",
+      "erapaiva": "2026-10-30",
+      "label": "26–30 Oct"
+    },
+    "45": {
+      "jarjestys": 7,
+      "tyyppi": "feature",
+      "vaihe": "C",
+      "otsikko": "The number converter — built from scratch",
+      "tehtavat": [
+        {
+          "id": "45-1",
+          "teksti": "Write the converter tests first: expected values from PDF pages 42–45, committed while still red."
+        },
+        {
+          "id": "45-2",
+          "teksti": "Implement numberToIonian and the ordinal helpers in js/numbers.js as small pure functions until tests/tests.html reports 0 failed."
+        },
+        {
+          "id": "45-3",
+          "teksti": "Build the converter's user interface (UI) from scratch — no Bootstrap components — and ship the week-44 feedback change."
+        }
+      ],
+      "nayta": "tests/numbers.test.js with PDF-cited expectations, js/numbers.js, the Numbers page live, and the feedback-change commit linked to its finding.",
+      "tuotos": "data/numbers.json (cardinals, ordinals, the paragoge/apocope rules as data where possible), js/numbers.js with pure functions and no DOM code, tests/tests.html with a small test runner you wrote yourself and expected values taken from the PDF before running, the converter UI built from scratch, the comparison section, and the week-44 feedback change deployed and linked to its finding. Debugging chain 2/3 starts from any real bug found here or in week 46.",
+      "valmis": "On the public URL, at least 0–999 999 converts correctly including the separation and clipping rules, tests/tests.html reports 0 failed with at least 6 converter tests whose names cite PDF pages, and the feedback change is live.",
+      "tarkistukset": [
+        {
+          "id": "tiedosto:tests/numbers.test.js",
+          "tyyppi": "tiedosto",
+          "polku": "tests/numbers.test.js",
+          "lahde": "auto"
+        },
+        {
+          "id": "tiedosto:js/numbers.js",
+          "tyyppi": "tiedosto",
+          "polku": "js/numbers.js",
+          "lahde": "auto"
+        },
+        {
+          "id": "tiedosto:data/numbers.json",
+          "tyyppi": "tiedosto",
+          "polku": "data/numbers.json",
+          "lahde": "auto"
+        },
+        {
+          "id": "tiedosto:tests/tests.html",
+          "tyyppi": "tiedosto",
+          "polku": "tests/tests.html",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:45",
+          "tyyppi": "paivakirja",
+          "viikko": 45,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:45",
+          "tyyppi": "commitit",
+          "viikko": 45,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ],
+      "vuosi": 2026,
+      "alku": "2026-11-02",
+      "loppu": "2026-11-08",
+      "erapaiva": "2026-11-06",
+      "label": "2–6 Nov"
+    },
+    "46": {
+      "jarjestys": 8,
+      "tyyppi": "feature",
+      "vaihe": "C",
+      "otsikko": "Phrasebook, word cards and search",
+      "tehtavat": [
+        {
+          "id": "46-1",
+          "teksti": "Complete data/words.json and write data/phrases.json from PDF pages 12 and 51–56, marking pages 57–58 as “coming later”."
+        },
+        {
+          "id": "46-2",
+          "teksti": "Render the vocabulary as a Bootstrap card grid and build the dialogue viewer with the Ionian/English toggle."
+        },
+        {
+          "id": "46-3",
+          "teksti": "Build the search that filters the cards in memory, render with textContent, and prove the XSS string appears as text."
+        },
+        {
+          "id": "46-4",
+          "teksti": "Fill the test matrix to at least 12 cases and commit LICENSE and CREDITS per the client's decision."
+        }
+      ],
+      "nayta": "The Phrasebook live with the card grid and search, the XSS screenshot, the full test matrix with expected results filled in, and the LICENSE/CREDITS commits.",
+      "tuotos": "data/words.json completed and data/phrases.json written (basic vocabulary p. 12, greetings and dialogues pp. 51–56), the vocabulary rendered as a responsive Bootstrap card grid, the dialogue viewer with the toggle, a search box that filters in memory and renders with textContent, the remaining test matrix planned (including the broken-network case), the LICENSE/CREDITS files per the client's decision, and debugging chain 2/3 completed if it started in week 45.",
+      "valmis": "A beginner can find 'thank you' by typing 'thank' on the public URL, the cards filter as you type with a live match count, the dialogues toggle between languages, searching for the T10 attack string (the img-onerror line in the test matrix) renders as harmless text, and the full test matrix (at least 12 cases) exists with the expected results filled in.",
+      "tarkistukset": [
+        {
+          "id": "tiedosto:data/phrases.json",
+          "tyyppi": "tiedosto",
+          "polku": "data/phrases.json",
+          "lahde": "auto"
+        },
+        {
+          "id": "tiedosto:LICENSE",
+          "tyyppi": "tiedosto",
+          "polku": "LICENSE",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:46",
+          "tyyppi": "paivakirja",
+          "viikko": 46,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:46",
+          "tyyppi": "commitit",
+          "viikko": 46,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ],
+      "vuosi": 2026,
+      "alku": "2026-11-09",
+      "loppu": "2026-11-15",
+      "erapaiva": "2026-11-13",
+      "label": "9–13 Nov"
+    },
+    "47": {
+      "jarjestys": 9,
+      "tyyppi": "laatu",
+      "vaihe": "C",
+      "otsikko": "Quality and testing week",
+      "tehtavat": [
+        {
+          "id": "47-1",
+          "teksti": "Execute the whole test matrix against the public URL and fill the observed column with dates."
+        },
+        {
+          "id": "47-2",
+          "teksti": "Complete debugging chain 3/3 and compile chains 1–3 into one document."
+        },
+        {
+          "id": "47-3",
+          "teksti": "Run the accessibility audit and the W3C HTML validation: fix keyboard, contrast, alt, labels and markup errors, and record the Lighthouse before/after pairs."
+        },
+        {
+          "id": "47-4",
+          "teksti": "Review the CDN dependencies (version pinned, integrity hash) and run the no-secrets check, then refactor in small commits with the tests green in between."
+        }
+      ],
+      "nayta": "The executed test matrix, debugging-chains.md with three complete chains, the Lighthouse pairs in project-docs/lighthouse/, html-validation.md and security-review.md, and the refactor commit series.",
+      "tuotos": "The test matrix executed (at least 12 cases, expected vs observed, thirds covered), debugging chain 3/3 plus chains 1–2 compiled into demonstration shape, Lighthouse before/after pairs for accessibility and performance, keyboard navigation and contrast fixes, every page through the W3C HTML validator with the findings fixed, a review of what you load from the CDN, a no-secrets check, and a refactor commit series with green tests in between.",
+      "valmis": "The matrix has every row filled with observed results and dates, three complete chains are in debugging-chains.md, the after-Lighthouse accessibility score is recorded next to its before-pair, every page validates without errors, and tests/tests.html plus tools/check-data.html are both green on main.",
+      "tarkistukset": [
+        {
+          "id": "tiedosto:html-validation.md",
+          "tyyppi": "tiedosto",
+          "polku": "html-validation.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "tiedosto:security-review.md",
+          "tyyppi": "tiedosto",
+          "polku": "security-review.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "kansio:project-docs/lighthouse/",
+          "tyyppi": "kansio",
+          "polku": "project-docs/lighthouse/",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:47",
+          "tyyppi": "paivakirja",
+          "viikko": 47,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:47",
+          "tyyppi": "commitit",
+          "viikko": 47,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ],
+      "vuosi": 2026,
+      "alku": "2026-11-16",
+      "loppu": "2026-11-22",
+      "erapaiva": "2026-11-20",
+      "label": "16–20 Nov"
+    },
+    "48": {
+      "jarjestys": 10,
+      "tyyppi": "julkaisu",
+      "vaihe": "D",
+      "otsikko": "Release candidate, user test and v1.0",
+      "tehtavat": [
+        {
+          "id": "48-1",
+          "teksti": "Freeze the content and tag the release candidate (RC)."
+        },
+        {
+          "id": "48-2",
+          "teksti": "Run the clean-environment test from a fresh clone using only the README, fixing the README where it fails."
+        },
+        {
+          "id": "48-3",
+          "teksti": "Run the external user test with a written task card, recording the tester's words verbatim and separately."
+        },
+        {
+          "id": "48-4",
+          "teksti": "Write the deployment-path description from your own artefacts and release v1.0."
+        }
+      ],
+      "nayta": "The clean-clone notes, user-test-2026-w48.md, deployment-path.md, the instruction-fix commits and the v1.0 release.",
+      "tuotos": "A content-frozen release candidate, a clean-environment run (a fresh clone on another machine, README steps only), the external user test with the tester's words recorded verbatim and separated from your interpretation, every hesitation turned into an instruction fix, the deployment-path description built from your own artefacts (t11), the finished README and user documentation, and the v1.0 tag + GitHub release.",
+      "valmis": "The tester reached and read the café dialogue using only the site and your written instructions — no spoken help; the fresh clone runs with the README steps only; v1.0 is tagged, released and live at the public URL.",
+      "tarkistukset": [
+        {
+          "id": "tiedosto:user-test-2026-w48.md",
+          "tyyppi": "tiedosto",
+          "polku": "user-test-2026-w48.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "tiedosto:deployment-path.md",
+          "tyyppi": "tiedosto",
+          "polku": "deployment-path.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "tagi:v1.0",
+          "tyyppi": "tagi",
+          "nimi": "v1.0",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:48",
+          "tyyppi": "paivakirja",
+          "viikko": 48,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:48",
+          "tyyppi": "commitit",
+          "viikko": 48,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ],
+      "vuosi": 2026,
+      "alku": "2026-11-23",
+      "loppu": "2026-11-29",
+      "erapaiva": "2026-11-27",
+      "label": "23–27 Nov"
+    },
+    "49": {
+      "jarjestys": 11,
+      "tyyppi": "naytto",
+      "vaihe": "D",
+      "otsikko": "Demonstration week",
+      "tehtavat": [
+        {
+          "id": "49-1",
+          "teksti": "Link all 44 matrix rows below to their exact work samples."
+        },
+        {
+          "id": "49-2",
+          "teksti": "Commit the final project journal and AI log, and write the self-assessment."
+        },
+        {
+          "id": "49-3",
+          "teksti": "Rehearse the 8–10 minute demo twice with a timer and hand over on Friday."
+        }
+      ],
+      "nayta": "The fully linked matrix, project-docs with the final journal, AI log and self-assessment, and the handover confirmation.",
+      "tuotos": "The evidence matrix below fully linked (a commit, file, screenshot or memo per requirement), the final project journal and AI log committed, the demo rehearsed with a timer, the self-assessment written, and the handover done on Friday 4 Dec.",
+      "valmis": "Every matrix row has a working link, the journal covers all 11 weeks, the demo ran inside 10 minutes in rehearsal, and the handover package is complete on Friday.",
+      "tarkistukset": [
+        {
+          "id": "paivakirja:49",
+          "tyyppi": "paivakirja",
+          "viikko": 49,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:49",
+          "tyyppi": "commitit",
+          "viikko": 49,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ],
+      "vuosi": 2026,
+      "alku": "2026-11-30",
+      "loppu": "2026-12-06",
+      "erapaiva": "2026-12-04",
+      "label": "30 Nov – 4 Dec"
+    }
+  }
+}

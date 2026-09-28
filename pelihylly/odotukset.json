@@ -1,0 +1,873 @@
+{
+  "skeema": 1,
+  "slug": "pelihylly",
+  "nimi": "PeliHylly",
+  "kieli": "fi",
+  "paivaton": true,
+  "generoitu": "2026-09-28",
+  "lahde": {
+    "sisalto.js": "16c69b23b00d8a17",
+    "index.html": "5cb7a8b5badadea5"
+  },
+  "viikot": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+  ],
+  "lomaViikot": [],
+  "tyoviikot": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+  ],
+  "paivakirja": {
+    "polku": "project-docs/projektipaivakirja.md",
+    "tiedostonimi": "projektipaivakirja.md",
+    "viikkotiedosto": "projektipaivakirja-vko-{n}.md",
+    "viikkoOtsikko": "## Vko {n}",
+    "kentat": [
+      "### Mitä tein ja miten?",
+      "### Miksi tein näin?",
+      "### Missä työnäyte on?"
+    ],
+    "tyhja": "Ei vielä kirjattu."
+  },
+  "aiLoki": {
+    "otsikko": "## AI-loki",
+    "tiedosto": "AI-loki.md"
+  },
+  "suunnitelma": {
+    "tiedostonimi": "suunnitelma.md",
+    "polku": "project-docs/suunnitelma.md"
+  },
+  "viikko": {
+    "1": {
+      "jarjestys": 1,
+      "tyyppi": "pohjustus",
+      "vaihe": "A",
+      "otsikko": "Aloitus",
+      "tehtavat": [
+        {
+          "id": "1-1",
+          "teksti": "Lue toimeksianto ja kirjaa vähintään kahdeksan kysymyksen lista ohjaajalle ja asiakkaalle."
+        },
+        {
+          "id": "1-2",
+          "teksti": "Asenna ja todenna työkalut (Node.js:n LTS-versio eli pitkään tuettu vakaa versio, Git ja editori) ja luo Vite + React -projekti."
+        },
+        {
+          "id": "1-3",
+          "teksti": "Luo etärepository, tee ensimmäiset commitit ja push."
+        },
+        {
+          "id": "1-4",
+          "teksti": "Tee julkisen repositoryn tehtävät: yksityisyystarkistus, tekijänimestä sopiminen ja alaikäisellä huoltajan suostumus ohjaajan kautta."
+        }
+      ],
+      "nayta": "Repositoryn osoite, ensimmäisen commitin tunniste, työkalutodennusten tulosteet ja `project-docs/kysymykset.md`.",
+      "tuotos": "Kysymyslista `project-docs/kysymykset.md`, todennetut työkaluversiot, Vite + React -projektirunko sekä etärepository ensimmäisine committeineen.",
+      "valmis": "Ohjaaja avaa repositoryn osoitteen toisella koneella: README kertoo mikä projekti on, ja `npm install && npm run dev` käynnistää sovellusrungon. Kysymyslista on `project-docs/kysymykset.md`-tiedostossa.",
+      "tarkistukset": [
+        {
+          "id": "tiedosto:project-docs/kysymykset.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/kysymykset.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "tiedosto:README.md",
+          "tyyppi": "tiedosto",
+          "polku": "README.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:1",
+          "tyyppi": "paivakirja",
+          "viikko": 1,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:1",
+          "tyyppi": "commitit",
+          "viikko": 1,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "2": {
+      "jarjestys": 2,
+      "tyyppi": "pohjustus",
+      "vaihe": "A",
+      "otsikko": "Suunnitelma ja tietomalli",
+      "tehtavat": [
+        {
+          "id": "2-1",
+          "teksti": "Kirjoita käyttäjätarinat hyväksymiskriteereineen ja priorisoi P0, P1 ja P2 ohjaajan kanssa."
+        },
+        {
+          "id": "2-2",
+          "teksti": "Piirrä tietomalli sekä sivukartta ja rautalangat eli karkeat luonnokset näkymien rakenteesta; profiilisivu tarkimmin."
+        },
+        {
+          "id": "2-3",
+          "teksti": "Vertaile tietovarastot (SQLite, JSON-tiedosto, palvelintietokanta) ja perustele valinta."
+        },
+        {
+          "id": "2-4",
+          "teksti": "Pilko P0 issueiksi ja arvioi jokaisen työmäärä."
+        }
+      ],
+      "nayta": "`project-docs/suunnitelma.md`, tietomallikaavio, rautalangat, issue-taulu arvioineen ja ohjaajan kirjallinen kuittaus P0-rajauksesta.",
+      "tuotos": "`project-docs/suunnitelma.md`, tietomallikaavio, sivukartta ja rautalangat, tietovarastovertailu sekä issue-taulu työmääräarvioineen.",
+      "valmis": "Suunnitelma on `project-docs/suunnitelma.md`-tiedostossa, ohjaaja on kuitannut P0-rajauksen kirjallisesti (issue-kommentti), ja jokaisella P0-issuella on työmääräarvio.",
+      "tarkistukset": [
+        {
+          "id": "tiedosto:project-docs/suunnitelma.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/suunnitelma.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:2",
+          "tyyppi": "paivakirja",
+          "viikko": 2,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:2",
+          "tyyppi": "commitit",
+          "viikko": 2,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "3": {
+      "jarjestys": 3,
+      "tyyppi": "feature",
+      "vaihe": "A",
+      "otsikko": "Julkaistu runko",
+      "tehtavat": [
+        {
+          "id": "3-1",
+          "teksti": "Tuo react-router perustellusti ja rakenna reitit etusivulle, peleille ja profiilille."
+        },
+        {
+          "id": "3-2",
+          "teksti": "Pystytä Express ja `/api/health`; kytke SQLite ja luo tietokannan rakenne eli skeema migraatioskriptillä, joka luo taulut ohjelmallisesti."
+        },
+        {
+          "id": "3-3",
+          "teksti": "Vertaile julkaisualustat (Render, Railway, Fly.io), päätä ja julkaise."
+        },
+        {
+          "id": "3-4",
+          "teksti": "Lähetä asiakkaalle tilannekatsaus ilman teknistä jargonia ja tallenna viesti repositoryyn."
+        }
+      ],
+      "nayta": "Julkinen osoite, julkaisuloki tai kuvakaappaus, k2-muistio ja tilannekatsausviesti `project-docs/viestit.md`-tiedostossa.",
+      "tuotos": "Julkinen osoite, jossa navigoitava React-runko ja vastaava `/api/health`, SQLite-skeema migraatioskriptinä, k2-muistio ja ensimmäinen tilannekatsaus asiakkaalle.",
+      "valmis": "Julkinen osoite näyttää navigoitavan rungon, `/api/health` vastaa tuotannossa, ja tilannekatsausviesti on lähetetty ja tallennettu `project-docs/viestit.md`-tiedostoon.",
+      "tarkistukset": [
+        {
+          "id": "tiedosto:project-docs/viestit.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/viestit.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:3",
+          "tyyppi": "paivakirja",
+          "viikko": 3,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:3",
+          "tyyppi": "commitit",
+          "viikko": 3,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "4": {
+      "jarjestys": 4,
+      "tyyppi": "feature",
+      "vaihe": "A",
+      "otsikko": "Pelilista tietokannasta",
+      "tehtavat": [
+        {
+          "id": "4-1",
+          "teksti": "Tee siemendataskripti ja `GET /api/games`."
+        },
+        {
+          "id": "4-2",
+          "teksti": "Rakenna PeliLista- ja PeliKortti-komponentit ja hae data omalla fetch-hookilla."
+        },
+        {
+          "id": "4-3",
+          "teksti": "Käsittele lataus- ja virhetilat: kun API on alhaalla, käyttäjä näkee viestin eikä tyhjää sivua."
+        },
+        {
+          "id": "4-4",
+          "teksti": "Kirjaa kaksi numeroitua testitapausta (T01 ja T02) odotettuine tuloksineen ennen ajoa ja aja ne."
+        }
+      ],
+      "nayta": "Commitit, kuvakaappaus normaali- ja virhetilasta sekä testikirjaukset T01–T02.",
+      "tuotos": "Siemendataskripti, `GET /api/games`, PeliLista- ja PeliKortti-komponentit, oma fetch-hookki sekä käsitellyt lataus- ja virhetilat.",
+      "valmis": "Lista renderöityy tuotannossa tietokannan datasta; kun API on alhaalla, sivu näyttää virheilmoituksen eikä jää tyhjäksi; molemmista kuvakaappaus.",
+      "tarkistukset": [
+        {
+          "id": "paivakirja:4",
+          "tyyppi": "paivakirja",
+          "viikko": 4,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:4",
+          "tyyppi": "commitit",
+          "viikko": 4,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "5": {
+      "jarjestys": 5,
+      "tyyppi": "feature",
+      "vaihe": "A",
+      "otsikko": "Pelin lisäys ja validointi",
+      "tehtavat": [
+        {
+          "id": "5-1",
+          "teksti": "Rakenna lisäyslomake itse ilman valmista käyttöliittymäkirjastoa: label-kytkennät ja kontrolloitu tila."
+        },
+        {
+          "id": "5-2",
+          "teksti": "Toteuta `POST /api/games` ja palvelinvalidointi, joka palauttaa virhekoodin 400 (virheellinen pyyntö) ja virhelistan."
+        },
+        {
+          "id": "5-3",
+          "teksti": "Näytä virheviestit kenttien vieressä ohjelmallisesti kytkettyinä."
+        },
+        {
+          "id": "5-4",
+          "teksti": "Kirjaa ja aja testitapaukset T03–T05: onnistuminen, rajat ja suora API-kutsu."
+        }
+      ],
+      "nayta": "Commitit, validointisääntötaulukko, curl-tulosteet ja testikirjaukset T03–T05.",
+      "tuotos": "Itse rakennettu lisäyslomake, `POST /api/games` palvelinvalidointeineen, kentittäiset virheviestit sekä validointisääntötaulukko ja testitapaukset T03–T05.",
+      "valmis": "Tyhjä nimi, ylipitkä nimi ja onnistunut lisäys käyttäytyvät ennalta kirjatun odotuksen mukaan sekä selaimessa että suoralla API-kutsulla (curl-tuloste talteen).",
+      "tarkistukset": [
+        {
+          "id": "paivakirja:5",
+          "tyyppi": "paivakirja",
+          "viikko": 5,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:5",
+          "tyyppi": "commitit",
+          "viikko": 5,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "6": {
+      "jarjestys": 6,
+      "tyyppi": "feature",
+      "vaihe": "B",
+      "otsikko": "Tilat ja tilahistoria",
+      "tehtavat": [
+        {
+          "id": "6-1",
+          "teksti": "Määrittele tilat ja sallitut siirtymät itse ja kirjaa ne suunnitelmaan."
+        },
+        {
+          "id": "6-2",
+          "teksti": "Toteuta tilanvaihto-API, joka kirjoittaa historiarivin samassa transaktiossa."
+        },
+        {
+          "id": "6-3",
+          "teksti": "Näytä tilahistoria pelin sivulla ja toteuta ”pelaan parhaillaan” -merkintä."
+        },
+        {
+          "id": "6-4",
+          "teksti": "Kirjaa ja aja testitapaus T06 ja todista tulos suoralla tietokantakyselyllä."
+        }
+      ],
+      "nayta": "Commitit, siirtymätaulukko, sqlite3-kyselyn tuloste ennen ja jälkeen sekä T06.",
+      "tuotos": "Oma tilamalli sallittuine siirtymineen, tilanvaihto-API transaktiossa, tilahistoria pelin sivulla ja ”pelaan parhaillaan” -merkintä.",
+      "valmis": "Tilan vaihto näkyy heti pelin sivulla, ja `status_history`-taulussa on rivi, jonka aikaleima ja vanha→uusi tila täsmäävät; suora tietokantakysely liitetty päiväkirjaan.",
+      "tarkistukset": [
+        {
+          "id": "paivakirja:6",
+          "tyyppi": "paivakirja",
+          "viikko": 6,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:6",
+          "tyyppi": "commitit",
+          "viikko": 6,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "7": {
+      "jarjestys": 7,
+      "tyyppi": "feature",
+      "vaihe": "B",
+      "otsikko": "Käyttäjät ja kirjautuminen",
+      "tehtavat": [
+        {
+          "id": "7-1",
+          "teksti": "Vertaile istuntopohjainen kirjautuminen ja token ohjaajan kanssa ja kirjaa päätös perusteluineen."
+        },
+        {
+          "id": "7-2",
+          "teksti": "Toteuta rekisteröityminen bcrypt-hashilla: käyttäjänimi, salasana, sähköposti ja valinnainen profiilikuva."
+        },
+        {
+          "id": "7-3",
+          "teksti": "Toteuta kirjautuminen ja suojaa muokkausreitit middlewarella eli välikäsittelijällä, jonka läpi jokainen pyyntö kulkee ja joka tarkistaa omistajuuden."
+        },
+        {
+          "id": "7-4",
+          "teksti": "Kirjaa ja aja testitapaukset T07 ja T08: väärä salasana sekä toisen käyttäjän peli."
+        }
+      ],
+      "nayta": "Vertailumuistio ohjaajan kommentilla, commitit, curl-tulosteet sekä T07–T08.",
+      "tuotos": "Vertailumuistio istunto vs. token ohjaajan kommentilla, rekisteröityminen bcrypt-hashilla, kirjautuminen sekä suojatut muokkausreitit.",
+      "valmis": "Toisen käyttäjän pelin muokkausyritys palauttaa 403 (curl-tuloste talteen); tietokannassa ja lokeissa ei näy selväkielistä salasanaa; vertailumuistiossa on ohjaajan kommentti.",
+      "tarkistukset": [
+        {
+          "id": "paivakirja:7",
+          "tyyppi": "paivakirja",
+          "viikko": 7,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:7",
+          "tyyppi": "commitit",
+          "viikko": 7,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "8": {
+      "jarjestys": 8,
+      "tyyppi": "feature",
+      "vaihe": "B",
+      "otsikko": "Profiilisivu",
+      "tehtavat": [
+        {
+          "id": "8-1",
+          "teksti": "Toteuta profiilin kooste-API ja laske lukumäärät tietokannan kyselykielellä SQL:llä (GROUP BY -kyselyt)."
+        },
+        {
+          "id": "8-2",
+          "teksti": "Rakenna profiilinäkymä itse rautalangan mukaan ja reititä se käyttäjänimen mukaan."
+        },
+        {
+          "id": "8-3",
+          "teksti": "Varmista vierailijanäkymä yksityisessä selainikkunassa ilman kirjautumista."
+        },
+        {
+          "id": "8-4",
+          "teksti": "Vertaa toteutusta rautalankaan, kirjaa poikkeamat perusteluineen ja aja testitapaus T09."
+        }
+      ],
+      "nayta": "Kuvakaappaus ja rautalanka rinnakkain, commitit, tarkistuskyselyn tuloste, T09 sekä ketju 1:n kirjaus, jos aito bugi osui tälle viikolle.",
+      "tuotos": "Profiilin kooste-API GROUP BY -kyselyineen, itse rakennettu profiilinäkymä reitillä `/kayttaja/:nimi`, vierailijanäkymä sekä rautalankavertailu poikkeamineen.",
+      "valmis": "Vierailija näkee profiilin tilastoineen yksityisessä selainikkunassa, ja tilastoluvut täsmäävät tietokannan tarkistuskyselyyn; rautalankavertailu on päiväkirjassa.",
+      "tarkistukset": [
+        {
+          "id": "paivakirja:8",
+          "tyyppi": "paivakirja",
+          "viikko": 8,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:8",
+          "tyyppi": "commitit",
+          "viikko": 8,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "9": {
+      "jarjestys": 9,
+      "tyyppi": "feature",
+      "vaihe": "B",
+      "otsikko": "Haku ja suodatus",
+      "tehtavat": [
+        {
+          "id": "9-1",
+          "teksti": "Toteuta haku ja suodatus API-parametreina parametrisoiduilla SQL-kyselyillä."
+        },
+        {
+          "id": "9-2",
+          "teksti": "Rakenna suodatuskäyttöliittymä ja tyhjän tuloksen tila, josta suodattimet voi nollata."
+        },
+        {
+          "id": "9-3",
+          "teksti": "Valitse, perustele ja konfiguroi toinen ulkoinen komponentti ja arvioi mitä sen tekeminen itse maksaisi."
+        },
+        {
+          "id": "9-4",
+          "teksti": "Kirjaa suunnitelmaan kokoelmien laajennuspäätöksen kriteerit ja aja testitapaukset T10 ja T11."
+        }
+      ],
+      "nayta": "Commitit, perustelumuistio ulkoisesta komponentista, API-kutsun ja käyttöliittymän rinnakkaiset tulokset, T10–T11 sekä laajennuspäätöksen kriteerikirjaus.",
+      "tuotos": "Haku ja suodatus API-parametreina parametrisoiduilla kyselyillä, suodatuskäyttöliittymä tyhjän tuloksen tiloineen, perustelumuistio toisesta ulkoisesta komponentista sekä kokoelmien laajennuspäätöksen kriteerit.",
+      "valmis": "Suodatus ”NES + pelattu läpi” palauttaa vain oikeat rivit sekä käyttöliittymässä että suoralla API-kutsulla; haku ilman osumia näyttää tyhjän tilan viestin; perustelumuistio ulkoisesta komponentista ja kokoelmien päätöskriteerit ovat repositoryssa.",
+      "tarkistukset": [
+        {
+          "id": "paivakirja:9",
+          "tyyppi": "paivakirja",
+          "viikko": 9,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:9",
+          "tyyppi": "commitit",
+          "viikko": 9,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "10": {
+      "jarjestys": 10,
+      "tyyppi": "katselmointi",
+      "vaihe": "B",
+      "otsikko": "Asiakaskatselmointi",
+      "tehtavat": [
+        {
+          "id": "10-1",
+          "teksti": "Valmistele katselmointirunko ja demopolku: rekisteröityminen, peli, tila ja profiili."
+        },
+        {
+          "id": "10-2",
+          "teksti": "Pidä katselmointi: asiakas käyttää palvelua itse, sinä kirjaat."
+        },
+        {
+          "id": "10-3",
+          "teksti": "Erota havainnot ja oma tulkinta toisistaan ja priorisoi palaute yhdessä."
+        },
+        {
+          "id": "10-4",
+          "teksti": "Päivitä issuet ja kirjoita asiakkaalle yhteenveto ilman jargonia."
+        }
+      ],
+      "nayta": "Katselmointimuistio (rooli, ajankohta ja lainaukset), päivitetty issue-taulu ja yhteenvetoviesti.",
+      "tuotos": "Katselmointimuistio (rooli, ajankohta, vähintään viisi lainausta erillään tulkinnasta), priorisoitu issue-taulu ja yhteenvetoviesti asiakkaalle.",
+      "valmis": "Katselmointimuistiossa on vähintään viisi asiakkaan havaintoa hänen omilla sanoillaan erillään omasta tulkinnasta, ja issueissa on niistä johdetut priorisoidut tehtävät.",
+      "tarkistukset": [
+        {
+          "id": "paivakirja:10",
+          "tyyppi": "paivakirja",
+          "viikko": 10,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:10",
+          "tyyppi": "commitit",
+          "viikko": 10,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "11": {
+      "jarjestys": 11,
+      "tyyppi": "feature",
+      "vaihe": "C",
+      "otsikko": "Palautemuutos",
+      "tehtavat": [
+        {
+          "id": "11-1",
+          "teksti": "Valitse palautteesta tärkein muutos ja kirjaa sille hyväksymiskriteerit."
+        },
+        {
+          "id": "11-2",
+          "teksti": "Toteuta muutos feature-haarassa pienin commitein."
+        },
+        {
+          "id": "11-3",
+          "teksti": "Avaa pull request, tee itsekatselmointi, yhdistä pääversioon ja ratkaise mahdollinen konflikti."
+        },
+        {
+          "id": "11-4",
+          "teksti": "Päivitä suunnitelma ja arviot, tee kokoelmien laajennuspäätös ja kerro asiakkaalle mikä muuttui."
+        }
+      ],
+      "nayta": "Pull requestin linkki ja commit-historia, suunnitelman diff kirjattuine kokoelmapäätöksineen sekä asiakasviesti.",
+      "tuotos": "Feature-haara ja pull request kuvauksineen, muutos tuotannossa, päivitetty suunnitelma arvioineen ja kokoelmapäätöksineen sekä asiakasviesti.",
+      "valmis": "PR:ssä on kuvaus, viittaus palautteeseen ja katselmointikommentti; muutos on tuotannossa; suunnitelman muutosvertailu (diff) näyttää päivitetyt arviot.",
+      "tarkistukset": [
+        {
+          "id": "pr:yhdistetty",
+          "tyyppi": "pr",
+          "min": 1,
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:11",
+          "tyyppi": "paivakirja",
+          "viikko": 11,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:11",
+          "tyyppi": "commitit",
+          "viikko": 11,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "12": {
+      "jarjestys": 12,
+      "tyyppi": "feature",
+      "vaihe": "C",
+      "otsikko": "Responsiivisuus ja saavutettavuus",
+      "tehtavat": [
+        {
+          "id": "12-1",
+          "teksti": "Päätä taitekohdat ja korjaa keskeiset näkymät mobiiliin. Testaa oikealla laitteella."
+        },
+        {
+          "id": "12-2",
+          "teksti": "Käy läpi näppäinpolku, fokusjärjestys ja fokuksen näkyvyys."
+        },
+        {
+          "id": "12-3",
+          "teksti": "Tarkista kontrastit, alt-tekstit, label-kytkennät ja otsikkohierarkia."
+        },
+        {
+          "id": "12-4",
+          "teksti": "Aja Lighthouse ennen ja jälkeen ja kirjaa testitapaus T12."
+        }
+      ],
+      "nayta": "Kuvakaappaukset laitteelta, Lighthouse-raportit ennen ja jälkeen, commitit sekä T12.",
+      "tuotos": "Omat taitekohdat ja mobiiliin korjatut näkymät, tarkistettu näppäinpolku ja fokus, korjatut kontrastit ja label-kytkennät sekä Lighthouse-raportit ennen ja jälkeen.",
+      "valmis": "Pelin lisäys onnistuu puhelimella ja pelkällä näppäimistöllä; Lighthouse-saavutettavuus on kirjattu ennen ja jälkeen, ja jokainen korjaus on selitetty omin sanoin.",
+      "tarkistukset": [
+        {
+          "id": "paivakirja:12",
+          "tyyppi": "paivakirja",
+          "viikko": 12,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:12",
+          "tyyppi": "commitit",
+          "viikko": 12,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "13": {
+      "jarjestys": 13,
+      "tyyppi": "laatu",
+      "vaihe": "C",
+      "otsikko": "Testausviikko",
+      "tehtavat": [
+        {
+          "id": "13-1",
+          "teksti": "Täydennä testimatriisi kolmeen luokkaan ja kirjaa odotettu tulos ennen ajoa."
+        },
+        {
+          "id": "13-2",
+          "teksti": "Aja kaikki tapaukset tuotantoversiota vasten ja kirjaa toteutuneet tulokset."
+        },
+        {
+          "id": "13-3",
+          "teksti": "Korjaa löydökset täysinä ketjuina havainnosta regressiotestiin asti."
+        },
+        {
+          "id": "13-4",
+          "teksti": "Aja testitapaus T13: verkkoyhteys katkeaa kesken lomakkeen lähetyksen."
+        }
+      ],
+      "nayta": "Testimatriisi tuloksineen, ketjukirjaukset ja korjauscommitit.",
+      "tuotos": "Täydennetty testimatriisi tuloksineen, virheenkorjausketju 2 regressiotestiin asti sekä korjauscommitit.",
+      "valmis": "Matriisin jokaisella rivillä on odotettu tulos (kirjattu ennen ajoa) ja toteutunut tulos; vähintään yksi täydellinen ketju on viety regressiotestiin asti tällä viikolla.",
+      "tarkistukset": [
+        {
+          "id": "paivakirja:13",
+          "tyyppi": "paivakirja",
+          "viikko": 13,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:13",
+          "tyyppi": "commitit",
+          "viikko": 13,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "14": {
+      "jarjestys": 14,
+      "tyyppi": "laatu",
+      "vaihe": "C",
+      "otsikko": "Laatuviikko",
+      "tehtavat": [
+        {
+          "id": "14-1",
+          "teksti": "Arvioi oma rakenne (komponenttien vastuut, moduulijako ja toisto) ja listaa refaktorointikohteet."
+        },
+        {
+          "id": "14-2",
+          "teksti": "Refaktoroi lista pienin, kuvaavasti nimetyin commitein."
+        },
+        {
+          "id": "14-3",
+          "teksti": "Kirjoita tietoturva-arvio: syötteet, salasanat, istunnot, tietojen näkyvyys, SQL-injektio ja XSS eli käyttäjän syöttämän koodin ajautuminen sivulla."
+        },
+        {
+          "id": "14-4",
+          "teksti": "Aja testimatriisin ydinrivit uudelleen ennen ja jälkeen refaktoroinnin."
+        }
+      ],
+      "nayta": "Commit-sarja, `project-docs/tietoturva-arvio.md` ja regressiokirjaus.",
+      "tuotos": "Refaktorointikohteiden lista, refaktorointicommit-sarja, `project-docs/tietoturva-arvio.md` sekä regressiokirjaus ennen ja jälkeen.",
+      "valmis": "Refaktorointicommitit ovat pieniä ja kuvaavasti nimettyjä; testimatriisin ydinrivit menevät läpi ennen ja jälkeen; `project-docs/tietoturva-arvio.md` kattaa vähintään viisi riskiä ratkaisuineen ja koodiviittauksineen.",
+      "tarkistukset": [
+        {
+          "id": "tiedosto:project-docs/tietoturva-arvio.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/tietoturva-arvio.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:14",
+          "tyyppi": "paivakirja",
+          "viikko": 14,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:14",
+          "tyyppi": "commitit",
+          "viikko": 14,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "15": {
+      "jarjestys": 15,
+      "tyyppi": "laatu",
+      "vaihe": "C",
+      "otsikko": "Dokumentaatio",
+      "tehtavat": [
+        {
+          "id": "15-1",
+          "teksti": "Kirjoita README ja käyttöönotto-ohje: vaatimukset, asennus, ympäristömuuttujat, migraatiot, käynnistys ja julkaisu."
+        },
+        {
+          "id": "15-2",
+          "teksti": "Dokumentoi riippuvuudet, komponenttirakenne ja ympäristöasetukset."
+        },
+        {
+          "id": "15-3",
+          "teksti": "Tee kuivaharjoitus: kloonaa puhtaaseen kansioon ja seuraa ohjetta orjallisesti."
+        },
+        {
+          "id": "15-4",
+          "teksti": "Kokoa julkaisuehdokkaan jäädytyksen tarkistuslista työviikkoa 16 varten."
+        }
+      ],
+      "nayta": "README ja `project-docs/`, `.env.example` sekä kuivaharjoituksen loki.",
+      "tuotos": "README ja käyttöönotto-ohje, `.env.example`, riippuvuustaulukko ja arkkitehtuurikuvaus (k7-lista), kuivaharjoituksen loki sekä julkaisuehdokkaan (release candidate, RC) jäädytyksen tarkistuslista.",
+      "valmis": "`git clone` puhtaaseen kansioon ja ohjeen komennot tuottavat toimivan sovelluksen ilman yhtään ohjeen ulkopuolista temppua; jokainen matkalla kirjattu tökkäys on korjattu ohjeeseen.",
+      "tarkistukset": [
+        {
+          "id": "paivakirja:15",
+          "tyyppi": "paivakirja",
+          "viikko": 15,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:15",
+          "tyyppi": "commitit",
+          "viikko": 15,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "16": {
+      "jarjestys": 16,
+      "tyyppi": "katselmointi",
+      "vaihe": "D",
+      "otsikko": "Julkaisuehdokas ja julkaisutestaus",
+      "tehtavat": [
+        {
+          "id": "16-1",
+          "teksti": "Jäädytä sisältö, rakenna tuotantobuild ja julkaise julkaisuehdokas tagilla asiakkaan ympäristöön."
+        },
+        {
+          "id": "16-2",
+          "teksti": "Järjestä julkaisutesti: ulkopuolinen testaaja, puhdas ympäristö ja vain kirjallinen ohje."
+        },
+        {
+          "id": "16-3",
+          "teksti": "Kirjaa testaajan havainnot hänen omilla sanoillaan ja jokainen epäröintikohta ohjeen korjauslistaksi."
+        },
+        {
+          "id": "16-4",
+          "teksti": "Luokittele löydökset estäviin ja v1.1:een siirtyviin ja aloita estävien virheiden ketjut."
+        }
+      ],
+      "nayta": "Julkaisuehdokkaan tagi, julkaisutestin pöytäkirja (rooli, ajankohta ja testaajan sanat), löydösten luokittelu ja ketju 3:n aloitus.",
+      "tuotos": "Julkaisuehdokkaan tag eli versiomerkintä Gitissä, julkaistu julkaisuehdokas asiakkaan ympäristössä, julkaisutestin pöytäkirja, löydösten estävä/ei-estävä-luokittelu ja aloitettu virheenkorjausketju 3.",
+      "valmis": "Testaaja rekisteröityi, lisäsi pelin ja vaihtoi tilan ilman suullista apua, tai jokainen epäröintikohta on kirjattu ja luokiteltu; RC-tag on repositoryssa ja estävien vikojen ketjut aloitettu.",
+      "tarkistukset": [
+        {
+          "id": "paivakirja:16",
+          "tyyppi": "paivakirja",
+          "viikko": 16,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:16",
+          "tyyppi": "commitit",
+          "viikko": 16,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "17": {
+      "jarjestys": 17,
+      "tyyppi": "julkaisu",
+      "vaihe": "D",
+      "otsikko": "Julkaisu v1.0",
+      "tehtavat": [
+        {
+          "id": "17-1",
+          "teksti": "Korjaa estävät virheet ja vie ketju 3 regressiotestiin asti."
+        },
+        {
+          "id": "17-2",
+          "teksti": "Rakenna tuotantobuild, tarkista ympäristöasetukset ja julkaise v1.0 tagilla."
+        },
+        {
+          "id": "17-3",
+          "teksti": "Kirjoita julkaisutiedote asiakkaalle: mitä palvelu tekee ja mitä jäi v1.1:een."
+        },
+        {
+          "id": "17-4",
+          "teksti": "Savutestaa tuotanto puhtaassa selainikkunassa ja toisella laitteella."
+        }
+      ],
+      "nayta": "Tagi `v1.0`, tuotannon osoite, julkaisutiedote ja savutestikirjaus.",
+      "tuotos": "Korjatut estävät virheet ja ketju 3 regressiotestiin asti, tuotantobuild ja tag `v1.0`, julkaisutiedote asiakkaalle sekä savutestikirjaus.",
+      "valmis": "Osoite toimii yksityisessä selainikkunassa ja toisella laitteella; repositoryssa on tag `v1.0`; julkaisutiedote kertoo asiakkaan kielellä, mitä palvelu tekee ja mitä siirtyi jatkoon.",
+      "tarkistukset": [
+        {
+          "id": "tagi:v1.0",
+          "tyyppi": "tagi",
+          "nimi": "v1.0",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:17",
+          "tyyppi": "paivakirja",
+          "viikko": 17,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:17",
+          "tyyppi": "commitit",
+          "viikko": 17,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    },
+    "18": {
+      "jarjestys": 18,
+      "tyyppi": "naytto",
+      "vaihe": "D",
+      "otsikko": "Näyttö",
+      "tehtavat": [
+        {
+          "id": "18-1",
+          "teksti": "Täsmälinkitä näyttömatriisin kaikki 32 vaatimusta suoraan työnäytteisiin."
+        },
+        {
+          "id": "18-2",
+          "teksti": "Harjoittele 8–10 minuutin demo ääneen ja kellon kanssa."
+        },
+        {
+          "id": "18-3",
+          "teksti": "Kirjoita itsearvio: mikä onnistui, missä tarvitsit apua ja mitä tekisit toisin."
+        },
+        {
+          "id": "18-4",
+          "teksti": "Luovuta paketti ohjaajalle ja pyydä luovutuskuittaus."
+        }
+      ],
+      "nayta": "Täsmälinkitetty näyttömatriisi, itsearvio, demorunko ja luovutuskuittaus.",
+      "tuotos": "Täsmälinkitetty näyttömatriisi, harjoiteltu 8–10 minuutin demo, kirjallinen itsearvio ja ohjaajalle luovutettu paketti.",
+      "valmis": "Ohjaaja avaa matriisista satunnaisen rivin ja päätyy oikeaan työnäytteeseen alle minuutissa; demo pysyy harjoituksessa ajassa; itsearvio ja AI-loki ovat päiväkirjan mukana repositoryssa.",
+      "tarkistukset": [
+        {
+          "id": "paivakirja:18",
+          "tyyppi": "paivakirja",
+          "viikko": 18,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:18",
+          "tyyppi": "commitit",
+          "viikko": 18,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ]
+    }
+  }
+}

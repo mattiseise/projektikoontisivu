@@ -1,0 +1,1004 @@
+{
+  "skeema": 1,
+  "slug": "vektoripaja",
+  "nimi": "Vektoripaja",
+  "kieli": "fi",
+  "paivaton": false,
+  "generoitu": "2026-09-28",
+  "lahde": {
+    "sisalto.js": "4037d582f7aa2463",
+    "index.html": "e31582558efe4069"
+  },
+  "viikot": [
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "lomaViikot": [
+    42,
+    52,
+    53,
+    1,
+    8
+  ],
+  "tyoviikot": [
+    40,
+    41,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    9
+  ],
+  "paivakirja": {
+    "polku": "project-docs/projektipaivakirja.md",
+    "tiedostonimi": "projektipaivakirja.md",
+    "viikkotiedosto": "projektipaivakirja-vko-{n}.md",
+    "viikkoOtsikko": "## Vko {n}",
+    "kentat": [
+      "### Mitä tein ja miten?",
+      "### Miksi tein näin?",
+      "### Missä työnäyte on?"
+    ],
+    "tyhja": "Ei vielä kirjattu."
+  },
+  "aiLoki": {
+    "otsikko": "## AI-loki",
+    "tiedosto": "AI-loki.md"
+  },
+  "suunnitelma": {
+    "tiedostonimi": "suunnitelma.md",
+    "polku": "project-docs/suunnitelma.md"
+  },
+  "viikko": {
+    "2": {
+      "jarjestys": 12,
+      "tyyppi": "pohjustus",
+      "vaihe": "D",
+      "otsikko": "Paluuviikko: testit läpi ja tärkeän jatkon järjestys",
+      "tehtavat": [
+        {
+          "id": "2-1",
+          "teksti": "Tarkista, että terminaalin rivin alussa lukee (.venv). Aja `python tarkista_ymparisto.py`, `python main.py` ja `pytest`. Kirjaa tulos."
+        },
+        {
+          "id": "2-2",
+          "teksti": "Ehdota tärkeän jatkon järjestys ja tuntiarviot asiakkaiden prioriteettien pohjalta. Sovi järjestys palaverissa."
+        },
+        {
+          "id": "2-3",
+          "teksti": "Tee yksi pieni korjaus katselmoinnin havainnoista Täydennys-kaistalla."
+        }
+      ],
+      "nayta": "testiajon tulos päiväkirjassa, tärkeän jatkon järjestys issueissa ja korjauksen commit.",
+      "tuotos": "Testiajon tulos päiväkirjassa · tärkeän jatkon järjestys tuntiarvioineen issueissa · yksi pieni korjaus Täydennys-kaistalla.",
+      "valmis": "`python tarkista_ymparisto.py` tulostaa joka rivin alkuun OK, `pytest` näyttää, että kaikki testit menevät läpi, tärkeän jatkon järjestys on sovittu palaverissa, ja korjauksen commit on GitHubissa.",
+      "tarkistukset": [
+        {
+          "id": "paivakirja:2",
+          "tyyppi": "paivakirja",
+          "viikko": 2,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:2",
+          "tyyppi": "commitit",
+          "viikko": 2,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ],
+      "vuosi": 2027,
+      "alku": "2027-01-11",
+      "loppu": "2027-01-17",
+      "erapaiva": "2027-01-15",
+      "label": "11.–15.1."
+    },
+    "3": {
+      "jarjestys": 13,
+      "tyyppi": "feature",
+      "vaihe": "D",
+      "otsikko": "Päivitä SVG: muokattu piirros malliksi",
+      "tehtavat": [
+        {
+          "id": "3-1",
+          "teksti": "Sovi palaverissa, miten osat tunnistetaan uudesta tiedostosta."
+        },
+        {
+          "id": "3-2",
+          "teksti": "Kirjoita ennen toteutusta testi 23: Päivitä SVG."
+        },
+        {
+          "id": "3-3",
+          "teksti": "Toteuta toiminto omassa haarassa. Aja kaikki testit `pytest`-komennolla. Liitä haara päähaaraan pull requestilla."
+        }
+      ],
+      "nayta": "testi 23 issuessa ja yhdistetty pull request.",
+      "tuotos": "Sovittu tunnistustapa · testi 23 · toiminto omassa haarassa · pull request ja merge.",
+      "valmis": "Muokattu SVG päivittyy malliin, transformit säilyvät, kaikki testit menevät läpi, ja pull request on yhdistetty päähaaraan.",
+      "tarkistukset": [
+        {
+          "id": "pr:yhdistetty",
+          "tyyppi": "pr",
+          "min": 1,
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:3",
+          "tyyppi": "paivakirja",
+          "viikko": 3,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:3",
+          "tyyppi": "commitit",
+          "viikko": 3,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ],
+      "vuosi": 2027,
+      "alku": "2027-01-18",
+      "loppu": "2027-01-24",
+      "erapaiva": "2027-01-22",
+      "label": "18.–22.1."
+    },
+    "4": {
+      "jarjestys": 14,
+      "tyyppi": "feature",
+      "vaihe": "D",
+      "otsikko": "Jousto ja tärkeä jatko: rästit tai seuraava toiminto",
+      "tehtavat": [
+        {
+          "id": "4-1",
+          "teksti": "Tee ensin pakollisen ytimen rästit omassa haarassa, jos niitä on."
+        },
+        {
+          "id": "4-2",
+          "teksti": "Kirjoita ennen toteutusta testi 24: seuraava toiminto. Testi koskee seuraavaa tärkeän jatkon toimintoa."
+        },
+        {
+          "id": "4-3",
+          "teksti": "Toteuta toiminto työsyklillä. Kirjoita toinen virheenkorjausketju."
+        }
+      ],
+      "nayta": "testi 24 issuessa, valmis toiminto päähaarassa ja virheenkorjausketju 2 havaintoissuessa.",
+      "tuotos": "Pakollisen ytimen rästit omassa haarassa tai seuraava tärkeän jatkon toiminto · testi 24 · virheenkorjausketju 2.",
+      "valmis": "Pakollisen ytimen rästit on liitetty päähaaraan pull requestilla, tai tärkeän jatkon toiminto toimii ja testi 24 menee läpi. Virheenkorjausketjun kuusi osaa ovat havaintoissuessa.",
+      "tarkistukset": [
+        {
+          "id": "paivakirja:4",
+          "tyyppi": "paivakirja",
+          "viikko": 4,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:4",
+          "tyyppi": "commitit",
+          "viikko": 4,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ],
+      "vuosi": 2027,
+      "alku": "2027-01-25",
+      "loppu": "2027-01-31",
+      "erapaiva": "2027-01-29",
+      "label": "25.–29.1."
+    },
+    "5": {
+      "jarjestys": 15,
+      "tyyppi": "feature",
+      "vaihe": "D",
+      "otsikko": "Saavutettavuus: isot säätimet ja näppäimistö",
+      "tehtavat": [
+        {
+          "id": "5-1",
+          "teksti": "Aja Accessibility Insightsin FastPass sovelluksen ikkunalle. Kirjaa perusmittaus."
+        },
+        {
+          "id": "5-2",
+          "teksti": "Tarkista käyttöliittymävaatimuksesi. Kirjoita testit 25–26 ennen toteutusta."
+        },
+        {
+          "id": "5-3",
+          "teksti": "Toteuta isot säätimet ja näppäimistökäyttö työsyklillä. Tee raahattavat kahvat vain, jos ne kuuluvat tärkeän jatkon järjestykseesi."
+        },
+        {
+          "id": "5-4",
+          "teksti": "Aja testit 25–26 näppäimistöllä ja Lukijalla. Aja FastPass uudelleen. Vertaa tuloksia."
+        }
+      ],
+      "nayta": "FastPassin tulokset ennen ja jälkeen, testit 25–26 issueissa ja korjausten commitit.",
+      "tuotos": "FastPass-perusmittaus · testit 25–26 · isot säätimet ja näppäimistökäyttö · FastPass-jälkimittaus.",
+      "valmis": "FastPassin tulokset ennen ja jälkeen on kirjattu, jälkimittauksessa ei ole uusia virheitä, testit 25–26 menevät läpi näppäimistöllä ja Lukijalla, ja löydetyt puutteet on korjattu tai kirjattu issueiksi.",
+      "tarkistukset": [
+        {
+          "id": "paivakirja:5",
+          "tyyppi": "paivakirja",
+          "viikko": 5,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:5",
+          "tyyppi": "commitit",
+          "viikko": 5,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ],
+      "vuosi": 2027,
+      "alku": "2027-02-01",
+      "loppu": "2027-02-07",
+      "erapaiva": "2027-02-05",
+      "label": "1.–5.2."
+    },
+    "6": {
+      "jarjestys": 16,
+      "tyyppi": "julkaisu",
+      "vaihe": "E",
+      "otsikko": "Julkaisutesti: julkaisuehdokas v1.0-rc1",
+      "tehtavat": [
+        {
+          "id": "6-1",
+          "teksti": "Jäädytä sisältö. Merkitse julkaisuehdokas tagilla v1.0-rc1."
+        },
+        {
+          "id": "6-2",
+          "teksti": "Täydennä README ja käyttöohje. Kerro ohjeessa Inkscapen nimeämissäännöt."
+        },
+        {
+          "id": "6-3",
+          "teksti": "Pyydä julkaisutestaajaa lataamaan zip ja kulkemaan koko polku Windows-koneella, jossa ei ole Pythonia. Pidä hänen havaintonsa erillään omasta tulkinnastasi."
+        }
+      ],
+      "nayta": "tagi v1.0-rc1, README ja käyttöohje sekä `project-docs/julkaisutesti.md`.",
+      "tuotos": "Tagi v1.0-rc1 · README ja käyttöohje · julkaisutestin epäröintilista.",
+      "valmis": "Julkaisutestaajan .obj-tiedosto aukeaa, ja epäröinnit on listattu pöytäkirjaan. Testaajan nimi ja sanatarkat lausumat on lähetetty ohjaajalle Teamsissa. Repositoryyn on kirjattu vain rooli.",
+      "tarkistukset": [
+        {
+          "id": "tiedosto:project-docs/julkaisutesti.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/julkaisutesti.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "tagi:v1.0-rc1",
+          "tyyppi": "tagi",
+          "nimi": "v1.0-rc1",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:6",
+          "tyyppi": "paivakirja",
+          "viikko": 6,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:6",
+          "tyyppi": "commitit",
+          "viikko": 6,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ],
+      "vuosi": 2027,
+      "alku": "2027-02-08",
+      "loppu": "2027-02-14",
+      "erapaiva": "2027-02-12",
+      "label": "8.–12.2."
+    },
+    "7": {
+      "jarjestys": 17,
+      "tyyppi": "julkaisu",
+      "vaihe": "E",
+      "otsikko": "v1.0: julkaisu ja asiakkaiden vahvistus",
+      "tehtavat": [
+        {
+          "id": "7-1",
+          "teksti": "Korjaa estävät havainnot. Kirjoita kolmas virheenkorjausketju."
+        },
+        {
+          "id": "7-2",
+          "teksti": "Julkaise v1.0 tagilla. Pyydä Anttia vahvistamaan, että zip toimii hänen Windows-koneellaan. Näytä sovellus Matille omalla koneellasi."
+        },
+        {
+          "id": "7-3",
+          "teksti": "Linkitä näyttömatriisin rivit päiväkirjan tunnusten avulla."
+        }
+      ],
+      "nayta": "tagi v1.0, virheenkorjausketju 3, asiakkaiden vahvistus ja linkitetty näyttömatriisi.",
+      "tuotos": "Virheenkorjausketju 3 · tagi v1.0 ja release-teksti · asiakkaiden vahvistus · linkitetty näyttömatriisi.",
+      "valmis": "Estävät issuet on suljettu, release v1.0 ja sen zip näkyvät GitHubissa, Antti on vahvistanut toimivuuden omalla Windows-koneellaan, Matti on nähnyt sovelluksen demossa tai sinun koneellasi, ja jokaisella matriisin rivillä on linkki.",
+      "tarkistukset": [
+        {
+          "id": "tagi:v1.0",
+          "tyyppi": "tagi",
+          "nimi": "v1.0",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:7",
+          "tyyppi": "paivakirja",
+          "viikko": 7,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:7",
+          "tyyppi": "commitit",
+          "viikko": 7,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ],
+      "vuosi": 2027,
+      "alku": "2027-02-15",
+      "loppu": "2027-02-21",
+      "erapaiva": "2027-02-19",
+      "label": "15.–19.2."
+    },
+    "9": {
+      "jarjestys": 18,
+      "tyyppi": "naytto",
+      "vaihe": "E",
+      "otsikko": "Näyttö: demo ja luovutus",
+      "tehtavat": [
+        {
+          "id": "9-1",
+          "teksti": "Jäädytä sisältö maanantaina. Tarkista, että jokainen työnäyte on repositoryssa."
+        },
+        {
+          "id": "9-2",
+          "teksti": "Harjoittele demo ajastettuna: tuotos, yksi tekninen ratkaisu omin sanoin, korjattu virhe, Git-historia ja työnkulku yhdellä kortilla."
+        },
+        {
+          "id": "9-3",
+          "teksti": "Kirjoita itsearviointi kolmesta tilanteesta. Lähetä se ohjaajalle Teamsissa."
+        }
+      ],
+      "nayta": "demo, linkitetty näyttömatriisi ja itsearvioinnin lähetyspäivä päiväkirjassa.",
+      "tuotos": "Jäädytetty repository · harjoiteltu demo · itsearviointi ohjaajalle · luovutettu näyttöaineisto.",
+      "valmis": "Demo on pidetty 8–10 minuutissa, kaikki viisi osaa on näytetty, itsearviointi on lähetetty ohjaajalle, ja aineisto on luovutettu perjantaina.",
+      "tarkistukset": [
+        {
+          "id": "paivakirja:9",
+          "tyyppi": "paivakirja",
+          "viikko": 9,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:9",
+          "tyyppi": "commitit",
+          "viikko": 9,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ],
+      "vuosi": 2027,
+      "alku": "2027-03-01",
+      "loppu": "2027-03-07",
+      "erapaiva": "2027-03-05",
+      "label": "1.–5.3."
+    },
+    "40": {
+      "jarjestys": 1,
+      "tyyppi": "pohjustus",
+      "vaihe": "A",
+      "otsikko": "Aloitus: työkalut, repository ja oma MVP",
+      "tehtavat": [
+        {
+          "id": "40-1",
+          "teksti": "Tarkista, mitä on jo asennettu. Asenna näistä puuttuvat: VS Code, Git, Python 3.13, VS Coden Python-laajennus, Inkscape ja Blender. Vaihda VS Codeen ja GitHubiin korkean kontrastin teema."
+        },
+        {
+          "id": "40-2",
+          "teksti": "Luo julkinen repository README-tiedoston kanssa. Kloonaa se VS Codeen. Jaa se ohjaajalle."
+        },
+        {
+          "id": "40-3",
+          "teksti": "Kirjoita MVP omin sanoin tiedostoon `project-docs/mvp.md`. Tee commit ja push. Lähetä kysymyslista asiakkaille."
+        },
+        {
+          "id": "40-4",
+          "teksti": "Mittaa yhden agenttipyynnön hinta viestipohjalla. Kirjaa hinta päiväkirjaan."
+        }
+      ],
+      "nayta": "repositoryn osoite, `project-docs/mvp.md` GitHubissa ja agenttipyynnön hinta päiväkirjassa.",
+      "tuotos": "Versiotulosteet · kloonattu ja jaettu repository · kolme pohjatiedostoa · `project-docs/mvp.md` GitHubissa · lähetetty kysymyslista · agenttipyynnön hinta päiväkirjassa.",
+      "valmis": "Ohjaaja näkee repositoryn, `mvp.md` on GitHubissa, kysymyslista on lähetetty, ja päiväkirjassa on agenttipyynnön hinta tai merkintä \"odottaa käyttönäkymää\".",
+      "tarkistukset": [
+        {
+          "id": "tiedosto:project-docs/mvp.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/mvp.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "tiedosto:README.md",
+          "tyyppi": "tiedosto",
+          "polku": "README.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:40",
+          "tyyppi": "paivakirja",
+          "viikko": 40,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:40",
+          "tyyppi": "commitit",
+          "viikko": 40,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ],
+      "vuosi": 2026,
+      "alku": "2026-09-28",
+      "loppu": "2026-10-04",
+      "erapaiva": "2026-10-02",
+      "label": "28.9.–2.10."
+    },
+    "41": {
+      "jarjestys": 2,
+      "tyyppi": "feature",
+      "vaihe": "A",
+      "otsikko": "Harjoitussykli: pyörivä kuutio julki",
+      "tehtavat": [
+        {
+          "id": "41-1",
+          "teksti": "Päätä, hyväksytkö teknisen ehdotuksen. Perustele päätös suunnitelmaan. Pura pohja. Luo virtuaaliympäristö ja asenna kirjastot itse komennoilla."
+        },
+        {
+          "id": "41-2",
+          "teksti": "Kirjoita ennen koodia testi 1: kiertokulma. Mitä odotat, kun kiertokulma saa ajan 0 ja nopeuden 0,5? Entä kun aika on 3?"
+        },
+        {
+          "id": "41-3",
+          "teksti": "Tee kortti #1 (kuutio) työsyklillä mallikortin avulla. Aja testi 1."
+        },
+        {
+          "id": "41-4",
+          "teksti": "Tee kortti #2 (release) työsyklillä. Aja testi 2: julkaisu. Käytä releasen zipistä purettua sovellusta."
+        }
+      ],
+      "nayta": "releasen v0.0.41 osoite, issuet #1 ja #2 suljettuina sekä testien 1 ja 2 tulokset issueissa.",
+      "tuotos": "Ikkuna, jossa kuutio pyörii · testit 1 ja 2 · release-zip GitHubissa · kaksi issueta suljettuna commit-viestillä · päätös teknisestä pohjasta suunnitelmassa.",
+      "valmis": "Releasen zipistä purettu sovellus käynnistyy, ja kuutio pyörii. Actionsin ajo on vihreä, eli itsetesti meni läpi. `pytest` näyttää, että testi 1 menee läpi. Issuet #1 ja #2 on suljettu commitilla.",
+      "tarkistukset": [
+        {
+          "id": "tagi:v0.0.41",
+          "tyyppi": "tagi",
+          "nimi": "v0.0.41",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:41",
+          "tyyppi": "paivakirja",
+          "viikko": 41,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:41",
+          "tyyppi": "commitit",
+          "viikko": 41,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ],
+      "vuosi": 2026,
+      "alku": "2026-10-05",
+      "loppu": "2026-10-11",
+      "erapaiva": "2026-10-09",
+      "label": "5.–9.10."
+    },
+    "43": {
+      "jarjestys": 3,
+      "tyyppi": "feature",
+      "vaihe": "B",
+      "otsikko": "SVG-tuonti: polut näkyviin",
+      "tehtavat": [
+        {
+          "id": "43-1",
+          "teksti": "Piirrä Inkscapessa testitiedosto, jossa on nimetyt layerit ja kolme sisäkkäistä ryhmää."
+        },
+        {
+          "id": "43-2",
+          "teksti": "Kirjoita testit 3–5 ennen toteutusta: kolme polkua, haitallinen SVG, jossa on `<script>`, ja väärä tiedosto, joka ei ole SVG."
+        },
+        {
+          "id": "43-3",
+          "teksti": "Kirjaa kansiorakenne ja moduulien rajat suunnitelmaan."
+        },
+        {
+          "id": "43-4",
+          "teksti": "Toteuta tuonti työsyklillä Tiedosto-kaistalla, tiedosto kerrallaan."
+        },
+        {
+          "id": "43-5",
+          "teksti": "Kokeile svgelementsin rajoitteita omalla tiedostollasi. Kirjaa ne `kirjastot.md`:hen. Julkaise viikon versio tagilla v0.0.43."
+        }
+      ],
+      "nayta": "oma SVG-tiedosto, testit 3–5 issueissa, `project-docs/kirjastot.md` ja release v0.0.43.",
+      "tuotos": "Oma testitiedosto Inkscapesta · testit 3–5 · kansiorakenne suunnitelmassa · polut näkymässä · `project-docs/kirjastot.md` · viikon release.",
+      "valmis": "Oma SVG avautuu tiedostoikkunasta, testit 3–5 menevät läpi, ja `project-docs/kirjastot.md`:ssä on kaksi svgelementsin rajoitetta omalla tiedostolla kokeiltuna.",
+      "tarkistukset": [
+        {
+          "id": "tiedosto:project-docs/kirjastot.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/kirjastot.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "tagi:v0.0.43",
+          "tyyppi": "tagi",
+          "nimi": "v0.0.43",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:43",
+          "tyyppi": "paivakirja",
+          "viikko": 43,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:43",
+          "tyyppi": "commitit",
+          "viikko": 43,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ],
+      "vuosi": 2026,
+      "alku": "2026-10-19",
+      "loppu": "2026-10-25",
+      "erapaiva": "2026-10-23",
+      "label": "19.–23.10."
+    },
+    "44": {
+      "jarjestys": 4,
+      "tyyppi": "feature",
+      "vaihe": "B",
+      "otsikko": "Hierarkia: layerit ja ryhmät osiksi",
+      "tehtavat": [
+        {
+          "id": "44-1",
+          "teksti": "Kirjoita hierarkian muunnoksen rajapinta ja testit 6–8 ennen toteutusta."
+        },
+        {
+          "id": "44-2",
+          "teksti": "Toteuta Agentti-kaistalla muunnos ja maailmamuunnos puhtaina funktioina sekä hierarkiapaneeli."
+        },
+        {
+          "id": "44-3",
+          "teksti": "Päätä valinnan toiminta. Kirjaa se suunnitelmaan."
+        },
+        {
+          "id": "44-4",
+          "teksti": "Vertaa kahta tapaa valita revolve. Tuo suositus ensi viikon palaveriin. Julkaise viikon versio tagilla v0.0.44."
+        }
+      ],
+      "nayta": "rajapinta, testit 6–8 ja maailmamuunnoksen lisätesti issueissa, hierarkiapaneeli releasessa v0.0.44 ja valinnan päätös suunnitelmassa.",
+      "tuotos": "Muunnoksen rajapinta ja testit 6–8 · muunnos puhtaana funktiona · maailmamuunnos ja sen lisätesti · hierarkiapaneeli · valinnan toiminta suunnitelmassa · revolven valintatapojen vertailu · viikon release.",
+      "valmis": "Oman tiedostosi kolme ryhmätasoa näkyvät paneelissa sisennettyinä. Testit 6–8 ja maailmamuunnoksen lisätesti menevät läpi. Suunnitelmassa on valinnan toiminta perusteluineen.",
+      "tarkistukset": [
+        {
+          "id": "tagi:v0.0.44",
+          "tyyppi": "tagi",
+          "nimi": "v0.0.44",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:44",
+          "tyyppi": "paivakirja",
+          "viikko": 44,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:44",
+          "tyyppi": "commitit",
+          "viikko": 44,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ],
+      "vuosi": 2026,
+      "alku": "2026-10-26",
+      "loppu": "2026-11-01",
+      "erapaiva": "2026-10-30",
+      "label": "26.–30.10."
+    },
+    "45": {
+      "jarjestys": 5,
+      "tyyppi": "feature",
+      "vaihe": "B",
+      "otsikko": "Revolve: profiilista pyörähdyskappale",
+      "tehtavat": [
+        {
+          "id": "45-1",
+          "teksti": "Sovi palaverissa revolven valintatapa. Kirjaa, mitä profiilille tehdään akselin väärällä puolella."
+        },
+        {
+          "id": "45-2",
+          "teksti": "Kirjoita testit 9–11 ennen toteutusta. Kysy tarvittaessa kysymystilassa, miten trimeshin revolve lukee pisteet."
+        },
+        {
+          "id": "45-3",
+          "teksti": "Toteuta revolve, segmenttisäädin ja orbit työsyklillä. Julkaise viikon versio tagilla v0.0.45."
+        }
+      ],
+      "nayta": "testit 9–11 issueissa, pyörähdyskappale releasessa v0.0.45 ja sovittu valintatapa issue-kommenttina.",
+      "tuotos": "Sovittu valintatapa suunnitelmassa · oma hyväksymiskriteeri profiilille · testit 9–11 · revolve, segmenttisäädin ja orbit · viikon release.",
+      "valmis": "Oma profiilisi pyörähtää kappaleeksi, segmenttisäädin muuttaa särmien määrää välillä 3–32, ja testit 9–11 menevät läpi.",
+      "tarkistukset": [
+        {
+          "id": "tagi:v0.0.45",
+          "tyyppi": "tagi",
+          "nimi": "v0.0.45",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:45",
+          "tyyppi": "paivakirja",
+          "viikko": 45,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:45",
+          "tyyppi": "commitit",
+          "viikko": 45,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ],
+      "vuosi": 2026,
+      "alku": "2026-11-02",
+      "loppu": "2026-11-08",
+      "erapaiva": "2026-11-06",
+      "label": "2.–6.11."
+    },
+    "46": {
+      "jarjestys": 6,
+      "tyyppi": "feature",
+      "vaihe": "B",
+      "otsikko": "Inflate ja kamera: putki ja suorat näkymät",
+      "tehtavat": [
+        {
+          "id": "46-1",
+          "teksti": "Kirjoita testit 12–14 ennen toteutusta."
+        },
+        {
+          "id": "46-2",
+          "teksti": "Toteuta inflate ja sivumäärän säädin työsyklillä. Tee putki PyVistan tube-suodattimella. Kirjaa putkigeometrian rajoitteet."
+        },
+        {
+          "id": "46-3",
+          "teksti": "Toteuta orientaatiowidget ja view lock -painike työsyklillä. Julkaise viikon versio tagilla v0.0.46."
+        }
+      ],
+      "nayta": "testit 12–14 issueissa, putki ja suorat näkymät releasessa v0.0.46 ja putkigeometrian rajoitteet `kirjastot.md`:ssä.",
+      "tuotos": "Testit 12–14 · inflate ja sivumäärän säädin · putkigeometrian rajoitteet `kirjastot.md`:ssä · orientaatiowidget ja view lock -painike · viikon release.",
+      "valmis": "Inflate on valmis, kun oma polkusi muuttuu putkeksi, sivumäärän voi valita väliltä 3–8 ja testit 12–13 menevät läpi. Kamera on valmis, kun orientaatiowidgetin akselin klikkaus kääntää kameran suoraan akselin suuntaan, view lock estää kierron ja testi 14 menee läpi. Jos kamera siirtyy viikolle 47, se on sovittu vaihtoehto eikä virhe.",
+      "tarkistukset": [
+        {
+          "id": "tagi:v0.0.46",
+          "tyyppi": "tagi",
+          "nimi": "v0.0.46",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:46",
+          "tyyppi": "paivakirja",
+          "viikko": 46,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:46",
+          "tyyppi": "commitit",
+          "viikko": 46,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ],
+      "vuosi": 2026,
+      "alku": "2026-11-09",
+      "loppu": "2026-11-15",
+      "erapaiva": "2026-11-13",
+      "label": "9.–13.11."
+    },
+    "47": {
+      "jarjestys": 7,
+      "tyyppi": "feature",
+      "vaihe": "B",
+      "otsikko": "Transformit: valitse, siirrä, kierrä ja skaalaa",
+      "tehtavat": [
+        {
+          "id": "47-1",
+          "teksti": "Kirjoita ennen toteutusta testi 15: lapsi seuraa. Mitä odotat lapsen paikalle, kun vanhempaa siirretään 10 yksikköä?"
+        },
+        {
+          "id": "47-2",
+          "teksti": "Toteuta valinta suunnitelmasi mukaan. Toteuta siirto, kierto ja skaalaus transformipaneeliin työsyklillä."
+        },
+        {
+          "id": "47-3",
+          "teksti": "Aja testi 15. Jos se ei mene läpi kahdella yrityksellä, avaa havaintoissue. Julkaise viikon versio tagilla v0.0.47."
+        }
+      ],
+      "nayta": "testi 15 issuessa, transformit releasessa v0.0.47 ja pakollisen ytimen tilanne palaverin issue-kommentissa.",
+      "tuotos": "Pakollisen ytimen tilanne käsitelty palaverissa · testi 15 · valinta, siirto, kierto ja skaalaus transformipaneelissa · viikon release.",
+      "valmis": "Osan voi valita suunnitelmasi mukaan. Siirto, kierto ja skaalaus toimivat numerokentillä ja pikanäppäimillä. Testi 15 menee läpi, tai siitä on havaintoissue.",
+      "tarkistukset": [
+        {
+          "id": "tagi:v0.0.47",
+          "tyyppi": "tagi",
+          "nimi": "v0.0.47",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:47",
+          "tyyppi": "paivakirja",
+          "viikko": 47,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:47",
+          "tyyppi": "commitit",
+          "viikko": 47,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ],
+      "vuosi": 2026,
+      "alku": "2026-11-16",
+      "loppu": "2026-11-22",
+      "erapaiva": "2026-11-20",
+      "label": "16.–20.11."
+    },
+    "48": {
+      "jarjestys": 8,
+      "tyyppi": "feature",
+      "vaihe": "C",
+      "otsikko": "Pivot: kiertopiste prosentteina",
+      "tehtavat": [
+        {
+          "id": "48-1",
+          "teksti": "Kirjoita pivotin syötteen tarkistuksen rajapinta ja testit 16–18 ennen toteutusta."
+        },
+        {
+          "id": "48-2",
+          "teksti": "Toteuta pivot ja syötteen tarkistus työsyklillä."
+        },
+        {
+          "id": "48-3",
+          "teksti": "Lisää pivotin prosenttikentät transformipaneeliin käyttöliittymävaatimuksesi mukaan. Julkaise viikon versio tagilla v0.0.48."
+        }
+      ],
+      "nayta": "rajapinta ja testit 16–18 issueissa sekä pivotin kentät releasessa v0.0.48.",
+      "tuotos": "Pivotin syötteen tarkistuksen rajapinta · testit 16–18 · pivot · pivotin prosenttikentät transformipaneelissa · viikon release.",
+      "valmis": "Pivot 50/50/50 on keskipisteessä, prosentit muuttavat pivotin paikkaa, virheellinen syöte käsitellään kriteerisi mukaan, ja testit 16–18 menevät läpi.",
+      "tarkistukset": [
+        {
+          "id": "tagi:v0.0.48",
+          "tyyppi": "tagi",
+          "nimi": "v0.0.48",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:48",
+          "tyyppi": "paivakirja",
+          "viikko": 48,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:48",
+          "tyyppi": "commitit",
+          "viikko": 48,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ],
+      "vuosi": 2026,
+      "alku": "2026-11-23",
+      "loppu": "2026-11-29",
+      "erapaiva": "2026-11-27",
+      "label": "23.–27.11."
+    },
+    "49": {
+      "jarjestys": 9,
+      "tyyppi": "feature",
+      "vaihe": "C",
+      "otsikko": "OBJ-vienti: osat erillisinä Blenderiin",
+      "tehtavat": [
+        {
+          "id": "49-1",
+          "teksti": "Kirjoita objektijaon rajapinta ja testit 19–20 ennen toteutusta."
+        },
+        {
+          "id": "49-2",
+          "teksti": "Toteuta vienti niin, että osien nimet säilyvät."
+        },
+        {
+          "id": "49-3",
+          "teksti": "Laske `o`-rivit VS Codessa. Avaa tiedosto Blenderissä kuvaohjeen mukaan."
+        },
+        {
+          "id": "49-4",
+          "teksti": "Kirjoita ensimmäinen virheenkorjausketju havaintoissueistasi. Kirjoita sille regressiotesti. Julkaise viikon versio tagilla v0.0.49."
+        }
+      ],
+      "nayta": "testit 19–20 issueissa, viety .obj-tiedosto, kuva Blenderistä ja virheenkorjausketju 1 havaintoissuessa.",
+      "tuotos": "Objektijaon rajapinta · testit 19–20 · .obj-vienti · tarkistus VS Codessa ja Blenderissä · virheenkorjausketju 1 ja sen regressiotesti · viikon release.",
+      "valmis": "Kolmen osan mallista syntyy .obj-tiedosto, jossa on kolme o-riviä osien nimillä. Tiedosto aukeaa Blenderissä. Testit 19–20 menevät läpi. Virheenkorjausketjun kuusi osaa ovat havaintoissuessa.",
+      "tarkistukset": [
+        {
+          "id": "tagi:v0.0.49",
+          "tyyppi": "tagi",
+          "nimi": "v0.0.49",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:49",
+          "tyyppi": "paivakirja",
+          "viikko": 49,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:49",
+          "tyyppi": "commitit",
+          "viikko": 49,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ],
+      "vuosi": 2026,
+      "alku": "2026-11-30",
+      "loppu": "2026-12-06",
+      "erapaiva": "2026-12-04",
+      "label": "30.11.–4.12."
+    },
+    "50": {
+      "jarjestys": 10,
+      "tyyppi": "feature",
+      "vaihe": "C",
+      "otsikko": "Tallennus ja MVP: versio v0.1 julki",
+      "tehtavat": [
+        {
+          "id": "50-1",
+          "teksti": "Vertaa tallennustapoja oman suunnitelmasi kriteereillä. Kirjaa valinta suunnitelmaan."
+        },
+        {
+          "id": "50-2",
+          "teksti": "Kirjoita testit 21–22 ennen toteutusta."
+        },
+        {
+          "id": "50-3",
+          "teksti": "Toteuta tallennus ja avaus työsyklillä. Kirjoita tietoturva-arvio tuonnista ja avauksesta."
+        },
+        {
+          "id": "50-4",
+          "teksti": "Julkaise MVP tagilla v0.1. Lataa zip releasesta ja käynnistä sovellus puretusta kansiosta."
+        }
+      ],
+      "nayta": "tallennusvertailu suunnitelmassa, testit 21–22 issueissa, `project-docs/tietoturva.md` ja release v0.1.",
+      "tuotos": "Tallennustapojen vertailu suunnitelmassa · testit 21–22 · tallennus ja avaus · tietoturva-arvio · release v0.1.",
+      "valmis": "Tallennettu projekti avautuu samassa tilassa, rikottu tiedosto antaa virheilmoituksen, `project-docs/tietoturva.md` on repositoryssa, ja releasen v0.1 zipistä purettu sovellus käynnistyy.",
+      "tarkistukset": [
+        {
+          "id": "tiedosto:project-docs/tietoturva.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/tietoturva.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "tagi:v0.1",
+          "tyyppi": "tagi",
+          "nimi": "v0.1",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:50",
+          "tyyppi": "paivakirja",
+          "viikko": 50,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:50",
+          "tyyppi": "commitit",
+          "viikko": 50,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ],
+      "vuosi": 2026,
+      "alku": "2026-12-07",
+      "loppu": "2026-12-13",
+      "erapaiva": "2026-12-11",
+      "label": "7.–11.12."
+    },
+    "51": {
+      "jarjestys": 11,
+      "tyyppi": "katselmointi",
+      "vaihe": "C",
+      "otsikko": "Katselmointi: asiakkaat kokeilevat MVP:tä",
+      "tehtavat": [
+        {
+          "id": "51-1",
+          "teksti": "Valmistele viiden minuutin demo omalla Inkscape-tiedostolla. Lähetä Antille releasen v0.1 osoite."
+        },
+        {
+          "id": "51-2",
+          "teksti": "Pidä katselmointi. Antti kokeilee zipiä omalla Windows-koneellaan. Matti kokeilee sovellusta sinun koneellasi. Pidä heidän havaintonsa erillään omasta tulkinnastasi."
+        },
+        {
+          "id": "51-3",
+          "teksti": "Tee havainnoista issuet. Kirjaa niihin asiakkaan prioriteetti."
+        },
+        {
+          "id": "51-4",
+          "teksti": "Kirjoita tilatiedoston Seuraavana-kohtaan viikon 2 ensimmäinen tehtävä issue-numeroineen."
+        }
+      ],
+      "nayta": "`project-docs/katselmointi.md`, havaintoissuet prioriteetteineen ja tilatiedoston Seuraavana-kohta.",
+      "tuotos": "Viiden minuutin demo · katselmointiloki rooleilla · havainnot issueina prioriteetteineen · tilatiedoston Seuraavana-kohta viikolle 2.",
+      "valmis": "Katselmointiloki on tiedostossa `project-docs/katselmointi.md`, jokaisesta havainnosta on issue prioriteetteineen, ja tilatiedoston Seuraavana-kohdassa on viikon 2 ensimmäinen tehtävä issue-numeroineen.",
+      "tarkistukset": [
+        {
+          "id": "tiedosto:project-docs/katselmointi.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/katselmointi.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "paivakirja:51",
+          "tyyppi": "paivakirja",
+          "viikko": 51,
+          "lahde": "oletus"
+        },
+        {
+          "id": "commitit:51",
+          "tyyppi": "commitit",
+          "viikko": 51,
+          "min": 1,
+          "lahde": "oletus"
+        }
+      ],
+      "vuosi": 2026,
+      "alku": "2026-12-14",
+      "loppu": "2026-12-20",
+      "erapaiva": "2026-12-18",
+      "label": "14.–17.12."
+    }
+  }
+}
