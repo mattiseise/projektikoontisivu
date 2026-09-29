@@ -58,9 +58,10 @@
     return true;
   }
 
-  /* Käynnissä olevat ensin, sitten uusin lukuvuosi, sitten nimi. */
+  /* Käynnissä olevat ensin, sitten vapaat, sitten päättyneet. */
   function jarjesta(a, b) {
-    if (a.tila !== b.tila) return a.tila === "kaynnissa" ? -1 : 1;
+    const tilajarjestys = { kaynnissa: 0, vapaa: 1, paattynyt: 2 };
+    if (a.tila !== b.tila) return (tilajarjestys[a.tila] ?? 9) - (tilajarjestys[b.tila] ?? 9);
     const lv = String(b.lukuvuosi || "").localeCompare(String(a.lukuvuosi || ""));
     if (lv) return lv;
     return a.nimi.localeCompare(b.nimi, "fi");
@@ -83,7 +84,7 @@
 
   function kortti(p) {
     const kat = kategoria(p.tyyppi);
-    const kaynnissa = p.tila === "kaynnissa";
+    const tilatekstit = { kaynnissa: "Käynnissä", vapaa: "Vapaa", paattynyt: "Päättynyt" };
     const kuva = p.kuva
       ? `<img src="${esc(p.kuva)}" alt="Kuvakaappaus projektin ${esc(p.nimi)} sivustosta" loading="lazy" width="640" height="400">`
       : `<div class="placeholder">Ei kuvaa</div>`;
@@ -125,7 +126,7 @@
         <div class="kortti-kuva">
           ${kuva}
           <span class="tyyppi-merkki" style="background:${kat.vari}">${esc(kat.lyhyt || kat.nimi)}</span>
-          <span class="tila-merkki${kaynnissa ? " kaynnissa" : ""}">${kaynnissa ? "Käynnissä" : "Päättynyt"}</span>
+          <span class="tila-merkki ${esc(p.tila)}">${esc(tilatekstit[p.tila] || "Päättynyt")}</span>
           ${kieliMerkki(p)}
         </div>
         <div class="kortti-sisalto">

@@ -10,7 +10,7 @@
  *   slug           yksilöivä tunnus, sama kuin projektin repositoryssa
  *   nimi           näkyvä nimi
  *   tyyppi         peli | web | ohjelmointi | kyber | ittuki | muu
- *   tila           kaynnissa | paattynyt
+ *   tila           kaynnissa | vapaa | paattynyt
  *   kieli          sivuston kieli, jos EI suomi: "en" | "sv" (näkyy kortissa lippumerkkinä)
  *   kuvaus         1–2 virkettä opiskelijalle: mitä tässä tehdään
  *   lukuvuosi      "2026–27"
@@ -184,7 +184,7 @@ window.PROJEKTIT = [
     "slug": "pelihylly",
     "nimi": "PeliHylly",
     "tyyppi": "web",
-    "tila": "kaynnissa",
+    "tila": "vapaa",
     "kieli": "",
     "kuvaus": "Oma pelikirjastopalvelu Reactilla ja Expressillä: jäsen lisää pelinsä, vaihtaa tilan yhdellä napilla ja profiilisivu kokoaa tilastot ja tilahistorian. Palvelu julkaistaan tuotantoon julkiseen osoitteeseen, jossa kuvitteellisen Pelikellari ry:n jäsenet kokeilevat sitä.",
     "lukuvuosi": "",
@@ -226,7 +226,7 @@ window.PROJEKTIT = [
     "slug": "noppakauppa",
     "nimi": "NoppaKauppa",
     "tyyppi": "web",
-    "tila": "kaynnissa",
+    "tila": "vapaa",
     "kieli": "",
     "kuvaus": "Lautapeliliikkeen ensimmäinen verkkokauppa: tuotteet kategorioittain, sanahaku, Pinia-ostoskori, tunnukset ja tilaukset ilman maksunvälitystä — sekä henkilökunnan tuotehallinta roolisuojauksella. Vue 3 -frontti ja FastAPI+SQLite-backend julkaistaan tuotantoon, ja tietoturva-arvio tehdään omin hyökkäystestein.",
     "lukuvuosi": "",
@@ -269,7 +269,7 @@ window.PROJEKTIT = [
     "slug": "tuntitutka",
     "nimi": "TuntiTutka",
     "tyyppi": "web",
-    "tila": "kaynnissa",
+    "tila": "vapaa",
     "kieli": "",
     "kuvaus": "Rakennat mainostoimistolle työaikaseurannan: työntekijät kirjaavat tunnit tehtävälajeittain ja projektipäällikkö saa aina ajantasaiset yhteenvedot kaavioina. Svelte + Express + SQLite, kaksi käyttäjäroolia ja julkaisu tuotantoon.",
     "lukuvuosi": "",
@@ -311,7 +311,7 @@ window.PROJEKTIT = [
     "slug": "valokaari",
     "nimi": "Valokaari",
     "tyyppi": "web",
-    "tila": "kaynnissa",
+    "tila": "vapaa",
     "kieli": "",
     "kuvaus": "Rakennat Lapin matkailuyritykselle sovelluksen, joka piirtää kaavioon päivän pituuden Suomen paikkakunnille vuoden jokaisena päivänä: kaamos, yötön yö ja paikkojen väliset leikkauspisteet näkyvät samassa kuvassa. PHP-rajapinta laskee datan, React-käyttöliittymä piirtää sen, ja sovellus julkaistaan julkiseen osoitteeseen.",
     "lukuvuosi": "",
