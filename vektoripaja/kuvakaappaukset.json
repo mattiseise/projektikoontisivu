@@ -491,7 +491,7 @@
         },
         {
           "n": 2,
-          "teksti": "Valitse New chat. Aloita jokainen tehtäväkortti uudessa keskustelussa.",
+          "teksti": "Valitse New chat viikon alussa tai silloin, kun keskustelu on jo pitkä. Liitä ajantasainen tilatiedosto uuteen keskusteluun.",
           "alue": [
             0,
             10,

@@ -23,6 +23,7 @@ window.NAYTTOPROJEKTI = {
   lyhyetViikot: { 51: 4 },
   tiivisSivupalkki: true,
   aloitusNappi: "Aloita viikosta 40",
+  yhtenaisetViikot: true,
   apuOtsikko: "Tarvitsen toteutusapua",
 
   /* Tietoiset mitoituspoikkeamat (tarkista.js raportoi INFO-rivinä). */
@@ -37,6 +38,8 @@ window.NAYTTOPROJEKTI = {
     taulukkoSavy: "#e6f4fb",
     riviSavy: "#f3fafd"
   },
+
+  lataukset: { tehtavaNumero: (i, n) => `Työvaihe ${i} / ${n}` },
 
   /* ---- opiskelijan teema (brief 6.1). Teematesti hyväksytty 23.9.2026: yksi väri ja tilasymbolit. ---- */
   teema: {
@@ -60,45 +63,68 @@ window.NAYTTOPROJEKTI = {
   },
 
   tekstit: {
+    progressCopy: (done, total) => `${done} / ${total} työvaihetta`,
+    resumeTask: (i, n) => `työvaihe ${i} / ${n}`,
+    resumeDone: "Kaikki työvaiheet valmiina",
     exampleLabel: "✓ Esimerkki riittävästä tarkkuudesta",
     notEnoughLabel: "✗ Tämä ei vielä riitä",
+    tasksLead: "Tee viikon työvaiheet järjestyksessä. Avaa yksi vaihe kerrallaan. Kun rakennat muutosta sovellukseen, tee siitä tehtäväkortti GitHub-issueen ja käytä työsykliä.",
+    taskNumber: (i, n) => `Työvaihe ${i} / ${n}`,
+    taskOpenAll: "Avaa kaikki työvaiheet",
+    taskOpenCurrent: "Näytä seuraava työvaihe",
+    goalNote: "Havainnekuva näyttää käyttäjän työnkulun. Se ei ole kuvakaappaus valmiista sovelluksesta.",
+    goalListLabel: "Käyttäjän työnkulku",
+    cycleRoundDoneText: "Tallenna kortin tulos ja AI-arvio. Jatka tämän viikon seuraavaan työvaiheeseen. Viikon yhteenveto kirjoitetaan viikon lopussa.",
     stepsLead: (n) => `${n} askelta · tee järjestyksessä`
+  },
+
+  lopputulos: {
+    otsikko: "Piirroksesta muokattavaksi 3D-malliksi",
+    kuvaus: "Piirrät Inkscapessa. Vektoripaja tekee piirroksesta 3D-kappaleita, joita käyttäjä voi muokata ja tallentaa. Valmis malli viedään Blenderiin OBJ-tiedostona.",
+    naytaKuvaus: false,
+    kuva: "assets/piirroksesta-malliksi.svg", leveys: 1080, korkeus: 540,
+    alt: "Kolme vaihetta: Inkscapessa piirretty puoliprofiili, siitä tehty särmikäs maljakko Vektoripajassa ja sama 3D-malli vietynä Blenderiin.",
+    kohdat: [
+      { n: 1, teksti: "Piirrä lähtökuva Inkscapessa ja tallenna se SVG-tiedostona." },
+      { n: 2, teksti: "Avaa kuva Vektoripajassa. Muodosta 3D-kappaleet, muokkaa osia ja tallenna työ." },
+      { n: 3, teksti: "Vie valmis malli OBJ-tiedostona Blenderiin tai toiseen 3D-ohjelmaan." }
+    ]
   },
 
   /* ---- vaiheet ---- */
   vaiheet: [
-    { tunnus: "A", lyhyt: "Työkalut", otsikko: "Työkalut ja harjoitussykli", viikot: [40, 41, 42], vari: "#1fa4e3" },
-    { tunnus: "B", lyhyt: "MVP-ydin", otsikko: "MVP-ydin: SVG:stä muotoja", viikot: [43, 44, 45, 46, 47], vari: "#1fa4e3" },
-    { tunnus: "C", lyhyt: "MVP valmiiksi", otsikko: "MVP valmiiksi ja katselmointi", viikot: [48, 49, 50, 51, 52, 53, 1], vari: "#1fa4e3" },
-    { tunnus: "D", lyhyt: "Jatkokehitys", otsikko: "Jatkokehitys katselmoinnin pohjalta", viikot: [2, 3, 4, 5], vari: "#1fa4e3" },
-    { tunnus: "E", lyhyt: "Julkaisu ja näyttö", otsikko: "Julkaisu ja näyttö", viikot: [6, 7, 8, 9], vari: "#1fa4e3" }
+    { tunnus: "1", lyhyt: "Valmistelu", otsikko: "Valmistellaan työkalut ja työtapa", kuvaus: "Viikot 40–41: työkalut ja kuutioharjoitus. Opit tekemään, testaamaan ja julkaisemaan. Syysloma viikolla 42.", viikot: [40, 41, 42], vari: "#1fa4e3" },
+    { tunnus: "2", lyhyt: "3D-malli", otsikko: "Rakennetaan piirroksesta 3D-malli", kuvaus: "Viikot 43–47: piirroksen tuonti, osat, muodot ja muokkaaminen. Sovelluksen perustoiminnot syntyvät.", viikot: [43, 44, 45, 46, 47], vari: "#1fa4e3" },
+    { tunnus: "3", lyhyt: "Kokeiltava versio", otsikko: "Tehdään ensimmäinen käyttökelpoinen versio", kuvaus: "Viikot 48–51: kiertopiste, vienti, tallennus ja asiakkaiden kokeilu. Joululoma viikoilla 52–1.", viikot: [48, 49, 50, 51, 52, 53, 1], vari: "#1fa4e3" },
+    { tunnus: "4", lyhyt: "Parannukset", otsikko: "Parannetaan asiakkaiden palautteen perusteella", kuvaus: "Viikot 2–5: korjaukset ja sovitut jatkotoiminnot. Palaute ohjaa seuraavia muutoksia.", viikot: [2, 3, 4, 5], vari: "#1fa4e3" },
+    { tunnus: "5", lyhyt: "Julkaisu ja näyttö", otsikko: "Julkaisu ja näyttö", kuvaus: "Viikot 6–9: julkaisutesti, v1.0 ja esittely. Talviloma viikolla 8, näyttö viikolla 9.", viikot: [6, 7, 8, 9], vari: "#1fa4e3" }
   ],
 
   /* ---- viikkonavigaation lyhyet nimet ---- */
   viikkoNimet: {
-    40: "Aloitus",
-    41: "Harjoitussykli",
+    40: "Aloitus: työkalut ja projektin rajaus",
+    41: "Harjoitus: pyörivä kuutio julki",
     42: "Syysloma",
-    43: "SVG-tuonti",
-    44: "Hierarkia",
-    45: "Revolve",
-    46: "Inflate ja kamera",
-    47: "Transformit",
-    48: "Pivot",
-    49: "OBJ-vienti",
-    50: "Tallennus ja MVP",
-    51: "Katselmointi",
+    43: "Piirroksen tuonti (SVG)",
+    44: "Piirroksen ryhmistä mallin osiksi",
+    45: "Profiilista pyörähdyskappale (revolve)",
+    46: "Viivasta putki ja mallin näkymät",
+    47: "Osien siirto, kierto ja skaalaus",
+    48: "Kiertopisteen säätäminen (pivot)",
+    49: "Mallin vienti Blenderiin (OBJ)",
+    50: "Tallennus ja ensimmäinen toimiva versio",
+    51: "Asiakkaat kokeilevat ensimmäistä versiota",
     52: "Joululoma",
     53: "Joululoma",
     1: "Joululoma",
-    2: "Paluuviikko",
-    3: "Päivitä SVG",
-    4: "Jousto ja tärkeä jatko",
-    5: "Saavutettavuus",
-    6: "Julkaisutesti",
-    7: "v1.0",
+    2: "Paluu ja parannusten järjestys",
+    3: "Muokatun piirroksen päivittäminen",
+    4: "Puutteet ja sovitut parannukset",
+    5: "Selkeät säätimet ja näppäimistökäyttö",
+    6: "Julkaisun kokeilu toisella koneella",
+    7: "Valmis sovellus v1.0",
     8: "Talviloma",
-    9: "Näyttö"
+    9: "Projektin esittely ja luovutus"
   },
 
   /* ---- viikkotyyppien kehystekstit ---- */
@@ -129,7 +155,7 @@ window.NAYTTOPROJEKTI = {
     kohdat: [
       { kysymys: "1. Onko GitHubissa avoin issue, jolla on label tehtäväkortti?", ohje: "Avaa issue. Katso sen lopusta syklin tarkistuslista. Jatka ensimmäisestä askeleesta, jonka rasti puuttuu." },
       { kysymys: "2. Ei avointa korttia?", ohje: "Avaa `PROJEKTIN-TILA.md`. Katso kohta Seuraavana. Aloita työsyklin askeleesta 1." },
-      { kysymys: "3. Viikon tulos on valmis, mutta viikkoa on jäljellä?", ohje: "Tee viikon lisätehtävä. Se on Näin etenet -listan lopussa. Jos viikolla ei ole omaa lisätehtävää, kirjoita viikon funktiolle lisätesti, joka kokeilee virheellistä syötettä. Kirjaa odotettu tulos ennen ajoa." },
+      { kysymys: "3. Viikon tulos on valmis, mutta viikkoa on jäljellä?", ohje: "Tee viikon lisätehtävä. Se löytyy viikon Lisätehtävä-kohdasta. Jos viikolla ei ole omaa lisätehtävää, kirjoita viikon funktiolle lisätesti, joka kokeilee virheellistä syötettä. Kirjaa odotettu tulos ennen ajoa." },
       { kysymys: "4. Viikko loppuu, ja tulos on kesken?", ohje: "Kirjaa tilatiedoston Seuraavana-kohtaan, mihin jäit. Ohjaaja päättää jatkosta seuraavan viikon palaverissa maanantaina tai tiistaina. Tee sillä välin lisätesti viikon funktiolle." },
       {
         kysymys: "5. Mikään yllä olevista ei auta?",
@@ -142,7 +168,7 @@ window.NAYTTOPROJEKTI = {
   /* ---- työsykli: sama joka tehtäväkortissa (brief 5.1–5.2, runko v3 § 5) ---- */
   sykli: {
     otsikko: "Työsykli",
-    johdanto: "Tee askeleet järjestyksessä. Yksi kierros on yksi tehtäväkortti. Kun kierros on valmis, aloita seuraava kortti askeleesta 1.",
+    johdanto: "Tee askeleet järjestyksessä. Yksi kierros on yksi GitHub-issueen kirjattu tehtäväkortti. Kun muutos on tehty, palaa viikon työvaiheisiin ja jatka seuraavasta keskeneräisestä kohdasta.",
     askeleet: [
       {
         nimi: "Suunnittele",
@@ -310,43 +336,139 @@ window.NAYTTOPROJEKTI = {
       type: "pohjustus",
       rutiini: false,
       josJumissa: false,
-      feature: "VS Code ja GitHub ovat korkean kontrastin teemassa. Komennot `git --version` ja `python --version` tulostavat versiot. Julkinen repository on kloonattu VS Codeen ja jaettu ohjaajalle. `project-docs/mvp.md` on pushattu.",
-      connection: "Tällä viikolla ei vielä rakenneta sovellusta. Laitat työkalut kuntoon. Kirjoitat omin sanoin, mitä MVP:hen kuuluu. Seuraavan viikon työsykli tarvitsee kaiken tämän.",
-      deliverable: "Versiotulosteet · kloonattu ja jaettu repository · kolme pohjatiedostoa · `project-docs/mvp.md` GitHubissa · lähetetty kysymyslista · agenttipyynnön hinta päiväkirjassa.",
+      feature: "Työkalut ovat käytössä, projektilla on oma repository ja ensimmäinen versio on rajattu.",
+      connection: "Vektoripajassa Inkscapella tehty piirros muuttuu muokattavaksi 3D-malliksi, jonka voi viedä Blenderiin. Tällä viikolla laitat työkalut ja oman repositoryn kuntoon sekä rajaat ensimmäisen toimivan version eli MVP:n. Näin seuraavien viikkojen toteutuksella on selkeä tavoite ja paikka, jossa muutokset säilyvät.",
+      deliverable: "Versiotulosteet · kloonattu ja jaettu repository · kolme pohjatiedostoa · `project-docs/suunnitelma.md` GitHubissa · lähetetty kysymyslista · agenttipyynnön hinta päiväkirjassa.",
       why: "Ilman omaa MVP-kuvausta Copilot pilkkoo väärää asiaa. Ilman mittausta et tiedä, montako agenttipyyntöä voit tehdä kuukauden krediiteillä.",
-      done: "Ohjaaja näkee repositoryn, `mvp.md` on GitHubissa, kysymyslista on lähetetty, ja päiväkirjassa on agenttipyynnön hinta tai merkintä \"odottaa käyttönäkymää\".",
+      done: "Ohjaaja näkee repositoryn, `suunnitelma.md` on GitHubissa, kysymyslista on lähetetty, ja päiväkirjassa on agenttipyynnön hinta tai merkintä \"odottaa käyttönäkymää\".",
       record: "MVP:n perustelu omin sanoin, repositoryn osoite, agenttipyynnön hinta ja näyttömatriisin vaatimukset: kehitysympäristö ja tärkeysjärjestys.",
       skills: ["Asiakkaan tarpeiden selvittäminen", "Tärkeysjärjestys: pakollinen ydin, tärkeä jatko ja jatkolista", "Kehitysympäristön käyttöönotto", "Versionhallinnan aloitus"],
       termit: ["MVP", "pakollinen ydin", "tärkeä jatko", "jatkolista", "tulkki", "pip", "virtuaaliympäristö", "repository", "kloonaus", "commit", "push", "tilatiedosto", "krediitti"],
       paivat: [
         ["Sopiminen ja asennus", "Sovi tekijänimi ja palaveripäivä. Asenna työkalut ja vaihda teemat."],
         ["Repository", "Aseta Git. Luo repository, kloonaa se ja lisää pohjat."],
-        ["MVP", "Lue toimeksianto. Kirjoita `mvp.md` omin sanoin."],
+        ["MVP", "Lue toimeksianto. Täytä suunnitelman MVP-kenttä omin sanoin ja vie suunnitelma GitHubiin."],
         ["Commit ja kysymykset", "Tee commit ja push. Lähetä kysymyslista asiakkaille."],
         ["Mittaus", "Mittaa agenttipyynnön hinta. Kirjoita päiväkirja ja tee commit."]
       ],
-      steps: [
-        ["Sovi ohjaajan kanssa.", "Sovi Teamsissa tekijänimi ja viikkopalaverin päivä, maanantai tai tiistai. Tee tämä ennen Gitin asetuksia."],
-        ["Asenna VS Code, Git, Inkscape ja Blender.", "Onko tämä jo tehty? Tarkista ohjelmat yksi kerrallaan. Asenna vain puuttuvat. Aja VS Coden terminaalissa <code>git --version</code>. Node.js:ää ei tarvita. Jos asensit sen jo, voit jättää sen koneelle."],
-        ["Asenna Python 3.13.", "Onko tämä jo tehty? Aja terminaalissa <code>python --version</code>. Jos tuloste alkaa <code>Python 3.13</code>, siirry seuraavaan askeleeseen. Muuten lataa Python 3.13:n Windows installer (64-bit) python.org-sivulta, ei Microsoft Storesta. Rastita asennuksen ensimmäisessä ikkunassa Add python.exe to PATH. Katso kuvaohje alta."],
-        ["Tarkista tulkki ja pip.", "Python-tulkki on ohjelma, joka ajaa Python-koodin. pip on Pythonin paketinhallinta. Se asentaa kirjastoja ja tulee Pythonin mukana. Sulje VS Code ja avaa se uudelleen. Aja <code>python --version</code>. Tulosteen pitää alkaa <code>Python 3.13</code>. Aja sitten <code>python -m pip --version</code>. Tulosteen lopussa pitää lukea <code>(python 3.13)</code>. Jos näkyy muu versio, lähetä ohjaajalle Teams-viesti."],
-        ["Asenna VS Coden Python-laajennus.", "Onko tämä jo tehty? Avaa VS Codessa Extensions. Hae Python. Julkaisija on Microsoft. Jos laajennuksen kohdalla lukee Uninstall, laajennus on jo asennettu. Muuten valitse Install. Ensi viikolla luot laajennuksella virtuaaliympäristön (.venv). Se on projektin oma kansio, johon projektin kirjastot asennetaan."],
-        ["Vaihda teemat.", "Valitse VS Codessa teema Dark High Contrast. Valitse GitHubin asetuksissa teema Dark high contrast."],
-        ["Aseta Git.", "Aseta Gitin nimeksi sovittu tekijänimi. Aseta sähköpostiksi GitHubin noreply-osoite. Näin omaa sähköpostiosoitettasi ei julkaista. Katso kuvaohje alta."],
-        ["Luo repository.", "Luo GitHubissa julkinen repository nimellä <code>vektoripaja</code>. Valitse Add a README file. README on repositoryn etusivun ohje."],
-        ["Kloonaa repository.", "Kloonaa repository VS Codeen. Kloonaus tekee siitä kopion omalle koneellesi."],
-        ["Lisää pohjat.", "Lisää kolme pohjatiedostoa ensi viikkoa varten: tilatiedosto <code>PROJEKTIN-TILA.md</code>, tehtäväkorttipohja ja <code>.github/copilot-instructions.md</code>. Pohjat ovat alla kopioitavina."],
-        ["Jaa repository.", "Lisää ohjaaja Collaboratoriksi. Collaborator on henkilö, joka näkee repositoryn ja voi kommentoida sitä."],
-        ["Kirjoita MVP.", "Kirjoita <code>project-docs/mvp.md</code>: pakollisen ytimen lista ja miksi muut asiat odottavat. Poista samalla suunnitelmastasi <code>[cite: n]</code>-merkinnät. Copilot saa selittää termejä, mutta perustelu on sinun. Kirjaa käyttö AI-lokiin."],
-        ["Tee commit ja push.", "Tallenna muutokset commitiksi. Commit on yksi nimetty muutos. Lähetä se GitHubiin pushilla."],
-        ["Lähetä kysymyslista.", "Kirjoita vähintään kolme kysymystä asiakkaille. Käytä pohjaa alta. Lähetä kysymykset Teamsissa. Vastaukset käydään läpi ensi viikon palaverissa."],
-        ["Katso krediitit ennen mittausta.", "Avaa GitHubin käyttönäkymä. Käyttönäkymä on sivu, jolla krediittien kulutus näkyy. Kirjaa, montako krediittiä on käytetty."],
-        ["Avaa GitHub Copilot.", "Avaa VS Codessa GitHub Copilotin chat."],
-        ["Vaihda agenttitilaan.", "Valitse chatin tilaksi Agent. Agenttitila muokkaa tiedostoja ja kuluttaa krediittejä."],
-        ["Lähetä mittauksen viestipohja.", "Viestipohja on valmis viesti, jonka kopioit. Kopioi mittauksen viestipohja alta ja lähetä se. Hylkää ehdotettu muutos, jos se koskee muita tiedostoja kuin README:tä."],
-        ["Kirjaa hinta.", "Avaa käyttönäkymä uudelleen. Hinta on nykyinen luku miinus aiempi luku. Kirjaa hinta päiväkirjaan. Jos luku ei ole muuttunut, kirjaa \"odottaa käyttönäkymää\" ja katso huomenna."],
-        ["Tee lisätehtävä.", "Valitse oman suunnitelmasi pakollisen ytimen listasta viisi termiä. Kirjoita jokaisesta yksi suomenkielinen rivi."]
-      ],
+      tehtavat: {
+        "40-1": {
+          "miksi": "Seuraavalla viikolla tarvitset toimivan kehitysympäristön.",
+          "osat": [
+            [
+              "Sovi aloitus",
+              "Sovi Teamsissa ohjaajan kanssa tekijänimi ja viikkopalaverin päivä, maanantai tai tiistai. Tee tämä ennen Gitin asetuksia."
+            ],
+            [
+              "Tarkista työkalut",
+              "Tarkista VS Code, Git, Inkscape ja Blender. Asenna vain puuttuvat. Aja VS Coden terminaalissa `git --version`. Node.js:ää ei tarvita."
+            ],
+            [
+              "Tarkista Python",
+              "Aja `python --version`. Jos versio ei ole Python 3.13, asenna python.org-sivulta Windows installer (64-bit). Valitse asennuksessa Add python.exe to PATH. Katso kuvaohje."
+            ],
+            [
+              "Varmista pip",
+              "Sulje VS Code ja avaa se uudelleen. Aja `python -m pip --version`. Lopussa pitää lukea `(python 3.13)`. Jos versio poikkeaa, lähetä tuloste ohjaajalle Teamsissa."
+            ],
+            [
+              "Tarkista Python-laajennus",
+              "Avaa VS Codessa Extensions ja hae Python, julkaisija Microsoft. Uninstall tarkoittaa, että se on asennettu. Muuten valitse Install. Laajennuksella luodaan ensi viikolla virtuaaliympäristö eli projektin oma kirjastokansio."
+            ],
+            [
+              "Vaihda teemat",
+              "Valitse VS Codessa Dark High Contrast ja GitHubin asetuksissa Dark high contrast."
+            ],
+            [
+              "Kirjaa lähtötilanne",
+              "Kirjaa työkalujen versiot README:hen. Python-tulkki ajaa Python-koodin; pip asentaa kirjastot. Seuraavalla viikolla luot projektin virtuaaliympäristön (.venv)."
+            ]
+          ],
+          "valmis": "Työkalut käynnistyvät, Pythonin ja pipin versiot näkyvät ja teema on vaihdettu.",
+          "tallenna": "Versiot README:hen ja sovittu tekijänimi suunnitelmaan.",
+          "sanat": []
+        },
+        "40-2": {
+          "miksi": "Repository säilyttää työn ja näyttää muutokset ohjaajalle.",
+          "osat": [
+            [
+              "Aseta Git",
+              "Aseta Gitin nimeksi sovittu tekijänimi. Aseta sähköpostiksi GitHubin noreply-osoite. Näin omaa sähköpostiosoitettasi ei julkaista. Katso kuvaohje alta."
+            ],
+            [
+              "Luo repository",
+              "Luo GitHubissa julkinen repository nimellä `vektoripaja`. Valitse Add a README file. README on repositoryn etusivun ohje."
+            ],
+            [
+              "Kloonaa repository",
+              "Kloonaa repository VS Codeen. Kloonaus tekee siitä kopion omalle koneellesi."
+            ],
+            [
+              "Lisää pohjat",
+              "Lisää kolme pohjatiedostoa ensi viikkoa varten: tilatiedosto `PROJEKTIN-TILA.md`, tehtäväkorttipohja ja `.github/copilot-instructions.md`. Pohjat ovat alla kopioitavina."
+            ],
+            [
+              "Jaa repository",
+              "Lisää ohjaaja Collaboratoriksi. Collaborator on henkilö, joka näkee repositoryn ja voi kommentoida sitä."
+            ]
+          ],
+          "valmis": "Repository on kloonattu VS Codeen, pohjat ovat mukana ja ohjaaja pääsee katsomaan työtä.",
+          "tallenna": "Repositoryn osoite päiväkirjaan. Pohjat GitHubiin commitilla ja pushilla.",
+          "sanat": []
+        },
+        "40-3": {
+          "miksi": "Rajaus kertoo, mitä asiakkaille pitää pystyä näyttämään ennen joulua.",
+          "osat": [
+            [
+              "Kirjoita MVP",
+              "Täytä tällä sivulla suunnitelman MVP omin sanoin -kenttä: mikä kuuluu pakolliseen ytimeen ja miksi muut asiat odottavat."
+            ],
+            "Lataa suunnitelma ja tallenna se tiedostoksi `project-docs/suunnitelma.md`. Perustele omin sanoin. Kirjaa Copilotin mahdollinen apu AI-lokiin.",
+            [
+              "Tee commit ja push",
+              "Tallenna muutokset commitiksi. Commit on yksi nimetty muutos. Lähetä se GitHubiin pushilla."
+            ],
+            [
+              "Lähetä kysymyslista",
+              "Kirjoita vähintään kolme kysymystä asiakkaille. Käytä pohjaa alta. Lähetä kysymykset Teamsissa. Vastaukset käydään läpi ensi viikon palaverissa."
+            ]
+          ],
+          "valmis": "Oma MVP-kuvaus on GitHubissa ja kysymyslista on lähetetty asiakkaille.",
+          "tallenna": "MVP-kuvaus suunnitelmaan. Vie suunnitelma project-docs/suunnitelma.md-tiedostoksi; kirjaa kysymykset project-docs/kysymykset.md-tiedostoon.",
+          "sanat": [
+            "MVP"
+          ]
+        },
+        "40-4": {
+          "miksi": "Mittaus auttaa valitsemaan toteutustavan käytettävissä olevalla budjetilla.",
+          "osat": [
+            [
+              "Katso krediitit ennen mittausta",
+              "Avaa GitHubin käyttönäkymä. Käyttönäkymä on sivu, jolla krediittien kulutus näkyy. Kirjaa, montako krediittiä on käytetty."
+            ],
+            [
+              "Avaa GitHub Copilot",
+              "Avaa VS Codessa GitHub Copilotin chat."
+            ],
+            [
+              "Vaihda agenttitilaan",
+              "Valitse chatin tilaksi Agent. Agenttitila muokkaa tiedostoja ja kuluttaa krediittejä."
+            ],
+            [
+              "Lähetä mittauksen viestipohja",
+              "Viestipohja on valmis viesti, jonka kopioit. Kopioi mittauksen viestipohja alta ja lähetä se. Hylkää ehdotettu muutos, jos se koskee muita tiedostoja kuin README:tä."
+            ],
+            [
+              "Kirjaa hinta",
+              "Avaa käyttönäkymä uudelleen. Hinta on nykyinen luku miinus aiempi luku. Kirjaa hinta päiväkirjaan. Jos luku ei ole muuttunut, kirjaa \"odottaa käyttönäkymää\" ja katso huomenna."
+            ]
+          ],
+          "valmis": "Päiväkirjassa on kulutuksen muutos tai merkintä odottaa käyttönäkymää.",
+          "tallenna": "Mittauksen alku- ja loppulukema sekä erotus tämän viikon päiväkirjaan.",
+          "sanat": []
+        }
+      },
+      lisatehtavat: [["Tee lisätehtävä.", "Valitse oman suunnitelmasi pakollisen ytimen listasta viisi termiä. Kirjoita jokaisesta yksi suomenkielinen rivi."]],
       pohjat: [
         { otsikko: "Kysymyslista asiakkaille (Teams)", teksti: "Hei Matti ja Antti,\nKysymyksiä Vektoripajasta:\n1. \n2. \n3. \nKäydäänkö vastaukset läpi viikkopalaverissa?" },
         { otsikko: "Mittauksen viestipohja GitHub Copilotille (agenttitila)", teksti: "Lue README.md ja ehdota sen alkuun yksi lause, joka kertoo, mikä Vektoripaja on. Älä muuta muita tiedostoja." },
@@ -361,34 +483,104 @@ window.NAYTTOPROJEKTI = {
         ["Lataa copilot-instructions.md", "pohjat/copilot-instructions.md", true]
       ],
       kuvaohjeet: ["python-asennus", "github-noreply", "vscode-kloonaus", "github-collaborators", "vscode-commit-push", "github-kayttonakyma"],
-      example: "`mvp.md`: \"Revolve kuuluu pakolliseen ytimeen, koska maljakko ja pyörä tehdään sillä. Boolean-toiminnot ovat jatkolistalla, koska malli toimii ilman niitä.\"",
+      example: "`suunnitelma.md`: \"Revolve kuuluu pakolliseen ytimeen, koska maljakko ja pyörä tehdään sillä. Boolean-toiminnot ovat jatkolistalla, koska malli toimii ilman niitä.\"",
       notEnough: "\"MVP on kaikki [MVP]-merkityt asiat.\" Lista on kopioitu suunnitelmasta. Siinä ei kerrota, miksi jokin jää pois."
     },
     41: {
       type: "feature",
-      feature: "Sovelluksen ikkunassa pyörii kuutio. Testit 1 ja 2 menevät läpi. GitHubin releasessa on zip, jonka itsetesti meni läpi.",
+      feature: "Windowsissa käynnistyy ladattu harjoitussovellus, jossa kuutio pyörii.",
       excerpt: "Haluamme kokeilla jokaista välivaihetta, emme vain katsoa kuvakaappauksia.",
-      connection: "Viikolla 40 asensit työkalut. Nyt käyt työsyklin läpi vaarattomalla tehtävällä. Kuutio poistetaan myöhemmin, mutta sama sykli toistuu joka viikko.",
+      connection: "Ennen varsinaisia mallinnustoimintoja harjoittelet koko matkan tehtäväkortista testattuun ja ladattavaan sovellukseen. Pyörivä kuutio on pieni harjoitus, jolla varmistat, että kehitysympäristö, testit ja Windows-julkaisu toimivat yhdessä. Samaa työsykliä käytät myöhemmin Vektoripajan jokaisen ominaisuuden rakentamiseen.",
       deliverable: "Ikkuna, jossa kuutio pyörii · testit 1 ja 2 · release-zip GitHubissa · kaksi issueta suljettuna commit-viestillä · päätös teknisestä pohjasta suunnitelmassa.",
       why: "Jos sykli opitaan vasta SVG-tuonnin kanssa, uusi työtapa ja vaikea tehtävä tulevat yhtä aikaa. Silloin et tiedä, johtuuko ongelma työtavasta vai tehtävästä.",
       done: "Releasen zipistä purettu sovellus käynnistyy, ja kuutio pyörii. Actionsin ajo on vihreä, eli itsetesti meni läpi. `pytest` näyttää, että testi 1 menee läpi. Issuet #1 ja #2 on suljettu commitilla.",
       record: "Releasen osoite, issueiden numerot, testin 1 odotettu ja havaittu tulos, kiertokulma-funktio selityspohjalla ja näyttömatriisin vaatimukset: kehitysympäristön käyttöönotto, ulkoiset komponentit ja julkaisu tuotantoon.",
       skills: ["Tehtäväkortti ja hyväksymiskriteerit", "Tekninen pohja: PySide6, PyVista, trimesh ja pytest", "Testi ennen koodia", "Julkaisu releasena GitHub Actionsilla"],
       termit: ["työsykli", "tehtäväkortti", "issue", "kaista", "testi", "tekninen pohja", "requirements.txt", "tagi", "GitHub Actions", "paketointi", "itsetesti", "release", "zip"],
-      steps: [
-        ["Käy viikkopalaveri.", "Käy läpi asiakkaiden vastaukset kysymyslistaasi. Kirjaa ne tiedostoon <code>project-docs/kysymykset.md</code>. Viikkopalaveri on viikon tapaaminen ohjaajan kanssa."],
-        ["Päätä ensin.", "Lue tekninen ehdotus suunnitelmasta. Kirjaa suunnitelmaan, hyväksytkö sen. Perustele päätös pakollisen ytimen toiminnoilla."],
-        ["Kirjaa käyttöliittymävaatimus.", "Kirjoita suunnitelmaan, millainen sovelluksesi ulkoasun pitää olla: taustaväri, tekstin väri, tekstin koko ja painikkeiden koko. Kortin #1 hyväksymiskriteeri tulee tästä."],
-        ["Pura pohja repositoryyn.", "Lataa alta <code>vektoripaja-pohja.zip</code>. Napsauta sitä hiiren oikealla painikkeella. Valitse Pura kaikki. Valitse kohteeksi repositorysi kansio. Pohjassa ovat valmiina julkaisun ja itsetestin tiedostot. Mukana on myös lista kirjastoista versioineen. Sen nimi on <code>requirements.txt</code>."],
-        ["Luo virtuaaliympäristö itse.", "Avaa repositoryn kansio VS Codessa. Paina Ctrl+Shift+P. Valitse Python: Create Environment. Valitse sitten Venv. Valitse lopuksi Python 3.13. Jos VS Code tarjoaa kirjastojen asennusta, älä valitse listasta mitään. Valitse OK. Asennat kirjastot itse seuraavassa askeleessa. Katso kuvaohje alta."],
-        ["Asenna kirjastot itse.", "Avaa uusi terminaali. Tarkista, että terminaalin rivin alussa lukee (.venv). Aja <code>pip install -r requirements.txt</code>. Aja sitten <code>python tarkista_ymparisto.py</code>. Rivien alussa pitää lukea OK. Viimeisellä rivillä lukee Ympäristö on kunnossa."],
-        ["Kirjaa kirjastot README:hen.", "Kirjoita README:hen kirjastojen nimet ja lisenssit. Lisenssin näet komennolla <code>pip show</code>. Kirjoita komennon perään kirjaston nimi, esimerkiksi <code>pip show PySide6</code>."],
-        ["Kirjoita testi 1 ennen koodia.", "Testi 1: kiertokulma. Funktio <code>kiertokulma(aika, nopeus)</code> saa ajan 0 ja nopeuden 0,5. Mitä odotat? Entä kun aika on 3? Kirjaa vastaukset ennen ajoa."],
-        ["Tee kortti #1 työsyklillä.", "Kortti: kuutio pyörii sovelluksen ikkunassa. Vertaa Copilotin korttia toteutusavun mallikorttiin."],
-        ["Tee kortti #2 työsyklillä.", "Kortti: sovellus julkaistaan releasena. Release on GitHubin julkaisusivu, josta valmiin version voi ladata zip-tiedostona. Julkaisu alkaa nimetystä versiosta Gitissä. Sitä kutsutaan tagiksi. Katso toteutusavusta, miten julkaiset."],
-        ["Tee testi 2 puretusta kansiosta.", "Testi 2: julkaisu. Lataa zip releasesta. Pura se valitsemalla Pura kaikki. Käynnistä <code>Vektoripaja.exe</code> puretusta kansiosta, älä VS Codesta. Kuution pitää pyöriä."],
-        ["Tee lisätehtävä.", "Lisätesti: mitä odotat, kun aika on negatiivinen? Kirjaa vastaus ennen ajoa. Lisätesti on ylimääräinen testi ilman T-numeroa."]
-      ],
+      tehtavat: {
+        "41-1": {
+          "miksi": "Harjoitus tarvitsee saman ympäristön kuin varsinainen sovellus.",
+          "osat": [
+            [
+              "Käy viikkopalaveri",
+              "Käy läpi asiakkaiden vastaukset kysymyslistaasi. Kirjaa ne tiedostoon `project-docs/kysymykset.md`. Viikkopalaveri on viikon tapaaminen ohjaajan kanssa."
+            ],
+            [
+              "Päätä ensin",
+              "Lue tekninen ehdotus toimeksiannosta. Kirjaa suunnitelmaan, hyväksytkö sen. Perustele päätös pakollisen ytimen toiminnoilla."
+            ],
+            [
+              "Kirjaa käyttöliittymävaatimus",
+              "Kirjoita suunnitelmaan, millainen sovelluksesi ulkoasun pitää olla: taustaväri, tekstin väri, tekstin koko ja painikkeiden koko. Kortin #1 hyväksymiskriteeri tulee tästä."
+            ],
+            [
+              "Pura pohja repositoryyn",
+              "Lataa alta `vektoripaja-pohja.zip`. Napsauta sitä hiiren oikealla painikkeella. Valitse Pura kaikki. Valitse kohteeksi repositorysi kansio. Pohjassa ovat valmiina julkaisun ja itsetestin tiedostot. Mukana on myös lista kirjastoista versioineen. Sen nimi on `requirements.txt`."
+            ],
+            [
+              "Luo virtuaaliympäristö itse",
+              "Avaa repositoryn kansio VS Codessa. Paina Ctrl+Shift+P. Valitse Python: Create Environment. Valitse sitten Venv. Valitse lopuksi Python 3.13. Jos VS Code tarjoaa kirjastojen asennusta, älä valitse listasta mitään. Valitse OK."
+            ],
+            "Asennat kirjastot itse seuraavassa askeleessa. Katso kuvaohje alta.",
+            [
+              "Asenna kirjastot itse",
+              "Avaa uusi terminaali. Tarkista, että terminaalin rivin alussa lukee (.venv). Aja `pip install -r requirements.txt`. Aja sitten `python tarkista_ymparisto.py`. Rivien alussa pitää lukea OK. Viimeisellä rivillä lukee Ympäristö on kunnossa."
+            ],
+            [
+              "Kirjaa kirjastot README:hen",
+              "Kirjoita README:hen kirjastojen nimet ja lisenssit. Lisenssin näet komennolla `pip show`. Kirjoita komennon perään kirjaston nimi, esimerkiksi `pip show PySide6`."
+            ]
+          ],
+          "valmis": "Ympäristötarkistus näyttää OK ja tekninen ehdotus on arvioitu omin sanoin.",
+          "tallenna": "Päätökset suunnitelmaan; asiakkaiden vastaukset kysymykset.md-tiedostoon ja lisenssit README:hen.",
+          "sanat": []
+        },
+        "41-2": {
+          "miksi": "Oma odotettu tulos kertoo, mitä kuution koodin pitää tehdä.",
+          "osat": [
+            [
+              "Kirjoita testi 1 ennen koodia",
+              "Testi 1: kiertokulma."
+            ],
+            "Funktio `kiertokulma(aika, nopeus)` saa ajan 0 ja nopeuden 0,5. Mitä odotat? Entä kun aika on 3? Kirjaa vastaukset ennen ajoa."
+          ],
+          "valmis": "Testin 1 odotetut arvot on kirjoitettu ennen toteutusta.",
+          "tallenna": "Testi tests/test_kierto.py-tiedostoon ja odotetut tulokset GitHub-issueen.",
+          "sanat": []
+        },
+        "41-3": {
+          "tyosykli": true,
+          "miksi": "Pieni kuutioharjoitus opettaa toteuttamisen ilman SVG-tuonnin vaikeutta.",
+          "osat": [
+            [
+              "Tee kortti #1 työsyklillä",
+              "Kortti: kuutio pyörii sovelluksen ikkunassa."
+            ],
+            "Vertaa Copilotin korttia toteutusavun mallikorttiin."
+          ],
+          "valmis": "Sovellus näyttää pyörivän kuution ja testi 1 menee läpi.",
+          "tallenna": "Koodi ja testi GitHubiin; testiajon tulos kuution issueen.",
+          "sanat": []
+        },
+        "41-4": {
+          "tyosykli": true,
+          "miksi": "Julkaisu varmistaa, että sovellusta voi käyttää kehitysympäristön ulkopuolella.",
+          "osat": [
+            [
+              "Tee kortti #2 työsyklillä",
+              "Kortti: sovellus julkaistaan releasena. Release on GitHubin julkaisusivu, josta valmiin version voi ladata zip-tiedostona. Julkaisu alkaa nimetystä versiosta Gitissä. Sitä kutsutaan tagiksi. Katso toteutusavusta, miten julkaiset."
+            ],
+            [
+              "Tee testi 2 puretusta kansiosta",
+              "Testi 2: julkaisu. Lataa zip releasesta. Pura se valitsemalla Pura kaikki. Käynnistä `Vektoripaja.exe` puretusta kansiosta, älä VS Codesta. Kuution pitää pyöriä."
+            ]
+          ],
+          "valmis": "Ladatusta zipistä käynnistetty Vektoripaja.exe näyttää pyörivän kuution.",
+          "tallenna": "Release v0.0.41 GitHubiin ja testin 2 tulos julkaisuissueen.",
+          "sanat": []
+        }
+      },
+      lisatehtavat: [["Tee lisätehtävä.", "Lisätesti: mitä odotat, kun aika on negatiivinen? Kirjaa vastaus ennen ajoa. Lisätesti on ylimääräinen testi ilman T-numeroa."]],
       resources: [
         ["Lataa vektoripaja-pohja.zip", "pohjat/vektoripaja-pohja.zip", true]
       ],
@@ -397,7 +589,7 @@ window.NAYTTOPROJEKTI = {
       notEnough: "\"Hyväksyn, koska Copilot suositteli tätä.\" Perustelussa ei ole yhtään pakollisen ytimen toimintoa.",
       help: {
         title: "Mallikortti, testipohja, kansiorakenne ja julkaisu",
-        tree: "vektoripaja/\n├─ .github/\n│  ├─ ISSUE_TEMPLATE/tehtavakortti.md\n│  ├─ copilot-instructions.md\n│  └─ workflows/release.yml     (pohja)\n├─ .venv/                        (oma, ei GitHubiin)\n├─ esimerkit/esimerkki.svg       (pohja)\n├─ project-docs/\n│  ├─ mvp.md\n│  └─ kysymykset.md\n├─ tests/\n│  └─ test_kierto.py\n├─ vektoripaja/                  (paketin kansio: sovelluksen koodi)\n│  ├─ __init__.py                (pohja)\n│  ├─ ikkuna.py\n│  ├─ itsetesti.py               (pohja)\n│  ├─ kierto.py\n│  ├─ teema.py                   (pohja)\n│  └─ teema.qss                  (pohja)\n├─ .gitignore                    (pohja)\n├─ LUE_MINUT.txt                 (pohja)\n├─ PROJEKTIN-TILA.md\n├─ README.md\n├─ main.py                       (pohja)\n├─ pytest.ini                    (pohja)\n├─ rakenna_exe.bat               (pohja)\n├─ requirements.txt              (pohja)\n├─ tarkista_ymparisto.py         (pohja)\n└─ vektoripaja.spec              (pohja)",
+        tree: "vektoripaja/\n├─ .github/\n│  ├─ ISSUE_TEMPLATE/tehtavakortti.md\n│  ├─ copilot-instructions.md\n│  └─ workflows/release.yml     (pohja)\n├─ .venv/                        (oma, ei GitHubiin)\n├─ esimerkit/esimerkki.svg       (pohja)\n├─ project-docs/\n│  ├─ suunnitelma.md\n│  └─ kysymykset.md\n├─ tests/\n│  └─ test_kierto.py\n├─ vektoripaja/                  (paketin kansio: sovelluksen koodi)\n│  ├─ __init__.py                (pohja)\n│  ├─ ikkuna.py\n│  ├─ itsetesti.py               (pohja)\n│  ├─ kierto.py\n│  ├─ teema.py                   (pohja)\n│  └─ teema.qss                  (pohja)\n├─ .gitignore                    (pohja)\n├─ LUE_MINUT.txt                 (pohja)\n├─ PROJEKTIN-TILA.md\n├─ README.md\n├─ main.py                       (pohja)\n├─ pytest.ini                    (pohja)\n├─ rakenna_exe.bat               (pohja)\n├─ requirements.txt              (pohja)\n├─ tarkista_ymparisto.py         (pohja)\n└─ vektoripaja.spec              (pohja)",
         actions: [
           "Kopioi testipohja tiedostoon `tests/test_kierto.py`. Kirjoita omat odotetut tuloksesi `___`-kohtiin (työsyklin kohta 3a).",
           "Pyydä Tiedosto-kaistalla tiedostot yksi kerrallaan: ensin `vektoripaja/kierto.py`, sitten `vektoripaja/ikkuna.py`. Pohjan `main.py` kutsuu funktiota `kaynnista()` tiedostosta `vektoripaja/ikkuna.py`. Älä muuta tiedostoa `main.py`.",
@@ -447,25 +639,92 @@ window.NAYTTOPROJEKTI = {
     },
     43: {
       type: "feature",
-      feature: "Inkscapessa piirretty SVG avautuu sovellukseen. Sen polut näkyvät 3D-näkymässä viivoina.",
+      feature: "Käyttäjä voi avata oman SVG-piirroksensa Vektoripajassa.",
       excerpt: "Tarvitsemme Windowsilla toimivan työpöytäsovelluksen, joka avaa Inkscapessa piirretyn SVG-tiedoston ja tekee siitä low-poly-mallin.",
-      connection: "Nyt sykli on tuttu. Ensimmäinen oikea ominaisuus on tuonti. Ilman sitä mallista ei synny mitään.",
+      connection: "Vektoripajan lähtöaineisto on käyttäjän Inkscapessa tekemä SVG-piirros. Tällä viikolla tuot sen polut sovellukseen ja tarkistat, että myös virheelliset tiedostot käsitellään hallitusti. Tuonti luo pohjan osien rakenteelle ja myöhemmille 3D-muodoille.",
       deliverable: "Oma testitiedosto Inkscapesta · testit 3–5 · kansiorakenne suunnitelmassa · polut näkymässä · `project-docs/kirjastot.md` · viikon release.",
       why: "Kaikki myöhemmät viikot tarvitsevat tuodut polut. Jos tuonti on epävarma, myös revolve ja inflate ovat epävarmoja.",
       done: "Oma SVG avautuu tiedostoikkunasta, testit 3–5 menevät läpi, ja `project-docs/kirjastot.md`:ssä on kaksi svgelementsin rajoitetta omalla tiedostolla kokeiltuna.",
       record: "Kansiorakenne ja moduulien rajat, yksi svgelementsin rajoite omalla tiedostolla kokeiltuna, viikon funktio selityspohjalla ja näyttömatriisin vaatimukset: kirjaston rajoitteet ja tiedon käsittely.",
       skills: ["SVG-tiedoston tuonti", "Moduulien rajat", "Komponenttikirjaston rajoitteet", "Ulkoinen tiedosto turvallisesti"],
       termit: ["täydennys", "moduuli", "havaintoissue", "layer"],
-      steps: [
-        ["Piirrä testitiedosto.", "Tee Inkscapessa nimetyt layerit ja kolme sisäkkäistä ryhmää. Katso kuvaohje alta. Tallenna tiedosto kansioon <code>testiaineisto/</code>."],
-        ["Kirjoita testit 3–5 ensin.", "Testi 3: kolme polkua. Tiedostossa on kolme polkua. Testi 4: haitallinen SVG. SVG:ssä on <code>&lt;script&gt;</code>-elementti. Testi 5: väärä tiedosto. Tiedosto ei ole SVG. Kirjaa jokaiselle, mitä odotat."],
-        ["Lisää havaintopohja.", "Tallenna havaintopohja tiedostoon <code>.github/ISSUE_TEMPLATE/havainto.md</code>. Kun huomaat virheen, tee siitä havaintoissue: mitä odotit, mitä tapahtui ja miten virheen saa toistettua."],
-        ["Kirjaa rakenne.", "Kirjaa suunnitelmaan kansiorakenne ja moduulien rajat. Moduuli on kansio tai tiedosto, jolla on yksi vastuu. Päivitä sama rakenne tiedostoon <code>copilot-instructions.md</code>."],
-        ["Sovi dokumentointitapa.", "Sovi palaverissa, miten ohjelma dokumentoidaan: README ja käyttöohje. Kirjaa sovittu tapa suunnitelmaan."],
-        ["Toteuta työsyklillä.", "Kirjoita testit Täydennys-kaistalla kommentista. Toteuta tuonti Tiedosto-kaistalla, tiedosto kerrallaan."],
-        ["Kokeile rajoitteita.", "Kokeile omalla tiedostollasi, mitä svgelements ei lue. Kirjaa se <code>project-docs/kirjastot.md</code>:hen."],
-        ["Julkaise viikon versio.", "Tee tagi <code>v0.0.43</code> ja pushaa se kuten viikolla 41. Kun Actions-ajo on vihreä, viikon versio on releasessa. Asiakkaat voivat kokeilla sitä."]
-      ],
+      tehtavat: {
+        "43-1": {
+          "miksi": "Oma piirros on tuonnin ja myöhempien toimintojen yhteinen testiaineisto.",
+          "osat": [
+            [
+              "Piirrä testitiedosto",
+              "Tee Inkscapessa nimetyt layerit eli tasot, kolme sisäkkäistä ryhmää ja kolme polkua."
+            ],
+            "Katso kuvaohje alta. Tallenna tiedosto kansioon `testiaineisto/`."
+          ],
+          "valmis": "SVG:ssä on nimetyt tasot, kolme sisäkkäistä ryhmää ja kolme polkua.",
+          "tallenna": "SVG-tiedosto repositoryn testiaineisto-kansioon.",
+          "sanat": []
+        },
+        "43-2": {
+          "miksi": "Tuonnin pitää käsitellä myös väärät ja haitalliset tiedostot.",
+          "osat": [
+            [
+              "Kirjoita testit 3–5 ensin",
+              "Testi 3: kolme polkua. Tiedostossa on kolme polkua. Testi 4: haitallinen SVG. SVG:ssä on `<script>`-elementti. Testi 5: väärä tiedosto. Tiedosto ei ole SVG. Kirjaa jokaiselle, mitä odotat."
+            ],
+            [
+              "Lisää havaintopohja",
+              "Tallenna havaintopohja tiedostoon `.github/ISSUE_TEMPLATE/havainto.md`. Kun huomaat virheen, tee siitä havaintoissue: mitä odotit, mitä tapahtui ja miten virheen saa toistettua."
+            ]
+          ],
+          "valmis": "Testien 3–5 syötteet ja odotetut tulokset on määritelty ennen toteutusta.",
+          "tallenna": "Testit tests-kansioon ja havaintopohja .github/ISSUE_TEMPLATE-kansioon.",
+          "sanat": []
+        },
+        "43-3": {
+          "miksi": "Moduulien rajat auttavat rakentamaan myöhemmät toiminnot samaan sovellukseen.",
+          "osat": [
+            [
+              "Kirjaa rakenne",
+              "Kirjaa suunnitelmaan kansiorakenne ja moduulien rajat. Moduuli on kansio tai tiedosto, jolla on yksi vastuu. Päivitä sama rakenne tiedostoon `copilot-instructions.md`."
+            ],
+            [
+              "Sovi dokumentointitapa",
+              "Sovi palaverissa, miten ohjelma dokumentoidaan: README ja käyttöohje. Kirjaa sovittu tapa suunnitelmaan."
+            ]
+          ],
+          "valmis": "Kansiorakenne, moduulien vastuut ja sovittu dokumentointitapa on kirjattu.",
+          "tallenna": "Päätökset suunnitelmaan; päivitetty suunnitelma GitHubiin.",
+          "sanat": []
+        },
+        "43-4": {
+          "tyosykli": true,
+          "miksi": "Kaikki mallinnustoiminnot tarvitsevat piirroksesta luetut polut.",
+          "osat": [
+            [
+              "Toteuta työsyklillä",
+              "Kirjoita testit Täydennys-kaistalla kommentista."
+            ],
+            "Toteuta tuonti Tiedosto-kaistalla, tiedosto kerrallaan."
+          ],
+          "valmis": "Oman SVG:n polut näkyvät sovelluksessa ja testit 3–5 menevät läpi.",
+          "tallenna": "Tuonnin koodi ja testit GitHubiin; tulokset tuonnin issueen.",
+          "sanat": []
+        },
+        "43-5": {
+          "miksi": "Kirjaston rajoitteet pitää tuntea ennen 3D-muotojen toteutusta.",
+          "osat": [
+            [
+              "Kokeile rajoitteita",
+              "Kokeile omalla tiedostollasi, mitä svgelements ei lue. Kirjaa se `project-docs/kirjastot.md`:hen."
+            ],
+            [
+              "Julkaise viikon versio",
+              "Tee tagi `v0.0.43` ja pushaa se kuten viikolla 41. Kun Actions-ajo on vihreä, viikon versio on releasessa. Asiakkaat voivat kokeilla sitä."
+            ]
+          ],
+          "valmis": "Kaksi itse kokeiltua rajoitetta on kirjattu ja viikon versio on julkaistu.",
+          "tallenna": "Rajoitteet project-docs/kirjastot.md-tiedostoon; release v0.0.43 GitHubiin.",
+          "sanat": []
+        }
+      },
       example: "`kirjastot.md`: \"svgelements ei tee tekstistä polkuja. Kokeilin tiedostolla elain.svg: tekstiobjekti jäi pois näkymästä.\"",
       notEnough: "\"svgelementsillä on rajoitteita.\" Mitään ei ole kokeiltu omalla tiedostolla.",
       resources: [
@@ -505,24 +764,80 @@ window.NAYTTOPROJEKTI = {
     },
     44: {
       type: "feature",
-      feature: "SVG:n layerit ja ryhmät muuttuvat solmupuuksi eli mallin vanhempi–lapsi-puuksi. Hierarkiapaneeli näyttää osien nimet sisennettyinä.",
+      feature: "Piirroksen tasot ja ryhmät näkyvät mallin nimettyinä osina.",
       excerpt: "Piirroksen layerit ja ryhmät muuttuvat mallin osiksi niin, että pää pysyy kiinni vartalossa, kun vartaloa siirretään.",
-      connection: "Viikolla 43 polut tulivat 3D-näkymään irrallisina. Nyt niille tulee rakenne: mikä osa on minkäkin lapsi. PyVistassa osat eivät ole sisäkkäin, joten teet puun itse. Viikon 47 transformit ja viikon 49 vienti tarvitsevat tämän puun.",
+      connection: "Piirroksen layerit ja ryhmät kertovat, mistä osista malli koostuu ja mitkä osat kuuluvat yhteen. Tällä viikolla säilytät tämän rakenteen Vektoripajassa, jotta käyttäjä voi käsitellä mallia osina. Sama rakenne tarvitaan myöhemmin osien siirtämiseen ja vientiin Blenderiin.",
       deliverable: "Muunnoksen rajapinta ja testit 6–8 · muunnos puhtaana funktiona · maailmamuunnos ja sen lisätesti · hierarkiapaneeli · valinnan toiminta suunnitelmassa · revolven valintatapojen vertailu · viikon release.",
       why: "Ilman puuta osat eivät seuraa toisiaan. Silloin pää jää paikalleen, kun vartaloa siirretään, eikä .obj-tiedostoon synny osia.",
       done: "Oman tiedostosi kolme ryhmätasoa näkyvät paneelissa sisennettyinä. Testit 6–8 ja maailmamuunnoksen lisätesti menevät läpi. Suunnitelmassa on valinnan toiminta perusteluineen.",
       record: "Hierarkian muunnos selityspohjalla (tämä on viikon funktio), valinnan toiminnan perustelu ja näyttömatriisin vaatimukset: rakenteinen ohjelmointi, käyttöliittymä ja toimintalogiikka.",
       skills: ["Puun läpikäynti: rekursio tai silmukka", "Puhdas funktio ja rajapinta", "Käyttöliittymän osa suunnitelman mukaan", "Agentti-kaista: agenttitila"],
       termit: ["solmupuu", "maailmamuunnos", "hierarkiapaneeli", "puhdas funktio", "rajapinta"],
-      steps: [
-        ["Kirjoita rajapinta.", "Kirjoita korttiin funktion nimi, mitä se saa (SVG:n ryhmä) ja mitä se palauttaa (solmu, jolla on nimi, lapset ja oma muunnos). Rajapinta on funktion nimi, syöte ja paluuarvo."],
-        ["Kirjoita testit 6–8.", "Testi 6: kolme tasoa. Ryhmät ovat kolmessa tasossa. Testi 7: tyhjä ryhmä. Testi 8: nimetön ryhmä. Kirjaa jokaiselle, mitä odotat."],
-        ["Kirjoita maailmamuunnos.", "Maailmamuunnos kertoo osan lopullisen paikan näkymässä. Se lasketaan näin: vanhemman maailmamuunnos kertaa osan oma muunnos. Kirjoita siitä puhdas funktio ilman Qt:ta. Kirjoita ensin lisätesti: kun vanhempaa ei ole siirretty, kierretty eikä skaalattu, lapsen maailmamuunnos on sama kuin sen oma muunnos."],
-        ["Tee kortti Agentti-kaistalla.", "Kortti koskee funktiota ja paneelia eli useaa tiedostoa. Agentti-kaista tarkoittaa GitHub Copilotin agenttitilaa. Katso kuvaohjeet alta."],
-        ["Päätä valinnan toiminta.", "Kun käyttäjä klikkaa osaa, valitaanko lapsi vai koko kappale? Kirjaa päätös ja peruste suunnitelmaan."],
-        ["Vertaa revolven valintatapoja.", "Vertaa kahta tapaa: valinta ja painike sovelluksessa, tai nimimerkintä Inkscapessa, esimerkiksi layerin nimen perässä <code>[revolve]</code>. Kirjaa hyvät ja huonot puolet. Tuo suositus ensi viikon palaveriin."],
-        ["Julkaise viikon versio.", "Tee tagi <code>v0.0.44</code> ja pushaa se. Kun Actions-ajo on vihreä, viikon versio on releasessa."]
-      ],
+      tehtavat: {
+        "44-1": {
+          "miksi": "Ryhmärakenne ratkaisee, mitkä osat seuraavat toisiaan.",
+          "osat": [
+            [
+              "Kirjoita rajapinta",
+              "Kirjoita korttiin funktion nimi, mitä se saa (SVG:n ryhmä) ja mitä se palauttaa (solmu, jolla on nimi, lapset ja oma muunnos). Rajapinta on funktion nimi, syöte ja paluuarvo."
+            ],
+            [
+              "Kirjoita testit 6–8",
+              "Testi 6: kolme tasoa. Ryhmät ovat kolmessa tasossa. Testi 7: tyhjä ryhmä. Testi 8: nimetön ryhmä. Kirjaa jokaiselle, mitä odotat."
+            ]
+          ],
+          "valmis": "Muunnoksen rajapinta ja testien 6–8 odotetut tulokset ovat kirjattuina.",
+          "tallenna": "Rajapinta suunnitelmaan; testit tests-kansioon ja odotukset issueen.",
+          "sanat": []
+        },
+        "44-2": {
+          "tyosykli": true,
+          "miksi": "Hierarkiaa käytetään myöhemmin osien siirtämisessä ja viennissä.",
+          "osat": [
+            [
+              "Kirjoita maailmamuunnos",
+              "Maailmamuunnos kertoo osan lopullisen paikan näkymässä. Se lasketaan näin: vanhemman maailmamuunnos kertaa osan oma muunnos. Kirjoita siitä puhdas funktio ilman Qt:ta."
+            ],
+            "Kirjoita ensin lisätesti: kun vanhempaa ei ole siirretty, kierretty eikä skaalattu, lapsen maailmamuunnos on sama kuin sen oma muunnos.",
+            [
+              "Tee kortti Agentti-kaistalla",
+              "Kortti koskee funktiota ja paneelia eli useaa tiedostoa. Agentti-kaista tarkoittaa GitHub Copilotin agenttitilaa. Katso kuvaohjeet alta."
+            ]
+          ],
+          "valmis": "Kolme ryhmätasoa näkyy sisennettynä ja hierarkian sekä maailmamuunnoksen testit menevät läpi.",
+          "tallenna": "Koodi ja testit GitHubiin; tulokset toteutuksen issueen.",
+          "sanat": []
+        },
+        "44-3": {
+          "miksi": "Valintasääntö ratkaisee, muokkaako käyttäjä osaa vai kokonaisuutta.",
+          "osat": [
+            [
+              "Päätä valinnan toiminta",
+              "Kun käyttäjä klikkaa osaa, valitaanko lapsi vai koko kappale?"
+            ],
+            "Kirjaa päätös ja peruste suunnitelmaan."
+          ],
+          "valmis": "Valinnan toiminta ja sen peruste on kirjattu.",
+          "tallenna": "Valinnan päätös suunnitelmaan.",
+          "sanat": []
+        },
+        "44-4": {
+          "miksi": "Ensi viikon pyörähdyskappale tarvitsee selkeän valintatavan.",
+          "osat": [
+            [
+              "Vertaa revolven valintatapoja",
+              "Vertaa kahta tapaa: valinta ja painike sovelluksessa, tai nimimerkintä Inkscapessa, esimerkiksi layerin nimen perässä `[revolve]`. Kirjaa hyvät ja huonot puolet. Tuo suositus ensi viikon palaveriin."
+            ],
+            [
+              "Julkaise viikon versio",
+              "Tee tagi `v0.0.44` ja pushaa se. Kun Actions-ajo on vihreä, viikon versio on releasessa."
+            ]
+          ],
+          "valmis": "Kaksi valintatapaa on vertailtu ja suositus on valmis palaveriin.",
+          "tallenna": "Vertailu suunnitelmaan; release v0.0.44 GitHubiin.",
+          "sanat": []
+        }
+      },
       example: "Selityspohja: \"Saa SVG-ryhmän. Palauttaa solmun, jolla on nimi, lapset ja oma muunnos. Valitsee: jos ryhmällä ei ole nimeä, käyttää id:tä. Toistaa: kutsuu itseään jokaiselle lapsiryhmälle. Testi 6 tarkistaa kolmen tason puun.\"",
       notEnough: "\"Funktio muuntaa SVG:n hierarkiaksi.\" Selityksestä puuttuvat syöte, paluuarvo, valinta, toisto ja testi.",
       kuvaohjeet: ["vscode-chat-tilat", "vscode-liita-tiedosto"],
@@ -549,23 +864,66 @@ window.NAYTTOPROJEKTI = {
     },
     45: {
       type: "feature",
-      feature: "Puoliprofiilista syntyy pyörähdyskappale. Segmenttien määrää voi säätää välillä 3–32. Kappaletta voi kiertää hiirellä joka puolelta.",
+      feature: "Käyttäjä voi tehdä piirretystä puoliprofiilista pyörähdyskappaleen.",
       excerpt: "Puoliprofiilista pitää syntyä pyörähdyskappale, esimerkiksi maljakko, ja viivasta putki, esimerkiksi johto tai sarvi.",
-      connection: "Nyt osat ovat puussa. Ensimmäinen muoto on revolve: puoliprofiili pyörähtää akselin ympäri, ja siitä syntyy kappale. Revolve tarkoittaa pyörähdyskappaletta.",
+      connection: "Nyt piirroksesta aletaan tehdä varsinaisia 3D-kappaleita. Revolve pyöräyttää profiilin akselin ympäri, jolloin siitä voi syntyä esimerkiksi maljakko tai pyörä. Segmenttisäädin ja kameran kierto auttavat käyttäjää muotoilemaan ja tarkastelemaan tätä ensimmäistä mallinnustoimintoa.",
       deliverable: "Sovittu valintatapa suunnitelmassa · oma hyväksymiskriteeri profiilille · testit 9–11 · revolve, segmenttisäädin ja orbit · viikon release.",
       why: "Revolve on MVP:n ensimmäinen oikea 3D-muoto. Ilman sitä maljakkoa, pyörää tai kupolia ei synny.",
       done: "Oma profiilisi pyörähtää kappaleeksi, segmenttisäädin muuttaa särmien määrää välillä 3–32, ja testit 9–11 menevät läpi.",
       record: "Sovittu valintatapa ja oma hyväksymiskriteeri akselin väärälle puolelle, viikon funktio selityspohjalla ja näyttömatriisin vaatimukset: ratkaisut yhdessä, toimintalogiikka ja kirjaston toiminnot.",
       skills: ["Ratkaisuvaihtoehdot yhdessä tiimin kanssa", "Toimintalogiikka: profiili kappaleeksi", "Komponenttikirjaston geometria", "Rajatapausten testaus"],
       termit: ["revolve", "orbit", "kysymystila"],
-      steps: [
-        ["Sovi valintatapa palaverissa.", "Esitä vertailusi. Sovi valintatapa ohjaajan kanssa. Kirjaa sovittu tapa issue-kommenttina ja suunnitelmaan."],
-        ["Päätä akselin väärän puolen käsittely.", "Mitä tehdään, jos profiilin piste on akselin väärällä puolella? Kirjaa oma hyväksymiskriteeri suunnitelmaan. Se on testin 11 odotettu tulos."],
-        ["Kirjoita testit 9–11.", "Testi 9: profiilin pisteet. Testi 10: segmenttien rajat, kun määrä on 2 ja 33. Testi 11: akselin väärä puoli. Profiilin piste on akselin väärällä puolella. Kirjaa odotukset ennen koodia."],
-        ["Kysy kysymystilassa.", "Avaa GitHub Copilotin chat kysymystilassa eli Ask-tilassa. Kysy, miten <code>trimesh.creation.revolve</code> lukee pisteet. Kysymystila vastaa, mutta ei muuta tiedostoja."],
-        ["Tee kortit työsyklillä.", "Tee revolve, segmenttisäädin ja orbit. Orbit tarkoittaa, että näkymää kierretään hiirellä. PyVistan kamerassa se on valmiina."],
-        ["Julkaise viikon versio.", "Tee tagi <code>v0.0.45</code> ja pushaa se. Kun Actions-ajo on vihreä, viikon versio on releasessa."]
-      ],
+      tehtavat: {
+        "45-1": {
+          "miksi": "Geometrian reunatapaukset sovitaan ennen koodin tekemistä.",
+          "osat": [
+            [
+              "Sovi valintatapa palaverissa",
+              "Esitä vertailusi. Sovi valintatapa ohjaajan kanssa. Kirjaa sovittu tapa issue-kommenttina ja suunnitelmaan."
+            ],
+            [
+              "Päätä akselin väärän puolen käsittely",
+              "Mitä tehdään, jos profiilin piste on akselin väärällä puolella? Kirjaa oma hyväksymiskriteeri suunnitelmaan. Se on testin 11 odotettu tulos."
+            ]
+          ],
+          "valmis": "Valintatapa ja akselin väärän puolen käsittely on sovittu.",
+          "tallenna": "Päätökset suunnitelmaan ja hyväksymiskriteeri issueen.",
+          "sanat": []
+        },
+        "45-2": {
+          "miksi": "Testit määrittelevät, millainen kappale profiilista syntyy.",
+          "osat": [
+            [
+              "Kirjoita testit 9–11",
+              "Testi 9: profiilin pisteet. Testi 10: segmenttien rajat, kun määrä on 2 ja 33. Testi 11: akselin väärä puoli. Profiilin piste on akselin väärällä puolella. Kirjaa odotukset ennen koodia."
+            ],
+            [
+              "Kysy kysymystilassa",
+              "Avaa GitHub Copilotin chat kysymystilassa eli Ask-tilassa. Kysy, miten `trimesh.creation.revolve` lukee pisteet. Kysymystila vastaa, mutta ei muuta tiedostoja."
+            ]
+          ],
+          "valmis": "Testien 9–11 omat odotetut tulokset on kirjoitettu ennen toteutusta.",
+          "tallenna": "Testit tests-kansioon ja odotukset issueen.",
+          "sanat": []
+        },
+        "45-3": {
+          "tyosykli": true,
+          "miksi": "Tämä on ensimmäinen toiminto, joka muodostaa piirroksesta 3D-kappaleen.",
+          "osat": [
+            [
+              "Tee kortit työsyklillä",
+              "Tee revolve, segmenttisäädin ja orbit. Orbit tarkoittaa, että näkymää kierretään hiirellä. PyVistan kamerassa se on valmiina."
+            ],
+            [
+              "Julkaise viikon versio",
+              "Tee tagi `v0.0.45` ja pushaa se. Kun Actions-ajo on vihreä, viikon versio on releasessa."
+            ]
+          ],
+          "valmis": "Oma profiili muuttuu kappaleeksi, segmenttimäärä muuttuu välillä 3–32 ja testit 9–11 menevät läpi.",
+          "tallenna": "Koodi ja testit GitHubiin; release v0.0.45 ja testitulokset issueen.",
+          "sanat": []
+        }
+      },
       example: "Testin 11 hyväksymiskriteeri: \"Jos piste on akselin väärällä puolella, se siirretään akselille ja käyttäjä näkee huomautuksen.\"",
       notEnough: "\"Virheelliset pisteet käsitellään.\" Kriteeristä ei näe, mitä pisteelle tapahtuu eikä mitä käyttäjä näkee.",
       help: {
@@ -590,22 +948,64 @@ window.NAYTTOPROJEKTI = {
     },
     46: {
       type: "feature",
-      feature: "Viivapolusta syntyy putki, jossa on 3–8 sivua. Orientaatiowidgetillä kameran voi kääntää katsomaan suoraan edestä, sivulta tai ylhäältä. View lock -painike lukitsee kierron.",
+      feature: "Käyttäjä voi tehdä viivasta putken ja tarkastella mallia suorista näkymistä.",
       excerpt: "Mallia pitää voida katsoa suoraan edestä, sivulta ja ylhäältä.",
-      connection: "Inflate tarkoittaa, että viivasta tulee putki. Se toistaa revolven kaavan: polku, geometria, säädin ja testit. Toinen osa on kamera. Suunnitelmasi Orthographic Plane Snap tehdään kahdessa vaiheessa. Pakollisessa ytimessä kamera kääntyy suoraan akselin suuntaan. Tätä kutsutaan suoraksi näkymäksi. Tärkeässä jatkossa lisätään ortografinen näkymä.",
+      connection: "Revolven rinnalle tarvitaan tapa tehdä piirroksen viivasta putkimainen osa. Tällä viikolla lisäät inflaten ja sen sivumäärän säädön sekä suorat kameranäkymät ja näkymän lukituksen. Näin Vektoripajalla voi rakentaa erilaisia osia ja tarkastella niitä vakaasta suunnasta.",
       deliverable: "Testit 12–14 · inflate ja sivumäärän säädin · putkigeometrian rajoitteet `kirjastot.md`:ssä · orientaatiowidget ja view lock -painike · viikon release.",
       why: "Putkella tehdään johdot, sarvet ja raajat. Suora näkymä ja view lock tarvitaan tarkkaan työhön: ilman niitä kamera kääntyy vahingossa, kun siirrät osia viikolla 47.",
       done: "Inflate on valmis, kun oma polkusi muuttuu putkeksi, sivumäärän voi valita väliltä 3–8 ja testit 12–13 menevät läpi. Kamera on valmis, kun orientaatiowidgetin akselin klikkaus kääntää kameran suoraan akselin suuntaan, view lock estää kierron ja testi 14 menee läpi. Jos kamera siirtyy viikolle 47, se on sovittu vaihtoehto eikä virhe.",
       record: "Kumpi osa valmistui ensin, putkigeometrian rajoitteet, viikon funktio selityspohjalla ja näyttömatriisin vaatimukset: toimintalogiikka, kirjaston rajoitteet, kirjaston toiminnot ja käyttöliittymä.",
       skills: ["Toimintalogiikka: polku putkeksi", "Komponenttikirjaston rajoitteet", "Valmiit komponentit: orientaatiowidget", "Käyttöliittymän tila: view lock"],
       termit: ["inflate", "orientaatiowidget", "suora näkymä", "view lock"],
-      steps: [
-        ["Tee ensin inflate.", "Inflate on pakollisen ytimen kohta 4 ja kamera kohta 6. Tee inflate ensin. Jos aika loppuu, kamera siirtyy viikon 47 alkuun. Siitä sovitaan palaverissa. Se on suunniteltu vaihtoehto."],
-        ["Kirjoita testit 12–14.", "Testi 12: sivujen rajat, kun määrä on 2 ja 9. Testi 13: suljettu polku. Testi 14: view lock. View lock on päällä, ja yrität kiertää näkymää. Kirjaa odotukset ennen koodia."],
-        ["Tee inflate työsyklillä.", "Tee putki PyVistan tube-suodattimella. Tee myös sivumäärän säädin. Kokeile omilla poluillasi. Kirjaa putkigeometrian rajoitteet <code>project-docs/kirjastot.md</code>:hen."],
-        ["Tee kamera työsyklillä.", "Orientaatiowidget on pieni akselikuvio näkymän kulmassa. Kun klikkaat sen akselia, kamera kääntyy katsomaan mallia suoraan akselin suunnasta. View lock on painike, joka estää kameran kiertymisen."],
-        ["Julkaise viikon versio.", "Tee tagi <code>v0.0.46</code> ja pushaa se. Kun Actions-ajo on vihreä, viikon versio on releasessa."]
-      ],
+      tehtavat: {
+        "46-1": {
+          "miksi": "Toinen muodostamistapa ja vakaat näkymät täydentävät mallinnusta.",
+          "osat": [
+            [
+              "Tee ensin inflate",
+              "Inflate on pakollisen ytimen kohta 4 ja kamera kohta 6. Tee inflate ensin. Jos aika loppuu, kamera siirtyy viikon 47 alkuun. Siitä sovitaan palaverissa. Se on suunniteltu vaihtoehto."
+            ],
+            [
+              "Kirjoita testit 12–14",
+              "Testi 12: sivujen rajat, kun määrä on 2 ja 9. Testi 13: suljettu polku. Testi 14: view lock. View lock on päällä, ja yrität kiertää näkymää. Kirjaa odotukset ennen koodia."
+            ]
+          ],
+          "valmis": "Putken ja kameran hyväksymiskriteerit sekä testien 12–14 odotukset ovat kirjattuina.",
+          "tallenna": "Testit tests-kansioon ja odotukset issueihin.",
+          "sanat": []
+        },
+        "46-2": {
+          "tyosykli": true,
+          "miksi": "Putkella käyttäjä voi tehdä esimerkiksi johdon tai sarven.",
+          "osat": [
+            [
+              "Tee inflate työsyklillä",
+              "Tee putki PyVistan tube-suodattimella."
+            ],
+            "Tee myös sivumäärän säädin. Kokeile omilla poluillasi. Kirjaa putkigeometrian rajoitteet `project-docs/kirjastot.md`:hen."
+          ],
+          "valmis": "Oma polku muuttuu putkeksi, sivumäärä muuttuu välillä 3–8 ja testit 12–13 menevät läpi.",
+          "tallenna": "Koodi GitHubiin, testitulokset issueen ja rajoitteet kirjastot.md-tiedostoon.",
+          "sanat": []
+        },
+        "46-3": {
+          "tyosykli": true,
+          "miksi": "Suora ja lukittu näkymä auttaa seuraavan viikon tarkassa muokkaamisessa.",
+          "osat": [
+            [
+              "Tee kamera työsyklillä",
+              "Orientaatiowidget on pieni akselikuvio näkymän kulmassa. Kun klikkaat sen akselia, kamera kääntyy katsomaan mallia suoraan akselin suunnasta. View lock on painike, joka estää kameran kiertymisen."
+            ],
+            [
+              "Julkaise viikon versio",
+              "Tee tagi `v0.0.46` ja pushaa se. Kun Actions-ajo on vihreä, viikon versio on releasessa."
+            ]
+          ],
+          "valmis": "Akselin valinta kääntää näkymän suoraan, lukitus estää kierron ja testi 14 menee läpi, tai siirto viikolle 47 on sovittu.",
+          "tallenna": "Kameran testitulos ja mahdollinen siirtopäätös issueen; release v0.0.46 GitHubiin.",
+          "sanat": []
+        }
+      },
       example: "Kameran hyväksymiskriteeri: \"Kun klikkaan orientaatiowidgetin Z-akselia, kamera katsoo mallia suoraan ylhäältä. Kaukana olevat osat näyttävät edelleen pienemmiltä. Se on oikein, koska ortografinen näkymä kuuluu tärkeään jatkoon.\"",
       notEnough: "\"Kamera toimii ortografisesti.\" Kriteeristä ei näe, mitä ruudulla tapahtuu, ja se lupaa tärkeän jatkon toiminnon.",
       help: {
@@ -629,22 +1029,63 @@ window.NAYTTOPROJEKTI = {
     },
     47: {
       type: "feature",
-      feature: "Osan voi valita. Sen voi siirtää, kiertää ja skaalata transformipaneelin numerokentillä ja näppäimistöllä. Lapset seuraavat vanhempaa.",
+      feature: "Käyttäjä voi valita, siirtää, kiertää ja skaalata mallin osia.",
       excerpt: "Osia pitää voida valita, siirtää, kiertää ja skaalata.",
-      connection: "Nyt muodot ovat valmiit ja kamera pysyy paikallaan view lockilla. Seuraavaksi osia muokataan. Viikon 44 maailmamuunnos hoitaa sen, että lapset seuraavat vanhempaa.",
+      connection: "Kun osien muodot ovat valmiit, käyttäjän pitää voida koota niistä kokonainen malli. Tällä viikolla lisäät osien valinnan, siirron, kierron ja skaalauksen. Aiemmin rakennettu hierarkia varmistaa, että esimerkiksi vanhempaan kuuluva lapsiosa seuraa mukana.",
       deliverable: "Pakollisen ytimen tilanne käsitelty palaverissa · testi 15 · valinta, siirto, kierto ja skaalaus transformipaneelissa · viikon release.",
       why: "Ilman transformeja mallin osat jäävät siihen, mihin tuonti ne toi. Transformi tarkoittaa siirtoa, kiertoa ja skaalausta.",
       done: "Osan voi valita suunnitelmasi mukaan. Siirto, kierto ja skaalaus toimivat numerokentillä ja pikanäppäimillä. Testi 15 menee läpi, tai siitä on havaintoissue.",
       record: "Pakollisen ytimen tilanne ja palaverin päätös, testin 15 tulos, viikon funktio selityspohjalla ja näyttömatriisin vaatimukset: toiminnot suunnitelmasta ja toimintalogiikka.",
       skills: ["Toiminnot suunnitelman mukaan", "Solmupuun käyttö", "Havaintojen kirjaus"],
       termit: ["transformi", "transformipaneeli"],
-      steps: [
-        ["Tuo pakollisen ytimen tilanne palaveriin.", "Palaverissa katsotaan, onko pakollinen ydin aikataulussa. Jos ei ole, ohjaaja päättää, mikä katselmoidaan keskeneräisenä ja mikä tehdään viikolla 4. Jos kamera siirtyi tälle viikolle, tee se ensin."],
-        ["Kirjoita testi 15.", "Testi 15: lapsi seuraa. Vanhempaa siirretään 10 yksikköä x-suunnassa. Mihin odotat lapsen siirtyvän? Kirjaa odotus ennen koodia. Testi käyttää viikon 44 maailmamuunnosta."],
-        ["Tee transformipaneeli työsyklillä.", "Transformipaneelissa on numerokentät siirrolle, kierrolle ja skaalaukselle. Lisää pikanäppäimet suunnitelmasi mukaan. Käytä view lockia, kun siirrät osia."],
-        ["Aja testi 15.", "Jos testi 15 ei mene läpi kahdella yrityksellä, avaa havaintoissue."],
-        ["Julkaise viikon versio.", "Tee tagi <code>v0.0.47</code> ja pushaa se. Kun Actions-ajo on vihreä, viikon versio on releasessa."]
-      ],
+      tehtavat: {
+        "47-1": {
+          "miksi": "Lapsiosan seuraaminen varmistaa, että malli pysyy koossa.",
+          "osat": [
+            [
+              "Tuo pakollisen ytimen tilanne palaveriin",
+              "Palaverissa katsotaan, onko pakollinen ydin aikataulussa. Jos ei ole, ohjaaja päättää, mikä katselmoidaan keskeneräisenä ja mikä tehdään viikolla 4. Jos kamera siirtyi tälle viikolle, tee se ensin."
+            ],
+            [
+              "Kirjoita testi 15",
+              "Testi 15: lapsi seuraa. Vanhempaa siirretään 10 yksikköä x-suunnassa. Mihin odotat lapsen siirtyvän? Kirjaa odotus ennen koodia. Testi käyttää viikon 44 maailmamuunnosta."
+            ]
+          ],
+          "valmis": "Testin 15 odotettu tulos on kirjoitettu ja pakollisen ytimen tilanne on sovittu palaverissa.",
+          "tallenna": "Odotettu tulos ja palaverin päätös issueen; testi tests-kansioon.",
+          "sanat": []
+        },
+        "47-2": {
+          "tyosykli": true,
+          "miksi": "Käyttäjä kokoaa mallin sijoittamalla sen osat oikeisiin paikkoihin.",
+          "osat": [
+            [
+              "Tee transformipaneeli työsyklillä",
+              "Transformipaneelissa on numerokentät siirrolle, kierrolle ja skaalaukselle."
+            ],
+            "Lisää pikanäppäimet suunnitelmasi mukaan. Käytä view lockia, kun siirrät osia."
+          ],
+          "valmis": "Valinta, siirto, kierto ja skaalaus toimivat sovitulla tavalla.",
+          "tallenna": "Koodi GitHubiin ja muokkaamisen issueen linkki muutokseen.",
+          "sanat": []
+        },
+        "47-3": {
+          "miksi": "Julkaistu väliversio näyttää, toimivatko aiemmat osat yhdessä.",
+          "osat": [
+            [
+              "Aja testi 15",
+              "Jos testi 15 ei mene läpi kahdella yrityksellä, avaa havaintoissue."
+            ],
+            [
+              "Julkaise viikon versio",
+              "Tee tagi `v0.0.47` ja pushaa se. Kun Actions-ajo on vihreä, viikon versio on releasessa."
+            ]
+          ],
+          "valmis": "Testi 15 menee läpi, tai poikkeamasta on havaintoissue ja jatko on sovittu.",
+          "tallenna": "Testitulos tai havaintoissue GitHubiin; release v0.0.47.",
+          "sanat": []
+        }
+      },
       example: "Testin 15 kirjaus issuessa: \"Testi 15: vanhempi x +10. Odotin, että lapsen maailmakoordinaatti x muuttuu saman verran. Havaittu: muuttui saman verran. Läpi.\"",
       notEnough: "\"Lapset seuraavat, testattu.\" Kirjauksesta ei näe syötettä, odotusta eikä havaintoa.",
       help: {
@@ -667,21 +1108,63 @@ window.NAYTTOPROJEKTI = {
     },
     48: {
       type: "feature",
-      feature: "Pivot on oletuksena kappaleen keskipisteessä. Sen voi asettaa transformipaneelissa prosentteina X, Y ja Z.",
-      connection: "Viikolla 47 osat kiersivät ja skaalautuivat keskipisteensä ympäri. Nyt käyttäjä valitsee pisteen itse. Pivot on piste, jonka ympäri kappale kiertää ja skaalautuu.",
+      feature: "Käyttäjä voi säätää pistettä, jonka ympäri osa kiertää ja skaalautuu.",
+      connection: "Osan siirtäminen ja kiertäminen ei vielä riitä, jos liike tapahtuu väärän pisteen ympärillä. Tällä viikolla käyttäjä saa valita pivotin eli kierto- ja skaalauspisteen prosenttikentillä. Se täydentää osien muokkausta ja tekee esimerkiksi nivelen ympärillä kääntymisestä hallittavaa.",
       deliverable: "Pivotin syötteen tarkistuksen rajapinta · testit 16–18 · pivot · pivotin prosenttikentät transformipaneelissa · viikon release.",
       why: "Ilman pivotia korva kiertyy oman keskipisteensä ympäri eikä kiinnityskohdan ympäri. Prosenttisyöttö on tarkempi kuin hiirellä vetäminen.",
       done: "Pivot 50/50/50 on keskipisteessä, prosentit muuttavat pivotin paikkaa, virheellinen syöte käsitellään kriteerisi mukaan, ja testit 16–18 menevät läpi.",
       record: "Pivotin syötteen tarkistus selityspohjalla (tämä on viikon funktio), testit 16–18 ja näyttömatriisin vaatimukset: rakenteinen ohjelmointi, käyttöliittymä ja toimintalogiikka.",
       skills: ["Valinta: syötteen tarkistus", "Toimintalogiikka: pivotin laskenta", "Käyttöliittymä vaatimuksen mukaan"],
       termit: ["pivot"],
-      steps: [
-        ["Kirjoita rajapinta.", "Pivotin syötteen tarkistus: nimi, syöte (prosentti) ja paluuarvo. Kirjaa korttiin."],
-        ["Kirjoita testit 16–18.", "Testi 16: pivot keskellä, 50/50/50. Testi 17: pivot reunoilla, 0 % ja 100 %. Testi 18: väärä pivot-syöte, −10, 150 ja teksti. Kirjaa, mitä odotat. Testin 18 odotus on oma kriteerisi: hylätäänkö arvo vai rajataanko se."],
-        ["Tee pivot ja tarkistus työsyklillä.", "Tee ensin syötteen tarkistus puhtaana funktiona. Tee sitten pivotin siirto."],
-        ["Lisää pivot transformipaneeliin.", "Lisää paneeliin kolme kenttää, joissa pivot syötetään prosentteina: X, Y ja Z. Kentillä on nimi, ja ne toimivat näppäimistöllä käyttöliittymävaatimuksesi mukaan."],
-        ["Julkaise viikon versio.", "Tee tagi <code>v0.0.48</code> ja pushaa se. Kun Actions-ajo on vihreä, viikon versio on releasessa."]
-      ],
+      tehtavat: {
+        "48-1": {
+          "miksi": "Kiertopisteen laskenta ja virheellinen syöte pitää määritellä tarkasti.",
+          "osat": [
+            [
+              "Kirjoita rajapinta",
+              "Pivotin syötteen tarkistus: nimi, syöte (prosentti) ja paluuarvo. Kirjaa korttiin."
+            ],
+            [
+              "Kirjoita testit 16–18",
+              "Testi 16: pivot keskellä, 50/50/50. Testi 17: pivot reunoilla, 0 % ja 100 %. Testi 18: väärä pivot-syöte, −10, 150 ja teksti. Kirjaa, mitä odotat."
+            ],
+            "Testin 18 odotus on oma kriteerisi: hylätäänkö arvo vai rajataanko se."
+          ],
+          "valmis": "Rajapinta ja testien 16–18 odotetut tulokset ovat valmiit ennen toteutusta.",
+          "tallenna": "Rajapinta suunnitelmaan; testit ja odotukset issueen.",
+          "sanat": []
+        },
+        "48-2": {
+          "tyosykli": true,
+          "miksi": "Osa voidaan kiertää esimerkiksi nivelen ympärillä.",
+          "osat": [
+            [
+              "Tee pivot ja tarkistus työsyklillä",
+              "Tee ensin syötteen tarkistus puhtaana funktiona."
+            ],
+            "Tee sitten pivotin siirto."
+          ],
+          "valmis": "Keskipiste ja prosenttisyöttö toimivat, virheellinen syöte käsitellään sovitusti ja testit 16–18 menevät läpi.",
+          "tallenna": "Laskennan koodi ja testit GitHubiin; tulokset issueen.",
+          "sanat": []
+        },
+        "48-3": {
+          "miksi": "Käyttäjä tarvitsee laskennan lisäksi säätimet kiertopisteen valintaan.",
+          "osat": [
+            [
+              "Lisää pivot transformipaneeliin",
+              "Lisää paneeliin kolme kenttää, joissa pivot syötetään prosentteina: X, Y ja Z. Kentillä on nimi, ja ne toimivat näppäimistöllä käyttöliittymävaatimuksesi mukaan."
+            ],
+            [
+              "Julkaise viikon versio",
+              "Tee tagi `v0.0.48` ja pushaa se. Kun Actions-ajo on vihreä, viikon versio on releasessa."
+            ]
+          ],
+          "valmis": "Prosenttikentät muuttavat kiertopistettä sovelluksessa.",
+          "tallenna": "Käyttöliittymän koodi ja release v0.0.48 GitHubiin.",
+          "sanat": []
+        }
+      },
       example: "Selityspohja: \"Saa prosentin. Palauttaa luvun 0–100 tai virheen. Valitsee: jos syöte ei ole luku, palauttaa virheen. Jos luku on alle 0, palauttaa 0. Toistaa: ei toistoa. Testi 18 tarkistaa virheelliset syötteet.\"",
       notEnough: "\"Funktio tarkistaa syötteen.\" Selityksestä ei näe, mitä tapahtuu arvolle −10 tai tekstille.",
       help: {
@@ -703,24 +1186,81 @@ window.NAYTTOPROJEKTI = {
     },
     49: {
       type: "feature",
-      feature: "Malli tallentuu .obj-tiedostoksi, jossa jokainen osa on oma objektinsa. Tiedosto aukeaa Blenderissä.",
+      feature: "Käyttäjä voi viedä mallin Blenderiin niin, että nimetyt osat säilyvät erillisinä.",
       excerpt: "Valmis malli viedään .obj-tiedostoksi niin, että jokainen osa on oma objektinsa.",
-      connection: "Mallin osat ovat puussa, ja niillä on nimet. Nyt ne viedään tiedostoon. OBJ on 3D-tiedostomuoto, jossa jokainen osa alkaa rivillä, jonka alussa on o-kirjain. Viikolla on myös ensimmäinen virheenkorjausketju.",
+      connection: "Vektoripajan mallin pitää olla käytettävissä myös sovelluksen ulkopuolella. Tällä viikolla viet sen OBJ-tiedostoksi ja varmistat Blenderissä, että nimetyt osat säilyvät erillisinä. Samalla dokumentoit virheen korjauksen ja lisäät testin, joka auttaa estämään saman virheen palaamisen.",
       deliverable: "Objektijaon rajapinta · testit 19–20 · .obj-vienti · tarkistus VS Codessa ja Blenderissä · virheenkorjausketju 1 ja sen regressiotesti · viikon release.",
       why: "Ilman vientiä malli jää sovellukseen. Asiakas haluaa jatkaa mallia toisessa ohjelmassa.",
       done: "Kolmen osan mallista syntyy .obj-tiedosto, jossa on kolme o-riviä osien nimillä. Tiedosto aukeaa Blenderissä. Testit 19–20 menevät läpi. Virheenkorjausketjun kuusi osaa ovat havaintoissuessa.",
       record: "Objektijako selityspohjalla (tämä on viikon funktio), virheenkorjausketju 1 ja näyttömatriisin vaatimukset: virheiden korjaus, tiedon käsittely ja kirjaston toiminnot.",
       skills: ["Tiedon käsittely: malli tiedostoksi", "Toisto: osat objekteiksi", "Virheen syy omin sanoin", "Regressiotesti"],
       termit: ["OBJ", "virheenkorjausketju", "regressiotesti", "vikatehtävä"],
-      steps: [
-        ["Kirjoita rajapinta ja testit.", "Kirjoita objektijaon rajapinta korttiin. Testi 19: kolmen osan vienti. Testi 20: tyhjä vienti, kun mallissa ei ole osia. Kirjaa, mitä odotat."],
-        ["Tee vienti työsyklillä.", "Osien nimien pitää säilyä tiedostossa."],
-        ["Tarkista tiedosto kahdella tavalla.", "Avaa .obj VS Codessa. Laske rivit, jotka alkavat o-kirjaimella. Avaa tiedosto sitten Blenderissä kuvaohjeen mukaan."],
-        ["Kirjoita virheenkorjausketju 1.", "Valitse yksi havaintoissue. Kirjaa siihen kuusi osaa: havainto, toistamisohje, syy omin sanoin, korjauscommit, uusintatesti ja regressiotesti."],
-        ["Kirjoita regressiotesti.", "Regressiotesti on testi, joka toistaa korjatun virheen ja jää testeihin. Kirjoita se Täydennys-kaistalla kuten kohdassa 3a. Nimeä se issuen mukaan, esimerkiksi regressiotesti #12."],
-        ["Pyydä vikatehtävä, jos havaintoissueita ei ole.", "Kerro siitä palaverissa. Ohjaaja antaa vikatehtävän. Vikatehtävä on tarkoituksellinen virhe, josta ketju tehdään."],
-        ["Julkaise viikon versio.", "Tee tagi <code>v0.0.49</code> ja pushaa se. Kun Actions-ajo on vihreä, viikon versio on releasessa."]
-      ],
+      tehtavat: {
+        "49-1": {
+          "miksi": "Viennin pitää säilyttää asiakkaan tarvitsemat erilliset osat.",
+          "osat": [
+            [
+              "Kirjoita rajapinta ja testit",
+              "Kirjoita objektijaon rajapinta korttiin."
+            ],
+            "Testi 19: kolmen osan vienti. Testi 20: tyhjä vienti, kun mallissa ei ole osia. Kirjaa, mitä odotat."
+          ],
+          "valmis": "Objektijaon rajapinta ja testien 19–20 odotukset on määritelty.",
+          "tallenna": "Rajapinta suunnitelmaan; testit tests-kansioon ja odotukset issueen.",
+          "sanat": []
+        },
+        "49-2": {
+          "tyosykli": true,
+          "miksi": "Vienti tekee mallista käyttökelpoisen myös toisessa ohjelmassa.",
+          "osat": [
+            [
+              "Tee vienti työsyklillä",
+              "Osien nimien pitää säilyä tiedostossa."
+            ],
+            "Tarkista tulos ennen rastittamista. Jos tulos poikkeaa odotetusta, kirjaa havainto ja selvitä se ohjaajan kanssa."
+          ],
+          "valmis": "Viety tiedosto sisältää sovitut osat ja nimet.",
+          "tallenna": "Viennin koodi ja esimerkin OBJ-tiedosto GitHubiin.",
+          "sanat": []
+        },
+        "49-3": {
+          "miksi": "Pelkkä tiedoston syntyminen ei osoita sen toimivuutta toisessa ohjelmassa.",
+          "osat": [
+            [
+              "Tarkista tiedosto kahdella tavalla",
+              "Avaa .obj VS Codessa."
+            ],
+            "Laske rivit, jotka alkavat o-kirjaimella. Avaa tiedosto sitten Blenderissä kuvaohjeen mukaan."
+          ],
+          "valmis": "Kolmen osan tiedostossa on kolme o-riviä ja malli avautuu Blenderissä.",
+          "tallenna": "Testitulokset issueen ja kuva Blenderistä project-docs-kansioon.",
+          "sanat": []
+        },
+        "49-4": {
+          "miksi": "Korjausketju näyttää, miten löydät ja estät virheen palaamisen.",
+          "osat": [
+            [
+              "Kirjoita virheenkorjausketju 1",
+              "Valitse yksi havaintoissue. Kirjaa siihen kuusi osaa: havainto, toistamisohje, syy omin sanoin, korjauscommit, uusintatesti ja regressiotesti."
+            ],
+            [
+              "Kirjoita regressiotesti",
+              "Regressiotesti on testi, joka toistaa korjatun virheen ja jää testeihin. Kirjoita se Täydennys-kaistalla kuten kohdassa 3a. Nimeä se issuen mukaan, esimerkiksi regressiotesti #12."
+            ],
+            [
+              "Pyydä vikatehtävä, jos havaintoissueita ei ole",
+              "Kerro siitä palaverissa. Ohjaaja antaa vikatehtävän. Vikatehtävä on tarkoituksellinen virhe, josta ketju tehdään."
+            ],
+            [
+              "Julkaise viikon versio",
+              "Tee tagi `v0.0.49` ja pushaa se. Kun Actions-ajo on vihreä, viikon versio on releasessa."
+            ]
+          ],
+          "valmis": "Ketjun kuusi osaa on kirjattu ja regressiotesti menee läpi.",
+          "tallenna": "Korjausketju havaintoissueen, regressiotesti tests-kansioon ja release v0.0.49.",
+          "sanat": []
+        }
+      },
       example: "Syy omin sanoin: \"Pivot laskettiin maailmakoordinaateissa, vaikka lapsen oma muunnos on vanhemman koordinaatistossa. Siksi lapsi hyppäsi.\"",
       notEnough: "\"Syy: koodissa oli bugi.\" Kirjauksesta ei näe, mikä meni väärin eikä miksi.",
       kuvaohjeet: ["blender-obj"],
@@ -747,26 +1287,81 @@ window.NAYTTOPROJEKTI = {
     },
     50: {
       type: "feature",
-      feature: "Projektin voi tallentaa JSON-tiedostoksi ja avata samassa tilassa. MVP on julkaistu versiona v0.1.",
+      feature: "Käyttäjä voi tallentaa ja avata työnsä. Ensimmäinen toimiva versio v0.1 on ladattavissa.",
       excerpt: "Keskeneräinen työ pitää voida tallentaa ja avata myöhemmin samassa tilassa.",
-      connection: "Tämä on pakollisen ytimen viimeinen kohta. JSON on tekstimuoto, jolla projektin tiedot tallennetaan tiedostoon. Viikon lopussa MVP julkaistaan katselmointia varten.",
+      connection: "Käyttäjän pitää voida jättää mallinnustyö kesken ja jatkaa sitä myöhemmin samasta tilanteesta. Tallennus ja avaus täydentävät ensimmäisen toimivan version, jossa piirros kulkee tuonnista muokkaukseen ja vientiin. Julkaiset tämän MVP:n versiona v0.1, jotta asiakkaat voivat kokeilla koko työnkulkua.",
       deliverable: "Tallennustapojen vertailu suunnitelmassa · testit 21–22 · tallennus ja avaus · tietoturva-arvio · release v0.1.",
       why: "Ilman tallennusta keskeneräinen malli katoaa, kun sovellus suljetaan. Ilman julkaisua asiakkaat eivät voi kokeilla MVP:tä viikolla 51.",
       done: "Tallennettu projekti avautuu samassa tilassa, rikottu tiedosto antaa virheilmoituksen, `project-docs/tietoturva.md` on repositoryssa, ja releasen v0.1 zipistä purettu sovellus käynnistyy.",
-      record: "Tallennustavan valinta perusteluineen, oman mallisi JSON-koko, tietoturva-arvion tärkein uhka ja näyttömatriisin vaatimukset: tietovaraston valinta, yhteys tietovarastoon, tietoturva ja julkaisu tuotantoon.",
+      record: "Tallennustavan valinta perusteluineen, oman mallisi tallennustiedoston koko, tietoturva-arvion tärkein uhka ja näyttömatriisin vaatimukset: tietovaraston valinta, yhteys tietovarastoon, tietoturva ja julkaisu tuotantoon.",
       skills: ["Tietovaraston valinta", "Yhteys tietovarastoon", "Tietoturvan arviointi", "Julkaisu ja versiointi"],
       termit: ["JSON", "tietoturva-arvio"],
-      steps: [
-        ["Vertaa tallennustapoja.", "Käytä oman suunnitelmasi kriteerejä. Säilyvätkö polut, parametrit, transformit ja vanhempi–lapsi-suhteet? Vertaa ainakin JSON-tiedostoa ja Qt:n asetustallennusta <code>QSettings</code>. Kirjaa oman mallisi JSON-tiedoston koko."],
-        ["Kirjoita testit 21–22.", "Testi 21: tallennus ja avaus. Tallennat mallin ja avaat sen. Testi 22: rikottu tallennus. Avaat rikotun JSON-tiedoston. Kirjaa, mitä odotat."],
-        ["Tee tallennus ja avaus työsyklillä.", "Tallenna tiedostoon versionumero. Silloin vanhan tiedoston tunnistaa myöhemmin."],
-        ["Kirjoita tietoturva-arvio.", "Tee taulukko: uhka, testi, tulos ja toimenpide. Käy läpi ainakin haitallinen SVG (testi 4) ja rikottu tallennus (testi 22). Tallenna arvio tiedostoon <code>project-docs/tietoturva.md</code>."],
-        ["Julkaise MVP.", "Tee tagi <code>v0.1</code> ja pushaa se. Kun Actions-ajo on vihreä, lataa zip releasesta. Pura se ja käynnistä sovellus puretusta kansiosta."]
-      ],
+      tehtavat: {
+        "50-1": {
+          "miksi": "Tallennusratkaisun pitää sopia oman mallin tietorakenteeseen.",
+          "osat": [
+            [
+              "Vertaa tallennustapoja",
+              "Käytä oman suunnitelmasi kriteerejä."
+            ],
+            "Säilyvätkö polut, parametrit, transformit ja vanhempi–lapsi-suhteet? Vertaa ainakin JSON-tiedostoa ja Qt:n asetustallennusta `QSettings`. Kirjaa oman mallisi tallennustiedoston koko."
+          ],
+          "valmis": "Vaihtoehdot on vertailtu samoilla kriteereillä ja valinta on perusteltu.",
+          "tallenna": "Vertailu, valinta ja oman tallennustiedoston koko suunnitelmaan.",
+          "sanat": [
+            "JSON"
+          ]
+        },
+        "50-2": {
+          "miksi": "Testit määrittelevät, säilyykö työ ja miten rikottu tiedosto käsitellään.",
+          "osat": [
+            [
+              "Kirjoita testit 21–22",
+              "Testi 21: tallennus ja avaus."
+            ],
+            "Tallennat mallin ja avaat sen. Testi 22: rikottu tallennus. Avaat valitun tallennusmuodon rikotun tiedoston. Kirjaa, mitä odotat."
+          ],
+          "valmis": "Testien 21–22 syötteet ja omat odotetut tulokset on kirjattu.",
+          "tallenna": "Testit tests-kansioon ja odotukset issueen.",
+          "sanat": []
+        },
+        "50-3": {
+          "tyosykli": true,
+          "miksi": "Käyttäjän pitää voida jatkaa keskeneräistä työtään myöhemmin.",
+          "osat": [
+            [
+              "Tee tallennus ja avaus työsyklillä",
+              "Tallenna tiedostoon versionumero. Silloin vanhan tiedoston tunnistaa myöhemmin."
+            ],
+            [
+              "Kirjoita tietoturva-arvio",
+              "Tee taulukko: uhka, testi, tulos ja toimenpide. Käy läpi ainakin haitallinen SVG (testi 4) ja rikottu tallennus (testi 22). Tallenna arvio tiedostoon `project-docs/tietoturva.md`."
+            ]
+          ],
+          "valmis": "Tallennettu työ avautuu samassa tilassa ja rikottu tiedosto antaa hallitun virheilmoituksen.",
+          "tallenna": "Koodi ja testitulokset GitHubiin; tietoturva-arvio project-docs/tietoturva.md-tiedostoon.",
+          "sanat": []
+        },
+        "50-4": {
+          "miksi": "Asiakkaat tarvitsevat ladattavan version seuraavan viikon kokeiluun.",
+          "osat": [
+            [
+              "Julkaise MVP",
+              "Tee tagi `v0.1` ja pushaa se."
+            ],
+            "Kun Actions-ajo on vihreä, lataa zip releasesta. Pura se ja käynnistä sovellus puretusta kansiosta."
+          ],
+          "valmis": "Releasen v0.1 zipistä purettu sovellus käynnistyy.",
+          "tallenna": "Release v0.1 GitHubiin ja käynnistyskokeilun tulos issueen.",
+          "sanat": [
+            "MVP"
+          ]
+        }
+      },
       example: "Vertailun rivi: \"JSON-tiedosto: säilyttää polut, parametrit ja suhteet, siirtyy koneelta toiselle. Oma malli 14 kt.\"",
       notEnough: "\"JSON, koska se on yleinen.\" Perustelu ei liity omaan malliin eikä omiin kriteereihin.",
       help: {
-        title: "Tallennus ja avaus",
+        title: "Tallennus ja avaus: ehdotetun JSON-muodon esimerkki",
         tree: "{\n  \"versio\": 1,\n  \"osat\": [ { \"nimi\": \"Vartalo\", \"polku\": \"…\", \"muoto\": \"revolve\", \"segmentit\": 12,\n              \"muunnos\": [[…], …], \"lapset\": [ … ] } ]\n}",
         actions: [
           "Tallenna oma data, älä trimesh- tai PyVista-olioita: `json.dumps(data, indent=2)`.",
@@ -785,23 +1380,75 @@ window.NAYTTOPROJEKTI = {
     },
     51: {
       type: "katselmointi",
-      feature: "Asiakkaat ovat kokeilleet MVP:tä. Antti on kokeillut releasen v0.1 zipiä omalla Windows-koneellaan. Matti on kokeillut sovellusta katselmoinnissa sinun koneellasi. Jokaisesta havainnosta on issue, jossa on asiakkaan antama prioriteetti.",
+      feature: "Asiakkaat ovat kokeilleet ensimmäistä versiota ja seuraavat muutokset on sovittu.",
       excerpt: "Ennen joulua kokeilemme itse ensimmäistä toimivaa versiota ja kerromme, mitä muutetaan.",
-      connection: "Viikolla 50 julkaisit MVP:n. Nyt asiakkaat kokeilevat sitä. Katselmointi tarkoittaa, että asiakas kokeilee versiota ja kertoo, mitä muutetaan. Antti lataa releasen v0.1 zipin. Hän käyttää sovellusta omalla Windows-koneellaan. Matilla on Mac, joten hän kokeilee sovellusta katselmoinnissa sinun koneellasi. Viikolla on neljä työpäivää.",
+      connection: "MVP on nyt valmis asiakkaiden kokeiltavaksi, joten tarkistat heidän kanssaan, vastaako se sovittua tarvetta. Katselmoinnin havainnot ja asiakkaiden prioriteetit ohjaavat korjauksia sekä joululoman jälkeistä jatkokehitystä. Tilatiedostoon kirjattu seuraava tehtävä auttaa jatkamaan samasta kohdasta tauon jälkeen.",
       deliverable: "Viiden minuutin demo · katselmointiloki rooleilla · havainnot issueina prioriteetteineen · tilatiedoston Seuraavana-kohta viikolle 2.",
       why: "Ilman katselmointia jatkokehitys perustuu arvaukseen. Asiakkaiden prioriteetit ohjaavat, mitkä tärkeän jatkon toiminnot tehdään ensin.",
       done: "Katselmointiloki on tiedostossa `project-docs/katselmointi.md`, jokaisesta havainnosta on issue prioriteetteineen, ja tilatiedoston Seuraavana-kohdassa on viikon 2 ensimmäinen tehtävä issue-numeroineen.",
       record: "Asiakkaiden tärkein havainto tiivistettynä, oma tulkintasi erikseen ja näyttömatriisin vaatimukset: viestintä asiakkaalle, katselmointi, ratkaisujen arviointi ja tärkeysjärjestys.",
       skills: ["Version katselmointi", "Asiakaslähtöinen viestintä", "Palautteen priorisointi"],
       termit: ["katselmointi"],
-      steps: [
-        ["Varaa katselmointiaika.", "Varaa aika asiakkaiden kanssa Teamsissa. Lähetä Antille releasen v0.1 osoite etukäteen, jotta hän ehtii ladata zipin omalle Windows-koneelleen. Tarkista ohjaajalta, miten katselmointi kirjataan."],
-        ["Valmistele demo.", "Näytä viidessä minuutissa omalla Inkscape-tiedostollasi: tuonti, revolve, inflate, transformit ja vienti. Harjoittele kerran ajastettuna."],
-        ["Pidä katselmointi.", "Anna asiakkaiden kokeilla itse. Antti kokeilee releasen zipiä omalla koneellaan. Matti kokeilee sovellusta sinun koneellasi. Kirjaa havainnot lokiin omin sanoin tiivistettynä. Älä kirjoita julkiseen repositoryyn nimiä tai sanatarkkoja lausumia."],
-        ["Kirjoita tulkinta erikseen.", "Kirjoita oma tulkintasi lokin kohtaan Oma tulkinta. Älä sekoita sitä asiakkaiden havaintoihin."],
-        ["Tee havainnoista issuet.", "Tee jokaisesta havainnosta issue. Kirjaa siihen asiakkaan antama prioriteetti."],
-        ["Päivitä tilatiedosto.", "Kirjoita Seuraavana-kohtaan viikon 2 ensimmäinen tehtävä ja sen issue-numero. Tee commit ennen lomaa."]
-      ],
+      tehtavat: {
+        "51-1": {
+          "miksi": "Yhteinen kokeilu keskittyy käyttäjän koko työnkulkuun.",
+          "osat": [
+            [
+              "Varaa katselmointiaika",
+              "Varaa aika asiakkaiden kanssa Teamsissa. Lähetä Antille releasen v0.1 osoite etukäteen, jotta hän ehtii ladata zipin omalle Windows-koneelleen. Tarkista ohjaajalta, miten katselmointi kirjataan."
+            ],
+            [
+              "Valmistele demo",
+              "Näytä viidessä minuutissa omalla Inkscape-tiedostollasi: tuonti, revolve, inflate, transformit ja vienti. Harjoittele kerran ajastettuna."
+            ]
+          ],
+          "valmis": "Aika on sovittu, oma SVG ja demo ovat valmiit ja Antilla on latauslinkki.",
+          "tallenna": "Demon rakenne ja releasen osoite katselmointimuistioon.",
+          "sanat": []
+        },
+        "51-2": {
+          "miksi": "Asiakkaiden havainnot ohjaavat seuraavan vaiheen parannuksia.",
+          "osat": [
+            [
+              "Pidä katselmointi",
+              "Anna asiakkaiden kokeilla itse. Antti kokeilee releasen zipiä omalla koneellaan. Matti kokeilee sovellusta sinun koneellasi. Kirjaa havainnot lokiin omin sanoin tiivistettynä. Älä kirjoita julkiseen repositoryyn nimiä tai sanatarkkoja lausumia."
+            ],
+            [
+              "Kirjoita tulkinta erikseen",
+              "Kirjoita oma tulkintasi lokin kohtaan Oma tulkinta. Älä sekoita sitä asiakkaiden havaintoihin."
+            ]
+          ],
+          "valmis": "Molemmat asiakkaat ovat kokeilleet versiota ja havainnot on erotettu omasta tulkinnasta.",
+          "tallenna": "Roolit ja tulkinta project-docs/katselmointi.md-tiedostoon; nimet ja sanatarkat lausumat Teamsiin.",
+          "sanat": []
+        },
+        "51-3": {
+          "miksi": "Palaute muuttuu toteutettaviksi töiksi prioriteettien avulla.",
+          "osat": [
+            [
+              "Tee havainnoista issuet",
+              "Tee jokaisesta havainnosta issue."
+            ],
+            "Kirjaa siihen asiakkaan antama prioriteetti."
+          ],
+          "valmis": "Jokaisesta havainnosta on issue ja asiakkaan prioriteetti.",
+          "tallenna": "Havainnot GitHub-issueihin.",
+          "sanat": []
+        },
+        "51-4": {
+          "miksi": "Tilatiedosto säilyttää seuraavan tehtävän loman yli.",
+          "osat": [
+            [
+              "Päivitä tilatiedosto",
+              "Kirjoita Seuraavana-kohtaan viikon 2 ensimmäinen tehtävä ja sen issue-numero."
+            ],
+            "Tee commit ennen lomaa."
+          ],
+          "valmis": "Seuraavana-kohdassa on viikon 2 ensimmäinen tehtävä ja issue-numero.",
+          "tallenna": "Päivitetty PROJEKTIN-TILA.md repositoryn juureen.",
+          "sanat": []
+        }
+      },
       pohjat: [
         { otsikko: "Katselmointiloki (project-docs/katselmointi.md)", teksti: "# Katselmointi pp.kk.vvvv\nVersio: v0.1 (commit ___)\nOsallistujat: asiakas 1, asiakas 2 (roolit, ei nimiä)\nMissä kokeiltiin: asiakas 1 omalla Windows-koneella releasen zipistä, asiakas 2 opiskelijan koneella\n\n## Asiakkaiden havainnot tiivistettynä (ei nimiä, ei sanatarkkoja lausumia)\n- \n\n## Oma tulkinta\n- \n\n## Sovitut muutokset\n- issue #__ · prioriteetti __" },
         { otsikko: "Demon runko (5 min)", teksti: "1. Tavoite yhdellä lauseella\n2. Tuonti omasta Inkscape-tiedostosta\n3. Revolve ja inflate\n4. Transformit ja pivot\n5. Vienti .obj-tiedostoksi\n6. Kysymys asiakkaille: mitä muutetaan ensin?" }
@@ -811,45 +1458,136 @@ window.NAYTTOPROJEKTI = {
     },
     2: {
       type: "pohjustus",
-      feature: "Kaikki testit menevät läpi. Tärkeän jatkon järjestys on sovittu tuntiarvioineen. Yksi pieni korjaus katselmoinnista on GitHubissa.",
-      connection: "Loma on ohi. Tilatiedosto kertoo, mihin jäit. Tällä viikolla ei tehdä uusia ominaisuuksia.",
+      feature: "Aiempi versio toimii loman jälkeen ja parannusten järjestys on sovittu.",
+      connection: "Joululoman jälkeen varmistat ensin, että kehitysympäristö, sovellus ja aiemmat testit toimivat edelleen. Sen jälkeen sovit tärkeän jatkon järjestyksen asiakkaiden katselmointipalautteen perusteella ja teet yhden pienen korjauksen. Näin uudet ominaisuudet rakentuvat toimivan MVP:n ja todellisten käyttäjätarpeiden päälle.",
       deliverable: "Testiajon tulos päiväkirjassa · tärkeän jatkon järjestys tuntiarvioineen issueissa · yksi pieni korjaus Täydennys-kaistalla.",
       why: "Loman jälkeen ympäristö voi olla rikki ja asiat unohtuneet. Kun kaikki testit menevät läpi, tiedät, että lähtötaso on kunnossa.",
       done: "`python tarkista_ymparisto.py` tulostaa joka rivin alkuun OK, `pytest` näyttää, että kaikki testit menevät läpi, tärkeän jatkon järjestys on sovittu palaverissa, ja korjauksen commit on GitHubissa.",
       record: "Testiajon tulos, tärkeän jatkon järjestys ja arviot, palaverin arvio MVP:n ratkaisuista ja näyttömatriisin vaatimukset: kehitysympäristö, tärkeysjärjestys, toteutuksen suunnittelu ja ratkaisujen arviointi.",
       skills: ["Kehitysympäristön käyttö", "Tärkeysjärjestys", "Työmäärän arviointi"],
-      steps: [
-        ["Käynnistä ympäristö.", "Avaa projekti VS Codessa. Avaa uusi terminaali. Tarkista, että terminaalin rivin alussa lukee (.venv). Aja <code>python tarkista_ymparisto.py</code>, sitten <code>python main.py</code> ja lopuksi <code>pytest</code>. Jos jokin ei toimi, katso työsyklin kohta Olen jumissa. Kirjaa tulos päiväkirjaan."],
-        ["Lue tilatiedosto.", "Avaa <code>PROJEKTIN-TILA.md</code>. Aloita uusi Copilot-keskustelu tilatiedostolla."],
-        ["Ehdota tärkeän jatkon järjestys.", "Asiakkaat antoivat prioriteetit katselmoinnissa. Ehdota järjestys. Arvioi jokaiselle toiminnolle tunnit."],
-        ["Arvioi MVP palaverissa.", "Käy palaverissa läpi, mikä MVP:n ratkaisu kestää tärkeän jatkon toiminnot ja mikä ei. Ohjaaja on tässä tiimin jäsenen roolissa. Sovi järjestys."],
-        ["Tee pieni korjaus Täydennys-kaistalla.", "Valitse katselmoinnin havaintoissueista pieni korjaus. Tee se työsyklillä."],
-        ["Tarkista krediitit.", "Budjetti nollautui 1.1. Kirjaa tammikuun lähtötilanne päiväkirjaan."]
-      ],
+      tehtavat: {
+        "2-1": {
+          "miksi": "Parannukset aloitetaan toimivasta aiemmasta versiosta.",
+          "osat": [
+            [
+              "Käynnistä ympäristö",
+              "Avaa projekti VS Codessa. Avaa uusi terminaali. Tarkista, että terminaalin rivin alussa lukee (.venv). Aja `python tarkista_ymparisto.py`, sitten `python main.py` ja lopuksi `pytest`. Jos jokin ei toimi, katso työsyklin kohta Olen jumissa."
+            ],
+            "Kirjaa tulos päiväkirjaan.",
+            [
+              "Lue tilatiedosto",
+              "Avaa `PROJEKTIN-TILA.md`. Aloita uusi Copilot-keskustelu tilatiedostolla."
+            ]
+          ],
+          "valmis": "Ympäristötarkistus ja kaikki testit menevät läpi; tilatiedosto on luettu.",
+          "tallenna": "Ajotulokset viikon päiväkirjaan.",
+          "sanat": []
+        },
+        "2-2": {
+          "miksi": "Asiakkaiden palaute ratkaisee, mihin rajattu työaika käytetään.",
+          "osat": [
+            [
+              "Ehdota tärkeän jatkon järjestys",
+              "Asiakkaat antoivat prioriteetit katselmoinnissa. Ehdota järjestys. Arvioi jokaiselle toiminnolle tunnit."
+            ],
+            [
+              "Arvioi MVP palaverissa",
+              "Käy palaverissa läpi, mikä MVP:n ratkaisu kestää tärkeän jatkon toiminnot ja mikä ei. Ohjaaja on tässä tiimin jäsenen roolissa. Sovi järjestys."
+            ]
+          ],
+          "valmis": "Parannusten järjestys ja tuntiarviot on sovittu palaverissa.",
+          "tallenna": "Järjestys ja tuntiarviot suunnitelmaan sekä sovitut tehtävät issueihin.",
+          "sanat": [
+            "MVP"
+          ]
+        },
+        "2-3": {
+          "tyosykli": true,
+          "miksi": "Pieni korjaus palauttaa toteutuksen työrytmin loman jälkeen.",
+          "osat": [
+            [
+              "Tee pieni korjaus Täydennys-kaistalla",
+              "Valitse katselmoinnin havaintoissueista pieni korjaus. Tee se työsyklillä."
+            ],
+            [
+              "Tarkista krediitit",
+              "Budjetti nollautui 1.1. Kirjaa tammikuun lähtötilanne päiväkirjaan."
+            ]
+          ],
+          "valmis": "Sovittu korjaus on testattu ja GitHubissa.",
+          "tallenna": "Korjauscommit ja testitulos issueen; krediittitilanne päiväkirjaan.",
+          "sanat": []
+        }
+      },
       example: "Tärkeän jatkon järjestys: \"1. Päivitä SVG, 6 h (asiakkaan prioriteetti 1). 2. Kulmasnappaus, 3 h. 3. Pieni esikatseluikkuna, 8 h.\"",
       notEnough: "\"Jatko: päivitys, snappaus ja esikatselu.\" Järjestyksestä puuttuvat arviot ja asiakkaan prioriteetti.",
       sykli: true
     },
     3: {
       type: "feature",
-      feature: "Päivitä SVG -toiminto rakentaa mallin uudelleen muokatusta tiedostosta. Osien transformit säilyvät.",
+      feature: "Käyttäjä voi päivittää muutetun SVG-piirroksen malliin ja säilyttää osien muokkaukset.",
       excerpt: "Kun piirrosta muokataan Inkscapessa, mallin pitää päivittyä ilman, että kaikki tehdään alusta.",
-      connection: "Asiakkaat pitävät tätä tärkeän jatkon toimintoa tärkeimpänä. Tällä viikolla työ tehdään ensimmäisen kerran omassa haarassa ja liitetään päähaaraan pull requestilla.",
+      connection: "Inkscape-piirros voi muuttua myös sen jälkeen, kun siitä on tehty malli. Nyt lisäät Päivitä SVG -toiminnon ja sovit, miten aiemmat osat tunnistetaan uudesta piirroksesta. Liität toiminnon testattuna aiempaan sovellukseen oman haaran ja pull requestin avulla.",
       deliverable: "Sovittu tunnistustapa · testi 23 · toiminto omassa haarassa · pull request ja merge.",
       why: "Ilman päivitystä jokainen Inkscape-muutos pakottaa tekemään transformit uudelleen. Silloin vektoripohjaisuus menettää hyötynsä.",
       done: "Muokattu SVG päivittyy malliin, transformit säilyvät, kaikki testit menevät läpi, ja pull request on yhdistetty päähaaraan.",
       record: "Tunnistustapa ja sen perustelu, pull requestin linkki, viikon funktio selityspohjalla ja näyttömatriisin vaatimukset: osan liittäminen versioon, toimintalogiikka ja ratkaisut yhdessä.",
       skills: ["Ohjelman osan liittäminen versioon", "Toimintalogiikka: osien tunnistus", "Ongelmanratkaisu yhdessä"],
       termit: ["haara", "pull request", "merge"],
-      steps: [
-        ["Sovi tunnistustapa.", "Sovi palaverissa, miten osa tunnistetaan uudesta tiedostosta: nimellä vai tunnisteella. Kirjaa päätös suunnitelmaan."],
-        ["Kirjoita testi 23.", "Testi 23: Päivitä SVG. Muokkaa testitiedostoa Inkscapessa ja päivitä malli Päivitä SVG -toiminnolla. Mitä odotat transformeille? Kirjaa odotus ennen koodia."],
-        ["Tee oma haara.", "Haara on oma työlinja. Muutokset eivät vaikuta päähaaraan <code>main</code>, ennen kuin liität ne."],
-        ["Tee toiminto työsyklillä haarassa.", "Tee kortit tavalliseen tapaan. Tee commitit haaraan."],
-        ["Aja kaikki testit.", "Aja <code>pytest</code>. Kaikkien vanhojen testien pitää mennä läpi."],
-        ["Tee pull request ja merge.", "Pull request on pyyntö liittää haara päähaaraan. Lue muutokset itse. Tee sitten merge eli liitä haara päähaaraan."],
-        ["Lisää halutessasi automaattinen päivitys.", "Tämä on valinnainen. Tee se vasta, kun painikkeella toimiva päivitys on päähaarassa. Qt:n <code>QFileSystemWatcher</code> huomaa, kun tallennat SVG:n Inkscapessa. Silloin se käynnistää Päivitä SVG -toiminnon itse. Tee siitä oma kortti."]
-      ],
+      tehtavat: {
+        "3-1": {
+          "miksi": "Päivityksen pitää löytää vastaavat osat muuttuneesta piirroksesta.",
+          "osat": [
+            [
+              "Sovi tunnistustapa",
+              "Sovi palaverissa, miten osa tunnistetaan uudesta tiedostosta: nimellä vai tunnisteella."
+            ],
+            "Kirjaa päätös ja peruste suunnitelmaan."
+          ],
+          "valmis": "Osien tunnistustapa on sovittu ja perusteltu.",
+          "tallenna": "Päätös suunnitelmaan.",
+          "sanat": []
+        },
+        "3-2": {
+          "miksi": "Testi varmistaa, etteivät käyttäjän aiemmat muokkaukset katoa.",
+          "osat": [
+            [
+              "Kirjoita testi 23",
+              "Testi 23: Päivitä SVG. Muokkaa testitiedostoa Inkscapessa ja määrittele, mitä odotat mallin osien muokkauksille päivityksen jälkeen."
+            ],
+            "Kirjoita oma odotettu tulos ennen toteutusta. Kirjoita sitten testi, joka tarkistaa tämän tuloksen."
+          ],
+          "valmis": "Testin 23 odotettu tulos on kirjattu ennen toteutusta.",
+          "tallenna": "Testi tests-kansioon ja odotukset issueen.",
+          "sanat": []
+        },
+        "3-3": {
+          "tyosykli": true,
+          "miksi": "Uusi toiminto liitetään aiempaan sovellukseen testattuna.",
+          "osat": [
+            [
+              "Tee oma haara",
+              "Haara on oma työlinja. Muutokset eivät vaikuta päähaaraan `main`, ennen kuin liität ne."
+            ],
+            [
+              "Tee toiminto työsyklillä haarassa",
+              "Tee kortit tavalliseen tapaan. Tee commitit haaraan."
+            ],
+            [
+              "Aja kaikki testit",
+              "Aja `pytest`. Kaikkien vanhojen testien pitää mennä läpi."
+            ],
+            [
+              "Tee pull request ja merge",
+              "Pull request on pyyntö liittää haara päähaaraan. Lue muutokset itse. Tee sitten merge eli liitä haara päähaaraan."
+            ]
+          ],
+          "valmis": "SVG päivittyy, osien muokkaukset säilyvät, kaikki testit menevät läpi ja pull request on yhdistetty.",
+          "tallenna": "Koodi, testi ja yhdistetty pull request GitHubiin.",
+          "sanat": []
+        }
+      },
+      lisatehtavat: [["Lisää halutessasi automaattinen päivitys.", "Tämä on valinnainen. Tee se vasta, kun painikkeella toimiva päivitys on päähaarassa. Qt:n <code>QFileSystemWatcher</code> huomaa, kun tallennat SVG:n Inkscapessa. Silloin se käynnistää Päivitä SVG -toiminnon itse. Tee siitä oma kortti."]],
       example: "Tunnistustavan perustelu: \"Tunnistan osat inkscape:label-nimellä, koska nimet näkyvät hierarkiapaneelissa ja pysyvät, kun polkua muokataan.\"",
       notEnough: "\"Tunnistan osat nimellä.\" Perustelusta puuttuu, miksi nimi on parempi kuin tunniste omassa työssäsi.",
       kuvaohjeet: ["github-pull-request"],
@@ -873,20 +1611,61 @@ window.NAYTTOPROJEKTI = {
     },
     4: {
       type: "feature",
-      feature: "Jos pakollisesta ytimestä on rästejä, ne ovat valmiit. Muuten seuraava sovittu tärkeän jatkon toiminto toimii.",
-      connection: "Tämä on joustoviikko. Ensin tehdään pakollisen ytimen rästit, jos viikon 47 palaverissa niin sovittiin. Sitten jatketaan tärkeän jatkon järjestyksessä.",
+      feature: "Sovittu puute on korjattu tai seuraava tärkeä jatkotoiminto on valmis.",
+      connection: "Tämä viikko antaa tilaa varmistaa, että Vektoripajan pakollinen ydin on valmis ennen seuraavia laajennuksia. Korjaat ensin sovitut rästit ja etenet sen jälkeen asiakkaiden kanssa päätetyssä tärkeän jatkon järjestyksessä. Uusi testi ja toinen virheenkorjausketju auttavat pitämään myös jatkokehityksen laadun näkyvänä.",
       deliverable: "Pakollisen ytimen rästit omassa haarassa tai seuraava tärkeän jatkon toiminto · testi 24 · virheenkorjausketju 2.",
       why: "Pakollinen ydin painaa arvioinnissa enemmän kuin tärkeä jatko. Rästit tehdään ensin, jotta MVP on kokonainen.",
       done: "Pakollisen ytimen rästit on liitetty päähaaraan pull requestilla, tai tärkeän jatkon toiminto toimii ja testi 24 menee läpi. Virheenkorjausketjun kuusi osaa ovat havaintoissuessa.",
       record: "Mitä tehtiin ja miksi juuri se, testin 24 tulos, virheenkorjausketju 2 ja näyttömatriisin vaatimukset: virheiden korjaus ja toimintalogiikka.",
       skills: ["Priorisointi", "Toimintalogiikka", "Virheenkorjaus"],
-      steps: [
-        ["Tarkista rästit.", "Katso palaverissa, jäikö pakollisesta ytimestä jotain kesken. Jos jäi, tee se ensin omassa haarassa. Liitä se päähaaraan pull requestilla."],
-        ["Valitse tärkeän jatkon toiminto.", "Jos rästejä ei ole, ota järjestyksen seuraava toiminto."],
-        ["Kirjoita testi 24.", "Testi 24: seuraava toiminto. Kirjoita toiminnon testi ennen toteutusta. Esimerkiksi kulmasnappauksessa: mitä odotat, kun kulma on 22° ja kun se on 23°?"],
-        ["Tee toiminto työsyklillä.", "Käytä haaraa, jos muutos koskee useaa tiedostoa."],
-        ["Kirjoita virheenkorjausketju 2.", "Valitse havaintoissue ja kirjaa kuusi osaa kuten viikolla 49. Kirjoita regressiotesti Täydennys-kaistalla."]
-      ],
+      tehtavat: {
+        "4-1": {
+          "miksi": "Ensimmäisen version perustoimintojen puutteet ratkaistaan ennen laajennuksia.",
+          "osat": [
+            [
+              "Tarkista rästit",
+              "Katso palaverissa, jäikö pakollisesta ytimestä jotain kesken."
+            ],
+            "Jos jäi, tee se ensin omassa haarassa. Liitä se päähaaraan pull requestilla."
+          ],
+          "valmis": "Rästit on tunnistettu ja sovittu, tehdäänkö tällä viikolla korjaus vai jatkotoiminto.",
+          "tallenna": "Tilanne ja sovittu tehtävä issueen sekä tilatiedostoon.",
+          "sanat": []
+        },
+        "4-2": {
+          "miksi": "Seuraava toiminto tarvitsee oman tarkistettavan tavoitteen.",
+          "osat": [
+            [
+              "Valitse tärkeän jatkon toiminto",
+              "Jos rästejä ei ole, ota järjestyksen seuraava toiminto."
+            ],
+            [
+              "Kirjoita testi 24",
+              "Testi 24: seuraava toiminto. Kirjoita toiminnon testi ennen toteutusta. Esimerkiksi kulmasnappauksessa: mitä odotat, kun kulma on 22° ja kun se on 23°?"
+            ]
+          ],
+          "valmis": "Testin 24 syöte ja odotettu tulos on kirjoitettu ennen toteutusta.",
+          "tallenna": "Valinta suunnitelmaan ja testi sekä odotukset issueen.",
+          "sanat": []
+        },
+        "4-3": {
+          "tyosykli": true,
+          "miksi": "Korjaus tai jatkotoiminto viedään osaksi toimivaa kokonaisuutta.",
+          "osat": [
+            [
+              "Tee toiminto työsyklillä",
+              "Käytä haaraa, jos muutos koskee useaa tiedostoa."
+            ],
+            [
+              "Kirjoita virheenkorjausketju 2",
+              "Valitse havaintoissue ja kirjaa kuusi osaa kuten viikolla 49. Kirjoita regressiotesti Täydennys-kaistalla."
+            ]
+          ],
+          "valmis": "Sovittu muutos toimii, testit menevät läpi ja virheenkorjausketju 2 on kirjattu.",
+          "tallenna": "Muutos GitHubiin pull requestilla; ketju havaintoissueen.",
+          "sanat": []
+        }
+      },
       example: "Päiväkirja: \"Tein ensin pakollisen ytimen rästin: kamera ei kääntynyt ylänäkymään. Sovittu palaverissa 12.1. Sitten kulmasnappaus.\"",
       notEnough: "\"Tein jatkojuttuja.\" Merkinnästä ei näe, mikä tehtiin eikä miksi juuri se.",
       pohjat: [
@@ -896,22 +1675,73 @@ window.NAYTTOPROJEKTI = {
     },
     5: {
       type: "feature",
-      feature: "Sovelluksessa on isot säätimet ja näppäimistökäyttö. Lukija lukee jokaisen painikkeen nimen. Accessibility Insightsin tulokset ennen ja jälkeen on kirjattu. Jälkimittauksessa ei ole uusia virheitä, ja löydetyt puutteet on korjattu.",
+      feature: "Sovelluksen säätimiä voi käyttää selkeämmin näppäimistöllä ja Lukijalla.",
       excerpt: "Työkalun pitää olla selkeä: iso tila piirtämiselle, isot painikkeet ja hyvä kontrasti.",
-      connection: "Perusteema tuli sovellukseen jo viikolla 41. Nyt teet saavutettavuuden loppuun: isot säätimet, näppäimistökäyttö ja ruudunlukijan tuki. Ruudunlukija on ohjelma, joka lukee näytön sisällön ääneen. Windowsin oma ruudunlukija on Lukija. Accessibility Insights for Windows on Microsoftin ilmainen työkalu, joka tarkistaa sovelluksen ikkunan saavutettavuuden. Sen pikatarkistus on nimeltään FastPass. Kahva on 3D-näkymän tartuntakohta, josta osaa vedetään hiirellä. Raahattavat kahvat tehdään vain, jos ne kuuluvat tärkeän jatkon järjestykseesi.",
+      connection: "Valmiista mallinnustoiminnoista on hyötyä vain, jos käyttäjä pystyy käyttämään niiden säätimiä. Tällä viikolla parannat isoja säätimiä ja näppäimistökäyttöä sekä kokeilet sovellusta Lukijalla. Ennen ja jälkeen tehdyt tarkistukset näyttävät, miten muutokset parantavat Vektoripajan käytettävyyttä.",
       deliverable: "FastPass-perusmittaus · testit 25–26 · isot säätimet ja näppäimistökäyttö · FastPass-jälkimittaus.",
       why: "Saavutettavuus on asiakkaan vaatimus. Ilman mittausta et voi näyttää, mikä parani.",
       done: "FastPassin tulokset ennen ja jälkeen on kirjattu, jälkimittauksessa ei ole uusia virheitä, testit 25–26 menevät läpi näppäimistöllä ja Lukijalla, ja löydetyt puutteet on korjattu tai kirjattu issueiksi.",
       record: "Accessibility Insightsin tulokset ennen ja jälkeen, testit 25–26 ja näyttömatriisin vaatimukset: käyttöliittymä ja testaus.",
       skills: ["Käyttöliittymä vaatimuksen mukaan", "Saavutettavuuden testaus", "Mittaaminen ennen ja jälkeen"],
       termit: ["ruudunlukija", "Accessibility Insights", "kahva"],
-      steps: [
-        ["Mittaa ensin.", "Käynnistä sovellus. Avaa Accessibility Insights for Windows. Valitse FastPass. Valitse kohteeksi Vektoripajan ikkuna. Aja tarkistus kuvaohjeen mukaan. Kirjaa virheiden määrä ja kolme ensimmäistä havaintoa päiväkirjaan."],
-        ["Tarkista vaatimus.", "Lue käyttöliittymävaatimuksesi suunnitelmasta. Mitä vielä puuttuu?"],
-        ["Kirjoita testit 25–26.", "Testi 25: näppäimistö. Käytä kaikkia painikkeita näppäimistöllä. Testi 26: painikkeiden nimet. Käynnistä Lukija näppäimillä Ctrl + Windows-näppäin + Enter. Siirry Tab-näppäimellä painikkeesta toiseen. Lukeeko Lukija jokaisen painikkeen nimen? Kirjaa, mitä odotat."],
-        ["Tee isot säätimet ja näppäimistö työsyklillä.", "Suurenna painikkeet ja transformipaneelin kentät. Anna jokaiselle painikkeelle nimi, jonka Lukija lukee. Tarkista, että Tab-järjestys on looginen. Tee raahattavat kahvat vain, jos ne kuuluvat tärkeän jatkon järjestykseesi."],
-        ["Mittaa uudelleen.", "Aja testit 25–26 ja FastPass uudelleen. Vertaa tuloksia. Kirjaa, mikä parani ja mikä jäi."]
-      ],
+      tehtavat: {
+        "5-1": {
+          "miksi": "Perusmittaus näyttää, mitä käyttöliittymässä pitää parantaa.",
+          "osat": [
+            [
+              "Mittaa ensin",
+              "Käynnistä sovellus."
+            ],
+            "Avaa Accessibility Insights for Windows. Valitse FastPass. Valitse kohteeksi Vektoripajan ikkuna. Aja tarkistus kuvaohjeen mukaan. Kirjaa virheiden määrä ja kolme ensimmäistä havaintoa päiväkirjaan."
+          ],
+          "valmis": "FastPassin tulokset on kirjattu ennen muutoksia.",
+          "tallenna": "Mittaus project-docs-kansioon ja havaintojen linkit issueihin.",
+          "sanat": []
+        },
+        "5-2": {
+          "miksi": "Käyttöliittymän tavoite muutetaan toistettaviksi kokeiluiksi.",
+          "osat": [
+            [
+              "Tarkista vaatimus",
+              "Lue käyttöliittymävaatimuksesi suunnitelmasta. Mitä vielä puuttuu?"
+            ],
+            [
+              "Kirjoita testit 25–26",
+              "Testi 25: näppäimistö. Käytä kaikkia painikkeita näppäimistöllä. Testi 26: painikkeiden nimet. Käynnistä Lukija näppäimillä Ctrl + Windows-näppäin + Enter. Siirry Tab-näppäimellä painikkeesta toiseen. Lukeeko Lukija jokaisen painikkeen nimen? Kirjaa, mitä odotat."
+            ]
+          ],
+          "valmis": "Oma vaatimus ja testien 25–26 odotetut tulokset on kirjattu.",
+          "tallenna": "Vaatimus suunnitelmaan ja testit issueihin.",
+          "sanat": []
+        },
+        "5-3": {
+          "tyosykli": true,
+          "miksi": "Selkeät säätimet auttavat käyttäjää hyödyntämään mallinnustoimintoja.",
+          "osat": [
+            [
+              "Tee isot säätimet ja näppäimistö työsyklillä",
+              "Suurenna painikkeet ja transformipaneelin kentät."
+            ],
+            "Anna jokaiselle painikkeelle nimi, jonka Lukija lukee. Tarkista, että Tab-järjestys on looginen. Tee raahattavat kahvat vain, jos ne kuuluvat tärkeän jatkon järjestykseesi."
+          ],
+          "valmis": "Sovitut säätimet ja näppäimistökäyttö on toteutettu.",
+          "tallenna": "Koodi ja muutosten linkit GitHub-issueihin.",
+          "sanat": []
+        },
+        "5-4": {
+          "miksi": "Jälkimittaus näyttää parannuksen vaikutuksen.",
+          "osat": [
+            [
+              "Mittaa uudelleen",
+              "Aja testit 25–26 ja FastPass uudelleen."
+            ],
+            "Vertaa tuloksia. Kirjaa, mikä parani ja mikä jäi."
+          ],
+          "valmis": "Testit on kokeiltu näppäimistöllä ja Lukijalla; uudet havainnot on korjattu tai kirjattu.",
+          "tallenna": "Ennen–jälkeen-vertailu project-docs-kansioon ja testitulokset issueihin.",
+          "sanat": []
+        }
+      },
       example: "Kirjaus: \"FastPass ennen: 7 virhettä, jälkeen: 0. Korjattu: kahdelta painikkeelta puuttui nimi, ja Lukija sanoi niistä vain sanan painike. Jäi: Lukija ei kerro, kun view lockin tila vaihtuu, issue #31.\"",
       notEnough: "\"Saavutettavuus parani.\" Kirjauksesta puuttuvat luvut ja se, mikä muuttui.",
       kuvaohjeet: ["accessibility-insights-fastpass"],
@@ -936,23 +1766,66 @@ window.NAYTTOPROJEKTI = {
     },
     6: {
       type: "julkaisu",
-      feature: "Julkaisuehdokas v1.0-rc1 on jäädytetty. Toinen opiskelija on ladannut sen zipin GitHubista. Hän on kulkenut README:n avulla koko polun Inkscape-piirroksesta .obj-tiedostoon Windows-koneella, jossa ei ole Pythonia.",
+      feature: "Toinen käyttäjä pystyy kulkemaan ohjeen avulla latauksesta omaan malliin ja vientiin.",
       excerpt: "Valmis tarkoittaa meille tätä: työkalun voi ladata GitHubista ja käynnistää Windows-koneella ilman Pythonia, oma piirroksemme muuttuu malliksi, .obj aukeaa toisessa ohjelmassa, ja mukana on ohje, jolla joku muu saa työkalun käyttöön kysymättä meiltä.",
-      connection: "Julkaisuehdokas (RC) on versio, jossa sisältö on jäädytetty. Sisältöjäädytys tarkoittaa, että uusia ominaisuuksia ei enää lisätä. Tällä viikolla testataan, saako joku muu työkalun käyttöön pelkällä ohjeella.",
+      connection: "Vektoripajan pitää toimia myös ihmiselle, joka ei tunne sen kehitystä tai omista Python-kehitysympäristöä. Tällä viikolla julkaisutestaaja kulkee ohjeen avulla koko polun latauksesta omaan piirrokseen ja OBJ-vientiin. Julkaisuehdokkaan kokeilu paljastaa viimeiset esteet sovelluksessa ja käyttöohjeessa ennen v1.0:aa.",
       deliverable: "Tagi v1.0-rc1 · README ja käyttöohje · julkaisutestin epäröintilista.",
       why: "Jos ohje toimii vain sinulle, asiakas ei saa työkalua käyttöön. Jokainen epäröinti on ohjeen korjauslista.",
       done: "Julkaisutestaajan .obj-tiedosto aukeaa, ja epäröinnit on listattu pöytäkirjaan. Testaajan nimi ja sanatarkat lausumat on lähetetty ohjaajalle Teamsissa. Repositoryyn on kirjattu vain rooli.",
       record: "Julkaisutestin tärkein epäröintikohta roolilla kirjattuna, ohjeeseen tehty korjaus ja näyttömatriisin vaatimukset: dokumentointi, viestintä asiakkaalle ja julkaisu tuotantoon.",
       skills: ["Dokumentointi sovitulla tavalla", "Julkaisuehdokas", "Asiakaslähtöinen viestintä"],
       termit: ["RC", "sisältöjäädytys"],
-      steps: [
-        ["Varaa testiaika ja kone.", "Sovi julkaisutestaajan kanssa aika. Varmista, että hänen Windows-koneellaan on Inkscape. Varmista myös, ettei koneelle ole asennettu Pythonia. Silloin näet, toimiiko zip ilman Pythonia."],
-        ["Jäädytä ja tee tagi.", "Jäädytä sisältö. Tee tagi <code>v1.0-rc1</code> ja pushaa se. Kun Actions-ajo on vihreä, release ja sen zip ovat GitHubissa."],
-        ["Täydennä README.", "Kirjoita README ja käyttöohje. Kerro, mistä zip ladataan, miten se puretaan ja mitä SmartScreen-varoituksessa valitaan. Kerro Inkscapen nimeämissäännöt: layerit, ryhmät ja mahdolliset nimimerkinnät."],
-        ["Pidä julkaisutesti.", "Anna testaajalle vain README:n osoite. Seuraa, älä neuvo. Testaaja lataa zipin releasesta ja purkaa sen. Sitten hän kulkee polun: piirros, tuonti, revolve tai inflate ja vienti."],
-        ["Listaa epäröinnit.", "Kirjaa pöytäkirjaan jokainen kohta, jossa testaaja epäröi. Kirjoita se omin sanoin ja roolilla \"julkaisutestaaja\". Lähetä testaajan nimi ja sanatarkat lausumat ohjaajalle Teamsissa."],
-        ["Korjaa ohje.", "Korjaa README jokaisen epäröinnin kohdalta. Tee estävistä virheistä issuet viikolle 7."]
-      ],
+      tehtavat: {
+        "6-1": {
+          "miksi": "Julkaisuehdokkaassa keskitytään toimivuuteen ja ohjeeseen.",
+          "osat": [
+            [
+              "Varaa testiaika ja kone",
+              "Sovi julkaisutestaajan kanssa aika. Varmista, että hänen Windows-koneellaan on Inkscape. Varmista myös, ettei koneelle ole asennettu Pythonia. Silloin näet, toimiiko zip ilman Pythonia."
+            ],
+            [
+              "Jäädytä ja tee tagi",
+              "Jäädytä sisältö. Tee tagi `v1.0-rc1` ja pushaa se. Kun Actions-ajo on vihreä, release ja sen zip ovat GitHubissa."
+            ]
+          ],
+          "valmis": "Testiaika ja Windows-kone on sovittu, sisältö jäädytetty ja tagi v1.0-rc1 tehty.",
+          "tallenna": "Tagi GitHubiin ja testijärjestelyt julkaisutestimuistioon.",
+          "sanat": []
+        },
+        "6-2": {
+          "miksi": "Uuden käyttäjän pitää saada sovellus käyttöön ohjeen avulla.",
+          "osat": [
+            [
+              "Täydennä README",
+              "Kirjoita README ja käyttöohje."
+            ],
+            "Kerro, mistä zip ladataan, miten se puretaan ja mitä SmartScreen-varoituksessa valitaan. Kerro Inkscapen nimeämissäännöt: layerit, ryhmät ja mahdolliset nimimerkinnät."
+          ],
+          "valmis": "Ohje kattaa lataamisen, piirroksen nimeämisen, mallintamisen ja viennin.",
+          "tallenna": "README ja käyttöohje GitHubiin.",
+          "sanat": []
+        },
+        "6-3": {
+          "miksi": "Ulkopuolinen kokeilu paljastaa julkaisemisen viimeiset esteet.",
+          "osat": [
+            [
+              "Pidä julkaisutesti",
+              "Anna testaajalle vain README:n osoite. Seuraa, älä neuvo. Testaaja lataa zipin releasesta ja purkaa sen. Sitten hän kulkee polun: piirros, tuonti, revolve tai inflate ja vienti."
+            ],
+            [
+              "Listaa epäröinnit",
+              "Kirjaa pöytäkirjaan jokainen kohta, jossa testaaja epäröi. Kirjoita se omin sanoin ja roolilla \"julkaisutestaaja\". Lähetä testaajan nimi ja sanatarkat lausumat ohjaajalle Teamsissa."
+            ],
+            [
+              "Korjaa ohje",
+              "Korjaa README jokaisen epäröinnin kohdalta. Tee estävistä virheistä issuet viikolle 7."
+            ]
+          ],
+          "valmis": "Testaajan OBJ avautuu ja kaikki epäröinnit on kirjattu; ohjeen puutteet on korjattu.",
+          "tallenna": "Roolit ja havainnot project-docs/julkaisutesti.md-tiedostoon; nimet ja sanatarkat lausumat Teamsiin.",
+          "sanat": []
+        }
+      },
       pohjat: [
         { otsikko: "Julkaisutestin pöytäkirja (project-docs/julkaisutesti.md)", teksti: "# Julkaisutesti pp.kk.vvvv\nVersio: v1.0-rc1\nTestaaja: julkaisutestaaja (rooli)\nKone: Windows, Python asennettuna (kyllä/ei): \n\n## Polku\n0. Zipin lataus releasesta ja purku: \n1. Piirros Inkscapessa: \n2. Tuonti: \n3. Revolve tai inflate: \n4. Vienti .obj: \n\n## Epäröinnit omin sanoin (ei sanatarkkoja lausumia)\n- \n\n## Korjaukset ohjeeseen\n- " }
       ],
@@ -961,22 +1834,63 @@ window.NAYTTOPROJEKTI = {
     },
     7: {
       type: "julkaisu",
-      feature: "Julkaisutestin estävät havainnot on korjattu. Versio v1.0 on julki. Antti on vahvistanut, että releasen zip toimii hänen Windows-koneellaan. Matti on nähnyt sovelluksen toimivan. Näyttömatriisin jokaisella rivillä on linkki työnäytteeseen.",
+      feature: "Vektoripaja v1.0 on julkaistu ja asiakkaat ovat vahvistaneet toimivuuden.",
       excerpt: "Valmis tarkoittaa meille tätä: työkalun voi ladata GitHubista ja käynnistää Windows-koneella ilman Pythonia, oma piirroksemme muuttuu malliksi, .obj aukeaa toisessa ohjelmassa, ja mukana on ohje, jolla joku muu saa työkalun käyttöön kysymättä meiltä.",
-      connection: "Viikolla 6 löytyivät viimeiset esteet. Nyt ne korjataan, ja v1.0 julkaistaan. Samalla näyttöaineisto linkitetään valmiiksi.",
+      connection: "Julkaisutestissä löytyneet esteet korjataan, jotta Vektoripaja voidaan luovuttaa asiakkaiden käyttöön. Julkaiset version v1.0 ja pyydät asiakkaita vahvistamaan sovelluksen toimivuuden. Samalla kokoat työnäytteiden linkit, jotta projektin ratkaisut ja oma osaamisesi löytyvät näyttöä varten.",
       deliverable: "Virheenkorjausketju 3 · tagi v1.0 ja release-teksti · asiakkaiden vahvistus · linkitetty näyttömatriisi.",
       why: "Julkaisu ilman korjauksia jättää asiakkaalle tunnetut viat. Ilman linkitystä arvioija ei löydä työnäytteitä.",
       done: "Estävät issuet on suljettu, release v1.0 ja sen zip näkyvät GitHubissa, Antti on vahvistanut toimivuuden omalla Windows-koneellaan, Matti on nähnyt sovelluksen demossa tai sinun koneellasi, ja jokaisella matriisin rivillä on linkki.",
       record: "Virheenkorjausketju 3, asiakkaiden vahvistus ja näyttömatriisin vaatimukset: virheiden korjaus, versionhallinta, julkaisu tuotantoon ja julkaisu asiakkaalle.",
       skills: ["Virheenkorjaus", "Julkaisu tuotantoon", "Näyttöaineiston kokoaminen"],
       termit: ["työnäyte", "näyttömatriisi"],
-      steps: [
-        ["Korjaa estävät havainnot.", "Korjaa viikon 6 estävät issuet työsyklillä."],
-        ["Kirjoita virheenkorjausketju 3.", "Valitse yksi korjauksista. Kirjaa ketjun kuusi osaa kuten viikolla 49."],
-        ["Julkaise v1.0.", "Tee tagi <code>v1.0</code> ja pushaa se. Kun Actions-ajo on vihreä, kirjoita release-tekstiin, mitä versiossa on."],
-        ["Pyydä asiakkaiden vahvistus.", "Lähetä asiakkaille releasen osoite viestipohjalla. Antti lataa zipin. Hän kokeilee sovellusta omalla Windows-koneellaan. Matilla on Mac, joten näytä sovellus hänelle palaverissa omalla koneellasi tai demossa. Mac-versiota ei tehdä."],
-        ["Linkitä näyttömatriisi.", "Työnäyte on yksi tuotos, joka osoittaa osaamisesi. Päiväkirjassa on jokaisen viikon kohdalla näyttömatriisin vaatimukset. Kopioi päiväkirjasta linkit näyttömatriisin oikeille riveille."]
-      ],
+      tehtavat: {
+        "7-1": {
+          "tyosykli": true,
+          "miksi": "Asiakkaalle luovutettavan version pitää läpäistä julkaisutesti.",
+          "osat": [
+            [
+              "Korjaa estävät havainnot",
+              "Korjaa viikon 6 estävät issuet työsyklillä."
+            ],
+            [
+              "Kirjoita virheenkorjausketju 3",
+              "Valitse yksi korjauksista. Kirjaa ketjun kuusi osaa kuten viikolla 49."
+            ]
+          ],
+          "valmis": "Estävät havainnot on korjattu ja virheenkorjausketju 3 on kirjattu.",
+          "tallenna": "Korjauscommitit, uusintatestit ja ketju havaintoissueihin.",
+          "sanat": []
+        },
+        "7-2": {
+          "miksi": "Asiakkaan vahvistus päättää sovelluksen toteutusvaiheen.",
+          "osat": [
+            [
+              "Julkaise v1.0",
+              "Tee tagi `v1.0` ja pushaa se. Kun Actions-ajo on vihreä, kirjoita release-tekstiin, mitä versiossa on."
+            ],
+            [
+              "Pyydä asiakkaiden vahvistus",
+              "Lähetä asiakkaille releasen osoite viestipohjalla. Antti lataa zipin. Hän kokeilee sovellusta omalla Windows-koneellaan. Matilla on Mac, joten näytä sovellus hänelle palaverissa omalla koneellasi tai demossa. Mac-versiota ei tehdä."
+            ]
+          ],
+          "valmis": "Release v1.0 on ladattavissa ja asiakkaat ovat vahvistaneet toimivuuden.",
+          "tallenna": "Release GitHubiin ja vahvistukset rooleilla projektin aineistoon.",
+          "sanat": []
+        },
+        "7-3": {
+          "miksi": "Arvioijan pitää löytää työn tulokset ja niitä osoittavat näytteet.",
+          "osat": [
+            [
+              "Linkitä näyttömatriisi",
+              "Työnäyte on yksi tuotos, joka osoittaa osaamisesi."
+            ],
+            "Päiväkirjassa on jokaisen viikon kohdalla näyttömatriisin vaatimukset. Kopioi päiväkirjasta linkit näyttömatriisin oikeille riveille."
+          ],
+          "valmis": "Jokaisella näyttömatriisin rivillä on täsmällinen linkki.",
+          "tallenna": "Linkit näyttömatriisiin ja koko päiväkirja GitHubiin.",
+          "sanat": []
+        }
+      },
       example: "Matriisin rivillä \"liittää ohjelman osan olemassa olevaan versioon\": pull request #24 (viikko 3), merge-commit a1b2c3d.",
       notEnough: "\"Tehty.\" Rivistä puuttuu linkki työnäytteeseen.",
       pohjat: [
@@ -987,8 +1901,8 @@ window.NAYTTOPROJEKTI = {
     9: {
       type: "naytto",
       rutiini: false,
-      feature: "Ajastettu 8–10 minuutin demo on pidetty. Kaikki viisi osaa on näytetty. Aineisto on luovutettu pe 5.3.2027.",
-      connection: "Tällä viikolla ei lisätä mitään uutta. Osaaminen tehdään löydettäväksi ja näytetään.",
+      feature: "Valmis sovellus, työskentelysi ja oma osaamisesi on esitelty ja aineisto luovutettu.",
+      connection: "Projektin päätöksessä näytät sekä valmiin Vektoripajan että sen, miten rakensit sen. Demo yhdistää käyttäjän työnkulun, yhden teknisen ratkaisun, virheenkorjauksen ja versionhallinnan konkreettiseksi kokonaisuudeksi. Itsearviointi ja linkitetty aineisto täydentävät asiakkaalle ja arvioijalle tehtävän luovutuksen.",
       deliverable: "Jäädytetty repository · harjoiteltu demo · itsearviointi ohjaajalle · luovutettu näyttöaineisto.",
       why: "Arvioija näkee osaamisesi vain, jos työnäytteet löytyvät ja osaat selittää ne.",
       done: "Demo on pidetty 8–10 minuutissa, kaikki viisi osaa on näytetty, itsearviointi on lähetetty ohjaajalle, ja aineisto on luovutettu perjantaina.",
@@ -1001,13 +1915,53 @@ window.NAYTTOPROJEKTI = {
         ["Puskuri", "Korjaa, mikä harjoituksessa jäi kesken. Kirjoita itsearviointi."],
         ["Demo ja luovutus", "Pidä demo. Luovuta aineisto."]
       ],
-      steps: [
-        ["Jäädytä sisältö maanantaina.", "Älä lisää enää ominaisuuksia. Tarkista, että jokainen työnäyte on repositoryssa."],
-        ["Harjoittele demo ajastettuna.", "Näytä viisi osaa: tuotos, yksi tekninen ratkaisu omin sanoin, korjattu virhe, Git-historia ja työnkulku yhdellä kortilla."],
-        ["Näytä työnkulku yhdellä kortilla.", "Näytä yhden kortin polku: oma rajaus ja odotettu tulos, issue, GitHub Copilot, perusteltu hylkäys tai korjautus ja commit."],
-        ["Kirjoita itsearviointi.", "Valitse päiväkirjasta kolme tilannetta. Niistä on kirjattu päivä ja issue-numero. Kirjoita arvio alla olevaan pohjaan. Lähetä se ohjaajalle Teamsissa, ei repositoryyn."],
-        ["Luovuta aineisto.", "Luovuta näyttöaineisto perjantaina 5.3.2027."]
-      ],
+      tehtavat: {
+        "9-1": {
+          "miksi": "Näyttö valmistellaan valmiin sovelluksen ja löydettävän aineiston pohjalta.",
+          "osat": [
+            [
+              "Jäädytä sisältö maanantaina",
+              "Älä lisää enää ominaisuuksia."
+            ],
+            "Tarkista, että jokainen työnäyte on repositoryssa."
+          ],
+          "valmis": "Sisältö on jäädytetty ja työnäytteet ovat repositoryssa.",
+          "tallenna": "Repositoryn osoite ja aineiston linkit päiväkirjaan.",
+          "sanat": []
+        },
+        "9-2": {
+          "miksi": "Demo yhdistää käyttäjän työnkulun ja oman osaamisesi.",
+          "osat": [
+            [
+              "Harjoittele demo ajastettuna",
+              "Näytä viisi osaa: tuotos, yksi tekninen ratkaisu omin sanoin, korjattu virhe, Git-historia ja työnkulku yhdellä kortilla."
+            ],
+            [
+              "Näytä työnkulku yhdellä kortilla",
+              "Näytä yhden kortin polku: oma rajaus ja odotettu tulos, issue, GitHub Copilot, perusteltu hylkäys tai korjautus ja commit."
+            ]
+          ],
+          "valmis": "Ajastettu 8–10 minuutin demo sisältää sovitut viisi osaa.",
+          "tallenna": "Demon runko ja harjoittelun havainto päiväkirjaan.",
+          "sanat": []
+        },
+        "9-3": {
+          "miksi": "Itsearviointi ja luovutus päättävät projektin.",
+          "osat": [
+            [
+              "Kirjoita itsearviointi",
+              "Valitse päiväkirjasta kolme tilannetta. Niistä on kirjattu päivä ja issue-numero. Kirjoita arvio alla olevaan pohjaan. Lähetä se ohjaajalle Teamsissa, ei repositoryyn."
+            ],
+            [
+              "Luovuta aineisto",
+              "Luovuta näyttöaineisto perjantaina 5.3.2027."
+            ]
+          ],
+          "valmis": "Itsearviointi on lähetetty ohjaajalle ja sovellus sekä aineisto on esitelty ja luovutettu.",
+          "tallenna": "Itsearviointi Teamsiin; lähetys- ja luovutuspäivä päiväkirjaan.",
+          "sanat": []
+        }
+      },
       pohjat: [
         { otsikko: "Demon runko (8–10 min)", teksti: "1. Tuotos toiminnassa: oma piirros → malli → .obj (2 min)\n2. Yksi tekninen ratkaisu omin sanoin (2 min)\n3. Yksi korjattu virhe ja sen syy (1–2 min)\n4. Git-historia: issuet, commitit, pull request, tagit (1–2 min)\n5. Työnkulku yhdellä kortilla: rajaus ja odotettu tulos → issue → GitHub Copilot → perusteltu hylkäys → commit (2 min)" },
         { otsikko: "Itsearviointi (lähetetään ohjaajalle Teamsissa)", teksti: "# Itsearviointi\n## Tilanne 1 (pp.kk., issue #__)\nMitä tapahtui: \nMitä tein: \nMitä tekisin toisin: \n\n## Tilanne 2 (pp.kk., issue #__)\n\n## Tilanne 3 (pp.kk., issue #__)" }
@@ -1140,48 +2094,28 @@ window.NAYTTOPROJEKTI = {
       "Asiakkaat ovat Matti Seise ja Antti Honkasalo. Käyttäjät ovat opiskelijoita, jotka",
       "piirtävät sujuvasti Inkscapessa mutta jäävät jumiin perinteisissä 3D-ohjelmissa.",
       "",
-      "## 3 · Pakollinen ydin, tärkeä jatko ja jatkolista (esitäytetty)",
+      "## Sovitut vaatimukset",
       "",
-      "**Pakollinen ydin (ennen joulua):** SVG-tuonti · layerit ja ryhmät osiksi (solmupuu) ·",
-      "pyörähdyskappale eli revolve 3–32 segmenttiä · putki eli inflate 3–8 sivua ·",
-      "valinta, siirto, kierto ja skaalaus, lapset seuraavat, pivot keskipisteessä ja",
-      "prosentteina · kierto hiirellä eli orbit, suorat näkymät orientaatiowidgetistä ja",
-      "view lock -painike · .obj-vienti osat erillisinä · tallennus ja avaus JSON-tiedostona.",
-      "",
-      "**Tärkeä jatko (loman jälkeen):** Päivitä SVG · kierto tasakulmiin (kulmasnappaus) · pieni",
-      "esikatseluikkuna · kierto lapselle ja sen alaosille · oma teema ja isot",
-      "kahvat · ortografinen näkymä · view lockin pikanäppäin.",
-      "",
-      "**Jatkolista (näytön jälkeen):** Bézier-kynä ja polkujen muokkaus sovelluksessa ·",
-      "Boolean-toiminnot · platoniset kappaleet · medial axis -inflaatio · UV-sidonta ·",
-      "hierarkiaa ymmärtävä raycasting ja törmäyssäännöt.",
+      "Vaatimukset ja niiden prioriteetit ovat toimeksiannossa:",
+      "https://mattiseise.github.io/projektikoontisivu/vektoripaja/#view-toimeksianto",
+      "Ensimmäinen toimiva versio ennen joulua, sovitut parannukset loman jälkeen ja julkaisu viikolla 7.",
       "",
       "### MVP omin sanoin (viikko 40)",
       "",
       arvo("mvp"),
       "",
-      "## 4 · Tekninen ehdotus (esitäytetty, päätös on sinun viikolla 41)",
+      "## Tekninen ratkaisu",
       "",
-      "Työpöytäsovellus Python 3.13:lla ja PySide6:lla (Qt), 3D-näkymä PyVistalla (pyvistaqt),",
-      "geometria ja .obj trimeshillä, SVG:n luku svgelementsillä ja testit pytestillä.",
-      "Julkaisu: GitHub Actions tekee tagista Windows-version PyInstallerilla, ajaa sille",
-      "itsetestin ja lisää zipin GitHubin releaseen. Pakollinen ydin rakentuu valmiista osista.",
-      "svgelements lukee SVG:n. trimesh tekee revolven ja .obj-viennin. PyVistan",
-      "tube-suodatin tekee inflaten. PyVistan kamera ja orientaatiowidget näyttävät",
-      "suorat näkymät. Transformit tehdään Qt:n numerokentillä ja pikanäppäimillä.",
-      "Vanhempi–lapsi-muunnokset lasketaan omalla puhtaalla funktiolla. Testit",
-      "kohdistuvat puhtaisiin funktioihin.",
+      "Tekninen ehdotus on toimeksiannossa. Kirjaa oma päätös ja peruste alle.",
       "",
       "### Hyväksynkö ehdotuksen ja miksi (viikko 41)",
       "",
       arvo("tekninenPohja"),
       "",
-      "## 5 · Työtapa (esitäytetty)",
+      "## Työtapa",
       "",
-      "Työsykli joka tehtäväkortille: Suunnittele (Copilot) → Siirrä (GitHub) → Rakenna",
-      "(testi ensin, sitten toteutus kortin kaistalla) → Tarkista (itse) → Raportoi",
-      "(Copilot) → Kirjaa (commit ja AI-loki). Viikkopalaveri ohjaajan kanssa maanantaina",
-      "tai tiistaina. Krediitit tarkistetaan maanantaisin.",
+      "Yksi GitHub-issue kerrallaan: suunnittele, siirrä, rakenna, tarkista, raportoi ja kirjaa.",
+      "Tarkat ohjeet: https://mattiseise.github.io/projektikoontisivu/vektoripaja/#view-tyotapa",
       "",
       "## B · Omat päätökset",
       "",
@@ -1191,7 +2125,7 @@ window.NAYTTOPROJEKTI = {
       `- **Valinnan toiminta: lapsi vai koko kappale (viikko 44):** ${arvo("valinta")}`,
       `- **Revolven valintatapa, sovittu palaverissa (viikko 45):** ${arvo("revolveValinta")}`,
       `- **Profiili akselin väärällä puolella, testin 11 kriteeri (viikko 45):** ${arvo("akseli")}`,
-      `- **Tallennustapa omilla kriteereillä ja JSON-koko (viikko 50):** ${arvo("tallennus")}`,
+      `- **Tallennustapa, valinnan peruste ja tiedoston koko (viikko 50):** ${arvo("tallennus")}`,
       `- **Tärkeän jatkon järjestys ja tuntiarviot (viikko 2):** ${arvo("p1Jarjestys")}`,
       `- **Osien tunnistus päivityksessä (viikko 3):** ${arvo("tunnistus")}`,
       "",
@@ -1219,7 +2153,7 @@ window.NAYTTOPROJEKTI = {
   opettaja: {
     jakso: "Vk 40/2026–vk 9/2027 · syysloma vk 42 · joululoma 18.12.–10.1. · talviloma vk 8",
     deadline: "pe 5.3.2027",
-    kansiKuvaus: "Low-poly 3D-mallinnin Windows-työpöytäsovelluksena (Python): Inkscapen SVG → 3D-malli → .obj. Tekoälyavusteinen työtapa: Copilot suunnittelee, GitHub Copilot toteuttaa.",
+    kansiKuvaus: "Low-poly 3D-mallinnin Windows-työpöytäsovelluksena (Python): Inkscapen SVG → 3D-malli → .obj. Tekoälyavusteinen työtapa: Microsoft 365 Copilot suunnittelee ja auttaa Tiedosto-kaistalla. GitHub Copilot avustaa VS Codessa.",
     kansiHuomiot: [
       "Repository on julkinen. Sinne ei laiteta henkilötietoja, testaajien nimiä eikä itsearviointia. Ne lähetetään ohjaajalle Teamsissa.",
       "Viikkopalaveri ohjaajan kanssa on maanantaina tai tiistaina. Päivä sovitaan viikolla 40."
@@ -1251,10 +2185,10 @@ window.NAYTTOPROJEKTI = {
       kohde: [
         "Näyttö suoritetaan ohjattuna oppilaitosprojektina. Opiskelija toteuttaa low-poly 3D-mallintimen Windows-työpöytäsovelluksena, joka tekee Inkscapen SVG-piirroksesta 3D-mallin (revolve ja inflate), muuntaa layerit ja ryhmät vanhempi–lapsi-puuksi, tukee transformeja ja pivotia, näyttää mallin suorista näkymistä ja vie mallin .obj-tiedostoksi osat erillisinä. Toimeksiantajat ovat Matti Seise ja Antti Honkasalo. Matti Seise on myös ohjaaja.",
         "Näyttö kattaa kolme tutkinnon osaa: Ohjelmointi (45 osp, 10 vaatimusta tässä näytössä), Ohjelmistokehittäjänä toimiminen (45 osp, 14 vaatimusta) ja Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla (30 osp, 7 vaatimusta). Yhteensä 31 osaamisvaatimusta. Ohjelmoinnin vaatimus \"kirjoittaa ylläpidettävää ohjelmakoodia\" (p5) osoitetaan muulla tavalla ohjaajan päätöksellä 23.9.2026, koska koodin kirjoittaa tässä työtavassa pääosin tekoäly.",
-        "Tekninen ympäristö: Python 3.13, PySide6 (Qt), PyVista ja pyvistaqt (VTK), trimesh ja numpy, svgelements, testit pytestillä. Julkaisu: GitHub Actions (windows-latest) tekee versiotagista PyInstallerilla Windows-version (onedir), ajaa pytestin ja valmiille .exe:lle itsetestin (--itsetesti) ja lisää zipin GitHubin releaseen. Valmis versio toimii ilman Pythonia. macOS-versiota ei tehdä. Opiskelija saa julkaisun, itsetestin ja kirjastolistan tiedostot viikon 41 pohjana (pohjat/vektoripaja-pohja.zip). Saavutettavuus mitataan Accessibility Insights for Windowsilla (FastPass), näppäimistötestillä ja Windowsin Lukijalla. Tekoälytyökalut: Microsoft 365 Copilot (BC, suunnittelu ja pilkkominen) ja GitHub Copilot (Student, toteutus VS Codessa). GitHub Copilotin budjetti on 200 krediittiä kuukaudessa.",
+        "Tekninen ympäristö: Python 3.13, PySide6 (Qt), PyVista ja pyvistaqt (VTK), trimesh ja numpy, svgelements, testit pytestillä. Julkaisu: GitHub Actions (windows-latest) tekee versiotagista PyInstallerilla Windows-version (onedir), ajaa pytestin ja valmiille .exe:lle itsetestin (--itsetesti) ja lisää zipin GitHubin releaseen. Valmis versio toimii ilman Pythonia. macOS-versiota ei tehdä. Opiskelija saa julkaisun, itsetestin ja kirjastolistan tiedostot viikon 41 pohjana (pohjat/vektoripaja-pohja.zip). Saavutettavuus mitataan Accessibility Insights for Windowsilla (FastPass), näppäimistötestillä ja Windowsin Lukijalla. Tekoälytyökalut: Microsoft 365 Copilot (BC, suunnittelu, pilkkominen ja Tiedosto-kaistan toteutus) ja GitHub Copilot (Student, toteutus VS Codessa). GitHub Copilotin budjetti on 200 krediittiä kuukaudessa.",
         "Aikataulu on päivätty: vk 40/2026 (ma 28.9.) – vk 9/2027 (pe 5.3.), 18 työviikkoa. Lomat vk 42, joululoma 18.12.–10.1. (vk 51 on neljä työpäivää) ja talviloma vk 8."
       ],
-      p0: "Pakollinen ydin (P0, ennen joulua): SVG-tuonti · layerit ja ryhmät solmupuuksi · revolve 3–32 segmenttiä · inflate 3–8 sivua · valinta, siirto, kierto ja skaalaus, lapset seuraavat, pivot keskipisteessä ja prosentteina · orbit, suorat näkymät orientaatiowidgetistä ja view lock -painike · .obj-vienti osat erillisinä · tallennus ja avaus JSONina. Tärkeä jatko (P1): Päivitä SVG, kulmasnappaus, pieni esikatseluikkuna (PiP), kierron kohderajaukset, oma teema ja isot kahvat, ortografinen näkymä, view lockin pikanäppäin.",
+      p0: "Pakollinen ydin (P0, ennen joulua): SVG-tuonti · layerit ja ryhmät solmupuuksi · revolve 3–32 segmenttiä · inflate 3–8 sivua · valinta, siirto, kierto ja skaalaus, lapset seuraavat, pivot keskipisteessä ja prosentteina · orbit, suorat näkymät orientaatiowidgetistä ja view lock -painike · .obj-vienti osat erillisinä · tallennus ja avaus (JSON on ehdotus, valinta perustellaan viikolla 50). Tärkeä jatko (P1): Päivitä SVG, kulmasnappaus, pieni esikatseluikkuna (PiP), kierron kohderajaukset, oma teema ja isot kahvat, ortografinen näkymä, view lockin pikanäppäin.",
       roolit: [
         ["Opiskelija", "Pilkkoo tavoitteet tehtäväkorteiksi, tekee arkkitehtuuripäätökset, kirjoittaa testien odotetut arvot ennen toteutusta, hyväksyy, korjauttaa tai hylkää tekoälyn tuotoksen perustellen, selittää virheen syyn ja funktiot omin sanoin sekä kokoaa näyttöaineiston. Koodin kirjoittaa pääosin tekoäly."],
         ["Ohjaaja (Matti Seise)", "Viikkopalaveri ma tai ti (sovitut kortit issue-kommentteina, edellisen viikon funktio ääneen), pakollisen ytimen (P0) tarkistuspiste vk 47, vikatehtävä tarvittaessa, ohjaajan päätökset (tekijänimi, lisenssi, krediitit, katselmoinnin kirjaustapa, julkaisutestaaja, arviointi). Toimii tiimin jäsenen roolissa vk 2:n ratkaisuarviossa."],
@@ -1263,7 +2197,7 @@ window.NAYTTOPROJEKTI = {
         ["Arvioijat (vk 9)", "Ottavat vastaan demon ja näyttöaineiston. Ajankohta ja arvioijat sovitaan ohjaajan kanssa."]
       ],
       tarkistuspisteet: [
-        [40, "Ympäristö ja repository", "Versiot, julkinen repository noreply-sähköpostilla, ohjaaja Collaboratorina, kolme pohjatiedostoa, mvp.md omin sanoin, kysymyslista lähetetty, agenttipyynnön hinta kirjattu."],
+        [40, "Ympäristö ja repository", "Versiot, julkinen repository noreply-sähköpostilla, ohjaaja Collaboratorina, kolme pohjatiedostoa, suunnitelma.md omin sanoin, kysymyslista lähetetty, agenttipyynnön hinta kirjattu."],
         [41, "Harjoitussykli", "Kaksi issueta syklin tarkistuslistoineen, testin 1 (T01) oma arvo testikoodissa ennen toteutusta, tarkista_ymparisto.py läpi, release-zip v0.0.41 purettuna käynnistyy (testi 2, T02) ja itsetesti läpi Actionsissa, päätös teknisestä pohjasta B-osiossa."],
         [44, "Hierarkia ja Agentti-kaista (C)", "Testit 6–8 (T06–T08), puhdas muunnosfunktio rajapintoineen, maailmamuunnos puhtaana funktiona lisätesteineen, hierarkiapaneeli (QTreeWidget), valinnan toiminta B-osiossa. Agentti-kaistan (C) krediittikulutus kirjattuna."],
         [47, "Pakollisen ytimen (P0) tarkistuspiste", "Onko pakollinen ydin aikataulussa? Jos ei, ohjaaja päättää, mikä katselmoidaan keskeneräisenä ja mikä tehdään vk 4:llä omassa haarassa pull requestilla."],
@@ -1293,7 +2227,7 @@ window.NAYTTOPROJEKTI = {
         s5: ["41→", "Tehtäväkortit hyväksymiskriteereineen, oma rajausehdotus ja tarkistusrivi issueissa"],
         s6: ["40, 41→, 2", "Kaistan valinta ja toteuman vertailu RAPORTOI-askeleessa, krediittimittaus, tärkeän jatkon (P1) tuntiarviot"],
         s7: ["44–48, 3", "Hierarkia, revolve, inflate, transformit, pivot ja päivitys"],
-        s8: ["50", "Tallennustapojen vertailu oman suunnitelman kriteereillä ja oman mallin JSON-koko"],
+        s8: ["50", "Tallennustapojen vertailu oman suunnitelman kriteereillä ja oman mallin tallennustiedoston koko"],
         s9: ["50", "JSON-tallennus ja avaus, versionumero ja rakenteen tarkistus"],
         s10: ["43, 49, 50", "QFileDialog, svgelements, trimesh-vienti ja JSON"],
         s11: ["43, 50", "Testi 4 (T04): haitallinen SVG, testi 22 (T22): rikottu tallennus, tietoturva-arvio uhka–testi–tulos–toimenpide"],
@@ -1321,7 +2255,7 @@ window.NAYTTOPROJEKTI = {
       palautuspaketti: [
         ["Julkaistu tuotos", "v1.0-release: zip, itsetesti läpi, release-teksti ja tagi v1.0."],
         ["Repository", "Julkinen repository: koodi, testit, issuet syklin tarkistuslistoineen, pull request ja tagit v0.1, v1.0-rc1 ja v1.0."],
-        ["Suunnitelma ja päiväkirja", "project-docs/suunnitelma.md, mvp.md, kysymykset.md, projektipaivakirja.md ja AI-loki. Päiväkirjasta commit joka viikolta."],
+        ["Suunnitelma ja päiväkirja", "project-docs/suunnitelma.md, kysymykset.md, projektipaivakirja.md ja AI-loki. Päiväkirjasta commit joka viikolta."],
         ["Laatuaineisto", "Testit 1–26 (T01–T26) issueissa, kolme virheenkorjausketjua, kirjastot.md, tietoturva.md, Accessibility Insights ennen ja jälkeen."],
         ["Katselmoinnit", "katselmointi.md (vk 51) ja julkaisutesti.md (vk 6) rooleilla; nimet ja sanatarkat lausumat Teamsissa ohjaajalla."],
         ["Näyttöaineisto", "Linkitetty näyttömatriisi 31 vaatimukselle, demo ja itsearviointi (Teams)."]

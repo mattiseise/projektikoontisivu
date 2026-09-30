@@ -2,7 +2,8 @@
 
 Ohjattu näyttöprojekti: Windowsilla toimiva low-poly 3D-mallinnin (Python-työpöytäsovellus), joka
 tekee Inkscapen SVG-piirroksesta 3D-mallin ja vie sen .obj-tiedostoksi. Työ tehdään tekoälyavusteisesti:
-Copilot (Microsoft 365) suunnittelee, GitHub Copilot toteuttaa, opiskelija päättää ja tarkistaa.
+Microsoft 365 Copilot auttaa suunnittelussa ja Tiedosto-kaistan toteutuksessa. GitHub Copilot
+avustaa VS Codessa. Opiskelija päättää ja tarkistaa.
 
 - Aikataulu: vk 40/2026 (ma 28.9.) – vk 9/2027 (pe 5.3.), 18 työviikkoa.
   Lomat vk 42, joululoma 18.12.–10.1. (vk 51 on neljä työpäivää) ja talviloma vk 8.
@@ -54,6 +55,16 @@ chrome --headless --no-pdf-header-footer --print-to-pdf=downloads/vektoripaja-ty
 ```
 
 ## Kuvaohjeiden kuvat
+
+Aloitusnäkymä kertoo tavoitteen ja viisi vaihetta. Jokaisen työviikon alussa on vaihepolku,
+yksi yhteys kokonaisprojektiin ja lyhyt tavoite. Projektin 63 työvaihetta on jaettu 153
+osatehtävään. Vanhat tehtävätunnukset säilyvät, ja moottori siirtää aiemmat rastit osatehtäviin.
+Sivun työvaihe on työohje; GitHub-issue on rajattu toteutustehtävä, johon työsykliä käytetään.
+
+Omat havainnekuvat `assets/piirroksesta-malliksi.svg` ja `assets/projektin-vaiheet.svg`
+syntyvät komennolla `python tyokalut/tee_projektikuvat.py`. Ne ovat muokattavia SVG-kuvia,
+eivät kuvakaappauksia valmiista sovelluksesta. Sama sisältö on myös HTML-tekstinä.
+Kuvat ovat tätä projektia varten tehtyjä omia kuvituksia, eivät verkkolähteiden kuvia.
 
 `kuvakaappaukset.json` listaa 28 kuvaohjetta, joista jokaisella on kuva. Mukana on 27 lisättyä kuvaa sekä aiempi issue-mallikuva. Kuvat sisältävät omia kuvakaappauksia, verkkolähteiden esimerkkejä sekä kaksi kuvaksi ladottua paikallista tulostetta. Erot ja versiot kerrotaan kuvateksteissä.
 
