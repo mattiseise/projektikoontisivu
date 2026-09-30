@@ -20,6 +20,27 @@ window.NAYTTOPROJEKTI = {
   aloitusNappi: "Aloita Valokaaren teko",
   apuOtsikko: "Tarvitsen toteutusapua",
 
+  /* ---- projektin tavoitekuva (moottori v2.6) ----
+   * Näkyy Näin käytät sivua -näkymän alussa, ja sivu avautuu siihen ensimmäisellä
+   * kerralla. Kuva on luonnos: project-docs/lopputulos/proto.html kuvattuna 2x-tarkkuudella
+   * (ks. project-docs/lopputulos/README.md). Protossa käyrät lasketaan NOAA:n
+   * auringonnousuyhtälöllä (−0,833°), joten kuvan arvot ovat oikeita vuodelle 2026.
+   * alue = [x, y, leveys, korkeus] prosentteina.
+   */
+  lopputulos: {
+    kuvaus: "Valokaari piirtää Revontuli Travelin sivuille kaavion siitä, kuinka pitkä päivä on vuoden jokaisena päivänä millä tahansa Suomen paikkakunnalla. Käyttäjä vertaa useita paikkoja samassa kaaviossa, ja kaamos ja yötön yö erottuvat siitä heti.",
+    kuva: "assets/lopputulos.jpg",
+    leveys: 1120,
+    korkeus: 700,
+    alt: "Tavoitekuva valmiista Valokaari-sovelluksesta. Selainikkunassa on kaavio päivän pituudesta vuonna 2026 Helsingissä, Rovaniemellä ja Utsjoella. Kaaviossa yötön yö on korostettu keltaisella ja kaamos violetilla, ja merkit näyttävät kohdat 19.3. ja 26.9., joissa päivä on kaikilla kolmella paikkakunnalla yhtä pitkä. Avoin vihjeruutu kertoo, että 21. kesäkuuta Rovaniemellä ja Utsjoella valoa on 24 h ja Helsingissä 18 h 56 min. Puhelinnäkymässä väärin kirjoitettu ”Rovanimi” antaa selvän virheilmoituksen, ja kun päiväksi on valittu 15.1.2026, Utsjoen kohdalla näkyy 0 min eli kaamos.",
+    kohdat: [
+      { n: 1, teksti: "Käyttäjä kirjoittaa paikkakunnan nimen, lisää sen kaavioon ja valitsee vuoden.", alue: [30.4, 9.1, 43.8, 10.1] },
+      { n: 2, teksti: "Hiiren tai sormen kohdalle avautuu vihjeruutu, jossa näkyvät päivämäärä, paikat ja päivän pituus.", alue: [27.7, 59.0, 21.8, 18.1] },
+      { n: 3, teksti: "Kaamos ja yötön yö erottuvat kaaviosta korostettuina jaksoina päivämäärineen.", alue: [51.3, 73.6, 20.4, 20.6] },
+      { n: 4, teksti: "Väärin kirjoitetusta paikkakunnasta tulee selvä virheilmoitus, ja sovellus toimii myös puhelimella.", alue: [73.8, 23.1, 22.5, 73.1] }
+    ]
+  },
+
   paletti: {
     aksentti: "#c2410c",
     aksenttiTumma: "#9a3412",

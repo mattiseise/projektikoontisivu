@@ -16,6 +16,25 @@ window.NAYTTOPROJEKTI = {
   aloitusNappi: "Aloita kaupan rakentaminen",
   apuOtsikko: "Tarvitsen toteutusapua",
 
+  /* ---- projektin tavoitekuva (moottori v2.6) ----
+   * Näkyy Näin käytät sivua -näkymän alussa, ja sivu avautuu siihen ensimmäisellä
+   * kerralla. Kuva on luonnos: project-docs/lopputulos/proto.html kuvattuna 2x-tarkkuudella
+   * (ks. project-docs/lopputulos/README.md). alue = [x, y, leveys, korkeus] prosentteina.
+   */
+  lopputulos: {
+    kuvaus: "Valmis verkkokauppa näyttää Nopan Nurkan pelit kategorioittain. Asiakas voi hakea pelejä nimellä, kerätä niitä ostoskoriin ja tehdä tilauksen myös puhelimella ilman verkkomaksua. Henkilökunta lisää ja muokkaa tuotteita selaimessa ja näkee uudet tilaukset omassa näkymässään.",
+    kuva: "assets/lopputulos.jpg",
+    leveys: 1120,
+    korkeus: 700,
+    alt: "Kuvitteellinen näkymä valmiista Nopan Nurkka -verkkokaupasta. Tietokoneen selaimessa on auki Perhepelit-kategoria, jossa on kuusi peliä, ja ostoskori. Ostoskorissa on neljä peliä, joiden yhteishinta on 109,60 euroa, sekä Tee tilaus -painike ja huomautus, että maksu hoidetaan noudon tai toimituksen yhteydessä. Puhelimen näytöllä on henkilökunnan tilausnäkymä, jossa näkyy kolme uutta tilausta ja Merkitse käsitellyksi -painike.",
+    kohdat: [
+      { n: 1, teksti: "Asiakas selaa pelejä kategorioittain ja näkee jokaisen pelin kuvauksen ja hinnan.", alue: [3.0, 25.1, 47.0, 68.0] },
+      { n: 2, teksti: "Ostoskorissa voi muuttaa määriä ja poistaa pelejä, ja kokonaissumma päivittyy heti.", alue: [51.4, 26.1, 21.5, 45.7] },
+      { n: 3, teksti: "Kirjautunut asiakas tekee tilauksen, ja maksu hoidetaan vasta noudon tai toimituksen yhteydessä.", alue: [51.4, 72.7, 21.5, 19.9] },
+      { n: 4, teksti: "Henkilökunta näkee uudet tilaukset omassa näkymässään ja merkitsee ne käsitellyiksi.", alue: [74.1, 22.9, 22.9, 73.7] }
+    ]
+  },
+
   paletti: {
     aksentti: "#c2410c",
     aksenttiTumma: "#9a3412",

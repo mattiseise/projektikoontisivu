@@ -18,6 +18,25 @@ window.NAYTTOPROJEKTI = {
   aloitusNappi: "Aloita PeliHyllyn teko",
   apuOtsikko: "Tarvitsen toteutusapua",
 
+  /* ---- projektin tavoitekuva (moottori v2.6) ----
+   * Näkyy Näin käytät sivua -näkymän alussa, ja sivu avautuu siihen ensimmäisellä
+   * kerralla. Kuva on luonnos: project-docs/lopputulos/proto.html kuvattuna 2x-tarkkuudella
+   * (ks. project-docs/lopputulos/README.md). alue = [x, y, leveys, korkeus] prosentteina.
+   */
+  lopputulos: {
+    kuvaus: "PeliHylly on Pelikellari ry:n jäsenten verkkopalvelu. Jokainen kirjaa palveluun pelinsä laitteineen, tähtiarvioineen ja kommentteineen ja vaihtaa pelin tilaa yhdellä napilla. Julkinen profiili näyttää kenelle tahansa, mitä jäsen pelaa nyt ja miten hänen hyllynsä on muuttunut.",
+    kuva: "assets/lopputulos.jpg",
+    leveys: 1120,
+    korkeus: 700,
+    alt: "Kuvassa on PeliHylly-palvelun valmis profiilisivu tietokoneen selaimessa: Aino Virtasen pelit tiloittain, parhaillaan pelattavat pelit, laitteittaiset tilastot, tilahistoria ja pelilista, jossa jokaisen pelin tilan voi vaihtaa yhdellä napilla. Oikealla puhelimen näytöllä on sama palvelu kapeana, ja siinä pelin tila on juuri vaihdettu Läpi-tilaan ja muutos tallentunut tilahistoriaan.",
+    kohdat: [
+      { n: 1, teksti: "Julkinen profiili näyttää, mitä jäsen pelaa nyt ja montako peliä on missäkin tilassa laitteittain.", alue: [4.2, 28.1, 45.2, 28.6] },
+      { n: 2, teksti: "Tilahistoria näyttää aikajärjestyksessä jokaisen tilanmuutoksen, esimerkiksi milloin peli tuli hyllyyn tai meni läpi.", alue: [50.8, 28.1, 21.4, 29.1] },
+      { n: 3, teksti: "Pelilistassa näkyvät laite, tähtiarvio ja oma kommentti, ja tila vaihtuu yhdellä napilla.", alue: [4.2, 59.3, 68.0, 35.1] },
+      { n: 4, teksti: "Puhelimellakin tila vaihtuu yhdellä napautuksella, ja muutos tallentuu tilahistoriaan.", alue: [73.5, 20.7, 22.1, 72.9] }
+    ]
+  },
+
   paletti: {
     aksentti: "#6d28d9",
     aksenttiTumma: "#5b21b6",

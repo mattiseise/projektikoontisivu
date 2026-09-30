@@ -19,6 +19,25 @@ window.NAYTTOPROJEKTI = {
   aloitusNappi: "Aloita sovelluksen teko",
   apuOtsikko: "Tarvitsen toteutusapua",
 
+  /* ---- projektin tavoitekuva (moottori v2.6) ----
+   * Näkyy Näin käytät sivua -näkymän alussa, ja sivu avautuu siihen ensimmäisellä
+   * kerralla. Kuva on luonnos: project-docs/lopputulos/proto.html kuvattuna 2x-tarkkuudella
+   * (ks. project-docs/lopputulos/README.md). alue = [x, y, leveys, korkeus] prosentteina.
+   */
+  lopputulos: {
+    kuvaus: "TuntiTutka on mainostoimiston sovellus työajan seurantaan. Siinä työntekijä kirjaa tuntinsa nopeasti myös puhelimella ja näkee vain omat kirjauksensa. Projektipäällikkö perustaa projektit ja näkee aina ajantasaiset yhteenvedot projekteittain, henkilöittäin ja tehtävälajeittain.",
+    kuva: "assets/lopputulos.jpg",
+    leveys: 1120,
+    korkeus: 700,
+    alt: "Kuvassa on valmis TuntiTutka-sovellus. Selainikkunassa näkyy projektipäällikön Yhteenvedot-näkymä viikolta 12: pylväskaavio tunneista projekteittain, donitsikaavio tehtävälajien osuuksista ja taulukko tunneista henkilöittäin, jossa yhden henkilön kirjaukset on avattu. Oikealla puhelimessa on työntekijän Kirjaa tunnit -lomake ja oma viikkosumma 30,0 tuntia.",
+    kohdat: [
+      { n: 1, teksti: "Pylväskaavio näyttää, montako tuntia kuhunkin projektiin kului valitulla viikolla.", alue: [4.6, 27.6, 38.6, 38.6] },
+      { n: 2, teksti: "Tehtävälajikaavio kertoo, mikä osuus ajasta meni suunnitteluun, tuotantoon, palavereihin ja korjauksiin.", alue: [4.6, 67.9, 38.6, 26.3] },
+      { n: 3, teksti: "Projektipäällikkö näkee tunnit henkilöittäin ja avaa yksittäisen työntekijän kirjaukset.", alue: [44.4, 27.6, 27.1, 66.6] },
+      { n: 4, teksti: "Työntekijä kirjaa tunnit puhelimella alle puolessa minuutissa ja näkee oman viikkosummansa.", alue: [72.9, 20.3, 22.0, 74.3] }
+    ]
+  },
+
   paletti: {
     aksentti: "#0e7490",
     aksenttiTumma: "#155e75",

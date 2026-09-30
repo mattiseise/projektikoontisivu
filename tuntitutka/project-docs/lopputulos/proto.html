@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1120">
+<title>TuntiTutka – valmis työ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --accent:#0e7490; --accent-dark:#155e75; --accent-soft:#e3f2f6; --row:#f2f9fb;
+    --ink:#13232a; --ink-2:#3f5159; --muted:#5a6b73; --line:#d8e3e7; --page:#f4f7f9;
+    --c-suun:#eb6834; --c-tuot:#0891b2; --c-pala:#eda100; --c-korj:#4a3aa7;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;width:1120px;height:700px;overflow:hidden}
+  body{
+    font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(900px 520px at 88% 12%, #cfe6ec 0%, rgba(207,230,236,0) 70%),
+      linear-gradient(145deg,#e9f2f4 0%,#dbeaee 52%,#cfe1e7 100%);
+    position:relative;
+    -webkit-font-smoothing:antialiased;
+  }
+  .num{font-variant-numeric:tabular-nums}
+
+  /* ---------- selainikkuna ---------- */
+  .browser{
+    position:absolute;left:30px;top:26px;width:844px;height:648px;
+    background:var(--page);border-radius:12px;overflow:hidden;
+    box-shadow:0 1px 2px rgba(16,42,52,.10),0 18px 48px rgba(16,42,52,.18);
+    border:1px solid #c9d7dc;
+  }
+  .chrome{height:40px;background:#e8eef1;border-bottom:1px solid #d3dee2;display:flex;align-items:center;padding:0 14px;gap:14px}
+  .dots{display:flex;gap:7px}
+  .dots i{width:11px;height:11px;border-radius:50%;background:#c3ced3;display:block}
+  .url{flex:0 0 440px;height:26px;border-radius:13px;background:#fff;border:1px solid #d3dee2;display:flex;align-items:center;gap:7px;padding:0 12px;font-size:12.5px;color:var(--ink-2)}
+  .url b{font-weight:500;color:var(--ink)}
+
+  .apphead{height:54px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 22px 0 20px}
+  .brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:18px;letter-spacing:-.01em;line-height:1.1}
+  .logo{width:28px;height:28px;border-radius:7px;background:var(--accent);display:grid;place-items:center}
+  .nav{display:flex;gap:4px;margin-left:30px;height:100%}
+  .nav a{display:flex;align-items:center;padding:0 12px;font-size:14px;font-weight:500;color:var(--ink-2);text-decoration:none;border-bottom:3px solid transparent;border-top:3px solid transparent}
+  .nav a.on{color:var(--accent-dark);font-weight:700;border-bottom-color:var(--accent)}
+  .who{margin-left:auto;display:flex;align-items:center;gap:10px;font-size:13.5px;font-weight:600}
+  .badge{font-size:12px;font-weight:700;color:var(--accent-dark);background:var(--accent-soft);border:1px solid #b9dde6;padding:3px 9px;border-radius:999px}
+  .avatar{width:30px;height:30px;border-radius:50%;background:#dbe7eb;color:var(--accent-dark);display:grid;place-items:center;font-size:12px;font-weight:700}
+
+  .content{padding:12px 74px 16px 20px}
+  .toolbar{display:flex;align-items:center;gap:14px;height:48px}
+  h1{margin:0;font-size:24px;line-height:1.12;font-weight:800;letter-spacing:-.015em}
+  .sub{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.3}
+  .tools{margin-left:auto;display:flex;gap:10px;align-items:center}
+  .week{display:flex;align-items:center;background:#fff;border:1px solid #c8d6db;border-radius:8px;height:36px}
+  .week button{all:unset;width:32px;height:34px;display:grid;place-items:center;color:var(--accent-dark)}
+  .week span{padding:0 10px;font-size:13.5px;font-weight:700;border-left:1px solid var(--line);border-right:1px solid var(--line);height:34px;display:flex;align-items:center;gap:6px;white-space:nowrap}
+  .week span small{font-weight:500;color:var(--muted);font-size:12.5px}
+  .select{height:36px;background:#fff;border:1px solid #c8d6db;border-radius:8px;display:flex;align-items:center;gap:10px;padding:0 10px 0 12px;font-size:13.5px;font-weight:500;white-space:nowrap}
+  .select em{font-style:normal;color:var(--muted);font-size:12.5px}
+
+  .grid{display:grid;grid-template-columns:432px 304px;gap:14px;margin-top:12px}
+  .col{display:flex;flex-direction:column;gap:12px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:13px 16px 12px}
+  .card h2{margin:0;font-size:18px;line-height:1.15;font-weight:700;letter-spacing:-.01em}
+  .card .hd{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:10px}
+  .card .hd .tot{font-size:13px;color:var(--muted)}
+  .card .hd .tot b{color:var(--ink);font-size:14px}
+
+  /* donitsi */
+  .donut{display:flex;align-items:center;gap:22px}
+  .legend{flex:1;display:flex;flex-direction:column;gap:0}
+  .legend div{display:grid;grid-template-columns:14px 1fr 58px 40px;align-items:center;gap:8px;font-size:13.5px;height:29px;border-bottom:1px solid #edf2f4}
+  .legend div:last-child{border-bottom:0}
+  .legend i{width:12px;height:12px;border-radius:3px;display:block}
+  .legend .h{text-align:right;font-weight:600}
+  .legend .p{text-align:right;color:var(--muted)}
+
+  /* henkilötaulukko */
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  th{font-size:12px;font-weight:600;color:var(--muted);text-align:left;padding:0 0 6px;border-bottom:1px solid var(--line)}
+  th.r,td.r{text-align:right}
+  td{height:28px;border-bottom:1px solid #edf2f4;padding:0}
+  td.n{display:flex;align-items:center;gap:8px;height:28px}
+  .ini{width:22px;height:22px;border-radius:50%;background:#e6eef1;color:var(--ink-2);font-size:11px;font-weight:700;display:grid;place-items:center;flex:0 0 22px}
+  td.h{font-weight:600}
+  td.c{width:18px;text-align:right;color:#7d8f96}
+  tr.open td{background:var(--row);border-bottom:0}
+  tr.open td.n{font-weight:700}
+  tr.open .ini{background:var(--accent);color:#fff}
+  tr.open td.c{color:var(--accent)}
+  tr.drill td{height:auto;background:var(--row);padding:0 8px 8px 8px;border-bottom:1px solid var(--line)}
+  .entries{background:#fff;border:1px solid #cfe3e9;border-radius:8px;padding:4px 10px 6px}
+  .entry{padding:5px 0;border-bottom:1px solid #edf2f4;line-height:1.3}
+  .entry:last-of-type{border-bottom:0}
+  .entry .l1{display:flex;justify-content:space-between;font-size:12.5px;font-weight:600}
+  .entry .l2{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
+  .dot{width:8px;height:8px;border-radius:2px;display:inline-block;flex:0 0 8px}
+  .more{display:block;font-size:12.5px;font-weight:600;color:var(--accent-dark);padding-top:5px;border-top:1px solid #edf2f4}
+  tr.sum td{border-bottom:0;font-weight:700;height:32px}
+
+  /* ---------- puhelin ---------- */
+  .phone{
+    position:absolute;left:816px;top:142px;width:246px;height:520px;
+    background:#1b2226;border-radius:36px;padding:9px;
+    box-shadow:0 2px 4px rgba(10,25,32,.25),0 24px 50px rgba(10,25,32,.35);
+  }
+  .phone::before{content:"";position:absolute;inset:3px;border-radius:33px;border:1px solid #39444a;pointer-events:none}
+  .screen{position:relative;width:228px;height:502px;border-radius:28px;background:var(--page);overflow:hidden;display:flex;flex-direction:column}
+  .status{height:26px;display:flex;align-items:center;justify-content:space-between;padding:4px 18px 0 22px;font-size:12px;font-weight:700}
+  .notch{position:absolute;left:50%;top:8px;width:62px;height:16px;border-radius:9px;background:#1b2226;transform:translateX(-50%)}
+  .pbar{height:44px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 12px}
+  .pbar .brand{font-size:15px;gap:7px}
+  .pbar .brand .logo{width:22px;height:22px;border-radius:6px}
+  .pwho{text-align:right;line-height:1.2}
+  .pwho b{display:block;font-size:12.5px}
+  .pwho span{font-size:12px;color:var(--accent-dark);font-weight:600}
+  .pbody{flex:1;padding:8px 12px 0}
+  .pbody h3{margin:0 0 5px;font-size:18px;line-height:1.15;font-weight:800;letter-spacing:-.01em}
+  .f{margin-bottom:6px}
+  .f label{display:block;font-size:12px;font-weight:600;color:var(--ink-2);margin-bottom:3px;line-height:1.2}
+  .ctl{height:33px;background:#fff;border:1px solid #bfd0d6;border-radius:7px;display:flex;align-items:center;justify-content:space-between;padding:0 9px;font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden}
+  .ctl.focus{border:2px solid var(--accent);padding:0 8px;box-shadow:0 0 0 3px rgba(14,116,144,.14)}
+  .row2{display:grid;grid-template-columns:90px 1fr;gap:8px}
+  .step{display:grid;grid-template-columns:26px 1fr 26px;height:33px;border:1px solid #bfd0d6;border-radius:7px;background:#fff;overflow:hidden}
+  .step i{font-style:normal;display:grid;place-items:center;font-size:17px;font-weight:600;color:var(--accent-dark);background:#eef5f7}
+  .step b{display:grid;place-items:center;font-size:14px}
+  .save{height:38px;border-radius:8px;background:var(--accent);color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;gap:7px;margin-top:9px}
+  .own{margin-top:8px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:7px 10px 8px}
+  .own .t{display:flex;justify-content:space-between;align-items:baseline}
+  .own .t span{font-size:12px;font-weight:600;color:var(--ink-2)}
+  .own .t b{font-size:17px;font-weight:800}
+  .days{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-top:5px}
+  .days div{text-align:center;font-size:12px;line-height:1.2;color:var(--muted)}
+  .days div b{display:block;color:var(--ink);font-weight:600}
+  .days div.today{color:var(--accent-dark)}
+  .days div.today b{color:var(--accent-dark)}
+  .tabs{height:48px;background:#fff;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;padding:0 8px 7px}
+  .tabs div{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:12px;font-weight:600;color:var(--muted)}
+  .tabs div.on{color:var(--accent-dark)}
+</style>
+</head>
+<body>
+
+<!-- ================= PROJEKTIPÄÄLLIKÖN RAPORTTINÄKYMÄ ================= -->
+<div class="browser">
+  <div class="chrome">
+    <div class="dots"><i></i><i></i><i></i></div>
+    <div class="url">
+      <svg width="11" height="12" viewBox="0 0 11 12" fill="none" stroke="#5a6b73" stroke-width="1.4"><rect x="1" y="5" width="9" height="6.2" rx="1.3"/><path d="M3 5V3.6a2.5 2.5 0 0 1 5 0V5"/></svg>
+      <span><b>tuntitutka.example.org</b>/raportit/viikko-12</span>
+    </div>
+  </div>
+
+  <div class="apphead">
+    <div class="brand">
+      <span class="logo"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><circle cx="9" cy="9" r="7"/><path d="M9 4.6V9l3 2"/></svg></span>
+      TuntiTutka
+    </div>
+    <nav class="nav">
+      <a>Kirjaus</a><a>Omat kirjaukset</a><a>Hallinta</a><a class="on">Raportit</a>
+    </nav>
+    <div class="who">
+      <span class="badge">Projektipäällikkö</span>
+      <span>Sari L.</span>
+      <span class="avatar">SL</span>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="toolbar">
+      <div>
+        <h1>Yhteenvedot</h1>
+        <div class="sub">Lasketaan kirjauksista joka haulla · päivitetty pe 20.3.2026 klo 14.05</div>
+      </div>
+      <div class="tools">
+        <div class="week">
+          <button aria-label="Edellinen viikko"><svg width="9" height="13" viewBox="0 0 9 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 1.5 2 6.5l5 5"/></svg></button>
+          <span>Viikko 12 <small>16.3.–22.3.2026</small></span>
+          <button aria-label="Seuraava viikko"><svg width="9" height="13" viewBox="0 0 9 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 1.5 5 5-5 5"/></svg></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="col">
+        <!-- Tunnit projekteittain -->
+        <section class="card" style="height:270px">
+          <div class="hd"><h2>Tunnit projekteittain</h2><span class="tot">yhteensä <b class="num">268,5 h</b></span></div>
+          <svg width="398" height="210" viewBox="0 0 398 210" font-family="Inter,system-ui,sans-serif">
+<g font-size="13.5" font-weight="600" fill="#13232a"><text x="0" y="14">Virtala kevätkampanja</text><text x="0" y="49">Kaarna brändiuudistus</text><text x="0" y="84">Mäntylä verkkosivut</text><text x="0" y="119">Kuiske kesäkampanja</text><text x="0" y="154">Revontuli verkkosivut</text><text x="0" y="189">Lumo ilmeen päivitys</text></g>
+<g font-size="12" fill="#63747b"><text x="0" y="29">Kampanja</text><text x="0" y="64">Brändityö</text><text x="0" y="99">Verkkosivut</text><text x="0" y="134">Kampanja</text><text x="0" y="169">Verkkosivut</text><text x="0" y="204">Brändityö</text></g>
+<line x1="172" y1="2" x2="172" y2="207" stroke="#b8c7cd" stroke-width="1"/>
+<g fill="#0e7490"><path d="M172 9h162.8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H172z"/><path d="M172 44h115.0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H172z"/><path d="M172 79h101.2a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H172z"/><path d="M172 114h76.8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H172z"/><path d="M172 149h54.4a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H172z"/><path d="M172 184h36.4a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H172z"/></g>
+<g font-size="13.5" font-weight="700" fill="#13232a"><text x="346" y="21.5">78,5 h</text><text x="298" y="56.5">56,0 h</text><text x="284" y="91.5">49,5 h</text><text x="260" y="126.5">38,0 h</text><text x="237" y="161.5">27,5 h</text><text x="219" y="196.5">19,0 h</text></g>
+</svg>
+        </section>
+
+        <!-- Tehtävälajien osuudet -->
+        <section class="card" style="height:184px">
+          <div class="hd"><h2>Tehtävälajien osuudet</h2><span class="tot">viikko 12</span></div>
+          <div class="donut">
+            <svg width="124" height="124" viewBox="0 0 124 124">
+              <g fill="none" stroke-width="20" transform="rotate(-90 62 62)">
+                <circle cx="62" cy="62" r="46" stroke="#eb6834" stroke-dasharray="75.54 213.48" stroke-dashoffset="-1.25"/>
+                <circle cx="62" cy="62" r="46" stroke="#0891b2" stroke-dasharray="127.75 161.28" stroke-dashoffset="-79.29"/>
+                <circle cx="62" cy="62" r="46" stroke="#eda100" stroke-dasharray="46.48 242.55" stroke-dashoffset="-209.54"/>
+                <circle cx="62" cy="62" r="46" stroke="#4a3aa7" stroke-dasharray="29.26 259.77" stroke-dashoffset="-258.52"/>
+              </g>
+              <text x="62" y="62" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="800" fill="#13232a">268,5 h</text>
+              <text x="62" y="78" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="12" fill="#5a6b73">yhteensä</text>
+            </svg>
+            <div class="legend num">
+              <div><i style="background:var(--c-suun)"></i><span>Suunnittelu</span><span class="h">72,5 h</span><span class="p">27 %</span></div>
+              <div><i style="background:var(--c-tuot)"></i><span>Tuotanto</span><span class="h">121,0 h</span><span class="p">45 %</span></div>
+              <div><i style="background:var(--c-pala)"></i><span>Palaverit</span><span class="h">45,5 h</span><span class="p">17 %</span></div>
+              <div><i style="background:var(--c-korj)"></i><span>Korjaukset</span><span class="h">29,5 h</span><span class="p">11 %</span></div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Tunnit henkilöittäin -->
+      <section class="card" style="height:466px;padding-bottom:8px">
+        <div class="hd" style="margin-bottom:8px"><h2>Tunnit henkilöittäin</h2></div>
+        <table class="num">
+          <thead><tr><th>Henkilö</th><th class="r">Kirjauksia</th><th class="r" style="width:64px">Tunnit</th><th></th></tr></thead>
+          <tbody>
+            <tr><td class="n"><span class="ini">AK</span>Aino K.</td><td class="r">9</td><td class="r h">34,5 h</td><td class="c">›</td></tr>
+            <tr><td class="n"><span class="ini">EM</span>Eetu M.</td><td class="r">4</td><td class="r h">30,0 h</td><td class="c">›</td></tr>
+            <tr class="open"><td class="n"><span class="ini">HR</span>Helmi R.</td><td class="r">8</td><td class="r h">36,0 h</td><td class="c">
+              <svg width="11" height="8" viewBox="0 0 11 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m1.5 1.8 4 4 4-4"/></svg></td></tr>
+            <tr class="drill"><td colspan="4">
+              <div class="entries">
+                <div class="entry"><div class="l1"><span>pe 20.3. · Mäntylä verkkosivut</span><span>4,5 h</span></div>
+                  <div class="l2"><i class="dot" style="background:var(--c-tuot)"></i>Tuotanto · tuotesivujen kuvat</div></div>
+                <div class="entry"><div class="l1"><span>pe 20.3. · Kuiske kesäkampanja</span><span>1,5 h</span></div>
+                  <div class="l2"><i class="dot" style="background:var(--c-pala)"></i>Palaverit · viikkopalaveri</div></div>
+                <a class="more">Näytä kaikki 8 kirjausta →</a>
+              </div>
+            </td></tr>
+            <tr><td class="n"><span class="ini">JP</span>Joonas P.</td><td class="r">7</td><td class="r h">33,5 h</td><td class="c">›</td></tr>
+            <tr><td class="n"><span class="ini">KV</span>Kaisa V.</td><td class="r">6</td><td class="r h">31,0 h</td><td class="c">›</td></tr>
+            <tr><td class="n"><span class="ini">LT</span>Lauri T.</td><td class="r">9</td><td class="r h">35,5 h</td><td class="c">›</td></tr>
+            <tr><td class="n"><span class="ini">NS</span>Noora S.</td><td class="r">7</td><td class="r h">32,0 h</td><td class="c">›</td></tr>
+            <tr><td class="n"><span class="ini">SL</span>Sari L.</td><td class="r">11</td><td class="r h">36,0 h</td><td class="c">›</td></tr>
+            <tr class="sum"><td>Yhteensä</td><td class="r">61</td><td class="r">268,5 h</td><td></td></tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </div>
+</div>
+
+<!-- ================= TYÖNTEKIJÄN PIKAKIRJAUS PUHELIMELLA ================= -->
+<div class="phone">
+  <div class="screen">
+    <div class="notch"></div>
+    <div class="status"><span>14.03</span>
+      <svg width="34" height="11" viewBox="0 0 34 11"><g fill="#13232a"><rect x="0" y="7" width="3" height="4" rx=".8"/><rect x="4.5" y="5" width="3" height="6" rx=".8"/><rect x="9" y="2.5" width="3" height="8.5" rx=".8"/></g><rect x="16" y="1" width="15" height="9" rx="2.2" fill="none" stroke="#13232a" stroke-width="1.2"/><rect x="17.8" y="2.8" width="9.5" height="5.4" rx="1" fill="#13232a"/><rect x="31.6" y="3.8" width="1.6" height="3.4" rx=".6" fill="#13232a"/></svg>
+    </div>
+    <div class="pbar">
+      <div class="brand"><span class="logo"><svg width="14" height="14" viewBox="0 0 18 18" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="9" r="7"/><path d="M9 4.6V9l3 2"/></svg></span>TuntiTutka</div>
+      <div class="pwho"><b>Eetu M.</b><span>Työntekijä</span></div>
+    </div>
+    <div class="pbody">
+      <h3>Kirjaa tunnit</h3>
+      <div class="f"><label>Projekti</label>
+        <div class="ctl">Kaarna brändiuudistus<svg width="10" height="7" viewBox="0 0 10 7" fill="none" stroke="#3f5159" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m1.2 1.3 3.8 3.8 3.8-3.8"/></svg></div></div>
+      <div class="f"><label>Tehtävälaji</label>
+        <div class="ctl"><span style="display:flex;align-items:center;gap:7px"><i class="dot" style="background:var(--c-pala)"></i>Palaverit</span><svg width="10" height="7" viewBox="0 0 10 7" fill="none" stroke="#3f5159" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m1.2 1.3 3.8 3.8 3.8-3.8"/></svg></div></div>
+      <div class="f row2">
+        <div><label>Tunnit</label><div class="step"><i>−</i><b>1,5</b><i>+</i></div></div>
+        <div><label>Päivä</label><div class="ctl" style="justify-content:flex-start;gap:7px"><svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="#3f5159" stroke-width="1.4"><rect x="1" y="2" width="11" height="10" rx="1.6"/><path d="M1 5.2h11M4 .6v2.6M9 .6v2.6"/></svg>20.3.2026</div></div>
+      </div>
+      <div class="f"><label>Selite</label>
+        <div class="ctl focus">Logoluonnokset asiakkaalla<span style="width:1.5px;height:16px;background:#0e7490;margin-left:2px"></span></div></div>
+      <div class="save"><svg width="14" height="11" viewBox="0 0 14 11" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m1.5 5.8 3.6 3.6L12.5 1.8"/></svg>Tallenna kirjaus</div>
+      <div class="own">
+        <div class="t"><span>Oma viikko 12</span><b class="num">30,0 h</b></div>
+        <div class="days num">
+          <div>ma<b>7,5</b></div><div>ti<b>8,0</b></div><div>ke<b>7,0</b></div><div>to<b>7,5</b></div><div class="today">pe<b>–</b></div>
+        </div>
+      </div>
+    </div>
+    <div class="tabs">
+      <div class="on"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="8" cy="8" r="6.3"/><path d="M8 5v6M5 8h6"/></svg>Kirjaus</div>
+      <div><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5.5 4h8M5.5 8h8M5.5 12h8"/><circle cx="2.4" cy="4" r=".6" fill="currentColor"/><circle cx="2.4" cy="8" r=".6" fill="currentColor"/><circle cx="2.4" cy="12" r=".6" fill="currentColor"/></svg>Omat kirjaukset</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

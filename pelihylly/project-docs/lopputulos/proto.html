@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1120">
+<title>PeliHylly lopputulos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1f1a2e; --muted:#5a5369; --line:#e5e1ec; --app:#f6f4fa;
+    --brand:#6d28d9; --brand-d:#5b21b6; --brand-s:#ede9fe;
+    --h:#5b6475; --h-s:#eceff4; --h-t:#414958;
+    --k:#b45309; --k-s:#fcefd6; --k-t:#8a3d07;
+    --l:#15803d; --l-s:#dcf2e3; --l-t:#14532d;
+    --kt:#6d28d9; --kt-s:#ede9fe; --kt-t:#4c1d95;
+    --star:#f59e0b; --star-off:#d9d5e0;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;width:1120px;height:700px;overflow:hidden}
+  body{
+    font-family:"Rubik",system-ui,-apple-system,"Segoe UI",sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(ellipse 520px 380px at 96% 8%, #e4dafa 0%, rgba(228,218,250,0) 70%),
+      radial-gradient(ellipse 600px 420px at 0% 100%, #efe7dc 0%, rgba(239,231,220,0) 70%),
+      linear-gradient(150deg,#f2eefb 0%,#ece8f5 55%,#f3eee9 100%);
+    -webkit-font-smoothing:antialiased;
+  }
+  svg.i{width:16px;height:16px;flex:none}
+
+  /* ---------- selainikkuna ---------- */
+  .browser{position:absolute;left:22px;top:20px;width:846px;height:660px;background:var(--app);
+    border-radius:12px;overflow:hidden;box-shadow:0 24px 60px rgba(45,25,90,.20),0 2px 6px rgba(45,25,90,.08);
+    border:1px solid #dcd6e6}
+  .chrome{height:38px;background:#ebe8f1;border-bottom:1px solid #dbd6e3;display:flex;align-items:center;padding:0 14px;gap:14px}
+  .dots{display:flex;gap:7px}
+  .dots span{width:11px;height:11px;border-radius:50%;background:#cfc9d9}
+  .dots span:nth-child(1){background:#e9867c}.dots span:nth-child(2){background:#e8c26b}.dots span:nth-child(3){background:#86c77e}
+  .navarrows{display:flex;gap:6px;color:#8b8499}
+  .url{margin-left:70px;width:400px;height:24px;border-radius:12px;background:#fff;border:1px solid #dcd6e3;display:flex;align-items:center;gap:7px;padding:0 12px;font-size:12.5px;color:#4a4458}
+  .url b{font-weight:500;color:var(--ink)}
+
+  .apphead{height:54px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 22px 0 24px}
+  .logo{display:flex;align-items:center;gap:9px;font-weight:700;font-size:20px;color:#2a1a57;line-height:1.1;letter-spacing:-.2px}
+  .appnav{display:flex;gap:4px;margin-left:34px;height:54px}
+  .appnav a{display:flex;align-items:center;padding:0 12px;font-size:14px;color:var(--muted);text-decoration:none;position:relative;font-weight:500}
+  .appnav a.on{color:var(--brand-d)}
+  .appnav a.on::after{content:"";position:absolute;left:10px;right:10px;bottom:0;height:3px;border-radius:3px 3px 0 0;background:var(--brand)}
+  .headright{margin-left:auto;display:flex;align-items:center;gap:14px}
+  .btn{display:inline-flex;align-items:center;gap:6px;background:var(--brand);color:#fff;border-radius:8px;font-size:13px;font-weight:600;padding:0 12px;height:32px}
+  .me{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500}
+  .av{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:12px}
+  .logout{font-size:12.5px;color:var(--muted)}
+
+  .main{padding:12px 58px 0 24px}
+
+  /* profiilin otsikko */
+  .phead{height:62px;display:flex;align-items:center}
+  .bigav{width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,#a78bfa,#6d28d9);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:21px;flex:none;box-shadow:0 0 0 3px #fff,0 0 0 4px #ddd4f3}
+  .pname{margin-left:14px}
+  .pname h1{margin:0;font-size:24px;line-height:1.12;font-weight:700;letter-spacing:-.2px}
+  .pmeta{font-size:13px;color:var(--muted);margin-top:3px}
+  .pub{display:inline-flex;align-items:center;gap:5px;margin-top:5px;font-size:12px;font-weight:500;color:var(--brand-d);background:var(--brand-s);border-radius:20px;padding:2px 9px 2px 7px}
+  .stats{margin-left:auto;display:flex;gap:8px}
+  .stat{background:#fff;border:1px solid var(--line);border-radius:10px;padding:7px 12px 7px 11px;min-width:78px}
+  .stat .n{font-size:22px;font-weight:700;line-height:1.1}
+  .stat .lb{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:500;color:var(--muted);margin-top:1px;white-space:nowrap}
+  .dot{width:9px;height:9px;border-radius:3px;flex:none}
+
+  /* kortit */
+  .mid{display:grid;grid-template-columns:230px 268px 1fr;gap:12px;margin-top:10px;height:204px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+  .ctitle{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:7px}
+  .ctitle h2{margin:0;font-size:18px;line-height:1.15;font-weight:600;letter-spacing:-.1px}
+  .ctitle small{font-size:12px;color:var(--muted)}
+
+  .tile{width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;flex:none;letter-spacing:.3px;position:relative}
+  .tile::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(160deg,rgba(255,255,255,.22),rgba(255,255,255,0) 55%)}
+
+  .now{display:flex;gap:10px;align-items:flex-start;padding:7px 0}
+  .now + .now{border-top:1px solid #efecf4}
+  .now .nm{font-size:14px;font-weight:600;line-height:1.2}
+  .now .sub{font-size:12px;color:var(--muted);margin-top:3px;display:flex;align-items:center;gap:6px}
+  .since{font-size:12px;color:var(--k-t);margin-top:3px}
+  .stars{display:inline-flex;gap:1px;vertical-align:-2px}
+  .stars svg{width:13px;height:13px}
+
+  .pill{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;border-radius:20px;padding:1px 8px}
+  .p-k{background:var(--k-s);color:var(--k-t)}
+
+  /* laitteittain */
+  .drow{display:flex;align-items:center;height:24px;margin-bottom:4px}
+  .drow .dl{width:50px;font-size:13px;font-weight:600}
+  .track{width:152px;height:22px;background:#f1eef6;border-radius:6px;display:flex;overflow:hidden}
+  .seg{height:100%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:600;border-right:2px solid #fff}
+  .seg:last-child{border-right:0}
+  .drow .tot{margin-left:10px;font-size:13px;font-weight:600;color:var(--muted);width:36px}
+  .legend{display:grid;grid-template-columns:1fr 1fr;gap:3px 10px;margin-top:7px;font-size:12px;color:var(--muted)}
+  .legend span{display:flex;align-items:center;gap:6px}
+
+  /* tilahistoria */
+  .hist{list-style:none;margin:0;padding:0 0 0 2px;position:relative}
+  .hist::before{content:"";position:absolute;left:6px;top:6px;bottom:8px;width:2px;background:#e8e3f0;border-radius:2px}
+  .hist li{position:relative;padding-left:20px;margin-bottom:6px}
+  .hist li i{position:absolute;left:0;top:3px;width:10px;height:10px;border-radius:50%;box-shadow:0 0 0 2px #fff}
+  .hist .hn{font-size:13px;font-weight:600;line-height:1.25}
+  .hist .hm{font-size:12px;color:var(--muted);line-height:1.3}
+  .hist .hm b{font-weight:600}
+
+  /* pelilista */
+  .list{margin-top:10px;padding:10px 14px 2px}
+  .lhead{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+  .lhead h2{margin:0;font-size:18px;line-height:1.15;font-weight:600}
+  .count{font-size:12px;font-weight:600;color:var(--brand-d);background:var(--brand-s);border-radius:20px;padding:1px 8px}
+  .filters{margin-left:auto;display:flex;gap:8px}
+  .field{height:28px;border:1px solid #d9d4e3;border-radius:7px;background:#fff;display:flex;align-items:center;gap:6px;padding:0 9px;font-size:12.5px;color:var(--muted)}
+  .field.sel{color:var(--ink)}
+  table{width:100%;border-collapse:collapse}
+  th{font-size:12px;font-weight:500;color:var(--muted);text-align:left;padding:4px 0 5px;border-bottom:1px solid var(--line)}
+  td{padding:0;height:44px;border-bottom:1px solid #f0edf4;vertical-align:middle}
+  tr:last-child td{border-bottom:0}
+  .gcell{display:flex;align-items:center;gap:10px}
+  .gcell .tile{width:34px;height:34px;font-size:12.5px;border-radius:8px}
+  .gn{font-size:13.5px;font-weight:600;line-height:1.2;display:flex;align-items:center;gap:6px}
+  .gd{font-size:12px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:6px}
+  .playing{white-space:nowrap;display:inline-flex;align-items:center;gap:3px;font-size:11.5px;font-weight:600;color:var(--k-t);background:var(--k-s);border-radius:10px;padding:0 6px 0 4px;line-height:17px}
+  .cmt{font-size:12.5px;color:#4a4458;line-height:1.3;padding-right:10px}
+  .none{font-size:12px;color:var(--muted)}
+
+  .segctl{display:inline-flex;border:1px solid #d6d0e1;border-radius:8px;background:#fff;padding:2px;gap:2px}
+  .segctl span{height:26px;display:flex;align-items:center;padding:0 8px;border-radius:6px;font-size:12px;font-weight:500;color:#4d475b;white-space:nowrap}
+  .segctl span.a{color:#fff;font-weight:600}
+  .a.s-h{background:var(--h)} .a.s-k{background:var(--k)} .a.s-l{background:var(--l)} .a.s-kt{background:var(--kt)}
+
+  /* ---------- puhelin ---------- */
+  .phone{position:absolute;left:826px;top:150px;width:240px;height:500px;border-radius:36px;background:#1d1b24;padding:9px;
+    box-shadow:0 26px 60px rgba(30,15,60,.35),0 0 0 1px #3a3645 inset,0 0 0 2px #0e0d12}
+  .screen{position:relative;width:222px;height:482px;border-radius:28px;background:var(--app);overflow:hidden}
+  .island{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:66px;height:19px;border-radius:12px;background:#111}
+  .sbar{height:30px;display:flex;align-items:center;justify-content:space-between;padding:4px 18px 0 22px;font-size:12px;font-weight:600}
+  .sbar .ic{display:flex;gap:4px;align-items:center}
+  .murl{height:24px;display:flex;align-items:center;justify-content:center;gap:5px;font-size:12px;color:#4a4458;background:#ebe8f1;margin:0 10px 3px;border-radius:8px}
+  .mhead{height:38px;display:flex;align-items:center;padding:0 12px;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .mhead .logo{font-size:16px;gap:7px}
+  .mhead .av{margin-left:auto;width:26px;height:26px;font-size:11px}
+  .mbody{padding:8px 10px 0}
+  .mtitle{display:flex;align-items:center}
+  .mtitle h2{margin:0;font-size:18px;line-height:1.15;font-weight:600}
+  .mtitle .btn{margin-left:auto;height:28px;font-size:12px;padding:0 9px;gap:4px}
+  .mhint{font-size:12px;color:var(--muted);margin:3px 0 7px;line-height:1.3}
+  .mcard{background:#fff;border:1px solid var(--line);border-radius:12px;padding:9px 10px;margin-bottom:8px}
+  .mtop{display:flex;gap:9px;align-items:center}
+  .mtop .tile{width:36px;height:36px;font-size:13px;border-radius:8px}
+  .mtop .gn{font-size:13.5px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:4px 5px;margin-top:8px}
+  .grid2 span{height:28px;border:1px solid #d6d0e1;border-radius:7px;display:flex;align-items:center;justify-content:center;gap:4px;font-size:12px;font-weight:500;color:#4d475b;background:#fff}
+  .grid2 span.a{border-color:transparent;color:#fff;font-weight:600}
+  .grid2 span.tap{box-shadow:0 0 0 3px rgba(21,128,61,.22),0 0 0 7px rgba(21,128,61,.10)}
+  .toast{position:absolute;left:10px;right:10px;bottom:14px;background:#241a40;color:#fff;border-radius:12px;padding:8px 10px;display:flex;gap:8px;align-items:flex-start;box-shadow:0 8px 20px rgba(20,10,40,.3)}
+  .toast .t1{font-size:12px;font-weight:600;line-height:1.3}
+  .toast .t2{font-size:12px;color:#d6cff0;line-height:1.3;margin-top:1px}
+  .home{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);width:80px;height:4px;border-radius:3px;background:#1d1b24;opacity:.55}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="star" viewBox="0 0 20 20"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.8L10 14.6l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></symbol>
+    <symbol id="logo" viewBox="0 0 28 28"><rect x="1" y="1" width="26" height="26" rx="7" fill="#6d28d9"/><rect x="6" y="7" width="4" height="13" rx="1.2" fill="#fff"/><rect x="11.5" y="9" width="4" height="11" rx="1.2" fill="#c4b5fd"/><rect x="17" y="7.5" width="4" height="12.5" rx="1.2" fill="#fff" transform="rotate(12 19 14)"/><rect x="5" y="20.5" width="18" height="2" rx="1" fill="#fff"/></symbol>
+    <symbol id="lock" viewBox="0 0 16 16"><rect x="3.5" y="7" width="9" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5.5 7V5a2.5 2.5 0 015 0v2" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+    <symbol id="eye" viewBox="0 0 16 16"><path d="M1.5 8S4 3.5 8 3.5 14.5 8 14.5 8 12 12.5 8 12.5 1.5 8 1.5 8z" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="8" r="2" fill="currentColor"/></symbol>
+    <symbol id="plus" viewBox="0 0 16 16"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="play" viewBox="0 0 16 16"><path d="M5 3.5v9l7.5-4.5z" fill="currentColor"/></symbol>
+    <symbol id="check" viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="search" viewBox="0 0 16 16"><circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 10.5l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="chev" viewBox="0 0 16 16"><path d="M4.5 6.5L8 10l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="back" viewBox="0 0 16 16"><path d="M10 3.5L5.5 8l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="fwd" viewBox="0 0 16 16"><path d="M6 3.5L10.5 8 6 12.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="reload" viewBox="0 0 16 16"><path d="M12.5 8a4.5 4.5 0 11-1.3-3.2M12.5 3v2.5H10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<!-- ===================== SELAIN: julkinen profiili ===================== -->
+<div class="browser">
+  <div class="chrome">
+    <div class="dots"><span></span><span></span><span></span></div>
+    <div class="navarrows"><svg class="i"><use href="#back"/></svg><svg class="i"><use href="#fwd"/></svg><svg class="i"><use href="#reload"/></svg></div>
+    <div class="url"><svg class="i" style="width:13px;height:13px;color:#6b6479"><use href="#lock"/></svg><span><b>pelihylly.example.org</b>/kayttaja/aino</span></div>
+  </div>
+
+  <div class="apphead">
+    <div class="logo"><svg style="width:28px;height:28px"><use href="#logo"/></svg>PeliHylly</div>
+    <nav class="appnav"><a>Etusivu</a><a>Pelit</a><a class="on">Profiili</a></nav>
+    <div class="headright">
+      <span class="btn"><svg class="i" style="width:14px;height:14px"><use href="#plus"/></svg>Lisää peli</span>
+      <span class="me"><span class="av">AV</span>aino</span>
+      <span class="logout">Kirjaudu ulos</span>
+    </div>
+  </div>
+
+  <div class="main">
+    <!-- profiilin otsikko + lukumäärät tiloittain -->
+    <div class="phead">
+      <div class="bigav">AV</div>
+      <div class="pname">
+        <h1>Aino Virtanen</h1>
+        <div class="pmeta">@aino · jäsen 3.2.2026 alkaen · 12 peliä</div>
+        <div class="pub"><svg class="i" style="width:14px;height:14px"><use href="#eye"/></svg>Julkinen: näkyy ilman kirjautumista</div>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="n" style="color:var(--h-t)">3</div><div class="lb"><i class="dot" style="background:var(--h)"></i>Hyllyssä</div></div>
+        <div class="stat"><div class="n" style="color:var(--k-t)">4</div><div class="lb"><i class="dot" style="background:var(--k)"></i>Kesken</div></div>
+        <div class="stat"><div class="n" style="color:var(--l-t)">3</div><div class="lb"><i class="dot" style="background:var(--l)"></i>Läpi</div></div>
+        <div class="stat"><div class="n" style="color:var(--kt-t)">2</div><div class="lb"><i class="dot" style="background:var(--kt)"></i>Kaikki tehty</div></div>
+      </div>
+    </div>
+
+    <div class="mid">
+      <!-- pelaan parhaillaan -->
+      <section class="card">
+        <div class="ctitle"><h2>Pelaan parhaillaan</h2></div>
+        <div class="now">
+          <div class="tile" style="background:#2f5d9e">TK</div>
+          <div>
+            <div class="nm">Tähtilaivan kapteeni</div>
+            <div class="sub">PC <span class="stars" data-s="4"></span></div>
+            <div class="since">Kesken 19.10.2026 alkaen</div>
+          </div>
+        </div>
+        <div class="now">
+          <div class="tile" style="background:#3f7a4a">MP</div>
+          <div>
+            <div class="nm">Metsänpeikon polku</div>
+            <div class="sub">Switch <span class="stars" data-s="5"></span></div>
+            <div class="since">Kesken 2.11.2026 alkaen</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- laitteittain -->
+      <section class="card">
+        <div class="ctitle"><h2>Laitteittain</h2><small>12 peliä</small></div>
+        <div class="drow"><span class="dl">PC</span><div class="track" data-c="1,1,1,1"></div><span class="tot">4</span></div>
+        <div class="drow"><span class="dl">Switch</span><div class="track" data-c="1,1,0,1"></div><span class="tot">3</span></div>
+        <div class="drow"><span class="dl">PS5</span><div class="track" data-c="1,1,1,0"></div><span class="tot">3</span></div>
+        <div class="drow"><span class="dl">NES</span><div class="track" data-c="0,1,1,0"></div><span class="tot">2</span></div>
+        <div class="legend">
+          <span><i class="dot" style="background:var(--h)"></i>Hyllyssä</span>
+          <span><i class="dot" style="background:var(--k)"></i>Kesken</span>
+          <span><i class="dot" style="background:var(--l)"></i>Läpi</span>
+          <span><i class="dot" style="background:var(--kt)"></i>Kaikki tehty</span>
+        </div>
+      </section>
+
+      <!-- tilahistoria -->
+      <section class="card">
+        <div class="ctitle"><h2>Tilahistoria</h2><small>uusin ensin</small></div>
+        <ul class="hist">
+          <li><i style="background:var(--l)"></i><div class="hn">Robottitehdas</div><div class="hm">12.11.2026 · Kesken → <b style="color:var(--l-t)">Läpi</b></div></li>
+          <li><i style="background:var(--h)"></i><div class="hn">Jäähallin sankarit</div><div class="hm">8.11.2026 · <b style="color:var(--h-t)">tuli hyllyyn</b></div></li>
+          <li><i style="background:var(--k)"></i><div class="hn">Metsänpeikon polku</div><div class="hm">2.11.2026 · Hyllyssä → <b style="color:var(--k-t)">Kesken</b></div></li>
+          <li><i style="background:var(--kt)"></i><div class="hn">Taikurin torni</div><div class="hm">27.10.2026 · Läpi → <b style="color:var(--kt-t)">Kaikki tehty</b></div></li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- pelilista -->
+    <section class="card list">
+      <div class="lhead">
+        <h2>Pelit</h2><span class="count">12</span>
+        <div class="filters">
+          <span class="field" style="width:150px"><svg class="i" style="width:14px;height:14px"><use href="#search"/></svg>Hae nimellä</span>
+          <span class="field sel">Kaikki laitteet <svg class="i" style="width:14px;height:14px"><use href="#chev"/></svg></span>
+          <span class="field sel">Kaikki tilat <svg class="i" style="width:14px;height:14px"><use href="#chev"/></svg></span>
+          <span class="field sel">Viimeksi muutettu <svg class="i" style="width:14px;height:14px"><use href="#chev"/></svg></span>
+        </div>
+      </div>
+      <table>
+        <colgroup><col style="width:196px"><col style="width:82px"><col><col style="width:266px"></colgroup>
+        <thead><tr><th>Peli</th><th>Tähdet</th><th>Oma kommentti</th><th>Tila · vaihtuu yhdellä napilla</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><div class="gcell"><div class="tile" style="background:#8a5a2b">RT</div><div><div class="gn">Robottitehdas</div><div class="gd">PC</div></div></div></td>
+            <td><span class="stars" data-s="4"></span></td>
+            <td><div class="cmt">Viimeinen kenttä oli huikea.</div></td>
+            <td><span class="segctl" data-a="l"></span></td>
+          </tr>
+          <tr>
+            <td><div class="gcell"><div class="tile" style="background:#35607a">JS</div><div><div class="gn">Jäähallin sankarit</div><div class="gd">PS5</div></div></div></td>
+            <td><span class="none">ei vielä</span></td>
+            <td><div class="cmt">Odottaa joululomaa.</div></td>
+            <td><span class="segctl" data-a="h"></span></td>
+          </tr>
+          <tr>
+            <td><div class="gcell"><div class="tile" style="background:#3f7a4a">MP</div><div><div class="gn">Metsänpeikon polku</div><div class="gd">Switch <span class="playing"><svg class="i" style="width:10px;height:10px"><use href="#play"/></svg>pelaan nyt</span></div></div></div></td>
+            <td><span class="stars" data-s="5"></span></td>
+            <td><div class="cmt">Rauhallinen iltapeli.</div></td>
+            <td><span class="segctl" data-a="k"></span></td>
+          </tr>
+          <tr>
+            <td><div class="gcell"><div class="tile" style="background:#7a3f6e">TT</div><div><div class="gn">Taikurin torni</div><div class="gd">Switch</div></div></div></td>
+            <td><span class="stars" data-s="5"></span></td>
+            <td><div class="cmt">Jokainen salahuone löytyi!</div></td>
+            <td><span class="segctl" data-a="kt"></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</div>
+
+<!-- ===================== PUHELIN: omat pelit ===================== -->
+<div class="phone">
+  <div class="screen">
+    <div class="island"></div>
+    <div class="sbar"><span>9.41</span>
+      <span class="ic">
+        <svg width="16" height="11" viewBox="0 0 16 11"><rect x="0" y="7" width="3" height="4" rx="1" fill="#1f1a2e"/><rect x="4.3" y="5" width="3" height="6" rx="1" fill="#1f1a2e"/><rect x="8.6" y="2.5" width="3" height="8.5" rx="1" fill="#1f1a2e"/><rect x="12.9" y="0" width="3" height="11" rx="1" fill="#1f1a2e"/></svg>
+        <svg width="23" height="11" viewBox="0 0 23 11"><rect x=".6" y=".6" width="19" height="9.8" rx="2.6" fill="none" stroke="#1f1a2e" stroke-width="1.2" opacity=".5"/><rect x="2.2" y="2.2" width="13" height="6.6" rx="1.4" fill="#1f1a2e"/><rect x="20.6" y="3.6" width="1.8" height="3.8" rx=".9" fill="#1f1a2e" opacity=".5"/></svg>
+      </span>
+    </div>
+    <div class="murl"><svg class="i" style="width:11px;height:11px;color:#6b6479"><use href="#lock"/></svg>pelihylly.example.org</div>
+    <div class="mhead">
+      <div class="logo"><svg style="width:23px;height:23px"><use href="#logo"/></svg>PeliHylly</div>
+      <span class="av">AV</span>
+    </div>
+    <div class="mbody">
+      <div class="mtitle"><h2>Omat pelit</h2><span class="btn"><svg class="i" style="width:12px;height:12px"><use href="#plus"/></svg>Lisää</span></div>
+      <div class="mhint">Yksi napautus vaihtaa tilan.</div>
+
+      <div class="mcard">
+        <div class="mtop"><div class="tile" style="background:#8a5a2b">RT</div><div><div class="gn">Robottitehdas</div><div class="gd">PC · <span class="stars" data-s="4"></span></div></div></div>
+        <div class="grid2">
+          <span>Hyllyssä</span><span>Kesken</span>
+          <span class="a s-l tap"><svg class="i" style="width:13px;height:13px"><use href="#check"/></svg>Läpi</span><span>Kaikki tehty</span>
+        </div>
+      </div>
+
+      <div class="mcard">
+        <div class="mtop"><div class="tile" style="background:#2f5d9e">TK</div><div><div class="gn">Tähtilaivan kapteeni</div><div class="gd">PC · <span class="stars" data-s="4"></span></div></div></div>
+        <div class="grid2">
+          <span>Hyllyssä</span><span class="a s-k"><svg class="i" style="width:13px;height:13px"><use href="#check"/></svg>Kesken</span>
+          <span>Läpi</span><span>Kaikki tehty</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast">
+      <svg class="i" style="width:16px;height:16px;color:#86efac;margin-top:1px"><use href="#check"/></svg>
+      <div><div class="t1">Robottitehdas → Läpi</div><div class="t2">Tallennettu tilahistoriaan</div></div>
+    </div>
+    <div class="home"></div>
+  </div>
+</div>
+
+<script>
+  // Tähdet 1–5 (deterministinen piirto data-s-attribuutista)
+  document.querySelectorAll('.stars').forEach(function(el){
+    var n = +el.dataset.s, h = '';
+    for (var i = 1; i <= 5; i++) h += '<svg style="fill:' + (i <= n ? 'var(--star)' : 'var(--star-off)') + '"><use href="#star"/></svg>';
+    el.innerHTML = h; el.setAttribute('aria-label', n + ' / 5 tähteä');
+  });
+  // Tilavalitsin: neljä tilaa, aktiivinen korostettu
+  var TILAT = [['h','Hyllyssä'],['k','Kesken'],['l','Läpi'],['kt','Kaikki tehty']];
+  document.querySelectorAll('.segctl').forEach(function(el){
+    el.innerHTML = TILAT.map(function(t){ return '<span class="' + (t[0] === el.dataset.a ? 'a s-' + t[0] : '') + '">' + t[1] + '</span>'; }).join('');
+  });
+  // Laitepalkit: järjestys Hyllyssä, Kesken, Läpi, Kaikki tehty; 38 px / peli
+  var VARIT = ['var(--h)','var(--k)','var(--l)','var(--kt)'];
+  document.querySelectorAll('.track').forEach(function(el){
+    el.innerHTML = el.dataset.c.split(',').map(function(c, i){
+      c = +c; return c ? '<span class="seg" style="width:' + (c * 38) + 'px;background:' + VARIT[i] + '">' + c + '</span>' : '';
+    }).join('');
+  });
+</script>
+</body>
+</html>
