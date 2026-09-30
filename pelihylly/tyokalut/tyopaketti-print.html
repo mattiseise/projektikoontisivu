@@ -12,198 +12,528 @@ th { background: #ede9fe; }
 .wk { page-break-inside: avoid; margin-bottom: 8pt; }
 .feature { color: #555; font-style: italic; margin: 0 0 4pt; }
 .task { margin: 2pt 0; }
+.tcard { margin: 7pt 0 2pt; }
+.osat { list-style: none; margin: 0 0 2pt 12pt; padding: 0; font-size: 9pt; }
+.osat li { margin: 1pt 0; }
+.osa-done { margin-left: 12pt; }
 .done { color: #5b21b6; font-size: 9pt; margin: 3pt 0 0; }
 .ev { color: #555; font-size: 9pt; margin: 2pt 0 0; }
 .page { page-break-before: always; }
 .muted { color: #555; }
 .item { font-size: 9pt; margin: 2pt 0; }
+.conn { font-size: 9pt; margin: 0 0 3pt; }
+code { font-family: Menlo, Consolas, monospace; font-size: 8.5pt; }
+.wk.u { page-break-inside: auto; }
+.wkdone { margin-top: 8pt; padding-top: 4pt; border-top: 0.5pt solid #bbb; }
+.tblock { page-break-inside: avoid; }
+.goal { font-size: 9.5pt; margin: 0 0 4pt; }
+img.figure { display: block; max-width: 100%; max-height: 96mm; margin: 4pt auto 6pt; }
 </style></head><body>
 <div class="cover"><h1>PeliHylly</h1><p style="font-size:14pt">Paperinen työpaketti</p><p>Oma pelikirjastopalvelu: React, Express, SQLite ja julkaisu tuotantoon</p><p style="font-size:12pt"><strong>Työviikot 1–18 · luovutus työviikon 18 lopussa</strong></p><p style="max-width:120mm;margin:18pt auto 0">Tämä paketti on aikataulu ja tarkistuslista tilanteisiin, joissa sivusto ei ole auki. Projektipäiväkirja kirjoitetaan sivustolla ja viedään repositoryn project-docs-kansioon. Rasti tässä vihossa ei ole palautus: työ on aina Git-repositoryssa.</p><p style="max-width:120mm;margin:10pt auto 0">Julkiseen repositoryyn ei laiteta henkilötietoja, salasanoja eikä ympäristömuuttujien arvoja.</p><p style="max-width:120mm;margin:10pt auto 0">Viikot ovat työviikkoja opiskelijan omasta aloituksesta; paketissa ei ole kalenteripäivämääriä.</p><p style="max-width:120mm;margin:10pt auto 0">Rasti tässä vihossa ei ole palautus: työnäyte on aina Git-repositoryssa.</p></div>
+<h1>Mitä rakennat ja miten etenet</h1>
+<p>PeliHylly on Pelikellari ry:n jäsenten verkkopalvelu. Jokainen kirjaa palveluun pelinsä laitteineen, tähtiarvioineen ja kommentteineen ja vaihtaa pelin tilaa yhdellä napilla. Julkinen profiili näyttää kenelle tahansa, mitä jäsen pelaa nyt ja miten hänen hyllynsä on muuttunut.</p>
+<ol class="osat"><li>1. Julkinen profiili näyttää, mitä jäsen pelaa nyt ja montako peliä on missäkin tilassa laitteittain.</li><li>2. Tilahistoria näyttää aikajärjestyksessä jokaisen tilanmuutoksen, esimerkiksi milloin peli tuli hyllyyn tai meni läpi.</li><li>3. Pelilistassa näkyvät laite, tähtiarvio ja oma kommentti, ja tila vaihtuu yhdellä napilla.</li><li>4. Puhelimellakin tila vaihtuu yhdellä napautuksella, ja muutos tallentuu tilahistoriaan.</li></ol>
+<h2>Projektin 5 vaihetta</h2>
+<img class="figure" src="../assets/projektin-vaiheet.svg" alt="PeliHyllyn viisi vaihetta: 1 suunnitelma ja julkaistu runko työviikoilla 1–3, 2 oma hylly eli pelilista, lisäys ja tilanvaihto työviikoilla 4–6, 3 jäsenet, profiilit ja asiakaskatselmointi työviikoilla 7–10, 4 palaute, laatu ja käyttöönotto-ohje työviikoilla 11–15 sekä 5 julkaisu ja näyttö työviikoilla 16–18.">
+<p class="task"><strong>1. Suunnitelma ja julkaistu runko · työviikot 1–3.</strong> Puret toimeksiannon kysymyksiksi, teet ohjaajan kuittaaman suunnitelman ja viet tyhjän palvelun julkiseen osoitteeseen. Julkaisu tehdään heti, koska sen ongelmat on halvinta korjata, kun rikottavaa on vähän.</p>
+<p class="task"><strong>2. Oma hylly: pelit ja tilanvaihto · työviikot 4–6.</strong> Rakennat pelilistan tietokannasta, oman lisäyslomakkeen validointeineen ja yhden napin tilanvaihdon, joka kirjaa tilahistorian. Asiakkaan tärkein toive toimii ennen kuin palveluun tulee muita käyttäjiä.</p>
+<p class="task"><strong>3. Jäsenet, profiilit ja katselmointi · työviikot 7–10.</strong> Lisäät rekisteröitymisen, kirjautumisen ja omistajuustarkistuksen, julkisen profiilin sekä haun. Asiakkaan edustaja kokeilee koko polkua työviikolla 10, ja hänen palautteensa ohjaa seuraavaa vaihetta.</p>
+<p class="task"><strong>4. Palaute, laatu ja käyttöönotto-ohje · työviikot 11–15.</strong> Toteutat palautteen tärkeimmän muutoksen ja teet palvelusta puhelimella ja näppäimistöllä toimivan. Testaat kaiken tuotantoa vasten, siistit koodin, arvioit tietoturvan ja kirjoitat käyttöönotto-ohjeen.</p>
+<p class="task"><strong>5. Julkaisu ja näyttö · työviikot 16–18.</strong> Ulkopuolinen testaaja ottaa julkaisuehdokkaan käyttöön pelkän kirjallisen ohjeen avulla. Korjaat estävät virheet, julkaiset v1.0:n ja esittelet työsi näytössä.</p>
+<p class="muted">Viikon työvaihe on tämän sivuston työohje. Kun työvaihe muuttaa palvelua, kirjaa muutos GitHub-issueksi hyväksymiskriteereineen ja tee se Työtapa-sivun kuudella askeleella. Testin tulos kirjataan testimatriisiin heti, viikon yhteenveto projektipäiväkirjaan viikon lopussa.</p>
+<div class="page"></div>
 <h1>Aikataulu</h1><table><tr><th>Vko</th><th>Ajoitus</th><th>Viikon aihe</th><th>Vaihe</th></tr>
-<tr><td><strong>1</strong></td><td>Työviikko 1 / 18</td><td>Aloitus</td><td>A</td></tr>
-<tr><td><strong>2</strong></td><td>Työviikko 2 / 18</td><td>Suunnitelma ja tietomalli</td><td>A</td></tr>
-<tr><td><strong>3</strong></td><td>Työviikko 3 / 18</td><td>Julkaistu runko</td><td>A</td></tr>
-<tr><td><strong>4</strong></td><td>Työviikko 4 / 18</td><td>Pelilista tietokannasta</td><td>A</td></tr>
-<tr><td><strong>5</strong></td><td>Työviikko 5 / 18</td><td>Pelin lisäys ja validointi</td><td>A</td></tr>
-<tr><td><strong>6</strong></td><td>Työviikko 6 / 18</td><td>Tilat ja tilahistoria</td><td>B</td></tr>
-<tr><td><strong>7</strong></td><td>Työviikko 7 / 18</td><td>Käyttäjät ja kirjautuminen</td><td>B</td></tr>
-<tr><td><strong>8</strong></td><td>Työviikko 8 / 18</td><td>Profiilisivu</td><td>B</td></tr>
-<tr><td><strong>9</strong></td><td>Työviikko 9 / 18</td><td>Haku ja suodatus</td><td>B</td></tr>
-<tr><td><strong>10</strong></td><td>Työviikko 10 / 18</td><td>Asiakaskatselmointi</td><td>B</td></tr>
-<tr><td><strong>11</strong></td><td>Työviikko 11 / 18</td><td>Palautemuutos</td><td>C</td></tr>
-<tr><td><strong>12</strong></td><td>Työviikko 12 / 18</td><td>Responsiivisuus ja saavutettavuus</td><td>C</td></tr>
-<tr><td><strong>13</strong></td><td>Työviikko 13 / 18</td><td>Testausviikko</td><td>C</td></tr>
-<tr><td><strong>14</strong></td><td>Työviikko 14 / 18</td><td>Laatuviikko</td><td>C</td></tr>
-<tr><td><strong>15</strong></td><td>Työviikko 15 / 18</td><td>Dokumentaatio</td><td>C</td></tr>
-<tr><td><strong>16</strong></td><td>Työviikko 16 / 18</td><td>Julkaisuehdokas ja julkaisutestaus</td><td>D</td></tr>
-<tr><td><strong>17</strong></td><td>Työviikko 17 / 18</td><td>Julkaisu v1.0</td><td>D</td></tr>
-<tr><td><strong>18</strong></td><td>Työviikko 18 / 18</td><td>Näyttö</td><td>D</td></tr>
+<tr><td><strong>1</strong></td><td>Työviikko 1 / 18</td><td>Aloitus</td><td>1</td></tr>
+<tr><td><strong>2</strong></td><td>Työviikko 2 / 18</td><td>Suunnitelma ja tietomalli</td><td>1</td></tr>
+<tr><td><strong>3</strong></td><td>Työviikko 3 / 18</td><td>Julkaistu runko</td><td>1</td></tr>
+<tr><td><strong>4</strong></td><td>Työviikko 4 / 18</td><td>Pelilista tietokannasta</td><td>2</td></tr>
+<tr><td><strong>5</strong></td><td>Työviikko 5 / 18</td><td>Pelin lisäys ja validointi</td><td>2</td></tr>
+<tr><td><strong>6</strong></td><td>Työviikko 6 / 18</td><td>Tilat ja tilahistoria</td><td>2</td></tr>
+<tr><td><strong>7</strong></td><td>Työviikko 7 / 18</td><td>Käyttäjät ja kirjautuminen</td><td>3</td></tr>
+<tr><td><strong>8</strong></td><td>Työviikko 8 / 18</td><td>Profiilisivu</td><td>3</td></tr>
+<tr><td><strong>9</strong></td><td>Työviikko 9 / 18</td><td>Haku ja suodatus</td><td>3</td></tr>
+<tr><td><strong>10</strong></td><td>Työviikko 10 / 18</td><td>Asiakaskatselmointi</td><td>3</td></tr>
+<tr><td><strong>11</strong></td><td>Työviikko 11 / 18</td><td>Palautemuutos</td><td>4</td></tr>
+<tr><td><strong>12</strong></td><td>Työviikko 12 / 18</td><td>Responsiivisuus ja saavutettavuus</td><td>4</td></tr>
+<tr><td><strong>13</strong></td><td>Työviikko 13 / 18</td><td>Testausviikko</td><td>4</td></tr>
+<tr><td><strong>14</strong></td><td>Työviikko 14 / 18</td><td>Laatuviikko</td><td>4</td></tr>
+<tr><td><strong>15</strong></td><td>Työviikko 15 / 18</td><td>Dokumentaatio</td><td>4</td></tr>
+<tr><td><strong>16</strong></td><td>Työviikko 16 / 18</td><td>Julkaisuehdokas ja julkaisutestaus</td><td>5</td></tr>
+<tr><td><strong>17</strong></td><td>Työviikko 17 / 18</td><td>Julkaisu v1.0</td><td>5</td></tr>
+<tr><td><strong>18</strong></td><td>Työviikko 18 / 18</td><td>Näyttö</td><td>5</td></tr>
 </table><p class="muted">Palautus viimeistään työviikon 18 lopussa. Sivusto: tehtävien tarkat ohjeet, toteutusavut ja projektipäiväkirja.</p>
-<h1 class="page">Vaihe A – Palvelun ydin: toimeksianto, suunnitelma ja julkaistu pelilista</h1>
-<div class="wk"><h2>Työviikko 1 / 18 – Aloitus</h2>
-<p class="feature">Kehitysympäristö toimii, repository on olemassa julkisen repositoryn pelisäännöillä, ja toimeksiannosta on kirjattu kysymyslista ohjaajalle; ensimmäinen commit on tehty.</p>
-<p class="task">☐&nbsp; Lue toimeksianto ja kirjaa vähintään kahdeksan kysymyksen lista ohjaajalle ja asiakkaalle.</p>
-<p class="task">☐&nbsp; Asenna ja todenna työkalut (Node.js:n LTS-versio eli pitkään tuettu vakaa versio, Git ja editori) ja luo Vite + React -projekti.</p>
-<p class="task">☐&nbsp; Luo etärepository, tee ensimmäiset commitit ja push.</p>
-<p class="task">☐&nbsp; Tee julkisen repositoryn tehtävät: yksityisyystarkistus, tekijänimestä sopiminen ja alaikäisellä huoltajan suostumus ohjaajan kautta.</p>
-<p class="done"><strong>Valmis kun:</strong> Ohjaaja avaa repositoryn osoitteen toisella koneella: README kertoo mikä projekti on, ja `npm install &amp;&amp; npm run dev` käynnistää sovellusrungon. Kysymyslista on `project-docs/kysymykset.md`-tiedostossa.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Repositoryn osoite, ensimmäisen commitin tunniste, työkalutodennusten tulosteet ja project-docs/kysymykset.md.</p>
+<h1 class="page">Vaihe 1 – Suunnitelma ja julkaistu runko</h1>
+<div class="wk u"><h2>Työviikko 1 / 18 – Aloitus</h2>
+<p class="conn"><strong>Yhteys kokonaisprojektiin:</strong> Projekti alkaa toimeksiannosta ja työkaluista, ennen ensimmäistä komponenttia. Tällä viikolla puret toimeksiannon kysymyksiksi ja rakennat ympäristön, jossa työ tallentuu muuallekin kuin omalle koneelle. Kysymysten vastauksista tulee työviikolla 2 suunnitelma, ja sama repository kerää kaikki työnäytteet näyttöön asti.</p>
+<p class="goal"><strong>Viikon tavoite:</strong> Ohjaaja avaa repositoryn toisella koneella ja saa sovellusrungon käyntiin pelkän README:n ohjeilla.</p>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 1 / 4 · Pura toimeksianto kysymyslistaksi</strong></p>
+<ol class="osat"><li>☐&nbsp; Lue toimeksianto. Lue Pelikellari ry:n toimeksianto kokonaan ja alleviivaa vaatimukset, esimerkiksi tilanvaihto yhdellä napilla ja vierailijan näkymä ilman tunnuksia.</li><li>☐&nbsp; Merkitse epäselvyydet. Merkitse kohdat, joista et tiedä, mitä asiakas tarkoittaa tai milloin toiminto on valmis.</li><li>☐&nbsp; Kirjoita kysymyslista. Kirjoita tiedostoon <code>project-docs/kysymykset.md</code> vähintään kahdeksan kysymystä, joihin et tiedä vastausta.</li><li>☐&nbsp; Tarkista, että kysymys pakottaa päätöksen. Muotoile kysymykset niin, että vastaus muuttaa jotain toteutuksessa. Katso viikon esimerkki.</li><li>☐&nbsp; Vie lista ohjaajalle. Käy lista läpi ohjaajan kanssa ja asiakkaan edustajan kanssa, jos hänet on jo nimetty. Kirjaa vastaukset kysymysten alle työviikon 2 tarinoita varten.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> <code>project-docs/kysymykset.md</code> sisältää vähintään kahdeksan kysymystä, ja lista on käyty läpi ohjaajan kanssa.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> <code>project-docs/kysymykset.md</code> repositoryyn. Epäselvät kohdat ja tärkein kysymys työviikon 1 päiväkirjaan.</p>
 </div>
-<div class="wk"><h2>Työviikko 2 / 18 – Suunnitelma ja tietomalli</h2>
-<p class="feature">Tekninen suunnitelma on repositoryssa: priorisoidut käyttäjätarinat (P0/P1/P2), tietomalli, tietovarastovertailu, sivukartta ja rautalangat, ja P0 on pilkottu issueiksi työmääräarvioineen.</p>
-<p class="task">☐&nbsp; Kirjoita käyttäjätarinat hyväksymiskriteereineen ja priorisoi P0, P1 ja P2 ohjaajan kanssa.</p>
-<p class="task">☐&nbsp; Piirrä tietomalli sekä sivukartta ja rautalangat eli karkeat luonnokset näkymien rakenteesta; profiilisivu tarkimmin.</p>
-<p class="task">☐&nbsp; Vertaile tietovarastot (SQLite, JSON-tiedosto, palvelintietokanta) ja perustele valinta.</p>
-<p class="task">☐&nbsp; Pilko P0 issueiksi ja arvioi jokaisen työmäärä.</p>
-<p class="done"><strong>Valmis kun:</strong> Suunnitelma on `project-docs/suunnitelma.md`-tiedostossa, ohjaaja on kuitannut P0-rajauksen kirjallisesti (issue-kommentti), ja jokaisella P0-issuella on työmääräarvio.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: project-docs/suunnitelma.md, tietomallikaavio, rautalangat, issue-taulu arvioineen ja ohjaajan kirjallinen kuittaus P0-rajauksesta.</p>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 2 / 4 · Todenna työkalut ja luo Vite + React -projekti</strong></p>
+<ol class="osat"><li>☐&nbsp; Asenna työkalut. Asenna Node.js:n LTS-versio eli pitkään tuettu vakaa versio, Git ja editori, esimerkiksi VS Code.</li><li>☐&nbsp; Ota versiot talteen. Aja <code>node -v</code> ja <code>git --version</code> ja kopioi tulosteet työviikon 1 päiväkirjaan.</li><li>☐&nbsp; Luo kansiot. Luo projektin juureen kansiot <code>client/</code>, <code>server/</code> ja <code>project-docs/</code>. Kaikki dokumentaatio menee <code>project-docs</code>-kansioon.</li><li>☐&nbsp; Luo React-projekti. Aja <code>client</code>-kansiossa <code>npm create vite@latest</code> ja valitse React.</li><li>☐&nbsp; Käynnistä kehityspalvelin. Aja <code>npm install</code> ja <code>npm run dev</code> ja avaa sovellusrunko selaimessa.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Versiotulosteet ovat tallessa, ja <code>npm run dev</code> käynnistää sovellusrungon <code>client</code>-kansiossa.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Versiotulosteet työviikon 1 päiväkirjaan. Projektirunko viedään repositoryyn seuraavassa työvaiheessa.</p>
 </div>
-<div class="wk"><h2>Työviikko 3 / 18 – Julkaistu runko</h2>
-<p class="feature">Reititetty React-runko ja Express + SQLite -perusta ovat julkaistuna oikeassa osoitteessa: tyhjä sivu tuotannossa ennen valmista sivua localhostissa.</p>
-<p class="task">☐&nbsp; Tuo react-router perustellusti ja rakenna reitit etusivulle, peleille ja profiilille.</p>
-<p class="task">☐&nbsp; Pystytä Express ja /api/health; kytke SQLite ja luo tietokannan rakenne eli skeema migraatioskriptillä, joka luo taulut ohjelmallisesti.</p>
-<p class="task">☐&nbsp; Vertaile julkaisualustat (Render, Railway, Fly.io), päätä ja julkaise.</p>
-<p class="task">☐&nbsp; Lähetä asiakkaalle tilannekatsaus ilman teknistä jargonia ja tallenna viesti repositoryyn.</p>
-<p class="done"><strong>Valmis kun:</strong> Julkinen osoite näyttää navigoitavan rungon, `/api/health` vastaa tuotannossa, ja tilannekatsausviesti on lähetetty ja tallennettu `project-docs/viestit.md`-tiedostoon.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Julkinen osoite, julkaisuloki tai kuvakaappaus, k2-muistio ja tilannekatsausviesti project-docs/viestit.md-tiedostossa.</p>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 3 / 4 · Vie projekti etärepositoryyn</strong></p>
+<ol class="osat"><li>☐&nbsp; Kirjoita README. Kirjoita <code>README.md</code>: mikä PeliHylly on ja miten sovellusrunko käynnistetään.</li><li>☐&nbsp; Lisää .gitignore. Lisää <code>.gitignore</code>, joka estää <code>node_modules</code>-kansion ja <code>.env</code>-tiedostot pääsemästä repositoryyn.</li><li>☐&nbsp; Tee ensimmäinen commit. Tee ensimmäinen commit kuvaavalla viestillä, esimerkiksi ”Vite + React -runko ja README”.</li><li>☐&nbsp; Vie etärepositoryyn. Luo etärepository GitHubiin ja vie commitit sinne komennolla <code>git push</code>.</li><li>☐&nbsp; Kokeile kloonausta. Kloonaa repository toiseen kansioon ja tarkista, että runko käynnistyy pelkän README:n ohjeilla.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Repository on GitHubissa, README kertoo, mikä projekti on, ja kloonattu kopio käynnistyy README:n ohjeilla.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Repositoryn osoite ja ensimmäisen commitin tunniste työviikon 1 päiväkirjaan.</p>
 </div>
-<div class="wk"><h2>Työviikko 4 / 18 – Pelilista tietokannasta</h2>
-<p class="feature">Pelilista tulee SQLite-tietokannasta oman API:n kautta ja renderöityy komponentteina; myös virhetila on käsitelty.</p>
-<p class="task">☐&nbsp; Tee siemendataskripti ja GET /api/games.</p>
-<p class="task">☐&nbsp; Rakenna PeliLista- ja PeliKortti-komponentit ja hae data omalla fetch-hookilla.</p>
-<p class="task">☐&nbsp; Käsittele lataus- ja virhetilat: kun API on alhaalla, käyttäjä näkee viestin eikä tyhjää sivua.</p>
-<p class="task">☐&nbsp; Kirjaa kaksi numeroitua testitapausta (T01 ja T02) odotettuine tuloksineen ennen ajoa ja aja ne.</p>
-<p class="done"><strong>Valmis kun:</strong> Lista renderöityy tuotannossa tietokannan datasta; kun API on alhaalla, sivu näyttää virheilmoituksen eikä jää tyhjäksi; molemmista kuvakaappaus.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Commitit, kuvakaappaus normaali- ja virhetilasta sekä testikirjaukset T01–T02.</p>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 4 / 4 · Käy julkisen repositoryn tarkistuslista ohjaajan kanssa</strong></p>
+<ol class="osat"><li>☐&nbsp; Tarkista historia. Käy repositoryn tiedostot ja commit-historia läpi. Niissä ei saa olla henkilötietoja, salasanoja eikä avaimia.</li><li>☐&nbsp; Sovi tekijänimestä. Sovi ohjaajan kanssa, millä nimellä olet tekijänä repositoryssa, ja kirjaa se suunnitelman Tekijä-kenttään.</li><li>☐&nbsp; Tarkista suostumustarve. Kysy ohjaajalta, tarvitaanko huoltajan suostumus. Alaikäisellä se hoidetaan ohjaajan kautta.</li><li>☐&nbsp; Merkitse avoimet asiat. Repositoryn julkisuus ja lisenssi ovat ohjaajan päätöksiä. Jätä ne suunnitelmassa avoimiksi, kunnes ne on sovittu.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Julkisen repositoryn tarkistuslista on käyty ohjaajan kanssa, ja sopimatta olevat asiat on merkitty avoimiksi.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Sovitut asiat suunnitelmaan (Tekijä ja ohjaajan kentät). Tarkistuksen tulos työviikon 1 päiväkirjaan.</p>
 </div>
-<div class="wk"><h2>Työviikko 5 / 18 – Pelin lisäys ja validointi</h2>
-<p class="feature">Peli lisätään itse alusta rakennetulla lomakkeella tähtiarvioineen ja kommentteineen, ja syötteet validoidaan sekä selaimessa että palvelimella; virheviestit kentittäin.</p>
-<p class="task">☐&nbsp; Rakenna lisäyslomake itse ilman valmista käyttöliittymäkirjastoa: label-kytkennät ja kontrolloitu tila.</p>
-<p class="task">☐&nbsp; Toteuta POST /api/games ja palvelinvalidointi, joka palauttaa virhekoodin 400 (virheellinen pyyntö) ja virhelistan.</p>
-<p class="task">☐&nbsp; Näytä virheviestit kenttien vieressä ohjelmallisesti kytkettyinä.</p>
-<p class="task">☐&nbsp; Kirjaa ja aja testitapaukset T03–T05: onnistuminen, rajat ja suora API-kutsu.</p>
-<p class="done"><strong>Valmis kun:</strong> Tyhjä nimi, ylipitkä nimi ja onnistunut lisäys käyttäytyvät ennalta kirjatun odotuksen mukaan sekä selaimessa että suoralla API-kutsulla (curl-tuloste talteen).</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Commitit, validointisääntötaulukko, curl-tulosteet ja testikirjaukset T03–T05.</p>
+<p class="done wkdone"><strong>Viikon lopputarkistus:</strong> Ohjaaja avaa repositoryn osoitteen toisella koneella: README kertoo mikä projekti on, ja <code>npm install &amp;&amp; npm run dev</code> käynnistää sovellusrungon. Kysymyslista on <code>project-docs/kysymykset.md</code>-tiedostossa.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Repositoryn osoite, ensimmäisen commitin tunniste, työkalutodennusten tulosteet ja project-docs/kysymykset.md.</p>
 </div>
-<h1 class="page">Vaihe B – Tilat, käyttäjät, profiilit ja asiakaskatselmointi</h1>
-<div class="wk"><h2>Työviikko 6 / 18 – Tilat ja tilahistoria</h2>
-<p class="feature">Pelin tila vaihdetaan yhdellä napilla, ja jokainen muutos kirjautuu automaattisesti tilahistoriaan; palvelun ydinlupaus toimii.</p>
-<p class="task">☐&nbsp; Määrittele tilat ja sallitut siirtymät itse ja kirjaa ne suunnitelmaan.</p>
-<p class="task">☐&nbsp; Toteuta tilanvaihto-API, joka kirjoittaa historiarivin samassa transaktiossa.</p>
-<p class="task">☐&nbsp; Näytä tilahistoria pelin sivulla ja toteuta ”pelaan parhaillaan” -merkintä.</p>
-<p class="task">☐&nbsp; Kirjaa ja aja testitapaus T06 ja todista tulos suoralla tietokantakyselyllä.</p>
-<p class="done"><strong>Valmis kun:</strong> Tilan vaihto näkyy heti pelin sivulla, ja `status_history`-taulussa on rivi, jonka aikaleima ja vanha→uusi tila täsmäävät; suora tietokantakysely liitetty päiväkirjaan.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Commitit, siirtymätaulukko, sqlite3-kyselyn tuloste ennen ja jälkeen sekä T06.</p>
+<div class="wk u"><h2>Työviikko 2 / 18 – Suunnitelma ja tietomalli</h2>
+<p class="conn"><strong>Yhteys kokonaisprojektiin:</strong> Työviikon 1 kysymyslista sai vastauksia, ja nyt ne muuttuvat käyttäjätarinoiksi, tietomalliksi ja rajaukseksi. Päätät, mitä tehdään ensin ja miten tieto tallennetaan, koska tilahistoria ja kokoelmat on vaikea lisätä jälkikäteen. Samaa suunnitelmaa vasten rakennat ja tarkistat työtä työviikosta 3 alkaen.</p>
+<p class="goal"><strong>Viikon tavoite:</strong> Ohjaaja on kuitannut pakollisen ytimen rajauksen, ja jokaisella sen issuella on hyväksymiskriteerit ja työmääräarvio.</p>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 1 / 4 · Kirjoita käyttäjätarinat ja priorisoi ne ohjaajan kanssa</strong></p>
+<ol class="osat"><li>☐&nbsp; Kirjoita tarinat. Kirjoita tiedostoon <code>project-docs/kayttajatarinat.md</code> jokaisesta toiminnosta tarina muodossa ”Jäsenenä haluan…, jotta…”. Käytä työviikon 1 vastauksia.</li><li>☐&nbsp; Lisää hyväksymiskriteerit. Kirjoita jokaiseen tarinaan 1–3 havaittavaa kriteeriä, joista ulkopuolinen voi todeta, onko tarina valmis.</li><li>☐&nbsp; Luokittele tarinat. Merkitse tarinat: pakollinen ydin (P0), tärkeä jatko (P1) tai valinnainen lisä (P2). Profiiliviestit kuuluvat P2:een.</li><li>☐&nbsp; Priorisoi ohjaajan kanssa. Käy luokittelu läpi ohjaajan kanssa ja muuta sitä, jos rajauksesta sovitaan toisin.</li><li>☐&nbsp; Pyydä kirjallinen kuittaus. Avaa GitHubiin issue ”P0-rajaus”, linkitä siihen tarinatiedosto ja pyydä ohjaajalta kuittaus issue-kommenttina.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Jokaisella tarinalla on hyväksymiskriteerit ja prioriteetti, ja ohjaaja on kuitannut pakollisen ytimen (P0) rajauksen issue-kommentissa.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> <code>project-docs/kayttajatarinat.md</code> repositoryyn. Linkki ohjaajan kuittaukseen ja P0:n ulkopuolelle jääneet tarinat työviikon 2 päiväkirjaan.</p>
 </div>
-<div class="wk"><h2>Työviikko 7 / 18 – Käyttäjät ja kirjautuminen</h2>
-<p class="feature">Rekisteröityminen ja kirjautuminen toimivat turvallisesti, ja vain kirjautunut käyttäjä voi muokata omia pelejään; todennettu myös API-tasolla.</p>
-<p class="task">☐&nbsp; Vertaile istuntopohjainen kirjautuminen ja token ohjaajan kanssa ja kirjaa päätös perusteluineen.</p>
-<p class="task">☐&nbsp; Toteuta rekisteröityminen bcrypt-hashilla: käyttäjänimi, salasana, sähköposti ja valinnainen profiilikuva.</p>
-<p class="task">☐&nbsp; Toteuta kirjautuminen ja suojaa muokkausreitit middlewarella eli välikäsittelijällä, jonka läpi jokainen pyyntö kulkee ja joka tarkistaa omistajuuden.</p>
-<p class="task">☐&nbsp; Kirjaa ja aja testitapaukset T07 ja T08: väärä salasana sekä toisen käyttäjän peli.</p>
-<p class="done"><strong>Valmis kun:</strong> Toisen käyttäjän pelin muokkausyritys palauttaa 403 (curl-tuloste talteen); tietokannassa ja lokeissa ei näy selväkielistä salasanaa; vertailumuistiossa on ohjaajan kommentti.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Vertailumuistio ohjaajan kommentilla, commitit, curl-tulosteet sekä T07–T08.</p>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 2 / 4 · Piirrä tietomalli, sivukartta ja rautalangat</strong></p>
+<ol class="osat"><li>☐&nbsp; Piirrä tietomalli. Piirrä taulut, avaimet, viiteavaimet ja tilahistorian rakenne. Viikon toteutusavun kentät ovat esimerkki: päätä omat.</li><li>☐&nbsp; Nimeä tilat alustavasti. Kirjaa pelin tilat, esimerkiksi hyllyssä, kesken ja läpi. Nimet testataan käytännössä työviikolla 6.</li><li>☐&nbsp; Piirrä sivukartta. Piirrä näkymät ja siirtymät niiden välillä, esimerkiksi etusivu, pelit, pelin sivu, profiili ja kirjautuminen.</li><li>☐&nbsp; Piirrä rautalangat. Piirrä rautalangat eli karkeat luonnokset näkymien rakenteesta paperille tai työkalulla. Tee profiilisivusta tarkin.</li><li>☐&nbsp; Kirjaa suunnitelmaan. Kirjoita tietomallin ja sivukartan tiivistelmä suunnitelman kenttiin ja tallenna kuvat <code>project-docs/</code>-kansioon.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Tietomallissa näkyvät taulut ja avaimet, ja profiilin rautalanka on niin tarkka, että toteutusta voi verrata siihen työviikolla 8.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Tietomallikaavio, sivukartta ja rautalangat kuvina <code>project-docs/</code>-kansioon. Tiivistelmät suunnitelman kenttiin Tietomalli ja Sivukartta.</p>
 </div>
-<div class="wk"><h2>Työviikko 8 / 18 – Profiilisivu</h2>
-<p class="feature">Julkinen profiilisivu kokoaa viikon 2 rautalangan mukaisesti parhaillaan pelattavat pelit, tilastot laitteittain ja tiloittain sekä tilahistorian.</p>
-<p class="task">☐&nbsp; Toteuta profiilin kooste-API ja laske lukumäärät tietokannan kyselykielellä SQL:llä (GROUP BY -kyselyt).</p>
-<p class="task">☐&nbsp; Rakenna profiilinäkymä itse rautalangan mukaan ja reititä se käyttäjänimen mukaan.</p>
-<p class="task">☐&nbsp; Varmista vierailijanäkymä yksityisessä selainikkunassa ilman kirjautumista.</p>
-<p class="task">☐&nbsp; Vertaa toteutusta rautalankaan, kirjaa poikkeamat perusteluineen ja aja testitapaus T09.</p>
-<p class="done"><strong>Valmis kun:</strong> Vierailija näkee profiilin tilastoineen yksityisessä selainikkunassa, ja tilastoluvut täsmäävät tietokannan tarkistuskyselyyn; rautalankavertailu on päiväkirjassa.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Kuvakaappaus ja rautalanka rinnakkain, commitit, tarkistuskyselyn tuloste, T09 sekä ketju 1:n kirjaus, jos aito bugi osui tälle viikolle.</p>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 3 / 4 · Vertaile tietovarastot ja perustele valinta</strong></p>
+<ol class="osat"><li>☐&nbsp; Valitse kriteerit. Päätä omat vertailukriteerit, esimerkiksi datan rakenne, monta-moneen-suhteet, samanaikainen kirjoitus ja julkaisun helppous.</li><li>☐&nbsp; Vertaile kolme vaihtoehtoa. Täytä vertailutaulukko: SQLite, JSON-tiedosto ja palvelintietokanta. JSON-tiedosto on tavallinen tekstitiedosto, johon tieto tallennetaan.</li><li>☐&nbsp; Tee päätös. Valitse tietovarasto ja kirjoita 2–3 virkkeen perustelu, joka viittaa kriteereihisi.</li><li>☐&nbsp; Kirjaa suunnitelmaan. Kirjoita vertailu ja päätös suunnitelman kenttään Tietovarasto ja perustelu.</li><li>☐&nbsp; Kerro päätös ohjaajalle. Kerro valinta ohjaajalle. Jos valitset muun kuin ehdotetun SQLiten, sovi hänen kanssaan, miten työviikkojen 3–17 ohjeita sovelletaan.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Suunnitelmassa on kolmen vaihtoehdon vertailu omilla kriteereillä ja valinta perusteluineen.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Vertailu ja päätös suunnitelman kenttään Tietovarasto ja perustelu. Perustelu omin sanoin työviikon 2 päiväkirjaan.</p>
 </div>
-<div class="wk"><h2>Työviikko 9 / 18 – Haku ja suodatus</h2>
-<p class="feature">Pelilistaa voi hakea ja suodattaa nimen, laitteen ja tilan mukaan suoraan tietokantakyselyssä, ja toinen ulkoinen komponentti on tuotu perustellusti.</p>
-<p class="task">☐&nbsp; Toteuta haku ja suodatus API-parametreina parametrisoiduilla SQL-kyselyillä.</p>
-<p class="task">☐&nbsp; Rakenna suodatuskäyttöliittymä ja tyhjän tuloksen tila, josta suodattimet voi nollata.</p>
-<p class="task">☐&nbsp; Valitse, perustele ja konfiguroi toinen ulkoinen komponentti ja arvioi mitä sen tekeminen itse maksaisi.</p>
-<p class="task">☐&nbsp; Kirjaa suunnitelmaan kokoelmien laajennuspäätöksen kriteerit ja aja testitapaukset T10 ja T11.</p>
-<p class="done"><strong>Valmis kun:</strong> Suodatus ”NES + pelattu läpi” palauttaa vain oikeat rivit sekä käyttöliittymässä että suoralla API-kutsulla; haku ilman osumia näyttää tyhjän tilan viestin; perustelumuistio ulkoisesta komponentista ja kokoelmien päätöskriteerit ovat repositoryssa.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Commitit, perustelumuistio ulkoisesta komponentista, API-kutsun ja käyttöliittymän rinnakkaiset tulokset, T10–T11 sekä laajennuspäätöksen kriteerikirjaus.</p>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 4 / 4 · Pilko pakollinen ydin issueiksi ja arvioi työmäärät</strong></p>
+<ol class="osat"><li>☐&nbsp; Pilko tarinat. Pilko jokainen pakollisen ytimen (P0) tarina GitHub-issueiksi. Yksi issue on yksi rajattu muutos, yleensä puolen tai yhden päivän työ.</li><li>☐&nbsp; Kirjaa kriteerit issueen. Kopioi issueen ne tarinan hyväksymiskriteerit, joihin issue vastaa.</li><li>☐&nbsp; Arvioi työmäärä. Kirjaa jokaiseen issueen työmääräarvio tunteina tai päivinä.</li><li>☐&nbsp; Järjestä issue-taulu. Järjestä issuet issue-tauluun siihen järjestykseen, jossa aiot tehdä ne.</li><li>☐&nbsp; Sovi aloitus ohjaajan kanssa. Sovi ohjaajan kanssa, mitkä issuet tehdään ensin. Tehtävistä sovitaan näin joka viikko tästä eteenpäin.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Jokaisella pakollisen ytimen (P0) issuella on hyväksymiskriteerit ja työmääräarvio.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Issue-taulun linkki työviikon 2 päiväkirjaan.</p>
 </div>
-<div class="wk"><h2>Työviikko 10 / 18 – Asiakaskatselmointi</h2>
-<p class="feature">Asiakkaan edustaja on kokeillut julkaistua versiota, ja palaute on kirjattu hänen omilla sanoillaan, priorisoitu ja muutettu issueiksi.</p>
-<p class="task">☐&nbsp; Valmistele katselmointirunko ja demopolku: rekisteröityminen, peli, tila ja profiili.</p>
-<p class="task">☐&nbsp; Pidä katselmointi: asiakas käyttää palvelua itse, sinä kirjaat.</p>
-<p class="task">☐&nbsp; Erota havainnot ja oma tulkinta toisistaan ja priorisoi palaute yhdessä.</p>
-<p class="task">☐&nbsp; Päivitä issuet ja kirjoita asiakkaalle yhteenveto ilman jargonia.</p>
-<p class="done"><strong>Valmis kun:</strong> Katselmointimuistiossa on vähintään viisi asiakkaan havaintoa hänen omilla sanoillaan erillään omasta tulkinnasta, ja issueissa on niistä johdetut priorisoidut tehtävät.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Katselmointimuistio (rooli, ajankohta ja lainaukset), päivitetty issue-taulu ja yhteenvetoviesti.</p>
+<p class="done wkdone"><strong>Viikon lopputarkistus:</strong> Suunnitelma on <code>project-docs/suunnitelma.md</code>-tiedostossa, ohjaaja on kuitannut P0-rajauksen kirjallisesti (issue-kommentti), ja jokaisella P0-issuella on työmääräarvio.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> project-docs/suunnitelma.md, tietomallikaavio, rautalangat, issue-taulu arvioineen ja ohjaajan kirjallinen kuittaus P0-rajauksesta.</p>
 </div>
-<h1 class="page">Vaihe C – Palautemuutos, saavutettavuus, testaus, laatu ja dokumentaatio</h1>
-<div class="wk"><h2>Työviikko 11 / 18 – Palautemuutos</h2>
-<p class="feature">Katselmoinnin tärkein muutos on toteutettu omassa haarassa ja yhdistetty pull requestilla pääversioon, ja suunnitelman työmääräarviot on päivitetty toteutunutta vasten.</p>
-<p class="task">☐&nbsp; Valitse palautteesta tärkein muutos ja kirjaa sille hyväksymiskriteerit.</p>
-<p class="task">☐&nbsp; Toteuta muutos feature-haarassa pienin commitein.</p>
-<p class="task">☐&nbsp; Avaa pull request, tee itsekatselmointi, yhdistä pääversioon ja ratkaise mahdollinen konflikti.</p>
-<p class="task">☐&nbsp; Päivitä suunnitelma ja arviot, tee kokoelmien laajennuspäätös ja kerro asiakkaalle mikä muuttui.</p>
-<p class="done"><strong>Valmis kun:</strong> PR:ssä on kuvaus, viittaus palautteeseen ja katselmointikommentti; muutos on tuotannossa; suunnitelman muutosvertailu (diff) näyttää päivitetyt arviot.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Pull requestin linkki ja commit-historia, suunnitelman diff kirjattuine kokoelmapäätöksineen sekä asiakasviesti.</p>
+<div class="wk u"><h2>Työviikko 3 / 18 – Julkaistu runko</h2>
+<p class="conn"><strong>Yhteys kokonaisprojektiin:</strong> Työviikon 2 sivukartta ja tietomalli muuttuvat nyt koodiksi: reitit vastaavat sivukarttaa, ja migraatioskripti luo tietomallin taulut. Koko putki viedään heti julkiseen osoitteeseen, koska julkaisun ongelmat, kuten ympäristömuuttujat ja SQLiten levypolku, on halvinta korjata, kun rikottavaa on vähän. Samaan osoitteeseen tulevat työviikosta 4 alkaen pelit ja työviikolla 17 versio v1.0.</p>
+<p class="goal"><strong>Viikon tavoite:</strong> Kuka tahansa voi avata PeliHyllyn rungon julkisesta osoitteesta, ja <code>/api/health</code> vastaa tuotannossa.</p>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 1 / 4 · Rakenna reitit react-routerilla ja kirjoita k2-muistio</strong></p>
+<ol class="osat"><li>☐&nbsp; Kirjoita k2-muistio. Kirjoita <code>project-docs/k2-muistio.md</code>: mitä React ratkaisee (komponentit, tila, renderöinti), mitä ei (reititys, palvelin, tietovarasto) ja mitä siitä seuraa PeliHyllylle.</li><li>☐&nbsp; Asenna react-router. Asenna react-router <code>client</code>-kansioon ja kirjaa riippuvuus perusteluineen k2-muistioon.</li><li>☐&nbsp; Rakenna kolme reittiä. Tee sivut Etusivu, Pelit ja Profiili kansioon <code>client/src/sivut/</code> ja reitit tiedostoon <code>App.jsx</code>. Sisällöksi riittää paikanpitäjä.</li><li>☐&nbsp; Lisää navigaatio. Lisää navigaatio, jolla pääsee jokaiselle kolmelle sivulle.</li><li>☐&nbsp; Vertaa sivukarttaan. Tarkista, että reitit vastaavat työviikon 2 sivukarttaa. Kirjaa poikkeama suunnitelman kenttään Sivukartta ja komponenttijako.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Kolme reittiä toimii navigaatiosta, ja k2-muistio kertoo omin sanoin, miksi reititys tarvitsee erillisen kirjaston.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> <code>project-docs/k2-muistio.md</code> ja reitit commitilla repositoryyn.</p>
 </div>
-<div class="wk"><h2>Työviikko 12 / 18 – Responsiivisuus ja saavutettavuus</h2>
-<p class="feature">Palvelu toimii puhelimella ja pelkällä näppäimistöllä, ja Lighthouse-tulokset ennen ja jälkeen on kirjattu parannuksineen; CSS on omaa käsialaa.</p>
-<p class="task">☐&nbsp; Päätä taitekohdat ja korjaa keskeiset näkymät mobiiliin. Testaa oikealla laitteella.</p>
-<p class="task">☐&nbsp; Käy läpi näppäinpolku, fokusjärjestys ja fokuksen näkyvyys.</p>
-<p class="task">☐&nbsp; Tarkista kontrastit, alt-tekstit, label-kytkennät ja otsikkohierarkia.</p>
-<p class="task">☐&nbsp; Aja Lighthouse ennen ja jälkeen ja kirjaa testitapaus T12.</p>
-<p class="done"><strong>Valmis kun:</strong> Pelin lisäys onnistuu puhelimella ja pelkällä näppäimistöllä; Lighthouse-saavutettavuus on kirjattu ennen ja jälkeen, ja jokainen korjaus on selitetty omin sanoin.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Kuvakaappaukset laitteelta, Lighthouse-raportit ennen ja jälkeen, commitit sekä T12.</p>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 2 / 4 · Pystytä Express-palvelin ja tietokannan skeema</strong></p>
+<ol class="osat"><li>☐&nbsp; Luo Express-projekti. Luo <code>server</code>-kansioon Express-projekti ja tiedosto <code>server/index.js</code>, joka käynnistää palvelimen.</li><li>☐&nbsp; Tee terveystarkistus. Toteuta reitti <code>/api/health</code>, joka palauttaa version ja tietokantayhteyden tilan. Kokeile sitä selaimessa.</li><li>☐&nbsp; Kytke SQLite. Tee tiedosto <code>server/db.js</code>, joka avaa SQLite-tietokannan. Lue tietokannan polku ympäristömuuttujasta.</li><li>☐&nbsp; Kirjoita migraatioskripti. Kirjoita <code>server/migrate.js</code>, joka luo työviikon 2 tietomallin taulut eli tietokannan skeeman ja tulostaa, montako taulua syntyi.</li><li>☐&nbsp; Aja migraatio. Aja migraatio tyhjään tietokantaan ja tarkista tulosteesta, että taulujen määrä vastaa tietomallia.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> <code>/api/health</code> vastaa paikallisesti, ja migraatio luo tietomallin taulut tyhjään tietokantaan.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> <code>server/</code>-kansion tiedostot commitilla repositoryyn. Migraation tuloste työviikon 3 päiväkirjaan.</p>
 </div>
-<div class="wk"><h2>Työviikko 13 / 18 – Testausviikko</h2>
-<p class="feature">Koko testimatriisi (vähintään 12 tapausta kolmessa luokassa) on ajettu tuotantoversiota vasten, ja löydökset on viety täydellisinä virheenkorjausketjuina korjauksiin asti.</p>
-<p class="task">☐&nbsp; Täydennä testimatriisi kolmeen luokkaan ja kirjaa odotettu tulos ennen ajoa.</p>
-<p class="task">☐&nbsp; Aja kaikki tapaukset tuotantoversiota vasten ja kirjaa toteutuneet tulokset.</p>
-<p class="task">☐&nbsp; Korjaa löydökset täysinä ketjuina havainnosta regressiotestiin asti.</p>
-<p class="task">☐&nbsp; Aja testitapaus T13: verkkoyhteys katkeaa kesken lomakkeen lähetyksen.</p>
-<p class="done"><strong>Valmis kun:</strong> Matriisin jokaisella rivillä on odotettu tulos (kirjattu ennen ajoa) ja toteutunut tulos; vähintään yksi täydellinen ketju on viety regressiotestiin asti tällä viikolla.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Testimatriisi tuloksineen, ketjukirjaukset ja korjauscommitit.</p>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 3 / 4 · Vertaile julkaisualustat ja julkaise runko</strong></p>
+<ol class="osat"><li>☐&nbsp; Vertaile alustat. Täytä vertailutaulukko: Render, Railway ja Fly.io. Kriteereinä ilmainen taso, levyn pysyvyys SQLite-tiedostolle, ympäristömuuttujat ja käyttöönoton työmäärä.</li><li>☐&nbsp; Tee päätös. Valitse alusta ja kirjaa perustelu suunnitelman kenttään Julkaisualusta. Tilin omistajuus sovitaan ohjaajan kanssa.</li><li>☐&nbsp; Kokoa tuotantobuild. Aja <code>client</code>-kansiossa <code>npm run build</code> ja tarkista, että Express tarjoilee <code>client/dist</code>-kansion.</li><li>☐&nbsp; Aseta ympäristö. Aseta salaisuudet ja tietokannan polku alustan ympäristömuuttujiksi. Tarkista, että SQLite-tiedosto on pysyvällä levyllä.</li><li>☐&nbsp; Julkaise ja tarkista. Julkaise ja avaa julkinen osoite sekä <code>/api/health</code> puhelimella mobiiliverkossa.</li><li>☐&nbsp; Kirjaa osoite. Lisää julkinen osoite README:hen ja ota julkaisulokista kuvakaappaus.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Julkinen osoite näyttää navigoitavan rungon, ja <code>/api/health</code> vastaa tuotannossa.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Julkaisulokin kuvakaappaus <code>project-docs/</code>-kansioon, osoite README:hen ja alustojen vertailu työviikon 3 päiväkirjaan.</p>
 </div>
-<div class="wk"><h2>Työviikko 14 / 18 – Laatuviikko</h2>
-<p class="feature">Koodin rakenne ja nimeäminen on refaktoroitu pienin commitein ilman toiminnan muutosta, ja tietoturva-arvio on dokumentoitu ratkaisuineen.</p>
-<p class="task">☐&nbsp; Arvioi oma rakenne (komponenttien vastuut, moduulijako ja toisto) ja listaa refaktorointikohteet.</p>
-<p class="task">☐&nbsp; Refaktoroi lista pienin, kuvaavasti nimetyin commitein.</p>
-<p class="task">☐&nbsp; Kirjoita tietoturva-arvio: syötteet, salasanat, istunnot, tietojen näkyvyys, SQL-injektio ja XSS eli käyttäjän syöttämän koodin ajautuminen sivulla.</p>
-<p class="task">☐&nbsp; Aja testimatriisin ydinrivit uudelleen ennen ja jälkeen refaktoroinnin.</p>
-<p class="done"><strong>Valmis kun:</strong> Refaktorointicommitit ovat pieniä ja kuvaavasti nimettyjä; testimatriisin ydinrivit menevät läpi ennen ja jälkeen; `project-docs/tietoturva-arvio.md` kattaa vähintään viisi riskiä ratkaisuineen ja koodiviittauksineen.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Commit-sarja, project-docs/tietoturva-arvio.md ja regressiokirjaus.</p>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 4 / 4 · Lähetä asiakkaalle tilannekatsaus</strong></p>
+<ol class="osat"><li>☐&nbsp; Varmista vastaanottaja. Tarkista ohjaajalta, kuka toimii asiakkaan edustajana. Ohjaaja nimeää hänet viimeistään tällä viikolla.</li><li>☐&nbsp; Kirjoita kolme virkettä. Kerro ilman teknistä jargonia, mitä nyt on valmiina, mitä seuraavaksi tehdään ja mistä osoitteesta palvelun näkee.</li><li>☐&nbsp; Poista jargon. Lue viesti asiakkaan silmin ja vaihda sanat kuten rajapinta, build tai migraatio arkikielelle.</li><li>☐&nbsp; Lähetä ja tallenna. Lähetä viesti asiakkaan edustajalle ja tallenna se tiedostoon <code>project-docs/viestit.md</code>.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Tilannekatsaus on lähetetty ja tallennettu <code>project-docs/viestit.md</code>-tiedostoon.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> <code>project-docs/viestit.md</code> commitilla repositoryyn.</p>
 </div>
-<div class="wk"><h2>Työviikko 15 / 18 – Dokumentaatio</h2>
-<p class="feature">Käyttöönotto-ohje ja dokumentaatio ovat niin valmiit, että ulkopuolinen saa palvelun käyntiin pelkän ohjeen avulla; todistettu omalla kuivaharjoituksella puhtaassa kansiossa.</p>
-<p class="task">☐&nbsp; Kirjoita README ja käyttöönotto-ohje: vaatimukset, asennus, ympäristömuuttujat, migraatiot, käynnistys ja julkaisu.</p>
-<p class="task">☐&nbsp; Dokumentoi riippuvuudet, komponenttirakenne ja ympäristöasetukset.</p>
-<p class="task">☐&nbsp; Tee kuivaharjoitus: kloonaa puhtaaseen kansioon ja seuraa ohjetta orjallisesti.</p>
-<p class="task">☐&nbsp; Kokoa julkaisuehdokkaan jäädytyksen tarkistuslista työviikkoa 16 varten.</p>
-<p class="done"><strong>Valmis kun:</strong> `git clone` puhtaaseen kansioon ja ohjeen komennot tuottavat toimivan sovelluksen ilman yhtään ohjeen ulkopuolista temppua; jokainen matkalla kirjattu tökkäys on korjattu ohjeeseen.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: README ja project-docs/, .env.example sekä kuivaharjoituksen loki.</p>
+<p class="done wkdone"><strong>Viikon lopputarkistus:</strong> Julkinen osoite näyttää navigoitavan rungon, <code>/api/health</code> vastaa tuotannossa, ja tilannekatsausviesti on lähetetty ja tallennettu <code>project-docs/viestit.md</code>-tiedostoon.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Julkinen osoite, julkaisuloki tai kuvakaappaus, k2-muistio ja tilannekatsausviesti project-docs/viestit.md-tiedostossa.</p>
 </div>
-<h1 class="page">Vaihe D – Julkaisuehdokas, v1.0 ja näyttö</h1>
-<div class="wk"><h2>Työviikko 16 / 18 – Julkaisuehdokas ja julkaisutestaus</h2>
-<p class="feature">Sisältö on jäädytetty, julkaisuehdokas on julkaistu asiakkaan ympäristöön, ja ulkopuolinen testaaja on ottanut palvelun käyttöön pelkän kirjallisen ohjeen avulla; vain estävät virheet korjataan.</p>
-<p class="task">☐&nbsp; Jäädytä sisältö, rakenna tuotantobuild ja julkaise julkaisuehdokas tagilla asiakkaan ympäristöön.</p>
-<p class="task">☐&nbsp; Järjestä julkaisutesti: ulkopuolinen testaaja, puhdas ympäristö ja vain kirjallinen ohje.</p>
-<p class="task">☐&nbsp; Kirjaa testaajan havainnot hänen omilla sanoillaan ja jokainen epäröintikohta ohjeen korjauslistaksi.</p>
-<p class="task">☐&nbsp; Luokittele löydökset estäviin ja v1.1:een siirtyviin ja aloita estävien virheiden ketjut.</p>
-<p class="done"><strong>Valmis kun:</strong> Testaaja rekisteröityi, lisäsi pelin ja vaihtoi tilan ilman suullista apua, tai jokainen epäröintikohta on kirjattu ja luokiteltu; RC-tag on repositoryssa ja estävien vikojen ketjut aloitettu.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Julkaisuehdokkaan tagi, julkaisutestin pöytäkirja (rooli, ajankohta ja testaajan sanat), löydösten luokittelu ja ketju 3:n aloitus.</p>
+<h1 class="page">Vaihe 2 – Oma hylly: pelit ja tilanvaihto</h1>
+<div class="wk u"><h2>Työviikko 4 / 18 – Pelilista tietokannasta</h2>
+<p class="conn"><strong>Yhteys kokonaisprojektiin:</strong> Työviikon 3 tyhjät reitit saavat nyt sisällön. Sama tietokanta, jonka migraatio loi, tarjoillaan oman rajapintareitin kautta React-komponenteille, ja virhetilat käsitellään heti. Lukuyhteys on pohja, jonka päälle työviikolla 5 tulee pelin lisäys.</p>
+<p class="goal"><strong>Viikon tavoite:</strong> Käyttäjä näkee pelilistan tietokannasta, ja jos palvelin on alhaalla, hän saa selkeän virheilmoituksen tyhjän sivun sijaan.</p>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 1 / 4 · Tee siemendata ja pelilistan rajapintareitti</strong></p>
+<ol class="osat"><li>☐&nbsp; Kirjoita siemendata. Kirjoita <code>server/seed.js</code>, joka lisää tietokantaan omat esimerkkipelisi. Kirjoita pelit itse, älä kopioi ulkopuolista tietokantaa.</li><li>☐&nbsp; Aja siemendata. Aja skripti ja tarkista <code>sqlite3</code>-kyselyllä, että pelit ovat tietokannassa.</li><li>☐&nbsp; Tee lukureitti. Toteuta <code>GET /api/games</code>, joka lukee pelit tietokannasta ja palauttaa ne JSON-muodossa.</li><li>☐&nbsp; Kokeile reittiä. Avaa reitti selaimessa tai curlilla ja vertaa vastausta siemendataan.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> <code>GET /api/games</code> palauttaa siemendatan pelit tietokannasta.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Siemendataskripti ja reitti commitilla repositoryyn.</p>
 </div>
-<div class="wk"><h2>Työviikko 17 / 18 – Julkaisu v1.0</h2>
-<p class="feature">Estävät virheet on korjattu ja uusintatestattu, v1.0 on tuotannossa asiakkaan osoitteessa tagilla merkittynä, ja julkaisutiedote on kirjoitettu asiakkaan kielellä.</p>
-<p class="task">☐&nbsp; Korjaa estävät virheet ja vie ketju 3 regressiotestiin asti.</p>
-<p class="task">☐&nbsp; Rakenna tuotantobuild, tarkista ympäristöasetukset ja julkaise v1.0 tagilla.</p>
-<p class="task">☐&nbsp; Kirjoita julkaisutiedote asiakkaalle: mitä palvelu tekee ja mitä jäi v1.1:een.</p>
-<p class="task">☐&nbsp; Savutestaa tuotanto puhtaassa selainikkunassa ja toisella laitteella.</p>
-<p class="done"><strong>Valmis kun:</strong> Osoite toimii yksityisessä selainikkunassa ja toisella laitteella; repositoryssa on tag `v1.0`; julkaisutiedote kertoo asiakkaan kielellä, mitä palvelu tekee ja mitä siirtyi jatkoon.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Tagi v1.0, tuotannon osoite, julkaisutiedote ja savutestikirjaus.</p>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 2 / 4 · Rakenna pelilista komponenteista omalla fetch-hookilla</strong></p>
+<ol class="osat"><li>☐&nbsp; Tee oma hookki. Kirjoita hookki <code>usePelit()</code>, joka hakee pelit useEffectin ja fetchin avulla ja palauttaa datan, lataustilan ja virheen.</li><li>☐&nbsp; Rakenna lista ja kortti. Tee komponentit PeliLista ja PeliKortti. Lista saa pelit propsina ja piirtää kortin jokaiselle pelille.</li><li>☐&nbsp; Erota tilamerkki. Tee TilaMerkki-komponentti, joka näyttää pelin tilan. Kortti ei itse päätä tilan ulkoasua.</li><li>☐&nbsp; Kytke Pelit-sivuun. Käytä hookkia PelitSivu-komponentissa ja näytä lista reitillä, jonka teit työviikolla 3.</li><li>☐&nbsp; Julkaise ja tarkista. Julkaise muutos ja tarkista, että lista näkyy tuotannossa tietokannan datasta.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Pelilista näkyy tuotannossa tietokannan datasta, ja jokaisella komponentilla on yksi vastuu.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Komponentit ja hookki commitilla. Vastuunjako omin sanoin työviikon 4 päiväkirjaan.</p>
 </div>
-<div class="wk"><h2>Työviikko 18 / 18 – Näyttö</h2>
-<p class="feature">Mitään uutta ei rakenneta: näyttömatriisin kaikki 32 vaatimusta on täsmälinkitetty työnäytteisiin, demo on harjoiteltu ja itsearvio kirjoitettu.</p>
-<p class="task">☐&nbsp; Täsmälinkitä näyttömatriisin kaikki 32 vaatimusta suoraan työnäytteisiin.</p>
-<p class="task">☐&nbsp; Harjoittele 8–10 minuutin demo ääneen ja kellon kanssa.</p>
-<p class="task">☐&nbsp; Kirjoita itsearvio: mikä onnistui, missä tarvitsit apua ja mitä tekisit toisin.</p>
-<p class="task">☐&nbsp; Luovuta paketti ohjaajalle ja pyydä luovutuskuittaus.</p>
-<p class="done"><strong>Valmis kun:</strong> Ohjaaja avaa matriisista satunnaisen rivin ja päätyy oikeaan työnäytteeseen alle minuutissa; demo pysyy harjoituksessa ajassa; itsearvio ja AI-loki ovat päiväkirjan mukana repositoryssa.</p>
-<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: Täsmälinkitetty näyttömatriisi, itsearvio, demorunko ja luovutuskuittaus.</p>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 3 / 4 · Käsittele lataus-, virhe- ja tyhjä tila</strong></p>
+<ol class="osat"><li>☐&nbsp; Näytä lataustila. Näytä käyttäjälle viesti tai merkki silloin, kun pelejä haetaan.</li><li>☐&nbsp; Tarkista vastaus. Tarkista hookissa <code>response.ok</code> ja palauta virhe, jos palvelin vastaa virheellä.</li><li>☐&nbsp; Kirjoita virheviesti. Näytä virhe käyttäjän kielellä, esimerkiksi ”Pelien haku ei onnistunut. Yritä hetken päästä uudelleen.”</li><li>☐&nbsp; Käsittele tyhjä lista. Näytä oma viesti, jos pelejä ei ole. Älä jätä sivua tyhjäksi.</li><li>☐&nbsp; Sammuta palvelin. Sammuta palvelin, lataa sivu uudelleen ja ota kuvakaappaus sekä normaalitilasta että virhetilasta.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Kun palvelin on alhaalla, sivu näyttää virheilmoituksen eikä jää tyhjäksi. Molemmista tiloista on kuvakaappaus.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Kuvakaappaukset normaali- ja virhetilasta <code>project-docs/</code>-kansioon ja muutokset commitilla.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 4 / 4 · Kirjaa ja aja testitapaukset T01 ja T02</strong></p>
+<ol class="osat"><li>☐&nbsp; Luo testimatriisi. Luo tiedosto <code>project-docs/testimatriisi.md</code>, jossa on sarakkeet tunnus, luokka, askeleet, odotettu tulos, toteutunut tulos ja viikko.</li><li>☐&nbsp; Kirjaa testitapaus T01. Normaali käyttö: pelilista latautuu ja näyttää siemendatan. Kirjaa odotettu tulos ennen ajoa.</li><li>☐&nbsp; Kirjaa testitapaus T02. Virhetilanne: palvelin on alhaalla, ja käyttäjä näkee virheilmoituksen. Kirjaa odotettu tulos ennen ajoa.</li><li>☐&nbsp; Aja ja kirjaa tulokset. Aja molemmat testitapaukset ja kirjaa toteutuneet tulokset matriisiin.</li><li>☐&nbsp; Tee commit. Tee commit, jonka viesti kertoo, mitkä testitapaukset lisättiin.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Testimatriisissa ovat testitapaukset T01 ja T02: odotettu tulos kirjattuna ennen ajoa ja toteutunut tulos ajon jälkeen.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> <code>project-docs/testimatriisi.md</code> commitilla. Odotetut ja toteutuneet tulokset lyhyesti työviikon 4 päiväkirjaan.</p>
+</div>
+<p class="done wkdone"><strong>Viikon lopputarkistus:</strong> Lista renderöityy tuotannossa tietokannan datasta; kun API on alhaalla, sivu näyttää virheilmoituksen eikä jää tyhjäksi; molemmista kuvakaappaus.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Commitit, kuvakaappaus normaali- ja virhetilasta sekä testikirjaukset T01–T02.</p>
+</div>
+<div class="wk u"><h2>Työviikko 5 / 18 – Pelin lisäys ja validointi</h2>
+<p class="conn"><strong>Yhteys kokonaisprojektiin:</strong> Työviikolla 4 pelejä vain luettiin, nyt niitä myös kirjoitetaan. Rakennat lomakkeen itse ja tarkistat syötteet sekä selaimessa että palvelimella, koska rajapintaa voi kutsua suoraan selaimen ohi. Tähtiarviot ja kommentit syntyvät lomakkeen kenttinä, ja samaa lomaketta käytetään myöhemmin pelin muokkaukseen.</p>
+<p class="goal"><strong>Viikon tavoite:</strong> Jäsen lisää pelin tähtiarvioineen ja kommentteineen, ja virheellinen syöte hylätään kentittäisellä viestillä myös suorassa kutsussa.</p>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 1 / 4 · Rakenna pelin lisäyslomake itse</strong></p>
+<ol class="osat"><li>☐&nbsp; Suunnittele kentät. Päätä kentät nimi, laite, tila, tähdet ja kommentti sekä niiden pakollisuus suunnitelman mukaan.</li><li>☐&nbsp; Kirjaa säännöt ensin. Täytä validointisääntötaulukko ennen koodia: kenttä, sääntö, virheviesti ja missä sääntö tarkistetaan.</li><li>☐&nbsp; Rakenna lomake. Tee PeliLomake-komponentti ilman valmista käyttöliittymäkirjastoa. Kenttien arvot ovat Reactin tilassa, eli lomake on kontrolloitu.</li><li>☐&nbsp; Kytke labelit. Kytke jokainen label omaan kenttäänsä. Tähtiarvion pitää toimia myös näppäimistöllä.</li><li>☐&nbsp; Lisää selainvalidointi. Toteuta taulukon säännöt selaimessa ennen kuin lomake lähettää pyynnön.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Lomake toimii näppäimistöllä, jokainen kenttä on kytketty labeliinsa, ja validointisäännöt on kirjattu taulukkoon ennen koodia.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Validointisääntötaulukko <code>project-docs/</code>-kansioon ja lomake commitilla repositoryyn.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 2 / 4 · Toteuta pelin lisäys ja palvelinvalidointi</strong></p>
+<ol class="osat"><li>☐&nbsp; Tee lisäysreitti. Toteuta <code>POST /api/games</code>, joka tallentaa pelin tietokantaan ja palauttaa lisätyn pelin.</li><li>☐&nbsp; Toteuta samat säännöt. Tarkista Expressissä samat säännöt kuin selaimessa sääntötaulukon mukaan.</li><li>☐&nbsp; Palauta virhelista. Palauta virheelliseen pyyntöön virhekoodi 400 (virheellinen pyyntö) ja virhelista kentittäin, esimerkiksi <code>{ nimi: "…" }</code>.</li><li>☐&nbsp; Todista curlilla. Lähetä curlilla selaimen ohi pyyntö ilman pakollisia kenttiä ja tallenna tuloste. Kirjaa odotus ennen ajoa.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Tyhjä pyyntö curlilla saa vastaukseksi virhekoodin 400 ja virhelistan, ja onnistunut lisäys tallentuu tietokantaan.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> curl-tulosteet <code>project-docs/</code>-kansioon ja reitti commitilla repositoryyn.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 3 / 4 · Näytä virheviestit kenttien vieressä</strong></p>
+<ol class="osat"><li>☐&nbsp; Käytä samaa virhemuotoa. Käytä samaa virhemuotoa selaimessa ja palvelimella, jotta palvelimen virhelista näkyy samoissa kohdissa.</li><li>☐&nbsp; Näytä viesti kentän vieressä. Näytä kunkin kentän virheviesti heti kentän alla, ei vain sivun yläreunassa.</li><li>☐&nbsp; Kytke viesti kenttään. Kytke virheviesti kenttään <code>aria-describedby</code>-attribuutilla.</li><li>☐&nbsp; Kokeile palvelimen virhettä. Ohita selainvalidointi hetkeksi ja tarkista, että palvelimen palauttama virhe näkyy oikean kentän vieressä.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Virheviesti näkyy oikean kentän vieressä sekä selaimen että palvelimen hylkäämässä pyynnössä, ja viesti on kytketty kenttään.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Muutokset commitilla ja kuvakaappaus kentittäisistä virheviesteistä <code>project-docs/</code>-kansioon.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 4 / 4 · Kirjaa ja aja testitapaukset T03–T05</strong></p>
+<ol class="osat"><li>☐&nbsp; Kirjaa testitapaus T03. Normaali käyttö: onnistunut lisäys. Kirjaa testimatriisiin odotettu tulos ennen ajoa.</li><li>☐&nbsp; Kirjaa testitapaus T04. Raja: ylipitkä nimi, esimerkiksi 101 merkkiä. Kirjaa odotettu tulos ennen ajoa.</li><li>☐&nbsp; Kirjaa testitapaus T05. Virhetilanne: suora kutsu curlilla ilman pakollisia kenttiä. Kirjaa odotettu tulos ennen ajoa.</li><li>☐&nbsp; Aja ja vertaa. Aja tapaukset selaimessa ja curlilla ja kirjaa toteutuneet tulokset. Molempien pitää hylätä virheellinen pyyntö samalla säännöllä.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Testitapaukset T03–T05 on kirjattu odotuksineen ennen ajoa, ja toteutuneet tulokset on kirjattu matriisiin.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> <code>project-docs/testimatriisi.md</code> commitilla. Validointisäännöt ja curl-ajon havainnot työviikon 5 päiväkirjaan.</p>
+</div>
+<p class="done wkdone"><strong>Viikon lopputarkistus:</strong> Tyhjä nimi, ylipitkä nimi ja onnistunut lisäys käyttäytyvät ennalta kirjatun odotuksen mukaan sekä selaimessa että suoralla API-kutsulla (curl-tuloste talteen).</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Commitit, validointisääntötaulukko, curl-tulosteet ja testikirjaukset T03–T05.</p>
+</div>
+<div class="wk u"><h2>Työviikko 6 / 18 – Tilat ja tilahistoria</h2>
+<p class="conn"><strong>Yhteys kokonaisprojektiin:</strong> Työviikolla 5 peli saatiin hyllyyn, nyt se saa elämän. Työviikon 2 tietomallin tilahistoriataulu otetaan käyttöön, ja tilojen nimet testataan käytännössä. Kun tilanvaihto toimii, profiili voi työviikolla 8 koota historiasta jäsenen tilastot.</p>
+<p class="goal"><strong>Viikon tavoite:</strong> Jäsen vaihtaa pelin tilan yhdellä napilla, ja jokainen muutos näkyy pelin tilahistoriassa.</p>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 1 / 4 · Määrittele pelin tilat ja sallitut siirtymät</strong></p>
+<ol class="osat"><li>☐&nbsp; Nimeä tilat. Nimeä tilat itse, esimerkiksi hyllyssä, kesken, läpi ja kaikki tehty. Älä kopioi aihekuvauksesta miettimättä.</li><li>☐&nbsp; Täytä siirtymätaulukko. Kirjaa taulukkoon, mistä tilasta mihin pääsee ja mihin ei.</li><li>☐&nbsp; Perustele estot. Kirjoita jokaiselle estetylle siirtymälle yhden virkkeen perustelu.</li><li>☐&nbsp; Päivitä suunnitelma. Päivitä suunnitelman kenttä Tietomalli ja tilojen nimet ja kirjaa, mikä muuttui työviikon 2 tietomallista.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Suunnitelmassa ovat tilojen nimet ja siirtymätaulukko, jossa jokainen estetty siirtymä on perusteltu.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Siirtymätaulukko <code>project-docs/</code>-kansioon ja päivitetty <code>project-docs/suunnitelma.md</code> commitilla.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 2 / 4 · Toteuta tilanvaihto, joka kirjaa historiarivin samassa transaktiossa</strong></p>
+<ol class="osat"><li>☐&nbsp; Tee tilanvaihtoreitti. Toteuta rajapintareitti, joka vaihtaa yhden pelin tilan.</li><li>☐&nbsp; Tarkista siirtymä. Hylkää siirtymä, jota siirtymätaulukko ei salli, ja palauta selkeä virhe.</li><li>☐&nbsp; Kirjoita transaktio. Päivitä <code>games</code>-taulun tila ja lisää <code>status_history</code>-tauluun vanha tila, uusi tila ja aikaleima samassa transaktiossa.</li><li>☐&nbsp; Kokeile virhettä. Aiheuta tarkoituksella virhe historiarivin lisäyksessä ja tarkista, ettei myöskään tila muuttunut.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Tilanvaihto ja historiarivi tallentuvat yhdessä, ja epäonnistunut vaihto ei jätä voimaan tilaa eikä riviä.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Reitti commitilla repositoryyn. Miten varmistit transaktion, työviikon 6 päiväkirjaan.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 3 / 4 · Lisää tilanappi, tilahistoria ja pelaan parhaillaan -merkintä</strong></p>
+<ol class="osat"><li>☐&nbsp; Tee pelin sivu. Tee pelin sivu, jolla näkyvät pelin tiedot ja nykyinen tila.</li><li>☐&nbsp; Lisää tilanappi. Lisää pelin sivulle nappi, joka vaihtaa tilan yhdellä painalluksella ja päivittää näkymän heti.</li><li>☐&nbsp; Näytä historia. Näytä pelin tilahistoria aikajärjestyksessä, uusin ylimpänä.</li><li>☐&nbsp; Lisää pelaan parhaillaan -merkintä. Toteuta merkintä, jonka jäsen voi laittaa päälle ja pois.</li><li>☐&nbsp; Tarkista julkaistussa versiossa. Vaihda tila julkaistussa versiossa ja tarkista, että uusi tila ja historiarivi näkyvät heti.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Tilan vaihto yhdellä napilla näkyy heti pelin sivulla ja historiassa, ja pelaan parhaillaan -merkintä tallentuu.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Muutokset commitilla ja kuvakaappaus pelin sivusta historioineen <code>project-docs/</code>-kansioon.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 4 / 4 · Kirjaa ja aja testitapaus T06 tietokantaa vasten</strong></p>
+<ol class="osat"><li>☐&nbsp; Kirjaa testitapaus T06. Normaali käyttö: tilanvaihto luo historiarivin, jonka vanha ja uusi tila täsmäävät. Kirjaa odotettu tulos testimatriisiin ennen ajoa.</li><li>☐&nbsp; Aja kysely ennen. Aja todennuskysely <code>sqlite3</code>-komennolla ennen tilanvaihtoa ja tallenna tuloste.</li><li>☐&nbsp; Vaihda tila kerran. Vaihda yhden pelin tila käyttöliittymästä.</li><li>☐&nbsp; Aja kysely jälkeen. Aja sama kysely ja tarkista, että syntyi täsmälleen yksi rivi oikealla aikaleimalla.</li><li>☐&nbsp; Kirjaa tulos. Kirjaa toteutunut tulos testimatriisiin ja liitä molemmat tulosteet päiväkirjaan.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Testitapaus T06 on kirjattu odotuksineen ennen ajoa, ja kyselyn tulosteet ennen ja jälkeen todistavat yhden täsmäävän historiarivin.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> <code>project-docs/testimatriisi.md</code> commitilla. sqlite3-tulosteet ennen ja jälkeen työviikon 6 päiväkirjaan.</p>
+</div>
+<p class="done wkdone"><strong>Viikon lopputarkistus:</strong> Tilan vaihto näkyy heti pelin sivulla, ja <code>status_history</code>-taulussa on rivi, jonka aikaleima ja vanha→uusi tila täsmäävät; suora tietokantakysely liitetty päiväkirjaan.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Commitit, siirtymätaulukko, sqlite3-kyselyn tuloste ennen ja jälkeen sekä T06.</p>
+</div>
+<h1 class="page">Vaihe 3 – Jäsenet, profiilit ja katselmointi</h1>
+<div class="wk u"><h2>Työviikko 7 / 18 – Käyttäjät ja kirjautuminen</h2>
+<p class="conn"><strong>Yhteys kokonaisprojektiin:</strong> Työviikoilla 4–6 kuka tahansa pystyi muokkaamaan mitä tahansa. Nyt pelit saavat omistajan, ja aiemmat muokkausreitit suojataan omistajuustarkistuksella. Kirjautuminen on edellytys julkiselle profiilille, jonka rakennat työviikolla 8.</p>
+<p class="goal"><strong>Viikon tavoite:</strong> Jäsen rekisteröityy ja kirjautuu, ja vain pelin omistaja voi muokata peliä, myös suoralla rajapintakutsulla.</p>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 1 / 4 · Vertaile istunto ja token ohjaajan kanssa</strong></p>
+<ol class="osat"><li>☐&nbsp; Valitse kriteerit. Kirjaa omat kriteerit, esimerkiksi palvelinten määrä, tietoturva, toteutuksen työmäärä ja uloskirjautuminen.</li><li>☐&nbsp; Vertaile kaksi tapaa. Kirjoita vertailumuistio: istuntopohjainen kirjautuminen ja token omia kriteereitäsi vasten.</li><li>☐&nbsp; Päätä ohjaajan kanssa. Käy vertailu läpi ohjaajan kanssa ja tehkää päätös yhdessä. Pyydä ohjaajalta kommentti muistioon.</li><li>☐&nbsp; Kirjaa päätös. Kirjoita päätös perusteluineen suunnitelman kenttään Autentikointitapa.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Vertailumuistiossa ovat omat kriteerit, päätös ja ohjaajan kommentti.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Vertailumuistio <code>project-docs/</code>-kansioon ja päätös <code>project-docs/suunnitelma.md</code>-tiedostoon commitilla.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 2 / 4 · Toteuta rekisteröityminen salasanan hashilla</strong></p>
+<ol class="osat"><li>☐&nbsp; Tee käyttäjätaulu. Tee migraatio <code>users</code>-taululle: käyttäjänimi, salasanan hash, sähköposti ja valinnainen profiilikuva.</li><li>☐&nbsp; Hashaa salasana. Tallenna salasana bcrypt-hashina eli yksisuuntaisesti salattuna. Selväkielinen salasana ei tallennu koskaan.</li><li>☐&nbsp; Tee rekisteröitymisreitti. Toteuta <code>POST /api/users</code> validointeineen samaan tapaan kuin työviikon 5 lomakkeessa.</li><li>☐&nbsp; Tarkista kanta ja lokit. Rekisteröi testikäyttäjä ja tarkista tietokannasta ja palvelinlokista, ettei selväkielistä salasanaa näy missään.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Rekisteröityminen toimii, ja tietokannassa ja lokeissa näkyy vain salasanan hash.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Muutokset commitilla ja tietokantatarkistuksen tuloste työviikon 7 päiväkirjaan.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 3 / 4 · Toteuta kirjautuminen ja suojaa muokkausreitit</strong></p>
+<ol class="osat"><li>☐&nbsp; Toteuta kirjautuminen. Toteuta <code>POST /api/login</code>, joka vertaa salasanaa hashiin. Virheviesti ei paljasta, oliko väärin tunnus vai salasana.</li><li>☐&nbsp; Päätä elinkaari. Päätä istunnon tai tokenin voimassaoloaika ja toteuta uloskirjautuminen, joka mitätöi sen.</li><li>☐&nbsp; Kirjoita middleware. Kirjoita middleware eli välikäsittelijä, joka tarkistaa jokaisesta muokkauspyynnöstä kirjautumisen (401) ja omistajuuden (403).</li><li>☐&nbsp; Suojaa vanhat reitit. Lisää middleware pelin lisäykseen, muokkaukseen ja tilanvaihtoon.</li><li>☐&nbsp; Erota näkymät. Tee selaimeen kirjautuneen ja vierailijan näkymät erikseen Reactin contextin avulla.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Vain kirjautunut omistaja voi muokata peliään. Kirjautumaton pyyntö saa virhekoodin 401 ja toisen käyttäjän pyyntö virhekoodin 403.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Muutokset commitilla. Suojattujen reittien lista työviikon 7 päiväkirjaan.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 4 / 4 · Kirjaa ja aja testitapaukset T07 ja T08</strong></p>
+<ol class="osat"><li>☐&nbsp; Kirjaa testitapaus T07. Virhetilanne: väärä salasana. Kirjautuminen estyy, eikä viesti paljasta, kumpi kenttä oli väärin. Kirjaa odotus ennen ajoa.</li><li>☐&nbsp; Kirjaa testitapaus T08. Virhetilanne: toisen käyttäjän pelin muokkaus rajapinnan kautta saa virhekoodin 403. Kirjaa odotus ennen ajoa.</li><li>☐&nbsp; Hyökkää itseäsi vastaan. Kirjaudu käyttäjänä A, ota istunto tai token talteen ja yritä muokata käyttäjän B peliä curlilla.</li><li>☐&nbsp; Kirjaa tulokset. Kirjaa toteutuneet tulokset testimatriisiin ja tallenna curl-tulosteet.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Testitapaukset T07 ja T08 on ajettu, ja curl-tuloste näyttää virhekoodin 403 toisen käyttäjän peliin.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> <code>project-docs/testimatriisi.md</code> ja curl-tulosteet commitilla. Tulokset työviikon 7 päiväkirjaan.</p>
+</div>
+<p class="done wkdone"><strong>Viikon lopputarkistus:</strong> Toisen käyttäjän pelin muokkausyritys palauttaa 403 (curl-tuloste talteen); tietokannassa ja lokeissa ei näy selväkielistä salasanaa; vertailumuistiossa on ohjaajan kommentti.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Vertailumuistio ohjaajan kommentilla, commitit, curl-tulosteet sekä T07–T08.</p>
+</div>
+<div class="wk u"><h2>Työviikko 8 / 18 – Profiilisivu</h2>
+<p class="conn"><strong>Yhteys kokonaisprojektiin:</strong> Työviikkojen 6 ja 7 tilahistoria ja käyttäjät saavat nyt näyteikkunan. Profiili kokoaa saman datan koosteiksi, jotka vierailijakin näkee ilman tunnuksia, ja toteutusta verrataan työviikon 2 rautalankaan. Kun jäsenillä on profiilit, työviikon 9 haku auttaa löytämään pelejä kasvavasta hyllystä.</p>
+<p class="goal"><strong>Viikon tavoite:</strong> Vierailija avaa jäsenen profiilin ilman tunnuksia ja näkee, mitä jäsen pelaa nyt, tilastot tiloittain ja laitteittain sekä tilahistorian.</p>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 1 / 4 · Toteuta profiilin kooste SQL-kyselyillä</strong></p>
+<ol class="osat"><li>☐&nbsp; Kirjoita koostekyselyt. Laske pelien määrä tiloittain ja laitteittain SQL:n GROUP BY -kyselyillä.</li><li>☐&nbsp; Hae pelaa nyt ja historia. Hae pelit, joilla on pelaan parhaillaan -merkintä, ja jäsenen tilahistoria aikajärjestyksessä.</li><li>☐&nbsp; Kokoa yhteen reittiin. Toteuta reitti, joka palauttaa koko profiilin datan yhdellä kutsulla, esimerkiksi <code>/api/users/:nimi/profiili</code>.</li><li>☐&nbsp; Tarkista luvut käsin. Laske sama luku käsin tietokannasta ja vertaa sitä reitin palauttamaan lukuun.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Koostereitti palauttaa tilastot, ja luvut täsmäävät käsin ajettuun tarkistuskyselyyn.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Reitti commitilla ja tarkistuskyselyn tuloste työviikon 8 päiväkirjaan.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 2 / 4 · Rakenna profiilisivu itse rautalangan mukaan</strong></p>
+<ol class="osat"><li>☐&nbsp; Reititä nimen mukaan. Lisää reitti <code>/kayttaja/:nimi</code> react-routerin parametrilla ja lue nimi sivulla.</li><li>☐&nbsp; Rakenna komponentit. Tee itse ProfiiliOtsikko, TilastoKortit, LaiteJakauma, PelaaNytLista ja HistoriaLista ilman valmista käyttöliittymäkirjastoa.</li><li>☐&nbsp; Hae data omalla hookilla. Hae profiilin kooste omalla hookilla ja käsittele lataus- ja virhetila kuten työviikolla 4.</li><li>☐&nbsp; Käsittele tuntematon nimi. Näytä selkeä viesti, jos käyttäjää ei löydy.</li><li>☐&nbsp; Jäljitä virheet. Kun data ei näy odotetusti, jäljitä syy kehittäjätyökalujen Network-välilehdeltä ja palvelinlokista.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Profiilisivu aukeaa osoitteesta <code>/kayttaja/&lt;nimi></code>, ja tuntematon nimi näyttää selkeän viestin.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Muutokset commitilla ja kuvakaappaus profiilisivusta <code>project-docs/</code>-kansioon.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 3 / 4 · Tarkista profiili vierailijana</strong></p>
+<ol class="osat"><li>☐&nbsp; Avaa yksityinen ikkuna. Avaa profiili yksityisessä selainikkunassa ilman kirjautumista.</li><li>☐&nbsp; Tarkista näkyvät tiedot. Tarkista, että tilastot, pelaa nyt -lista ja historia näkyvät.</li><li>☐&nbsp; Tarkista piilotetut toiminnot. Tarkista, ettei vierailija näe tilanappia eikä muokkaustoimintoja.</li><li>☐&nbsp; Vertaa tietokantaan. Vertaa sivun tilastolukuja tietokannan tarkistuskyselyyn.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Vierailija näkee profiilin tilastoineen yksityisessä ikkunassa, ja luvut täsmäävät tietokantaan.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Kuvakaappaus vierailijanäkymästä <code>project-docs/</code>-kansioon ja vertailun tulos työviikon 8 päiväkirjaan.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 4 / 4 · Vertaa profiilia rautalankaan ja aja testitapaus T09</strong></p>
+<ol class="osat"><li>☐&nbsp; Aseta rinnakkain. Aseta työviikon 2 rautalanka ja profiilisivun kuvakaappaus rinnakkain samaan kuvaan tai dokumenttiin.</li><li>☐&nbsp; Kirjaa poikkeamat. Kirjaa jokainen poikkeama rautalangasta ja sen perustelu.</li><li>☐&nbsp; Kirjaa testitapaus T09. Raja: profiili, jolla ei ole yhtään peliä, näyttää nollatilastot ja tyhjän tilan viestin eikä kaadu. Kirjaa odotus ennen ajoa.</li><li>☐&nbsp; Aja testitapaus T09. Aja testi uudella käyttäjällä ja kirjaa toteutunut tulos testimatriisiin.</li><li>☐&nbsp; Tarkista virheenkorjausketju 1. Jos löysit tällä viikolla aidon bugin, kirjaa se virheenkorjausketjuksi 1 testimatriisiin. Jos et löytänyt, kirjaa se päiväkirjaan.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Rautalanka ja toteutus ovat rinnakkain poikkeamineen, ja testitapaus T09 on ajettu.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Rinnakkaiskuva <code>project-docs/</code>-kansioon, T09 <code>project-docs/testimatriisi.md</code>-tiedostoon ja poikkeamat perusteluineen työviikon 8 päiväkirjaan.</p>
+</div>
+<p class="done wkdone"><strong>Viikon lopputarkistus:</strong> Vierailija näkee profiilin tilastoineen yksityisessä selainikkunassa, ja tilastoluvut täsmäävät tietokannan tarkistuskyselyyn; rautalankavertailu on päiväkirjassa.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Kuvakaappaus ja rautalanka rinnakkain, commitit, tarkistuskyselyn tuloste, T09 sekä ketju 1:n kirjaus, jos aito bugi osui tälle viikolle.</p>
+</div>
+<div class="wk u"><h2>Työviikko 9 / 18 – Haku ja suodatus</h2>
+<p class="conn"><strong>Yhteys kokonaisprojektiin:</strong> Työviikon 8 profiili näytti, että pelejä kertyy nopeasti. Nyt pelilista saa haun ja suodatuksen, jotka tehdään tietokantakyselyssä eikä selaimen muistissa. Samalla tuot toisen ulkoisen komponentin ja kirjaat kokoelmien päätöskriteerit, jotta asiakas voi työviikolla 10 kokeilla koko palvelua.</p>
+<p class="goal"><strong>Viikon tavoite:</strong> Jäsen löytää pelin nimen, laitteen ja tilan mukaan, ja haku ilman osumia kertoo, miten pääsee takaisin koko listaan.</p>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 1 / 4 · Toteuta haku ja suodatus parametrisoiduilla kyselyillä</strong></p>
+<ol class="osat"><li>☐&nbsp; Lisää kyselyparametrit. Lisää reittiin <code>GET /api/games</code> parametrit <code>nimi</code>, <code>laite</code> ja <code>tila</code>.</li><li>☐&nbsp; Kokoa ehdot listasta. Rakenna WHERE-ehdot listasta ja anna arvot aina parametreina. Älä liimaa arvoja kyselymerkkijonoon.</li><li>☐&nbsp; Suodata tietokannassa. Tee suodatus kyselyssä. Älä suodata selaimessa koko dataa.</li><li>☐&nbsp; Kokeile injektiota. Syötä hakuun heittomerkki tai pätkä SQL:ää ja tarkista, että kysely käsittelee sen tekstinä.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Suodatus toimii kyselyparametreilla suoraan rajapinnasta, eikä hakuun syötetty SQL muuta kyselyä.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Muutokset commitilla ja esimerkkikutsut tuloksineen työviikon 9 päiväkirjaan.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 2 / 4 · Rakenna suodatusnäkymä ja tyhjän tuloksen tila</strong></p>
+<ol class="osat"><li>☐&nbsp; Tee suodatuskentät. Tee hakukenttä nimelle ja valinnat laitteelle ja tilalle.</li><li>☐&nbsp; Päivitä tulokset. Hae tulokset rajapinnasta aina, kun suodatin muuttuu.</li><li>☐&nbsp; Tee tyhjä tila. Näytä viesti, kun hakuun ei löydy osumia, ja nappi, joka nollaa suodattimet.</li><li>☐&nbsp; Vertaa suoraan kutsuun. Aja sama suodatus käyttöliittymästä ja suoraan osoitteesta kyselyparametreilla. Tulosten pitää olla samat.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Suodatus ”NES + pelattu läpi” palauttaa samat rivit käyttöliittymässä ja suorassa kutsussa, ja tyhjä haku näyttää viestin ja nollausnapin.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Kuvakaappaus käyttöliittymän ja suoran kutsun rinnakkaisista tuloksista <code>project-docs/</code>-kansioon ja muutokset commitilla.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 3 / 4 · Valitse ja ota käyttöön toinen ulkoinen komponentti</strong></p>
+<ol class="osat"><li>☐&nbsp; Nimeä tarve. Päätä, mihin tarpeeseen komponentti tulee, esimerkiksi kaavio profiiliin.</li><li>☐&nbsp; Vertaile kaksi ehdokasta. Täytä vertailu: tarve, koko ja riippuvuudet, saavutettavuus ja arvio itse tekemisen työmäärästä.</li><li>☐&nbsp; Asenna ja konfiguroi. Asenna valittu komponentti ja käytä sitä yhdessä paikassa. Kirjaa, mitä asetuksia muutit ja miksi.</li><li>☐&nbsp; Kirjaa perustelu. Kirjoita perustelumuistio <code>project-docs/</code>-kansioon ja päätös suunnitelman kenttään Toinen ulkoinen komponentti.</li><li>☐&nbsp; Kirjaa riippuvuus. Lisää README:hen kirjasto, versio ja mihin sitä käytetään.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Komponentti toimii palvelussa, ja perustelumuistiossa ovat vertailu, valinta ja arvio itse tekemisen työmäärästä.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Perustelumuistio <code>project-docs/</code>-kansioon, päätös <code>project-docs/suunnitelma.md</code>-tiedostoon ja asennus commitilla.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 4 / 4 · Kirjaa kokoelmien kriteerit ja aja testitapaukset T10 ja T11</strong></p>
+<ol class="osat"><li>☐&nbsp; Kirjaa kokoelmien kriteerit. Kirjaa suunnitelman kenttään Kokoelmien laajennuspäätös, millä ehdoilla kokoelmat toteutetaan. Päätös tehdään vasta työviikolla 11.</li><li>☐&nbsp; Kirjaa testitapaus T10. Normaali käyttö: suodatus laitteen ja tilan mukaan palauttaa vain oikeat rivit. Kirjaa odotus ennen ajoa.</li><li>☐&nbsp; Kirjaa testitapaus T11. Raja: haku ilman osumia näyttää tyhjän tilan viestin. Kirjaa odotus ennen ajoa.</li><li>☐&nbsp; Aja ja kirjaa. Aja testitapaukset ja kirjaa toteutuneet tulokset testimatriisiin.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Kokoelmien päätöskriteerit ovat suunnitelmassa, ja testitapaukset T10 ja T11 on ajettu.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> <code>project-docs/suunnitelma.md</code> ja <code>project-docs/testimatriisi.md</code> commitilla. Kriteerit työviikon 9 päiväkirjaan.</p>
+</div>
+<p class="done wkdone"><strong>Viikon lopputarkistus:</strong> Suodatus ”NES + pelattu läpi” palauttaa vain oikeat rivit sekä käyttöliittymässä että suoralla API-kutsulla; haku ilman osumia näyttää tyhjän tilan viestin; perustelumuistio ulkoisesta komponentista ja kokoelmien päätöskriteerit ovat repositoryssa.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Commitit, perustelumuistio ulkoisesta komponentista, API-kutsun ja käyttöliittymän rinnakkaiset tulokset, T10–T11 sekä laajennuspäätöksen kriteerikirjaus.</p>
+</div>
+<div class="wk u"><h2>Työviikko 10 / 18 – Asiakaskatselmointi</h2>
+<p class="conn"><strong>Yhteys kokonaisprojektiin:</strong> Vaiheet 2 ja 3 on rakennettu omien oletusten varassa. Nyt asiakkaan edustaja käyttää julkaistua palvelua itse koko polun rekisteröitymisestä toisen jäsenen profiiliin. Hänen havainnoistaan johdetaan vaiheen 4 työjärjestys ja työviikon 11 palautemuutos.</p>
+<p class="goal"><strong>Viikon tavoite:</strong> Asiakkaan edustaja on kokeillut julkaistua palvelua itse, ja hänen havaintonsa ovat priorisoituina issueina.</p>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 1 / 4 · Valmistele katselmointirunko ja demopolku</strong></p>
+<ol class="osat"><li>☐&nbsp; Varmista katselmoija. Tarkista ohjaajalta asiakkaan edustaja. Hän on nimetty ulkopuolinen henkilö, ei oma ohjaava opettajasi.</li><li>☐&nbsp; Kirjoita demopolku. Kirjaa katselmointimuistioon, mitä asiakas tekee itse: rekisteröityy, lisää pelin, vaihtaa tilan, katsoo profiiliaan ja löytää toisen jäsenen profiilin.</li><li>☐&nbsp; Kirjoita loppukysymykset. Kirjaa kysymykset, jotka esität lopuksi, esimerkiksi mikä oli helpointa ja mitä puuttuu, jotta asiakas ottaisi palvelun käyttöön.</li><li>☐&nbsp; Tarkista versio. Tarkista, että demopolku toimii julkaistussa versiossa, ja kirjaa version commit muistioon.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Katselmointimuistiossa ovat demopolku, loppukysymykset ja julkaistun version tunniste.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Katselmointimuistion runko <code>project-docs/</code>-kansioon commitilla.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 2 / 4 · Pidä katselmointi, jossa asiakas käyttää palvelua itse</strong></p>
+<ol class="osat"><li>☐&nbsp; Kirjaa rooli ja ajankohta. Kirjaa muistioon katselmoijan rooli ja ajankohta.</li><li>☐&nbsp; Anna asiakkaan käyttää. Anna asiakkaan tehdä demopolku itse. Älä neuvo, ellei työ pysähdy kokonaan.</li><li>☐&nbsp; Kirjaa omat sanat. Kirjaa lainauksina, mitä asiakas tekee ja sanoo. Tavoite on vähintään viisi havaintoa.</li><li>☐&nbsp; Esitä loppukysymykset. Esitä valmistellut kysymykset ja kirjaa vastaukset asiakkaan sanoin.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Muistiossa ovat rooli, ajankohta ja vähintään viisi asiakkaan havaintoa hänen omilla sanoillaan.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Katselmointimuistio <code>project-docs/</code>-kansioon commitilla.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 3 / 4 · Erota havainnot tulkinnasta ja priorisoi palaute yhdessä</strong></p>
+<ol class="osat"><li>☐&nbsp; Erota sarakkeet. Kirjaa muistioon asiakkaan sanat ja oma tulkintasi eri sarakkeisiin.</li><li>☐&nbsp; Tarkista erottelu. Lue muistio läpi ja tarkista, että jokaisesta rivistä näkee, mikä on asiakkaan sanomaa.</li><li>☐&nbsp; Priorisoi yhdessä. Päättäkää yhdessä ohjaajan ja asiakkaan edustajan kanssa, mitkä muutokset tehdään ennen v1.0:aa ja mitkä siirtyvät v1.1:een.</li><li>☐&nbsp; Kirjaa päätökset. Merkitse jokaiselle havainnolle päätös: ennen v1.0:aa tai v1.1.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Jokaisella havainnolla on erillinen tulkinta ja yhdessä sovittu päätös.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Päivitetty katselmointimuistio commitilla. Yllättävin havainto työviikon 10 päiväkirjaan.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 4 / 4 · Päivitä issuet ja lähetä asiakkaalle yhteenveto</strong></p>
+<ol class="osat"><li>☐&nbsp; Tee issuet. Tee jokaisesta ennen v1.0:aa sovitusta muutoksesta oma issue, joka viittaa muistion havaintoon.</li><li>☐&nbsp; Järjestä issue-taulu. Järjestä issue-taulu uudelleen ja merkitse v1.1:een siirtyvät erikseen.</li><li>☐&nbsp; Kirjoita yhteenveto. Kirjoita asiakkaalle lyhyt viesti ilman teknistä jargonia: mitä muutetaan ja mitä siirtyy.</li><li>☐&nbsp; Lähetä ja tallenna. Lähetä viesti ja tallenna se tiedostoon <code>project-docs/viestit.md</code>.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Jokaisesta sovitusta muutoksesta on issue, ja yhteenveto on lähetetty ja tallennettu.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Issue-taulun linkki työviikon 10 päiväkirjaan ja <code>project-docs/viestit.md</code> commitilla.</p>
+</div>
+<p class="done wkdone"><strong>Viikon lopputarkistus:</strong> Katselmointimuistiossa on vähintään viisi asiakkaan havaintoa hänen omilla sanoillaan erillään omasta tulkinnasta, ja issueissa on niistä johdetut priorisoidut tehtävät.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Katselmointimuistio (rooli, ajankohta ja lainaukset), päivitetty issue-taulu ja yhteenvetoviesti.</p>
+</div>
+<h1 class="page">Vaihe 4 – Palaute, laatu ja käyttöönotto-ohje</h1>
+<div class="wk u"><h2>Työviikko 11 / 18 – Palautemuutos</h2>
+<p class="conn"><strong>Yhteys kokonaisprojektiin:</strong> Työviikon 10 palaute muuttuu nyt koodiksi. Teet tärkeimmän muutoksen omassa haarassa ja yhdistät sen pääversioon pull requestilla, ja samalla suunnitelman arviot testataan toteumaa vasten. Kokoelmapäätös ratkaisee, mitä vaiheen 4 loppuviikoilla rakennetaan.</p>
+<p class="goal"><strong>Viikon tavoite:</strong> Asiakkaan tärkein toive on muutettu palveluun, ja muutos on tuotannossa pull requestin kautta.</p>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 1 / 4 · Valitse palautteen tärkein muutos ja kirjaa kriteerit</strong></p>
+<ol class="osat"><li>☐&nbsp; Valitse muutos. Valitse katselmointimuistiosta tärkein ennen v1.0:aa sovittu muutos.</li><li>☐&nbsp; Viittaa havaintoon. Kirjaa issueen, mihin muistion havaintoon muutos perustuu. Lainaa asiakkaan sanat.</li><li>☐&nbsp; Kirjaa kriteerit. Kirjoita issueen havaittavat hyväksymiskriteerit ennen koodia.</li><li>☐&nbsp; Arvioi työmäärä. Kirjaa issueen työmääräarvio, jota verrataan toteumaan tämän viikon lopussa.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Issuessa ovat viittaus asiakkaan havaintoon, hyväksymiskriteerit ja työmääräarvio.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Issue GitHubissa. Valinnan perustelu työviikon 11 päiväkirjaan.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 2 / 4 · Toteuta muutos omassa haarassa pienin commitein</strong></p>
+<ol class="osat"><li>☐&nbsp; Luo haara. Luo haara muodossa <code>feature/…</code>, esimerkiksi <code>feature/tilanappi-ensisijaiseksi</code>.</li><li>☐&nbsp; Tee pienet commitit. Tee muutos pienin commitein: yksi looginen muutos kerrallaan ja kuvaava viesti.</li><li>☐&nbsp; Testaa kriteereitä vasten. Tarkista jokainen hyväksymiskriteeri ja aja siihen liittyvä testitapaus uudelleen.</li><li>☐&nbsp; Lisää uusi testitapaus. Kirjaa muutokselle testimatriisiin uusi testitapaus odotuksineen ennen ajoa ja aja se.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Muutos on omassa haarassa kuvaavasti nimetyin commitein, ja hyväksymiskriteerit on tarkistettu.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Haara ja commitit repositoryssa. Testitulokset <code>project-docs/testimatriisi.md</code>-tiedostoon.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 3 / 4 · Yhdistä muutos pääversioon pull requestilla</strong></p>
+<ol class="osat"><li>☐&nbsp; Avaa pull request. Avaa pull request ja kirjoita kuvaus: mitä, miksi, miten testattu sekä riskit ja rajaukset.</li><li>☐&nbsp; Katselmoi oma muutos. Käy muutos läpi kuin vieraan koodina ja kirjoita pull requestiin katselmointikommentti.</li><li>☐&nbsp; Yhdistä ja ratkaise konflikti. Yhdistä pääversioon ja ratkaise konflikti hallitusti. Jos konfliktia ei synny, pyydä ohjaajalta harjoituskonflikti.</li><li>☐&nbsp; Julkaise ja tarkista. Julkaise pääversio ja tarkista muutos tuotannossa.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Pull requestissa ovat kuvaus, viittaus palautteeseen ja katselmointikommentti, ja muutos on tuotannossa.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Pull requestin linkki työviikon 11 päiväkirjaan.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 4 / 4 · Päivitä suunnitelma ja tee kokoelmapäätös</strong></p>
+<ol class="osat"><li>☐&nbsp; Vertaa arviot toteumaan. Kirjaa suunnitelmaan issueiden arvio ja toteuma tunteina sekä se, mitä opit arvioinnista.</li><li>☐&nbsp; Tee kokoelmapäätös. Päätä työviikon 9 kriteereillä: kokoelmat omana haarana vaiheessa 4 tai v1.1-listalle. Siirto on rajauspäätös, ei epäonnistuminen.</li><li>☐&nbsp; Lataa suunnitelma. Päivitä suunnitelmalomakkeen kentät, lataa <code>suunnitelma.md</code> ja korvaa repositoryn vanha tiedosto.</li><li>☐&nbsp; Kerro asiakkaalle. Kerro asiakkaalle lyhyesti ilman jargonia, mikä muuttui, ja tallenna viesti tiedostoon <code>project-docs/viestit.md</code>.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Suunnitelman muutosvertailu (diff) näyttää päivitetyt arviot ja kokoelmapäätöksen perusteluineen, ja asiakasviesti on tallennettu.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> <code>project-docs/suunnitelma.md</code> ja <code>project-docs/viestit.md</code> commitilla.</p>
+</div>
+<p class="done wkdone"><strong>Viikon lopputarkistus:</strong> PR:ssä on kuvaus, viittaus palautteeseen ja katselmointikommentti; muutos on tuotannossa; suunnitelman muutosvertailu (diff) näyttää päivitetyt arviot.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Pull requestin linkki ja commit-historia, suunnitelman diff kirjattuine kokoelmapäätöksineen sekä asiakasviesti.</p>
+</div>
+<div class="wk u"><h2>Työviikko 12 / 18 – Responsiivisuus ja saavutettavuus</h2>
+<p class="conn"><strong>Yhteys kokonaisprojektiin:</strong> Kaikki näkymät ovat nyt olemassa, ja palautemuutos on tehty. Ennen testausviikkoa viimeistelet ne laitteille ja käyttötavoille, joita et itse käytä kehittäessäsi: puhelimelle ja pelkälle näppäimistölle. Työviikolla 13 koko palvelu testataan tässä kunnossa tuotantoa vasten.</p>
+<p class="goal"><strong>Viikon tavoite:</strong> Jäsen lisää pelin puhelimella ja pelkällä näppäimistöllä, ja Lighthouse-luvut ennen ja jälkeen näyttävät, mikä parani.</p>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 1 / 4 · Päätä taitekohdat ja korjaa näkymät puhelimelle</strong></p>
+<ol class="osat"><li>☐&nbsp; Aja Lighthouse ennen. Aja Lighthouse keskeisille näkymille ja ota ennen-luvut talteen ennen ensimmäistäkään korjausta.</li><li>☐&nbsp; Käy polut puhelimella. Käy rekisteröityminen, pelin lisäys, tilanvaihto ja profiili läpi oikealla puhelimella.</li><li>☐&nbsp; Päätä taitekohdat. Päätä taitekohdat sen mukaan, missä sisältö hajoaa, ei laitemallien mukaan.</li><li>☐&nbsp; Korjaa näkymät. Korjaa keskeiset näkymät omalla CSS:llä niin, ettei vaakavieritystä synny.</li><li>☐&nbsp; Kirjaa perustelu. Kirjoita taitekohdat perusteluineen suunnitelman kenttään Responsiivisuuden taitekohdat.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Keskeiset näkymät toimivat puhelimella ilman vaakavieritystä, ja taitekohdat on perusteltu suunnitelmassa.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Lighthouse-raportit ennen ja kuvakaappaukset puhelimelta <code>project-docs/</code>-kansioon, taitekohdat suunnitelmaan ja CSS commitilla.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 2 / 4 · Korjaa näppäinpolku ja fokus</strong></p>
+<ol class="osat"><li>☐&nbsp; Irrota hiiri. Tee rekisteröityminen ja pelin lisäys alusta loppuun pelkällä näppäimistöllä.</li><li>☐&nbsp; Tarkista fokusjärjestys. Tarkista, että fokus etenee sivun luettavassa järjestyksessä ylhäältä alas.</li><li>☐&nbsp; Tarkista fokuksen näkyvyys. Tarkista, että fokus näkyy jokaisessa kohteessa, myös omissa napeissa.</li><li>☐&nbsp; Korjaa katkot. Korjaa jokainen kohta, johon jäit jumiin, ja kirjaa korjaus omin sanoin.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Rekisteröityminen ja pelin lisäys onnistuvat pelkällä näppäimistöllä, ja fokus näkyy koko ajan.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Korjaukset commitilla ja näppäintestauksen löydökset työviikon 12 päiväkirjaan.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 3 / 4 · Tarkista kontrastit, tekstivastineet ja otsikot</strong></p>
+<ol class="osat"><li>☐&nbsp; Mittaa kontrastit. Mittaa tekstin kontrasti myös violetilla aksentilla. Vaatimus on vähintään 4.5:1.</li><li>☐&nbsp; Tarkista alt-tekstit. Anna jokaiselle merkitykselliselle kuvalle alt-teksti, esimerkiksi profiilikuvalle.</li><li>☐&nbsp; Tarkista label-kytkennät. Tarkista, että jokainen kenttä ja virheviesti on kytketty ohjelmallisesti.</li><li>☐&nbsp; Tarkista otsikot. Tarkista, että otsikot etenevät h1 → h2 → h3 ilman hyppyjä.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Kontrastit täyttävät vaatimuksen, ja jokaisella kentällä ja merkityksellisellä kuvalla on tekstivastine.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Korjaukset commitilla ja tarkistuslistan tulos työviikon 12 päiväkirjaan.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 4 / 4 · Aja Lighthouse uudelleen ja testitapaus T12</strong></p>
+<ol class="osat"><li>☐&nbsp; Aja Lighthouse jälkeen. Aja Lighthouse samoille näkymille kuin ennen korjauksia ja tallenna raportit.</li><li>☐&nbsp; Selitä erot. Selitä omin sanoin, mistä korjauksesta kukin muutos tuli.</li><li>☐&nbsp; Kirjaa testitapaus T12. Raja: profiilisivu 320 pikselin leveydellä ilman vaakavieritystä, ja toiminnot ovat käytettävissä. Kirjaa odotus ennen ajoa.</li><li>☐&nbsp; Aja testitapaus T12. Aja testi ja kirjaa toteutunut tulos testimatriisiin.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Lighthouse-raportit ennen ja jälkeen on tallennettu, jokainen ero on selitetty, ja testitapaus T12 on ajettu.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Lighthouse-raportit <code>project-docs/</code>-kansioon, T12 <code>project-docs/testimatriisi.md</code>-tiedostoon ja luvut työviikon 12 päiväkirjaan.</p>
+</div>
+<p class="done wkdone"><strong>Viikon lopputarkistus:</strong> Pelin lisäys onnistuu puhelimella ja pelkällä näppäimistöllä; Lighthouse-saavutettavuus on kirjattu ennen ja jälkeen, ja jokainen korjaus on selitetty omin sanoin.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Kuvakaappaukset laitteelta, Lighthouse-raportit ennen ja jälkeen, commitit sekä T12.</p>
+</div>
+<div class="wk u"><h2>Työviikko 13 / 18 – Testausviikko</h2>
+<p class="conn"><strong>Yhteys kokonaisprojektiin:</strong> Työviikkojen 4–12 aikana testimatriisiin kertyi yksittäisiä testitapauksia. Nyt matriisi täydennetään ja ajetaan ensimmäistä kertaa kokonaisuutena tuotantoa vasten, ja löydökset korjataan täydellisinä ketjuina. Matriisi on turvaverkko, jota vasten koodia siistitään työviikolla 14.</p>
+<p class="goal"><strong>Viikon tavoite:</strong> Koko testimatriisi on ajettu tuotantoversiota vasten, ja löydökset on korjattu täydellisinä ketjuina regressiotestiin asti.</p>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 1 / 4 · Täydennä testimatriisi kolmeen luokkaan</strong></p>
+<ol class="osat"><li>☐&nbsp; Kokoa aiemmat tapaukset. Tarkista, että testimatriisissa ovat kaikki aiemmat testitapaukset T01–T12.</li><li>☐&nbsp; Lisää uudet tapaukset. Lisää tapauksia niin, että niitä on vähintään 12 kolmessa luokassa: normaali käyttö, rajat ja virhetilanteet.</li><li>☐&nbsp; Tasapainota luokat. Tarkista, että jokaisessa luokassa on suunnilleen kolmannes tapauksista.</li><li>☐&nbsp; Kirjaa odotukset. Kirjoita jokaisen tapauksen odotettu tulos ennen kuin ajat sen.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Matriisissa on vähintään 12 testitapausta kolmessa luokassa, ja jokaisella on odotettu tulos ennen ajoa.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> <code>project-docs/testimatriisi.md</code> commitilla.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 2 / 4 · Aja koko matriisi tuotantoversiota vasten</strong></p>
+<ol class="osat"><li>☐&nbsp; Varmista versio. Tarkista, että julkaistu versio on sama kuin pääversio, ja kirjaa sen commit matriisiin.</li><li>☐&nbsp; Aja tuotantoa vasten. Aja jokainen tapaus julkisessa osoitteessa. Älä oikaise omalla koneella.</li><li>☐&nbsp; Kirjaa toteutunut tulos. Kirjaa jokaiselle riville toteutunut tulos heti ajon jälkeen.</li><li>☐&nbsp; Kirjaa löydökset. Kirjaa jokainen epäonnistunut tapaus toistamisohjeineen niin tarkasti, että toinen henkilö pystyy toistamaan vian.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Matriisin jokaisella rivillä on odotettu ja toteutunut tulos tuotantoversiosta.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> <code>project-docs/testimatriisi.md</code> commitilla ja epäonnistuneiden tapausten määrä työviikon 13 päiväkirjaan.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 3 / 4 · Korjaa löydökset virheenkorjausketjuina</strong></p>
+<ol class="osat"><li>☐&nbsp; Jäljitä syy. Jäljitä syy kehittäjätyökaluilla, verkkopyynnöistä ja palvelinlokista.</li><li>☐&nbsp; Korjaa ja uusintatestaa. Tee korjauscommit ja aja sama testitapaus uudelleen.</li><li>☐&nbsp; Aja regressio. Aja ydinpolut uudelleen ja varmista, ettei korjaus rikkonut muuta.</li><li>☐&nbsp; Kirjaa ketju 2. Kirjaa ketju kokonaan: havainto, toistamisohje, syy, korjauscommit, uusintatesti ja regressiotesti.</li><li>☐&nbsp; Varmista, että ketju on aito. Keksittyä bugia ei kirjata. Jos aitoja löydöksiä ei ole, pyydä ohjaajalta vikatehtävä.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Vähintään yksi täydellinen virheenkorjausketju on viety regressiotestiin asti tällä viikolla.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Ketju 2 <code>project-docs/testimatriisi.md</code>-tiedostoon ja korjauscommitit repositoryyn.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 4 / 4 · Aja testitapaus T13 katkenneella verkolla</strong></p>
+<ol class="osat"><li>☐&nbsp; Kirjaa testitapaus T13. Virhetilanne: verkkoyhteys katkeaa kesken lomakkeen lähetyksen. Kirjaa odotettu tulos ennen ajoa.</li><li>☐&nbsp; Katkaise yhteys. Katkaise yhteys kehittäjätyökalujen Network-välilehdellä (Offline) juuri ennen lähetystä.</li><li>☐&nbsp; Kirjaa tulos. Kirjaa, mitä käyttäjä näki ja jäikö tietokantaan puolikas rivi.</li><li>☐&nbsp; Tarkista poikkeama. Jos tulos poikkesi odotuksesta, korjaa se samalla ketjumallilla kuin työvaiheessa 3.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Testitapaus T13 on ajettu ja kirjattu, ja mahdollinen poikkeama on korjattu ketjuna.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> <code>project-docs/testimatriisi.md</code> commitilla.</p>
+</div>
+<p class="done wkdone"><strong>Viikon lopputarkistus:</strong> Matriisin jokaisella rivillä on odotettu tulos (kirjattu ennen ajoa) ja toteutunut tulos; vähintään yksi täydellinen ketju on viety regressiotestiin asti tällä viikolla.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Testimatriisi tuloksineen, ketjukirjaukset ja korjauscommitit.</p>
+</div>
+<div class="wk u"><h2>Työviikko 14 / 18 – Laatuviikko</h2>
+<p class="conn"><strong>Yhteys kokonaisprojektiin:</strong> Työviikon 13 testimatriisi antaa turvaverkon. Nyt koodia voi siistiä ja todistaa regressioajolla, ettei toiminta muuttunut, ja samalla arvioit tietoturvan koko palvelulle. Siisti ja arvioitu koodi on pohja, jolle työviikon 15 käyttöönotto-ohje kirjoitetaan.</p>
+<p class="goal"><strong>Viikon tavoite:</strong> Koodin rakenne on siistitty pienin commitein ilman toiminnan muutosta, ja tietoturva-arvio kertoo jokaisen riskin ratkaisun omassa koodissa.</p>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 1 / 4 · Arvioi koodin rakenne ja listaa refaktorointikohteet</strong></p>
+<ol class="osat"><li>☐&nbsp; Aja ydinrivit ennen. Aja testimatriisin ydinrivit ja kirjaa tulokset regressiokirjaukseen ennen ensimmäistäkään muutosta.</li><li>☐&nbsp; Lue koodi vieraan silmin. Käy komponentit ja reittitiedostot läpi ja merkitse kohdat, joita et ymmärrä heti.</li><li>☐&nbsp; Tunnista kohteet. Etsi komponentit, joilla on monta vastuuta, toistuva logiikka, epäselvät nimet ja reittitiedostot, jotka pitäisi jakaa moduuleihin.</li><li>☐&nbsp; Kirjaa lista. Kirjaa refaktorointikohteet listaksi: kohde, ongelma ja aiottu muutos.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Refaktorointikohteet on listattu, ja testimatriisin ydinrivien tulokset on kirjattu ennen muutoksia.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Kohdelista ja regressiokirjauksen ennen-sarake <code>project-docs/</code>-kansioon commitilla.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 2 / 4 · Refaktoroi lista pienin commitein</strong></p>
+<ol class="osat"><li>☐&nbsp; Tee yksi kohde kerrallaan. Tee jokainen listan kohde omana committinaan.</li><li>☐&nbsp; Nimeä commit kuvaavasti. Kirjoita viesti, joka kertoo muutoksen, esimerkiksi ”PeliKortin tilanvaihto omaan hookkiin useTilanvaihto”.</li><li>☐&nbsp; Muuta vain rakennetta. Muuta vain rakennetta ja nimiä. Jos huomaat bugin, kirjaa se erikseen testimatriisiin.</li><li>☐&nbsp; Kirjaa ennen ja jälkeen. Kirjaa listaan jokaisesta kohteesta, mitä muuttui, esimerkiksi <code>data2</code> → <code>profiiliKooste</code>.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Jokainen listan kohde on omana kuvaavasti nimettynä committinaan.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Refaktorointicommitit repositoryssa ja ennen ja jälkeen -muutokset kohdelistaan.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 3 / 4 · Kirjoita tietoturva-arvio omaa koodia vasten</strong></p>
+<ol class="osat"><li>☐&nbsp; Käy riskit läpi. Käy tietoturvatarkistuslista läpi omaa koodia vasten: syötteet, salasanat, istunnot tai tokenit, tietojen näkyvyys, SQL-injektio ja XSS.</li><li>☐&nbsp; Kokeile XSS-hyökkäystä. Kirjoita pelin kommenttiin <code>&lt;script></code>-tagi ja tarkista, että sivu näyttää sen tekstinä eikä aja sitä.</li><li>☐&nbsp; Kirjoita arvio. Kirjoita <code>project-docs/tietoturva-arvio.md</code>: riski, ratkaisu tässä projektissa ja missä koodissa. Vähintään viisi riskiä.</li><li>☐&nbsp; Kirjaa avoimet riskit. Kirjaa loppuun rehellisesti riskit, joita et ehtinyt käsitellä.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> <code>project-docs/tietoturva-arvio.md</code> kattaa vähintään viisi riskiä ratkaisuineen ja koodiviittauksineen.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> <code>project-docs/tietoturva-arvio.md</code> commitilla. Avoimet riskit työviikon 14 päiväkirjaan.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 4 / 4 · Aja testimatriisin ydinrivit refaktoroinnin jälkeen</strong></p>
+<ol class="osat"><li>☐&nbsp; Aja ydinrivit jälkeen. Aja samat ydinrivit kuin työvaiheessa 1, nyt refaktoroinnin jälkeen.</li><li>☐&nbsp; Vertaa tuloksia. Kirjaa tulokset regressiokirjauksen jälkeen-sarakkeeseen ja vertaa niitä ennen-sarakkeeseen.</li><li>☐&nbsp; Tarkista muutokset. Jos jokin tulos muuttui, peru tai korjaa kyseinen commit ja aja rivi uudelleen.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Testimatriisin ydinrivit menevät läpi sekä ennen että jälkeen refaktoroinnin.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Regressiokirjaus <code>project-docs/</code>-kansioon commitilla.</p>
+</div>
+<p class="done wkdone"><strong>Viikon lopputarkistus:</strong> Refaktorointicommitit ovat pieniä ja kuvaavasti nimettyjä; testimatriisin ydinrivit menevät läpi ennen ja jälkeen; <code>project-docs/tietoturva-arvio.md</code> kattaa vähintään viisi riskiä ratkaisuineen ja koodiviittauksineen.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Commit-sarja, project-docs/tietoturva-arvio.md ja regressiokirjaus.</p>
+</div>
+<div class="wk u"><h2>Työviikko 15 / 18 – Dokumentaatio</h2>
+<p class="conn"><strong>Yhteys kokonaisprojektiin:</strong> Koodi on työviikon 14 jäljiltä siistiä ja testattua. Nyt siitä kirjoitetaan ohje, jolla yhdistys saa palvelun käyttöön ilman tekijää, ja todistat sen itse kuivaharjoituksella puhtaassa kansiossa. Työviikolla 16 ulkopuolinen testaaja seuraa samaa ohjetta ilman suullista apua.</p>
+<p class="goal"><strong>Viikon tavoite:</strong> Kuka tahansa saa palvelun käyntiin puhtaassa kansiossa pelkän README:n ja käyttöönotto-ohjeen avulla.</p>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 1 / 4 · Kirjoita README ja käyttöönotto-ohje</strong></p>
+<ol class="osat"><li>☐&nbsp; Rakenna runko. Kirjoita README:n runko: mikä PeliHylly on ja kenelle, vaatimukset, asennus, ympäristömuuttujat, migraatiot, käynnistys, julkaisu ja tunnetut puutteet.</li><li>☐&nbsp; Lisää odotetut tulosteet. Kirjoita jokaiseen askeleeseen odotettu tuloste tai näkyvä lopputulos, esimerkiksi ”taulut luotu (5)”.</li><li>☐&nbsp; Tee .env.example. Tee <code>.env.example</code>, jossa on jokainen tarvittava muuttuja ilman todellisia salaisuuksia.</li><li>☐&nbsp; Kirjaa v1.1-lista. Lisää loppuun tunnetut puutteet ja v1.1-lista.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> README kertoo, mitä palvelu tekee ja kenelle, ja jokaisella asennusaskeleella on odotettu tulos.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> <code>README.md</code> ja <code>.env.example</code> commitilla repositoryyn.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 2 / 4 · Dokumentoi riippuvuudet ja arkkitehtuuri</strong></p>
+<ol class="osat"><li>☐&nbsp; Taulukoi riippuvuudet. Kirjoita taulukko: kirjasto, versio ja mihin sitä käytetään. Mukaan tulevat react-router ja toinen ulkoinen komponentti.</li><li>☐&nbsp; Piirrä arkkitehtuuri. Piirrä yksi kuva client–server–tietokanta-rakenteesta ja lisää se README:hen.</li><li>☐&nbsp; Kuvaa komponenttirakenne. Kuvaa pääkomponentit ja niiden vastuut lyhyesti.</li><li>☐&nbsp; Kuvaa ympäristöasetukset. Kerro, mitkä asetukset eroavat kehityksessä ja tuotannossa ja mistä ne luetaan.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> README:ssä ovat riippuvuustaulukko, arkkitehtuurikuva, komponenttirakenne ja ympäristöasetukset.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Päivitetty <code>README.md</code> ja arkkitehtuurikuva commitilla.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 3 / 4 · Tee kuivaharjoitus puhtaassa kansiossa</strong></p>
+<ol class="osat"><li>☐&nbsp; Kloonaa puhtaaseen kansioon. Kloonaa repository uuteen kansioon, jossa ei ole <code>node_modules</code>-kansiota eikä <code>.env</code>-tiedostoa.</li><li>☐&nbsp; Seuraa ohjetta kirjaimellisesti. Tee vain se, mitä ohjeessa lukee. Älä käytä muistiasi.</li><li>☐&nbsp; Kirjaa tökkäykset. Kirjaa kuivaharjoituksen lokiin jokainen kohta, jossa jouduit arvaamaan: askel, ohjeen teksti, mitä tapahtui ja korjaus.</li><li>☐&nbsp; Korjaa ohje. Korjaa jokainen tökkäys ohjeeseen ja aja korjattu askel uudelleen.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> <code>git clone</code> puhtaaseen kansioon ja ohjeen komennot tuottavat toimivan sovelluksen ilman yhtään ohjeen ulkopuolista temppua.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Kuivaharjoituksen loki <code>project-docs/</code>-kansioon ja ohjeen korjaukset commitilla.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 4 / 4 · Kokoa julkaisuehdokkaan jäädytyslista</strong></p>
+<ol class="osat"><li>☐&nbsp; Kokoa lista. Kokoa jäädytyksen tarkistuslista: ei uusia ominaisuuksia, ydinrivit menevät läpi, <code>.env.example</code> vastaa tuotantoa ja migraatiot toimivat puhtaaseen kantaan.</li><li>☐&nbsp; Sovi versiomerkinnän nimi. Sovi julkaisuehdokkaan versiomerkinnän nimi, esimerkiksi <code>v1.0-rc1</code>.</li><li>☐&nbsp; Käy lista läpi. Käy lista läpi nykyistä versiota vasten ja merkitse, mikä on vielä kesken.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Jäädytyslista on repositoryssa, ja jokaisen kohdan tila on merkitty.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Jäädytyslista <code>project-docs/</code>-kansioon commitilla ja sen sisältö työviikon 15 päiväkirjaan.</p>
+</div>
+<p class="done wkdone"><strong>Viikon lopputarkistus:</strong> <code>git clone</code> puhtaaseen kansioon ja ohjeen komennot tuottavat toimivan sovelluksen ilman yhtään ohjeen ulkopuolista temppua; jokainen matkalla kirjattu tökkäys on korjattu ohjeeseen.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> README ja project-docs/, .env.example sekä kuivaharjoituksen loki.</p>
+</div>
+<h1 class="page">Vaihe 5 – Julkaisu ja näyttö</h1>
+<div class="wk u"><h2>Työviikko 16 / 18 – Julkaisuehdokas ja julkaisutestaus</h2>
+<p class="conn"><strong>Yhteys kokonaisprojektiin:</strong> Työviikon 15 ohje pannaan nyt koetukselle. Jäädytät sisällön, julkaiset julkaisuehdokkaan ja annat toisen ulkopuolisen henkilön ottaa sen käyttöön puhtaassa ympäristössä ilman, että saat auttaa. Estäviksi luokitellut löydökset korjataan työviikolla 17 ennen v1.0:aa.</p>
+<p class="goal"><strong>Viikon tavoite:</strong> Ulkopuolinen testaaja ottaa julkaisuehdokkaan käyttöön pelkän kirjallisen ohjeen avulla, ja jokainen epäröinti on kirjattu ja luokiteltu.</p>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 1 / 4 · Jäädytä sisältö ja julkaise julkaisuehdokas</strong></p>
+<ol class="osat"><li>☐&nbsp; Jäädytä sisältö. Käy työviikon 15 jäädytyslista läpi. Tästä eteenpäin ei lisätä uusia ominaisuuksia.</li><li>☐&nbsp; Kokoa tuotantobuild. Aja Viten tuotantobuild ja tarkista, että se syntyy virheittä.</li><li>☐&nbsp; Merkitse versio. Luo julkaisuehdokkaan versiomerkintä eli tag, esimerkiksi <code>v1.0-rc1</code>, ja vie se etärepositoryyn.</li><li>☐&nbsp; Julkaise asiakkaan ympäristöön. Julkaise julkaisuehdokas asiakkaan ympäristöön ja tarkista julkinen osoite.</li><li>☐&nbsp; Kirjaa jäädytys. Kirjaa jäädytys suunnitelmaan, lataa <code>suunnitelma.md</code> ja korvaa repositoryn vanha tiedosto.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Julkaisuehdokkaan tag on repositoryssa, ja sama versio vastaa asiakkaan ympäristössä.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Tag repositoryssa, julkinen osoite työviikon 16 päiväkirjaan ja päivitetty <code>project-docs/suunnitelma.md</code> commitilla.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 2 / 4 · Järjestä julkaisutesti ulkopuoliselle testaajalle</strong></p>
+<ol class="osat"><li>☐&nbsp; Varmista testaaja. Sovi ohjaajan kanssa julkaisutestaaja. Hän on eri henkilö kuin työviikon 10 asiakkaan edustaja.</li><li>☐&nbsp; Kirjaa rooli ja ajankohta. Kirjaa julkaisutestin pöytäkirjaan testaajan rooli, ajankohta ja testattava versio.</li><li>☐&nbsp; Anna vain ohje. Anna testaajalle repositoryn osoite, kirjallinen käyttöönotto-ohje ja palvelun osoite. Älä anna suullisia vinkkejä tai valmista .env-tiedostoa.</li><li>☐&nbsp; Kirjaa testitapaus T14. Normaali käyttö: puhtaan ympäristön käyttöönotto pelkän kirjallisen ohjeen avulla. Kirjaa odotettu tulos ennen testiä.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Pöytäkirjassa ovat testaajan rooli, ajankohta ja versio, ja testitapaus T14 on kirjattu odotuksineen.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Julkaisutestin pöytäkirja <code>project-docs/</code>-kansioon ja T14 <code>project-docs/testimatriisi.md</code>-tiedostoon.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 3 / 4 · Kirjaa testaajan havainnot hänen omilla sanoillaan</strong></p>
+<ol class="osat"><li>☐&nbsp; Havainnoi auttamatta. Testaaja puhuu ja tekee, sinä kirjaat. Älä auta, ellei työ pysähdy kokonaan.</li><li>☐&nbsp; Kirjaa vaiheittain. Kirjaa pöytäkirjaan vaiheet: käyttöönotto ohjeesta, rekisteröityminen, pelin lisääminen ja tilan vaihto.</li><li>☐&nbsp; Kirjaa epäröinnit. Kirjaa jokainen epäröintikohta testaajan sanoin.</li><li>☐&nbsp; Tee korjauslista. Muuta epäröintikohdat ohjeen korjauslistaksi ja kirjaa testitapauksen T14 toteutunut tulos.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Testaaja rekisteröityi, lisäsi pelin ja vaihtoi tilan ilman suullista apua, tai jokainen epäröintikohta on kirjattu hänen sanoinaan.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Pöytäkirja ja korjauslista <code>project-docs/</code>-kansioon commitilla.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 4 / 4 · Luokittele löydökset ja aloita ketju 3</strong></p>
+<ol class="osat"><li>☐&nbsp; Luokittele yhdessä. Luokittele löydökset ohjaajan kanssa. Estävä löydös estää pakollisen toiminnon, kadottaa dataa tai vuotaa tietoa. Muut siirtyvät v1.1-listalle.</li><li>☐&nbsp; Kirjaa perustelut. Kirjaa jokaisen luokittelun peruste pöytäkirjaan.</li><li>☐&nbsp; Aloita ketju 3. Aloita estävästä löydöksestä virheenkorjausketju 3: havainto, toistamisohje ja syy.</li><li>☐&nbsp; Kirjaa löydökset suunnitelmaan. Kirjaa julkaisutestin löydökset suunnitelmaan ja lataa päivitetty <code>suunnitelma.md</code>.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Jokainen löydös on luokiteltu perusteluineen, ja estävien vikojen ketjut on aloitettu.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Luokittelu pöytäkirjaan, ketju 3 <code>project-docs/testimatriisi.md</code>-tiedostoon ja <code>project-docs/suunnitelma.md</code> commitilla.</p>
+</div>
+<p class="done wkdone"><strong>Viikon lopputarkistus:</strong> Testaaja rekisteröityi, lisäsi pelin ja vaihtoi tilan ilman suullista apua, tai jokainen epäröintikohta on kirjattu ja luokiteltu; RC-tag on repositoryssa ja estävien vikojen ketjut aloitettu.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Julkaisuehdokkaan tagi, julkaisutestin pöytäkirja (rooli, ajankohta ja testaajan sanat), löydösten luokittelu ja ketju 3:n aloitus.</p>
+</div>
+<div class="wk u"><h2>Työviikko 17 / 18 – Julkaisu v1.0</h2>
+<p class="conn"><strong>Yhteys kokonaisprojektiin:</strong> Työviikon 16 estävät löydökset korjataan, ja ketju 3 viedään regressiotestiin asti. Sen jälkeen sama osoite, joka avattiin työviikolla 3, saa version v1.0, ja asiakas saa tiedotteen omalla kielellään. Julkaistu versio on se työnäyte, jonka esittelet näytössä työviikolla 18.</p>
+<p class="goal"><strong>Viikon tavoite:</strong> Asiakkaan osoitteessa on versio v1.0, joka toimii myös laitteella, jolla palvelua ei ole ennen käytetty.</p>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 1 / 4 · Korjaa estävät virheet ja vie ketju 3 loppuun</strong></p>
+<ol class="osat"><li>☐&nbsp; Korjaa vain estävät. Korjaa työviikolla 16 estäviksi luokitellut virheet. Muut odottavat v1.1-listalla.</li><li>☐&nbsp; Uusintatestaa. Aja jokaisen korjatun löydöksen testi uudelleen.</li><li>☐&nbsp; Aja regressio. Aja testimatriisin ydinpolut uudelleen.</li><li>☐&nbsp; Kirjaa ketju 3 loppuun. Kirjaa ketjuun korjauscommit, uusintatesti ja regressiotesti.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Estävät virheet on korjattu ja uusintatestattu, ja ketju 3 on kirjattu regressiotestiin asti.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Korjauscommitit repositoryyn ja ketju 3 <code>project-docs/testimatriisi.md</code>-tiedostoon.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 2 / 4 · Julkaise v1.0 tagilla</strong></p>
+<ol class="osat"><li>☐&nbsp; Tarkista salaisuudet. Tarkista, ettei yksikään salaisuus ole repositoryssa ja että ympäristömuuttujat on asetettu alustalle.</li><li>☐&nbsp; Kokoa tuotantobuild. Aja tuotantobuild ja tarkista, että se syntyy virheittä.</li><li>☐&nbsp; Aja migraatiot. Aja migraatiot tuotannon tietokantaan.</li><li>☐&nbsp; Merkitse versio. Luo tag <code>v1.0</code> ja vie se etärepositoryyn.</li><li>☐&nbsp; Julkaise samaan osoitteeseen. Julkaise samaan osoitteeseen, jonka asiakas on tuntenut työviikosta 3 asti.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Repositoryssa on tag <code>v1.0</code>, ja sama versio vastaa asiakkaan tuntemassa osoitteessa.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Tag repositoryssa ja julkaisun vaiheet työviikon 17 päiväkirjaan.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 3 / 4 · Kirjoita julkaisutiedote asiakkaalle</strong></p>
+<ol class="osat"><li>☐&nbsp; Kerro, mitä palvelu tekee. Kerro ilman jargonia, mitä jäsen voi tehdä: rekisteröityä, lisätä pelin, vaihtaa tilan ja katsoa kaverin profiilia.</li><li>☐&nbsp; Kerro, mitä siirtyi. Kerro, mitä siirtyi v1.1:een ja miksi, esimerkiksi profiiliviestit.</li><li>☐&nbsp; Liitä osoite ja ohje. Liitä tiedotteeseen palvelun osoite ja tieto siitä, mistä käyttöönotto-ohje löytyy.</li><li>☐&nbsp; Lähetä ja tallenna. Lähetä tiedote asiakkaalle ja tallenna se tiedostoon <code>project-docs/viestit.md</code>.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Julkaisutiedote on lähetetty, ja se kertoo asiakkaan kielellä, mitä palvelu tekee ja mitä siirtyi jatkoon.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> <code>project-docs/viestit.md</code> commitilla.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 4 / 4 · Savutestaa tuotanto kahdella laitteella</strong></p>
+<ol class="osat"><li>☐&nbsp; Avaa yksityinen ikkuna. Avaa osoite yksityisessä selainikkunassa ja tee koko polku rekisteröitymisestä tilanvaihtoon.</li><li>☐&nbsp; Kokeile toisella laitteella. Tee sama polku laitteella, jolla et ole koskaan kirjautunut palveluun.</li><li>☐&nbsp; Kirjaa savutesti. Kirjaa savutestiin molemmat laitteet ja tulokset.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Palvelu toimii koko polulta yksityisessä selainikkunassa ja toisella laitteella.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Savutestikirjaus <code>project-docs/</code>-kansioon ja tulokset työviikon 17 päiväkirjaan.</p>
+</div>
+<p class="done wkdone"><strong>Viikon lopputarkistus:</strong> Osoite toimii yksityisessä selainikkunassa ja toisella laitteella; repositoryssa on tag <code>v1.0</code>; julkaisutiedote kertoo asiakkaan kielellä, mitä palvelu tekee ja mitä siirtyi jatkoon.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Tagi v1.0, tuotannon osoite, julkaisutiedote ja savutestikirjaus.</p>
+</div>
+<div class="wk u"><h2>Työviikko 18 / 18 – Näyttö</h2>
+<p class="conn"><strong>Yhteys kokonaisprojektiin:</strong> 17 työviikkoa on tuottanut committeja, muistioita ja testitapauksia. Viimeisellä viikolla et rakenna mitään uutta, vaan teet niistä löydettäviä: jokainen vaatimus saa suoran linkin työnäytteeseen. Harjoiteltu demo ja itsearvio kertovat arvioijalle, mitä teit ja miksi.</p>
+<p class="goal"><strong>Viikon tavoite:</strong> Arvioija avaa näyttömatriisista minkä tahansa rivin ja löytää siihen liittyvän työnäytteen alle minuutissa.</p>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 1 / 4 · Täsmälinkitä näyttömatriisin 32 vaatimusta</strong></p>
+<ol class="osat"><li>☐&nbsp; Linkitä rivi kerrallaan. Kirjaa tiedostoon <code>project-docs/nayttomatriisi.md</code> jokaiselle vaatimukselle suora linkki: commit, pull request, dokumentti, testitapaus tai muistio.</li><li>☐&nbsp; Avaa jokainen linkki. Avaa linkki ja tarkista, että se osoittaa juuri oikeaan työnäytteeseen.</li><li>☐&nbsp; Merkitse aukot. Merkitse rivit, joille et löydä työnäytettä.</li><li>☐&nbsp; Käy aukot ohjaajan kanssa. Käy merkityt rivit läpi ohjaajan kanssa ja sovi, mikä työnäyte niihin kelpaa.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Jokaisella 32 vaatimuksella on suora linkki työnäytteeseen, ja aukot on käyty läpi ohjaajan kanssa.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> <code>project-docs/nayttomatriisi.md</code> commitilla. Vaikeimmin linkitettävät rivit työviikon 18 päiväkirjaan.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 2 / 4 · Harjoittele 8–10 minuutin demo ääneen ja kellon kanssa</strong></p>
+<ol class="osat"><li>☐&nbsp; Kirjoita demorunko. Kirjoita runko: palvelu ja asiakas, palvelu toiminnassa, yksi tekninen ratkaisu, yksi korjattu bugi, Git-historia ja tekoälyn käyttö sekä v1.1.</li><li>☐&nbsp; Valitse esimerkit. Valitse esiteltävä tekninen ratkaisu, esimerkiksi tilahistorian transaktio, ja yksi täydellinen virheenkorjausketju.</li><li>☐&nbsp; Harjoittele kellon kanssa. Harjoittele demo ääneen kellon kanssa vähintään kahdesti ja kirjaa kesto.</li><li>☐&nbsp; Tarkista kesto. Jos demo ylittää 10 minuuttia, lyhennä runkoa ja harjoittele uudelleen.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Demo on harjoiteltu vähintään kahdesti, ja se pysyy 8–10 minuutissa.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Demorunko <code>project-docs/</code>-kansioon ja harjoiteltu kesto työviikon 18 päiväkirjaan.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 3 / 4 · Kirjoita itsearvio konkreettisin esimerkein</strong></p>
+<ol class="osat"><li>☐&nbsp; Vastaa kysymyksiin. Vastaa itsearvion kysymyksiin: mikä onnistui, missä tarvitsit apua, minkä päätöksen tekisit toisin, miten tekoäly vaikutti ja mitä veisit seuraavaan projektiin.</li><li>☐&nbsp; Liitä esimerkit. Liitä jokaiseen vastaukseen konkreettinen esimerkki ja linkki työnäytteeseen.</li><li>☐&nbsp; Tarkista AI-loki. Tarkista, että AI-loki on ajan tasalla. Se tulee mukaan päiväkirjan lataukseen.</li><li>☐&nbsp; Vie repositoryyn. Lataa koko projektipäiväkirja AI-lokeineen ja vie se repositoryyn itsearvion kanssa.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Itsearviossa on vastaus jokaiseen kysymykseen konkreettisin esimerkein, ja itsearvio ja AI-loki ovat repositoryssa.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Itsearvio <code>project-docs/</code>-kansioon ja päiväkirja AI-lokeineen tiedostoon <code>project-docs/projektipaivakirja.md</code>.</p>
+</div>
+<div class="tblock"><p class="task tcard"><strong>Työvaihe 4 / 4 · Luovuta paketti ohjaajalle ja pyydä luovutuskuittaus</strong></p>
+<ol class="osat"><li>☐&nbsp; Pyydä tarkistus. Pyydä toista henkilöä avaamaan matriisin linkit ja valitsemaan satunnainen rivi. Työnäytteen pitää löytyä alle minuutissa.</li><li>☐&nbsp; Korjaa rikkinäiset linkit. Korjaa jokainen linkki, joka ei auennut.</li><li>☐&nbsp; Tarkista paketti. Käy luovutuspaketin tarkistuslista läpi: matriisi, päiväkirja, AI-loki, tag <code>v1.0</code>, julkinen osoite, itsearvio ja demorunko.</li><li>☐&nbsp; Luovuta ja pyydä kuittaus. Luovuta paketti ohjaajalle ja pyydä luovutuskuittaus.</li></ol>
+<p class="done osa-done"><strong>Valmis kun:</strong> Ohjaaja on kuitannut paketin, ja satunnainen matriisin rivi johtaa oikeaan työnäytteeseen alle minuutissa.</p>
+<p class="ev osa-done"><strong>Tallenna työnäyte:</strong> Luovutuskuittaus työviikon 18 päiväkirjaan.</p>
+</div>
+<p class="done wkdone"><strong>Viikon lopputarkistus:</strong> Ohjaaja avaa matriisista satunnaisen rivin ja päätyy oikeaan työnäytteeseen alle minuutissa; demo pysyy harjoituksessa ajassa; itsearvio ja AI-loki ovat päiväkirjan mukana repositoryssa.</p>
+<p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Täsmälinkitetty näyttömatriisi, itsearvio, demorunko ja luovutuskuittaus.</p>
 </div>
 <h1 class="page">Viimeiset viisi päivää</h1>
 <p class="task"><strong>Päivä 1</strong> · Sisältöjäädytys – viimeinen hyväksytty versio</p>
@@ -215,10 +545,10 @@ th { background: #ede9fe; }
 <tr><td style="width:24%"><strong>P0</strong></td><td><em>Pakollinen ydin.</em> Toiminnot, joiden on valmistuttava, tai palvelua ei ole: rekisteröityminen ja kirjautuminen, pelien lisäys ja muokkaus, tilanvaihto ja tilahistoria, julkinen profiili sekä julkaisu tuotantoon. P0 tehdään ensin, ennen P1:tä ja P2:ta.</td></tr>
 <tr><td style="width:24%"><strong>P1</strong></td><td><em>Tärkeä jatko.</em> Toiminnot, jotka tehdään sitten kun P0 toimii: haku ja suodatus, tähtiarvostelut ja kommentit sekä profiilikuva. Kokoelmat ovat P1-laajennus, josta päätetään erikseen työviikolla 11.</td></tr>
 <tr><td style="width:24%"><strong>P2</strong></td><td><em>Valinnainen lisä.</em> Toiminnot, jotka saavat jäädä kokonaan pois ilman että työ on kesken. Tässä projektissa P2 tarkoittaa viestejä toisten profiileihin: asiakas sanoi itse, että ne voivat jäädä.</td></tr>
-<tr><td style="width:24%"><strong>GitHub-issue</strong></td><td><em>Tehtäväkortti GitHubissa.</em> Yksi rajattu tehtävä GitHubin tehtävälistalla, esimerkiksi ”#23 Tilan vaihto kirjaa historiarivin”. Yksi issue on yleensä puolen tai yhden päivän työ.</td></tr>
+<tr><td style="width:24%"><strong>GitHub-issue</strong></td><td><em>Yksi toteutustehtävä GitHubissa.</em> Yksi rajattu muutos palveluun GitHubin tehtävälistalla, esimerkiksi ”#23 Tilan vaihto kirjaa historiarivin”. Issuessa ovat tavoite, hyväksymiskriteerit, työmääräarvio ja testin tulos. Issue on yleensä puolen tai yhden päivän työ, ja yksi sivun työvaihe voi sisältää useita issueita. Issue tehdään Työtapa-sivun kuudella askeleella.</td></tr>
 <tr><td style="width:24%"><strong>commit</strong></td><td><em>Tallennettu muutos.</em> Yksi nimetty muutos versionhallinnassa. Commitin viesti kertoo, mitä muutit; commit-tunniste on linkki, jolla työnäyte löytyy myöhemmin näyttömatriisista.</td></tr>
 <tr><td style="width:24%"><strong>repository</strong></td><td><em>Projektin koodivarasto.</em> Versionhallinnan säilytyspaikka, jossa ovat koodi, dokumentit ja koko muutoshistoria. Työnäyte on aina repositoryssa, ei tällä sivulla.</td></tr>
-<tr><td style="width:24%"><strong>haara</strong></td><td><em>Branch.</em> Erillinen kehityslinja, jossa muutoksen voi tehdä rauhassa ilman että pääversio rikkoutuu. Vaiheesta B alkaen isommat muutokset tehdään omassa haarassa.</td></tr>
+<tr><td style="width:24%"><strong>haara</strong></td><td><em>Branch.</em> Erillinen kehityslinja, jossa muutoksen voi tehdä rauhassa ilman että pääversio rikkoutuu. Työviikosta 6 alkaen isommat muutokset tehdään omassa haarassa.</td></tr>
 <tr><td style="width:24%"><strong>PR</strong></td><td><em>Pull request.</em> Pyyntö yhdistää oman haaran muutokset pääversioon. Pull requestin kuvaus kertoo mitä muutit, miksi ja miten testasit, ja muutos käydään läpi ennen yhdistämistä.</td></tr>
 <tr><td style="width:24%"><strong>API</strong></td><td><em>Rajapinta.</em> Osoitteisto, jonka kautta selain hakee ja tallentaa tietoa palvelimelta. Yksi osoite on API-reitti: esimerkiksi GET /api/games palauttaa pelilistan.</td></tr>
 <tr><td style="width:24%"><strong>JSON</strong><br><span class="muted">vko 2</span></td><td><em>Tiedon siirtomuoto.</em> Tekstimuoto, jossa tieto liikkuu selaimen ja palvelimen välillä. Samaa muotoa voi käyttää myös tiedostoon tallentamiseen, ja siksi JSON-tiedosto on yksi tietovarastovaihtoehto.</td></tr>
@@ -256,7 +586,7 @@ th { background: #ede9fe; }
 <p class="item">☐&nbsp; <strong>toteuttaa yhteyden tietovarastoon</strong> – SQLite-yhteys Expressistä työviikolla 4: skeeman migraatio, siemendata sekä luku, lisäys ja muokkaus hallitusti; koko CRUD eli luonti, luku, muokkaus ja poisto täydentyy työviikoilla 5–9.</p>
 <p class="item">☐&nbsp; <strong>hyödyntää rajapintoja ja käsittelee tietoa</strong> – Oma REST-tyylinen rajapinta työviikolla 5: POST validointeineen ja virhevastauksineen sekä selainpuolen fetch-käsittely virhetiloineen; kyselyparametrit työviikolla 9.</p>
 <p class="item">☐&nbsp; <strong>arvioi ohjelmiston tietoturvaa</strong> – Dokumentoitu tietoturva-arvio työviikolla 14: syötteet, salasanahashit, istunnot, tietojen näkyvyys, SQL-injektio ja XSS; riski, ratkaisu ja koodiviittaus (perusta työviikolla 7).</p>
-<p class="item">☐&nbsp; <strong>käyttää versionhallintaa</strong> – Git koko projektin ajan: etärepository työviikosta 1, kuvaavat commitit ja feature-haarat vaiheesta B alkaen.</p>
+<p class="item">☐&nbsp; <strong>käyttää versionhallintaa</strong> – Git koko projektin ajan: etärepository työviikosta 1, kuvaavat commitit ja feature-haarat työviikosta 6 alkaen.</p>
 <p class="item">☐&nbsp; <strong>liittää ohjelman osan olemassa olevaan versioon</strong> – Palautemuutos feature-haarassa ja pull request pääversioon työviikolla 11: kuvaus, itsekatselmointi, merge ja konfliktin ratkaisu.</p>
 <p class="item">☐&nbsp; <strong>julkaisee ohjelman tuotantoympäristöön</strong> – v1.0 työviikolla 17: tuotantobuild, ympäristöasetukset, julkaisu valittuun pilviympäristöön, tagi ja savutesti; ensimmäinen julkaisu jo työviikolla 3.</p>
 <h2>Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla</h2>
@@ -267,5 +597,5 @@ th { background: #ede9fe; }
 <p class="item">☐&nbsp; <strong>suunnittelee, toteuttaa ja testaa ohjelmiston ohjelmistokomponenttikirjastoa käyttäen</strong> – Kokonaisketju: komponenttirakenne ja vastuut suunniteltu työviikolla 2, toteutettu työviikoilla 3–12 ja testattu matriisilla työviikolla 13.</p>
 <p class="item">☐&nbsp; <strong>julkaisee ohjelmiston asiakkaan ympäristöön</strong> – Viten tuotantobuild julkaisuehdokkaana asiakkaan ympäristöön julkaisutestausta varten työviikolla 16; v1.0 samaan osoitteeseen työviikolla 17.</p>
 <p class="item">☐&nbsp; <strong>dokumentoi ohjelmiston sovitulla tavalla</strong> – README ja käyttöönotto-ohje työviikolla 15: asennus, käynnistys, riippuvuudet ja ympäristöasetukset; todistettu kuivaharjoituksella ja työviikon 16 ulkopuolisella testillä.</p>
-<p class="muted" style="margin-top:10pt"><em>Muista: sivuston rastit ja kentät tallentuvat vain selaimeen. Ne eivät siirry opettajalle eivätkä korvaa Gitissä olevaa työtä.</em></p>
+<p class="muted" style="margin-top:1em"><em>Muista: sivuston rastit ja kentät tallentuvat vain selaimeen. Ne eivät siirry opettajalle eivätkä korvaa Gitissä olevaa työtä.</em></p>
 </body></html>

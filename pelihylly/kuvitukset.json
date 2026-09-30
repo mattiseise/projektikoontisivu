@@ -5,7 +5,8 @@
     "#8d5a2b",
     "#6b7f3f",
     "#5b6b8c",
-    "#8d4a5b"
+    "#8d4a5b",
+    "#0f766e"
   ],
   "tyokierto": [
     "Suunnitelma",
@@ -16,19 +17,23 @@
   ],
   "vaiheet": [
     [
-      "A",
-      "Ydin"
+      "1",
+      "Valmistelu"
     ],
     [
-      "B",
-      "Ominaisuudet"
+      "2",
+      "Oma hylly"
     ],
     [
-      "C",
-      "Valmiiksi"
+      "3",
+      "Jäsenet"
     ],
     [
-      "D",
+      "4",
+      "Viimeistely"
+    ],
+    [
+      "5",
       "Julkaisu"
     ]
   ],
@@ -51,7 +56,7 @@
     "Kirjaa"
   ],
   "tunnus": "neliot",
-  "tyokiertoOtsikko": "VIIKON TYÖKIERTO",
+  "tyokiertoOtsikko": "YHDEN ISSUEN KULKU",
   "suunnitelmaOtsikko": "SUUNNITELMA SYNTYY ENNEN TOTEUTUSTA",
   "tekoalyTekstit": [
     "Selitä ratkaisu omin sanoin.",
@@ -59,5 +64,7 @@
     "Aja testi itse omassa ympäristössä.",
     "Merkitse käyttö AI-lokiin."
   ],
-  "tekoalyMuistutus": "Komponenttirakenne, saavutettavuus ja CSS tehdään itse."
+  "tekoalyMuistutus": "Komponenttirakenne, saavutettavuus ja CSS tehdään itse.",
+  "tyokiertoAlt": "Yhden GitHub-issuen kulku palvelun osien läpi: suunnitelma, komponentti, API ja data, testi ja julkaisu.",
+  "vaiheetAlt": "PeliHyllyn viisi vaihetta: valmistelu, oma hylly, jäsenet, viimeistely ja julkaisu."
 }

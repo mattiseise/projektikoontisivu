@@ -52,6 +52,8 @@ sekä päivättömyys.
 | `project-docs/projekti.json` | projektin konfiguraatio (viikot, vaiheet, paletti, tokenit, koontikortti) |
 | `tyokalut/` | generaattorit ja tarkistusskripti, **ei muokata projektikohtaisesti** |
 | `assets/`, `downloads/` | generoidut SVG-kuvitukset, faviconit sekä docx- ja pdf-lataukset |
+| `assets/projektin-vaiheet.svg` | vaihekuva, generoidaan `sisalto.js`:n vaiheista (`tyokalut/tee_vaihekuva.js`) |
+| `assets/sovelluksen-osat.svg`, `assets/tilanvaihto.svg`, `assets/suojattu-pyynto.svg` | käsin muokattavat havainnekuvat: palvelun osat (aloitus), tilanvaihto transaktiossa (työvaihe 6-2) ja suojattu pyyntö (työvaihe 7-3) |
 
 ## Julkaiseminen
 
@@ -82,6 +84,7 @@ palautus: työnäyte on aina opiskelijan omassa Git-repositoryssa.
 npm install docx
 node tyokalut/tee_lataukset.js        # docx-tiedostot + tyopaketti-print.html
 python3 tyokalut/tee_kuvitukset.py    # SVG-kuvitukset + faviconit (vaatii Pillow'n)
+node tyokalut/tee_vaihekuva.js        # vaihekuva assets/projektin-vaiheet.svg vaiheista
 node tyokalut/tarkista.js             # savutesti: index.html ja sisalto.js synkassa
 ```
 

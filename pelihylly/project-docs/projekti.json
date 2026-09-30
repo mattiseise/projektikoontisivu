@@ -34,35 +34,63 @@
   },
   "vaiheet": [
     {
-      "tunnus": "A",
-      "lyhyt": "Ydin",
-      "otsikko": "Palvelun ydin: toimeksianto, suunnitelma ja julkaistu pelilista",
+      "tunnus": "1",
+      "lyhyt": "Valmistelu",
+      "otsikko": "Suunnitelma ja julkaistu runko",
+      "kuvaus": "Puret toimeksiannon kysymyksiksi, teet ohjaajan kuittaaman suunnitelman ja viet tyhjän palvelun julkiseen osoitteeseen. Julkaisu tehdään heti, koska sen ongelmat on halvinta korjata, kun rikottavaa on vähän.",
+      "kuvassa": [
+        "Toimeksianto → suunnitelma → julkinen osoite",
+        "Palvelun pohja on verkossa ennen ensimmäistä peliä."
+      ],
       "viikot": [
         1,
         2,
-        3,
-        4,
-        5
+        3
       ],
       "vari": "#8d5a2b"
     },
     {
-      "tunnus": "B",
-      "lyhyt": "Ominaisuudet",
-      "otsikko": "Tilat, käyttäjät, profiilit ja asiakaskatselmointi",
+      "tunnus": "2",
+      "lyhyt": "Oma hylly",
+      "otsikko": "Oma hylly: pelit ja tilanvaihto",
+      "kuvaus": "Rakennat pelilistan tietokannasta, oman lisäyslomakkeen validointeineen ja yhden napin tilanvaihdon, joka kirjaa tilahistorian. Asiakkaan tärkein toive toimii ennen kuin palveluun tulee muita käyttäjiä.",
+      "kuvassa": [
+        "Pelilista → lisäyslomake → tila yhdellä napilla",
+        "Oma peli hyllyyn, tila vaihtuu ja historia kirjautuu."
+      ],
       "viikot": [
-        6,
+        4,
+        5,
+        6
+      ],
+      "vari": "#6b7f3f"
+    },
+    {
+      "tunnus": "3",
+      "lyhyt": "Jäsenet",
+      "otsikko": "Jäsenet, profiilit ja katselmointi",
+      "kuvaus": "Lisäät rekisteröitymisen, kirjautumisen ja omistajuustarkistuksen, julkisen profiilin sekä haun. Asiakkaan edustaja kokeilee koko polkua työviikolla 10, ja hänen palautteensa ohjaa seuraavaa vaihetta.",
+      "kuvassa": [
+        "Kirjautuminen → profiili → haku → katselmointi",
+        "Asiakkaan edustaja kokeilee palvelua työviikolla 10."
+      ],
+      "viikot": [
         7,
         8,
         9,
         10
       ],
-      "vari": "#6b7f3f"
+      "vari": "#5b6b8c"
     },
     {
-      "tunnus": "C",
-      "lyhyt": "Valmiiksi",
-      "otsikko": "Palautemuutos, saavutettavuus, testaus, laatu ja dokumentaatio",
+      "tunnus": "4",
+      "lyhyt": "Viimeistely",
+      "otsikko": "Palaute, laatu ja käyttöönotto-ohje",
+      "kuvaus": "Toteutat palautteen tärkeimmän muutoksen ja teet palvelusta puhelimella ja näppäimistöllä toimivan. Testaat kaiken tuotantoa vasten, siistit koodin, arvioit tietoturvan ja kirjoitat käyttöönotto-ohjeen.",
+      "kuvassa": [
+        "Palautemuutos → saavutettavuus → testaus → ohje",
+        "Palvelu kestää oikeat käyttäjät ilman tekijää."
+      ],
       "viikot": [
         11,
         12,
@@ -70,18 +98,23 @@
         14,
         15
       ],
-      "vari": "#5b6b8c"
+      "vari": "#8d4a5b"
     },
     {
-      "tunnus": "D",
+      "tunnus": "5",
       "lyhyt": "Julkaisu",
-      "otsikko": "Julkaisuehdokas, v1.0 ja näyttö",
+      "otsikko": "Julkaisu ja näyttö",
+      "kuvaus": "Ulkopuolinen testaaja ottaa julkaisuehdokkaan käyttöön pelkän kirjallisen ohjeen avulla. Korjaat estävät virheet, julkaiset v1.0:n ja esittelet työsi näytössä.",
+      "kuvassa": [
+        "Julkaisuehdokas → julkaisutesti → v1.0 → näyttö",
+        "Yhdistys saa palvelun käyttöön kirjallisella ohjeella."
+      ],
       "viikot": [
         16,
         17,
         18
       ],
-      "vari": "#8d4a5b"
+      "vari": "#0f766e"
     }
   ],
   "kuvitukset": {
@@ -119,7 +152,8 @@
       "Merkitse käyttö AI-lokiin."
     ],
     "tekoalyMuistutus": "Komponenttirakenne, saavutettavuus ja CSS tehdään itse.",
-    "tunnus": "neliot"
+    "tunnus": "neliot",
+    "vaiheetAlt": "PeliHyllyn viisi vaihetta: valmistelu, oma hylly, jäsenet, viimeistely ja julkaisu."
   },
   "tokenit": {
     "KUVAUS": "Ohjattu näyttöprojekti: oma pelikirjastopalvelu rakennetaan Reactilla ja Expressillä viikko kerrallaan 18 työviikossa ja julkaistaan tuotantoon.",

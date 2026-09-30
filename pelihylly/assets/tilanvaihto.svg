@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="600" viewBox="0 0 720 600" role="img" aria-labelledby="title desc">
+<title id="title">Näin tilanvaihto kulkee</title>
+<desc id="desc">Havainnekuva, ei kuvakaappaus. 1: Jäsen painaa pelin sivulla tilanappia, esimerkiksi kesken → läpi, ja selain lähettää pyynnön, jossa ovat peli ja uusi tila. 2: Express tarkistaa siirtymätaulukosta, onko siirtymä sallittu. Estetty siirtymä palauttaa virheen, eikä mitään tallenneta. 3: Transaktio alkaa (BEGIN). Games-taulun tila päivitetään ja status_history-tauluun lisätään rivi, jossa ovat vanha tila, uusi tila ja aikaleima. COMMIT tallentaa molemmat. Jos jompikumpi epäonnistuu, ROLLBACK peruu molemmat, joten historia ei valehtele. 4: Pelin sivu näyttää uuden tilan ja historiarivin heti.</desc>
+<rect width="720" height="600" fill="#ffffff"/>
+<defs>
+  <marker id="nuoli" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#5c5347"/></marker>
+</defs>
+<text x="24" y="40" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Näin tilanvaihto kulkee</text>
+<rect x="24" y="64" width="440" height="66" rx="10" fill="#ede9fe"/>
+<text x="42" y="92" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700">1 Jäsen painaa tilanappia</text>
+<text x="42" y="116" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16">pelin sivulla: kesken → läpi</text>
+<path d="M244 134V160" fill="none" stroke="#5c5347" stroke-width="2.5" marker-end="url(#nuoli)"/>
+<text x="258" y="152" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="15">pyyntö: peli ja uusi tila</text>
+<rect x="24" y="166" width="440" height="66" rx="10" fill="#ede9fe"/>
+<text x="42" y="194" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700">2 Express tarkistaa siirtymän</text>
+<text x="42" y="218" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16">onko kesken → läpi sallittu siirtymätaulukossa?</text>
+<path d="M468 199H494" fill="none" stroke="#8d4a5b" stroke-width="2" marker-end="url(#nuoli)"/>
+<rect x="498" y="170" width="198" height="86" rx="10" fill="#fbf3f5" stroke="#8d4a5b" stroke-width="2"/>
+<text x="512" y="196" fill="#8d4a5b" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">Estetty siirtymä</text>
+<text x="512" y="218" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16">virhe, mitään ei</text>
+<text x="512" y="240" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16">tallenneta</text>
+<path d="M244 236V262" fill="none" stroke="#5c5347" stroke-width="2.5" marker-end="url(#nuoli)"/>
+<text x="258" y="254" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="15">sallittu</text>
+<rect x="24" y="268" width="440" height="206" rx="12" fill="#ffffff" stroke="#5b21b6" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="42" y="296" fill="#5b21b6" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">3 Transaktio: molemmat tai ei kumpaakaan</text>
+<text x="42" y="324" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">BEGIN</text>
+<rect x="42" y="336" width="404" height="44" rx="8" fill="#ede9fe"/>
+<text x="56" y="364" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16">UPDATE games: tila = läpi</text>
+<rect x="42" y="390" width="404" height="44" rx="8" fill="#ede9fe"/>
+<text x="56" y="418" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16">INSERT status_history: kesken → läpi, aikaleima</text>
+<text x="42" y="460" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">COMMIT: tila ja historiarivi tallentuvat yhdessä</text>
+<path d="M468 385H494" fill="none" stroke="#8d4a5b" stroke-width="2" marker-end="url(#nuoli)"/>
+<rect x="498" y="334" width="198" height="108" rx="10" fill="#fbf3f5" stroke="#8d4a5b" stroke-width="2"/>
+<text x="512" y="360" fill="#8d4a5b" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">Virhe kesken?</text>
+<text x="512" y="382" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16">ROLLBACK peruu sekä</text>
+<text x="512" y="404" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16">tilan että rivin.</text>
+<text x="512" y="426" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16">Historia ei valehtele.</text>
+<path d="M244 478V504" fill="none" stroke="#5c5347" stroke-width="2.5" marker-end="url(#nuoli)"/>
+<rect x="24" y="510" width="440" height="66" rx="10" fill="#ede9fe"/>
+<text x="42" y="538" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700">4 Pelin sivu päivittyy</text>
+<text x="42" y="562" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16">uusi tila ja historiarivi näkyvät heti</text>
+<text x="498" y="568" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="14">Havainnekuva,</text>
+<text x="498" y="588" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="14">ei kuvakaappaus.</text>
+</svg>

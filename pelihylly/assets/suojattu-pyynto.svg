@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="560" viewBox="0 0 720 560" role="img" aria-labelledby="title desc">
+<title id="title">Näin suojattu muokkauspyyntö tarkistetaan</title>
+<desc id="desc">Havainnekuva, ei kuvakaappaus. 1: Selain lähettää muokkauspyynnön, esimerkiksi PATCH /api/games/12, ja mukana on istunto tai token. 2: Middleware eli välikäsittelijä tarkistaa, onko pyytäjä kirjautunut. Jos ei, vastaus on 401 eli ei kirjautunut. 3: Sitten se tarkistaa, omistaako kirjautunut käyttäjä pelin 12. Jos ei, vastaus on 403 eli ei oikeutta. 4: Vasta sen jälkeen muutos tehdään tietokantaan. Pelkkä kirjautumisen tarkistus ei riitä, koska silloin kuka tahansa kirjautunut voisi muokata toisen pelejä.</desc>
+<rect width="720" height="560" fill="#ffffff"/>
+<defs>
+  <marker id="nuoli" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#5c5347"/></marker>
+</defs>
+<text x="24" y="40" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Näin suojattu muokkauspyyntö tarkistetaan</text>
+<rect x="24" y="64" width="440" height="66" rx="10" fill="#ede9fe"/>
+<text x="42" y="92" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700">1 Selain lähettää muokkauspyynnön</text>
+<text x="42" y="116" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16">PATCH /api/games/12 ja istunto tai token</text>
+<path d="M244 134V160" fill="none" stroke="#5c5347" stroke-width="2.5" marker-end="url(#nuoli)"/>
+<rect x="24" y="166" width="440" height="66" rx="10" fill="#ede9fe"/>
+<text x="42" y="194" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700">2 Onko pyytäjä kirjautunut?</text>
+<text x="42" y="218" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16">middleware tarkistaa istunnon tai tokenin</text>
+<path d="M468 199H494" fill="none" stroke="#8d4a5b" stroke-width="2" marker-end="url(#nuoli)"/>
+<text x="472" y="190" fill="#8d4a5b" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700">ei</text>
+<rect x="498" y="174" width="198" height="64" rx="10" fill="#fbf3f5" stroke="#8d4a5b" stroke-width="2"/>
+<text x="512" y="200" fill="#8d4a5b" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">401</text>
+<text x="512" y="222" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16">ei kirjautunut</text>
+<path d="M244 236V262" fill="none" stroke="#5c5347" stroke-width="2.5" marker-end="url(#nuoli)"/>
+<text x="258" y="254" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">kyllä</text>
+<rect x="24" y="268" width="440" height="66" rx="10" fill="#ede9fe"/>
+<text x="42" y="296" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700">3 Omistaako käyttäjä pelin 12?</text>
+<text x="42" y="320" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16">pelin user_id = kirjautuneen käyttäjän id</text>
+<path d="M468 301H494" fill="none" stroke="#8d4a5b" stroke-width="2" marker-end="url(#nuoli)"/>
+<text x="472" y="292" fill="#8d4a5b" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700">ei</text>
+<rect x="498" y="276" width="198" height="64" rx="10" fill="#fbf3f5" stroke="#8d4a5b" stroke-width="2"/>
+<text x="512" y="302" fill="#8d4a5b" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">403</text>
+<text x="512" y="324" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16">ei oikeutta</text>
+<path d="M244 338V364" fill="none" stroke="#5c5347" stroke-width="2.5" marker-end="url(#nuoli)"/>
+<text x="258" y="356" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">kyllä</text>
+<rect x="24" y="370" width="440" height="66" rx="10" fill="#ede9fe"/>
+<text x="42" y="398" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700">4 Muutos tehdään tietokantaan</text>
+<text x="42" y="422" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16">vain omistajan omaan peliin</text>
+<rect x="24" y="460" width="672" height="64" rx="10" fill="#ffffff" stroke="#5b21b6" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="42" y="486" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16">Pelkkä kirjautumisen tarkistus ei riitä: silloin kuka tahansa</text>
+<text x="42" y="508" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16">kirjautunut voisi muokata toisen jäsenen pelejä.</text>
+<text x="24" y="548" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="14">Havainnekuva, ei kuvakaappaus.</text>
+</svg>
