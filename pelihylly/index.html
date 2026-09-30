@@ -24,9 +24,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap">
-  <link rel="stylesheet" href="styles.css?v2.7.1-20260930">
-  <script src="sisalto.js?v2.7.1-20260930" defer></script>
-  <script src="app.js?v2.7.1-20260930" defer></script>
+  <link rel="stylesheet" href="styles.css?v2.7.2-20260930">
+  <script src="sisalto.js?v2.7.2-20260930" defer></script>
+  <script src="app.js?v2.7.2-20260930" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#sisalto">Siirry sisältöön</a>
@@ -81,7 +81,7 @@
         <p class="view-eyebrow">Aloita tästä · kokonaiskuva ennen työviikkoa 1</p>
         <h1 class="view-title">PeliHylly: mitä rakennat ja miten etenet</h1>
         <p class="view-lead">Rakennat Pelikellari ry:n jäsenille verkkopalvelun, johon jokainen kirjaa pelinsä laitteineen, tähtiarvioineen ja kommentteineen. Jäsen vaihtaa pelin tilaa yhdellä napilla, ja julkinen profiili näyttää kenelle tahansa, mitä hän pelaa nyt ja miten hänen hyllynsä on muuttunut.</p>
-        <p>Sinä teet ja perustelet ratkaisut, esimerkiksi tietovaraston, pelien tilat, julkaisualustan ja kirjautumistavan, ja testaat jokaisen toiminnon itse ennalta kirjattua odotusta vasten. Tekoäly saa selittää ja tarkistaa, mutta komponenttirakenne, saavutettavuusratkaisut ja CSS ovat omaa työtäsi.</p>
+        <p>Sinä teet ja perustelet ratkaisut, esimerkiksi tietomallin, pelien tilat, julkaisualustan ja kirjautumistavan, ja testaat jokaisen toiminnon itse ennalta kirjattua odotusta vasten. Tekoäly saa selittää ja tarkistaa, mutta komponenttirakenne, saavutettavuusratkaisut ja CSS ovat omaa työtäsi.</p>
         <section data-goal></section>
 
         <section data-roadmap></section>
@@ -107,7 +107,7 @@
           <dl class="project-roles">
             <dt>Selain: React ja Vite (<code>client/</code>)</dt><dd>Sivut ja komponentit: pelilista ja pelikortti, lisäyslomake, tilanappi ja tilahistoria sekä julkinen profiili. react-router vaihtaa sivua osoitteen mukaan. Lomake ja profiilisivu rakennetaan itse ilman valmista käyttöliittymäkirjastoa, ja koko CSS on omaa.</dd>
             <dt>Express-rajapinta (<code>server/</code>)</dt><dd>API eli rajapinta on osoitteisto, jonka kautta selain hakee ja tallentaa tietoa palvelimelta. Yksi osoite on API-reitti, esimerkiksi <code>GET /api/games</code>. Express tarkistaa syötteet, kirjautumisen ja omistajuuden, koska selaimen tarkistuksen voi ohittaa.</dd>
-            <dt>SQLite-tietokanta</dt><dd>Taulut käyttäjille, peleille ja tilahistorialle, ja kokoelmille, jos laajennus toteutetaan. Migraatioskripti luo taulut ja siemendataskripti esimerkkipelit. SQLite on ehdotus: tietovaraston valitset ja perustelet vertailulla työviikolla 2.</dd>
+            <dt>SQLite-tietokanta</dt><dd>Taulut käyttäjille, peleille ja tilahistorialle, ja kokoelmille, jos laajennus toteutetaan. Migraatioskripti luo taulut ja siemendataskripti esimerkkipelit. SQLite on sovittu toteutustapa, koska myöhemmät viikot rakentuvat sen varaan. Työviikolla 2 perustelet sen vertailemalla vähintään yhtä vaihtoehtoa vasten.</dd>
             <dt>Julkaisualusta</dt><dd>Render, Railway tai Fly.io: valitset alustan vertailulla työviikolla 3. Ehdotettu malli on yksi palvelin, joka tarjoilee sekä rajapinnan että Reactin tuotantobuildin eli julkaisua varten kootun version samasta julkisesta osoitteesta. Kenen tilille alusta avataan, sovitaan ohjaajan kanssa.</dd>
             <dt>GitHub ja VS Code</dt><dd>Koodi, issuet, pull requestit ja versiomerkinnät eli tagit ovat repositoryssa, projektin koodivarastossa. <code>project-docs/</code> sisältää suunnitelman, muistiot, testimatriisin, päiväkirjan ja AI-lokin.</dd>
             <dt>Testauksen välineet</dt><dd>Selaimen kehittäjätyökalut, curl ja Lighthouse. curl on komentorivin työkalu, jolla lähetät pyynnön suoraan palvelimelle ilman selainta. Sillä todistat, että palvelin itse hylkää virheelliset pyynnöt. Lighthouse mittaa saavutettavuutta ja suorituskykyä.</dd>
@@ -119,13 +119,13 @@
           <summary>Mihin kirjoitan mitäkin?</summary>
           <dl class="project-roles">
             <dt>Toimeksianto</dt><dd>Asiakkaan tarve, vaatimukset ja rajaus. Tästä tarkistat, mitä pitää tehdä. Et kirjoita siihen.</dd>
-            <dt>Suunnitelma</dt><dd>Käyttäjätarinat, prioriteetit, tietomalli ja sivukartta sekä omat ja ohjaajan päätökset perusteluineen. Täytät sen tällä sivulla työviikolla 2, päivität työviikoilla 11 ja 16 ja viet tiedostoksi <code>project-docs/suunnitelma.md</code>.</dd>
+            <dt>Suunnitelma</dt><dd>Prioriteetit, tietomallin ja sivukartan tiivistelmä sekä omat ja ohjaajan päätökset perusteluineen. Käyttäjätarinat ovat tiedostossa <code>project-docs/kayttajatarinat.md</code>, johon suunnitelma viittaa. Täytät sen tällä sivulla työviikolla 2, päivität työviikoilla 11 ja 16 ja viet tiedostoksi <code>project-docs/suunnitelma.md</code>.</dd>
             <dt>GitHub-issue</dt><dd>Yhden muutoksen tavoite, hyväksymiskriteerit, työmääräarvio ja linkki testitapaukseen. Ohjaajan kuittaukset, kuten pakollisen ytimen hyväksyntä, ovat issue-kommentteja. Katselmoinneissa sovitut muutokset kirjataan issueiksi.</dd>
             <dt>Testimatriisi (<code>project-docs/testimatriisi.md</code>)</dt><dd>Jokainen numeroitu testitapaus T01, T02 ja niin edelleen: odotettu tulos ennen ajoa ja toteutunut tulos ajon jälkeen. Samaan tiedostoon kirjaat virheenkorjausketjut. Kirjaat heti, kun ajat testin.</dd>
-            <dt>Muistiot ja viestit <code>project-docs/</code>-kansiossa</dt><dd>Esimerkiksi <code>kysymykset.md</code>, <code>k2-muistio.md</code>, vertailumuistiot, katselmointimuistio, <code>tietoturva-arvio.md</code> ja asiakasviestit tiedostossa <code>viestit.md</code>. Teet muistion silloin, kun työvaihe pyytää sitä.</dd>
+            <dt>Muistiot ja viestit <code>project-docs/</code>-kansiossa</dt><dd>Esimerkiksi <code>kysymykset.md</code>, <code>k2-muistio.md</code>, vertailumuistiot, katselmointimuistio, <code>tietoturva-arvio.md</code> ja asiakasviestit tiedostossa <code>viestit.md</code>. Teet muistion silloin, kun työvaihe pyytää sitä. Kirjaa henkilöistä vain rooli, esimerkiksi ohjaaja, asiakkaan edustaja tai julkaisutestaaja. Nimet ja sanatarkat muistiinpanot lähetät ohjaajalle Teamsissa, jos hän tarvitsee niitä.</dd>
             <dt>Projektipäiväkirja</dt><dd>Viikon yhteenveto, perustelut ja linkit työnäytteisiin. Kirjoitat viikon lopussa viikkosivun kolmeen kenttään, lataat päiväkirjan ja viet sen tiedostoksi <code>project-docs/projektipaivakirja.md</code>.</dd>
             <dt>AI-loki</dt><dd>Mitä kysyit tekoälyltä, mitä teit vastauksella (käytit, muutit tai hylkäsit) ja miten tarkistit sen.</dd>
-            <dt>Näyttömatriisi</dt><dd>Linkit työnäytteisiin, jotka osoittavat tutkinnon vaatimukset. Täsmälinkität sen työviikolla 18. Sama työnäyte voi osoittaa useita vaatimuksia.</dd>
+            <dt>Näyttömatriisi (<code>project-docs/nayttomatriisi.md</code>)</dt><dd>Jokaista vaatimusta kohti rivi, jossa ovat vaatimuksen tunnus, työnäytteen linkki (commit, issue, tiedosto, tagi tai kuva) ja viikko. Sama työnäyte saa esiintyä useilla riveillä. Perustat tiedoston työviikolla 17 ja viimeistelet sen työviikolla 18. Sivun näyttömatriisin rastit ovat oma muistilistasi.</dd>
           </dl>
           <p>Varsinainen työ tehdään repositoryn kansioissa <code>client/</code>, <code>server/</code> ja <code>project-docs/</code>. Tämä sivu ohjaa työtä, mutta koodi ja dokumentit elävät Gitissä. Kirjaa tulos heti sen ensisijaiseen paikkaan ja viittaa siihen päiväkirjassa. Rastit ja kentät tallentuvat vain tähän selaimeen: rasti ei ole palautus, työnäyte on aina repositoryssa.</p>
         </details>
@@ -133,7 +133,7 @@
         <details class="view-section project-reference">
           <summary>Vaatimus, ehdotus vai oma päätös?</summary>
           <p><strong>Vaatimus</strong> tulee toimeksiannosta, ja se pitää toteuttaa. Toiminnot jaetaan työviikolla 2 kolmeen luokkaan, ja samat tunnukset toistuvat koko sivustolla. <strong>P0</strong> on pakollinen ydin: rekisteröityminen ja kirjautuminen, pelien lisäys ja muokkaus, tilanvaihto ja tilahistoria, julkinen profiili sekä julkaisu tuotantoon. Se on saatava valmiiksi, tai palvelua ei ole. <strong>P1</strong> on tärkeä jatko, joka tehdään, kun P0 toimii: haku ja suodatus, tähtiarviot ja kommentit sekä profiilikuva. Kokoelmat ovat P1-laajennus, josta päätetään työviikolla 11. <strong>P2</strong> on valinnainen lisä, joka saa jäädä pois: viestit toisten profiileihin. Keskeneräinen P0 painaa arvioinnissa enemmän kuin puuttuva P2.</p>
-          <p><strong>Sovittu toteutustapa</strong> on lukittu: React ja Vite, react-router, Node.js ja Express, kansiot <code>client/</code>, <code>server/</code> ja <code>project-docs/</code> sekä Git ja GitHub. <strong>Ehdotettu toteutustapa</strong> on lähtökohta, jonka varaan viikko-ohjeet on kirjoitettu: SQLite tietovarastona, yhden palvelimen julkaisumalli sekä ohjeiden esimerkkikentät ja esimerkkitilat. <strong>Oma päätös</strong> perustellaan suunnitelmassa: tietovarasto, tietomalli ja tilojen nimet, sivukartta, julkaisualusta, kirjautumistapa yhdessä ohjaajan kanssa, toinen ulkoinen komponentti, kokoelmien laajennuspäätös ja taitekohdat.</p>
+          <p><strong>Sovittu toteutustapa</strong> on lukittu: React ja Vite, react-router, Node.js ja Express, SQLite, kansiot <code>client/</code>, <code>server/</code> ja <code>project-docs/</code> sekä Git ja GitHub. SQLite on sovittu toteutustapa, koska myöhemmät viikot rakentuvat sen varaan. Työviikolla 2 perustelet sen vertailemalla vähintään yhtä vaihtoehtoa vasten. Jos vertailu puoltaa selvästi muuta, sovi poikkeamasta ohjaajan kanssa ennen työviikkoa 3. <strong>Ehdotettu toteutustapa</strong> on lähtökohta, jonka varaan viikko-ohjeet on kirjoitettu: yhden palvelimen julkaisumalli sekä ohjeiden esimerkkikentät ja esimerkkitilat. <strong>Oma päätös</strong> perustellaan suunnitelmassa: tietomalli ja tilojen nimet, sivukartta, julkaisualusta, kirjautumistapa yhdessä ohjaajan kanssa, toinen ulkoinen komponentti, kokoelmien laajennuspäätös ja taitekohdat.</p>
           <p><strong>Ohjaajan kanssa sovittavat asiat</strong> ovat toimeksiannon lopussa: lisenssi, repositoryn julkisuus ja tekijänimi, perusteversio, katselmoijat ja julkaisualustan tili. Tyhjä kenttä suunnitelmassa on oikea tulos, kunnes asia on sovittu.</p>
           <a href="#view-toimeksianto" data-open-view="toimeksianto">Avaa toimeksianto →</a>
         </details>
@@ -142,7 +142,7 @@
           <summary>Mitä näytössä arvioidaan?</summary>
           <p>Projekti kattaa kolme tutkinnon osaa: Ohjelmointi (45 osp), Ohjelmistokehittäjänä toimiminen (45 osp) ja Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla (30 osp). Kaikki kolme näytetään samalla työllä, ja näyttömatriisissa on kaikki 32 osaamisvaatimusta. Tunnukset p1–p11, s1–s14 ja k1–k7 viittaavat näihin osiin: p = Ohjelmointi, s = Ohjelmistokehittäjänä toimiminen ja k = komponenttikirjasto-osa.</p>
           <p>Ohjelmoinnin osaaminen näkyy koodissa, jonka kirjoitat, testaat ja korjaat itse: komponenteissa, API-reiteissä ja tietokantakyselyissä. Ohjelmistokehittäjänä toimiminen näkyy tavassa tehdä työtä: suunnitelma, priorisointi, versionhallinta, katselmoinnit ja julkaisu tuotantoon. Komponenttikirjaston osuus on React: komponentit, propsit, hookit ja tilanhallinta ovat työnäytteiden ydin.</p>
-          <p>Tutkinnon osissa on myös tiimissä tehtäviä kokonaisuuksia. Siksi tehtävissä puhutaan tiimistä, katselmoinneista ja asiakkaasta, vaikka rakennat PeliHyllyn muuten yksin. Ohjaaja toimii tiimin toisena osapuolena priorisoinnissa, vertailupäätöksissä ja ratkaisujen arvioinnissa. Asiakkaan roolia esittää ohjaajan nimeämä ulkopuolinen henkilö, ja työviikon 16 julkaisutestaaja on eri henkilö. Sopimiset ja katselmoinnit ovat osa arvioitavaa osaamista, eivät muodollisuus.</p>
+          <p>Tutkinnon osissa on myös tiimissä tehtäviä kokonaisuuksia. Siksi tehtävissä puhutaan tiimistä, katselmoinneista ja asiakkaasta, vaikka rakennat PeliHyllyn muuten yksin. Ohjaaja toimii tiimin toisena osapuolena priorisoinnissa, vertailupäätöksissä ja ratkaisujen arvioinnissa. Asiakkaan roolia esittää ohjaajan nimeämä ulkopuolinen henkilö, ja työviikon 16 julkaisutestaaja on eri henkilö. Kunnes asiakkaan edustaja on nimetty, ohjaaja toimii asiakkaan sijaisena ja vastaanottaa kysymyslistan ja tilannekatsaukset. Katselmoinneissa asiakasta esittää nimetty edustaja. Sopimiset ja katselmoinnit ovat osa arvioitavaa osaamista, eivät muodollisuus.</p>
           <a href="#view-naytto" data-open-view="naytto">Avaa näyttömatriisi →</a>
         </details>
 
@@ -188,7 +188,7 @@
           <p>Jokaisesta pelistä pitää saada talteen nimi, laite jolla sitä pelataan, tila, tähtiarvio ja oma kommentti, ja pelin voi merkitä ”pelaan tätä parhaillaan”. Kokoelmat, joilla pelejä voisi ryhmitellä vaikkapa ”NES-hyllyksi” tai ”kauhupeleiksi”, olisivat hienot, mutta tilat, historia ja profiilit ensin. Jäsenet haluavat myös nähdä toistensa profiilit: mitä kaveri pelaa juuri nyt, montako peliä hänellä on kesken milläkin laitteella, ja aikajärjestyksessä sen, milloin mikäkin peli tuli hyllyyn tai meni läpi. Profiili on yhdistyksen yhteinen olohuone: sen pitää kertoa pelaajan hylly yhdellä silmäyksellä.</p>
           <p>Vieraiden pitää päästä katselemaan profiileja ja pelilistoja ilman tunnuksia, mutta lisääminen ja muokkaaminen ovat vain omilla tunnuksilla. Salasanat on hoidettava kunnolla: pienen yhdistyksen maine ei kestä vuotoa. Haluan nähdä keskeneräisen version verkossa jo varhain, ja noin puolivälissä haluan itse kokeilla palvelua ja sanoa mielipiteeni ennen kuin loput rakennetaan. Kerro minulle etenemisestä ilman teknistä jargonia: minä ymmärrän pelejä, en palvelimia.</p>
           <p>Valmis tarkoittaa minulle sitä, että palvelu on julkisessa osoitteessa, jäsen rekisteröityy itse, lisää pelinsä, vaihtaa tilaa ja löytää kaverin profiilin, ja että saan kirjallisen ohjeen, jolla yhdistys saa palvelun käyttöön vaikka tekijä ei ole paikalla. Viestit toisten profiileihin olisivat kivoja, mutta ne saavat jäädä pois, jos homma alkaa paisua. Mieluummin vähemmän ja kunnolla.</p>
-          <p class="assignment-note"><strong>Huomaa:</strong> Pelikellari ry ja sen toiminnanvetäjä ovat kuvitteellisia. Asiakkaan roolia esittää nimetty ulkopuolinen henkilö, ei oma ohjaava opettajasi. Ohjaaja nimeää henkilön viimeistään työviikolla 3, ennen ensimmäistä tilannekatsausta.</p>
+          <p class="assignment-note"><strong>Huomaa:</strong> Pelikellari ry ja sen toiminnanvetäjä ovat kuvitteellisia. Asiakkaan roolia esittää nimetty ulkopuolinen henkilö, ei oma ohjaava opettajasi. Ohjaaja nimeää henkilön viimeistään työviikolla 3. Siihen asti ohjaaja toimii asiakkaan sijaisena ja vastaanottaa kysymyslistan ja tilannekatsaukset. Katselmoinneissa asiakasta esittää nimetty edustaja.</p>
         </div>
 
         <div class="grid-2 view-section">
@@ -198,7 +198,7 @@
             <p style="margin-top:8px"><strong>Frontend eli selainpuoli (lukittu):</strong> React + Vite. React on valinnaisen tutkinnon osan ohjelmistokomponenttikirjasto: komponentit, propsit, hookit ja tilanhallinta ovat työnäytteiden ydin.</p>
             <p style="margin-top:8px"><strong>Reititys (lukittu):</strong> react-router tuodaan työviikolla 3: reititys ei kuulu Reactin ytimeen, ja tämä on samalla k2-havainto.</p>
             <p style="margin-top:8px"><strong>Backend eli palvelinpuoli (lukittu):</strong> Node.js + Express. Sama kieli molemmissa päissä pitää 18 työviikon projektin hallittavana yhdelle tekijälle.</p>
-            <p style="margin-top:8px"><strong>Tietovarasto (ehdotus ja oma päätös):</strong> SQLite, kun perustelet valinnan vertailulla työviikolla 2. Viikko-ohjeet on kirjoitettu SQLiten varaan, ja valinnan perustelu kirjataan suunnitelmaan.</p>
+            <p style="margin-top:8px"><strong>Tietovarasto (lukittu):</strong> SQLite on sovittu toteutustapa, koska myöhemmät viikot rakentuvat sen varaan. Työviikolla 2 perustelet sen vertailemalla vähintään yhtä vaihtoehtoa vasten. Jos vertailu puoltaa selvästi muuta, sovi poikkeamasta ohjaajan kanssa ennen työviikkoa 3. Perustelu kirjataan suunnitelmaan.</p>
             <p style="margin-top:8px"><strong>Kansiot (lukittu):</strong> <code>client/</code>, <code>server/</code> ja <code>project-docs/</code>. Kaikki dokumentaatio yhteen kansioon.</p>
             <p style="margin-top:8px"><strong>Työkalut (lukittu):</strong> Git ja GitHub (issuet, pull requestit), VS Code, selaimen kehittäjätyökalut ja Lighthouse.</p>
             <p style="margin-top:8px"><strong>P0 eli pakollinen ydin (vaatimus):</strong> rekisteröityminen ja kirjautuminen, pelien lisäys ja muokkaus, tilanvaihto ja automaattinen tilahistoria, julkinen profiili tilastoineen sekä julkaisu tuotantoon. Julkaisualusta (Render, Railway tai Fly.io) on oma päätöksesi työviikolla 3, ja sama julkinen osoite pysyy käytössä v1.0-julkaisuun asti.</p>
@@ -272,7 +272,7 @@
           <h2>Testaa kuin kehittäjä</h2>
           <p class="view-lead" style="margin-top:8px">Testaus ei ole pelkkää sivujen klikkailua ja toteamista, että toimii. Kirjaa odotettu tulos, havaittu tulos, virheen syy, korjaus ja uusintatesti.</p>
           <ul class="check-list">
-            <li><strong>Vähintään 14 suunniteltua testitapausta</strong> kolmessa luokassa: normaali käyttö, rajat ja virhetilanteet. Odotettu tulos kirjataan aina ennen ajoa. Testitapaukset numeroidaan T01, T02 ja niin edelleen, ja ne kirjataan testimatriisiin <code>project-docs/testimatriisi.md</code> työviikosta 4 alkaen.</li>
+            <li><strong>Vähintään 14 suunniteltua testitapausta</strong> koko projektissa kolmessa luokassa: normaali käyttö, rajat ja virhetilanteet. Niistä vähintään 12 on kirjoitettu ja ajettu työviikkoon 13 mennessä. Odotettu tulos kirjataan aina ennen ajoa. Testitapaukset numeroidaan T01, T02 ja niin edelleen, ja ne kirjataan testimatriisiin <code>project-docs/testimatriisi.md</code> työviikosta 4 alkaen.</li>
             <li><strong>3 täydellistä virheenkorjausketjua:</strong> havainto → toistamisohje → syy → korjauscommit → uusintatesti → regressiotesti. Ketju 1 työviikolla 8 (kun aito bugi osuu), ketju 2 työviikolla 13 ja ketju 3 työviikoilla 16–17. Regressiotesti tarkoittaa, että ajat korjauksen jälkeen myös muut ydinpolut ja varmistat, ettei korjaus rikkonut jotain muuta.</li>
             <li><strong>Palvelinvalidointi todennetaan curlilla</strong> selaimen ohittaen: tyhjä nimi, ylipitkä nimi ja puuttuvat pakolliset kentät. curl on komentorivin työkalu, jolla lähetät pyynnön suoraan palvelimelle ilman selainta.</li>
             <li><strong>Omistajuus todennetaan API-tasolla:</strong> toisen käyttäjän pelin muokkausyritys palauttaa virhekoodin 403 (ei oikeutta).</li>
@@ -425,7 +425,7 @@
             <div class="task-list">
             <label class="task-row"><input type="checkbox" data-task="2-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjoita käyttäjätarinat ja priorisoi ne ohjaajan kanssa</span></label>
             <label class="task-row"><input type="checkbox" data-task="2-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Piirrä tietomalli, sivukartta ja rautalangat</span></label>
-            <label class="task-row"><input type="checkbox" data-task="2-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Vertaile tietovarastot ja perustele valinta</span></label>
+            <label class="task-row"><input type="checkbox" data-task="2-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Vertaile tietovarastot ja perustele SQLite</span></label>
             <label class="task-row"><input type="checkbox" data-task="2-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Pilko pakollinen ydin issueiksi ja arvioi työmäärät</span></label>
             </div>
           </section>
@@ -1534,7 +1534,7 @@
             <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 4</span></div>
             <div class="task-list">
             <label class="task-row"><input type="checkbox" data-task="17-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Korjaa estävät virheet ja vie ketju 3 loppuun</span></label>
-            <label class="task-row"><input type="checkbox" data-task="17-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Julkaise v1.0 tagilla</span></label>
+            <label class="task-row"><input type="checkbox" data-task="17-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Julkaise v1.0 tagilla ja perusta näyttömatriisi</span></label>
             <label class="task-row"><input type="checkbox" data-task="17-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjoita julkaisutiedote asiakkaalle</span></label>
             <label class="task-row"><input type="checkbox" data-task="17-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Savutestaa tuotanto kahdella laitteella</span></label>
             </div>
@@ -1681,14 +1681,14 @@
 
         <form class="plan-form" data-plan-form>
           <div class="plan-form-heading">
-            <div><p class="section-label section-label-accent">Omat päätökset</p><h3>Omat päätökset – sinä omistat nämä</h3><p>Tietovarasto, tietomalli ja tilojen nimet, sivukartta ja komponenttijako, julkaisualusta, autentikointitapa, toinen ulkoinen komponentti, kokoelmien laajennuspäätös ja responsiivisuuden taitekohdat ovat sinun päätöksiäsi perusteluineen. Tietovarastovertailussa mainittu JSON-tiedosto tarkoittaa tavallista tekstitiedostoa: JSON eli selaimen ja palvelimen yhteinen tekstimuoto käy myös tiedon tallentamiseen levylle. Myös aiheen muunnelma (musiikki- tai DVD-arkisto) on mahdollinen, jos perustelet ohjaajalle, mikä muunnelmassa on oikeasti järkevää. Ohjaajan päätökset (lisenssi ja repositoryn julkisuus) kirjataan avoimiksi asioiksi, kunnes ne on sovittu.</p></div>
+            <div><p class="section-label section-label-accent">Omat päätökset</p><h3>Omat päätökset – sinä omistat nämä</h3><p>SQLite on sovittu tietovarasto, ja sen perustelu vertailuineen kirjataan tähän. Tietomalli ja tilojen nimet, sivukartta ja komponenttijako, julkaisualusta, autentikointitapa, toinen ulkoinen komponentti, kokoelmien laajennuspäätös ja responsiivisuuden taitekohdat ovat sinun päätöksiäsi perusteluineen. Käyttäjätarinat kirjoitat tiedostoon <code>project-docs/kayttajatarinat.md</code>, ja suunnitelma viittaa siihen. Tietovarastovertailussa mainittu JSON-tiedosto tarkoittaa tavallista tekstitiedostoa: JSON eli selaimen ja palvelimen yhteinen tekstimuoto käy myös tiedon tallentamiseen levylle. Myös aiheen muunnelma (musiikki- tai DVD-arkisto) on mahdollinen, jos perustelet ohjaajalle, mikä muunnelmassa on oikeasti järkevää. Ohjaajan päätökset (lisenssi ja repositoryn julkisuus) kirjataan avoimiksi asioiksi, kunnes ne on sovittu.</p></div>
             <span data-plan-status>Ei vielä aloitettu</span>
           </div>
 
           <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Projektin nimi<input type="text" data-plan-field="nimi" placeholder="PeliHylly tai oma nimesi palvelulle"></label><span class="plan-row-week">viikko 1</span></div>
           <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Tekijä<input type="text" data-plan-field="tekija" placeholder="Sovittu tekijänimi; varmista ohjaajalta ennen julkista repositorya"></label><span class="plan-row-week">viikko 1</span></div>
           <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Aiheen muunnelma<input type="text" data-plan-field="aihe" placeholder="Videopeliarkisto sellaisenaan vai muunnelma (musiikki-, DVD-arkisto)? Mikä muunnelmassa on järkevää?"></label><span class="plan-row-week">viikko 2</span></div>
-          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Tietovarasto ja perustelu<input type="text" data-plan-field="tietovarasto" placeholder="SQLite / JSON-tiedosto / palvelintietokanta: kriteerit ja päätös"></label><span class="plan-row-week">viikko 2</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Tietovarasto ja perustelu<input type="text" data-plan-field="tietovarasto" placeholder="Sovittu: SQLite. Vertailu vähintään yhtä vaihtoehtoa vasten ja perustelu"></label><span class="plan-row-week">viikko 2</span></div>
           <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Tietomalli ja tilojen nimet<input type="text" data-plan-field="tietomalli" placeholder="Taulut, kentät, tilat ja sallitut siirtymät"></label><span class="plan-row-week">viikko 2 · testataan viikolla 6</span></div>
           <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Sivukartta ja komponenttijako<input type="text" data-plan-field="sivukartta" placeholder="Näkymät, reitit ja komponenttien vastuut"></label><span class="plan-row-week">viikko 2 · testataan viikoilla 3 ja 8</span></div>
           <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Julkaisualusta<input type="text" data-plan-field="julkaisualusta" placeholder="Render / Railway / Fly.io: ilmainen taso, levyn pysyvyys, ympäristömuuttujat"></label><span class="plan-row-week">viikko 3</span></div>
@@ -1701,7 +1701,7 @@
           <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Lisenssi<input type="text" data-plan-field="lisenssi" placeholder="Jätä tyhjäksi, kunnes ohjaaja on päättänyt"></label><span class="plan-row-week">avoin asia</span></div>
           <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Repositoryn julkisuus ja tekijänimi<input type="text" data-plan-field="repojulkisuus" placeholder="Jätä tyhjäksi, kunnes ohjaaja on päättänyt"></label><span class="plan-row-week">avoin asia</span></div>
           <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Perusteversion siirtymäsääntö<input type="text" data-plan-field="perusteversio" placeholder="Jätä tyhjäksi, kunnes oppilaitoksen linja on selvillä"></label><span class="plan-row-week">avoin asia</span></div>
-          <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Katselmoijat (työviikot 10 ja 16)<input type="text" data-plan-field="katselmoijat" placeholder="Jätä tyhjäksi, kunnes ohjaaja on nimennyt henkilöt"></label><span class="plan-row-week">avoin asia</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Katselmoijat (työviikot 10 ja 16)<input type="text" data-plan-field="katselmoijat" placeholder="Kun ohjaaja on nimennyt henkilöt, kirjaa vain roolit, ei nimiä"></label><span class="plan-row-week">avoin asia</span></div>
           <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Julkaisualustan tilin omistajuus<input type="text" data-plan-field="alustatili" placeholder="Jätä tyhjäksi, kunnes oppilaitoksen linja on selvillä"></label><span class="plan-row-week">avoin asia</span></div>
 
           <div class="plan-actions">
@@ -1767,7 +1767,7 @@
       <section class="view" data-view="naytto" id="view-naytto">
         <p class="view-eyebrow">Näyttöaineisto syntyy työn aikana</p>
         <h1 class="view-title">Näyttömatriisi</h1>
-        <p class="view-lead">Pelkkä valmis tuotos ei näytä koko osaamista. Työnäyte on yksi tuotos, joka osoittaa osaamisesi: commit, kuva, testitapaus tai muistio. Näyttöaineisto on kaikki työnäytteesi yhdessä. Sama työnäyte voi kelvata useaan kohtaan. Kokoa jokaisesta kohdasta linkki, commit, kuva, lokimerkintä tai päätösmuistio.</p>
+        <p class="view-lead">Pelkkä valmis tuotos ei näytä koko osaamista. Työnäyte on yksi tuotos, joka osoittaa osaamisesi: commit, kuva, testitapaus tai muistio. Näyttöaineisto on kaikki työnäytteesi yhdessä. Sama työnäyte voi kelvata useaan kohtaan. Kokoa jokaisesta kohdasta linkki, commit, kuva, lokimerkintä tai päätösmuistio tiedostoon <code>project-docs/nayttomatriisi.md</code>: vaatimuksen tunnus, työnäytteen linkki ja viikko. Tämän sivun rastit ovat oma muistilistasi.</p>
 
         <div class="card card-tint evidence-summary"><strong data-evidence-count>0 / 32</strong><span>osaamisvaatimuksen työnäyte merkitty</span></div>
 

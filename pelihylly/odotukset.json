@@ -6,8 +6,8 @@
   "paivaton": true,
   "generoitu": "2026-09-30",
   "lahde": {
-    "sisalto.js": "c9b8316bc515aebb",
-    "index.html": "1c706ba592df9be0"
+    "sisalto.js": "4eee96ea5b3af711",
+    "index.html": "e44fc83fe52301da"
   },
   "viikot": [
     1,
@@ -153,9 +153,9 @@
         },
         {
           "id": "2-3",
-          "teksti": "Vertaile tietovarastot ja perustele valinta",
-          "valmis": "Suunnitelmassa on kolmen vaihtoehdon vertailu omilla kriteereillä ja valinta perusteluineen.",
-          "tallenna": "Vertailu ja päätös suunnitelman kenttään Tietovarasto ja perustelu. Perustelu omin sanoin työviikon 2 päiväkirjaan."
+          "teksti": "Vertaile tietovarastot ja perustele SQLite",
+          "valmis": "Suunnitelmassa on vertailu, jossa SQLiteä verrataan omilla kriteereillä vähintään yhteen vaihtoehtoon, ja perustelu sovitulle valinnalle.",
+          "tallenna": "Vertailu ja perustelu suunnitelman kenttään Tietovarasto ja perustelu. Perustelu omin sanoin työviikon 2 päiväkirjaan."
         },
         {
           "id": "2-4",
@@ -728,7 +728,7 @@
         {
           "id": "13-1",
           "teksti": "Täydennä testimatriisi kolmeen luokkaan",
-          "valmis": "Matriisissa on vähintään 12 testitapausta kolmessa luokassa, ja jokaisella on odotettu tulos ennen ajoa.",
+          "valmis": "Matriisissa on vähintään 12 testitapausta kolmessa luokassa, ja jokaisella on odotettu tulos ennen ajoa. Koko projektissa tapauksia on vähintään 14, sillä testitapaus T14 ajetaan työviikolla 16.",
           "tallenna": "`project-docs/testimatriisi.md` commitilla."
         },
         {
@@ -752,7 +752,7 @@
       ],
       "nayta": "Testimatriisi tuloksineen, ketjukirjaukset ja korjauscommitit.",
       "tuotos": "Täydennetty testimatriisi tuloksineen, virheenkorjausketju 2 regressiotestiin asti sekä korjauscommitit.",
-      "valmis": "Matriisin jokaisella rivillä on odotettu tulos (kirjattu ennen ajoa) ja toteutunut tulos; vähintään yksi täydellinen ketju on viety regressiotestiin asti tällä viikolla.",
+      "valmis": "Vähintään 12 testitapausta on kirjoitettu ja ajettu työviikkoon 13 mennessä: matriisin jokaisella rivillä on odotettu tulos (kirjattu ennen ajoa) ja toteutunut tulos. Vähintään yksi täydellinen ketju on viety regressiotestiin asti tällä viikolla.",
       "tarkistukset": [
         {
           "id": "paivakirja:13",
@@ -939,9 +939,9 @@
         },
         {
           "id": "17-2",
-          "teksti": "Julkaise v1.0 tagilla",
+          "teksti": "Julkaise v1.0 tagilla ja perusta näyttömatriisi",
           "valmis": "Repositoryssa on tag `v1.0`, ja sama versio vastaa asiakkaan tuntemassa osoitteessa.",
-          "tallenna": "Tag repositoryssa ja julkaisun vaiheet työviikon 17 päiväkirjaan."
+          "tallenna": "Tag repositoryssa, perustettu `project-docs/nayttomatriisi.md` commitilla ja julkaisun vaiheet työviikon 17 päiväkirjaan."
         },
         {
           "id": "17-3",
@@ -960,6 +960,12 @@
       "tuotos": "Korjatut estävät virheet ja ketju 3 regressiotestiin asti, tuotantobuild ja tag `v1.0`, julkaisutiedote asiakkaalle sekä savutestikirjaus.",
       "valmis": "Osoite toimii yksityisessä selainikkunassa ja toisella laitteella; repositoryssa on tag `v1.0`; julkaisutiedote kertoo asiakkaan kielellä, mitä palvelu tekee ja mitä siirtyi jatkoon.",
       "tarkistukset": [
+        {
+          "id": "tiedosto:project-docs/nayttomatriisi.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/nayttomatriisi.md",
+          "lahde": "auto"
+        },
         {
           "id": "tagi:v1.0",
           "tyyppi": "tagi",
@@ -1016,12 +1022,6 @@
       "tuotos": "Täsmälinkitetty näyttömatriisi, harjoiteltu 8–10 minuutin demo, kirjallinen itsearvio ja ohjaajalle luovutettu paketti.",
       "valmis": "Ohjaaja avaa matriisista satunnaisen rivin ja päätyy oikeaan työnäytteeseen alle minuutissa; demo pysyy harjoituksessa ajassa; itsearvio ja AI-loki ovat päiväkirjan mukana repositoryssa.",
       "tarkistukset": [
-        {
-          "id": "tiedosto:project-docs/nayttomatriisi.md",
-          "tyyppi": "tiedosto",
-          "polku": "project-docs/nayttomatriisi.md",
-          "lahde": "auto"
-        },
         {
           "id": "paivakirja:18",
           "tyyppi": "paivakirja",
