@@ -6,8 +6,8 @@
   "paivaton": true,
   "generoitu": "2026-09-30",
   "lahde": {
-    "sisalto.js": "ffb87fbcff44d19e",
-    "index.html": "8d278f93ee5c1b8d"
+    "sisalto.js": "35f4c95d5978dc9f",
+    "index.html": "901597e83f343e6b"
   },
   "viikot": [
     1,
@@ -153,9 +153,9 @@
         },
         {
           "id": "2-3",
-          "teksti": "Vertaa tietovarastoja ja perustele valinta",
-          "valmis": "Vertailutaulukossa on kolme vaihtoehtoa omilla kriteereilläsi, ja valinta on perusteltu suunnitelmassa omilla tauluillasi.",
-          "tallenna": "Vertailutaulukko `project-docs/`-kansioon. Valinta perusteluineen työviikon 2 päiväkirjaan."
+          "teksti": "Perustele sovittu tietovarasto vertailulla",
+          "valmis": "SQLiteä on verrattu JSON-tiedostoon ja PostgreSQLiin omilla kriteereilläsi, ja perustelu omilla tauluillasi on suunnitelmassa.",
+          "tallenna": "Vertailutaulukko `project-docs/`-kansioon. Perustelu työviikon 2 päiväkirjaan."
         },
         {
           "id": "2-4",
@@ -272,7 +272,7 @@
         {
           "id": "4-2",
           "teksti": "Vertaa istuntotapoja ja päätä ohjaajan kanssa",
-          "valmis": "Vertailu on kirjoitettu tämän sovelluksen ehdoilla, ja yhteinen päätös on kirjattu ohjaajan nimen ja ajankohdan kanssa.",
+          "valmis": "Vertailu on kirjoitettu tämän sovelluksen ehdoilla, ja yhteinen päätös on kirjattu keskustelukumppanin roolin ja ajankohdan kanssa.",
           "tallenna": "Vertailu ja muistio `project-docs/`-kansioon. Päätös perusteluineen työviikon 4 päiväkirjaan."
         },
         {
@@ -372,7 +372,7 @@
         {
           "id": "6-2",
           "teksti": "Toteuta projektien hallinta (CRUD)",
-          "valmis": "Projektipäällikkö voi luoda, listata, muokata ja poistaa projekteja hallintanäkymässä ilman tietokannan käsin muokkausta.",
+          "valmis": "Projektipäällikkö voi luoda, listata, muokata ja poistaa projekteja ilman tietokannan käsin muokkausta, ja projektin, jolla on kirjauksia, poisto palauttaa 409 ja käyttöliittymä kertoo syyn.",
           "tallenna": "Reitit ja näkymä commitilla. Kuvakaappaus hallintanäkymästä työviikon 6 päiväkirjaan."
         },
         {
@@ -390,7 +390,7 @@
       ],
       "nayta": "perusteltu kirjastovalinta package.json-diffillä, reittikartta ja demo molemmilla rooleilla (p7, k4; s7 laajenee).",
       "tuotos": "Perusteltu reitityskirjastovalinta, reittikartta, projektien CRUD eli luonti, luku, muokkaus ja poisto, tehtävälajien ja projektityyppien hallinta sekä projektin jäsenyydet.",
-      "valmis": "Työntekijän kirjauslomakkeessa näkyvät vain projektit, joihin hänet on liitetty; vain projektipäällikkö pääsee hallintanäkymiin (testattu myös suoralla URL-osoitteella); reittikartta on dokumentoitu.",
+      "valmis": "Työntekijän kirjauslomakkeessa näkyvät vain projektit, joihin hänet on liitetty; vain projektipäällikkö pääsee hallintanäkymiin (testattu myös suoralla URL-osoitteella); projektin, jolla on kirjauksia, poisto palauttaa 409 ja käyttöliittymä kertoo syyn; reittikartta on dokumentoitu.",
       "tarkistukset": [
         {
           "id": "tiedosto:package.json",
@@ -583,9 +583,9 @@
         },
         {
           "id": "10-3",
-          "teksti": "Kirjaa palaute sitaatteina ja oma tulkinta erikseen",
-          "valmis": "Muistiossa jokaisella havainnolla on testaajan omat sanat ja erillinen oma tulkinta.",
-          "tallenna": "`project-docs/katselmointi-vk10.md`. Kolme tärkeintä sitaattia työviikon 10 päiväkirjaan."
+          "teksti": "Kirjaa palaute sitaatteina ja tulkinta erikseen",
+          "valmis": "Muistiossa jokaisella havainnolla on testaajan omat sanat roolilla merkittyinä ja erillinen oma tulkinta, ja testaajan nimi on lähetetty ohjaajalle Teamsissa.",
+          "tallenna": "`project-docs/katselmointi-vk10.md`. Kolme tärkeintä sitaattia roolilla merkittyinä työviikon 10 päiväkirjaan. Nimi ohjaajalle Teamsissa."
         },
         {
           "id": "10-4",
@@ -595,8 +595,8 @@
         }
       ],
       "nayta": "katselmointimuistio, priorisoitu muutoslista ja uudet issuet (s2, s3, p10; s1 täydentyy).",
-      "tuotos": "Katselmointimuistio testaajan sitaatteineen, oma tulkinta erikseen kirjattuna ja priorisoitu muutoslista issueina.",
-      "valmis": "Katselmointimuistio (testaajan nimetty rooli, ajankohta, testaajan omat sanat, oma tulkinta, sovitut muutokset) on project-docs-kansiossa ja tärkein muutos on issueina hyväksymiskriteereineen.",
+      "tuotos": "Katselmointimuistio testaajan sitaatteineen (puhuja merkitty roolilla), oma tulkinta erikseen kirjattuna ja priorisoitu muutoslista issueina.",
+      "valmis": "Katselmointimuistio (testaajan rooli, ajankohta, testaajan omat sanat roolilla merkittyinä, oma tulkinta, sovitut muutokset) on project-docs-kansiossa; testaajan nimi on lähetetty ohjaajalle Teamsissa; tärkein muutos on issueina hyväksymiskriteereineen.",
       "tarkistukset": [
         {
           "id": "tiedosto:project-docs/katselmointi-vk10.md",
@@ -914,13 +914,13 @@
         {
           "id": "16-4",
           "teksti": "Järjestä ulkopuolinen julkaisutestaus",
-          "valmis": "Testauspöytäkirjassa on nimetty rooli, ajankohta, testaajan omat sanat ja oma tulkinta erikseen, ja estävät virheet ovat issueina.",
-          "tallenna": "Julkaisutestauksen pöytäkirja ja estävien issueiden lista repositoryyn. Tärkeimmät havainnot sitaatteina työviikon 16 päiväkirjaan."
+          "valmis": "Testauspöytäkirjassa on testaajan rooli, ajankohta, testaajan omat sanat ja oma tulkinta erikseen, testaajan nimi on lähetetty ohjaajalle Teamsissa, ja estävät virheet ovat issueina.",
+          "tallenna": "Julkaisutestauksen pöytäkirja ja estävien issueiden lista repositoryyn. Tärkeimmät havainnot sitaatteina roolilla merkittyinä työviikon 16 päiväkirjaan. Nimi ohjaajalle Teamsissa."
         }
       ],
       "nayta": "julkaisuehdokkaan tagi (v1.0-rc1) ja release, oma asennuspöytäkirja, ohjeen korjausdiffi, ulkopuolisen testauspöytäkirja ja estävien issue-lista (k6, s14 osa, s3 toinen katselmointi).",
       "tuotos": "Jäädytyspäätös ja issue-luokittelu, tagilla merkitty julkaisuehdokas (RC) julkisessa osoitteessa, oma asennuspöytäkirja, korjattu käyttöönotto-ohje, ulkopuolisen testauspöytäkirja ja estävien issueiden lista.",
-      "valmis": "v1.0-rc1 on julkisessa osoitteessa ja merkitty tagilla; oma asennuspöytäkirja ja ulkopuolisen testauspöytäkirja (nimetty rooli, ajankohta, testaajan omat sanat erillään omasta tulkinnasta) ovat repossa; estävät virheet on kirjattu issueiksi (niitä ei korjata kiireellä tällä viikolla vaan seuraavalla).",
+      "valmis": "v1.0-rc1 on julkisessa osoitteessa ja merkitty tagilla; oma asennuspöytäkirja ja ulkopuolisen testauspöytäkirja (testaajan rooli, ajankohta, testaajan omat sanat roolilla merkittyinä erillään omasta tulkinnasta) ovat repossa; testaajan nimi on lähetetty ohjaajalle Teamsissa; estävät virheet on kirjattu issueiksi (niitä ei korjata kiireellä tällä viikolla vaan seuraavalla).",
       "tarkistukset": [
         {
           "id": "tagi:v1.0-rc1",
@@ -969,15 +969,21 @@
         },
         {
           "id": "17-4",
-          "teksti": "Kirjoita luovutusviesti asiakkaalle",
-          "valmis": "Luovutusviesti on repositoryssa ilman teknistä jargonia, ja viikolle jäi puskuriaikaa eikä mitään uutta aloitettu.",
-          "tallenna": "Luovutusviesti `project-docs/`-kansioon. Se, mitä jätit tietoisesti v1.1-listalle, työviikon 17 päiväkirjaan."
+          "teksti": "Kirjoita luovutusviesti ja perusta näyttömatriisi",
+          "valmis": "Luovutusviesti on repositoryssa ilman teknistä jargonia, näyttömatriisi on perustettu, ja viikolle jäi puskuriaikaa eikä mitään uutta aloitettu.",
+          "tallenna": "Luovutusviesti `project-docs/`-kansioon ja `project-docs/nayttomatriisi.md` commitilla. Se, mitä jätit tietoisesti v1.1-listalle, työviikon 17 päiväkirjaan."
         }
       ],
       "nayta": "kolmas virheenkorjausketju, v1.0-tagi ja release, savutestin kirjaus, julkaisutiedote ja luovutusviesti (s14, s2; k6 ja p2 täydentyvät).",
       "tuotos": "Kolmas virheenkorjausketju, v1.0-tagi ja release, julkaisutiedote, savutestin tulos ja luovutusviesti asiakkaalle.",
-      "valmis": "v1.0 on julkisessa osoitteessa ja merkitty tagilla; kolmas ketju on täydellisenä repossa (tai kirjaus siitä, mistä aidosta havainnosta ketju ajettiin); savutestin tulos, julkaisutiedote ja luovutusviesti ovat repossa; viikolle jäi puskuriaikaa eikä mitään uutta aloitettu.",
+      "valmis": "v1.0 on julkisessa osoitteessa ja merkitty tagilla; kolmas ketju on täydellisenä repossa (tai kirjaus siitä, mistä aidosta havainnosta ketju ajettiin); savutestin tulos, julkaisutiedote ja luovutusviesti ovat repossa; project-docs/nayttomatriisi.md on perustettu; viikolle jäi puskuriaikaa eikä mitään uutta aloitettu.",
       "tarkistukset": [
+        {
+          "id": "tiedosto:project-docs/nayttomatriisi.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/nayttomatriisi.md",
+          "lahde": "auto"
+        },
         {
           "id": "tagi:v1.0",
           "tyyppi": "tagi",
@@ -1007,9 +1013,9 @@
       "tehtavat": [
         {
           "id": "18-1",
-          "teksti": "Täsmälinkitä näyttömatriisi",
-          "valmis": "Jokainen matriisin rivi osoittaa olemassa olevaan aineistoon, ja jokainen linkki aukeaa.",
-          "tallenna": "Näyttömatriisi täsmälinkitettynä. Heikoimmin todennetut kohdat ja niiden korjaus työviikon 18 päiväkirjaan."
+          "teksti": "Viimeistele linkitetty näyttömatriisi",
+          "valmis": "Tiedoston `project-docs/nayttomatriisi.md` jokainen rivi osoittaa olemassa olevaan aineistoon, ja jokainen linkki aukeaa.",
+          "tallenna": "`project-docs/nayttomatriisi.md` commitilla. Heikoimmin todennetut kohdat ja niiden korjaus työviikon 18 päiväkirjaan. Sivun näyttömatriisin rastit ovat vain oma muistilistasi."
         },
         {
           "id": "18-2",
@@ -1031,8 +1037,8 @@
         }
       ],
       "nayta": "valmis näyttömatriisi, demorunko, itsearviointi ja luovutettu paketti (p11 ja koko matriisin koonti).",
-      "tuotos": "Täsmälinkitetty näyttömatriisi, harjoiteltu demorunko, kirjoitettu itsearviointi ja luovutettu näyttöpaketti.",
-      "valmis": "Jokainen matriisin rivi osoittaa olemassa olevaan aineistoon ja linkki aukeaa; demo on ajettu kellon kanssa vähintään kerran toiselle henkilölle; itsearviointi sisältää konkreettisia tilanteita, ei yleislauseita.",
+      "tuotos": "Linkitetty näyttömatriisi project-docs/nayttomatriisi.md, harjoiteltu demorunko, kirjoitettu itsearviointi ja luovutettu näyttöpaketti.",
+      "valmis": "Jokainen project-docs/nayttomatriisi.md-tiedoston rivi osoittaa olemassa olevaan aineistoon ja linkki aukeaa; demo on ajettu kellon kanssa vähintään kerran toiselle henkilölle; itsearviointi sisältää konkreettisia tilanteita, ei yleislauseita.",
       "tarkistukset": [
         {
           "id": "paivakirja:18",

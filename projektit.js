@@ -285,7 +285,7 @@ window.PROJEKTIT = [
       "Node.js",
       "Express",
       "SQLite",
-      "Chart.js",
+      "kaaviokirjasto (oma valinta)",
       "Git"
     ],
     "sivusto": "https://mattiseise.github.io/projektikoontisivu/tuntitutka/",

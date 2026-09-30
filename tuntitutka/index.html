@@ -23,9 +23,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap">
-  <link rel="stylesheet" href="styles.css?v2.7.1-20260930">
-  <script src="sisalto.js?v2.7.1-20260930" defer></script>
-  <script src="app.js?v2.7.1-20260930" defer></script>
+  <link rel="stylesheet" href="styles.css?v2.7.2-20260930">
+  <script src="sisalto.js?v2.7.2-20260930" defer></script>
+  <script src="app.js?v2.7.2-20260930" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#sisalto">Siirry sisältöön</a>
@@ -124,7 +124,8 @@
             <dt>Muistiot ja raportit <code>project-docs/</code>-kansiossa</dt><dd>Esimerkiksi kysymyslista, katselmointimuistio, tietoturva-arvio, testiraportti ja pöytäkirjat. Tee muistio silloin, kun työvaihe pyytää sitä.</dd>
             <dt>Projektipäiväkirja</dt><dd>Viikon yhteenveto, perustelut ja linkit työnäytteisiin. Kirjoitat viikon lopussa viikkosivun kolmeen kenttään, lataat koko päiväkirjan ja korvaat tiedoston <code>project-docs/projektipaivakirja.md</code>. Päiväkirjasta tehdään commit joka viikko.</dd>
             <dt>AI-loki</dt><dd>Mihin pyysit tekoälyltä apua ja mitä teit vastauksella: käytit, muutit tai hylkäsit, ja miten tarkistit sen.</dd>
-            <dt>Näyttömatriisi</dt><dd>Linkit työnäytteisiin, jotka osoittavat tutkinnon vaatimukset. Sama työnäyte voi osoittaa useita vaatimuksia.</dd>
+            <dt>Linkitetty näyttömatriisi <code>project-docs/nayttomatriisi.md</code></dt><dd>Jokaista 32 vaatimusta kohti rivi, jossa ovat vaatimuksen tunnus, työnäytteen linkki (commit, issue, tiedosto, tagi tai kuva) ja viikko. Sama työnäyte saa esiintyä useilla riveillä. Perustat tiedoston viimeistään julkaisuviikolla 17 ja viimeistelet sen näyttöviikolla 18. Sivun näyttömatriisin rastit ovat oma muistilistasi.</dd>
+            <dt>Ohjaajalle Teamsissa</dt><dd>Testaajien ja katselmoijien nimet sekä muistiinpanot, joista henkilön voi tunnistaa. Muistioihin kirjoitat testaajan sanat lyhyinä sitaatteina, mutta puhuja merkitään vain roolilla, esimerkiksi asiakkaan edustaja tai julkaisutestaaja.</dd>
           </dl>
           <p>Tulos kirjataan issueen heti. Päiväkirjaan kirjoitat viikon yhteenvedon ja linkität tuloksiin. Samoja asioita ei kirjoiteta erilliseen Word-pohjaan: projektipäiväkirja on työpäiväkirja ja näyttöaineiston hakemisto, ja päätökset ovat suunnitelmassa.</p>
         </details>
@@ -133,7 +134,7 @@
           <summary>Vaatimus, ehdotus vai oma päätös?</summary>
           <p><strong>Vaatimus</strong> tulee toimeksiannosta, ja se pitää toteuttaa. Toiminnot jaetaan työviikolla 2 kolmeen luokkaan, ja samat tunnukset toistuvat koko sivustolla. <strong>P0</strong> on pakollinen ydin: kirjautuminen ja roolit, tuntikirjaus, omat kirjaukset, hallinta ja lasketut yhteenvedot. <strong>P1</strong> on tärkeä jatko, joka tehdään, kun P0 toimii: kaaviot, mobiilihionta ja yhteenvetojen vienti taulukkotiedostoksi (CSV). <strong>P2</strong> on valinnainen lisä, joka saa jäädä pois. Myös laskentaperiaate on vaatimus: yhteenvetosummia ei tallenneta.</p>
           <p><strong>Sovittu toteutustapa</strong> on lukittu: Svelte ja Vite, Node.js ja Express sekä SQLite, eikä valmista käyttöliittymäkirjastoa käytetä. <strong>Ehdotus</strong> on toteutusavun esimerkki, kuten kansiorakenne, tiedostojen ja komponenttien nimet tai vertailtavat kirjastot. Saat toteuttaa toisin, kun perustelet sen. <strong>Oma päätös</strong> perustellaan suunnitelmassa, esimerkiksi tietomalli, julkaisualusta, istuntotapa, reitityskirjasto, viikkokäytäntö ja kaaviokirjasto. <strong>Ohjaajan kanssa sovittavat asiat</strong>, kuten lisenssi, repositoryn julkisuus, katselmoijat ja oppilaitoksen linja julkaisualustoista, ovat toimeksiannon lopussa. Tyhjä kenttä suunnitelmassa on oikea tulos, kunnes asia on sovittu.</p>
-          <p class="note"><strong>Tietovarasto:</strong> toimeksianto sopii SQLiten, ja työviikolla 2 vertaat sitä JSON-tiedostoon ja PostgreSQLiin omalla datallasi. Jos vertailusi puoltaa muuta kuin SQLiteä, sovi asiasta ohjaajan kanssa ennen työviikkoa 3, koska työviikoista 3 alkaen ohjeet olettavat SQLiten.</p>
+          <p class="note"><strong>Tietovarasto:</strong> SQLite on sovittu toteutustapa, koska myöhemmät työviikot rakentuvat sen varaan. Työviikolla 2 perustelet sen vertailemalla sitä JSON-tiedostoon ja PostgreSQLiin (s8). Jos vertailu puoltaa selvästi muuta, poikkeamasta sovitaan ohjaajan kanssa ennen työviikkoa 3.</p>
           <a href="#view-toimeksianto" data-open-view="toimeksianto">Avaa toimeksianto →</a>
         </details>
 
@@ -141,7 +142,7 @@
           <summary>Mitä näytössä arvioidaan?</summary>
           <p>Projekti kattaa kolme tutkinnon osaa: Ohjelmointi (45 osp), Ohjelmistokehittäjänä toimiminen (45 osp) ja Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla (30 osp). Näyttömatriisissa on kaikki 32 osaamisvaatimusta. Viikkojen Näytä-rivien tunnukset viittaavat niihin: p on Ohjelmointi, s on Ohjelmistokehittäjänä toimiminen ja k on komponenttikirjasto-osa, ja numero yksilöi vaatimuksen (esimerkiksi s7).</p>
           <p>Ohjelmoinnin osaaminen näkyy koodissa, jonka kirjoitat, testaat ja korjaat itse, esimerkiksi yhteenvetojen laskennassa ja virheenkorjausketjuissa. Ohjelmistokehittäjänä toimiminen on työtapa: puret toimeksiannon käyttäjätarinoiksi, priorisoit ne, ohjaat työtä Gitillä ja issueilla, arvioit tietoturvan ja julkaiset sovelluksen tuotantoon. Komponenttikirjasto-osa todennetaan Sveltellä: rakennat käyttöliittymän komponenteista, otat reititys- ja kaaviokirjaston käyttöön perustellusti ja julkaiset tuotantoversion asiakkaan ympäristöön.</p>
-          <p>Tutkinnon osissa on tiimissä tehtäviä kokonaisuuksia. Siksi tehtävissä puhutaan tiimistä, katselmoinneista ja asiakkaasta, vaikka teet TuntiTutkan muuten yksin. Ohjaava opettaja toimii tarvittaessa asiakkaana ja ohjaajana, ja sopimiset, katselmoinnit ja yhteiset päätökset käydään hänen tai muun nimetyn henkilön kanssa. Työviikkojen 10 ja 16 katselmoijat ovat ohjaajan nimeämiä muita henkilöitä. Nämä ovat osa arvioitavaa osaamista, eivät muodollisuus.</p>
+          <p>Tutkinnon osissa on tiimissä tehtäviä kokonaisuuksia. Siksi tehtävissä puhutaan tiimistä, katselmoinneista ja asiakkaasta, vaikka teet TuntiTutkan muuten yksin. Kunnes asiakkaan ulkopuolinen edustaja on nimetty, ohjaava opettaja toimii asiakkaan sijaisena: hän vastaanottaa kysymyslistat ja sopii kanssasi rajauksesta ja priorisoinnista. Katselmoinneissa asiakasta esittää nimetty edustaja: työviikolla 10 asiakkaan roolissa on ohjaajan nimeämä muu henkilö, ja työviikon 16 julkaisutestaajakin on ulkopuolinen. Nämä ovat osa arvioitavaa osaamista, eivät muodollisuus.</p>
           <a href="#view-naytto" data-open-view="naytto">Avaa näyttömatriisi →</a>
         </details>
 
@@ -196,7 +197,7 @@
             <p style="margin-top:8px"><strong>Frontend</strong> eli selaimessa toimiva osa: Svelte + Vite. <strong>Backend</strong> eli palvelimella toimiva osa: Node.js + Express. <strong>Tietovarasto:</strong> SQLite. Ulkoisia komponentteja otetaan käyttöön kaksi: reitityskirjasto (työviikko 6) ja kaaviokirjasto (työviikko 9), molemmat perusteltuina.</p>
             <p style="margin-top:8px"><strong>Kansiot:</strong> <code>client/</code> (Svelte-sovellus), <code>server/</code> (Express ja SQLite) ja <code>project-docs/</code> (suunnitelma, päiväkirja, muistiot ja raportit).</p>
             <p style="margin-top:8px"><strong>Julkaisu:</strong> sovellus viedään julkiseen osoitteeseen jo työviikolla 3 ja samaa julkaisuputkea käytetään loppuun asti: julkaisuehdokas työviikolla 16 ja v1.0 työviikolla 17.</p>
-            <p class="note" style="margin-top:8px"><strong>Tietovarasto:</strong> työviikolla 2 vertaat SQLiteä JSON-tiedostoon ja PostgreSQLiin ja perustelet valinnan omalla datallasi. Jos vertailu puoltaa muuta kuin SQLiteä, sovi asiasta ohjaajan kanssa ennen työviikkoa 3.</p>
+            <p class="note" style="margin-top:8px"><strong>Tietovarasto:</strong> SQLite on sovittu toteutustapa, koska myöhemmät työviikot rakentuvat sen varaan. Työviikolla 2 perustelet sen vertailemalla sitä JSON-tiedostoon ja PostgreSQLiin (s8). Jos vertailu puoltaa selvästi muuta, poikkeamasta sovitaan ohjaajan kanssa ennen työviikkoa 3.</p>
           </div>
         </div>
 
@@ -217,7 +218,6 @@
             <p class="section-label">Oma päätös · perustellaan suunnitelmassa</p>
             <ul>
               <li>tietomalli: taulut, avaimet ja mitä ei tallenneta (työviikko 2)</li>
-              <li>tietovaraston valinnan perustelu (työviikko 2)</li>
               <li>julkaisualusta: Render, Fly.io tai Railway (työviikko 3)</li>
               <li>istuntotapa, yhdessä ohjaajan kanssa (työviikko 4)</li>
               <li>komponenttijako (työviikot 5 ja 15)</li>
@@ -233,7 +233,7 @@
           <ul>
             <li><strong>Lisenssi:</strong> mikä lisenssi työhön tulee? Kysy työviikolla 1, viimeistään 15, ja lisää LICENSE repositoryyn heti, kun asia on sovittu.</li>
             <li><strong>Repositoryn julkisuus ja tekijänimi:</strong> saako repo olla julkinen ja millä nimellä esiinnyt? Alaikäisen huoltajan suostumus hoidetaan ohjaajan kautta.</li>
-            <li><strong>Katselmoijien roolit:</strong> kuka toimii asiakkaan roolissa työviikolla 10 (ei oma ohjaava opettajasi) ja kuka julkaisutestaajana työviikolla 16? Nimeäminen viimeistään työviikolla 8.</li>
+            <li><strong>Katselmoijien roolit:</strong> kuka toimii asiakkaan roolissa työviikolla 10 (ei oma ohjaava opettajasi) ja kuka julkaisutestaajana työviikolla 16? Nimeäminen viimeistään työviikolla 8. Repositoryyn kirjataan vain rooli, ja nimet lähetetään ohjaajalle Teamsissa.</li>
             <li><strong>Oppilaitoksen linja julkaisualustoista:</strong> saako ilmaista pilvipalvelua käyttää oppilaitoksen nimissä? Vaikuttaa työviikon 3 valintaan.</li>
             <li><strong>Perusteversion siirtymäsääntö:</strong> minkä perusteversion mukaan näyttö arvioidaan (OPH-6216-2025)?</li>
             <li><strong>Arvioinnin järjestelyt:</strong> näytön ajankohta ja arvioijat työviikolle 18.</li>
@@ -276,12 +276,12 @@
           <h2>Testaa kuin kehittäjä</h2>
           <p class="view-lead" style="margin-top:8px">Testaus ei ole pelkkää satunnaista klikkailua. Kirjaa odotettu tulos, havaittu tulos, virheen syy, korjaus ja uusintatesti. Testaat sekä käyttöliittymää että sovelluksen rajapintaa (API) eli niitä palvelimen osoitteita, joita selain kutsuu tietojen hakemiseen ja tallentamiseen, esimerkiksi <code>/api/kirjaukset</code>.</p>
           <ul class="tooling-list">
-            <li>Vähintään 12 suunniteltua testitapausta (tässä projektissa 13) kolmessa luokassa: normaali käyttö, rajat ja virhetilanteet. Jokainen testitapaus saa tunnuksen T01–T13, jotta siihen voi viitata päiväkirjassa ja korjausketjussa.</li>
+            <li>Vähintään 12 suunniteltua testitapausta (tässä projektissa 14) kolmessa luokassa: normaali käyttö, rajat ja virhetilanteet. Jokainen testitapaus saa tunnuksen T01–T14, jotta siihen voi viitata päiväkirjassa ja korjausketjussa.</li>
             <li>Odotettu tulos kirjataan jokaisesta tapauksesta ennen ajoa. Jälkikäteen kirjattu odotus ei ole odotus.</li>
             <li>3 täydellistä virheenkorjausketjua aidoista havainnoista: havainto → toistamisohje → syy → korjauscommit → uusintatesti → regressiotesti.</li>
             <li>Yhteenvetojen summat verrataan käsin laskettuihin odotusarvoihin vähintään kolmella eri testiaineistolla.</li>
             <li>Rajatapaukset: 0,25 h ja 24 h, tyhjä viikko, sunnuntain kirjaus viikon- ja vuodenvaihteessa, projekti ilman jäseniä.</li>
-            <li>Virhetilanteet: virheelliset tunnit, suora API-kutsu väärällä roolilla, skriptisyöte selitteessä, verkkovirhe raporttihaussa ja vanhentunut istunto.</li>
+            <li>Virhetilanteet: virheelliset tunnit, suora API-kutsu väärällä roolilla, skriptisyöte selitteessä, verkkovirhe raporttihaussa, vanhentunut istunto ja sellaisen projektin poisto, jolla on kirjauksia (odotettu 409).</li>
             <li>Laskentamoduulin yksikkötestit eli yhtä funktiota kerrallaan tarkistavat automaattiset testit ajetaan komennolla. Ne toimivat regressiosuojana: ne paljastavat heti, jos aiemmin toiminut laskenta menee rikki.</li>
             <li>Julkaistu versio testataan puhtaassa ympäristössä: ensin itse, sitten ulkopuolinen pelkän kirjallisen ohjeen avulla.</li>
           </ul>
@@ -407,7 +407,7 @@
             <div class="task-list">
             <label class="task-row"><input type="checkbox" data-task="2-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjoita käyttäjätarinat ja priorisoi ne</span></label>
             <label class="task-row"><input type="checkbox" data-task="2-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Piirrä tietomalli ja kirjaa laskentaperiaate</span></label>
-            <label class="task-row"><input type="checkbox" data-task="2-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Vertaa tietovarastoja ja perustele valinta</span></label>
+            <label class="task-row"><input type="checkbox" data-task="2-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Perustele sovittu tietovarasto vertailulla</span></label>
             <label class="task-row"><input type="checkbox" data-task="2-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Piirrä rautalangat ja pilko P0 issueiksi</span></label>
             </div>
           </section>
@@ -999,7 +999,7 @@
             <div class="task-list">
             <label class="task-row"><input type="checkbox" data-task="10-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Valmistele katselmointi</span></label>
             <label class="task-row"><input type="checkbox" data-task="10-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Esittele versio ja anna testaajan kokeilla</span></label>
-            <label class="task-row"><input type="checkbox" data-task="10-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjaa palaute sitaatteina ja oma tulkinta erikseen</span></label>
+            <label class="task-row"><input type="checkbox" data-task="10-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjaa palaute sitaatteina ja tulkinta erikseen</span></label>
             <label class="task-row"><input type="checkbox" data-task="10-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Priorisoi muutokset ja kirjaa ne issueiksi</span></label>
             </div>
           </section>
@@ -1518,7 +1518,7 @@
             <label class="task-row"><input type="checkbox" data-task="17-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Korjaa estävät virheet virheenkorjausketjuna</span></label>
             <label class="task-row"><input type="checkbox" data-task="17-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Julkaise v1.0 tagilla ja releasella</span></label>
             <label class="task-row"><input type="checkbox" data-task="17-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Aja savutesti ja kirjoita julkaisutiedote</span></label>
-            <label class="task-row"><input type="checkbox" data-task="17-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjoita luovutusviesti asiakkaalle</span></label>
+            <label class="task-row"><input type="checkbox" data-task="17-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjoita luovutusviesti ja perusta näyttömatriisi</span></label>
             </div>
           </section>
 
@@ -1589,7 +1589,7 @@
           <section class="view-section">
             <div class="section-heading-row"><h2>Viikon työvaiheet</h2><span class="week-status" data-week-status>0 / 4</span></div>
             <div class="task-list">
-            <label class="task-row"><input type="checkbox" data-task="18-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Täsmälinkitä näyttömatriisi</span></label>
+            <label class="task-row"><input type="checkbox" data-task="18-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Viimeistele linkitetty näyttömatriisi</span></label>
             <label class="task-row"><input type="checkbox" data-task="18-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Harjoittele demo toiselle henkilölle</span></label>
             <label class="task-row"><input type="checkbox" data-task="18-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjoita itsearviointi</span></label>
             <label class="task-row"><input type="checkbox" data-task="18-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Tarkista aukot ja luovuta näyttöpaketti</span></label>
@@ -1663,7 +1663,7 @@
 
         <form class="plan-form" data-plan-form>
           <div class="plan-form-heading">
-            <div><p class="section-label section-label-accent">Omat päätökset</p><h3>Nämä päätät itse</h3><p>Tietomalli, tietovarasto, julkaisualusta, istuntotapa, reititys- ja kaaviokirjasto sekä viikkokäytäntö. Jokainen päätös perustellaan ja testataan omassa työssäsi. OMA-rivit ovat sinun päätöksiäsi, OHJAAJA-rivit ohjaajan kanssa sovittavia asioita.</p></div>
+            <div><p class="section-label section-label-accent">Omat päätökset</p><h3>Nämä päätät itse</h3><p>Tietomalli, julkaisualusta, istuntotapa, reititys- ja kaaviokirjasto sekä viikkokäytäntö. Jokainen päätös perustellaan ja testataan omassa työssäsi. Lisäksi perustelet sovitun tietovaraston eli SQLiten vertailulla. OMA-rivit kirjoitat itse, OHJAAJA-rivit ovat ohjaajan kanssa sovittavia asioita.</p></div>
             <span data-plan-status>Ei vielä aloitettu</span>
           </div>
 
@@ -1672,7 +1672,7 @@
           <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Tavoite omin sanoin: mistä tiedät onnistuneesi?<input type="text" data-plan-field="tavoite" placeholder="Projektipäällikkö näkee viikkotunnit ilman että kysyy keneltäkään mitään"></label><span class="plan-row-week">viikko 2</span></div>
           <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Käyttäjäryhmät ja niiden tärkein tarve omin sanoin<input type="text" data-plan-field="kohde" placeholder="Työntekijä: nopea kirjaus puhelimella. Projektipäällikkö: ajantasainen viikkoyhteenveto"></label><span class="plan-row-week">viikko 2</span></div>
           <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Tietomalli: taulut, avaimet ja mitä EI tallenneta<input type="text" data-plan-field="tietomalli" placeholder="kayttaja, projekti, projektityyppi, tehtavalaji, kirjaus, projektin_jasen (ei summataulua)"></label><span class="plan-row-week">viikot 2–3</span></div>
-          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Tietovarasto ja perustelu: SQLite, JSON-tiedosto (JSON on tekstimuotoinen tietomuoto, jossa tieto on nimi–arvo-pareina) vai PostgreSQL<input type="text" data-plan-field="tietovarasto" placeholder="Valinta ja perustelu oman datan rakenteella, ei yleisillä ominaisuuksilla"></label><span class="plan-row-week">viikko 2</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Tietovaraston perustelu: sovittu SQLite verrattuna JSON-tiedostoon (JSON on tekstimuotoinen tietomuoto, jossa tieto on nimi–arvo-pareina) ja PostgreSQLiin<input type="text" data-plan-field="tietovarasto" placeholder="Miksi SQLite sopii omaan dataasi ja mikä siinä jää huonommaksi. Poikkeama vain ohjaajan kanssa sovittuna."></label><span class="plan-row-week">viikko 2</span></div>
           <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Julkaisualusta: Render / Fly.io / Railway<input type="text" data-plan-field="julkaisualusta" placeholder="Kriteerit: ilmainen taso, Node-tuki, SQLite-tiedoston pysyvyys, lokit"></label><span class="plan-row-week">viikko 3</span></div>
           <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Istuntotapa: evästesessio vai token eli selaimelle annettava tunnistetieto<input type="text" data-plan-field="istuntotapa" placeholder="Päätös ohjaajan kanssa ja perustelu tässä sovelluksessa"></label><span class="plan-row-week">viikko 4</span></div>
           <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Komponenttijako: näkymät ja komponenttien vastuut<input type="text" data-plan-field="komponenttijako" placeholder="KirjausLomake, KirjausLista, KenttaVirhe: kunkin vastuu yhdellä lauseella"></label><span class="plan-row-week">viikot 5 ja 15</span></div>
@@ -1684,7 +1684,7 @@
 
           <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Lisenssi (kysytään työviikolla 1, viimeistään 15)<input type="text" data-plan-field="lisenssi" placeholder="Täytä vasta kun ohjaaja on vastannut"></label><span class="plan-row-week">avoin asia</span></div>
           <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Repositoryn julkisuus, tekijänimi ja huoltajan suostumus<input type="text" data-plan-field="julkisuus" placeholder="Täytä vasta kun ohjaaja on kuitannut"></label><span class="plan-row-week">avoin asia</span></div>
-          <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Katselmoijien roolit työviikoille 10 ja 16<input type="text" data-plan-field="katselmoijat" placeholder="Täytä vasta kun ohjaaja on nimennyt"></label><span class="plan-row-week">avoin asia</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Katselmoijien roolit työviikoille 10 ja 16 (vain roolit, nimet ohjaajalle Teamsissa)<input type="text" data-plan-field="katselmoijat" placeholder="Täytä vasta kun ohjaaja on nimennyt, esimerkiksi asiakkaan edustaja ja julkaisutestaaja"></label><span class="plan-row-week">avoin asia</span></div>
           <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Oppilaitoksen linja julkaisualustoista<input type="text" data-plan-field="alustalinja" placeholder="Täytä vasta kun ohjaaja on vastannut"></label><span class="plan-row-week">avoin asia</span></div>
           <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Perusteversion siirtymäsääntö (OPH-6216-2025)<input type="text" data-plan-field="perusteversio" placeholder="Täytä vasta kun ohjaaja on vahvistanut"></label><span class="plan-row-week">avoin asia</span></div>
           <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Arvioinnin järjestelyt työviikolle 18<input type="text" data-plan-field="arviointi" placeholder="Täytä vasta kun ajankohta ja arvioijat on sovittu"></label><span class="plan-row-week">avoin asia</span></div>
@@ -1753,6 +1753,7 @@
         <p class="view-eyebrow">Näyttöaineisto</p>
         <h1 class="view-title">Näyttöaineisto syntyy työn aikana</h1>
         <p class="view-lead">Pelkkä valmis tuotos ei näytä koko osaamista. Työnäyte on yksi tuotos, joka osoittaa osaamisesi: commit, kuva, testirivi tai muistio. Näyttöaineisto on kaikki työnäytteesi yhdessä. Sama työnäyte voi kelvata useaan kohtaan. Kokoa jokaiseen kohtaan linkki, commit, kuva, lokimerkintä tai päätösmuistio.</p>
+        <p class="view-lead" style="margin-top:10px">Arvioija lukee linkitetyn näyttömatriisin repositoryn tiedostosta <code>project-docs/nayttomatriisi.md</code>. Siinä on jokaista vaatimusta kohti tunnus, työnäytteen linkki ja viikko. Perustat sen viimeistään työviikolla 17 ja viimeistelet työviikolla 18. Tämän sivun rastit ovat oma muistilistasi.</p>
 
         <div class="card card-tint evidence-summary"><strong data-evidence-count>0 / 32</strong><span>osaamisvaatimuksen työnäyte merkitty</span></div>
 
@@ -1789,7 +1790,7 @@
             <label class="matrix-row"><input type="checkbox" data-evidence="s6"><span><strong>suunnittelee ja arvioi kehitystiimin kanssa tehtävien toteuttamista</strong> Työmääräarviot issueissa työviikolta 2 ja arvio vs. toteuma -vertailu työviikolta 7 omista TuntiTutka-kirjauksista; suunnitelman päivitys, kun arvio petti.</span></label>
             <p class="matrix-group">Opiskelija kehittää ohjelmiston toimintalogiikkaa ja tietovarastoyhteyksiä</p>
             <label class="matrix-row"><input type="checkbox" data-evidence="s7"><span><strong>kehittää ohjelmiston toimintalogiikkaa</strong> Yhteenvetojen laskenta lennossa työviikolla 8 viikoittain, henkilöittäin ja tehtävälajeittain ilman tallennettuja summia; käyttöoikeudet, validointi ja omistajuussäännöt työviikoilta 4, 7 ja 13.</span></label>
-            <label class="matrix-row"><input type="checkbox" data-evidence="s8"><span><strong>valitsee ohjelmistoon sopivan tietovaraston</strong> Vertailu SQLite, JSON-tiedosto ja PostgreSQL työviikolla 2 datan rakenteen, käyttötilanteen ja laajuuden perusteella; perusteltu valinta suunnitelmassa.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s8"><span><strong>valitsee ohjelmistoon sopivan tietovaraston</strong> Sovitun SQLiten perustelu työviikolla 2 vertailemalla sitä JSON-tiedostoon ja PostgreSQLiin datan rakenteen, käyttötilanteen ja laajuuden perusteella; perustelu suunnitelmassa.</span></label>
             <label class="matrix-row"><input type="checkbox" data-evidence="s9"><span><strong>toteuttaa yhteyden tietovarastoon</strong> Kirjausten ja hallintadatan luku, lisäys, muokkaus ja poisto SQLitestä hallitusti työviikoilta 5–7; skeema ja init-skripti työviikolta 3.</span></label>
             <label class="matrix-row"><input type="checkbox" data-evidence="s10"><span><strong>hyödyntää rajapintoja ja käsittelee tietoa</strong> Raportti-API:n kutsu fetchillä työviikolla 9, JSON-muunnos kaavion muotoon testattuna funktiona ja virhetilanteet eli tyhjä data, verkkovirhe ja lataus käsiteltyinä.</span></label>
             <label class="matrix-row"><input type="checkbox" data-evidence="s11"><span><strong>arvioi ohjelmiston tietoturvaa</strong> Tietoturva-arvio työviikolla 13: syötteet, käyttöoikeudet, salasanat, istunnot ja tietojen näkyvyys; ajettu reittitaulukko ja XSS-testi, salaisuudet ympäristömuuttujissa.</span></label>
