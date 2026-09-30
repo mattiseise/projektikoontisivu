@@ -55,12 +55,9 @@ chrome --headless --no-pdf-header-footer --print-to-pdf=downloads/vektoripaja-ty
 
 ## Kuvaohjeiden kuvat
 
-`kuvakaappaukset.json` listaa 28 kuvaohjetta. Yksi (`github-uusi-issue`) on mallikuva, muut
-näkyvät paikanpitäjinä, kunnes kuva lisätään. Kuva otetaan GitHubin Dark high contrast-,
-VS Coden Dark High Contrast- tai M365 Copilotin näkymästä demorepositoryssa, rajattuna yhteen
-kohtaan. Tallenna kuva kansioon `assets/kuvakaappaukset/`, täytä `tiedosto`, `leveys`, `korkeus`
-ja `pvm`, tarkista kohtien tekstit kuvaa vasten ja lisää jokaiselle kohdalle `alue`
-(`[x, y, leveys, korkeus]` prosentteina). `tarkista.js` varoittaa puuttuvista kuvista.
+`kuvakaappaukset.json` listaa 28 kuvaohjetta: 24 uutta kuvaa, aiempi issue-mallikuva ja kolme vielä kuvattavaa näkymää. Uudet kuvat sisältävät omia kuvakaappauksia, verkkolähteiden esimerkkejä sekä kaksi kuvaksi ladottua paikallista tulostetta. Erot ja versiot kerrotaan kuvateksteissä.
+
+[Lähteet, käyttöehdot ja puuttuvat näkymät](assets/kuvakaappaukset/LAHTEET.md). Verkkokuvan `pvm` on lisäyspäivä. Aluemerkinnät koskevat vain kuvassa näkyviä vaiheita.
 
 ## Tiedot ja yksityisyys
 
