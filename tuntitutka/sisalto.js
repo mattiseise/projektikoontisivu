@@ -51,6 +51,7 @@ window.NAYTTOPROJEKTI = {
 
   /* ---- paperiaineiston kielisäädöt: päivätön aikataulu ---- */
   lataukset: {
+    resurssienPerusosoite: "https://mattiseise.github.io/projektikoontisivu/tuntitutka/",
     sarakePvm: "Ajoitus",
     viikkoOtsikko: (num, dates, title) => "Työviikko " + num + " / 18 – " + title,
     aloitusHuomio: "Viikon työvaihe on tämän sivuston työohje. Kun toteutat muutoksen sovellukseen, kirjaa se GitHub-issueksi hyväksymiskriteereineen ja tee se Työtapa-sivun kuudella askeleella. Testin tulos kirjataan issueen heti, viikon yhteenveto projektipäiväkirjaan viikon lopussa."
@@ -329,13 +330,14 @@ window.NAYTTOPROJEKTI = {
       record: "Kirjoita työviikon 1 merkintään: asennetut työkalut versioineen, repositoryn osoite, ensimmäisen commitin tunnus, kysymyslistan kysymykset ja se, mitkä julkisuusasiat jäivät avoimiksi.",
       skills: ["kehitysympäristö", "Git", "npm ja Vite", "projektin rakenne"],
       termit: ["repository", "commit"],
+      resources: [["GitHub Desktop: kuvaohje ilman Git-komentoja", "../ohjeet/github-desktop/?projekti=tuntitutka#asennus", false]],
       tehtavat: {
         "1-1": {
           miksi: "Kirjatut versiot kertovat, millä ympäristöllä sovellus toimii. Pelkkä ”asensin” ei riitä työnäytteeksi, koska sitä ei voi todentaa jälkikäteen.",
           osat: [
-            ["Asenna työkalut", "Asenna Node LTS eli pitkään tuettu vakaa versio, VS Code ja Git."],
-            ["Tarkista versiot", "Aja komennot `node -v`, `npm -v` ja `git --version` ja kirjoita tulokset muistiin."],
-            ["Kirjaa versiotaulukko", "Tee `README.md`-tiedostoon taulukko: työkalu, versio ja tarkistuskomento, esimerkiksi Node 20.11.1 → `node -v`."]
+            ["Asenna työkalut", "Asenna Node LTS eli pitkään tuettu vakaa versio, VS Code sekä GitHub Desktop (viikon kuvaohje) tai komentorivin Git."],
+            ["Tarkista versiot", "Aja `node -v` ja `npm -v`. Kirjaa lisäksi GitHub Desktopin versio kohdasta Help → About GitHub Desktop tai komentorivin Gitin versio komennolla `git --version`."],
+            ["Kirjaa versiotaulukko", "Luo projektikansio `tuntitutka/` ja tee sen juureen `README.md`. Kirjoita tiedostoon taulukko: työkalu, versio ja tarkistuskomento, esimerkiksi Node 20.11.1 → `node -v`."]
           ],
           valmis: "README.md:ssä on taulukko, jossa jokaisella työkalulla on versio ja tarkistuskomento.",
           tallenna: "README.md repositoryyn ensimmäisessä commitissa (työvaihe 4). Versiot myös työviikon 1 päiväkirjaan."
@@ -343,13 +345,13 @@ window.NAYTTOPROJEKTI = {
         "1-2": {
           miksi: "Repositoryssa säilyvät koodi, dokumentit ja koko muutoshistoria. Julkisuustarkistus suojaa sinua ja muita, ennen kuin mitään julkaistaan.",
           osat: [
-            ["Luo repository", "Luo GitHubiin repository eli repo: projektin kansio versionhallinnassa. Kloonaa se omalle koneellesi."],
+            ["Luo repository", "Lisää nykyinen tuntitutka-kansio GitHub Desktopiin kuvaohjeen reitillä B. Jos oma repo on jo GitHubissa, kloonaa se reitillä C ja siirrä README siihen. Uuden paikallisen repon julkaiset työvaiheessa 4 julkisuustarkistusten jälkeen."],
             ["Käy tarkistuslista läpi", "Käy julkisen repon tarkistuslista läpi: ei henkilötietoja, ei koulun tunnisteita eikä muiden nimiä."],
             ["Sovi tekijänimi", "Sovi ohjaajan kanssa, millä nimellä esiinnyt repositoryssa. Jos olet alaikäinen, huoltajan suostumus hoidetaan ohjaajan kautta."],
             ["Pyydä kuittaus", "Pyydä ohjaajalta tarkistuslistaan kirjallinen kuittaus. Kirjaa kuittaamatta jäävät asiat avoimiksi asioiksi, kunnes ne on sovittu."]
           ],
           valmis: "Repository on olemassa, ja ohjaaja on kuitannut julkisen repon tarkistuslistan kirjallisesti.",
-          tallenna: "Repositoryn osoite ja julkisuusasioiden tila työviikon 1 päiväkirjaan. Avoimiksi jääneet asiat suunnitelman OHJAAJA-kenttiin.",
+          tallenna: "Projektikansion polku ja julkisuusasioiden tila työviikon 1 päiväkirjaan; lisää repositoryn osoite julkaisemisen jälkeen. Avoimiksi jääneet asiat suunnitelman OHJAAJA-kenttiin.",
           sanat: ["repository"]
         },
         "1-3": {
@@ -369,8 +371,8 @@ window.NAYTTOPROJEKTI = {
             ["Lue toimeksianto", "Lue toimeksianto läpi ja alleviivaa pakolliset asiat. Asiakkaan ydinkipu on raportointi, ei kirjaaminen."],
             ["Kirjoita kysymykset", "Kirjoita jokaisesta epäselvästä kohdasta kysymys ohjaajalle tiedostoon `project-docs/kysymykset.md`. Tavoite on vähintään kuusi kysymystä."],
             ["Kysy lisenssistä", "Ota kysymyslistaan mukaan lisenssi. Toimeksiannon mukaan se kysytään ohjaajalta jo työviikolla 1."],
-            ["Tee ensimmäinen commit", "Tee commit eli tallenna muutos Git-historiaan viestillä, joka kertoo projektin perustamisesta, esimerkiksi ”Perusta projekti, kansiorakenne ja Svelte-runko”."],
-            ["Vie GitHubiin", "Vie commit etärepositoryyn eli GitHubiin komennolla `git push` ja tarkista, että tiedostot näkyvät GitHubissa."]
+            ["Tee ensimmäinen commit", "Tarkista Desktopin Changes-lista ja tee Commit kuvaavalla Summary-viestillä, esimerkiksi ”Perusta projekti, kansiorakenne ja Svelte-runko”. Katso kuvaohjeen kohta 5. Commit tallentaa Git-historiaan omalla koneellasi."],
+            ["Vie GitHubiin", "Valitse Desktopissa Publish repository uudelle paikalliselle repolle ja sovittu julkisuus. Jo julkaistulle repolle valitse Push origin. Tarkista View on GitHub -toiminnolla, että tiedostot ja sisältöcommit näkyvät GitHubissa. Katso kuvaohjeen kohdat 6–7."]
           ],
           valmis: "Kysymyslistassa on vähintään kuusi kysymystä, ja ensimmäinen commit näkyy GitHubissa.",
           tallenna: "`project-docs/kysymykset.md` repositoryyn. Ensimmäisen commitin tunnus ja kysymykset työviikon 1 päiväkirjaan.",
@@ -381,14 +383,14 @@ window.NAYTTOPROJEKTI = {
         title: "Perusta kehitysympäristö ja repository",
         tree: "tuntitutka/\n├─ client/            Svelte + Vite -sovellus\n│  ├─ src/\n│  └─ vite.config.js\n├─ server/            Express-palvelin (tulee työviikolla 3)\n├─ project-docs/      suunnitelma, päiväkirja, muistiot\n├─ README.md\n└─ .gitignore         node_modules/, *.db, .env",
         actions: [
-          "Asenna Node LTS ja tarkista versiot: node -v, npm -v, git --version.",
+          "Asenna Node LTS. Kirjaa node -v ja npm -v sekä GitHub Desktopin versio (Help → About GitHub Desktop) tai git --version.",
           "Luo Svelte-runko: npm create vite@latest -- --template svelte, sitten npm install ja npm run dev.",
-          "Luo GitHub-repository, aja git init, tee ensimmäinen commit ja vie se GitHubiin (git push).",
+          "Ota projektikansio GitHub Desktopiin kuvaohjeen reitillä B. Tee Commit, sitten julkisuustarkistusten jälkeen Publish repository tai Push origin. Tarkista tiedostot GitHubista.",
           "Käy julkisen repon tarkistuslista läpi ohjaajan kanssa ja pyydä kuittaus kirjallisena."
         ],
-        code: "ALOITUKSEN TARKISTUSLISTA\n[ ] node -v, npm -v ja git --version kirjattu README:hen\n[ ] npm run dev avaa sovelluksen selaimessa\n[ ] kansiot client/, server/ ja project-docs/ olemassa\n[ ] .gitignore estää node_modules/, *.db ja .env\n[ ] repositoryssa ei ole henkilötietoja eikä koulun tunnisteita\n[ ] tekijänimi sovittu ohjaajan kanssa\n[ ] kysymyslistassa vähintään 6 kysymystä\n[ ] ensimmäinen commit viety etärepositoryyn (push)",
+        code: "ALOITUKSEN TARKISTUSLISTA\n[ ] Node-, npm- ja GitHub Desktopin tai komentorivin Gitin versiot kirjattu README:hen\n[ ] npm run dev avaa sovelluksen selaimessa\n[ ] kansiot client/, server/ ja project-docs/ olemassa\n[ ] .gitignore estää node_modules/, *.db ja .env\n[ ] repositoryssa ei ole henkilötietoja eikä koulun tunnisteita\n[ ] tekijänimi sovittu ohjaajan kanssa\n[ ] kysymyslistassa vähintään 6 kysymystä\n[ ] ensimmäinen commit viety etärepositoryyn (push)",
         test: "Kloonaa repository toiseen kansioon ja varmista, että sovellus käynnistyy pelkän README:n ohjeilla.",
-        links: [
+        links: [["GitHub Desktop: lisää nykyinen projektikansio", "../ohjeet/github-desktop/?projekti=tuntitutka#olemassa"],
           ["Vite: Getting Started", "https://vitejs.dev/guide/"],
           ["Svelte: virallinen tutoriaali", "https://svelte.dev/tutorial"],
           ["GitHub Docs: repositoryn luominen", "https://docs.github.com/en/repositories"]
@@ -398,7 +400,7 @@ window.NAYTTOPROJEKTI = {
       notEnough: "“Asensin kaikki ja kaikki toimii” ilman versionumeroita, kuvakaappausta ja ensimmäistä committia: mitään ei voi todentaa jälkikäteen.",
       paivat: [
         ["Tarve", "Lue toimeksianto ja poimi asiakkaan ydinkipu: raportointi. Aloita kysymyslista ohjaajalle."],
-        ["Työkalut", "Asenna Node, VS Code ja Git. Kirjaa versiot README:hen."],
+        ["Työkalut", "Asenna Node, VS Code sekä GitHub Desktop (viikon kuvaohje) tai komentorivin Git. Kirjaa versiot README:hen."],
         ["Repository", "Luo GitHub-repository ja käy julkisen repon tarkistuslista läpi ohjaajan kanssa."],
         ["Sovellusrunko", "Luo Svelte + Vite -runko ja kansiot client/, server/ ja project-docs/. Kirjoita README:n käynnistyskomennot."],
         ["Talteen", "Täydennä kysymyslista, tee ensimmäinen commit ja push ja kokeile, että runko käynnistyy README:n ohjeilla."]

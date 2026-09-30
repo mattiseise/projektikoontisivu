@@ -47,6 +47,7 @@ window.NAYTTOPROJEKTI = {
 
   /* ---- paperiaineiston tekstien yliajot (päivätön tila) ---- */
   lataukset: {
+    resurssienPerusosoite: "https://mattiseise.github.io/projektikoontisivu/noppakauppa/",
     sarakePvm: "Ajoitus",
     viikkoOtsikko: (num, dates, title) => "Työviikko " + num + " / 18 – " + title,
     aloitusHuomio: "Viikon työvaihe on tämän sivuston työohje. Kun muutat kaupan koodia, kirjaa muutos GitHub-issueksi valmis kun -ehtoineen ja tee se Työtapa-sivun kuudella askeleella. Testitapaus kirjataan testimatriisiin heti, viikon yhteenveto projektipäiväkirjaan viikon lopussa."
@@ -310,6 +311,7 @@ window.NAYTTOPROJEKTI = {
       record: "Kirjoita työviikon 1 merkintään: toimeksiannon epäselvät kohdat, kysymyslistan sisältö, ohjaajan vastaukset, repositoryn linkki, ensimmäisen commitin tunnus ja katselmoijien etsinnän tilanne.",
       skills: ["kehitysympäristö (p1)", "versionhallinta (s12)", "Vite- ja Vue-projektin luonti ja konfigurointi (k1)"],
       termit: ["frontend", "backend", "repository", "commit"],
+      resources: [["GitHub Desktop: kuvaohje ilman Git-komentoja", "../ohjeet/github-desktop/?projekti=noppakauppa#asennus", false]],
       tehtavat: {
         "1-1": {
           miksi: "Kysymykset ratkaisevat rajauksen ennen koodia. Arvaamalla rakennettu kauppa tehdään helposti väärin.",
@@ -336,11 +338,11 @@ window.NAYTTOPROJEKTI = {
         "1-3": {
           miksi: "Kaikki työnäytteet ovat repositoryssa, ja Git-historia on itsessään versionhallinnan työnäyte. Siksi se alkaa ensimmäisenä päivänä.",
           osat: [
-            ["Luo kansiot", "Luo projektikansio ja sen alle kansiot `frontend/`, `backend/` ja `project-docs/`."],
+            ["Luo kansiot", "Luo projektikansio `noppakauppa/` ja sen alle `frontend/`, `backend/` ja `project-docs/`. Git ei tallenna tyhjiä kansioita: lisää frontend- ja backend-kansioon aluksi README tai .gitkeep, jotta kansiorakenne näkyy ensimmäisessä commitissa."],
             ["Lisää .gitignore", "Estä tiedostossa `.gitignore` ainakin `node_modules/`, `__pycache__/`, `*.db` ja `.env`, jotta riippuvuudet, kanta ja salaisuudet eivät päädy repositoryyn."],
             ["Kirjoita README", "Kirjoita `README.md`: mitä rakennat ja miten projekti käynnistetään. Käynnistyskomennot lisäät työvaiheessa 4."],
             ["Tallenna kysymyslista", "Tallenna työvaiheen 1 kysymyslista tiedostoksi `project-docs/kysymykset.md`."],
-            ["Tee ensimmäinen commit", "Aja `git init` ja tee ensimmäinen commit. Luo GitHubiin repository sovitulla julkisuudella ja vie commit sinne komennolla `git push`."]
+            ["Tee ensimmäinen commit", "Seuraa GitHub Desktop -kuvaohjetta: asennus, kirjautuminen, nykyisen kansion lisääminen (B), Changes-tarkistus ja Commit. Lähetä sovitulla julkisuudella: Publish repository tai jo julkaistulle repolle Push origin. Tarkista tiedostot View on GitHub -toiminnolla."]
           ],
           valmis: "Repository on GitHubissa, siinä ovat kolme kansiota, README ja .gitignore, ja ensimmäinen commit näkyy historiassa.",
           tallenna: "Repositoryn osoite ja ensimmäisen commitin tunnus työviikon 1 päiväkirjaan.",
@@ -352,7 +354,7 @@ window.NAYTTOPROJEKTI = {
             ["Alusta frontend", "Luo Vue-projekti komennolla `npm create vite@latest frontend -- --template vue`, aja `npm install` ja käynnistä kehityspalvelin komennolla `npm run dev`."],
             ["Alusta backend", "Luo `backend/`-kansioon virtuaaliympäristö, asenna `pip install fastapi uvicorn` ja käynnistä sovellus komennolla `uvicorn main:app --reload`."],
             ["Avaa /docs-sivu", "Avaa backendin `/docs`-sivu selaimessa. FastAPI näyttää siellä rajapinnan, jota kokeilet tulevilla viikoilla."],
-            ["Kirjaa komennot READMEen", "Lisää README:hen molempien palvelinten käynnistyskomennot ja tee commit."],
+            ["Kirjaa komennot READMEen", "Lisää README:hen molempien palvelinten käynnistyskomennot. Tee Desktopissa Commit ja Push origin myös sovellusrungosta. Tarkista muutokset GitHubista."],
             ["Kokeile pelkällä README:llä", "Sulje terminaalit ja käynnistä molemmat palvelimet uudelleen pelkän README:n komennoilla."]
           ],
           valmis: "Molemmat kehityspalvelimet vastaavat selaimessa README:n komennoilla, ja backendin `/docs`-sivu aukeaa.",
@@ -367,11 +369,11 @@ window.NAYTTOPROJEKTI = {
           "Luo kansiorakenne ja .gitignore (node_modules/, __pycache__/, *.db, .env).",
           "Alusta frontend: npm create vite@latest frontend -- --template vue, sitten npm install ja npm run dev.",
           "Alusta backend: virtuaaliympäristö, pip install fastapi uvicorn, sitten uvicorn main:app --reload.",
-          "git init, ensimmäinen commit, luo GitHubiin repository ja push."
+          "Seuraa GitHub Desktop -kuvaohjetta: asennus, nykyisen kansion lisääminen (B), Commit ja Publish repository sovitulla julkisuudella. Seuraaville muutoksille Commit ja Push origin."
         ],
         code: "ALOITUKSEN TARKISTUSLISTA\n[ ] npm run dev vastaa selaimessa\n[ ] uvicorn main:app --reload vastaa selaimessa\n[ ] /docs-sivu aukeaa backendistä\n[ ] .gitignore estää node_modules, .env ja *.db\n[ ] README kertoo mitä tehdään ja miten projekti käynnistetään\n[ ] kysymyslista on project-docs-kansiossa\n[ ] ensimmäinen commit on viety etärepositoryyn (push)",
         test: "Sulje molemmat terminaalit, avaa ne uudelleen ja käynnistä frontend ja backend pelkän README:n komennoilla. Molempien pitää vastata selaimessa.",
-        links: [
+        links: [["GitHub Desktop: lisää nykyinen projektikansio", "../ohjeet/github-desktop/?projekti=noppakauppa#olemassa"],
           ["Vite: Getting Started", "https://vite.dev/guide/"],
           ["FastAPI: First Steps", "https://fastapi.tiangolo.com/tutorial/first-steps/"]
         ]
