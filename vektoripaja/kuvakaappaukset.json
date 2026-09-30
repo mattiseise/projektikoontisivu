@@ -398,12 +398,12 @@
     {
       "tunnus": "windows-pura-kaikki",
       "otsikko": "Pura zip",
-      "kuvaa": "Windowsin Resurssienhallinta: zip-tiedoston pikavalikko ja Pura kaikki -ikkuna",
+      "kuvaa": "Kaksi suomenkielistä Windows 11 -kuvakaappausta: vasemmalla zipin pikavalikon Pura kaikki, oikealla Valitse kohde ja pura tiedostot -ikkuna, esimerkkikohde C:\\Vektoripaja-esimerkki sekä Pura-painike.",
       "missa": "Resurssienhallinta → Lataukset → zip-tiedosto → hiiren oikea painike",
-      "tiedosto": "",
-      "leveys": 1200,
-      "korkeus": 700,
-      "alt": "Kuvakaappaus Windowsin Resurssienhallinnasta. Zip-tiedoston pikavalikossa on valittuna Pura kaikki. Vieressä Pura pakatut kansiot -ikkuna, jossa on kohdekansio ja Pura-painike.",
+      "tiedosto": "assets/kuvakaappaukset/windows-pura-kaikki.png",
+      "leveys": 1144,
+      "korkeus": 580,
+      "alt": "Kaksi suomenkielistä Windows 11 -kuvakaappausta: vasemmalla zipin pikavalikon Pura kaikki, oikealla Valitse kohde ja pura tiedostot -ikkuna, esimerkkikohde C:\\Vektoripaja-esimerkki sekä Pura-painike.",
       "kohdat": [
         {
           "n": 1,
@@ -411,19 +411,31 @@
         },
         {
           "n": 2,
-          "teksti": "Valitse Pura kaikki."
+          "teksti": "Valitse Pura kaikki.",
+          "alue": [
+            1.9,
+            21.5,
+            27.5,
+            6
+          ]
         },
         {
           "n": 3,
-          "teksti": "Tarkista kohdekansio. Valitse Pura."
+          "teksti": "Tarkista kohdekansio. Valitse Pura.",
+          "alue": [
+            83.6,
+            90.5,
+            6.9,
+            4.8
+          ]
         },
         {
           "n": 4,
           "teksti": "Avaa purettu kansio. Sen sisällä on kansio Vektoripaja. Siellä ovat Vektoripaja.exe, LUE_MINUT.txt ja kansio _internal."
         }
       ],
-      "pvm": "",
-      "teema": "Windows 11, tumma teema"
+      "pvm": "2026-09-30",
+      "teema": "Omat Windows 11 -kuvakaappaukset. Kuvaus käyttää lähdekoodin pohjapakettia ja esimerkkikohdetta; julkaistun sovelluksen zip puretaan samalla tavalla."
     },
     {
       "tunnus": "windows-smartscreen",
@@ -479,7 +491,7 @@
         },
         {
           "n": 2,
-          "teksti": "Valitse New chat. Aloita jokainen tehtäväkortti uudessa keskustelussa.",
+          "teksti": "Valitse New chat viikon alussa tai silloin, kun keskustelu on jo pitkä. Liitä ajantasainen tilatiedosto uuteen keskusteluun.",
           "alue": [
             0,
             10,
@@ -504,28 +516,46 @@
     {
       "tunnus": "copilot-tilatiedosto",
       "otsikko": "Liitä tilatiedosto Copilotiin",
-      "kuvaa": "Microsoft 365 Copilotin liitetoiminto ja liitetty tiedosto viestikentän yläpuolella",
+      "kuvaa": "Microsoft 365 Copilotin kolme esimerkkinäkymää: tyhjän viestikentän plus-painike, liitevalikon Upload images and files sekä viestikenttään liitetty HSDE Syllabus - Demo.docx. Projektin oma liite on PROJEKTIN-TILA.md.",
       "missa": "Microsoft 365 Copilot → viestikenttä → liitä tiedosto",
-      "tiedosto": "",
-      "leveys": 1200,
-      "korkeus": 700,
-      "alt": "Kuvakaappaus Microsoft 365 Copilotin viestikentästä. Kentän vasemmalla puolella liitepainike ja kentän yläpuolella liitetty tiedosto PROJEKTIN-TILA.md.",
+      "tiedosto": "assets/kuvakaappaukset/copilot-tilatiedosto.png",
+      "leveys": 1295,
+      "korkeus": 793,
+      "alt": "Microsoft 365 Copilotin kolme esimerkkinäkymää: tyhjän viestikentän plus-painike, liitevalikon Upload images and files sekä viestikenttään liitetty HSDE Syllabus - Demo.docx. Projektin oma liite on PROJEKTIN-TILA.md.",
       "kohdat": [
         {
           "n": 1,
-          "teksti": "Valitse viestikentän liitepainike."
+          "teksti": "Valitse viestikentän liitepainike. Kuvan esimerkissä se on plus-merkki.",
+          "alue": [
+            4,
+            17.5,
+            4,
+            5.5
+          ]
         },
         {
           "n": 2,
-          "teksti": "Valitse tiedoston lataus omalta koneeltasi. Valitse PROJEKTIN-TILA.md repositorysi kansiosta."
+          "teksti": "Valitse tiedoston lataus omalta koneeltasi (kuvassa Upload images and files). Valitse PROJEKTIN-TILA.md repositorysi kansiosta. Kuvan .docx on vain esimerkki.",
+          "alue": [
+            3.8,
+            39.5,
+            24,
+            7.8
+          ]
         },
         {
           "n": 3,
-          "teksti": "Tarkista, että tiedoston nimi näkyy viestikentän yläpuolella. Lähetä viesti vasta sitten."
+          "teksti": "Tarkista, että tiedoston nimi näkyy viestikentän yläpuolella. Lähetä viesti vasta sitten.",
+          "alue": [
+            4.5,
+            65,
+            18,
+            8
+          ]
         }
       ],
-      "pvm": "",
-      "teema": "Microsoft 365 Copilot, BC"
+      "pvm": "huhtikuu 2026; lisätty 2026-09-30",
+      "teema": "Microsoftin PSU-koulutusmateriaalin esimerkkikuvat (Brent Ellis, huhtikuu 2026), yhdistetty. Kuvassa on HSDE Syllabus - Demo.docx; valitse projektissa PROJEKTIN-TILA.md. Ei BC:n käyttäjätili."
     },
     {
       "tunnus": "github-uusi-issue",
@@ -664,12 +694,12 @@
     {
       "tunnus": "copilot-kopioi-vastaus",
       "otsikko": "Kopioi Copilotin vastaus",
-      "kuvaa": "Microsoft 365 Copilotin vastaus ja sen alla oleva kopiointipainike",
+      "kuvaa": "Microsoft 365 Copilotin vastauksen toimintorivi. Vasemmanpuoleinen kahden päällekkäisen suorakulmion kuvake on vastauksen kopiointi; sen jälkeen ovat palautepainikkeet ja muut toiminnot.",
       "missa": "Microsoft 365 Copilot → vastauksen alareuna",
-      "tiedosto": "",
-      "leveys": 1200,
-      "korkeus": 600,
-      "alt": "Kuvakaappaus Microsoft 365 Copilotin vastauksesta. Vastauksen alla on rivi pieniä painikkeita, ja niistä ensimmäinen on Copy.",
+      "tiedosto": "assets/kuvakaappaukset/copilot-kopioi-vastaus.png",
+      "leveys": 485,
+      "korkeus": 167,
+      "alt": "Microsoft 365 Copilotin vastauksen toimintorivi. Vasemmanpuoleinen kahden päällekkäisen suorakulmion kuvake on vastauksen kopiointi; sen jälkeen ovat palautepainikkeet ja muut toiminnot.",
       "kohdat": [
         {
           "n": 1,
@@ -677,15 +707,21 @@
         },
         {
           "n": 2,
-          "teksti": "Valitse vastauksen alta Copy."
+          "teksti": "Valitse vastauksen alta Copy eli kopiointipainike. Kuvassa se on vasemmanpuoleinen kuvake, jossa on kaksi päällekkäistä suorakulmiota.",
+          "alue": [
+            3.5,
+            5.4,
+            5.8,
+            16.2
+          ]
         },
         {
           "n": 3,
           "teksti": "Liitä vastaus issueen tai AI-lokiin. Lue se, ennen kuin tallennat."
         }
       ],
-      "pvm": "",
-      "teema": "Microsoft 365 Copilot, BC"
+      "pvm": "huhtikuu 2026; lisätty 2026-09-30",
+      "teema": "Microsoftin PSU-koulutusmateriaalin vastauksen toimintorivi (Brent Ellis, huhtikuu 2026). Ensimmäinen kuvake kopioi vastauksen. Näkymä ja painikkeen nimi voivat vaihdella version mukaan."
     },
     {
       "tunnus": "github-issue-sulkeutuu",

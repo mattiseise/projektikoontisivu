@@ -95,9 +95,10 @@ while ((m = cardRe.exec(html))) {
 /* Lomaviikot holiday-cardeista (sama otsikkomuoto kuin week-cardeissa:
    view-eyebrow kantaa data-week-label-attribuutin, h1.view-title on nimi). */
 const holidays = {};
-const holRe = /<article class="holiday-card" id="week-(\d+)" data-week="\d+">\s*<p class="view-eyebrow" data-week-label="([^"]+)"[^>]*>[^<]*<\/p>\s*<h1 class="view-title">([^<]+)<\/h1>\s*<p>([\s\S]*?)<\/p>/g;
+const holRe = /<article class="holiday-card" id="week-(\d+)" data-week="\d+">\s*<p class="view-eyebrow" data-week-label="([^"]+)"[^>]*>[^<]*<\/p>\s*<h1 class="view-title">([^<]+)<\/h1>([\s\S]*?)<\/article>/g;
 while ((m = holRe.exec(html))) {
-  holidays[+m[1]] = { dates: stripTags(m[2]), title: stripTags(m[3]), text: stripTags(m[4]) };
+  const paragraphs = [...m[4].matchAll(/<p>([\s\S]*?)<\/p>/g)];
+  holidays[+m[1]] = { dates: stripTags(m[2]), title: stripTags(m[3]), text: paragraphs.length ? stripTags(paragraphs[paragraphs.length - 1][1]) : "" };
 }
 
 /* Näyttömatriisi (kaksipalstainen layout: otsikko + laskuri omissa <span>:eissä) */
@@ -202,6 +203,16 @@ tp.push(p(lt("kansiJohdanto"), { size: 21, align: AlignmentType.CENTER, color: G
 tpKansiHuomiot.forEach((note) => tp.push(p(note, { size: 21, align: AlignmentType.CENTER, color: GREY, before: 200 })));
 tp.push(pageBreak());
 
+if (P.lopputulos) {
+  tp.push(h1("Mitä rakennat ja miten etenet"));
+  tp.push(p(P.lopputulos.kuvaus));
+  (P.lopputulos.kohdat || []).forEach((c) => tp.push(p(`${c.n}. ${c.teksti}`)));
+  tp.push(h2("Projektin viisi vaihetta"));
+  (P.vaiheet || []).forEach((phase, i) => tp.push(p(`${i + 1}. ${phase.otsikko}${phase.kuvaus ? `. ${phase.kuvaus}` : ""}`)));
+  tp.push(p("Viikon työvaihe on työohje. Kun rakennat muutosta sovellukseen, tee siitä GitHub-issue ja käytä työsykliä. Kirjaa testitulos issueen ja viikon yhteenveto päiväkirjaan."));
+  tp.push(pageBreak());
+}
+
 tp.push(h1(lt("aikatauluOtsikko")));
 const schedW = widths([9, 18, 51, 18]);
 const schedRows = [headerRow([[lt("sarakeViikko"), schedW[0]], [lt("sarakePvm"), schedW[1]], [lt("sarakeAihe"), schedW[2]], [lt("sarakeVaihe"), schedW[3]]])];
@@ -234,6 +245,7 @@ tp.push(pageBreak());
     if (!wk) return;
     const g = P.viikkoOhjeet[num] || {};
     tp.push(h2(lt("viikkoOtsikko", wk.num, wk.dates, wk.title)));
+    if (P.yhtenaisetViikot && g.connection) tp.push(p(g.connection));
     if (g.feature) tp.push(p(g.feature, { italics: true, color: GREY }));
     wk.tasks.forEach((t, i) => {
       const d = taskDef(g, wk.taskIds[i]);
@@ -544,6 +556,15 @@ function printHtml(style) {
 ${printCss(style)}
 </style></head><body>`);
   H.push(`<div class="cover"><h1>${esc(P.nimi)}</h1><p style="font-size:${style === "oletus" ? "14pt" : "1.2em"}">${esc(lt("tyopakettiOtsikko"))}</p><p>${esc(tpKansiKuvaus || "")}</p><p${style === "oletus" ? ' style="font-size:12pt"' : ""}><strong>${esc(tpJakso)}${tpDeadline ? ` · ${esc(lt("luovutus", tpDeadline))}` : ""}</strong></p><p style="${style === "oletus" ? "max-width:120mm;margin:18pt auto 0" : "margin-top:1em"}">${esc(lt("kansiJohdanto"))}</p>${tpKansiHuomiot.map((n) => `<p style="${style === "oletus" ? "max-width:120mm;margin:10pt auto 0" : "margin-top:.6em"}">${esc(n)}</p>`).join("")}</div>`);
+  if (P.lopputulos) {
+    H.push(`<h1>Mitä rakennat ja miten etenet</h1><p>${esc(P.lopputulos.kuvaus)}</p>`);
+    if (style === "teema" && P.lopputulos.kuva) H.push(`<img src="../${esc(P.lopputulos.kuva)}" alt="${esc(P.lopputulos.alt)}" style="width:100%;height:auto">`);
+    (P.lopputulos.kohdat || []).forEach((c) => H.push(`<p>${c.n}. ${esc(c.teksti)}</p>`));
+    H.push(`<h2>Projektin viisi vaihetta</h2>`);
+    (P.vaiheet || []).forEach((phase,i) => H.push(`<p><strong>${i+1}. ${esc(phase.otsikko)}</strong>${phase.kuvaus ? `. ${esc(phase.kuvaus)}` : ""}</p>`));
+    H.push(`<p>Viikon työvaihe on työohje. Kun rakennat muutosta sovellukseen, tee siitä GitHub-issue ja käytä työsykliä. Kirjaa testitulos issueen ja viikon yhteenveto päiväkirjaan.</p>`);
+    H.push(`<div class="page"></div>`);
+  }
   H.push(`<h1>${esc(lt("aikatauluLyhyt"))}</h1><table><tr><th>${esc(lt("sarakeViikko"))}</th><th>${esc(lt("sarakePvm"))}</th><th>${esc(lt("sarakeAihe"))}</th><th>${esc(lt("sarakeVaihe"))}</th></tr>`);
   walkWeeks(
     (wk, g, phase) => H.push(`<tr><td><strong>${wk.num}</strong></td><td>${esc(wk.dates)}</td><td>${esc(wk.title)}</td><td>${phase ? esc(phase.tunnus) : "–"}</td></tr>`),
@@ -562,6 +583,7 @@ ${printCss(style)}
       if (!wk) return;
       const g = P.viikkoOhjeet[num] || {};
       H.push(`<div class="wk"><h2>${esc(lt("viikkoOtsikko", wk.num, wk.dates, wk.title))}</h2>`);
+      if (P.yhtenaisetViikot && g.connection) H.push(`<p>${esc(g.connection)}</p>`);
       if (g.feature) H.push(`<p class="feature">${esc(g.feature)}</p>`);
       wk.tasks.forEach((t, i) => {
         const d = taskDef(g, wk.taskIds[i]);

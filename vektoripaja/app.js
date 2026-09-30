@@ -490,6 +490,7 @@
         <ol class="substep-list" aria-label="${escapeText(t("taskStepsLabel", plainTitle))}">${osat.map((o, j) => `
           <li><label class="substep-row"><input type="checkbox" data-substep="${escapeText(id)}" data-substep-n="${j}"><span class="task-box" aria-hidden="true"></span><span class="substep-n" aria-hidden="true">${j + 1}</span><span class="substep-text">${o.otsikko ? `<strong>${richText(o.otsikko)}.</strong> ` : ""}${richText(o.teksti)}</span></label></li>`).join("")}
         </ol>
+        ${def.tyosykli ? `<button class="button button-secondary" type="button" data-open-workflow>Käytä työsykliä tämän muutoksen tekemiseen →</button>` : ""}
         ${def.valmis ? `<p class="task-card-done"><strong>${escapeText(t("taskDone"))}</strong> ${richText(def.valmis)}</p>` : ""}
         ${def.tallenna ? `<p class="task-card-save"><strong>${escapeText(t("taskSave"))}</strong> ${richText(def.tallenna)}</p>` : ""}
         ${calibration}
@@ -524,6 +525,13 @@
       el.querySelectorAll("[data-substep]").forEach((box) => {
         box.checked = state[Number(box.dataset.substepN)];
         box.addEventListener("change", () => onSubstepChange(el));
+      });
+      el.querySelector("[data-open-workflow]")?.addEventListener("click", () => {
+        const workflow = card.querySelector(".week-workflow");
+        if (!workflow) return;
+        workflow.open = true;
+        workflow.scrollIntoView({ block: "start" });
+        workflow.querySelector("summary")?.focus();
       });
       taskCardEls.push(el);
     });
@@ -726,14 +734,14 @@
     if ((guide.kuvaohjeet || []).length) {
       let section = card.querySelector("[data-week-kuvaohjeet]");
       if (!section) {
-        section = document.createElement("section");
+        section = document.createElement(P.yhtenaisetViikot ? "details" : "section");
         section.className = "view-section week-kuvaohjeet";
         section.setAttribute("data-week-kuvaohjeet", "");
         const anchor = card.querySelector(".lesson-instructions");
         if (anchor) anchor.insertAdjacentElement("afterend", section);
         else card.querySelector(".outcome-grid")?.insertAdjacentElement("beforebegin", section);
       }
-      section.innerHTML = `<h2>${escapeText(t("kuvaohjeetHeading"))}</h2>` +
+      section.innerHTML = (P.yhtenaisetViikot ? `<summary>${escapeText(t("kuvaohjeetHeading"))} · avaa tarvittaessa</summary>` : `<h2>${escapeText(t("kuvaohjeetHeading"))}</h2>`) +
         guide.kuvaohjeet.map((id) => `<div class="kuvaohje-slot" data-kuvaohje="${escapeText(id)}" data-kuvaohje-taso="3"></div>`).join("");
       section.hidden = false;
     }
@@ -775,7 +783,7 @@
        steps-listaa; resurssilinkit ja viestipohjat siirtyvät silloin tehtävien yhteyteen. */
     if (enhanceTaskCards(card, guide)) {
       card.classList.add("has-task-cards");
-      collapseWeekBackground(card);
+      if (!P.yhtenaisetViikot) collapseWeekBackground(card);
       const lesson = card.querySelector(".lesson-instructions");
       const taskList = card.querySelector(".task-list");
       if (lesson && taskList && !steps.length) {
@@ -965,7 +973,7 @@
     };
     slot.innerHTML = `<p class="section-label section-label-accent">${escapeText(t("goalLabel"))}</p>
       <h2 class="goal-title" id="goal-title">${escapeText(title)}</h2>
-      ${goalData.kuvaus ? `<p class="goal-lead">${richText(goalData.kuvaus)}</p>` : ""}
+      ${goalData.kuvaus && goalData.naytaKuvaus !== false ? `<p class="goal-lead">${richText(goalData.kuvaus)}</p>` : ""}
       <figure class="goal-figure">
         ${kuvaStageHtml(k, false)}
         <figcaption class="goal-note">${escapeText(t("goalNote"))}</figcaption>
@@ -1165,7 +1173,7 @@
     if (!routine || !g || g.rutiini === false) return;
     let box = card.querySelector("[data-week-routine]");
     if (!box) {
-      box = document.createElement("section");
+      box = document.createElement(P.yhtenaisetViikot ? "details" : "section");
       box.setAttribute("data-week-routine", "");
       const tasks = card.querySelector(".task-list")?.closest(".view-section");
       if (tasks) tasks.insertAdjacentElement("afterend", box);
@@ -1174,7 +1182,9 @@
     box.className = "view-section week-routine";
     const saved = routineState[week] || {};
     const done = routine.kohdat.filter((_, i) => saved[i]).length;
-    box.innerHTML = `<div class="section-heading-row"><h2>${escapeText(routine.otsikko || t("routineHeading"))}</h2><span class="week-status" data-routine-status>${done} / ${routine.kohdat.length}</span></div>
+    box.innerHTML = (P.yhtenaisetViikot
+      ? `<summary>Viikkorutiini: palaveri ja tallennus <span class="week-status" data-routine-status>${done} / ${routine.kohdat.length}</span></summary>`
+      : `<div class="section-heading-row"><h2>${escapeText(routine.otsikko || t("routineHeading"))}</h2><span class="week-status" data-routine-status>${done} / ${routine.kohdat.length}</span></div>`) + `
       ${routine.johdanto ? `<p class="week-routine-lead">${richText(routine.johdanto)}</p>` : ""}
       <div class="task-list">${routine.kohdat.map((k, i) => `<label class="task-row routine-row"><input type="checkbox" data-routine="${week}-${i}"${saved[i] ? " checked" : ""}><span class="task-box" aria-hidden="true"></span><span class="task-text">${k.milloin ? `<strong>${escapeText(k.milloin)}:</strong> ` : ""}${richText(weekFill(week)(k.teksti))}</span></label>`).join("")}</div>`;
     box.querySelectorAll("[data-routine]").forEach((input) => input.addEventListener("change", () => {
@@ -1321,7 +1331,15 @@
     event.currentTarget.setAttribute("aria-expanded", String(open));
   });
 
-  window.addEventListener("hashchange", () => { if (applyHashFromLocation(false)) render(); });
+  window.addEventListener("hashchange", () => {
+    if (!applyHashFromLocation(false)) return;
+    if (P.yhtenaisetViikot) setView(state.view, state.week);
+    else render();
+  });
+  document.querySelectorAll("[data-open-week]").forEach((el) => el.addEventListener("click", (event) => {
+    event.preventDefault();
+    goToWeek(Number(el.dataset.openWeek));
+  }));
 
   /* ---------- sivupalkin viikkonavigaatio ---------- */
 

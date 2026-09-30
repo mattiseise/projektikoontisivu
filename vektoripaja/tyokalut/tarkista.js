@@ -124,8 +124,10 @@ holidays.forEach((w) => { if (!P.viikkoNimet[w]) warn(`lomaviikolta ${w} puuttuu
 const covered = [];
 (P.vaiheet || []).forEach((ph) => {
   if (!ph.tunnus || !ph.otsikko || !Array.isArray(ph.viikot)) err(`vaihe ${ph.tunnus || "?"}: tunnus, otsikko tai viikot puuttuu`);
-  if (ph.tunnus && !"ABCDEF".includes(String(ph.tunnus).toUpperCase())) {
-    err(`vaihe ${ph.tunnus}: tunnuksen pitää olla A–F (styles.css tuntee vain ne värit)`);
+  if (ph.tunnus && !/^[A-F1-6]$/i.test(String(ph.tunnus))) {
+    err(`vaihe ${ph.tunnus}: tunnuksen pitää olla A–F tai 1–6`);
+  } else if (ph.tunnus && !read("styles.css").includes(`--phase-${String(ph.tunnus).toLowerCase()}:`)) {
+    err(`vaihe ${ph.tunnus}: vastaava vaiheväri puuttuu styles.css:stä`);
   }
   (ph.viikot || []).forEach((w) => {
     if (covered.includes(w)) err(`viikko ${w} on useammassa vaiheessa`);
