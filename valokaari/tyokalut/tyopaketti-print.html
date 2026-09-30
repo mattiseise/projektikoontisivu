@@ -12,6 +12,10 @@ th { background: #fdece3; }
 .wk { page-break-inside: avoid; margin-bottom: 8pt; }
 .feature { color: #555; font-style: italic; margin: 0 0 4pt; }
 .task { margin: 2pt 0; }
+.tcard { margin: 7pt 0 2pt; }
+.osat { list-style: none; margin: 0 0 2pt 12pt; padding: 0; font-size: 9pt; }
+.osat li { margin: 1pt 0; }
+.osa-done { margin-left: 12pt; }
 .done { color: #9a3412; font-size: 9pt; margin: 3pt 0 0; }
 .ev { color: #555; font-size: 9pt; margin: 2pt 0 0; }
 .page { page-break-before: always; }
@@ -107,7 +111,7 @@ th { background: #fdece3; }
 <p class="task">☐&nbsp; Toteuta format.ts (minuutit → 23 h 59 min, päivä → 21. kesäkuuta) ja sen yksikkötestit T10–T11 ennen kaavioon kytkemistä.</p>
 <p class="task">☐&nbsp; Toteuta tooltip: päivä, paikka ja kesto luettavassa muodossa hiirellä ja kosketuksella. Kirjaa, mitä kirjasto tukee näppäimistöllä, ja suunnittele kiertoreitti viikolle 12.</p>
 <p class="task">☐&nbsp; Korosta kaamos (0 min) ja yötön yö (1440 min) kaaviossa Utsjoen ja Rovaniemen datalla.</p>
-<p class="done"><strong>Valmis kun:</strong> T10 ja T11 menevät läpi komennolla `npm test`; tooltip toimii hiirellä ja kosketuksella ja näyttää esimerkiksi ”21. kesäkuuta · Rovaniemi · 23 h 59 min”; Utsjoen kaamosjaksot ja yöttömän yön jaksot erottuvat kaaviosta; päiväkirjassa on kirjattu, mitä kirjasto tukee näppäimistöllä, ja päätös kiertoreitistä (datataulukko vai päivävalitsin) perusteluineen.</p>
+<p class="done"><strong>Valmis kun:</strong> T10 ja T11 menevät läpi komennolla `npm test`; tooltip toimii hiirellä ja kosketuksella ja näyttää esimerkiksi ”21. kesäkuuta · Rovaniemi · 24 h”; Utsjoen kaamosjaksot ja yöttömän yön jaksot erottuvat kaaviosta; päiväkirjassa on kirjattu, mitä kirjasto tukee näppäimistöllä, ja päätös kiertoreitistä (datataulukko vai päivävalitsin) perusteluineen.</p>
 <p class="ev"><strong>Työnäyte Git-repositoryyn ennen rastia:</strong> Näytä: client/src/format.ts ja sen testit, tooltip-komponentti, kirjattu näppäimistörajoite ja kiertoreitti, kuvakaappaus Utsjoen kaaviosta korostuksineen (p3, k3, k2; p4 täydentyy).</p>
 </div>
 <div class="wk"><h2>Työviikko 9 / 18 – Leikkauspisteet</h2>
@@ -228,7 +232,7 @@ th { background: #fdece3; }
 <tr><td style="width:24%"><strong>ominaisuushaara</strong><br><span class="muted">vko 6</span></td><td><em>Feature branch.</em> Oma Git-haara yhdelle ominaisuudelle. Työ tehdään haarassa ja yhdistetään main-haaraan pull requestilla, kun se on valmis.</td></tr>
 <tr><td style="width:24%"><strong>pull request</strong><br><span class="muted">vko 6</span></td><td><em>Yhdistämispyyntö.</em> GitHubin pyyntö yhdistää haara pääversioon. Siinä näkyvät muutokset ja kuvaus. Katselmoit sen itse ennen yhdistämistä. Työviikolla 11 kahden pull requestin yhdistäminen tuottaa merge-konfliktin, joka ratkaistaan käsin.</td></tr>
 <tr><td style="width:24%"><strong>hook</strong><br><span class="muted">vko 7</span></td><td><em>React-hook.</em> Funktio, jolla komponentti käyttää tilaa (useState) tai sivuvaikutuksia (useEffect). Oma hook useLocations kokoaa paikkojen tilan yhteen paikkaan.</td></tr>
-<tr><td style="width:24%"><strong>tooltip</strong><br><span class="muted">vko 8</span></td><td><em>Vihjeruutu.</em> Ruutu, joka avautuu hiiren tai kosketuksen alle kaaviossa ja näyttää päivän, paikan ja keston, esimerkiksi ”21. kesäkuuta · Rovaniemi · 23 h 59 min”.</td></tr>
+<tr><td style="width:24%"><strong>tooltip</strong><br><span class="muted">vko 8</span></td><td><em>Vihjeruutu.</em> Ruutu, joka avautuu hiiren tai kosketuksen alle kaaviossa ja näyttää päivän, paikan ja keston, esimerkiksi ”21. kesäkuuta · Rovaniemi · 24 h”.</td></tr>
 <tr><td style="width:24%"><strong>Vitest</strong><br><span class="muted">vko 8</span></td><td><em>TypeScript-testiajuri.</em> Viten kanssa toimiva testityökalu, joka ajaa format.ts- ja intersections.ts-moduulien yksikkötestit komennolla npm test.</td></tr>
 <tr><td style="width:24%"><strong>leikkauspiste</strong><br><span class="muted">vko 9</span></td><td><em>Kahden paikan yhtä pitkä päivä.</em> Päivä, jona kahden paikan päivänvalo on yhtä pitkä tai lähes yhtä pitkä (erotus alle toleranssin). Peräkkäiset osumat yhdistetään yhdeksi merkiksi.</td></tr>
 <tr><td style="width:24%"><strong>toleranssi</strong><br><span class="muted">vko 9</span></td><td><em>Sallittu erotus.</em> Kuinka monta minuuttia kahden paikan päivänvalo saa erota, jotta päivä lasketaan leikkauspisteeksi. Oma päätös, joka perustellaan ja testataan.</td></tr>
@@ -278,5 +282,5 @@ th { background: #fdece3; }
 <p class="item">☐&nbsp; <strong>suunnittelee, toteuttaa ja testaa ohjelmiston ohjelmistokomponenttikirjastoa käyttäen</strong> – Komponenttijako ja vastuut suunnitelmassa työviikolla 2, sovellus toteutettu Reactilla käyttäjätarinoiden mukaan työviikoilla 6–9 ja 11–12, omat ja kirjastoon liittyvät ratkaisut testattuina työviikolla 14.</p>
 <p class="item">☐&nbsp; <strong>julkaisee ohjelmiston asiakkaan ympäristöön</strong> – Viten tuotantobuild ja PHP-rajapinta julkaistuna sovittuun alustaan: julkaisuehdokas tagilla v1.0-rc1 työviikolla 16 ja v1.0 työviikolla 17.</p>
 <p class="item">☐&nbsp; <strong>dokumentoi ohjelmiston sovitulla tavalla</strong> – README työviikolla 15: käyttöönotto tyhjään ympäristöön, kehityskomennot, rajapinnan kuvaus esimerkkivastauksella ja riippuvuustaulukko lisensseineen; lisäksi asiakkaan pikaohje.</p>
-<p class="muted" style="margin-top:10pt"><em>Muista: sivuston rastit ja kentät tallentuvat vain selaimeen. Ne eivät siirry opettajalle eivätkä korvaa Gitissä olevaa työtä.</em></p>
+<p class="muted" style="margin-top:1em"><em>Muista: sivuston rastit ja kentät tallentuvat vain selaimeen. Ne eivät siirry opettajalle eivätkä korvaa Gitissä olevaa työtä.</em></p>
 </body></html>

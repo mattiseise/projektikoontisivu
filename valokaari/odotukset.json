@@ -4,9 +4,9 @@
   "nimi": "Valokaari",
   "kieli": "fi",
   "paivaton": true,
-  "generoitu": "2026-09-28",
+  "generoitu": "2026-09-30",
   "lahde": {
-    "sisalto.js": "754881693488aa1f",
+    "sisalto.js": "55bbe0b62ebcb4ce",
     "index.html": "bf554387afa43e91"
   },
   "viikot": [
@@ -444,7 +444,7 @@
       ],
       "nayta": "`client/src/format.ts` ja sen testit, tooltip-komponentti, kirjattu näppäimistörajoite ja kiertoreitti, kuvakaappaus Utsjoen kaaviosta korostuksineen (p3, k3, k2; p4 täydentyy).",
       "tuotos": "client/src/format.ts ja sen Vitest-testit T10–T11, tooltip-komponentti, kaamoksen ja yöttömän yön korostus, kirjattu näppäimistörajoite ja päätös kiertoreitistä.",
-      "valmis": "T10 ja T11 menevät läpi komennolla `npm test`; tooltip toimii hiirellä ja kosketuksella ja näyttää esimerkiksi ”21. kesäkuuta · Rovaniemi · 23 h 59 min”; Utsjoen kaamosjaksot ja yöttömän yön jaksot erottuvat kaaviosta; päiväkirjassa on kirjattu, mitä kirjasto tukee näppäimistöllä, ja päätös kiertoreitistä (datataulukko vai päivävalitsin) perusteluineen.",
+      "valmis": "T10 ja T11 menevät läpi komennolla `npm test`; tooltip toimii hiirellä ja kosketuksella ja näyttää esimerkiksi ”21. kesäkuuta · Rovaniemi · 24 h”; Utsjoen kaamosjaksot ja yöttömän yön jaksot erottuvat kaaviosta; päiväkirjassa on kirjattu, mitä kirjasto tukee näppäimistöllä, ja päätös kiertoreitistä (datataulukko vai päivävalitsin) perusteluineen.",
       "tarkistukset": [
         {
           "id": "tiedosto:client/src/format.ts",

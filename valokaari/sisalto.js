@@ -156,7 +156,7 @@ window.NAYTTOPROJEKTI = {
     { termi: "ominaisuushaara", nimi: "Feature branch", selite: "Oma Git-haara yhdelle ominaisuudelle. Työ tehdään haarassa ja yhdistetään main-haaraan pull requestilla, kun se on valmis.", viikko: 6 },
     { termi: "pull request", nimi: "Yhdistämispyyntö", selite: "GitHubin pyyntö yhdistää haara pääversioon. Siinä näkyvät muutokset ja kuvaus. Katselmoit sen itse ennen yhdistämistä. Työviikolla 11 kahden pull requestin yhdistäminen tuottaa merge-konfliktin, joka ratkaistaan käsin.", viikko: 6 },
     { termi: "hook", nimi: "React-hook", selite: "Funktio, jolla komponentti käyttää tilaa (useState) tai sivuvaikutuksia (useEffect). Oma hook useLocations kokoaa paikkojen tilan yhteen paikkaan.", viikko: 7 },
-    { termi: "tooltip", nimi: "Vihjeruutu", selite: "Ruutu, joka avautuu hiiren tai kosketuksen alle kaaviossa ja näyttää päivän, paikan ja keston, esimerkiksi ”21. kesäkuuta · Rovaniemi · 23 h 59 min”.", viikko: 8 },
+    { termi: "tooltip", nimi: "Vihjeruutu", selite: "Ruutu, joka avautuu hiiren tai kosketuksen alle kaaviossa ja näyttää päivän, paikan ja keston, esimerkiksi ”21. kesäkuuta · Rovaniemi · 24 h”.", viikko: 8 },
     { termi: "Vitest", nimi: "TypeScript-testiajuri", selite: "Viten kanssa toimiva testityökalu, joka ajaa format.ts- ja intersections.ts-moduulien yksikkötestit komennolla npm test.", viikko: 8 },
     { termi: "leikkauspiste", nimi: "Kahden paikan yhtä pitkä päivä", selite: "Päivä, jona kahden paikan päivänvalo on yhtä pitkä tai lähes yhtä pitkä (erotus alle toleranssin). Peräkkäiset osumat yhdistetään yhdeksi merkiksi.", viikko: 9 },
     { termi: "toleranssi", nimi: "Sallittu erotus", selite: "Kuinka monta minuuttia kahden paikan päivänvalo saa erota, jotta päivä lasketaan leikkauspisteeksi. Oma päätös, joka perustellaan ja testataan.", viikko: 9 },
@@ -390,7 +390,7 @@ window.NAYTTOPROJEKTI = {
         code: "KÄYTTÄJÄTARINAN POHJA\nMatkailijana haluan [toiminto], jotta [hyöty].\nHyväksymiskriteerit:\n- [havaittava ehto 1]\n- [havaittava ehto 2]\nPrioriteetti: P0 / P1 / P2 – perustelu: …\nArvio: … h\n\nVERTAILUTAULUKON POHJA\n| Kriteeri | Vaihtoehto A | Vaihtoehto B | Vaihtoehto C |\n| tarkkuus vs. referenssi | | | |\n| Utsjoki 21.12. → 0? | | | |\n| oma ymmärrys | | | |\n| testattavuus | | | |\nValinta ja se, mikä valinnasta jää huonommaksi: …",
         test: "Anna suunnitelma ohjaajalle ja pyydä häntä nimeämään yksi P0-tarina, jonka hyväksymiskriteereistä ei voi päätellä, milloin se on valmis. Korjaa se ennen hyväksyntää."
       },
-      example: "Vertailutaulukko: ”date_sun_info antaa Helsingille 21.6. 18 h 55 min, referenssi 18 h 56 min; Utsjoella 21.6. se palauttaa true, ei aikaa → tarvitsen rajatarkistuksen joka tapauksessa. Valitsen oman yhtälön, koska haluan ymmärtää polaarijaksot, ja käytän date_sun_infoa referenssinä.” Ohjaajan kommentti issue #3:ssa: ”Rajaus hyväksytty 2. työviikolla, ML.”",
+      example: "Vertailutaulukko: ”date_sun_info (PHP 8.3) antaa Helsingille 21.6. saman 18 h 56 min kuin referenssi; Utsjoella 21.6. se palauttaa true, ei aikaa → tarvitsen rajatarkistuksen joka tapauksessa. Valitsen oman yhtälön, koska haluan ymmärtää polaarijaksot, ja käytän date_sun_infoa referenssinä.” Ohjaajan kommentti issue #3:ssa: ”Rajaus hyväksytty 2. työviikolla, ML.”",
       notEnough: "Tekoälyn kirjoittama yleinen vertailu (”SQLite on kevyt ja suosittu”) ilman omaa koeajoa, omaa hakua ja ohjaajan kirjattua kommenttia."
     },
 
@@ -450,7 +450,7 @@ window.NAYTTOPROJEKTI = {
       ],
       help: {
         title: "Päivänvalolaskennan ansat ja testipohja",
-        tree: "server/\n├─ src/Daylight.php        minutesForDate(), yearFor()\n├─ tests/DaylightTest.php  T01–T04 (PHPUnit) TAI\n├─ tests/run.php           T01–T04 omana skriptinä\n└─ composer.json           \"scripts\": { \"test\": \"phpunit tests\" }\n\nANSAT – NÄMÄ OVAT ODOTETTUJA, EIVÄT OMA VIKA\n1 acos(x), kun x > 1 tai x < -1 → NaN. Napapiirin pohjoispuolella\n  kesällä ja talvella. Ratkaisu: tarkista arvoalue ennen acos-kutsua:\n  x >= 1 → 0 min (kaamos), x <= -1 → 1440 min (yötön yö).\n2 Refraktio: ilmakehä taittaa valon, joten aurinko näkyy ennen kuin se\n  on horisontissa. Ilman -0,833° korjausta Rovaniemi 21.6. antaa\n  n. 23 h 40 min, ei 24 h. Referenssit käyttävät korjausta.\n3 date_sun_info palauttaa polaarijaksoilla true/false, ei aikaleimaa.\n  Tarkista tyyppi ennen kuin lasket erotusta.\n4 Aikavyöhyke: laske päivän pituus, älä kellonaikoja. Erotus\n  nousu → lasku ei riipu vyöhykkeestä, kellonajat riippuvat.",
+        tree: "server/\n├─ src/Daylight.php        minutesForDate(), yearFor()\n├─ tests/DaylightTest.php  T01–T04 (PHPUnit) TAI\n├─ tests/run.php           T01–T04 omana skriptinä\n└─ composer.json           \"scripts\": { \"test\": \"phpunit tests\" }\n\nANSAT – NÄMÄ OVAT ODOTETTUJA, EIVÄT OMA VIKA\n1 acos(x), kun x > 1 tai x < -1 → NaN. Napapiirin pohjoispuolella\n  kesällä ja talvella. Ratkaisu: tarkista arvoalue ennen acos-kutsua:\n  x >= 1 → 0 min (kaamos), x <= -1 → 1440 min (yötön yö).\n2 Refraktio: ilmakehä taittaa valon, joten aurinko näkyy ennen kuin se\n  on horisontissa. Ilman -0,833° korjausta Rovaniemi 21.6. antaa\n  n. 23 h 30 min, ei 24 h. Referenssit käyttävät korjausta.\n3 date_sun_info palauttaa polaarijaksoilla true/false, ei aikaleimaa.\n  Tarkista tyyppi ennen kuin lasket erotusta.\n4 Aikavyöhyke: laske päivän pituus, älä kellonaikoja. Erotus\n  nousu → lasku ei riipu vyöhykkeestä, kellonajat riippuvat.",
         actions: [
           "Kirjoita testit ennen moduulia ja katso niiden epäonnistuvan.",
           "Laske ensin Helsinki 21.6. käsin paperilla yhtälöllä ja vertaa referenssiin, ennen kuin koodaat silmukkaa.",
@@ -581,7 +581,7 @@ window.NAYTTOPROJEKTI = {
       connection: "Data on oikein ja paikkoja on monta, mutta minuutit eivät kerro matkailijalle mitään. Muotoilu tehdään omassa moduulissa testeineen, ja kaavio vain käyttää sitä. Ääripäiden korostus on asiakkaan myyntiargumentti, joten se ei ole koristus.",
       deliverable: "client/src/format.ts ja sen Vitest-testit T10–T11, tooltip-komponentti, kaamoksen ja yöttömän yön korostus, kirjattu näppäimistörajoite ja päätös kiertoreitistä.",
       why: "Muotoilu on logiikkaa, ja logiikka testataan ilman selainta. ”0 min” ja ”24 h” ovat rajatapaukset, jotka menevät helposti väärin (”0 h 0 min”, ”24 h 0 min”). Näppäimistötuki riippuu kirjastosta, joten rajoite kirjataan rehellisesti ja kiertoreitti päätetään nyt, toteutetaan työviikolla 12.",
-      done: "T10 ja T11 menevät läpi komennolla `npm test`; tooltip toimii hiirellä ja kosketuksella ja näyttää esimerkiksi ”21. kesäkuuta · Rovaniemi · 23 h 59 min”; Utsjoen kaamosjaksot ja yöttömän yön jaksot erottuvat kaaviosta; päiväkirjassa on kirjattu, mitä kirjasto tukee näppäimistöllä, ja päätös kiertoreitistä (datataulukko vai päivävalitsin) perusteluineen.",
+      done: "T10 ja T11 menevät läpi komennolla `npm test`; tooltip toimii hiirellä ja kosketuksella ja näyttää esimerkiksi ”21. kesäkuuta · Rovaniemi · 24 h”; Utsjoen kaamosjaksot ja yöttömän yön jaksot erottuvat kaaviosta; päiväkirjassa on kirjattu, mitä kirjasto tukee näppäimistöllä, ja päätös kiertoreitistä (datataulukko vai päivävalitsin) perusteluineen.",
       record: "Kirjoita työviikon 8 merkintään: format.ts:n funktiot ja niiden testit, miten tooltip on toteutettu kirjaston keinoin, miten ääripäät korostetaan, ja näppäimistörajoite sekä kiertoreitin valinta perusteluineen.",
       skills: ["muotoilulogiikka moduulina", "Vitest-yksikkötestit", "kaaviokirjaston tooltip ja merkinnät", "rajoitteen kirjaaminen"],
       termit: ["tooltip", "Vitest"],
@@ -605,7 +605,7 @@ window.NAYTTOPROJEKTI = {
         code: "T10 · formatMinutes\n| syöte | odotettu |\n| 0     | ”0 min”  |\n| 61    | ”1 h 1 min” |\n| 1136  | ”18 h 56 min” |\n| 1440  | ”24 h”  |\nT11 · formatDate(”2026-06-21”) → ”21. kesäkuuta”\n\nNÄPPÄIMISTÖRAJOITE (kirjataan suunnitelmaan)\nKirjasto: … Tuki: … Puute: …\nKiertoreitti vk 12: datataulukko / päivävalitsin, perustelu: …",
         test: "Aja `npm test` ja tarkista, että T10:n neljä riviä ja T11 menevät läpi. Vie sitten puhelimella sormi Utsjoen tammikuun kohdalle: tooltipin pitää sanoa ”0 min”, ei ”0 h 0 min”."
       },
-      example: "Tooltip: ”21. kesäkuuta · Rovaniemi · 23 h 59 min”. Kaaviossa Utsjoen 0-taso ja 1440-taso merkitty alueina ”kaamos” ja ”yötön yö”. Päiväkirja: ”Recharts-tooltip ei aukea näppäimistöllä; valitsen päivävalitsimen viikolle 12, koska 365 × 4 riviä taulukkona on liian pitkä.”",
+      example: "Tooltip: ”21. kesäkuuta · Rovaniemi · 24 h”. Kaaviossa Utsjoen 0-taso ja 1440-taso merkitty alueina ”kaamos” ja ”yötön yö”. Päiväkirja: ”Recharts-tooltip ei aukea näppäimistöllä; valitsen päivävalitsimen viikolle 12, koska 365 × 4 riviä taulukkona on liian pitkä.”",
       notEnough: "Tooltip, joka näyttää ”daylightMinutes: 1439”, ääripäät ilman nimeä, tai muotoilufunktio komponentin sisällä ilman testiä."
     },
 
@@ -624,23 +624,23 @@ window.NAYTTOPROJEKTI = {
         ["Määritelmä paperilla.", "Piirrä kaksi käyrää: Helsinki ja Rovaniemi maaliskuussa (ohittavat toisensa) ja Utsjoki ja Inari kesäkuussa (molemmat 1440 pitkään). Päätä: onko leikkaus merkinvaihto (a − b vaihtaa etumerkkiä), erotus alle toleranssin, vai molemmat? Mikä toleranssi minuutteina? Kirjaa päätös ja perustelu suunnitelmaan."],
         ["Testit ensin.", "Kirjoita T12 ja T13 Vitestillä oikealla rajapintadatalla (tallenna vastaukset testiaineistoksi). T12: Helsinki–Rovaniemi → merkit maalis- ja syyskuussa, ei kesäkuussa. T13: Utsjoki–Inari → yöttömän yön jakso tuottaa yhden merkin, ei yhtä per päivä."],
         ["intersections.ts.", "Toteuta findIntersections(seriesA, seriesB, toleranceMin) puhtaana funktiona, joka palauttaa listan {date, minutesA, minutesB}. Yhdistä peräkkäiset osumat yhdeksi merkiksi (jakson ensimmäinen päivä tai keskipäivä). Laske parit kaikille paikoille, kun paikkoja on useampi kuin kaksi."],
-        ["Merkit kaavioon.", "Piirrä merkit kaavioon kirjaston merkintätuella (piste, viiteviiva tai erillinen sarja) ja anna niille oma tooltip: ”20. maaliskuuta · Helsinki ja Rovaniemi · noin 12 h”. Jos kirjasto ei tue merkintöjä, piirrä ne erillisenä sarjana, jossa vain leikkauspäivillä on arvo."],
+        ["Merkit kaavioon.", "Piirrä merkit kaavioon kirjaston merkintätuella (piste, viiteviiva tai erillinen sarja) ja anna niille oma tooltip: ”19. maaliskuuta · Helsinki ja Rovaniemi · noin 12 h”. Jos kirjasto ei tue merkintöjä, piirrä ne erillisenä sarjana, jossa vain leikkauspäivillä on arvo."],
         ["Pull request ja viikkopalaveri.", "Yhdistä, julkaise ja näytä ohjaajalle Helsinki–Rovaniemi-esimerkki. Kirjaa bug-issuet, jos tasauspäivät tuottivat ylimääräisiä merkkejä."]
       ],
       help: {
         title: "Leikkauspisteen laskennan runko",
-        tree: "client/src/\n├─ intersections.ts        findIntersections(a, b, tolerance) → Intersection[]\n├─ intersections.test.ts   T12, T13 tallennetulla rajapintadatalla\n└─ test-data/\n   ├─ helsinki-2026.json    curl-tuloste tallennettuna\n   ├─ rovaniemi-2026.json\n   ├─ utsjoki-2026.json\n   └─ inari-2026.json\n\nPIIRROS 1 · Helsinki (─) ja Rovaniemi (···) maalis–syyskuu\n 24h │        ···········\n     │     ···           ···\n 12h │──··─────────────────··──   ← ohittavat toisensa n. 20.3. ja 23.9.\n     │ ··                     ··\n  0h │\n\nPIIRROS 2 · Utsjoki ja Inari kesäkuu: molemmat 1440 viikkoja\n 24h │ ═══════════════════════   ← erotus 0 joka päivä → YKSI merkki, ei 40",
+        tree: "client/src/\n├─ intersections.ts        findIntersections(a, b, tolerance) → Intersection[]\n├─ intersections.test.ts   T12, T13 tallennetulla rajapintadatalla\n└─ test-data/\n   ├─ helsinki-2026.json    curl-tuloste tallennettuna\n   ├─ rovaniemi-2026.json\n   ├─ utsjoki-2026.json\n   └─ inari-2026.json\n\nPIIRROS 1 · Helsinki (─) ja Rovaniemi (···) maalis–syyskuu\n 24h │        ···········\n     │     ···           ···\n 12h │──··─────────────────··──   ← ohittavat toisensa n. 19.3. ja 26.9.\n     │ ··                     ··\n  0h │\n\nPIIRROS 2 · Utsjoki ja Inari kesäkuu: molemmat 1440 viikkoja\n 24h │ ═══════════════════════   ← erotus 0 joka päivä → YKSI merkki, ei n. 60",
         actions: [
           "Käy päivät läpi järjestyksessä: d = a[i] − b[i]. Osuma, kun |d| <= toleranssi tai d:n etumerkki vaihtuu edellisestä päivästä.",
           "Ryhmittele peräkkäiset osumat: uusi merkki alkaa vain, kun edellinen päivä ei ollut osuma.",
           "Kun paikkoja on N, laske parit i < j ja anna jokaiselle merkille molemmat nimet.",
           "Jos tasauspäivät tuottavat merkin joka parille, se on oikea tulos: kaikilla on n. 12 h. Näytä silloin yksi yhteinen merkki tai pienennä toleranssia ja kirjaa päätös."
         ],
-        code: "T12 · Helsinki–Rovaniemi 2026, toleranssi N min\nOdotettu: merkki välillä 15.–25.3. ja 18.–28.9.; ei merkkiä kesä–heinäkuussa\nSaatu: … · Tila: …\n\nT13 · Utsjoki–Inari 2026\nOdotettu: yöttömän yön jaksolta (touko–heinäkuu) enintään 1 merkki; kaamokselta enintään 1\nSaatu: … · Tila: …\n\nPALUUARVO\n{ date: \"2026-03-20\", a: \"Helsinki\", b: \"Rovaniemi\", minutesA: 731, minutesB: 728 }",
+        code: "T12 · Helsinki–Rovaniemi 2026, toleranssi N min\nOdotettu: merkki välillä 15.–25.3. ja 18.–28.9.; ei merkkiä kesä–heinäkuussa\nSaatu: … · Tila: …\n\nT13 · Utsjoki–Inari 2026\nOdotettu: yöttömän yön jaksolta (touko–heinäkuu) enintään 1 merkki; kaamoksesta enintään 1 merkki tammikuun alkuun ja 1 joulukuuhun (vuodenvaihde katkaisee kaamoksen kahtia)\nSaatu: … · Tila: …\n\nPALUUARVO\n{ date: \"2026-03-19\", a: \"Helsinki\", b: \"Rovaniemi\", minutesA: 721, minutesB: 721 }",
         test: "Lisää Helsinki, Rovaniemi ja Utsjoki ja laske merkit. Jos maaliskuussa on enemmän kuin kolme merkkiä (yksi per pari), peräkkäisten päivien yhdistäminen ei toimi."
       },
       example: "Suunnitelma: ”Leikkaus = erotus ≤ 10 min tai merkinvaihto. Peräkkäiset osumat yhdistetään ja merkki asetetaan jakson keskipäivälle. Toleranssi 10 min, koska päiväkohtainen muutos keväällä on Rovaniemellä n. 7 min/päivä; pienemmällä toleranssilla ohitus voi jäädä väliin.” T12 ja T13 läpi, kuvakaappaus maaliskuun merkistä tooltipilla.",
-      notEnough: "Merkki joka päivälle, jona erotus on pieni (40 merkkiä kesäkuussa), toleranssi ilman perustelua, tai laskenta kaaviokomponentin sisällä ilman testiä."
+      notEnough: "Merkki joka päivälle, jona erotus on pieni (Utsjoki–Inari-parille n. 60 merkkiä yöttömän yön ajalta), toleranssi ilman perustelua, tai laskenta kaaviokomponentin sisällä ilman testiä."
     },
 
     10: {
@@ -741,7 +741,7 @@ window.NAYTTOPROJEKTI = {
         code: "TARKISTUSLISTA\n[ ] ei vaakasuuntaista rullausta puhelimella\n[ ] Tab kulkee lomake → lista → vuosi → kiertoreitti loogisessa järjestyksessä\n[ ] jokaisella kentällä label, jokaisella napilla teksti\n[ ] kohdistus näkyy\n[ ] kontrasti vähintään 4,5:1 tekstille\n[ ] yksi h1, väliotsikot h2\n[ ] kiertoreitti antaa saman tiedon kuin tooltip ilman hiirtä\n[ ] Lighthouse ennen: … / jälkeen: …",
         test: "Irrota hiiri (tai älä koske siihen) ja lisää Utsjoki, vaihda vuosi ja lue tammikuun 15. päivän arvo pelkällä näppäimistöllä. Jos jokin vaihe ei onnistu, se on korjauslistan rivi."
       },
-      example: "Päiväkirja: ”Lighthouse-saavutettavuus 71 → 96. Korjaukset: label-kytkennät (3), kontrasti listan harmaassa tekstissä, näkyvä kohdistus napeille. Puhelimella kaavio vuoti oikealle 40 px: korjattu w-full ja ResponsiveContainer. Päivävalitsin toteutettu: näyttää 15.1.2026 Utsjoki 0 min, Helsinki 6 h 30 min.”",
+      example: "Päiväkirja: ”Lighthouse-saavutettavuus 71 → 96. Korjaukset: label-kytkennät (3), kontrasti listan harmaassa tekstissä, näkyvä kohdistus napeille. Puhelimella kaavio vuoti oikealle 40 px: korjattu w-full ja ResponsiveContainer. Päivävalitsin toteutettu: näyttää 15.1.2026 Utsjoki 0 min, Helsinki 6 h 37 min.”",
       notEnough: "”Testasin puhelimella ja toimii” ilman kuvakaappauksia, tai Lighthouse ajettu vain jälkeen, tai kiertoreitti jätetty pois koska ”kirjasto ei tue”."
     },
 
