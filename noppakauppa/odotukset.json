@@ -6,8 +6,8 @@
   "paivaton": true,
   "generoitu": "2026-09-30",
   "lahde": {
-    "sisalto.js": "651e5227a0711c6a",
-    "index.html": "1025f0d336e5b6e5"
+    "sisalto.js": "c724739a2badb114",
+    "index.html": "899a5b254be5383d"
   },
   "viikot": [
     1,
@@ -153,20 +153,20 @@
         },
         {
           "id": "2-3",
-          "teksti": "Vertaa kolme tietovarastoa ja perustele valinta",
-          "valmis": "Vertailussa on kolme vaihtoehtoa kolmella perusteella, jokaisen haitta ja valinta perusteltuna kaupan omalla datalla.",
+          "teksti": "Perustele sovittu SQLite vertaamalla vaihtoehtoihin",
+          "valmis": "Vertailussa ovat SQLite, JSON-tiedosto ja PostgreSQL kolmella perusteella, jokaisen haitta ja perustelu sille, miksi sovittu SQLite sopii kaupan dataan.",
           "tallenna": "Vertailu suunnitelmalomakkeelle ja siitä `project-docs/suunnitelma.md`:hen."
         },
         {
           "id": "2-4",
           "teksti": "Hyväksytä rautalangat ja pilko työ issueiksi",
-          "valmis": "Rautalankojen hyväksyntä on kirjattu hyväksyjän sanoin, komponenttijako on suunnitelmassa, ja GitHubissa on vähintään kahdeksan P0-issueta valmis kun -ehtoineen.",
-          "tallenna": "Rautalangat kansioon `project-docs/rautalangat/` ja issuen numerot tiedostoon `kayttajatarinat.md`. Hyväksyjä, hänen sanansa ja issue-listan linkki työviikon 2 päiväkirjaan."
+          "valmis": "Rautalankojen hyväksyntä on kirjattu hyväksyjän roolilla, komponenttijako linkkeineen on suunnitelmassa, `vue-pinia-selvitys.md` on repositoryssa, ja GitHubissa on vähintään kahdeksan P0-issueta valmis kun -ehtoineen.",
+          "tallenna": "Rautalangat kansioon `project-docs/rautalangat/`, selvitys tiedostoon `project-docs/vue-pinia-selvitys.md` ja issuen numerot tiedostoon `kayttajatarinat.md`. Hyväksyjän rooli, hänen palautteensa ja issue-listan linkki työviikon 2 päiväkirjaan."
         }
       ],
-      "nayta": "`suunnitelma.md`, `kayttajatarinat.md`, tietomallikuva, issue-listan linkki ja hyväksyntämerkintä.",
-      "tuotos": "suunnitelma.md, kayttajatarinat.md, tietomallikaavio, tietovarastovertailu, hyväksytyt rautalangat ja vähintään kahdeksan issueta.",
-      "valmis": "Käyttäjätarinat prioriteetteineen ja arvioineen ovat tiedostossa kayttajatarinat.md; suunnitelma.md:ssä on teemapäätös, tietomalli ja tietovarastoperustelu, ja tietomallikaavio on project-docs-kansiossa; issueita on vähintään kahdeksan ja P0 on merkitty; rautalankojen hyväksyntä on kirjattu: kuka hyväksyi ja mitä hän sanoi. Hyväksyjäksi käy ohjaaja asiakkaan äänenä, jos katselmoijaa ei ole vielä nimetty.",
+      "nayta": "`suunnitelma.md`, `kayttajatarinat.md`, `vue-pinia-selvitys.md`, tietomallikuva, issue-listan linkki ja hyväksyntämerkintä.",
+      "tuotos": "suunnitelma.md, kayttajatarinat.md, vue-pinia-selvitys.md, tietomallikaavio, tietovarastovertailu, hyväksytyt rautalangat ja vähintään kahdeksan issueta.",
+      "valmis": "Käyttäjätarinat prioriteetteineen ja arvioineen ovat tiedostossa kayttajatarinat.md; suunnitelma.md:ssä on teemapäätös, tietomalli ja sovitun SQLiten perustelu, ja tietomallikaavio ja vue-pinia-selvitys.md ovat project-docs-kansiossa; issueita on vähintään kahdeksan ja P0 on merkitty; rautalankojen hyväksyntä on kirjattu: hyväksyjän rooli ja hänen palautteensa. Hyväksyjäksi käy ohjaaja asiakkaan sijaisena, jos asiakkaan edustajaa ei ole vielä nimetty.",
       "tarkistukset": [
         {
           "id": "tiedosto:project-docs/kayttajatarinat.md",
@@ -178,6 +178,12 @@
           "id": "tiedosto:project-docs/suunnitelma.md",
           "tyyppi": "tiedosto",
           "polku": "project-docs/suunnitelma.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "tiedosto:project-docs/vue-pinia-selvitys.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/vue-pinia-selvitys.md",
           "lahde": "auto"
         },
         {
@@ -223,7 +229,7 @@
           "id": "3-4",
           "teksti": "Toteuta tuotelistan kolme tilaa ja testaa ne",
           "valmis": "Lataus-, tyhjä- ja virhetila näkyvät käyttäjälle, sammutettu backend antaa virheilmoituksen, ja T01:n ja T02:n odotettu ja toteutunut tulos ovat testimatriisissa.",
-          "tallenna": "Testitapaukset T01 ja T02 tiedostoon `project-docs/testimatriisi.md` commitilla. Tulos lyhyesti työviikon 3 päiväkirjaan."
+          "tallenna": "Testitapaukset T01 ja T02 tiedostoon `project-docs/testimatriisi.md` commitilla. Tulos lyhyesti ja linkki testimatriisiin työviikon 3 päiväkirjaan."
         }
       ],
       "nayta": "commit-linkki, kuvakaappaus tuotelistasta ja testitapausten T01–T02 tulokset tiedostossa `project-docs/testimatriisi.md`.",
@@ -379,7 +385,7 @@
           "id": "6-4",
           "teksti": "Aja testitapaukset T04 ja T05",
           "valmis": "T04:n ja T05:n odotettu ja toteutunut tulos ovat testimatriisissa, eikä erikoismerkkihaku muuttanut kantaa.",
-          "tallenna": "Testitapaukset tiedostoon `project-docs/testimatriisi.md` commitilla. Tulokset lyhyesti työviikon 6 päiväkirjaan."
+          "tallenna": "Testitapaukset tiedostoon `project-docs/testimatriisi.md` commitilla. Tulokset lyhyesti ja linkki testimatriisiin työviikon 6 päiväkirjaan."
         }
       ],
       "nayta": "commit, testitapausten T04–T05 tulokset testimatriisissa ja kuvakaappaus hakudemosta.",
@@ -429,7 +435,7 @@
           "id": "7-4",
           "teksti": "Aja testitapaukset T06–T07 ja kirjaa ketju K1",
           "valmis": "T06:n ja T07:n tulokset ovat testimatriisissa, ja K1-ketju on kokonainen havainnosta regressiotestiin.",
-          "tallenna": "Testitapaukset tiedostoon `project-docs/testimatriisi.md`. K1-ketju kokonaisena työviikon 7 päiväkirjaan."
+          "tallenna": "Testitapaukset tiedostoon `project-docs/testimatriisi.md`. Tulokset lyhyesti ja linkki testimatriisiin sekä K1-ketju kokonaisena työviikon 7 päiväkirjaan."
         }
       ],
       "nayta": "pull requestin linkki, päätösmuistio, testitapausten T06–T07 tulokset testimatriisissa ja K1-ketju päiväkirjassa.",
@@ -491,7 +497,7 @@
           "id": "8-4",
           "teksti": "Aja testitapaukset T08 ja T09",
           "valmis": "T08:n ja T09:n odotettu ja toteutunut tulos ovat testimatriisissa, eikä kirjautunut tila palaa uloskirjautumisen jälkeen.",
-          "tallenna": "Testitapaukset tiedostoon `project-docs/testimatriisi.md` commitilla. Tulokset lyhyesti työviikon 8 päiväkirjaan."
+          "tallenna": "Testitapaukset tiedostoon `project-docs/testimatriisi.md` commitilla. Tulokset lyhyesti ja linkki testimatriisiin työviikon 8 päiväkirjaan."
         }
       ],
       "nayta": "päätösmuistio, kuvakaappaus kantariveistä (hash näkyy, salasana ei) ja testitapausten T08–T09 tulokset testimatriisissa.",
@@ -547,7 +553,7 @@
           "id": "9-4",
           "teksti": "Aja testitapaukset T10 ja T11",
           "valmis": "T10:n ja T11:n odotettu ja toteutunut tulos ovat testimatriisissa.",
-          "tallenna": "Testitapaukset tiedostoon `project-docs/testimatriisi.md` commitilla. Tulokset lyhyesti työviikon 9 päiväkirjaan."
+          "tallenna": "Testitapaukset tiedostoon `project-docs/testimatriisi.md` commitilla. Tulokset lyhyesti ja linkki testimatriisiin työviikon 9 päiväkirjaan."
         }
       ],
       "nayta": "commit, lisäpaketin perustelu suunnitelmassa, testitapausten T10–T11 tulokset testimatriisissa ja kuvakaappaus historiasta.",
@@ -703,7 +709,7 @@
           "id": "12-4",
           "teksti": "Aja testitapaukset T12 ja T13 molemmilla rooleilla",
           "valmis": "T12:n ja T13:n tulokset curl-vastauksineen ovat testimatriisissa: 401 ilman istuntoa, 403 asiakkaana ja onnistunut lisäys henkilökuntana.",
-          "tallenna": "Testitapaukset tiedostoon `project-docs/testimatriisi.md` commitilla. curl-kutsujen vastaukset työviikon 12 päiväkirjaan."
+          "tallenna": "Testitapaukset tiedostoon `project-docs/testimatriisi.md` commitilla. curl-kutsujen vastaukset lyhyesti ja linkki testimatriisiin työviikon 12 päiväkirjaan."
         }
       ],
       "nayta": "testitapausten T12–T13 tulokset curl-kutsun vastauksineen testimatriisissa, commit ja kuvakaappaus hallintanäkymästä.",
@@ -958,8 +964,8 @@
         {
           "id": "17-3",
           "teksti": "Julkaise versio 1.0 ja kirjoita julkaisumuistio",
-          "valmis": "Tagi `v1.0` on olemassa, julkinen osoite toimii, ja julkaisumuistio kertoo mukana olevat ja pois rajatut asiat.",
-          "tallenna": "Julkaisumuistio tiedostoon `project-docs/julkaisumuistio.md`. Tuotanto-URL työviikon 17 päiväkirjaan."
+          "valmis": "Tagi `v1.0` on olemassa, julkinen osoite toimii, julkaisumuistio kertoo mukana olevat ja pois rajatut asiat, ja `nayttomatriisi.md` on perustettu.",
+          "tallenna": "Julkaisumuistio tiedostoon `project-docs/julkaisumuistio.md` ja matriisi tiedostoon `project-docs/nayttomatriisi.md`. Tuotanto-URL työviikon 17 päiväkirjaan."
         },
         {
           "id": "17-4",
@@ -968,10 +974,16 @@
           "tallenna": "Luovutusviesti tiedostoon `project-docs/luovutusviesti.md`."
         }
       ],
-      "nayta": "`v1.0`-tag ja julkaisumuistio, tuotanto-URL sekä luovutusviesti `project-docs`-kansiossa.",
+      "nayta": "`v1.0`-tag ja julkaisumuistio, tuotanto-URL, luovutusviesti `project-docs`-kansiossa sekä perustettu `project-docs/nayttomatriisi.md`.",
       "tuotos": "Tagi v1.0, julkaisumuistio, valmis dokumentaatio ja asiakkaan luovutusviesti.",
       "valmis": "Tagi v1.0 on olemassa; julkinen osoite toimii; README:n avulla ulkopuolinen saa kehitysympäristön käyntiin; luovutusviesti ja tunnetut puutteet on kirjattu.",
       "tarkistukset": [
+        {
+          "id": "tiedosto:project-docs/nayttomatriisi.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/nayttomatriisi.md",
+          "lahde": "auto"
+        },
         {
           "id": "tiedosto:project-docs/julkaisumuistio.md",
           "tyyppi": "tiedosto",
@@ -1014,8 +1026,8 @@
         {
           "id": "18-1",
           "teksti": "Linkitä kaikkien 32 vaatimuksen työnäytteet",
-          "valmis": "Näyttömatriisin jokaisella rivillä on toimiva linkki työnäytteeseen.",
-          "tallenna": "Linkitetty matriisi ohjaajan kanssa sovittuun paikkaan, esimerkiksi tiedostoon `project-docs/nayttomatriisi.md`. Sivun rastit ovat vain muistilista."
+          "valmis": "Tiedostossa `nayttomatriisi.md` on jokaiselle 32 vaatimukselle rivi, jossa on viikko ja toimiva linkki työnäytteeseen.",
+          "tallenna": "`project-docs/nayttomatriisi.md` commitilla. Sivun näyttömatriisin rastit ovat vain oma muistilistasi."
         },
         {
           "id": "18-2",
@@ -1036,16 +1048,10 @@
           "tallenna": "Luovutuksen tapa ja ajankohta työviikon 18 päiväkirjaan."
         }
       ],
-      "nayta": "linkitetty näyttömatriisi, demorunko ja itsearviointi päiväkirjan viimeisenä merkintänä.",
-      "tuotos": "Täytetty näyttömatriisi toimivine linkkeineen, harjoiteltu demorunko ja itsearviointi päiväkirjan viimeisenä merkintänä.",
+      "nayta": "`project-docs/nayttomatriisi.md` toimivine linkkeineen, demorunko ja itsearviointi päiväkirjan viimeisenä merkintänä.",
+      "tuotos": "Täytetty project-docs/nayttomatriisi.md toimivine linkkeineen, harjoiteltu demorunko ja itsearviointi päiväkirjan viimeisenä merkintänä.",
       "valmis": "Matriisin jokaisella rivillä on toimiva linkki; demo on ajettu kellon kanssa vähintään kerran toiselle ihmiselle; itsearviointi nimeää konkreettisia tilanteita.",
       "tarkistukset": [
-        {
-          "id": "tiedosto:project-docs/nayttomatriisi.md",
-          "tyyppi": "tiedosto",
-          "polku": "project-docs/nayttomatriisi.md",
-          "lahde": "auto"
-        },
         {
           "id": "tiedosto:project-docs/demo.md",
           "tyyppi": "tiedosto",
