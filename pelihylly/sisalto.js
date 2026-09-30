@@ -175,6 +175,7 @@ window.NAYTTOPROJEKTI = {
 
   /* ---- paperiaineiston kieliyliajot (päivätön tila) ---- */
   lataukset: {
+    resurssienPerusosoite: "https://mattiseise.github.io/projektikoontisivu/pelihylly/",
     sarakePvm: "Ajoitus",
     viikkoOtsikko: (num, dates, title) => "Työviikko " + num + " / 18 – " + title,
     aloitusHuomio: "Viikon työvaihe on tämän sivuston työohje. Kun työvaihe muuttaa palvelua, kirjaa muutos GitHub-issueksi hyväksymiskriteereineen ja tee se Työtapa-sivun kuudella askeleella. Testin tulos kirjataan testimatriisiin heti, viikon yhteenveto projektipäiväkirjaan viikon lopussa."
@@ -306,6 +307,7 @@ window.NAYTTOPROJEKTI = {
       done: "Ohjaaja avaa repositoryn osoitteen toisella koneella: README kertoo mikä projekti on, ja `npm install && npm run dev` käynnistää sovellusrungon. Kysymyslista on `project-docs/kysymykset.md`-tiedostossa.",
       record: "Kirjoita työviikon 1 merkintään: mitkä kohdat toimeksiannosta jäivät epäselviksi, kysymyslistan tärkein kysymys, työkalujen versiotulosteet, repositoryn osoite ja ensimmäisen commitin tunniste.",
       skills: ["kehitysympäristö (p1, k1)", "versionhallinta (s12)", "vaatimusten purku (s1)", "julkisen repositoryn tietosuoja"],
+      resources: [["GitHub Desktop: kuvaohje ilman Git-komentoja", "../ohjeet/github-desktop/?projekti=pelihylly#asennus", false]],
       tehtavat: {
         "1-1": {
           miksi: "Rajaus ratkeaa kysymällä, ei arvaamalla. Vastaukset muuttuvat työviikolla 2 käyttäjätarinoiksi ja rajaukseksi.",
@@ -322,8 +324,8 @@ window.NAYTTOPROJEKTI = {
         "1-2": {
           miksi: "Ilman toimivaa ympäristöä yksikään myöhempi viikko ei tallennu näyttöaineistoksi. Versiotulosteet todistavat, millä työkaluilla työ on tehty.",
           osat: [
-            ["Asenna työkalut", "Asenna Node.js:n LTS-versio eli pitkään tuettu vakaa versio, Git ja editori, esimerkiksi VS Code."],
-            ["Ota versiot talteen", "Aja `node -v` ja `git --version` ja kopioi tulosteet työviikon 1 päiväkirjaan."],
+            ["Asenna työkalut", "Asenna Node.js:n LTS-versio eli pitkään tuettu vakaa versio, GitHub Desktop (viikon kuvaohje) tai komentorivin Git sekä editori, esimerkiksi VS Code."],
+            ["Ota versiot talteen", "Aja `node -v`. Kirjaa lisäksi GitHub Desktopin versio kohdasta Help → About GitHub Desktop tai komentorivin Gitin versio komennolla `git --version`. Tallenna tiedot työviikon 1 päiväkirjaan."],
             ["Luo kansiot", "Luo projektin juureen kansiot `client/`, `server/` ja `project-docs/`. Kaikki dokumentaatio menee `project-docs`-kansioon."],
             ["Luo React-projekti", "Aja `client`-kansiossa `npm create vite@latest` ja valitse React."],
             ["Käynnistä kehityspalvelin", "Aja `npm install` ja `npm run dev` ja avaa sovellusrunko selaimessa."]
@@ -336,9 +338,9 @@ window.NAYTTOPROJEKTI = {
           osat: [
             ["Kirjoita README", "Kirjoita `README.md`: mikä PeliHylly on ja miten sovellusrunko käynnistetään."],
             ["Lisää .gitignore", "Lisää `.gitignore`, joka estää `node_modules`-kansion ja `.env`-tiedostot pääsemästä repositoryyn."],
-            ["Tee ensimmäinen commit", "Tee ensimmäinen commit kuvaavalla viestillä, esimerkiksi ”Vite + React -runko ja README”."],
-            ["Vie etärepositoryyn", "Luo etärepository GitHubiin ja vie commitit sinne komennolla `git push`."],
-            ["Kokeile kloonausta", "Kloonaa repository toiseen kansioon ja tarkista, että runko käynnistyy pelkän README:n ohjeilla."]
+            ["Tee ensimmäinen commit", "Avaa GitHub Desktop -kuvaohjeen reitti B ja lisää nykyinen projektikansio versionhallintaan. Tarkista Changes-lista ja tee Commit kuvaavalla Summary-viestillä, esimerkiksi ”Vite + React -runko ja README”. Komentorivin Git käy myös."],
+            ["Vie etärepositoryyn", "Sovi ennen lähettämistä työvaiheen 4 julkisuusasiat ohjaajan kanssa. Valitse Desktopissa Publish repository ja sovittu julkisuus; jo julkaistulle repolle Push origin. Tarkista tiedostot View on GitHub -toiminnolla. Katso kuvaohjeen kohdat 6–7."],
+            ["Kokeile kloonausta", "Kloonaa oma repository Desktopin File → Clone repository → URL -toiminnolla erilliseen kansioon (kuvaohjeen reitti C). Tarkista, että runko käynnistyy pelkän README:n ohjeilla."]
           ],
           valmis: "Repository on GitHubissa, README kertoo, mikä projekti on, ja kloonattu kopio käynnistyy README:n ohjeilla.",
           tallenna: "Repositoryn osoite ja ensimmäisen commitin tunniste työviikon 1 päiväkirjaan.",
@@ -361,20 +363,20 @@ window.NAYTTOPROJEKTI = {
         tree: "pelihylly/\n├─ client/            React + Vite\n│  ├─ src/\n│  └─ package.json\n├─ server/            Express + SQLite\n│  └─ package.json\n├─ project-docs/      suunnitelma, testit, päiväkirja, AI-loki\n│  └─ kysymykset.md\n├─ README.md\n└─ .gitignore",
         actions: [
           "Luo kansiot client/, server/ ja project-docs/. Kaikki dokumentaatio menee project-docs-kansioon.",
-          "Aja node -v ja git --version ja liitä tulosteet päiväkirjaan.",
+          "Aja node -v. Kirjaa GitHub Desktopin versio Help → About GitHub Desktop -kohdasta tai git --version -tuloste päiväkirjaan.",
           "Luo Vite + React -projekti client-kansioon ja käynnistä kehityspalvelin.",
-          "Kirjoita README, lisää .gitignore, tee ensimmäinen commit ja push etärepositoryyn."
+          "Kirjoita README ja .gitignore. Seuraa Desktop-kuvaohjeen reittiä B: Commit, sovittu julkisuus, Publish repository (sen jälkeen Push origin) ja tarkistus GitHubista."
         ],
-        code: "ALOITUKSEN TARKISTUSLISTA\n[ ] node -v ja git --version tulostettu ja talletettu\n[ ] client/ kääntyy ja dev-palvelin käynnistyy\n[ ] README kertoo mikä projekti on ja miten se käynnistetään\n[ ] .gitignore estää node_modules-kansion ja .env-tiedostot\n[ ] project-docs/kysymykset.md sisältää vähintään 8 kysymystä\n[ ] ensimmäinen commit on viety etärepositoryyn (push)\n\nJULKISEN REPOSITORYN TARKISTUSLISTA\n[ ] historiassa ei ole henkilötietoja, salasanoja eikä avaimia\n[ ] tekijänimestä on sovittu ohjaajan kanssa\n[ ] alaikäisellä huoltajan suostumus hoidettu ohjaajan kautta\n[ ] repositoryn julkisuus on ohjaajan päätös; merkitse avoimeksi asiaksi kunnes sovittu",
+        code: "ALOITUKSEN TARKISTUSLISTA\n[ ] Node-versio ja GitHub Desktopin tai komentorivin Gitin versio talletettu\n[ ] client/ kääntyy ja dev-palvelin käynnistyy\n[ ] README kertoo mikä projekti on ja miten se käynnistetään\n[ ] .gitignore estää node_modules-kansion ja .env-tiedostot\n[ ] project-docs/kysymykset.md sisältää vähintään 8 kysymystä\n[ ] ensimmäinen commit on viety etärepositoryyn (push)\n\nJULKISEN REPOSITORYN TARKISTUSLISTA\n[ ] historiassa ei ole henkilötietoja, salasanoja eikä avaimia\n[ ] tekijänimestä on sovittu ohjaajan kanssa\n[ ] alaikäisellä huoltajan suostumus hoidettu ohjaajan kautta\n[ ] repositoryn julkisuus on ohjaajan päätös; merkitse avoimeksi asiaksi kunnes sovittu",
         test: "Kloonaa repository toiseen kansioon ja tarkista, että sovellusrunko käynnistyy pelkän README:n ohjeilla.",
-        links: [["Vite: Getting Started", "https://vite.dev/guide/"], ["GitHub Docs: repositoryn luominen", "https://docs.github.com/en/repositories"]]
+        links: [["GitHub Desktop: lisää nykyinen projektikansio", "../ohjeet/github-desktop/?projekti=pelihylly#olemassa"], ["Vite: Getting Started", "https://vite.dev/guide/"], ["GitHub Docs: repositoryn luominen", "https://docs.github.com/en/repositories"]]
       },
       example: "Kysymyslistan kysymys, joka pakottaa päätöksen: ”Näkeekö vierailija myös tähtiarviot ja kommentit vai vain tilat?”",
       notEnough: "”Asensin Noden ja VS Coden” ilman versiotulosteita ja ilman kysymyslistaa.",
       paivat: [
         ["Tarve", "Lue Pelikellari ry:n toimeksianto ja alleviivaa vaatimukset ja epäselvyydet."],
         ["Rajaus", "Kirjaa vähintään kahdeksan kysymyksen lista ohjaajalle: rajaus ratkeaa kysymällä, ei arvaamalla."],
-        ["Työkaluperusta", "Asenna ja todenna työkalut: Node.js:n LTS-versio (pitkään tuettu vakaa versio), Git ja editori. Tulosteet talteen päiväkirjaan."],
+        ["Työkaluperusta", "Asenna ja todenna työkalut: Node.js:n LTS-versio (pitkään tuettu vakaa versio), GitHub Desktop tai komentorivin Git ja editori. Versiot talteen päiväkirjaan."],
         ["Suunnittele", "Luo Vite + React -projekti ja käynnistä kehityspalvelin. Sovi ohjaajan kanssa julkisen repositoryn pelisäännöistä."],
         ["Ensimmäinen commit", "Luo etärepository, lisää README ja .gitignore ja tee ensimmäinen commit ja push. Projekti on nyt olemassa muuallakin kuin omalla koneella."]
       ]
