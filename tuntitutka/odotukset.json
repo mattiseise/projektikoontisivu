@@ -6,8 +6,8 @@
   "paivaton": true,
   "generoitu": "2026-09-30",
   "lahde": {
-    "sisalto.js": "35f4c95d5978dc9f",
-    "index.html": "901597e83f343e6b"
+    "sisalto.js": "79acfe73270e5b6c",
+    "index.html": "c1df6f1edcb7d733"
   },
   "viikot": [
     1,
@@ -85,9 +85,9 @@
         },
         {
           "id": "1-2",
-          "teksti": "Luo GitHub-repository ja tee julkisuustarkistus",
+          "teksti": "Perusta repository ja tee julkisuustarkistus",
           "valmis": "Repository on olemassa, ja ohjaaja on kuitannut julkisen repon tarkistuslistan kirjallisesti.",
-          "tallenna": "Repositoryn osoite ja julkisuusasioiden tila työviikon 1 päiväkirjaan. Avoimiksi jääneet asiat suunnitelman OHJAAJA-kenttiin."
+          "tallenna": "Projektikansion polku ja julkisuusasioiden tila työviikon 1 päiväkirjaan; lisää repositoryn osoite julkaisemisen jälkeen. Avoimiksi jääneet asiat suunnitelman OHJAAJA-kenttiin."
         },
         {
           "id": "1-3",

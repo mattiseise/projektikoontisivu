@@ -53,6 +53,7 @@ window.NAYTTOPROJEKTI = {
 
   /* ---- paperiaineiston kielisäädöt: päivätön aikataulu ---- */
   lataukset: {
+    resurssienPerusosoite: "https://mattiseise.github.io/projektikoontisivu/valokaari/",
     sarakePvm: "Ajoitus",
     viikkoOtsikko: (num, dates, title) => "Työviikko " + num + " / 18 – " + title,
     aloitusHuomio: "Viikon työvaihe on tämän sivuston työohje. Kun toteutat muutoksen sovellukseen, kirjaa se GitHub-issueksi hyväksymiskriteereineen ja tee siitä commit. Testin tulos kirjataan issueen heti, viikon yhteenveto projektipäiväkirjaan viikon lopussa."
@@ -342,6 +343,7 @@ window.NAYTTOPROJEKTI = {
       record: "Kirjoita työviikon 1 merkintään: asennetut työkalut versioineen, repositoryn osoite, ensimmäisen commitin tunnus, kysymyslistan kysymykset, kuka (rooli, esimerkiksi luokkakaveri) sai rungon käyntiin ohjeellasi ja mitkä julkisuusasiat jäivät avoimiksi.",
       skills: ["kehitysympäristö", "Git", "npm ja Vite", "PHP:n sisäänrakennettu palvelin"],
       termit: ["repository", "commit", "push", "backend", "frontend", "API", "JSON", "kehityspalvelin"],
+      resources: [["GitHub Desktop: kuvaohje ilman Git-komentoja", "../ohjeet/github-desktop/?projekti=valokaari#asennus", false]],
       tehtavat: {
         "1-1": {
           miksi: "Kysymyslista ratkaisee epäselvät kohdat kysymällä, ei arvaamalla. Ohjaajan vastaukset ovat työviikon 2 suunnitelman pohja.",
@@ -358,12 +360,12 @@ window.NAYTTOPROJEKTI = {
         "1-2": {
           miksi: "Versiotaulukko todistaa, millä ympäristöllä työ on tehty. Se auttaa myös toista henkilöä saamaan rungon käyntiin.",
           osat: [
-            ["Asenna työkalut", "Asenna PHP 8.2 tai uudempi, Node LTS, Git ja VS Code."],
-            ["Tarkista versiot", "Aja komennot `php -v`, `node -v`, `npm -v` ja `git --version`. Jokaisen pitää tulostaa versionumero."],
-            ["Kirjaa versiotaulukko", "Kirjoita `README.md`:hen taulukko: työkalu, versio ja tarkistuskomento. Pelkkä ”asensin” ei riitä työnäytteeksi."],
-            ["Aloita versionhallinta", "Aja `git init` projektikansiossa ja tee ensimmäinen commit, jonka viesti kertoo projektin perustamisesta. Mukaan tulevat README ja kysymyslista."]
+            ["Asenna työkalut", "Asenna PHP 8.2 tai uudempi, Node LTS, VS Code sekä GitHub Desktop (viikon kuvaohje) tai komentorivin Git."],
+            ["Tarkista versiot", "Aja `php -v`, `node -v` ja `npm -v`. Kirjaa GitHub Desktopin versio kohdasta Help → About GitHub Desktop tai komentorivin Gitin versio komennolla `git --version`."],
+            ["Kirjaa versiotaulukko", "Kirjoita `README.md`:hen taulukko: työkalu, versio ja tarkistuskomento tai Desktopin Help → About GitHub Desktop. Pelkkä ”asensin” ei riitä työnäytteeksi."],
+            ["Aloita versionhallinta", "Lisää nykyinen valokaari-kansio GitHub Desktopiin kuvaohjeen reitillä B. Tarkista Changes-lista ja tee Commit kuvaavalla Summary-viestillä. Mukaan tulevat README ja kysymyslista. Komentorivin Git käy myös."]
           ],
-          valmis: "README:n taulukossa on neljän työkalun versio ja tarkistuskomento, ja `git log` näyttää ensimmäisen commitin.",
+          valmis: "README:n taulukossa on PHP:n, Noden, npm:n ja GitHub Desktopin tai komentorivin Gitin versiot ja tarkistuspaikat. Ensimmäinen sisältöcommit näkyy Desktopin Historyssa tai komennolla `git log`.",
           tallenna: "`README.md` ensimmäisessä commitissa. Asennetut versiot myös työviikon 1 päiväkirjaan.",
           sanat: ["commit"]
         },
@@ -386,7 +388,7 @@ window.NAYTTOPROJEKTI = {
           osat: [
             ["Tee julkisuustarkistus", "Tarkista, ettei repositoryyn tule henkilötietoja, koulun tunnisteita eikä muiden nimiä."],
             ["Sovi tekijänimi", "Sovi ohjaajan kanssa, millä nimellä esiinnyt, ja kirjaa se suunnitelmalomakkeen Tekijä-kenttään. Jos olet alaikäinen, huoltajan suostumus hoidetaan ohjaajan kautta."],
-            ["Luo repository", "Luo GitHub-repository, liitä se omaan kansioosi ja vie commitit sinne komennolla `git push`."],
+            ["Luo repository", "Valitse Desktopissa Publish repository ja ohjaajan kanssa sovittu julkisuus. Jo julkaistulle repolle valitse Push origin. Tarkista tiedostot ja sisältöcommit View on GitHub -toiminnolla. Katso kuvaohjeen kohdat 6–7."],
             ["Lisää ohjaaja", "Lisää ohjaaja repositoryn yhteistyökumppaniksi (collaborator). Hän tarvitsee oikeuden työviikoilla 11 ja 15. Pyydä häntä kuittaamaan julkisuustarkistus."],
             ["Pyydä toinen kokeilija", "Pyydä nimettyä toista henkilöä, esimerkiksi luokkakaveria, kloonaamaan repository ja käynnistämään molemmat palvelimet pelkän README:n avulla. Kirjaa hänen roolinsa, älä nimeä, ja se, mihin hän pysähtyi."],
             ["Korjaa README", "Korjaa README kohdasta, johon toinen henkilö pysähtyi, ja vie korjaus repositoryyn."]
@@ -400,15 +402,15 @@ window.NAYTTOPROJEKTI = {
         title: "Perusta kehitysympäristö ja repository",
         tree: "valokaari/\n├─ client/               React + TypeScript + Vite\n│  ├─ src/\n│  └─ vite.config.ts\n├─ server/\n│  ├─ public/index.php   palauttaa {\"status\":\"ok\"}\n│  └─ src/               Daylight.php, Geocoder.php (tulevat vk 4–5)\n├─ project-docs/         suunnitelma, päiväkirja, muistiot\n├─ README.md\n└─ .gitignore            node_modules/, client/dist/, vendor/, .env",
         actions: [
-          "Tarkista versiot: php -v, node -v, npm -v, git --version. Kirjaa README:n taulukkoon.",
+          "Kirjaa php -v, node -v ja npm -v sekä GitHub Desktopin versio (Help → About GitHub Desktop) tai git --version README:n taulukkoon.",
           "Luo React-runko: cd client && npm create vite@latest . -- --template react-ts, sitten npm install ja npm run dev.",
           "Luo server/public/index.php: header('Content-Type: application/json'); echo json_encode(['status' => 'ok']);",
           "Käynnistä PHP: php -S localhost:8000 -t server/public ja avaa http://localhost:8000.",
-          "Aja git init ja tee ensimmäinen commit heti, kun Git on asennettu. Luo GitHub-repository julkisuustarkistuksen jälkeen ja vie commitit sinne (git push)."
+          "Seuraa Desktop-kuvaohjeen reittiä B: nykyinen kansio, Commit, julkisuustarkistukset ja Publish repository (sen jälkeen Push origin). Tarkista lopputulos GitHubista. Komentorivillä sama järjestys: git init ja ensimmäinen commit heti asennuksen jälkeen, GitHub-repository vasta julkisuustarkistuksen jälkeen (git push)."
         ],
-        code: "ALOITUKSEN TARKISTUSLISTA\n[ ] php -v, node -v, npm -v ja git --version kirjattu README:hen\n[ ] npm run dev avaa React-rungon selaimessa\n[ ] php -S palauttaa {\"status\":\"ok\"} osoitteessa localhost:8000\n[ ] kansiot client/, server/ ja project-docs/ olemassa\n[ ] .gitignore estää node_modules/, client/dist/, vendor/ ja .env\n[ ] repositoryssa ei ole henkilötietoja eikä koulun tunnisteita\n[ ] tekijänimi sovittu ja ohjaaja lisätty collaboratoriksi\n[ ] kysymyslistassa vähintään 6 kysymystä\n[ ] ensimmäinen commit viety etärepositoryyn (push)\n[ ] toinen henkilö sai molemmat palvelimet käyntiin README:llä",
+        code: "ALOITUKSEN TARKISTUSLISTA\n[ ] PHP-, Node-, npm- ja GitHub Desktopin tai komentorivin Gitin versiot kirjattu README:hen\n[ ] npm run dev avaa React-rungon selaimessa\n[ ] php -S palauttaa {\"status\":\"ok\"} osoitteessa localhost:8000\n[ ] kansiot client/, server/ ja project-docs/ olemassa\n[ ] .gitignore estää node_modules/, client/dist/, vendor/ ja .env\n[ ] repositoryssa ei ole henkilötietoja eikä koulun tunnisteita\n[ ] tekijänimi sovittu ja ohjaaja lisätty collaboratoriksi\n[ ] kysymyslistassa vähintään 6 kysymystä\n[ ] ensimmäinen commit viety etärepositoryyn (push)\n[ ] toinen henkilö sai molemmat palvelimet käyntiin README:llä",
         test: "Kloonaa repository itse toiseen kansioon ja käynnistä molemmat palvelimet pelkän README:n ohjeilla, ennen kuin annat sen toiselle.",
-        links: [
+        links: [["GitHub Desktop: lisää nykyinen projektikansio", "../ohjeet/github-desktop/?projekti=valokaari#olemassa"],
           ["Vite: Getting Started", "https://vite.dev/guide/"],
           ["React: Quick Start", "https://react.dev/learn"],
           ["PHP: sisäänrakennettu palvelin", "https://www.php.net/manual/en/features.commandline.webserver.php"],
@@ -419,7 +421,7 @@ window.NAYTTOPROJEKTI = {
       notEnough: "”Asensin kaikki ja kaikki toimii” ilman versionumeroita, kuvakaappauksia, ensimmäistä committia ja toisen henkilön kokeilua: mitään ei voi todentaa jälkikäteen.",
       paivat: [
         ["Tarve", "Lue toimeksianto ja poimi asiakkaan ydinongelma: numeroita ei hahmoteta, kuva tarvitaan. Kirjaa kysymyslista ohjaajalle."],
-        ["Työkalut", "Asenna PHP, Node ja Git. Kirjaa versiot README:hen ja aloita versionhallinta komennolla git init."],
+        ["Työkalut", "Asenna PHP, Node ja GitHub Desktop tai komentorivin Git. Kirjaa versiot README:hen ja tee ensimmäinen commit (Desktopin Commit tai git init)."],
         ["Kaksi palvelinta", "Luo React-runko ja PHP:n index.php. Käynnistä molemmat ja ota kuvakaappaukset."],
         ["Repository", "Tee julkisuustarkistukset, luo sitten GitHub-repository, lisää ohjaaja yhteistyökumppaniksi (collaborator) ja vie commitit sinne (push)."],
         ["Toisen henkilön testi", "Anna README toiselle henkilölle ja kirjaa, mihin hän pysähtyi. Korjaa ohje."]

@@ -6,8 +6,8 @@
   "paivaton": true,
   "generoitu": "2026-09-30",
   "lahde": {
-    "sisalto.js": "1cc71762092cfe43",
-    "index.html": "bfc365fd6387e8a9"
+    "sisalto.js": "316bbb71ba129706",
+    "index.html": "42a0658c9f464252"
   },
   "viikot": [
     1,
@@ -86,7 +86,7 @@
         {
           "id": "1-2",
           "teksti": "Asenna työkalut ja kirjaa versiot README:hen",
-          "valmis": "README:n taulukossa on neljän työkalun versio ja tarkistuskomento, ja `git log` näyttää ensimmäisen commitin.",
+          "valmis": "README:n taulukossa on PHP:n, Noden, npm:n ja GitHub Desktopin tai komentorivin Gitin versiot ja tarkistuspaikat. Ensimmäinen sisältöcommit näkyy Desktopin Historyssa tai komennolla `git log`.",
           "tallenna": "`README.md` ensimmäisessä commitissa. Asennetut versiot myös työviikon 1 päiväkirjaan."
         },
         {

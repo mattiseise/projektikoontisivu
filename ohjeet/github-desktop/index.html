@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GitHub Desktop — projektin tallennus kuvineen</title>
+  <meta name="description" content="Opiskelijan kuvaohje: GitHub Desktopin asennus, oman repositoryn luonti sekä tiedostojen tallennus commitilla ja lähetys GitHubiin ilman Git-komentoja.">
+  <link rel="stylesheet" href="style.css?v=20260930-rivitys">
+  <script src="ohje.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#sisalto">Siirry ohjeeseen</a>
+<header>
+  <p class="eyebrow">Projektin ensimmäinen työviikko · Windows</p>
+  <h1>GitHub Desktop<br><span>Git käyttöön kuvien avulla</span></h1>
+  <p class="lead">Tallenna projektin koodi ja dokumentit muutoshistoriaan ja vie ne GitHubiin. Näin ohjaaja löytää työnäytteesi ja voit palata aiempaan versioon.</p>
+  <p id="projektihuomio">Ohje sopii PeliHyllyyn, TuntiTutkaan, NoppaKauppaan ja Valokaareen.</p>
+  <a id="paluu" class="button" href="../../">Palaa projektikoontiin</a>
+</header>
+<main id="sisalto">
+  <section aria-labelledby="ketju">
+    <h2 id="ketju">Tämä on koko työketju</h2>
+    <ol class="flow">
+      <li><strong>Projektikansio</strong><span>Tiedostot omalla koneellasi</span></li>
+      <li><strong>Commit</strong><span>Nimetty tallennus muutoshistoriaan</span></li>
+      <li><strong>GitHub</strong><span>Publish ensimmäisellä kerralla, sitten Push</span></li>
+    </ol>
+    <p><strong>Commit tallentaa paikallisesti. Push lähettää tallennuksen GitHubiin.</strong> Pelkkä tallennus editorissa tai commit ei vielä vie tiedostoja verkkoon. Myöskään projektisivun rastit eivät siirrä tiedostoja repositoryyn.</p>
+    <p>Tällä ohjeella hoidat Gitin perustoiminnot ilman komentoriviä. Sovelluksen asentamiseen ja käynnistämiseen tarvittavat Node-, PHP- tai Python-komennot teet edelleen oman projektisi ohjeesta.</p>
+  </section>
+  <nav class="contents" aria-label="Ohjeen sisällysluettelo">
+    <h2>Aloita tilanteesi mukaan</h2>
+    <ol>
+      <li><a href="#asennus">Lataa ja asenna GitHub Desktop</a></li>
+      <li><a href="#kirjautuminen">Kirjaudu ja tarkista tekijätiedot</a></li>
+      <li><a href="#valitse">Valitse: uusi kansio, valmis kansio vai kloonaus</a></li>
+      <li><a href="#tiedostot">Laita tiedostot oikeaan kansioon</a></li>
+      <li><a href="#commit">Tee commit</a></li>
+      <li><a href="#julkaise">Julkaise repository ensimmäisen kerran</a></li>
+      <li><a href="#push">Lähetä seuraavat muutokset ja tarkista lopputulos</a></li>
+    </ol>
+    <a href="#ongelmat">Jos jokin ei toimi →</a>
+  </nav>
+  <section id="asennus">
+    <p class="step">1 · Tee kerran</p>
+    <h2>Lataa ja asenna</h2>
+    <ol>
+      <li>Avaa <a href="https://desktop.github.com/download/">GitHub Desktopin virallinen lataussivu</a>.</li>
+      <li>Valitse <strong>Download for Windows (64bit)</strong>. Windows-version vaatimus on Windows 10 tai uudempi, 64-bittinen.</li>
+      <li>Avaa ladattu <strong>GitHubDesktopSetup.exe</strong> selaimen latauksista tai Resurssienhallinnan Lataukset-kansiosta. Asennuksen jälkeen sovellus avautuu.</li>
+    </ol>
+    <figure>
+      <a href="kuvat/lataa-windows.png"><img src="kuvat/lataa-windows.png" alt="GitHub Desktopin lataussivu: Windowsin latauspainike on otsikon alla." width="1265" height="712"></a>
+      <figcaption>Kuva 1. Valitse Windowsin latauspainike. Kuvakaappaus virallisesta lataussivusta, 30.9.2026. <a href="kuvat/lataa-windows.png">Avaa kuva suurena</a>.</figcaption>
+    </figure>
+    <p class="source">Tarkempi ohje: <a href="https://docs.github.com/en/desktop/installing-and-authenticating-to-github-desktop/installing-github-desktop">GitHub Docs — asentaminen</a>.</p>
+    <p><strong>Oppilaitoksen koneella:</strong> jos asentaminen on estetty, pyydä ohjaajalta asennus tai koulun ohjelmistokeskuksen ohje.</p>
+  </section>
+  <section id="kirjautuminen">
+    <p class="step">2 · Tee kerran</p>
+    <h2>Kirjaudu ja tarkista tekijätiedot</h2>
+    <ol>
+      <li>Tarvitset oman GitHub-tilin. Sovi projektin tekijänimestä ja julkisuudesta ohjaajan kanssa oman projektin ohjeen mukaan.</li>
+      <li>Valitse aloitusnäkymässä <strong>Sign in to GitHub.com</strong>. Jos sovellus on jo auki, sama toiminto löytyy kohdasta <strong>File → Options → Accounts</strong>.</li>
+      <li>Valitse <strong>Continue with browser</strong>, kirjaudu selaimessa ja hyväksy GitHub Desktopin yhteys tiliisi. Palaa sovellukseen selaimen ehdottamalla tavalla.</li>
+      <li>Avaa <strong>File → Options → Git</strong>. Tarkista <strong>Name</strong> ja <strong>Email</strong>. Käytä sovittua tekijänimeä ja tilisi noreply-osoitetta, jos et halua henkilökohtaisen sähköpostin näkyvän julkisissa commiteissa. Valitse <strong>Save</strong>.</li>
+    </ol>
+    <figure class="compact">
+      <a href="kuvat/windows-sign-in-github.png"><img src="kuvat/windows-sign-in-github.png" alt="Windowsin Options-ikkuna: Accounts-kohdassa on Sign Into GitHub.com -painike." width="1232" height="1088"></a>
+      <figcaption>Kuva 2. Kirjautuminen löytyy Accounts-kohdasta. Kuva: GitHub Docs. <a href="kuvat/windows-sign-in-github.png">Avaa kuva suurena</a>.</figcaption>
+    </figure>
+    <figure class="compact">
+      <a href="kuvat/windows-select-git-pane.png"><img src="kuvat/windows-select-git-pane.png" alt="Options-ikkunan Git-asetukset: Name ja Email määrittävät commitin tekijätiedot. Esimerkissä on noreply-sähköpostiosoite." width="1799" height="1640"></a>
+      <figcaption>Kuva 3. Kuvan nimi ja osoite ovat GitHubin esimerkkejä. Valitse omat sovitut tietosi. Kuva: GitHub Docs. <a href="kuvat/windows-select-git-pane.png">Avaa kuva suurena</a>.</figcaption>
+    </figure>
+    <p class="source">Lähteet: <a href="https://docs.github.com/en/desktop/installing-and-authenticating-to-github-desktop/authenticating-to-github-in-github-desktop">kirjautuminen</a> ja <a href="https://docs.github.com/en/desktop/configuring-and-customizing-github-desktop/configuring-git-for-github-desktop">tekijätietojen asetukset</a>.</p>
+    <p><strong>Version työnäyte:</strong> GitHub Desktopin version löydät kohdasta <strong>Help → About GitHub Desktop</strong>. Desktop sisältää omaan käyttöönsä Gitin; erillinen <code>git --version</code> ei välttämättä toimi komentorivillä pelkän Desktop-asennuksen jälkeen. Tämän ohjeen Desktop-reitillä kirjaa Desktopin versionumero ja tarkistuspaikka työkalutaulukkoon tai päiväkirjaan.</p>
+  </section>
+  <section id="valitse">
+    <p class="step">3 · Valitse yksi reitti</p>
+    <h2>Missä projektisi on nyt?</h2>
+    <ul class="routes">
+      <li><a href="#uusi"><strong>A · Ei vielä projektikansiota</strong><span>Luo uusi paikallinen repository.</span></a></li>
+      <li><a href="#olemassa"><strong>B · Tiedostot ovat jo omalla koneella</strong><span>Ota nykyinen kansio versionhallintaan.</span></a></li>
+      <li><a href="#kloonaa"><strong>C · Oma repo on jo GitHubissa</strong><span>Kloonaa se. Älä luo toista repositorya.</span></a></li>
+    </ul>
+    <p><strong>Oma työrepository on eri asia kuin projektin ohjesivusto.</strong> Käytä oman repositorysi osoitetta; tämän oppimateriaalin repository ei ole opiskelijan palautuskansio.</p>
+    <h3 id="uusi">A · Luo uusi paikallinen repository</h3>
+    <ol>
+      <li>Valitse <strong>File → New repository</strong>.</li>
+      <li>Kirjoita <strong>Name</strong>-kenttään projektisi nimi, esimerkiksi <code class="project-name">oma-projekti</code>.</li>
+      <li>Valitse <strong>Local path</strong>: kansio, jonka <em>alle</em> projektikansio luodaan. Desktop lisää siihen Name-kentän nimen. Tarkista ikkunan alareunassa näkyvä lopullinen polku.</li>
+      <li>Valitse <strong>Initialize this repository with a README</strong>. Voit jättää Git ignore- ja License-valinnat kohtaan None ja lisätä projektin oman <code>.gitignore</code>-tiedoston seuraavaksi. Lisenssi sovitaan ohjaajan kanssa.</li>
+      <li>Valitse <strong>Create repository</strong>. Kansio on nyt omalla koneellasi. README:stä syntyy alkutallennus, <strong>Initial commit</strong>. Jatka <a href="#tiedostot">tiedostojen lisäämiseen</a>.</li>
+    </ol>
+    <figure>
+      <a href="kuvat/uusi-repository.png"><img src="kuvat/uusi-repository.png" alt="Create a new repository -ikkuna: nimi oma-projekti, paikallinen kansio ja Initialize this repository with a README valittuna." width="963" height="662"></a>
+      <figcaption>Kuva 4. Esimerkissä luodaan oma-projekti. Käytä oman projektisi nimeä ja oman koneesi polkua. Oma kuvakaappaus, GitHub Desktop 3.6.6 / Windows. <a href="kuvat/uusi-repository.png">Avaa kuva suurena</a>.</figcaption>
+    </figure>
+    <p class="source">Lähde: <a href="https://docs.github.com/en/desktop/overview/creating-your-first-repository-using-github-desktop">GitHub Docs — ensimmäinen repository</a>.</p>
+    <h3 id="olemassa">B · Lisää olemassa oleva projektikansio</h3>
+    <ol>
+      <li>Valitse <strong>File → Add local repository → Choose</strong>.</li>
+      <li>Valitse <strong>projektin juurikansio</strong>: se, jossa README, sovelluksen kansiot ja project-docs ovat. Älä valitse vain client-, frontend- tai project-docs-alikansiota.</li>
+      <li>Valitse <strong>Add repository</strong>. Jos kansiossa on jo Git-versionhallinta, se lisätään Desktopiin.</li>
+      <li>Jos näet ilmoituksen <strong>This directory does not appear to be a Git repository</strong>, valitse ilmoituksen <strong>create a repository</strong> -linkki. Tarkista, että lopullinen polku on juuri nykyinen projektikansio. Jos README on jo olemassa, jätä sen alustusruutu valitsematta. Valitse <strong>Create repository</strong>.</li>
+    </ol>
+    <figure class="compact">
+      <a href="kuvat/add-local-repository-windows.png"><img src="kuvat/add-local-repository-windows.png" alt="Windowsin File-valikko: Add local repository -kohta on korostettu." width="659" height="338"></a>
+      <figcaption>Kuva 5. Valmis kansio lisätään Add local repository -kohdasta. Kuva: GitHub Docs. <a href="kuvat/add-local-repository-windows.png">Avaa kuva suurena</a>.</figcaption>
+    </figure>
+    <figure>
+      <a href="kuvat/valmis-kansio.png"><img src="kuvat/valmis-kansio.png" alt="Add local repository -ikkuna näyttää valmiin projektikansion polun sekä create a repository -linkin, koska kansiossa ei vielä ole Git-versionhallintaa." width="963" height="662"></a>
+      <figcaption>Kuva 6. Kun Git puuttuu kansiosta, aloita se create a repository -linkistä. Oma kuvakaappaus, GitHub Desktop 3.6.6 / Windows. <a href="kuvat/valmis-kansio.png">Avaa kuva suurena</a>.</figcaption>
+    </figure>
+    <p>Nykyisiä tiedostoja ei tarvitse siirtää. Jatka niiden <a href="#commit">tarkistamiseen ja committiin</a>.</p>
+    <p class="source">Lisätietoa: <a href="https://docs.github.com/en/desktop/adding-and-cloning-repositories/adding-a-repository-from-your-local-computer-to-github-desktop">paikallisen repositoryn lisääminen</a>.</p>
+    <h3 id="kloonaa">C · Kloonaa oma olemassa oleva GitHub-repository</h3>
+    <ol>
+      <li>Kopioi selaimesta <strong>oman repositorysi</strong> osoite.</li>
+      <li>Valitse <strong>File → Clone repository → URL</strong>. Liitä osoite Repository URL -kenttään.</li>
+      <li>Valitse <strong>Local path</strong>: uusi, erillinen kohdekansio. Valitse <strong>Clone</strong>.</li>
+    </ol>
+    <figure>
+      <a href="kuvat/clone-choose-button-url-windows.png"><img src="kuvat/clone-choose-button-url-windows.png" alt="Windowsin Clone a repository -ikkuna: URL-välilehti, repositoryn osoite, Local path ja Clone-painike." width="1016" height="614"></a>
+      <figcaption>Kuva 7. Kuvan octocat/Spoon-Knife on esimerkki. Korvaa se oman reposi osoitteella. Kuva: GitHub Docs. <a href="kuvat/clone-choose-button-url-windows.png">Avaa kuva suurena</a>.</figcaption>
+    </figure>
+    <p>Kloonaus tuo myös historian ja GitHub-yhteyden. Sille ei tehdä uutta Publish repository -julkaisua. Tätä reittiä käytät myös, kun projektin ohje pyytää kokeilemaan käynnistystä toisesta kansiosta tai toisella koneella.</p>
+    <p class="source">Lähde: <a href="https://docs.github.com/en/desktop/adding-and-cloning-repositories/cloning-and-forking-repositories-from-github-desktop">GitHub Docs — kloonaaminen</a>.</p>
+  </section>
+  <section id="tiedostot">
+    <p class="step">4 · Ennen jokaista committia</p>
+    <h2>Laita tiedostot oikeaan kansioon</h2>
+    <ol>
+      <li>Tarkista Desktopin vasemmasta yläkulmasta <strong>Current repository</strong>: valittuna on oma projektisi.</li>
+      <li>Avaa <strong>Repository → Show in Explorer</strong>. Näet juuri sen kansion, jota Desktop seuraa.</li>
+      <li>Tallenna koodit editorista tähän kansioon. Kopioi aiemmin kirjoitetut dokumentit ja kuvakaappaukset sen <strong>project-docs</strong>-alikansioon: valitse tiedostot Resurssienhallinnassa, paina <strong>Ctrl+C</strong>, avaa project-docs ja paina <strong>Ctrl+V</strong>. Älä vedä tiedostoja Desktopin ikkunaan.</li>
+      <li>Lisää juureen <code>.gitignore</code> <strong>ennen committia</strong>. Käytä oman projektin vaatimaa sisältöä. Tarkista tiedoston nimi: sen pitää olla <code>.gitignore</code>, ei <code>.gitignore.txt</code>.</li>
+    </ol>
+    <pre class="tree"><code><span class="project-name">oma-projekti</span>/
+├─ <span id="client-name">client</span>/       sovelluksen käyttöliittymä
+├─ <span id="server-name">server</span>/       palvelimen koodi
+├─ project-docs/
+│  └─ kysymykset.md
+├─ README.md
+└─ .gitignore</code></pre>
+    <p>Git ei tallenna tyhjiä kansioita. Jos kansion pitää näkyä jo ensimmäisessä commitissa, lisää siihen tarkoituksenmukainen README tai tyhjä <code>.gitkeep</code>-tiedosto. Kun sovelluksen oikeat tiedostot ovat kansiossa, ne pitävät sen mukana.</p>
+    <details>
+      <summary>.gitignore-esimerkki näille projekteille</summary>
+      <p>Yhteinen lähtökohta. Täydennä oman projektin ohjeella. <code>.env.example</code> saa sisältää vain tyhjät tai keksityt esimerkkiarvot.</p>
+      <pre><code>node_modules/
+.env
+.env.*
+!.env.example
+*.db
+*.db-shm
+*.db-wal
+__pycache__/
+.venv/
+venv/
+client/dist/
+frontend/dist/
+vendor/</code></pre>
+    </details>
+    <p><strong>Tarkista valittavat tiedostot:</strong> mukaan tulevat oma koodi, README ja työnäytteet. Salasanat, avaimet, oikeiden käyttäjien tiedot ja asennetut riippuvuuskansiot jäävät pois. Jos salaisuus ehti jo committiin, <code>.gitignore</code> ei poista sitä historiasta: pyydä ohjaajalta apua ennen lähettämistä.</p>
+  </section>
+  <section id="commit">
+    <p class="step">5 · Nimetty tallennus omalla koneella</p>
+    <h2>Tee commit</h2>
+    <ol>
+      <li>Avaa Desktopin <strong>Changes</strong>-välilehti. Talletetut muutokset näkyvät listalla.</li>
+      <li>Avaa listan tiedostot ja tarkista muutokset. Rastita tähän tallennukseen kuuluvat tiedostot. Ensimmäisellä kerralla mukana ovat ainakin README, .gitignore ja kysymyslista sekä valmiit sovellustiedostot.</li>
+      <li>Kirjoita <strong>Summary</strong>-kenttään, mitä muutit, esimerkiksi <strong>README ja kysymyslista</strong>. Myöhemmin sopiva viesti on vaikkapa <strong>Korjaa kirjautumisen virheilmoitus #12</strong>. Description on vapaaehtoinen lisäselitys.</li>
+      <li>Valitse <strong>Commit … files to main</strong> (painikkeessa näkyvä haara voi olla toinen). Tallennus näkyy <strong>History</strong>-välilehdellä.</li>
+    </ol>
+    <figure>
+      <a href="kuvat/muutokset-ja-commit.png"><img src="kuvat/muutokset-ja-commit.png" alt="GitHub Desktopin Changes-näkymässä on kolme valittua tiedostoa: .gitignore, project-docs/kysymykset.md ja README.md. Summary on README ja kysymyslista, ja alhaalla on Commit 3 files to main." width="963" height="662"></a>
+      <figcaption>Kuva 8. Vasemmalla valitaan tiedostot ja kirjoitetaan viesti. Oikealla tarkistetaan muutokset. Oma kuvakaappaus, GitHub Desktop 3.6.6 / Windows. <a href="kuvat/muutokset-ja-commit.png">Avaa kuva suurena</a>.</figcaption>
+    </figure>
+    <p><strong>Jatka vielä lähettämiseen.</strong> Changes-listan tyhjeneminen tarkoittaa, että valitut muutokset on commitoitu. Se ei yksin kerro, ovatko ne GitHubissa.</p>
+    <p class="source">Lähde: <a href="https://docs.github.com/en/desktop/making-changes-in-a-branch/committing-and-reviewing-changes-to-your-project-in-github-desktop">GitHub Docs — muutosten tarkistus ja commit</a>.</p>
+  </section>
+  <section id="julkaise">
+    <p class="step">6 · Vain ensimmäinen lähetys uudelle repolle</p>
+    <h2>Julkaise repository GitHubiin</h2>
+    <p>Jos repo on uusi ja paikallinen, yläpalkissa on <strong>Publish repository</strong>. Jos kloonasit oman GitHub-repon, jatka suoraan <a href="#push">Push origin -kohtaan</a>.</p>
+    <ol>
+      <li>Käy oman projektin julkisuustarkistus läpi ohjaajan kanssa <strong>ennen julkaisemista</strong>. Tarkista myös commitin tekijätiedot ja tiedostojen sisältö.</li>
+      <li>Valitse <strong>Publish repository</strong>. Tarkista nimi ja se, että repo tulee omalle tilillesi.</li>
+      <li><strong>Keep this code private</strong> tarkoittaa yksityistä repositorya. Jätä rasti, kunnes julkisuus on sovittu. Poista se vain, jos ohjaajan kanssa on sovittu julkisesta reposta. Jos projektin valmis kun -ehto edellyttää julkista repoa, asia ratkaistaan ohjaajan kanssa ennen valmistumisrastia.</li>
+      <li>Valitse ikkunan <strong>Publish repository</strong>. Tämä luo GitHub-repon ja lähettää paikalliset commitit sinne.</li>
+    </ol>
+    <figure>
+      <a href="kuvat/julkaise-repository.png"><img src="kuvat/julkaise-repository.png" alt="Publish repository -ikkunassa näkyvät nimi oma-projekti ja valittuna Keep this code private. Ikkunan alareunassa on Publish repository -painike." width="963" height="662"></a>
+      <figcaption>Kuva 9. Kuvassa rasti säilyttää repon yksityisenä. Valitse oman projektin sovittu julkisuus. Oma kuvakaappaus, GitHub Desktop 3.6.6 / Windows. <a href="kuvat/julkaise-repository.png">Avaa kuva suurena</a>.</figcaption>
+    </figure>
+    <p>Repositoryn julkaisu tallentaa koodin GitHubiin. Sovelluksen verkkojulkaisu tehdään erikseen oman projektin myöhemmässä työvaiheessa.</p>
+    <p class="source">Lähde: <a href="https://docs.github.com/en/desktop/overview/creating-your-first-repository-using-github-desktop">GitHub Docs — ensimmäisen repositoryn julkaisu</a>.</p>
+  </section>
+  <section id="push">
+    <p class="step">7 · Toista aina muutosten jälkeen</p>
+    <h2>Lähetä muutokset ja tarkista GitHubista</h2>
+    <ol>
+      <li>Tallenna tiedostot editorissa ja tee <a href="#commit">commit</a>.</li>
+      <li>Valitse yläpalkista <strong>Push origin</strong>. Odota lähetyksen valmistumista. Jos painike on <strong>Fetch origin</strong> eikä lähetettäviä committeja ole, tarkista silti seuraava kohta.</li>
+      <li>Avaa <strong>Repository → View on GitHub</strong>. Tarkista selaimessa, että oikea repository ja haara ovat auki, uusin commit näkyy ja esimerkiksi <strong>project-docs/kysymykset.md</strong> sisältää juuri kirjoittamasi tekstin.</li>
+      <li>Kirjaa oman reposi osoite ja commitin tunniste viikon päiväkirjaan. Lisää ohjaaja collaboratoriksi, jos projektisi sitä pyytää; katso <a href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/repository-access-and-collaboration/inviting-collaborators-to-a-personal-repository">GitHubin collaborator-ohje</a>.</li>
+    </ol>
+    <figure>
+      <a href="kuvat/push-to-origin.png"><img src="kuvat/push-to-origin.png" alt="GitHub Desktopin yläpalkissa Push origin -painike on korostettu. Painikkeen yhden commitin nuoli kertoo odottavasta lähetyksestä." width="1448" height="208"></a>
+      <figcaption>Kuva 10. Push origin lähettää commitit. Kuvan repo hi-desktop on GitHubin esimerkki. Kuva: GitHub Docs. <a href="kuvat/push-to-origin.png">Avaa kuva suurena</a>.</figcaption>
+    </figure>
+    <p class="routine"><strong>Päivittäinen muistisääntö:</strong> oikea repo → tallennetut tiedostot → Changes-tarkistus → kuvaava commit → Push origin → tarkistus GitHubista.</p>
+    <p>Jos työskentelet usealla koneella tai yhdessä muiden kanssa, valitse työn alussa <strong>Fetch origin</strong> ja tarvittaessa <strong>Pull origin</strong>. Pull hakee muiden lähettämät muutokset koneellesi. Jos syntyy ristiriita, pyydä ohjaajalta apua ennen jatkamista.</p>
+    <p class="source">Lähde: <a href="https://docs.github.com/en/desktop/making-changes-in-a-branch/pushing-changes-to-github-from-github-desktop">GitHub Docs — Push</a>.</p>
+  </section>
+  <section id="ongelmat">
+    <h2>Jos jokin ei toimi</h2>
+    <dl>
+      <dt>Tiedosto ei näy Changes-listalla</dt>
+      <dd>Tallenna se editorissa. Tarkista Current repository ja Show in Explorer: onko tiedosto juuri tämän kansion sisällä? Tarkista myös .gitignore. Jos tiedosto ei ole muuttunut viime commitista, sen ei kuulukaan näkyä Changes-listalla.</dd>
+      <dt>Commit-painike ei toimi</dt>
+      <dd>Kirjoita Summary ja valitse vähintään yksi muuttunut tiedosto. Jos muutoksia ei ole, uutta committia ei tarvitse tehdä.</dd>
+      <dt>Commit näkyy Historyssa, mutta tiedosto ei näy GitHubissa</dt>
+      <dd>Valitse Publish repository uudelle paikalliselle repolle tai Push origin jo julkaistulle repolle. Tarkista selaimesta oikea repository ja sama haara.</dd>
+      <dt>Desktop sanoo, että repository on jo olemassa</dt>
+      <dd>Tarkista GitHubista, onko oma projektirepo jo luotu. Kloonaa olemassa oleva repo reitillä C. Jos nykyisen kansion muutokset pitää yhdistää siihen, pyydä ohjaajalta apua; älä poista tiedostoja tai historiaa.</dd>
+      <dt>Lähetys pyytää ensin hakemaan muutoksia</dt>
+      <dd>Valitse Fetch origin ja Pull origin. Tarkista muutokset. Ristiriidassa ota ohjaaja mukaan; älä yritä pakottaa lähetystä.</dd>
+      <dt>GitHub torjuu suuren tiedoston</dt>
+      <dd>GitHub estää yli 100 MiB:n tiedostot tavallisessa Git-lähetyksessä. Älä lisää node_modules-kansiota, asennuspaketteja tai suuria videoita repoosi. Jos tiedosto ehti jo committiin, pyydä ohjaajalta apua ennen uutta lähetysyritystä.</dd>
+    </dl>
+    <h3>Ensimmäisen viikon lopputarkistus</h3>
+    <ul>
+      <li>Oma repository avautuu GitHubissa ja sen julkisuus vastaa ohjaajan kanssa sovittua.</li>
+      <li>README, .gitignore, kysymyslista ja tähän asti tehty koodi ovat mukana.</li>
+      <li>Oma sisältöcommit näkyy historiassa; pelkkä automaattinen Initial commit ei kata myöhemmin lisäämiäsi tiedostoja.</li>
+      <li>Salaisuudet ja riippuvuuskansiot jäävät pois.</li>
+      <li>Repositoryn osoite ja commitin tunniste on kirjattu päiväkirjaan.</li>
+    </ul>
+    <p>Palaa oman projektin viikko-ohjeeseen ja tee sen muut valmis kun -tarkistukset.</p>
+    <a id="paluu-lopussa" class="button" href="../../">Palaa projektikoontiin</a>
+  </section>
+</main>
+<footer>
+  <h2>Kuvien lähteet</h2>
+  <p>Omat kuvakaappaukset: 1, 4, 6, 8 ja 9, otettu 30.9.2026. Sovelluskuvissa GitHub Desktop 3.6.6 Windowsissa. Käyttöliittymä voi näyttää eri versiossa hieman erilaiselta.</p>
+  <p>Kuvat 2, 3, 5, 7 ja 10: <a href="https://github.com/github/docs/tree/main/assets/images/help/desktop">GitHub Docs / GitHub, Inc.</a>, käytetty muuttamattomina. Lisenssi <a href="https://github.com/github/docs/blob/main/LICENSE">Creative Commons Attribution 4.0 (CC BY 4.0)</a>. Kuvien lähdeohjeet on linkitetty asianomaisten vaiheiden yhteyteen. Kuvien esimerkkitunnukset ja repositoriot eivät ole opiskelijan omia.</p>
+  <p>Ohje tarkistettu 30.9.2026. <a href="#sisalto">Takaisin alkuun ↑</a></p>
+</footer>
+</body>
+</html>
