@@ -15,7 +15,9 @@ opiskelijan omaan GitHub-repositoryyn.
 - **Tutkinnon osat:** Ohjelmointi (11 vaatimusta) · Ohjelmistokehittäjänä
   toimiminen (14) · Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla
   (7). Yhteensä 32 osaamisvaatimusta.
-- **Kesto:** 18 työviikkoa, neljä vaihetta (5 + 5 + 5 + 3).
+- **Kesto:** 18 työviikkoa, viisi numeroitua vaihetta: 1 Valmistelu ja julkaistu runko (1–3),
+  2 Tuntien kirjaaminen (4–7), 3 Yhteenvedot ja asiakaskatselmointi (8–10), 4 Viimeistely ja
+  laatu (11–15), 5 Julkaisu ja näyttö (16–18).
 
 ## Päivätön aikataulu
 
@@ -42,13 +44,13 @@ HTTP-palvelin repositoryn juuressa.
 
 | Tiedosto | Mitä sisältää |
 | --- | --- |
-| `index.html` | sivuston rakenne, 18 viikkokorttia ja näyttömatriisi |
-| `sisalto.js` | projektin koko sisältödata: viikkojen ohjeet, vaiheet, suunnitelmapohja, opettaja-aineisto |
+| `index.html` | sivuston rakenne: projektin kokonaiskuva, 18 viikkokorttia (tehtävärivit = työvaiheiden otsikot) ja näyttömatriisi |
+| `sisalto.js` | projektin koko sisältödata: vaiheet, viikkojen yhteydet, tavoitteet ja työvaiheet (`tehtavat`), suunnitelmapohja, opettaja-aineisto |
 | `app.js` | geneerinen moottori: **ei muokata projektikohtaisesti** |
 | `styles.css` | ulkoasu; projektikohtaista vain `:root`-lohkon paletti |
 | `kuvitukset.json` | SVG-kuvitusten tekstit ja värit |
 | `project-docs/projekti.json` | projektin konfiguraatio ja koontikortin tiedot |
-| `assets/` | generoidut SVG-kuvitukset ja faviconit |
+| `assets/` | generoidut SVG-kuvitukset ja faviconit; käsin kirjoitetut havainnekuvat `sovelluksen-osat.svg`, `reitin-suojaus.svg` (työviikko 4) ja `yhteenvedon-laskenta.svg` (työviikko 8); vaihekuva `projektin-vaiheet.svg` generoidaan `vaiheet`-datasta |
 | `downloads/` | generoitu työpaketti (PDF ja Word) sekä opettajan asiakirjat |
 
 ## Materiaalien generointi
@@ -56,6 +58,7 @@ HTTP-palvelin repositoryn juuressa.
 ```
 python3 tyokalut/tee_kuvitukset.py    # SVG-kuvitukset + faviconit (vaatii Pillow'n)
 npm install docx
+node tyokalut/tee_vaihekuva.js        # assets/projektin-vaiheet.svg sisalto.js:n vaiheista
 node tyokalut/tee_lataukset.js        # docx-tiedostot + tyokalut/tyopaketti-print.html
 node tyokalut/tarkista.js             # savutesti: index.html ja sisalto.js yhtenäisiä
 ```

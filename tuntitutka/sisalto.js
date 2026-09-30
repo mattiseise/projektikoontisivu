@@ -16,25 +16,29 @@ window.NAYTTOPROJEKTI = {
   vuosi: 2026,
   paivaton: true,
   viikot: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+  yhtenaisetViikot: true,
   aloitusNappi: "Aloita sovelluksen teko",
   apuOtsikko: "Tarvitsen toteutusapua",
 
   /* ---- projektin tavoitekuva (moottori v2.6) ----
-   * Näkyy Näin käytät sivua -näkymän alussa, ja sivu avautuu siihen ensimmäisellä
+   * Näkyy Projektin kokonaiskuva -näkymän alussa, ja sivu avautuu siihen ensimmäisellä
    * kerralla. Kuva on luonnos: project-docs/lopputulos/proto.html kuvattuna 2x-tarkkuudella
    * (ks. project-docs/lopputulos/README.md). alue = [x, y, leveys, korkeus] prosentteina.
+   * Kohdat ovat käyttäjän työnkulun järjestyksessä: työntekijä kirjaa, projektipäällikkö katsoo.
    */
   lopputulos: {
     kuvaus: "TuntiTutka on mainostoimiston sovellus työajan seurantaan. Siinä työntekijä kirjaa tuntinsa nopeasti myös puhelimella ja näkee vain omat kirjauksensa. Projektipäällikkö perustaa projektit ja näkee aina ajantasaiset yhteenvedot projekteittain, henkilöittäin ja tehtävälajeittain.",
+    /* Aloituksen johdanto kertoo saman, joten kuvauslause näkyy vain työpaketissa. */
+    naytaKuvaus: false,
     kuva: "assets/lopputulos.jpg",
     leveys: 1120,
     korkeus: 700,
-    alt: "Kuvassa on valmis TuntiTutka-sovellus. Selainikkunassa näkyy projektipäällikön Yhteenvedot-näkymä viikolta 12: pylväskaavio tunneista projekteittain, donitsikaavio tehtävälajien osuuksista ja taulukko tunneista henkilöittäin, jossa yhden henkilön kirjaukset on avattu. Oikealla puhelimessa on työntekijän Kirjaa tunnit -lomake ja oma viikkosumma 30,0 tuntia.",
+    alt: "Tavoitekuva valmiista TuntiTutka-sovelluksesta. Selainikkunassa näkyy projektipäällikön Yhteenvedot-näkymä viikolta 12: pylväskaavio tunneista projekteittain, donitsikaavio tehtävälajien osuuksista ja taulukko tunneista henkilöittäin, jossa yhden henkilön kirjaukset on avattu. Oikealla puhelimessa on työntekijän Kirjaa tunnit -lomake ja oma viikkosumma 30,0 tuntia.",
     kohdat: [
-      { n: 1, teksti: "Pylväskaavio näyttää, montako tuntia kuhunkin projektiin kului valitulla viikolla.", alue: [4.6, 27.6, 38.6, 38.6] },
-      { n: 2, teksti: "Tehtävälajikaavio kertoo, mikä osuus ajasta meni suunnitteluun, tuotantoon, palavereihin ja korjauksiin.", alue: [4.6, 67.9, 38.6, 26.3] },
-      { n: 3, teksti: "Projektipäällikkö näkee tunnit henkilöittäin ja avaa yksittäisen työntekijän kirjaukset.", alue: [44.4, 27.6, 27.1, 66.6] },
-      { n: 4, teksti: "Työntekijä kirjaa tunnit puhelimella alle puolessa minuutissa ja näkee oman viikkosummansa.", alue: [72.9, 20.3, 22.0, 74.3] }
+      { n: 1, teksti: "Työntekijä kirjaa tunnit puhelimella alle puolessa minuutissa ja näkee oman viikkosummansa.", alue: [72.9, 20.3, 22.0, 74.3] },
+      { n: 2, teksti: "Projektipäällikkö näkee pylväskaaviosta, montako tuntia kuhunkin projektiin kului valitulla viikolla.", alue: [4.6, 27.6, 38.6, 38.6] },
+      { n: 3, teksti: "Tehtävälajikaavio kertoo, mikä osuus ajasta meni suunnitteluun, tuotantoon, palavereihin ja korjauksiin.", alue: [4.6, 67.9, 38.6, 26.3] },
+      { n: 4, teksti: "Projektipäällikkö näkee tunnit henkilöittäin ja avaa yksittäisen työntekijän kirjaukset.", alue: [44.4, 27.6, 27.1, 66.6] }
     ]
   },
 
@@ -48,40 +52,34 @@ window.NAYTTOPROJEKTI = {
   /* ---- paperiaineiston kielisäädöt: päivätön aikataulu ---- */
   lataukset: {
     sarakePvm: "Ajoitus",
-    viikkoOtsikko: (num, dates, title) => "Työviikko " + num + " / 18 – " + title
+    viikkoOtsikko: (num, dates, title) => "Työviikko " + num + " / 18 – " + title,
+    aloitusHuomio: "Viikon työvaihe on tämän sivuston työohje. Kun toteutat muutoksen sovellukseen, kirjaa se GitHub-issueksi hyväksymiskriteereineen ja tee se Työtapa-sivun kuudella askeleella. Testin tulos kirjataan issueen heti, viikon yhteenveto projektipäiväkirjaan viikon lopussa."
   },
 
-  /* ---- vaiheet ---- */
+  /* ---- vaiheet (moottori v2.7: numeroidut vaiheet, kuvaus näkyy aloituksessa ja vaihekuvassa) ----
+   * Vaiheen N väri on styles.css:n --phase-a, --phase-b … (1 = a). */
   vaiheet: [
-    {
-      tunnus: "A",
-      lyhyt: "Ydin",
-      otsikko: "Sovelluksen ydin: suunnitelma, julkaistu runko, roolit ja tuntikirjaus",
-      viikot: [1, 2, 3, 4, 5],
-      vari: "#1a6fae"
-    },
-    {
-      tunnus: "B",
-      lyhyt: "Ominaisuudet",
-      otsikko: "Ominaisuudet: hallinta, omat kirjaukset, lasketut yhteenvedot ja asiakaskatselmointi",
-      viikot: [6, 7, 8, 9, 10],
-      vari: "#0e7490"
-    },
-    {
-      tunnus: "C",
-      lyhyt: "Valmiiksi",
-      otsikko: "Valmiiksi: palautemuutos, mobiili, tietoturva, testaus ja laatu",
-      viikot: [11, 12, 13, 14, 15],
-      vari: "#b83280"
-    },
-    {
-      tunnus: "D",
-      lyhyt: "Julkaisu",
-      otsikko: "Julkaisu: julkaisuehdokas ja julkaisutestaus, v1.0 ja näyttö",
-      viikot: [16, 17, 18],
-      vari: "#ca8a04"
-    }
+    { tunnus: "1", lyhyt: "Valmistelu", otsikko: "Valmistelu ja julkaistu runko", kuvaus: "Otat työkalut käyttöön, teet hyväksytyn suunnitelman ja tietomallin ja viet tyhjän rungon julkiseen osoitteeseen. Tietomalli tehdään ensin, koska kaikki yhteenvedot lasketaan sen tauluista, ja julkaisu on helpointa korjata, kun rikottavaa on vähän.", kuvassa: ["Työkalut → suunnitelma ja tietomalli → julkinen osoite", "Julkaisuputki toimii, ennen kuin mitään voi rikkoa."], viikot: [1, 2, 3], vari: "#1a6fae" },
+    { tunnus: "2", lyhyt: "Kirjaaminen", otsikko: "Tuntien kirjaaminen", kuvaus: "Rakennat kirjautumisen ja roolit, tuntikirjauksen, projektien hallinnan ja omien kirjausten käsittelyn. Vaiheen lopussa työntekijät kirjaavat tunnit oikeisiin projekteihin ja sinä kirjaat omasi, joten raportteihin kertyy aitoa dataa.", kuvassa: ["Roolit → tuntikirjaus → hallinta → omat kirjaukset", "Kirjauksia kertyy, ja niistä voi laskea yhteenvedot."], viikot: [4, 5, 6, 7], vari: "#0e7490" },
+    { tunnus: "3", lyhyt: "Yhteenvedot", otsikko: "Yhteenvedot ja asiakaskatselmointi", kuvaus: "Lasket kirjauksista yhteenvedot kolmella ryhmittelyllä ja teet niistä kaaviot. Asiakkaan roolissa oleva testaaja kokeilee väliversiota, ja hänen palautteensa ohjaa loppua.", kuvassa: ["Laskenta → kaaviot → asiakaskatselmointi", "Projektipäällikkö näkee ajantasaiset yhteenvedot."], viikot: [8, 9, 10], vari: "#b83280" },
+    { tunnus: "4", lyhyt: "Viimeistely", otsikko: "Viimeistely ja laatu", kuvaus: "Toteutat katselmoinnin tärkeimmän muutoksen, teet sovelluksesta puhelimella ja näppäimistöllä toimivan ja arvioit tietoturvan. Testaus ja dokumentaatio kootaan valmiiksi ennen julkaisua.", kuvassa: ["Palautemuutos → mobiili → tietoturva → testaus → ohjeet", "Sovellus kestää oikeat käyttäjät ja virheet."], viikot: [11, 12, 13, 14, 15], vari: "#a16207" },
+    { tunnus: "5", lyhyt: "Julkaisu ja näyttö", otsikko: "Julkaisu ja näyttö", kuvaus: "Ulkopuolinen testaaja kokeilee julkaisuehdokasta pelkän kirjallisen ohjeen avulla. Korjaat estävät virheet, julkaiset v1.0:n ja kokoat näyttöaineiston.", kuvassa: ["Julkaisuehdokas → v1.0 → näyttö", "Tiimi saa osoitteen ja ohjeen, jolla pääsee alkuun."], viikot: [16, 17, 18], vari: "#6d28d9" }
   ],
+  poikkeamat: {
+    vaiheita: "viisi vaihetta: tuntien kirjaaminen ja yhteenvedot ovat eri tuloksia (kirjauksia kertyy vs. niistä lasketut raportit), ja yhdessä ne olisivat seitsemän viikon vaihe, jossa asiakaskatselmointi jää vaiheen sisälle ilman omaa välitulosta"
+  },
+  vaihekuva: {
+    kuva: "assets/projektin-vaiheet.svg", leveys: 880, korkeus: 844,
+    alt: "TuntiTutkan viisi vaihetta: 1 valmistelu ja julkaistu runko työviikoilla 1–3, 2 tuntien kirjaaminen työviikoilla 4–7, 3 yhteenvedot ja asiakaskatselmointi työviikoilla 8–10, 4 viimeistely ja laatu työviikoilla 11–15 sekä 5 julkaisu ja näyttö työviikoilla 16–18."
+  },
+  vaiheetJohdanto: "Ensin teet suunnitelman ja tietomallin ja varmistat, että sovellus pääsee verkkoon. Sitten rakennat kirjaamisen, koska yhteenvedot lasketaan kirjatuista tunneista. Asiakkaan palaute ohjaa viimeistelyä, ja lopuksi ulkopuolinen testaaja varmistaa, että sovellus ja ohje toimivat ilman sinua.",
+  vaiheetHuomio: "Työviikot ovat järjestysnumeroita, eivät kalenteriviikkoja. Projektissa ei ole lomia eikä lyhyitä viikkoja. Tehtävistä sovitaan ohjaajan kanssa joka viikko, katselmoinnit ovat työviikoilla 10 ja 16, ja katselmoijat nimetään viimeistään työviikolla 8.",
+
+  /* ---- opiskelijalle näkyvä työn tasojen nimeäminen (moottori v2.7) ---- */
+  tekstit: {
+    goalListLabel: "Käyttäjän työnkulku",
+    tasksLead: "Tee työvaiheet järjestyksessä. Ensimmäinen keskeneräinen vaihe on auki. Kun toteutat muutoksen sovellukseen, kirjaa se GitHub-issueksi ja tee se Työtapa-sivun kuudella askeleella."
+  },
 
   /* ---- viikkonavigaation lyhyet nimet ---- */
   viikkoNimet: {
@@ -115,7 +113,7 @@ window.NAYTTOPROJEKTI = {
     { termi: "P0", nimi: "pakollinen ydin", selite: "Ominaisuudet, joiden on valmistuttava ennen mitään lisäominaisuuksia: kirjautuminen ja roolit, tuntikirjaus, omat kirjaukset ja lasketut yhteenvedot. P0 tehdään ensin.", viikko: 2 },
     { termi: "P1", nimi: "tärkeä jatkosisältö", selite: "Sisältö, joka tehdään vasta kun P0 toimii. TuntiTutkassa P1 on kaaviot, mobiilihionta ja yhteenvetojen vienti taulukkotiedostoksi.", viikko: 2 },
     { termi: "P2", nimi: "valinnainen lisä", selite: "Sisältö, joka voidaan jättää kokonaan pois ilman että työ jää kesken. TuntiTutkassa P2 on kirjausmuistutus ja usean viikon vertailu.", viikko: 2 },
-    { termi: "GitHub-issue", nimi: "tehtäväkortti", selite: "GitHubissa oleva tehtäväkortti, jossa on hyväksymiskriteerit ja työmääräarvio. Yksi issue on tyypillisesti puolen tai yhden päivän työ, ja siihen viitataan numerolla, esimerkiksi #12.", viikko: 2 },
+    { termi: "GitHub-issue", nimi: "yhden muutoksen tehtäväkortti GitHubissa", selite: "Yksi rajattu muutos sovellukseen: tavoite, hyväksymiskriteerit ja työmääräarvio. Yksi issue on tyypillisesti puolen tai yhden päivän työ, ja siihen viitataan numerolla, esimerkiksi #12. Sivun työvaihe voi sisältää useita issueita, ja jokainen issue tehdään Työtapa-sivun kuudella askeleella.", viikko: 2 },
     { termi: "API", nimi: "sovelluksen rajapinta", selite: "Palvelimen osoitteet, joita selain kutsuu tietojen hakemiseen ja tallentamiseen, esimerkiksi /api/kirjaukset. TuntiTutkan rajapinta tarkistaa oikeudet itse: käyttöliittymästä piilotettu nappi ei ole suojaus.", viikko: 3 },
     { termi: "JSON", nimi: "tekstimuotoinen tietomuoto", selite: "Tapa esittää tieto nimi–arvo-pareina tekstinä. TuntiTutkassa JSON on sekä yksi vertailtavista tietovarastoista (JSON-tiedosto) että muoto, jossa rajapinta palauttaa kirjaukset ja raportit selaimelle.", viikko: 3 },
     { termi: "build", nimi: "valmiiksi käännetty tuotantoversio", selite: "Komennolla tuotettu versio sovelluksesta, joka viedään palvelimelle. Kehityspalvelin ei ole build: julkaistava versio syntyy aina erikseen.", viikko: 3 },
@@ -323,22 +321,62 @@ window.NAYTTOPROJEKTI = {
   viikkoOhjeet: {
     1: {
       type: "pohjustus",
-      feature: "Kehitysympäristö ja julkinen repository ovat valmiit, ja Svelte + Vite -sovellusrunko käynnistyy omalla koneella.",
-      connection: "Työ alkaa työkaluista ja repositorysta: Git-historia on itsessään työnäyte, ja se alkaa ensimmäisestä työpäivästä.",
+      feature: "Svelte-sovellusrunko käynnistyy omalla koneellasi README:n ohjeilla, ja julkinen repository on tarkistettu.",
+      connection: "Lähtöaineistona on toimeksianto, ja tällä viikolla syntyvät kehitysympäristö, julkinen repository ja käynnistyvä Svelte-runko. Git-historia on itsessään työnäyte, joten se aloitetaan ensimmäisenä työpäivänä. Kysymyslistan vastauksilla rajaat työviikolla 2 sen, mitä rakennetaan.",
       deliverable: "Asennetut työkalut versioineen, julkinen repository tarkistuslistoineen, käynnistyvä Svelte + Vite -runko, kansiorakenne ja kysymyslista ohjaajalle.",
       why: "Ilman toimivaa ympäristöä ja repoa yksikään myöhempi viikko ei tuota näyttöaineistoa: Git-historia on s12-työnäyte ja sen pitää alkaa päivästä 1.",
       done: "Repositoryssa on käynnistyvä Svelte-runko ja README, jossa on käynnistyskomennot; ohjaaja on kuitannut julkisen repon tarkistuslistan; kysymyslistassa on vähintään kuusi kysymystä.",
       record: "Kirjoita työviikon 1 merkintään: asennetut työkalut versioineen, repositoryn osoite, ensimmäisen commitin tunnus, kysymyslistan kysymykset ja se, mitkä julkisuusasiat jäivät avoimiksi.",
       skills: ["kehitysympäristö", "Git", "npm ja Vite", "projektin rakenne"],
       termit: ["repository", "commit"],
-      steps: [
-        ["Työkalut ja versiot.", "Asenna Node LTS, VS Code ja Git. Kirjaa jokaisesta versionumero ja tarkistuskomento README:hen. Pelkkä 'asensin' ei riitä työnäytteeksi."],
-        ["Repository ja julkisuustarkistus.", "Luo GitHub-repository eli repo: projektin kansio versionhallinnassa, jossa koodi ja koko muutoshistoria säilyvät. Käy läpi julkisen repon tarkistuslista: ei henkilötietoja, ei koulun tunnisteita, ei muiden nimiä. Sovi tekijänimestä ohjaajan kanssa. Jos olet alaikäinen, huoltajan suostumus hoidetaan ohjaajan kautta. Kirjaa se avoimeksi asiaksi, kunnes se on kuitattu."],
-        ["Svelte + Vite -runko käyntiin.", "Luo Svelte-projekti Vitellä ja käynnistä kehityspalvelin. Ota kuvakaappaus selaimessa näkyvästä rungosta."],
-        ["Kansiorakenne ja README.", "Luo kansiot client/, server/ ja project-docs/. Kirjoita README:hen mitä olet tekemässä, kenelle ja millä komennoilla projekti käynnistyy."],
-        ["Toimeksianto ja kysymyslista.", "Lue toimeksianto läpi ja alleviivaa pakolliset asiat. Kirjoita jokaisesta epäselvästä kohdasta kysymys ohjaajalle. Tavoite on vähintään kuusi kysymystä."],
-        ["Commit ja push.", "Tee ensimmäinen commit eli tallenna muutos Git-historiaan viestillä, joka kertoo projektin perustamisesta. Vie commit sen jälkeen etärepositoryyn eli GitHubiin komennolla git push."]
-      ],
+      tehtavat: {
+        "1-1": {
+          miksi: "Kirjatut versiot kertovat, millä ympäristöllä sovellus toimii. Pelkkä ”asensin” ei riitä työnäytteeksi, koska sitä ei voi todentaa jälkikäteen.",
+          osat: [
+            ["Asenna työkalut", "Asenna Node LTS eli pitkään tuettu vakaa versio, VS Code ja Git."],
+            ["Tarkista versiot", "Aja komennot `node -v`, `npm -v` ja `git --version` ja kirjoita tulokset muistiin."],
+            ["Kirjaa versiotaulukko", "Tee `README.md`-tiedostoon taulukko: työkalu, versio ja tarkistuskomento, esimerkiksi Node 20.11.1 → `node -v`."]
+          ],
+          valmis: "README.md:ssä on taulukko, jossa jokaisella työkalulla on versio ja tarkistuskomento.",
+          tallenna: "README.md repositoryyn ensimmäisessä commitissa (työvaihe 4). Versiot myös työviikon 1 päiväkirjaan."
+        },
+        "1-2": {
+          miksi: "Repositoryssa säilyvät koodi, dokumentit ja koko muutoshistoria. Julkisuustarkistus suojaa sinua ja muita, ennen kuin mitään julkaistaan.",
+          osat: [
+            ["Luo repository", "Luo GitHubiin repository eli repo: projektin kansio versionhallinnassa. Kloonaa se omalle koneellesi."],
+            ["Käy tarkistuslista läpi", "Käy julkisen repon tarkistuslista läpi: ei henkilötietoja, ei koulun tunnisteita eikä muiden nimiä."],
+            ["Sovi tekijänimi", "Sovi ohjaajan kanssa, millä nimellä esiinnyt repositoryssa. Jos olet alaikäinen, huoltajan suostumus hoidetaan ohjaajan kautta."],
+            ["Pyydä kuittaus", "Pyydä ohjaajalta tarkistuslistaan kirjallinen kuittaus. Kirjaa kuittaamatta jäävät asiat avoimiksi asioiksi, kunnes ne on sovittu."]
+          ],
+          valmis: "Repository on olemassa, ja ohjaaja on kuitannut julkisen repon tarkistuslistan kirjallisesti.",
+          tallenna: "Repositoryn osoite ja julkisuusasioiden tila työviikon 1 päiväkirjaan. Avoimiksi jääneet asiat suunnitelman OHJAAJA-kenttiin.",
+          sanat: ["repository"]
+        },
+        "1-3": {
+          miksi: "Käynnistyvä runko todistaa, että kehitysympäristö toimii. Kansiot erottavat selaimen, palvelimen ja dokumentit toisistaan koko projektin ajan.",
+          osat: [
+            ["Luo sovellusrunko", "Luo Svelte + Vite -projekti kansioon `client/` komennolla `npm create vite@latest` (pohja svelte) ja aja `npm install`."],
+            ["Käynnistä kehityspalvelin", "Aja `npm run dev` ja avaa sovellus selaimessa. Ota kuvakaappaus käynnistyneestä rungosta."],
+            ["Luo kansiorakenne", "Luo kansiot `server/` ja `project-docs/`. Lisää `.gitignore`, joka estää kansion `node_modules/`, tietokantatiedostot `*.db` ja tiedoston `.env`."],
+            ["Kirjoita README", "Kirjoita README:hen, mitä olet tekemässä, kenelle ja millä komennoilla projekti käynnistyy."]
+          ],
+          valmis: "`npm run dev` avaa rungon selaimessa, ja kansiot `client/`, `server/` ja `project-docs/` sekä README ja .gitignore ovat olemassa.",
+          tallenna: "Kuvakaappaus käynnistyneestä rungosta työviikon 1 päiväkirjaan. Kansiot ja README menevät repositoryyn työvaiheen 4 commitissa."
+        },
+        "1-4": {
+          miksi: "Kun kysyt epäselvät kohdat, ne ratkeavat ennen työviikon 2 rajausta eikä niitä tarvitse arvata. Ensimmäinen commit aloittaa Git-historian, joka on osa näyttöaineistoa.",
+          osat: [
+            ["Lue toimeksianto", "Lue toimeksianto läpi ja alleviivaa pakolliset asiat. Asiakkaan ydinkipu on raportointi, ei kirjaaminen."],
+            ["Kirjoita kysymykset", "Kirjoita jokaisesta epäselvästä kohdasta kysymys ohjaajalle tiedostoon `project-docs/kysymykset.md`. Tavoite on vähintään kuusi kysymystä."],
+            ["Kysy lisenssistä", "Ota kysymyslistaan mukaan lisenssi. Toimeksiannon mukaan se kysytään ohjaajalta jo työviikolla 1."],
+            ["Tee ensimmäinen commit", "Tee commit eli tallenna muutos Git-historiaan viestillä, joka kertoo projektin perustamisesta, esimerkiksi ”Perusta projekti, kansiorakenne ja Svelte-runko”."],
+            ["Vie GitHubiin", "Vie commit etärepositoryyn eli GitHubiin komennolla `git push` ja tarkista, että tiedostot näkyvät GitHubissa."]
+          ],
+          valmis: "Kysymyslistassa on vähintään kuusi kysymystä, ja ensimmäinen commit näkyy GitHubissa.",
+          tallenna: "`project-docs/kysymykset.md` repositoryyn. Ensimmäisen commitin tunnus ja kysymykset työviikon 1 päiväkirjaan.",
+          sanat: ["commit"]
+        }
+      },
       help: {
         title: "Perusta kehitysympäristö ja repository",
         tree: "tuntitutka/\n├─ client/            Svelte + Vite -sovellus\n│  ├─ src/\n│  └─ vite.config.js\n├─ server/            Express-palvelin (tulee työviikolla 3)\n├─ project-docs/      suunnitelma, päiväkirja, muistiot\n├─ README.md\n└─ .gitignore         node_modules/, *.db, .env",
@@ -359,19 +397,19 @@ window.NAYTTOPROJEKTI = {
       example: "Versiotaulukko README:ssä: työkalu → versio → tarkistuskomento (Node 20.11.1 → node -v). Mukana kuvakaappaus käynnistyneestä dev-palvelimesta ja commit “Perusta projekti, kansiorakenne ja Svelte-runko”.",
       notEnough: "“Asensin kaikki ja kaikki toimii” ilman versionumeroita, kuvakaappausta ja ensimmäistä committia: mitään ei voi todentaa jälkikäteen.",
       paivat: [
-        ["Tarve", "Lue toimeksianto ja poimi asiakkaan ydinkipu: raportointi. Kirjaa kysymyslista ohjaajalle."],
-        ["Rajaus", "Erottele pakollinen ydin (kirjaus, roolit, lasketut yhteenvedot) lisäominaisuuksista ja sovi rajauksesta ohjaajan kanssa."],
-        ["Työkaluperusta", "Asenna Node ja Git, luo repository ja Svelte + Vite -projekti. Tee julkisen repon tarkistukset."],
-        ["Suunnittele", "Piirrä tietomalli ja rautalangat kirjaus- ja raporttinäkymästä. Päätä: summat lasketaan, ei tallenneta."],
-        ["Julkaise", "Vie tyhjä runko julkiseen osoitteeseen ja tee kaikesta commit. Ensimmäinen havaittava tulos on olemassa."]
+        ["Tarve", "Lue toimeksianto ja poimi asiakkaan ydinkipu: raportointi. Aloita kysymyslista ohjaajalle."],
+        ["Työkalut", "Asenna Node, VS Code ja Git. Kirjaa versiot README:hen."],
+        ["Repository", "Luo GitHub-repository ja käy julkisen repon tarkistuslista läpi ohjaajan kanssa."],
+        ["Sovellusrunko", "Luo Svelte + Vite -runko ja kansiot client/, server/ ja project-docs/. Kirjoita README:n käynnistyskomennot."],
+        ["Talteen", "Täydennä kysymyslista, tee ensimmäinen commit ja push ja kokeile, että runko käynnistyy README:n ohjeilla."]
       ]
     },
 
     2: {
       type: "pohjustus",
-      feature: "Hyväksytty tekninen suunnitelma: priorisoidut käyttäjätarinat, tietomalli, tietovarastovertailu, rautalangat ja issue-taulu työmääräarvioineen.",
+      feature: "Ohjaaja hyväksyy suunnitelmasi: jokaisella pakollisen ytimen (P0) tarinalla on GitHub-issue, hyväksymiskriteerit ja työmääräarvio.",
       excerpt: "Pahin puute ei ole kirjaaminen vaan raportointi.",
-      connection: "Työviikon 1 kysymyslista saa vastaukset, ja toimeksianto muuttuu priorisoiduiksi käyttäjätarinoiksi ja tietomalliksi, joiden päälle koko loppuprojekti rakentuu.",
+      connection: "Työviikon 1 kysymyslista saa nyt vastaukset, ja toimeksianto muuttuu priorisoiduiksi käyttäjätarinoiksi, tietomalliksi ja GitHub-issueiksi. Tietomallin päätös ”lasketaan, ei tallenneta” ratkaisee jo nyt, ettei sovellukseen synny summatauluja, joita pitäisi pitää ajan tasalla. Hyväksytyn suunnitelman varaan rakennat työviikolla 3 tietokannan ja julkaistun rungon.",
       deliverable: "project-docs/suunnitelma.md, tietomallikaavio, tietovarastovertailu, rautalangat kirjaus- ja raporttinäkymästä sekä issue-taulu työmääräarvioineen.",
       why: "Ilman priorisointia ominaisuuslista paisuu; ilman tietomallia raporttilaskenta menee uusiksi. Päätös “lasketaan, ei tallenneta” ratkaisee tässä, ettei sovellukseen synny synkronoitavia summatauluja.",
       done: "project-docs/suunnitelma.md on repossa ja ohjaaja on hyväksynyt rajauksen kirjatulla kommentilla; jokaisella P0-tarinalla on issue, hyväksymiskriteerit ja arvio tunteina.",
@@ -379,14 +417,57 @@ window.NAYTTOPROJEKTI = {
       skills: ["vaatimusmäärittely", "tietomallinnus", "priorisointi", "työn ositus"],
       termit: ["P0", "P1", "P2", "GitHub-issue"],
       resources: [["Avaa suunnitelmalomake", "#view-suunnitelma", false]],
-      steps: [
-        ["Käyttäjätarinat.", "Kirjoita toimeksiannosta käyttäjätarinat muodossa “Työntekijänä … jotta …” ja anna jokaiselle 2–4 hyväksymiskriteeriä."],
-        ["Priorisointi ohjaajan kanssa.", "Merkitse jokainen tarina P0, P1 tai P2 yhdessä ohjaajan kanssa (hän toimii asiakkaan sijaisena). P0 on pakollinen ydin, P1 tärkeä jatkosisältö ja P2 valinnainen lisä. Kirjaa perustelut, älä vain kirjaimia."],
-        ["Tietomalli.", "Piirrä taulut kayttaja, projekti, projektityyppi, tehtavalaji, kirjaus ja projektin_jasen avaimineen. Kirjaa kaavion viereen periaate: yhteenvetosummia ei tallenneta, ne lasketaan kirjauksista."],
-        ["Tietovarastovertailu.", "Vertaa SQLiteä, JSON-tiedostoa (JSON on tekstimuotoinen tietomuoto, jossa tieto on nimi–arvo-pareina) ja PostgreSQLiä oman datasi rakenteen, käyttötilanteen ja laajuuden perusteella. Perustele valinta omilla tauluillasi, ei yleisillä ominaisuuksilla."],
-        ["Rautalangat.", "Piirrä kirjausnäkymä ja raporttinäkymä käsin tai piirtotyökalulla. Merkitse mitä kenttiä ja mitä toimintoja kummassakin on."],
-        ["Issuet ja työmääräarviot.", "Pilko P0-tarinat GitHub-issueiksi eli tehtäväkorteiksi, joissa jokaisessa on hyväksymiskriteerit ja arvio tunteina. Yksi issue on tyypillisesti puolen tai yhden päivän työ."]
-      ],
+      tehtavat: {
+        "2-1": {
+          miksi: "Käyttäjätarina kertoo, mitä käyttäjä tarvitsee ja miksi. Priorisointi estää ominaisuuslistaa paisumasta, koska keskeneräinen pakollinen ydin painaa arvioinnissa enemmän kuin puuttuva lisäominaisuus.",
+          osat: [
+            ["Kirjaa ohjaajan vastaukset", "Käy työviikon 1 kysymyslista läpi ohjaajan kanssa ja kirjaa jokainen vastaus kysymyksen alle omin sanoin."],
+            ["Kirjoita tarinat", "Kirjoita toimeksiannosta käyttäjätarinat muodossa ”Työntekijänä … jotta …” tai ”Projektipäällikkönä … jotta …”. Anna jokaiselle 2–4 hyväksymiskriteeriä."],
+            ["Priorisoi ohjaajan kanssa", "Merkitse tarinat ohjaajan kanssa, joka toimii asiakkaan sijaisena. P0 on pakollinen ydin, P1 on tärkeä jatko ja P2 on valinnainen lisä."],
+            ["Kirjaa perustelut", "Kirjoita jokaisen prioriteetin viereen perustelu, älä pelkkää kirjainta. Täytä suunnitelmaan tavoite ja käyttäjäryhmät omin sanoin."]
+          ],
+          valmis: "Jokaisella tarinalla on 2–4 hyväksymiskriteeriä ja perusteltu prioriteetti, ja ohjaajan vastaukset on kirjattu kysymyslistaan.",
+          tallenna: "Käyttäjätarinat ja kysymyslista vastauksineen `project-docs/`-kansioon. P0-rajaus työviikon 2 päiväkirjaan.",
+          sanat: ["P0","P1","P2"]
+        },
+        "2-2": {
+          miksi: "Tietomalli ratkaisee, mistä raportit lasketaan. Jos summat tallennettaisiin, jokainen muokkaus ja poisto vaatisi myös summien päivityksen.",
+          osat: [
+            ["Piirrä taulut", "Piirrä taulut kayttaja, projekti, projektityyppi, tehtavalaji, kirjaus ja projektin_jasen. Merkitse pääavaimet, viiteavaimet ja pakolliset kentät."],
+            ["Kirjaa periaate", "Kirjoita kaavion viereen periaate: yhteenvetosummia ei tallenneta, vaan ne lasketaan kirjauksista jokaisella pyynnöllä."],
+            ["Tarkista tarinoita vasten", "Käy jokainen pakollisen ytimen (P0) tarina läpi mallia vasten: löytyykö jokaiselle hyväksymiskriteerille kenttä tai taulu? Jos ei, täydennä mallia."],
+            ["Kirjaa suunnitelmaan", "Kirjoita taulut, avaimet ja se, mitä ei tallenneta, suunnitelman Tietomalli-kenttään."]
+          ],
+          valmis: "Tietomallikaaviossa on kaikki kuusi taulua avaimineen, ja periaate ”summia ei tallenneta” on kirjattu kaavioon ja suunnitelmaan.",
+          tallenna: "Tietomallikaavio kuvana `project-docs/`-kansioon. Taulut ja tallentamatta jätettävät summat työviikon 2 päiväkirjaan.",
+          sanat: ["P0"]
+        },
+        "2-3": {
+          miksi: "Tietovaraston valinta on osaamisvaatimus s8. Kun perustelet sen omilla tauluillasi, näytät, että valinta sopii juuri tähän sovellukseen.",
+          osat: [
+            ["Tee vertailutaulukko", "Vertaa SQLiteä, JSON-tiedostoa ja PostgreSQLiä. JSON on tekstimuotoinen tietomuoto, jossa tieto on nimi–arvo-pareina."],
+            ["Käytä omia kriteereitä", "Arvioi vaihtoehdot oman datasi rakenteen, käyttötilanteen ja laajuuden perusteella, älä yleisten ominaisuuksien."],
+            ["Perustele valinta", "Kirjoita valinta ja se, mikä valinnasta jää huonommaksi, suunnitelman Tietovarasto-kenttään."],
+            ["Tarkista sovittu toteutustapa", "Toimeksianto sopii SQLiten. Jos vertailusi puoltaa muuta, sovi asiasta ohjaajan kanssa ennen työviikkoa 3."]
+          ],
+          valmis: "Vertailutaulukossa on kolme vaihtoehtoa omilla kriteereilläsi, ja valinta on perusteltu suunnitelmassa omilla tauluillasi.",
+          tallenna: "Vertailutaulukko `project-docs/`-kansioon. Valinta perusteluineen työviikon 2 päiväkirjaan.",
+          sanat: ["JSON"]
+        },
+        "2-4": {
+          miksi: "Rautalanka näyttää ennen koodia, mitä kenttiä ja toimintoja näkymissä on. Issueiksi pilkottu työ näyttää, mitä tehdään seuraavaksi ja kauanko se kestää.",
+          osat: [
+            ["Piirrä rautalangat", "Piirrä kirjausnäkymä ja raporttinäkymä käsin tai piirtotyökalulla. Rautalanka on yksinkertainen näkymäluonnos ilman värejä. Merkitse kummankin kentät ja toiminnot."],
+            ["Pilko issueiksi", "Pilko pakollisen ytimen (P0) tarinat GitHub-issueiksi. Yksi issue on tyypillisesti puolen tai yhden päivän työ."],
+            ["Lisää kriteerit ja arviot", "Kirjoita jokaiseen issueen hyväksymiskriteerit ja työmääräarvio tunteina. Arvioihin palataan työviikolla 7."],
+            ["Vie suunnitelma repositoryyn", "Täytä Suunnitelma-näkymän kentät, lataa `suunnitelma.md` ja tallenna se polkuun `project-docs/suunnitelma.md` commitilla."],
+            ["Pyydä hyväksyntä", "Pyydä ohjaajalta kirjattu hyväksyntä rajaukselle, esimerkiksi kommenttina issueen. Suunnitelma hyväksytään ennen työviikkoa 3."]
+          ],
+          valmis: "Jokaisella P0-tarinalla on issue, hyväksymiskriteerit ja arvio tunteina, ja ohjaajan hyväksyntä on kirjattu.",
+          tallenna: "Rautalangat ja `suunnitelma.md` `project-docs/`-kansioon. Linkki issue-tauluun ja ohjaajan hyväksyntään työviikon 2 päiväkirjaan.",
+          sanat: ["GitHub-issue","P0"]
+        }
+      },
       help: {
         title: "Tietomallin ja käyttäjätarinoiden pohjat",
         tree: "kayttaja       (id, nimi, sposti, salasana_hash, rooli, puhelin)\nprojekti       (id, nimi, tyyppi_id → projektityyppi, alkaa, paattyy, kuvaus)\nprojektityyppi (id, nimi)\ntehtavalaji    (id, tunnus, kuvaus)\nkirjaus        (id, kayttaja_id, projekti_id, tehtavalaji_id, paiva, tunnit, selite)\nprojektin_jasen(projekti_id, kayttaja_id)\n\nEI TAULUA: viikkosumma, henkilosumma, tehtavalajisumma",
@@ -405,22 +486,59 @@ window.NAYTTOPROJEKTI = {
 
     3: {
       type: "feature",
-      feature: "Tyhjä sovellusrunko on julkisessa osoitteessa: Express tarjoaa Svelte-buildin, /api/health vastaa ja SQLite-skeema syntyy skriptillä.",
-      connection: "Työviikon 2 tietomalli muuttuu ajettavaksi skeemaksi, ja koko julkaisuputki testataan nyt, kun sovelluksessa ei vielä ole mitään rikkoutuvaa.",
+      feature: "Kuka tahansa voi avata TuntiTutkan julkisesta osoitteesta, ja osoite `/api/health` vastaa toisen henkilön laitteella.",
+      connection: "Työviikon 2 tietomalli muuttuu nyt ajettavaksi skeemaksi, ja sovellus saa palvelimen. Koko julkaisuputki testataan tällä viikolla, koska se on helpointa korjata, kun sovelluksessa ei vielä ole mitään rikkoutuvaa. Samaa julkaisuputkea käytät julkaisuehdokkaaseen ja v1.0:aan asti.",
       deliverable: "Express-palvelin health-reitteineen, SQLiten init-skripti, perusteltu julkaisualustavalinta, julkinen osoite README:ssä ja kirjallinen k2-selvitys (osaamisvaatimus k2: mitä Svelte ja Vite ratkaisevat ja mitä eivät).",
       why: "Webprofiilin sääntö: tyhjä sivu tuotannossa on parempi kuin valmis sivu localhostissa: julkaisuputki testataan kun se on vielä pieni, ei työviikolla 16 paniikissa.",
       done: "/api/health palauttaa 200 julkisessa osoitteessa toisen henkilön selaimella testattuna; init-skripti luo skeeman tyhjään tietokantaan; k2-selvitys ja alustaperustelu ovat repossa.",
       record: "Kirjoita työviikon 3 merkintään: julkinen osoite, valittu julkaisualusta ja kriteerit joilla valitsit sen, mitä julkaisussa meni pieleen ja miten korjasit sen. Liitä k2-selvitys.",
       skills: ["Express", "SQLite", "julkaisuputki", "ympäristöasetukset"],
       termit: ["API", "JSON", "build"],
-      steps: [
-        ["Express-runko ja health-reitti.", "Rakenna server/index.js, joka tarjoaa Sveltin tuotantobuildin (build eli valmiiksi käännetty, julkaistava versio) staattisena ja vastaa reitillä /api/health JSON-muodossa. /api/health on ensimmäinen oman rajapintasi (API) osoite."],
-        ["Dev-proxy.", "Kytke Viten kehityspalvelimen proxy backendiin, jotta /api-kutsut menevät perille myös kehityksessä."],
-        ["SQLite-skeema skriptillä.", "Skeema tarkoittaa tietokannan taulurakennetta. Kirjoita ajettava init-skripti, joka luo työviikon 2 tietomallin taulut tyhjään tietokantaan. Skeema on koodissa, ei käsin klikattuna."],
-        ["Julkaisualustan vertailu ja valinta.", "Vertaa Renderiä, Fly.iota ja Railwayta kriteereillä: ilmainen taso, Node-tuki, SQLite-tiedoston pysyvyys ja levy, lokit. Tämä on oma päätöksesi. Perustele se kirjallisesti."],
-        ["Ensimmäinen julkaisu.", "Vie runko valitulle alustalle ja kirjaa julkinen osoite README:hen. Tarkista ympäristömuuttujat ja tietokantatiedoston polku."],
-        ["Savutesti julkisessa osoitteessa.", "Savutesti on nopea tarkistus, että perustoiminto vastaa julkaistussa versiossa. Pyydä toista henkilöä avaamaan /api/health omalla laitteellaan. Kirjaa tulos ja ota kuvakaappaus alustan julkaisulokista."]
-      ],
+      tehtavat: {
+        "3-1": {
+          miksi: "Palvelin on se osa, joka myöhemmin tarkistaa oikeudet ja laskee raportit. Health-reitti kertoo yhdellä kutsulla, että palvelin vastaa.",
+          osat: [
+            ["Tee palvelin", "Rakenna `server/index.js`, joka tarjoaa Sveltin tuotantobuildin staattisena. Build on valmiiksi käännetty, julkaistava versio sovelluksesta."],
+            ["Lisää health-reitti", "Tee reitti `/api/health`, joka palauttaa JSONin, esimerkiksi `{ tila: \"ok\" }`, ja HTTP-koodin 200. Se on oman rajapintasi (API) ensimmäinen osoite."],
+            ["Kytke dev-proxy", "Lisää Viten asetuksiin proxy eli välitysasetus, joka ohjaa kehityspalvelimen `/api`-kutsut Express-palvelimelle."],
+            ["Kokeile molemmat", "Avaa `/api/health` sekä Expressin osoitteessa että Viten kehityspalvelimen kautta. Saman vastauksen pitää näkyä molemmissa."]
+          ],
+          valmis: "`/api/health` palauttaa 200 ja JSONin sekä Expressin osoitteessa että Viten proxyn kautta.",
+          tallenna: "`server/index.js`, reitti ja proxy-asetus commitilla repositoryyn.",
+          sanat: ["build","API","JSON"]
+        },
+        "3-2": {
+          miksi: "Kun skeema on koodissa, tietokannan voi luoda samalla tavalla mihin tahansa ympäristöön. Käsin klikattua rakennetta ei voi toistaa.",
+          osat: [
+            ["Kirjoita init-skripti", "Skeema tarkoittaa tietokannan taulurakennetta. Kirjoita `server/init-db.js`, joka luo työviikon 2 tietomallin taulut tyhjään tietokantaan."],
+            ["Keskitä yhteys", "Tee tietokantayhteys yhteen paikkaan, esimerkiksi `server/db.js`, jotta reitit eivät avaa omia yhteyksiään."],
+            ["Aja ja tarkista", "Aja skripti tyhjään tietokantatiedostoon ja tarkista, että kaikki taulut syntyivät eikä summataulua ole."]
+          ],
+          valmis: "Init-skripti luo tyhjään tietokantaan kaikki tietomallin taulut, eikä tietokantatiedosto ole repositoryssa.",
+          tallenna: "`server/init-db.js` ja `server/db.js` commitilla. Skeema ja init-skripti pohjustavat tietovarastoyhteyden työnäytettä (s9)."
+        },
+        "3-3": {
+          miksi: "Alustan pitää säilyttää SQLite-tiedosto julkaisujen välillä, tai kirjaukset katoavat. Vertailu ennen tilin luontia estää väärän valinnan.",
+          osat: [
+            ["Tarkista oppilaitoksen linja", "Kysy ohjaajalta oppilaitoksen linja ilmaisista pilvipalveluista, jos se on vielä avoin. Linja rajaa valintaasi."],
+            ["Vertaa alustoja", "Vertaa Renderiä, Fly.iota ja Railwayta taulukkona: ilmainen taso, Node-tuki, SQLite-tiedoston pysyvyys ja levy sekä lokit."],
+            ["Perustele valinta", "Valitse alusta ja kirjoita perustelu suunnitelman Julkaisualusta-kenttään. Tämä on oma päätöksesi."]
+          ],
+          valmis: "Alustavertailu on taulukkona, ja valinta on perusteltu suunnitelmassa, ennen kuin loit tilin mihinkään palveluun.",
+          tallenna: "Alustavertailu `project-docs/`-kansioon. Valittu alusta ja valintakriteerit työviikon 3 päiväkirjaan."
+        },
+        "3-4": {
+          miksi: "Tyhjä sivu tuotannossa on parempi kuin valmis sivu omalla koneella. Selvitys näyttää, mitä Svelte ja Vite ratkaisevat ja mitä otat muualta.",
+          osat: [
+            ["Tarkista asetukset", "Varmista, että palvelin kuuntelee alustan antamaa porttia (PORT), tietokantatiedoston polku on ympäristömuuttujassa eikä `.env` ole repositoryssa."],
+            ["Julkaise", "Vie runko valitulle alustalle ja kirjaa julkinen osoite README:hen. Ota kuvakaappaus alustan julkaisulokista."],
+            ["Tee savutesti", "Savutesti on nopea tarkistus, että perustoiminto vastaa julkaistussa versiossa. Pyydä toista henkilöä avaamaan `/api/health` omalla laitteellaan ja kirjaa tulos."],
+            ["Kirjoita selvitys", "Kirjoita taulukkona, mitä Svelte ja Vite ratkaisevat, mitä eivät ja mistä puuttuva otetaan. Tämä on osaamisvaatimuksen k2 työnäyte."]
+          ],
+          valmis: "`/api/health` palauttaa 200 julkisessa osoitteessa toisen henkilön laitteella, ja selvitys ja alustaperustelu ovat repositoryssa.",
+          tallenna: "Julkinen osoite README:hen, julkaisulokin kuvakaappaus ja selvitys `project-docs/`-kansioon. Mitä julkaisussa meni pieleen ja miten korjasit sen, työviikon 3 päiväkirjaan."
+        }
+      },
       help: {
         title: "Palvelimen rakenne ja julkaisun tarkistuslista",
         tree: "server/\n├─ index.js        Express-sovellus, staattinen build ja reitit\n├─ db.js           tietokantayhteys yhdessä paikassa\n├─ init-db.js      skeeman luonti tyhjään kantaan\n└─ routes/\n   ├─ health.js\n   └─ (kirjaukset.js, raportit.js … tulevat myöhemmin)",
@@ -443,22 +561,70 @@ window.NAYTTOPROJEKTI = {
 
     4: {
       type: "feature",
-      feature: "Työntekijä ja projektipäällikkö kirjautuvat sisään ja näkevät roolinsa mukaisen navigaation; API-reitit on suojattu middlewarella.",
-      connection: "Julkaistun rungon päälle tulee ensimmäinen oikea toiminto: käyttäjät ja roolit, joiden varaan kaikki myöhemmät rajaukset ja raportit rakentuvat.",
+      feature: "Työntekijä ja projektipäällikkö kirjautuvat sisään ja näkevät roolinsa mukaisen navigaation, ja suojattu reitti vastaa ilman kirjautumista koodilla 401.",
+      connection: "Julkaistun rungon päälle tulee ensimmäinen oikea toiminto: käyttäjät ja roolit. Kirjaukset, hallinta ja raportit rajataan roolilla, joten roolit tehdään nyt, eikä jokaista reittiä ja näkymää tarvitse myöhemmin avata uudelleen. Työviikolla 5 kirjautunut työntekijä kirjaa ensimmäiset tuntinsa.",
       deliverable: "Käyttäjätaulu bcrypt-hasheineen ja siemendata, kirjattu istuntotapavertailu ja päätös, kirjautuminen ja uloskirjautuminen sekä autentikointi- ja roolimiddleware.",
       why: "Roolit ovat koko sovelluksen perusta: raportit ja hallinta rajataan roolilla. Jos roolit lisätään jälkikäteen, jokainen reitti ja näkymä pitää avata uudelleen.",
       done: "Väärä salasana antaa selkeän suomenkielisen virheilmoituksen; työntekijä ei näe hallintanavigaatiota; kirjautuminen säilyy sivun päivityksessä; suora API-kutsu ilman kirjautumista palauttaa 401.",
       record: "Kirjoita työviikon 4 merkintään: istuntotapojen vertailu, ohjaajan kanssa tehty päätös perusteluineen sekä se, mitä middleware-ketju tarkistaa ja missä järjestyksessä.",
       skills: ["autentikointi", "bcrypt", "middleware", "roolipohjainen pääsy"],
       termit: ["middleware"],
-      steps: [
-        ["Käyttäjätaulu ja siemendata.", "Toteuta käyttäjätaulu ja tallenna salasanat bcrypt-hashina: hash on salasanasta laskettu tiiviste, josta alkuperäistä salasanaa ei saa takaisin. Luo siemendata: yksi projektipäällikkö ja kaksi työntekijää."],
-        ["Istuntotapojen vertailu ja päätös.", "Vertaa evästesessiota ja tokenia nimenomaan tässä sovelluksessa (SQLite, yksi palvelin). Tee päätös yhdessä ohjaajan kanssa ja kirjaa keskustelu muistioon."],
-        ["Kirjautumislomake.", "Toteuta kirjautuminen ja uloskirjautuminen sekä roolitiedon välitys frontendiin. Virheviestit suomeksi ja kentän vieressä."],
-        ["Middleware-ketju.", "Middleware on välikerros, joka tarkistaa pyynnön ennen kuin reitin oma käsittelijä ajetaan. Kirjoita autentikointimiddleware ja roolimiddleware. Erottele 401 (ei kirjautunut) ja 403 (ei oikeuksia)."],
-        ["Roolin mukainen navigaatio.", "Näytä hallintalinkit vain projektipäällikölle. Navigaation piilottaminen ei kuitenkaan riitä: reitit suojataan palvelimella."],
-        ["Testi molemmilla rooleilla.", "Kirjaudu sisään kummallakin roolilla ja tarkista näkymät. Kutsu suojattua API-reittiä ilman kirjautumista ja varmista 401."]
-      ],
+      tehtavat: {
+        "4-1": {
+          miksi: "Kirjautuminen tarvitsee käyttäjät ja roolit. Salasana tallennetaan vain hashina, jotta vuotanutkaan tietokanta ei paljasta sitä.",
+          osat: [
+            ["Tee käyttäjätaulu", "Toteuta `kayttaja`-taulu, jossa on nimi, sähköposti, salasanan hash, rooli ja puhelin."],
+            ["Hashaa salasanat", "Tallenna salasanat bcrypt-hashina. Hash on salasanasta laskettu tiiviste, josta alkuperäistä salasanaa ei saa takaisin. Selväkielistä salasanaa ei kirjoiteta lokiin eikä kantaan."],
+            ["Luo siemendata", "Luo skripti, joka lisää yhden projektipäällikön ja kaksi työntekijää. Käytä keksittyjä tunnuksia, ei oikeiden ihmisten tietoja."]
+          ],
+          valmis: "Tietokannassa on yksi projektipäällikkö ja kaksi työntekijää, eikä yhtään salasanaa ole tallennettu selväkielisenä.",
+          tallenna: "Taulu ja siemenskripti commitilla repositoryyn."
+        },
+        "4-2": {
+          miksi: "Istuntotapa ratkaisee, miten palvelin tunnistaa kirjautuneen käyttäjän. Yhdessä tehty ja perusteltu päätös on osaamisvaatimuksen p9 työnäyte.",
+          osat: [
+            ["Vertaa tapoja", "Vertaa evästesessiota ja tokenia eli selaimelle annettavaa tunnistetietoa juuri tässä sovelluksessa: SQLite ja yksi palvelin. Kirjoita molempien hyödyt ja riskit."],
+            ["Päätä yhdessä", "Käy vertailu läpi ohjaajan kanssa ennen toteutusta ja tee päätös yhdessä."],
+            ["Kirjaa keskustelu", "Kirjaa muistioon päätös, perustelu, keskustelukumppani, hänen roolinsa ja ajankohta. Täytä suunnitelman Istuntotapa-kenttä."]
+          ],
+          valmis: "Vertailu on kirjoitettu tämän sovelluksen ehdoilla, ja yhteinen päätös on kirjattu ohjaajan nimen ja ajankohdan kanssa.",
+          tallenna: "Vertailu ja muistio `project-docs/`-kansioon. Päätös perusteluineen työviikon 4 päiväkirjaan."
+        },
+        "4-3": {
+          miksi: "Kirjautuminen kertoo käyttöliittymälle, kuka käyttäjä on ja mikä hänen roolinsa on. Navigaatio näyttää kummallekin roolille vain sen tarvitsemat näkymät.",
+          osat: [
+            ["Tee kirjautuminen", "Toteuta kirjautumislomake, kirjautuminen ja uloskirjautuminen valitsemallasi istuntotavalla."],
+            ["Välitä rooli", "Välitä roolitieto selaimeen, esimerkiksi storeen `client/src/lib/istunto.js`. Kirjautuminen säilyy, kun sivu päivitetään."],
+            ["Näytä virheet", "Väärä salasana antaa selkeän suomenkielisen virheilmoituksen kentän vieressä."],
+            ["Rajaa navigaatio", "Näytä hallintalinkit vain projektipäällikölle. Piilotettu linkki ei ole suojaus: reitit suojataan palvelimella työvaiheessa 4."]
+          ],
+          valmis: "Molemmat roolit kirjautuvat sisään ja ulos, kirjautuminen säilyy sivun päivityksessä, eikä työntekijä näe hallintalinkkejä.",
+          tallenna: "Kuvakaappaukset navigaatiosta molemmilla rooleilla työviikon 4 päiväkirjaan. Koodi commitilla."
+        },
+        "4-4": {
+          miksi: "Käyttöliittymästä piilotettu nappi ei estä suoraa kutsua rajapintaan. Middleware tarkistaa jokaisen pyynnön palvelimella, ennen kuin reitti ajetaan.",
+          osat: [
+            ["Tunnista käyttäjä", "Middleware on välikerros, joka tarkistaa pyynnön ennen reitin omaa käsittelijää. Kirjoita autentikointimiddleware, joka palauttaa 401, jos voimassa olevaa istuntoa ei ole."],
+            ["Tarkista rooli", "Kirjoita roolimiddleware, joka palauttaa 403, jos käyttäjällä ei ole reitin vaatimaa roolia."],
+            ["Suojaa jokainen reitti", "Lisää middleware jokaiselle suojatulle reitille, älä vain navigaatioon."],
+            ["Testaa molemmilla rooleilla", "Kirjaudu kummallakin roolilla ja tarkista, että kumpikin näkee vain omat näkymänsä."],
+            ["Kutsu reittiä suoraan", "Kutsu suojattua reittiä curlilla ilman kirjautumista ja työntekijän istunnolla. curl on komentorivin työkalu, jolla rajapintaa kutsutaan ilman selainta. Kirjaa saadut koodit."]
+          ],
+          valmis: "Suora kutsu suojattuun reittiin ilman kirjautumista palauttaa 401, ja työntekijän kutsu projektipäällikön reittiin palauttaa 403.",
+          tallenna: "Middleware-koodin commit. Mitä middleware-ketju tarkistaa, missä järjestyksessä ja mitkä koodit sait, työviikon 4 päiväkirjaan.",
+          sanat: ["middleware","API"],
+          apu: {
+            "otsikko": "Havainnekuva: näin pyyntö kulkee middlewaren läpi",
+            "images": [
+              [
+                "assets/reitin-suojaus.svg",
+                "Havainnekuva pyynnön kulusta. Pyyntö tulee ensin tunnistusmiddlewareen: jos istuntoa ei ole, palvelin vastaa 401 Kirjaudu sisään. Sitten roolimiddleware tarkistaa roolin: väärällä roolilla vastaus on 403 Ei oikeuksia. Vasta sen jälkeen reitin käsittelijä ajetaan ja palauttaa vastauksen. Esimerkkinä työntekijä, joka kutsuu projektipäällikön raporttireittiä, saa 403.",
+                "Havainnekuva, ei kuvakaappaus. Tarkistukset tehdään palvelimella jokaisella pyynnöllä."
+              ]
+            ]
+          }
+        }
+      },
       help: {
         title: "Middleware-ketju ja 401/403-erottelu",
         tree: "Pyyntö\n  ↓\ntunnistaMiddleware   → ei istuntoa?      → 401 Kirjaudu sisään\n  ↓\nvaadiRooli(\"pp\")     → väärä rooli?      → 403 Ei oikeuksia\n  ↓\nreitin käsittelijä   → vastaus\n\nclient/src/\n├─ lib/istunto.js      store: kirjautunut käyttäjä ja rooli\n├─ Kirjautuminen.svelte\n└─ Navigaatio.svelte   näyttää linkit roolin mukaan",
@@ -477,23 +643,60 @@ window.NAYTTOPROJEKTI = {
 
     5: {
       type: "feature",
-      feature: "Työntekijä kirjaa tunnit (projekti, tehtävälaji, tunnit, päivä, selitys) ja näkee omat kirjauksensa listana. Kirjausnäkymä on rakennettu itse alusta ilman valmista käyttöliittymäkirjastoa.",
+      feature: "Työntekijä kirjaa tunnit projektille ja tehtävälajille alle 30 sekunnissa ja näkee kirjauksen omassa listassaan.",
       excerpt: "Kirjaamisen pitää olla niin helppoa, ettei sitä voi vältellä: valmis alle puolessa minuutissa, myös puhelimella.",
-      connection: "Kirjautuneet käyttäjät saavat ensimmäisen oikean toiminnon: rivit, joista kaikki myöhemmät yhteenvedot lasketaan.",
+      connection: "Työviikolla 4 syntyneet kirjautuminen ja roolit kertovat, kuka kirjaa. Nyt rakennat itse kirjauksen: lomakkeen, tallennusreitin ja omien kirjausten listan. Kaikki myöhemmät yhteenvedot lasketaan näistä riveistä, joten tämän viikon validointi ratkaisee, voiko raportteihin luottaa.",
       deliverable: "Kirjauslomake omina Svelte-komponentteina, POST /api/kirjaukset validointeineen, omien kirjausten lista ja virhesyötteiden testitaulukko.",
       why: "Tämä on sovelluksen P0-ydin: kaikki raportit lasketaan näistä riveistä, joten tämän viikon validointi ratkaisee raporttien luotettavuuden.",
       done: "Kirjaus tallentuu SQLiteen ja näkyy listassa sivun päivityksen jälkeenkin; virheellinen syöte ei tallennu ja käyttäjä näkee suomenkielisen virheviestin kentän vieressä; kirjaus onnistuu alle 30 sekunnissa. Ota aika.",
       record: "Kirjoita työviikon 5 merkintään: komponenttijako ja kunkin komponentin vastuu, validointisäännöt kenttä kerrallaan sekä mitattu kirjausaika sekunteina.",
       skills: ["Svelte-komponentit ja sidonnat", "REST", "validointi molemmissa päissä"],
       termit: ["REST"],
-      steps: [
-        ["Komponenttijako.", "Päätä ja kirjaa, mitkä komponentit näkymään tulee ja mikä on kunkin vastuu. Kirjaa jako suunnitelmaan. Siihen palataan työviikolla 15."],
-        ["Lomake ja sidonnat.", "Toteuta kirjauslomake työviikon 2 rautalangan mukaan omina komponentteina. Käytä Sveltin sidontoja lomakekenttiin."],
-        ["Rajapintareitti ja backend-validointi.", "Toteuta POST /api/kirjaukset. Reitit noudattavat REST-tyyliä: REST tarkoittaa, että osoite kertoo kohteen ja HTTP-metodi toiminnon – POST lisää, GET hakee. Tarkista palvelimella: tunnit välillä 0,25–24, pakolliset kentät täytetty, projekti ja tehtävälaji ovat olemassa."],
-        ["Tallennus ja lista.", "Toteuta GET /api/kirjaukset/omat ja näytä omat kirjaukset listana. Tarkista, että lista säilyy sivun päivityksen jälkeen."],
-        ["Virheviestit käyttäjälle.", "Näytä jokainen virhe suomeksi sen kentän vieressä, jota virhe koskee. Viesti kertoo mitä pitää tehdä, ei vain että jokin meni pieleen."],
-        ["Virhesyötteiden läpitestaus.", "Testaa 0 h, negatiivinen, 25 h, ei-numeerinen ja puuttuva tehtävälaji. Kirjaa jokaisesta odotettu ja havaittu tulos taulukkoon."]
-      ],
+      tehtavat: {
+        "5-1": {
+          miksi: "Lomake on se osa, jota työntekijä käyttää joka päivä. Kun jaat sen pieniin komponentteihin, jokaisella osalla on yksi vastuu ja sitä on helppo muuttaa palautteen perusteella.",
+          osat: [
+            ["Päätä komponenttijako", "Nimeä kirjausnäkymän komponentit ja kirjoita kunkin vastuu yhdellä lauseella suunnitelman Komponenttijako-kenttään. Jakoon palataan työviikolla 15."],
+            ["Rakenna lomake rautalangan mukaan", "Toteuta kirjauslomake työviikon 2 rautalangan mukaan kansioon `client/src/kirjaus/`. Kentät ovat projekti, tehtävälaji, tunnit, päivä ja selite. Valmista käyttöliittymäkirjastoa ei käytetä."],
+            ["Kytke kentät sidonnoilla", "Käytä Sveltin sidontoja (`bind:value`) lomakekenttiin, jotta lomakkeen tila on aina sama kuin kentissä näkyy."]
+          ],
+          valmis: "Lomake näkyy selaimessa kaikkine kenttineen, ja komponenttijako on kirjattu suunnitelmaan.",
+          tallenna: "Komponentit commitilla kansioon `client/src/kirjaus/`. Komponenttijakokaavio ja kuvakaappaus lomakkeesta työviikon 5 päiväkirjaan."
+        },
+        "5-2": {
+          miksi: "Palvelimen validointi estää virheelliset rivit silloinkin, kun joku ohittaa lomakkeen. Jokainen hyväksytty rivi päätyy raportteihin.",
+          osat: [
+            ["Tee tallennusreitti", "Toteuta `POST /api/kirjaukset` tiedostoon `server/routes/kirjaukset.js`. REST-tyylissä osoite kertoo kohteen ja HTTP-metodi toiminnon: POST lisää ja GET hakee."],
+            ["Validoi palvelimella", "Tarkista palvelimella, että tunnit ovat välillä 0,25–24, pakolliset kentät on täytetty sekä projekti ja tehtävälaji ovat olemassa."],
+            ["Validoi myös lomakkeessa", "Toteuta samat säännöt lomakkeeseen. Pelkkä selaimen validointi ei riitä, koska rajapintaa voi kutsua suoraan."],
+            ["Näytä virhe kentän vieressä", "Näytä jokainen virhe suomeksi sen kentän vieressä, jota virhe koskee. Viesti kertoo, mitä pitää tehdä, esimerkiksi ”Tunnit voivat olla enintään 24.”"]
+          ],
+          valmis: "Kelvollinen kirjaus tallentuu SQLiteen. Virheellinen syöte hylätään sekä lomakkeessa että palvelimella, ja suomenkielinen viesti näkyy kentän vieressä.",
+          tallenna: "Reitti ja validointi commitilla. Validointisäännöt taulukkona (kenttä → sääntö → virheviesti) työviikon 5 päiväkirjaan.",
+          sanat: ["REST"]
+        },
+        "5-3": {
+          miksi: "Lista näyttää työntekijälle, että kirjaus tallentui. Samaa hakua laajennetaan työviikolla 7 muokkaukseen ja suodatukseen.",
+          osat: [
+            ["Tee hakureitti", "Toteuta `GET /api/kirjaukset/omat`, joka palauttaa vain kirjautuneen käyttäjän kirjaukset."],
+            ["Rakenna lista", "Näytä omat kirjaukset taulukkona omassa komponentissaan, esimerkiksi `KirjausLista.svelte`."],
+            ["Tarkista pysyvyys", "Päivitä sivu ja tarkista, että kirjaukset näkyvät yhä listassa. Ne tulevat tietokannasta, eivät selaimen muistista."]
+          ],
+          valmis: "Omat kirjaukset näkyvät listassa myös sivun päivityksen jälkeen, eikä listassa näy muiden käyttäjien kirjauksia.",
+          tallenna: "Reitti ja lista commitilla. Kuvakaappaus lomakkeesta ja listasta työviikon 5 päiväkirjaan."
+        },
+        "5-4": {
+          miksi: "Virhesyötteiden testi todistaa, että validointi toimii. Kirjausaika mittaa asiakkaan omaa vaatimusta: kirjaus on valmis alle puolessa minuutissa.",
+          osat: [
+            ["Kirjaa odotukset", "Tee taulukko, jossa on syöte, odotettu tulos, havaittu tulos ja täsmääkö. Kirjoita odotettu tulos ennen kuin kokeilet."],
+            ["Testaa virhesyötteet", "Kokeile lomakkeella arvoja 0 h, negatiivinen, 25 h, ei-numeerinen ja puuttuva tehtävälaji. Kirjaa jokaisen havaittu tulos."],
+            ["Ohita lomake", "Lähetä `tunnit=25` suoraan rajapintaan curlilla. curl on komentorivin työkalu, jolla rajapintaa kutsutaan ilman selainta. Palvelimen pitää hylätä kirjaus."],
+            ["Mittaa kirjausaika", "Ota aika yhdestä kirjauksesta alusta loppuun ja kirjaa sekunnit. Tavoite on alle 30 sekuntia."]
+          ],
+          valmis: "Jokainen virhesyöte hylätään sekä lomakkeessa että suorassa rajapintakutsussa, ja kirjaus onnistuu alle 30 sekunnissa.",
+          tallenna: "Testitaulukko ja mitattu kirjausaika sekunteina työviikon 5 päiväkirjaan."
+        }
+      },
       help: {
         title: "Komponenttipuu ja validointitaulukko",
         tree: "client/src/kirjaus/\n├─ KirjausNakyma.svelte   hakee projektit ja tehtävälajit, kokoaa näkymän\n├─ KirjausLomake.svelte   kentät, sidonnat, lähetys\n├─ KirjausLista.svelte    omat kirjaukset taulukkona\n└─ KenttaVirhe.svelte     yhden kentän virheviesti\n\nserver/routes/kirjaukset.js\n├─ POST /api/kirjaukset\n└─ GET  /api/kirjaukset/omat",
@@ -512,23 +715,60 @@ window.NAYTTOPROJEKTI = {
 
     6: {
       type: "feature",
-      feature: "Projektipäällikkö perustaa projekteja, hallitsee projektityyppejä ja tehtävälajeja sekä liittää työntekijöitä projekteihin, ja sovellus on jaettu näkymiin reitityskirjastolla.",
+      feature: "Projektipäällikkö perustaa projektin ja liittää siihen työntekijän, ja työntekijä näkee kirjauslomakkeessa vain omat projektinsa.",
       excerpt: "Minun pitää pystyä perustamaan projektit ja tehtävälajit itse sekä päättämään, kuka kirjaa mihinkin projektiin.",
-      connection: "Kirjaus tarvitsee projekteja ja tehtävälajeja: nyt asiakas voi perustaa ne itse, ja jäsenyys rajaa kirjaukset oikeisiin projekteihin.",
+      connection: "Kirjauslomake tarvitsee projekteja ja tehtävälajeja, ja ilman hallintaa ne pitäisi syöttää tietokantaan käsin. Nyt projektipäällikkö perustaa ne itse ja päättää jäsenyyksillä, kuka kirjaa mihinkin projektiin. Jäsenyys rajaa kirjaukset oikeisiin projekteihin, mikä on raporttien oikeellisuuden ehto.",
       deliverable: "Perusteltu reitityskirjastovalinta, reittikartta, projektien CRUD eli luonti, luku, muokkaus ja poisto, tehtävälajien ja projektityyppien hallinta sekä projektin jäsenyydet.",
       why: "Ilman hallintaa data syötetään käsin tietokantaan eikä asiakas voi käyttää sovellusta itse, ja jäsenyys rajaa kirjaukset oikeisiin projekteihin, mikä on raporttien oikeellisuuden ehto.",
       done: "Työntekijän kirjauslomakkeessa näkyvät vain projektit, joihin hänet on liitetty; vain projektipäällikkö pääsee hallintanäkymiin (testattu myös suoralla URL-osoitteella); reittikartta on dokumentoitu.",
       record: "Kirjoita työviikon 6 merkintään: reitityskirjaston vertailu ja valinta, reittikartta URL → näkymä → rooli sekä se, mitä kuormitusrajauksesta jouduit tekemään.",
       skills: ["reititys", "CRUD", "ulkoisen komponentin käyttöönotto", "roolirajaus"],
       termit: ["CRUD"],
-      steps: [
-        ["Reitityskirjaston vertailu ja asennus.", "Vertaa kahta vaihtoehtoa (esimerkiksi svelte-routing ja page.js): koko, ylläpito, dokumentaatio ja se, mitä juuri tämä projekti tarvitsee. Asenna valittu ja kirjaa package.json-diffi eli se, mitä riippuvuuksia asennus lisäsi."],
-        ["Reittikartta (URL → näkymä → rooli).", "Kirjoita taulukko, jossa jokaiselle reitille on näkymä ja sallittu rooli. Tämä on samalla tarkistuslista roolirajaukselle."],
-        ["Projektien CRUD.", "CRUD tarkoittaa tietueen neljää perustoimintoa: luonti, luku, muokkaus ja poisto. Toteuta projektien luonti, muokkaus ja listaus: nimi, tyyppi, alku- ja loppupäivä sekä kuvaus."],
-        ["Tehtävälajit ja tyypit.", "Toteuta tehtävälajien ja projektityyppien hallinta kevyenä: lisäys sekä nimen ja kuvauksen muokkaus riittävät. Poisto ja käytöstä poisto ovat P1. Tee ne vain jos viikosta jää aikaa."],
-        ["Jäsenyydet.", "Toteuta työntekijän lisäys projektiin ja poisto projektista. Tarkista, että kirjauslomakkeen projektivalikko rajautuu jäsenyyden mukaan."],
-        ["Roolitarkistus reiteillä.", "Testaa jokainen hallintareitti työntekijän istunnolla ja suoralla URL-osoitteella. Odotettu tulos on 403, ei näkymä."]
-      ],
+      tehtavat: {
+        "6-1": {
+          miksi: "Reitityskirjasto on sovelluksen ensimmäinen ulkoinen komponentti, ja sen käyttöönotto pitää perustella. Reittikartta on samalla roolirajauksen tarkistuslista.",
+          osat: [
+            ["Vertaa vaihtoehtoja", "Vertaa kahta reitityskirjastoa, esimerkiksi svelte-routing ja page.js: koko, ylläpito, dokumentaatio ja se, mitä juuri tämä projekti tarvitsee."],
+            ["Perustele ja asenna", "Kirjaa valinta perusteluineen suunnitelman Reitityskirjasto-kenttään ennen asennusta. Asenna sitten valittu kirjasto."],
+            ["Kirjaa package.json-diffi", "Tallenna package.json-diffi eli se, mitä riippuvuuksia asennus lisäsi."],
+            ["Tee reittikartta", "Kirjoita taulukko URL → näkymä → sallittu rooli jokaiselle reitille ja jaa sovellus näihin näkymiin."]
+          ],
+          valmis: "Valinta on perusteltu suunnitelmassa, kirjasto on asennettu, ja jokaisella reittikartan rivillä on näkymä ja sallittu rooli.",
+          tallenna: "Kirjastovertailu ja reittikartta `project-docs/`-kansioon, package.json-diffi commitissa."
+        },
+        "6-2": {
+          miksi: "Asiakas haluaa perustaa projektit itse ilman, että tietokantaan kosketaan käsin. Projekti on se, jolle tunnit kirjataan ja josta raportit lasketaan.",
+          osat: [
+            ["Tee projektien reitit", "CRUD tarkoittaa tietueen neljää perustoimintoa: luonti, luku, muokkaus ja poisto. Toteuta projekteille nämä reitit ja suojaa ne projektipäällikön roolilla."],
+            ["Rakenna hallintanäkymä", "Rakenna projektien listaus sekä luonti, muokkaus ja poisto. Projektilla on nimi, tyyppi, alku- ja loppupäivä sekä kuvaus."],
+            ["Kokeile hallintaa", "Perusta testiprojekti, muokkaa sen aikaväliä ja poista se. Tarkista jokaisen vaiheen jälkeen, että lista päivittyy."]
+          ],
+          valmis: "Projektipäällikkö voi luoda, listata, muokata ja poistaa projekteja hallintanäkymässä ilman tietokannan käsin muokkausta.",
+          tallenna: "Reitit ja näkymä commitilla. Kuvakaappaus hallintanäkymästä työviikon 6 päiväkirjaan.",
+          sanat: ["CRUD"]
+        },
+        "6-3": {
+          miksi: "Tehtävälajeista syntyy raportin jako suunnitteluun, tuotantoon, palavereihin ja korjauksiin. Kevyt toteutus riittää, jotta viikko ei paisu.",
+          osat: [
+            ["Toteuta lisäys", "Toteuta tehtävälajin ja projektityypin lisäys hallintanäkymään."],
+            ["Toteuta muokkaus", "Toteuta nimen ja kuvauksen muokkaus. Poisto ja käytöstä poisto kuuluvat tärkeään jatkoon (P1): tee ne vain, jos viikosta jää aikaa."],
+            ["Tarkista kuormitus", "Jos viikko uhkaa paisua, pidä ydin eli projektit, tehtävälajit, jäsenyys ja roolirajaus. Yksinkertaista projektityypit muokattavaksi listaksi samaan näkymään ja kirjaa rajaus."]
+          ],
+          valmis: "Projektipäällikkö voi lisätä tehtävälajin ja projektityypin ja muokata niiden nimeä ja kuvausta, ja mahdollinen kuormitusrajaus on kirjattu.",
+          tallenna: "Koodi commitilla. Kuormitusrajauksesta tehdyt päätökset työviikon 6 päiväkirjaan.",
+          sanat: ["P1"]
+        },
+        "6-4": {
+          miksi: "Jäsenyys päättää, kuka kirjaa mihinkin projektiin. Ilman sitä kirjauksia voisi tehdä vääriin projekteihin, ja raportit näyttäisivät väärää tietoa.",
+          osat: [
+            ["Toteuta jäsenyys", "Toteuta työntekijän lisäys projektiin ja poisto projektista `projektin_jasen`-tauluun."],
+            ["Rajaa projektivalikko", "Rajaa kirjauslomakkeen projektivalikko jäsenyyden mukaan palvelimella, ei vain selaimessa."],
+            ["Testaa hallintareitit", "Kokeile jokaista hallintareittiä työntekijän istunnolla ja suoralla URL-osoitteella. Odotettu tulos on 403, ei näkymä. Kirjautumattomana odotettu tulos on 401."]
+          ],
+          valmis: "Työntekijän kirjauslomakkeessa näkyvät vain projektit, joihin hänet on liitetty, ja jokainen hallintareitti palauttaa työntekijälle 403 myös suoralla URL-osoitteella.",
+          tallenna: "Testattu reittikartta ja demo molemmilla rooleilla työviikon 6 päiväkirjaan."
+        }
+      },
       help: {
         title: "Reittikartta ja roolirajauksen tarkistus",
         tree: "URL                      Näkymä                  Rooli\n/                        Kirjaus                 työntekijä, pp\n/omat                    Omat kirjaukset         työntekijä, pp\n/hallinta/projektit      Projektien hallinta     pp\n/hallinta/tehtavalajit   Tehtävälajit ja tyypit  pp\n/hallinta/jasenet        Projektin jäsenet       pp\n/raportit                Yhteenvedot             pp\n/kirjaudu                Kirjautuminen           kaikki",
@@ -547,22 +787,56 @@ window.NAYTTOPROJEKTI = {
 
     7: {
       type: "feature",
-      feature: "Työntekijä muokkaa ja poistaa omia kirjauksiaan, suodattaa niitä viikon ja projektin mukaan ja näkee oman viikkosummansa; omat yhteystiedot voi päivittää. Oma tuntikirjanpito TuntiTutkassa alkaa.",
+      feature: "Työntekijä muokkaa ja poistaa vain omia kirjauksiaan, suodattaa niitä viikon ja projektin mukaan ja näkee oman viikkosummansa.",
       excerpt: "Jokainen näkee omat kirjauksensa ja omat yhteenvetonsa, mutta ei muiden. Tuntitiedot ovat herkkää tietoa.",
-      connection: "Kirjaukset ja jäsenyydet ovat olemassa; nyt niitä hallitaan turvallisesti ja sovellus otetaan omaan käyttöön, jotta raportteihin kertyy aitoa dataa.",
+      connection: "Kirjaukset ja jäsenyydet ovat nyt olemassa. Tällä viikolla työntekijä hallitsee omia kirjauksiaan turvallisesti, ja sinä alat kirjata omat projektituntisi TuntiTutkaan. Oma käyttö tuottaa työviikkojen 8 ja 9 raportteihin aitoa dataa ja paljastaa käytettävyysongelmat ennen asiakasta.",
       deliverable: "Kirjauksen muokkaus ja poisto omistajuustarkistuksineen, viikko- ja projektisuodatus, oma viikkosumma, yhteystietojen päivitys ja omien työtuntien kirjaaminen sovellukseen.",
       why: "Omistajuus ja laskenta ovat toimintalogiikan ydintä, ja oma käyttö tuottaa aitoa dataa raportteihin sekä paljastaa käytettävyysongelmat ennen asiakasta. Samalla syntyy työnäyte omista työmääräarvioista verrattuna toteutuneisiin tunteihin.",
       done: "Toisen käyttäjän kirjausta ei voi muokata edes suoralla API-kutsulla (testi kirjattu: odotettu 403, saatu 403); viikkosumma täsmää käsin laskettuun; omia kirjauksia on sovelluksessa vähintään viikon verran.",
       record: "Kirjoita työviikon 7 merkintään: valittu viikkokäytäntö perusteluineen, omistajuustestin tulos sekä ensimmäinen vertailu työmääräarvioiden ja toteutuneiden tuntien välillä.",
       skills: ["tilanhallinta", "päivämäärä- ja viikkokäsittely", "käyttöoikeudet"],
-      steps: [
-        ["Muokkauslomake.", "Toteuta kirjauksen muokkaus ja poisto omien kirjausten listasta. Sama validointi kuin uudessa kirjauksessa."],
-        ["Omistajuustarkistus backendissa.", "Tarkista palvelimella, että muokattava tai poistettava kirjaus kuuluu kirjautuneelle käyttäjälle. Vieras kirjaus → 403."],
-        ["Suodattimet.", "Toteuta viikko- ja projektisuodatus omien kirjausten listaan. Päätä ja kirjaa viikkokäytäntö: ISO-viikko (kansainvälisen standardin viikkonumerointi, jossa viikko alkaa maanantaista) vai muu, ja miten viikon- ja vuodenvaihde käsitellään."],
-        ["Viikkosumma.", "Laske oma viikkosumma kyselyllä. Älä tallenna sitä mihinkään. Vertaa summaa käsin laskettuun."],
-        ["Yhteystiedot.", "Toteuta omien yhteystietojen (puhelin, sähköposti) päivitys."],
-        ["Oma käyttö käyntiin.", "Ala kirjata omat projektityötuntisi TuntiTutkaan tehtävälajeilla suunnittelu, koodaus, testaus ja dokumentointi. Vertaa toteumaa issueiden arvioihin."]
-      ],
+      tehtavat: {
+        "7-1": {
+          miksi: "Virheellisen kirjauksen pitää voida korjata. Omistajuustarkistus varmistaa, ettei kukaan muuta toisen tunteja, koska tuntitiedot ovat herkkää tietoa.",
+          osat: [
+            ["Tee muokkaus ja poisto", "Lisää omien kirjausten listaan muokkaus ja poisto. Käytä samaa validointia kuin uudessa kirjauksessa."],
+            ["Tarkista omistajuus", "Tarkista palvelimella reiteissä `PUT` ja `DELETE /api/kirjaukset/:id`, että kirjaus kuuluu kirjautuneelle käyttäjälle. Vieras kirjaus palauttaa 403."],
+            ["Testaa suoralla kutsulla", "Yritä muokata toisen käyttäjän kirjausta curlilla toisen käyttäjän istunnolla. Kirjaa odotettu ja saatu vastauskoodi."]
+          ],
+          valmis: "Toisen käyttäjän kirjausta ei voi muokata eikä poistaa edes suoralla rajapintakutsulla: odotettu 403, saatu 403.",
+          tallenna: "Omistajuustestin tulos työviikon 7 päiväkirjaan. Koodi commitilla."
+        },
+        "7-2": {
+          miksi: "Viikko on sekä työntekijän että projektipäällikön tärkein aikajakso. Kun viikkokäytäntö päätetään nyt, samat viikot näkyvät listassa, viikkosummassa ja raporteissa.",
+          osat: [
+            ["Päätä viikkokäytäntö", "Valitse ISO-viikko eli kansainvälisen standardin viikkonumerointi, jossa viikko alkaa maanantaista, tai muu tapa. Päätä, miten viikon- ja vuodenvaihde käsitellään."],
+            ["Kirjaa päätös", "Kirjoita valinta perusteluineen suunnitelman Viikkokäytäntö-kenttään, ennen kuin kirjoitat kyselyn."],
+            ["Toteuta suodattimet", "Lisää omien kirjausten listaan viikko- ja projektisuodatus reitille `GET /api/kirjaukset/omat?viikko=&projekti=`."]
+          ],
+          valmis: "Lista näyttää valitun viikon ja projektin kirjaukset, ja viikkokäytäntö on kirjattu suunnitelmaan.",
+          tallenna: "Valittu viikkokäytäntö perusteluineen työviikon 7 päiväkirjaan. Koodi commitilla."
+        },
+        "7-3": {
+          miksi: "Viikkosumma on ensimmäinen laskettu yhteenveto, ja se lasketaan kyselyllä samalla periaatteella kuin työviikon 8 raportit. Omat yhteystiedot pitää voida päivittää ilman projektipäällikköä.",
+          osat: [
+            ["Laske viikkosumma", "Laske oma viikkosumma kyselyllä reitillä `GET /api/kirjaukset/omat/viikkosumma?viikko=`. Älä tallenna summaa mihinkään."],
+            ["Vertaa käsin laskettuun", "Laske saman viikon tunnit käsin ja vertaa niitä sovelluksen summaan."],
+            ["Toteuta yhteystiedot", "Toteuta omien yhteystietojen eli puhelimen ja sähköpostin päivitys."]
+          ],
+          valmis: "Viikkosumma täsmää käsin laskettuun eikä sitä ole tallennettu tietokantaan, ja käyttäjä voi päivittää omat yhteystietonsa.",
+          tallenna: "Käsin lasketun ja sovelluksen summan vertailu työviikon 7 päiväkirjaan."
+        },
+        "7-4": {
+          miksi: "Oma käyttö tuottaa raportteihin aitoa dataa ja paljastaa käytettävyysongelmat ennen asiakasta. Samalla syntyy työnäyte arvioiden ja toteuman vertailusta (s6).",
+          osat: [
+            ["Lisää tehtävälajit", "Lisää TuntiTutkaan tehtävälajit suunnittelu, koodaus, testaus ja dokumentointi."],
+            ["Kirjaa tuntisi", "Kirjaa tästä eteenpäin omat projektityötuntisi TuntiTutkaan tehtävälajeittain."],
+            ["Vertaa arvioihin", "Vertaa toteutuneita tunteja issueiden työmääräarvioihin ja aloita arvio vs. toteuma -taulukko."]
+          ],
+          valmis: "Sovelluksessa on vähintään viikon verran omia kirjauksiasi, ja arvio vs. toteuma -taulukossa on ensimmäiset rivit.",
+          tallenna: "Kuvakaappaus omista kirjauksista ja ensimmäinen arvioiden ja toteuman vertailu työviikon 7 päiväkirjaan."
+        }
+      },
       help: {
         title: "Viikkonumerot ja omistajuustesti",
         tree: "GET    /api/kirjaukset/omat?viikko=&projekti=\nPUT    /api/kirjaukset/:id     omistajuustarkistus ennen päivitystä\nDELETE /api/kirjaukset/:id     omistajuustarkistus ennen poistoa\nGET    /api/kirjaukset/omat/viikkosumma?viikko=\nPUT    /api/kayttajat/minä     omat yhteystiedot",
@@ -581,23 +855,71 @@ window.NAYTTOPROJEKTI = {
 
     8: {
       type: "feature",
-      feature: "Raportti-API laskee työtunnit lennossa kolmella ryhmittelyllä (viikoittain, henkilöittäin ja tehtävälajeittain) eikä yhtään summaa tallenneta; projektipäällikkö näkee taulukkoyhteenvedon ja porautuu yksittäisiin kirjauksiin.",
+      feature: "Projektipäällikkö näkee ajantasaisen taulukkoyhteenvedon kolmella ryhmittelyllä ja pääsee rivistä yksittäisiin kirjauksiin.",
       excerpt: "Näiden lukujen pitää olla aina ajan tasalla: ei 'viime kuun tilanne', vaan tilanne nyt.",
-      connection: "Kirjauksia on kertynyt myös omasta käytöstä; nyt niistä lasketaan se tieto, jota asiakas on koko ajan halunnut.",
+      connection: "Kirjauksia on nyt kertynyt myös omasta käytöstäsi. Tällä viikolla lasket niistä sen tiedon, jota asiakas on koko ajan halunnut: tunnit viikoittain, henkilöittäin ja tehtävälajeittain. Työviikolla 9 samat luvut saavat kaaviot, ja työviikolla 10 asiakkaan roolissa oleva testaaja kokeilee niitä.",
       deliverable: "Suunniteltu vastausmuoto, testiaineisto käsin laskettuine odotusarvoineen, laskentamoduuli yksikkötesteineen, kolme raporttireittiä sekä taulukkonäkymä ja porautuminen.",
       why: "Tämä on koko sovelluksen olemassaolon syy: asiakkaan ydinkipu on raportointi. “Lasketaan, ei tallenneta” pitää luvut aina ajan tasalla ilman synkronointibugeja; jos summat tallennettaisiin, jokainen muokkaus ja poisto vaatisi summien päivityksen.",
       done: "Kolme raporttireittiä palauttaa summat, jotka täsmäävät käsin laskettuihin odotusarvoihin vähintään kolmella eri testiaineistolla; tietokannassa ei ole summataulua ja skeema todistaa sen; laskentamoduulilla on vähintään kolme yksikkötestiä.",
       record: "Kirjoita työviikon 8 merkintään: raporttien vastausmuoto, käsin lasketut odotusarvot ja API:n palauttamat luvut rinnakkain sekä se, mikä laskennassa meni ensin väärin ja miksi.",
       skills: ["SQL-aggregointi", "toimintalogiikan moduulijako", "REST-suunnittelu", "yksikkötestaus"],
       termit: ["SQL"],
-      steps: [
-        ["Vastausmuodon suunnittelu.", "Piirrä raporttireittien JSON-vastaukset paperille ennen koodia: mitkä kentät, missä muodossa, mitä tyhjä tulos palauttaa."],
-        ["Testiaineisto ja käsin lasketut odotusarvot.", "Rakenna testiaineisto (esimerkiksi 3 käyttäjää × 2 projektia × 3 tehtävälajia, viikonvaihteen ylitys mukana) ja laske odotetut summat käsin ennen toteutusta."],
-        ["GROUP BY -kyselyt.", "SQL on tietokannan kyselykieli: GROUP BY ryhmittelee rivit ja SUM laskee ryhmän summan. Toteuta laskenta SQL-aggregoinnilla (tai perustellusti JavaScriptillä). Erota laskenta omaksi moduulikseen, jota reitit kutsuvat."],
-        ["Rajaukset (aikaväli, projekti).", "Lisää aikaväli- ja projektirajaukset. Tarkista, että rajaukset koskevat kaikkia kolmea ryhmittelyä samalla tavalla."],
-        ["Taulukkonäkymä.", "Toteuta projektipäällikön taulukkoyhteenveto: ryhmittely, rivit ja summat selkeästi luettavina."],
-        ["Porautuminen kirjauksiin.", "Toteuta porautuminen: taulukon rivistä pääsee niihin yksittäisiin kirjauksiin, joista summa syntyy."]
-      ],
+      tehtavat: {
+        "8-1": {
+          miksi: "Kun vastauksen muoto on sovittu ennen koodia, laskenta, taulukko ja työviikon 9 kaaviot tietävät, mitä odottaa.",
+          osat: [
+            ["Piirrä vastaukset", "Piirrä kolmen raporttireitin JSON-vastaukset paperille: mitkä kentät ja missä muodossa."],
+            ["Päätä tyhjä tulos", "Päätä, mitä reitti palauttaa, kun aikavälillä ei ole kirjauksia. Tyhjä tulos on normaali tilanne, ei virhe."],
+            ["Nimeä reitit", "Kirjaa reitit ja parametrit, esimerkiksi `GET /api/raportit/viikot?alkaa=&paattyy=&projekti=` sekä vastaavat `/henkilot` ja `/tehtavalajit`."]
+          ],
+          valmis: "Kolmen raporttireitin vastausmuoto ja tyhjän tuloksen muoto on kirjattu ennen ensimmäistäkään kyselyä.",
+          tallenna: "Vastausmuoto kuvana tai tekstinä `project-docs/`-kansioon ja työviikon 8 päiväkirjaan.",
+          sanat: ["JSON"]
+        },
+        "8-2": {
+          miksi: "Käsin lasketut odotusarvot ovat ainoa tapa todistaa, että summat ovat oikein. Ne lasketaan ennen toteutusta, jotta tulos ei ohjaa odotusta.",
+          osat: [
+            ["Rakenna aineistot", "Rakenna kolme testiaineistoa: normaali (esimerkiksi 3 käyttäjää × 2 projektia × 3 tehtävälajia), tyhjä viikko ja viikonvaihteen ylittävä aineisto."],
+            ["Laske odotusarvot", "Laske jokaiselle aineistolle ja ryhmittelylle odotetut summat käsin."],
+            ["Kirjaa taulukkoon", "Kirjaa odotusarvot taulukkoon: aineisto, ryhmittely ja käsin laskettu summa. Sarakkeet rajapinnan palauttamalle summalle ja täsmäävyydelle jäävät vielä tyhjiksi."]
+          ],
+          valmis: "Odotusarvotaulukossa on käsin lasketut summat kolmelle aineistolle ja kolmelle ryhmittelylle, ja se on kirjattu ennen ajoa.",
+          tallenna: "Odotusarvotaulukko `project-docs/`-kansioon ennen ensimmäistä ajoa."
+        },
+        "8-3": {
+          miksi: "Tämä on sovelluksen olemassaolon syy. Kun laskenta on omassa moduulissaan, sitä voi testata ilman selainta, ja periaate ”lasketaan, ei tallenneta” pitää luvut aina ajan tasalla.",
+          osat: [
+            ["Kirjoita kyselyt", "SQL on tietokannan kyselykieli: GROUP BY ryhmittelee rivit ja SUM laskee ryhmän summan. Toteuta kolme ryhmittelyä kyselyinä (tai perustellusti JavaScriptillä) kansioon `server/laskenta/`."],
+            ["Lisää rajaukset", "Lisää aikaväli- ja projektirajaus. Tarkista, että rajaukset koskevat kaikkia kolmea ryhmittelyä samalla tavalla."],
+            ["Tee reitit", "Tee kolme raporttireittiä tiedostoon `server/routes/raportit.js`. Reitti vain ottaa parametrit ja kutsuu laskentamoduulia."],
+            ["Kirjoita yksikkötestit", "Kirjoita laskentamoduulille vähintään kolme yksikkötestiä: normaali aineisto, tyhjä viikko ja viikonvaihteen ylitys."],
+            ["Vertaa odotusarvoihin", "Aja reitit kolmella testiaineistolla ja kirjaa palautetut summat odotusarvotaulukkoon. Tarkista skeemasta, ettei summataulua ole syntynyt."]
+          ],
+          valmis: "Kolme raporttireittiä palauttaa summat, jotka täsmäävät käsin laskettuihin kolmella aineistolla, yksikkötestit menevät läpi eikä skeemassa ole summataulua.",
+          tallenna: "Laskentamoduulin ja testien commit. Odotusarvot ja rajapinnan palauttamat luvut rinnakkain työviikon 8 päiväkirjaan.",
+          sanat: ["SQL"],
+          apu: {
+            "otsikko": "Havainnekuva: näin yhteenveto lasketaan kirjauksista",
+            "images": [
+              [
+                "assets/yhteenvedon-laskenta.svg",
+                "Havainnekuva yhteenvedon laskennasta. Kirjaus-taulussa on viisi riviä: Aino 7,5 tuntia suunnittelua, Aino 2,0 tuntia palaveria, Eetu 4,0 tuntia tuotantoa, Eetu 1,5 tuntia palaveria ja Helmi 6,0 tuntia tuotantoa. Kysely SELECT henkilö, SUM(tunnit) FROM kirjaus GROUP BY henkilö laskee niistä kolme riviä: Aino 9,5, Eetu 5,5 ja Helmi 6,0 tuntia, yhteensä 21,0 tuntia. Kun Eetu muokkaa kirjauksensa 1,5 tunnista 2,5 tuntiin, seuraava pyyntö laskee Eetun summaksi 6,5 tuntia. Summataulua ei ole, joten mitään ei tarvitse päivittää erikseen.",
+                "Havainnekuva, ei kuvakaappaus. Yhteenveto lasketaan kirjauksista jokaisella pyynnöllä."
+              ]
+            ]
+          }
+        },
+        "8-4": {
+          miksi: "Asiakas haluaa nähdä tilanteen yhdellä silmäyksellä ja tarvittaessa porautua yksittäisen tekijän kirjauksiin asti.",
+          osat: [
+            ["Rakenna taulukko", "Toteuta projektipäällikön taulukkoyhteenveto: ryhmittely, rivit ja summat selkeästi luettavina."],
+            ["Lisää porautuminen", "Toteuta porautuminen: taulukon rivistä pääsee niihin yksittäisiin kirjauksiin, joista summa syntyy."],
+            ["Tarkista summa riveistä", "Laske porautumisnäkymän kirjausten tunnit yhteen ja vertaa taulukon riviin. Lukujen pitää olla samat."]
+          ],
+          valmis: "Projektipäällikkö näkee taulukon kolmella ryhmittelyllä, ja jokaisesta rivistä pääsee niihin kirjauksiin, joista summa syntyy.",
+          tallenna: "Kuvakaappaus taulukosta ja porautumisesta työviikon 8 päiväkirjaan. Koodi commitilla."
+        }
+      },
       help: {
         title: "GROUP BY -rakenne ja odotusarvotaulukko",
         tree: "server/laskenta/\n├─ index.js          julkinen rajapinta: viikoittain, henkiloittain, lajeittain\n├─ kyselyt.js        SQL-lauseet yhdessä paikassa\n└─ laskenta.test.js  yksikkötestit\n\nserver/routes/raportit.js\n├─ GET /api/raportit/viikot?alkaa=&paattyy=&projekti=\n├─ GET /api/raportit/henkilot?…\n└─ GET /api/raportit/tehtavalajit?…",
@@ -616,21 +938,59 @@ window.NAYTTOPROJEKTI = {
 
     9: {
       type: "feature",
-      feature: "Projektipäällikön raporttinäkymä esittää viikkotunnit pylväskaaviona ja tehtävälajijakauman kaaviona; tyhjä data, verkkovirhe ja lataustila käsitellään.",
-      connection: "Työviikon 8 raportti-API saa käyttöliittymän: sama data muunnetaan kaavion muotoon ja virhetilanteet käsitellään ennen asiakaskatselmointia.",
+      feature: "Projektipäällikkö näkee viikkotunnit ja tehtävälajijakauman kaavioina, jotka päivittyvät valinnoista eivätkä kaadu tyhjään dataan tai verkkovirheeseen.",
+      connection: "Työviikon 8 raporttireitit palauttavat oikeat summat, mutta asiakas haluaa nähdä ne yhdellä silmäyksellä. Nyt muunnat saman datan kaavioiksi ja käsittelet tyhjän datan, verkkovirheen ja lataustilan. Näin väliversio on valmis työviikon 10 asiakaskatselmointiin.",
       deliverable: "Perusteltu kaaviokirjastovalinta, kaaviot oikeasta datasta, testattu muunnosfunktio, ryhmittelyn ja aikavälin valinta sekä virhe- ja lataustilat.",
       why: "Kaavio on asiakkaan “yhdellä silmäyksellä” -tarve, ja tämä viikko on päänäyte rajapinnan palauttaman tiedon käsittelystä muunnoksineen ja virhetilanteineen, ja samalla käyttöön tulee toinen ulkoinen komponentti.",
       done: "Kaaviot piirtyvät oikeasta datasta ja päivittyvät suodattimista; verkkovirhe (testataan katkaisemalla backend) näyttää viestin eikä tyhjää ruutua; muunnosfunktion testi menee läpi; valinta on perusteltu kirjallisesti.",
       record: "Kirjoita työviikon 9 merkintään: kaaviokirjaston vertailu ja valinta, muunnosfunktion tehtävä ja sen testin tulos sekä se, miten kukin virhetila testattiin.",
       skills: ["fetch ja asynkronisuus", "tiedon muunnos", "kaaviokirjasto", "virheenkäsittely"],
-      steps: [
-        ["Kirjastovertailu ja asennus.", "Vertaa kahta kaaviokirjastoa: koko, lisenssi, dokumentaatio ja saavutettavuus. Perustele valinta kirjallisesti ja asenna valittu."],
-        ["Ensimmäinen kaavio kovakoodatulla datalla.", "Piirrä kaavio kiinteällä esimerkkidatalla, jotta kirjaston käyttö ja oma data eivät sekoitu toisiinsa."],
-        ["Muunnosfunktio ja sen testi.", "Hae raportit selaimen fetch-funktiolla ja kirjoita funktio, joka muuntaa rajapinnan JSON-vastauksen kaavion tarvitsemaan muotoon. Kirjoita funktiolle testi. Se on puhdas funktio, joten se on helppo testata."],
-        ["Suodattimet.", "Toteuta ryhmittelyn vaihto (viikko, henkilö, tehtävälaji) ja aikavälin valinta. Kaavion pitää päivittyä valinnasta."],
-        ["Virhe- ja lataustilat.", "Käsittele kolme tilaa: tyhjä aineisto → ohjaava viesti, verkkovirhe → virheilmoitus ja uudelleenyritys, lataus → latausindikaattori."],
-        ["Katselmointidemon valmistelu.", "Valmistele työviikon 10 demoa varten testitunnukset ja tarpeeksi kirjauksia, jotta kaaviot näyttävät jotain järkevää."]
-      ],
+      tehtavat: {
+        "9-1": {
+          miksi: "Kaaviokirjasto on sovelluksen toinen ulkoinen komponentti, ja sen koko, lisenssi ja saavutettavuus vaikuttavat koko sovellukseen.",
+          osat: [
+            ["Vertaa kirjastoja", "Vertaa kahta kaaviokirjastoa: koko, lisenssi, dokumentaatio ja saavutettavuus."],
+            ["Perustele ja asenna", "Kirjaa valinta perusteluineen suunnitelman Kaaviokirjasto-kenttään ja asenna valittu kirjasto."],
+            ["Piirrä kiinteällä datalla", "Piirrä ensimmäinen kaavio kiinteällä esimerkkidatalla, jotta kirjaston käyttö ja oma data eivät sekoitu toisiinsa."]
+          ],
+          valmis: "Kirjastovalinta on perusteltu suunnitelmassa, ja ensimmäinen kaavio piirtyy kiinteällä datalla.",
+          tallenna: "Kirjastovertailu `project-docs/`-kansioon, asennus commitilla."
+        },
+        "9-2": {
+          miksi: "Muunnosfunktio erottaa rajapinnan vastauksen kaavion tarvitsemasta muodosta. Puhdas funktio on helppo testata ilman selainta.",
+          osat: [
+            ["Hae raportit", "Hae raporttireittien data raporttinäkymään selaimen fetch-funktiolla."],
+            ["Kirjoita muunnos", "Kirjoita funktio, esimerkiksi `muunnaKaavioksi` tiedostoon `client/src/raportit/muunna.js`, joka muuntaa rajapinnan JSON-vastauksen kaavion tarvitsemaan muotoon."],
+            ["Testaa muunnos", "Kirjoita funktiolle testi, ennen kuin kytket kaavion oikeaan dataan. Aja testi ja kirjaa tulos."],
+            ["Kytke oikea data", "Korvaa kiinteä esimerkkidata muunnetulla raporttidatalla."]
+          ],
+          valmis: "Muunnosfunktion testi menee läpi, ja kaaviot piirtyvät oikeasta raporttidatasta.",
+          tallenna: "Muunnosfunktio ja testi commitilla. Testin ajotulos työviikon 9 päiväkirjaan.",
+          sanat: ["JSON"]
+        },
+        "9-3": {
+          miksi: "Projektipäällikkö haluaa katsoa samaa dataa eri kulmista: viikoittain, henkilöittäin ja tehtävälajeittain.",
+          osat: [
+            ["Lisää ryhmittely", "Toteuta ryhmittelyn vaihto: viikko, henkilö ja tehtävälaji."],
+            ["Lisää aikaväli", "Toteuta aikavälin valinta, joka välittyy raporttireitin parametreiksi."],
+            ["Tarkista päivitys", "Vaihda ryhmittelyä ja aikaväliä ja tarkista, että kaavio päivittyy jokaisesta valinnasta."]
+          ],
+          valmis: "Kaavio päivittyy jokaisesta ryhmittelyn ja aikavälin valinnasta.",
+          tallenna: "Kuvakaappaukset kaavioista kahdella eri valinnalla työviikon 9 päiväkirjaan."
+        },
+        "9-4": {
+          miksi: "Tyhjä ruutu tai kaatunut näkymä vie asiakkaan luottamuksen. Katselmoinnissa kaavioiden pitää myös näyttää jotain järkevää.",
+          osat: [
+            ["Käsittele tyhjä aineisto", "Näytä ohjaava viesti, kun valitulla aikavälillä ei ole kirjauksia. Tyhjä aineisto on normaali tilanne, ei virhe."],
+            ["Käsittele verkkovirhe", "Näytä virheilmoitus ja uudelleenyritys. Testaa sammuttamalla backend kesken raporttihaun."],
+            ["Näytä lataustila", "Näytä latausindikaattori, kun haku on kesken."],
+            ["Kirjaa virhetilat", "Kirjaa taulukkoon jokaisesta tilasta, mitä käyttäjä näkee ja miten se testattiin."],
+            ["Valmistele demodata", "Valmistele työviikon 10 katselmointia varten testitunnukset molemmille rooleille ja niin paljon kirjauksia, että kaaviot näyttävät järkevältä."]
+          ],
+          valmis: "Tyhjä aineisto, verkkovirhe ja lataus näkyvät käyttäjälle viestinä eivätkä tyhjänä ruutuna, ja demodata on valmiina.",
+          tallenna: "Virhetilataulukko ja kuvakaappaukset virhetiloista työviikon 9 päiväkirjaan."
+        }
+      },
       help: {
         title: "Muunnosfunktio ja virhetilojen tarkistuslista",
         tree: "client/src/raportit/\n├─ RaporttiNakyma.svelte   haku, tilat, suodattimet\n├─ Kaavio.svelte          kaaviokirjaston kääre\n├─ muunna.js             API-JSON → { labels, datasets }\n└─ muunna.test.js        muunnoksen yksikkötesti\n\nTilat: lataus → onnistui | tyhjä | virhe",
@@ -649,23 +1009,58 @@ window.NAYTTOPROJEKTI = {
 
     10: {
       type: "katselmointi",
-      feature: "Ulkopuolinen henkilö asiakkaan roolissa kokeilee julkaistua versiota molemmilla rooleilla; palaute on kirjattu testaajan omin sanoin erillään omasta tulkinnasta, ja muutokset on priorisoitu issueiksi.",
+      feature: "Asiakkaan roolissa oleva testaaja on kokeillut julkaistua versiota molemmilla rooleilla, ja sovitut muutokset ovat priorisoituina issueina.",
       excerpt: "Haluan kokeilla toimivaa väliversiota noin puolivälissä omilla käsilläni.",
-      connection: "Puolet sovelluksesta on valmiina ja julkaistuna: nyt selviää, ratkaiseeko se oikeasti asiakkaan ongelman, ja mikä muuttuu ennen loppusuoraa.",
+      connection: "Kirjaus, hallinta ja yhteenvedot toimivat julkaistussa versiossa. Nyt asiakkaan roolissa oleva ulkopuolinen testaaja kokeilee sitä omin käsin, ja selviää, ratkaiseeko sovellus asiakkaan ongelman. Palaute puolivälissä ehtii vielä muuttaa suuntaa, ja tärkein muutos toteutetaan työviikolla 11.",
       deliverable: "Katselmointimuistio testaajan sitaatteineen, oma tulkinta erikseen kirjattuna ja priorisoitu muutoslista issueina.",
       why: "Palaute puolivälissä ehtii vielä muuttaa suuntaa, ja tämä on asiakasviestinnän ja katselmoinnin päätyönäyte, jota ei voi tuottaa tekoälyllä: oikea ihminen, oikeat sanat, oikea julkaistu sovellus.",
       done: "Katselmointimuistio (testaajan nimetty rooli, ajankohta, testaajan omat sanat, oma tulkinta, sovitut muutokset) on project-docs-kansiossa ja tärkein muutos on issueina hyväksymiskriteereineen.",
       record: "Kirjoita työviikon 10 merkintään: kuka testasi ja missä roolissa, kolme tärkeintä sitaattia, oma tulkinta niistä ja se, minkä muutoksen valitsit toteutettavaksi ensin.",
       skills: ["asiakasviestintä", "katselmointikäytäntö", "palautteen jäsentäminen"],
       resources: [["Lataa dokumentointipohjat (katselmointiloki)", "downloads/nayton-dokumentointipohjat.docx", true]],
-      steps: [
-        ["Katselmoinnin valmistelu.", "Tee esityslista ja kaksi testipolkua: työntekijä kirjaa tunnin, projektipäällikkö katsoo raportin ja porautuu. Valmistele tunnukset ja testidata etukäteen."],
-        ["Esittely ja vapaa kokeilu.", "Esittele versio asiakaslähtöisesti: mitä sovellus tekee käyttäjälle, ei miten se on koodattu. Anna testaajan sitten kokeilla itse ilman opastusta."],
-        ["Palautteen kirjaus sitaatteina.", "Kirjoita testaajan havainnot hänen omin sanoinaan. Älä siisti, älä tulkitse vielä."],
-        ["Oma tulkinta erikseen.", "Kirjaa erilliseen sarakkeeseen, mitä uskot havainnon tarkoittavan ja mikä sen syy on."],
-        ["Priorisointi ohjaajan kanssa.", "Käy muutokset läpi ohjaajan kanssa ja päätä, mikä toteutetaan työviikolla 11 ja mikä jää v1.1-listalle."],
-        ["Muutokset issueiksi.", "Kirjaa sovitut muutokset issueiksi hyväksymiskriteereineen ja arvioineen."]
-      ],
+      tehtavat: {
+        "10-1": {
+          miksi: "Hyvin valmisteltu katselmointi käyttää testaajan ajan sovelluksen kokeiluun eikä tunnusten etsimiseen.",
+          osat: [
+            ["Varmista testaaja", "Varmista ohjaajan kanssa testaaja ja ajankohta. Asiakkaan roolia ei esitä oma ohjaava opettajasi."],
+            ["Tee esityslista", "Kirjoita esityslista ja kaksi testipolkua: työntekijä kirjaa tunnin, projektipäällikkö katsoo raportin ja porautuu."],
+            ["Tarkista tunnukset ja data", "Tarkista, että testitunnukset toimivat julkaistussa versiossa ja kirjauksia on tarpeeksi."],
+            ["Kirjaa testattu versio", "Kirjaa muistion alkuun testattava versio (commit tai tagi) ja testaajan rooli."]
+          ],
+          valmis: "Testaaja ja ajankohta on sovittu, testipolut on kirjoitettu ja tunnukset toimivat julkaistussa versiossa.",
+          tallenna: "Esityslista ja testipolut muistioon `project-docs/katselmointi-vk10.md`."
+        },
+        "10-2": {
+          miksi: "Asiakasta kiinnostaa, mitä sovellus tekee hänelle, ei miten se on koodattu. Vapaa kokeilu paljastaa, missä käyttäjä oikeasti pysähtyy.",
+          osat: [
+            ["Esittele asiakaslähtöisesti", "Kerro, mitä sovellus tekee työntekijälle ja projektipäällikölle. Jätä tekninen toteutus pois."],
+            ["Anna kokeilla itse", "Anna testaajan tehdä molemmat testipolut ilman opastusta. Älä ota hiirtä käteesi, kun hän epäröi."],
+            ["Merkitse pysähdykset", "Merkitse muistiin jokainen kohta, jossa testaaja pysähtyi tai kysyi jotain."]
+          ],
+          valmis: "Testaaja on tehnyt molemmat testipolut itse, ja pysähdyskohdat on merkitty.",
+          tallenna: "Pysähdyskohdat katselmointimuistioon jo katselmoinnin aikana."
+        },
+        "10-3": {
+          miksi: "Testaajan omat sanat ovat työnäyte, jota ei voi tuottaa tekoälyllä. Kun tulkinta on erillään, näet myöhemmin, mitä hän oikeasti sanoi.",
+          osat: [
+            ["Kirjaa sitaatit", "Kirjoita testaajan havainnot heti hänen omin sanoinaan. Älä siisti äläkä tulkitse vielä."],
+            ["Kirjaa tulkinta", "Kirjaa erilliseen sarakkeeseen, mitä uskot havainnon tarkoittavan ja mikä sen syy on."],
+            ["Täydennä muistio", "Täydennä muistioon testaajan rooli, ajankohta ja testattu versio."]
+          ],
+          valmis: "Muistiossa jokaisella havainnolla on testaajan omat sanat ja erillinen oma tulkinta.",
+          tallenna: "`project-docs/katselmointi-vk10.md`. Kolme tärkeintä sitaattia työviikon 10 päiväkirjaan."
+        },
+        "10-4": {
+          miksi: "Palaute, joka ei johda sovittuun muutokseen, on kerätty turhaan. Priorisointi ohjaajan kanssa kertoo, mikä tehdään työviikolla 11.",
+          osat: [
+            ["Priorisoi ohjaajan kanssa", "Käy muutokset läpi ohjaajan kanssa ja päätä, mikä toteutetaan työviikolla 11 ja mikä jää v1.1-listalle."],
+            ["Kirjaa issueiksi", "Kirjaa sovitut muutokset GitHub-issueiksi hyväksymiskriteereineen ja arvioineen."],
+            ["Kirjaa päätökset muistioon", "Lisää muistioon sovitut muutokset, niiden prioriteetit ja issue-numerot."]
+          ],
+          valmis: "Tärkein muutos on issueina hyväksymiskriteereineen, ja muistiossa näkyvät sovitut muutokset issue-numeroineen.",
+          tallenna: "Muistio ja issuet. Ensimmäiseksi valittu muutos perusteluineen työviikon 10 päiväkirjaan."
+        }
+      },
       help: {
         title: "Katselmointimuistion pohja",
         tree: "project-docs/katselmointi-vk10.md\n├─ Testaajan rooli ja ajankohta\n├─ Testattu versio (commit tai tag)\n├─ Testipolut (1 työntekijä, 2 projektipäällikkö)\n├─ Havainnot: | testaajan sanat | oma tulkinta |\n├─ Sovitut muutokset ja prioriteetit\n└─ Issue-numerot",
@@ -684,22 +1079,60 @@ window.NAYTTOPROJEKTI = {
 
     11: {
       type: "feature",
-      feature: "Katselmoinnin tärkein muutos on toteutettu omassa haarassa ja yhdistetty pääversioon pull requestilla (PR); vähintään yksi merge-konflikti on ratkaistu hallitusti.",
-      connection: "Työviikon 10 palaute muuttuu koodiksi, ja samalla harjoitellaan se tapa, jolla ominaisuus liitetään olemassa olevaan versioon hallitusti.",
+      feature: "Testaajan tärkein havainto on korjattu julkaistussa versiossa, ja muutos on liitetty pääversioon pull requestilla.",
+      connection: "Työviikon 10 katselmoinnin tärkein muutos muuttuu nyt koodiksi. Teet sen omassa haarassa ja liität pääversioon pull requestilla, koska ominaisuuden hallittu liittäminen olemassa olevaan versioon on oma osaamisvaatimuksensa. Palaute, joka ei johda muutokseen, on kerätty turhaan.",
       deliverable: "Ominaisuushaara pienine commiteineen, pull request kuvauksineen ja itsekatselmointeineen, ratkaistu konflikti ja muutos tuotannossa.",
       why: "Ominaisuuden hallittu liittäminen olemassa olevaan versioon on oma vaatimuksensa, ja palaute, joka ei johda muutokseen, on kerätty turhaan.",
       done: "Pull requestin kuvaus ja keskustelu näyttävät mitä muutettiin ja miksi; muutos on tuotannossa; konfliktin ratkaisu näkyy historiassa; katselmointimuistion kohta on kuitattu linkillä.",
       record: "Kirjoita työviikon 11 merkintään: mikä muutos valittiin ja miksi juuri se, pull requestin linkki, miten konflikti syntyi ja miten ratkaisit sen.",
       skills: ["Git-haarat", "pull request", "konfliktin ratkaisu"],
       termit: ["haara", "pull request"],
-      steps: [
-        ["Issue ja kriteerit.", "Valitse katselmoinnin tärkein muutos ja tarkenna sen hyväksymiskriteerit issueen ennen kuin kirjoitat riviäkään."],
-        ["Haara.", "Luo ominaisuushaara (feature branch) eli oma kehityslinja, jossa muutoksen voi tehdä rikkomatta pääversiota. Nimeä haara niin, että nimi kertoo mitä tehdään, esimerkiksi feature/viikkosuodatin-ylos."],
-        ["Toteutus pienin commitein.", "Tee muutos pienissä osissa. Yksi commit = yksi looginen muutos, viesti kertoo mitä ja miksi."],
-        ["Pull request ja itsekatselmointi.", "Avaa pull request (PR) eli pyyntö yhdistää haaran muutokset pääversioon. Kirjoita kuvaus (mitä, miksi, linkki palautteeseen) ja katselmoi oma koodisi kommentein: perustele valinnat ja merkitse kohdat, joita epäilet."],
-        ["Konfliktin ratkaisu ja merge.", "Merge tarkoittaa haaran yhdistämistä pääversioon, ja merge-konflikti syntyy, kun sama kohta on muuttunut molemmissa. Ratkaise konflikti hallitusti ja yhdistä pääversioon. Jos konfliktia ei synny luonnostaan, tee ohjattu harjoituskonflikti ja merkitse se selvästi harjoitukseksi."],
-        ["Julkaisu ja todennus palautetta vasten.", "Julkaise muutos ja tarkista se julkaistusta versiosta. Kuittaa katselmointimuistion kohta linkillä."]
-      ],
+      tehtavat: {
+        "11-1": {
+          miksi: "Tarkat hyväksymiskriteerit kertovat ennen koodia, milloin muutos on valmis ja mitä tarkistat julkaistusta versiosta.",
+          osat: [
+            ["Valitse muutos", "Valitse katselmoinnin tärkein muutos niistä issueista, jotka sovittiin ohjaajan kanssa työviikolla 10."],
+            ["Tarkenna kriteerit", "Kirjoita issueen hyväksymiskriteerit, jotka voi tarkistaa julkaistusta versiosta."],
+            ["Linkitä palautteeseen", "Lisää issueen viittaus katselmointimuistion kohtaan ja testaajan sitaattiin."]
+          ],
+          valmis: "Issuessa on hyväksymiskriteerit ja viittaus katselmointimuistion kohtaan, ennen kuin olet kirjoittanut riviäkään koodia.",
+          tallenna: "Issue GitHubissa. Valittu muutos ja valinnan syy työviikon 11 päiväkirjaan."
+        },
+        "11-2": {
+          miksi: "Haarassa muutoksen voi tehdä rikkomatta pääversiota. Pienet commitit näyttävät, miten muutos eteni.",
+          osat: [
+            ["Luo haara", "Luo ominaisuushaara eli oma kehityslinja päivitetystä main-haarasta. Nimeä se tehtävän mukaan, esimerkiksi `feature/viikkosuodatin-ylos`."],
+            ["Tee pienet commitit", "Tee muutos pienissä osissa. Yksi commit on yksi looginen muutos, ja viesti kertoo, mitä ja miksi."],
+            ["Vie haara GitHubiin", "Vie haara etärepositoryyn komennolla `git push`, jotta voit avata siitä pull requestin."]
+          ],
+          valmis: "Muutos on omassa haarassa useana pienenä committina, ja haara näkyy GitHubissa.",
+          tallenna: "Haara ja commitit GitHubissa.",
+          sanat: ["haara"]
+        },
+        "11-3": {
+          miksi: "Pull request näyttää, mitä muutettiin ja miksi. Konfliktin hallittu ratkaisu on osa ominaisuuden liittämistä olemassa olevaan versioon.",
+          osat: [
+            ["Avaa pull request", "Avaa pull request (PR) eli pyyntö yhdistää haara pääversioon. Kirjoita kuvaus: mitä, miksi ja linkki palautteeseen."],
+            ["Katselmoi oma koodi", "Kommentoi pull requestiin omat valintasi perusteluineen ja merkitse kohdat, joita epäilet."],
+            ["Ratkaise konflikti", "Merge-konflikti syntyy, kun sama kohta on muuttunut molemmissa haaroissa. Ratkaise se tiedosto kerrallaan ja aja testit ennen commitia."],
+            ["Harjoittele tarvittaessa", "Jos konfliktia ei synny luonnostaan, tee ohjattu harjoituskonflikti ja merkitse se selvästi harjoitukseksi."],
+            ["Yhdistä pääversioon", "Yhdistä haara pääversioon eli tee merge, kun kuvaus ja itsekatselmointi ovat valmiit."]
+          ],
+          valmis: "Pull requestin kuvaus ja kommentit näyttävät, mitä muutettiin ja miksi, ja konfliktin ratkaisu näkyy historiassa.",
+          tallenna: "Pull requestin linkki sekä se, miten konflikti syntyi ja miten ratkaisit sen, työviikon 11 päiväkirjaan.",
+          sanat: ["pull request"]
+        },
+        "11-4": {
+          miksi: "Muutos on valmis vasta, kun se toimii siellä, missä asiakas sitä käyttää.",
+          osat: [
+            ["Julkaise", "Julkaise yhdistetty pääversio samalla julkaisuputkella kuin ennenkin."],
+            ["Todenna palautetta vasten", "Avaa julkaistu versio ja tee juuri se asia, josta testaaja huomautti. Sen pitää nyt onnistua ilman epäröintiä."],
+            ["Kuittaa muistio", "Kuittaa katselmointimuistion kohta linkillä pull requestiin."]
+          ],
+          valmis: "Muutos toimii julkaistussa versiossa, ja katselmointimuistion kohta on kuitattu linkillä.",
+          tallenna: "Ennen/jälkeen-kuvakaappaus työviikon 11 päiväkirjaan."
+        }
+      },
       help: {
         title: "Konfliktin ratkaisu ja PR-kuvauksen pohja",
         tree: "git switch -c feature/viikkosuodatin-ylos\n… commitit …\ngit switch main && git pull\ngit switch feature/viikkosuodatin-ylos\ngit merge main          ← konflikti näkyy tässä\ngit status              ← mitkä tiedostot ovat kesken\n… ratkaise merkinnät …\nnpm test                ← testit ennen committia\ngit add . && git commit\n→ pull request → itsekatselmointi → merge",
@@ -718,22 +1151,58 @@ window.NAYTTOPROJEKTI = {
 
     12: {
       type: "feature",
-      feature: "Tuntikirjaus onnistuu oikealla puhelimella; sovellus toimii näppäimistöllä, lomakkeilla on label-kytkennät ja kontrastit riittävät. Saavutettavuuspistemäärä on vähintään 90 ja ennen/jälkeen-raportit ovat tallessa.",
+      feature: "Työntekijä kirjaa tunnin oikealla puhelimella alle 30 sekunnissa, ja koko sovellus toimii pelkällä näppäimistöllä.",
       excerpt: "Kirjaamisen pitää olla niin helppoa, ettei sitä voi vältellä: valmis alle puolessa minuutissa, myös puhelimella.",
-      connection: "Toiminnot ovat kasassa; nyt varmistetaan, että ne toimivat siellä missä asiakkaan väki niitä käyttää: puhelimella, näppäimistöllä ja ruudunlukijalla.",
+      connection: "Toiminnot ovat kasassa, ja palautemuutos on tuotannossa. Nyt varmistat, että ne toimivat siellä, missä asiakkaan väki niitä käyttää: puhelimella asiakaskäynnillä, näppäimistöllä ja ruudunlukijalla. Mittaus ennen ja jälkeen tekee parannuksesta todistettavan.",
       deliverable: "Lighthouse-raportit ennen ja jälkeen, omat CSS-taitekohdat, korjattu näppäinpolku, label-kytkennät ja kaavion tekstivastine.",
       why: "Asiakkaan väki kirjaa tunteja asiakaskäynneillä puhelimella, ja saavutettavuus on webprofiilissa vaatimus, ei kaunistus. Ennen/jälkeen-mittaus tekee parannuksesta todistettavan.",
       done: "Kirjaus on tehty oikealla puhelimella alusta loppuun alle 30 sekunnissa; koko käyttöpolku kulkee pelkällä näppäimistöllä; saavutettavuuspistemäärä on vähintään 90 ja molemmat raportit ovat repossa.",
       record: "Kirjoita työviikon 12 merkintään: lähtö- ja lopputulokset numeroina, korjauslista kohta kohdalta, puhelimella mitattu kirjausaika ja se, mikä näppäinpolussa oli rikki.",
       skills: ["responsiivinen CSS", "saavutettavuus", "mittaustyökalut", "mobiilitestaus"],
-      steps: [
-        ["Lähtömittaus.", "Aja Lighthouse (saavutettavuus ja suorituskyky) ja tallenna raportti repositoryyn. Tämä on lähtötaso, jota vastaan parannus todistetaan."],
-        ["Taitekohdat ja mobiilitesti laitteella.", "Korjaa responsiivisuus omilla CSS-taitekohdilla: kirjauslomake ja raportit mahtuvat puhelimen näytölle. Testaa oikealla laitteella ja ota aika kirjaukselta."],
-        ["Näppäinpolku läpi sovelluksen.", "Kulje koko sovellus pelkällä näppäimistöllä: kirjautuminen, kirjaus, lista, raportit. Merkitse jokainen kohta, jossa fokus katoaa tai jumittuu."],
-        ["Labelit, hierarkia ja kontrastit.", "Kytke jokainen lomakekenttä label-elementtiin, korjaa otsikkohierarkia ja varmista kontrastit. CSS-ratkaisut tehdään itse."],
-        ["Kaavion tekstivastine.", "Anna jokaiselle kaaviolle tekstivastine: sama data taulukkona, jotta tieto on saatavilla ilman kuvaa."],
-        ["Loppumittaus ja vertailu.", "Aja Lighthouse uudelleen, tallenna raportti ja kirjoita ennen/jälkeen-vertailu: mitkä korjaukset nostivat pistemäärää."]
-      ],
+      tehtavat: {
+        "12-1": {
+          miksi: "Lähtömittaus on se taso, jota vastaan parannus todistetaan. Ilman sitä ennen/jälkeen-vertailua ei voi tehdä.",
+          osat: [
+            ["Aja Lighthouse", "Aja Lighthouse eli Chromen kehittäjätyökalujen laatumittari julkaistulle versiolle: saavutettavuus ja suorituskyky."],
+            ["Tallenna raportti", "Tallenna raportti repositoryyn, ennen kuin korjaat mitään."],
+            ["Kirjaa luvut", "Kirjaa saavutettavuuden ja suorituskyvyn pistemäärät muistiin."]
+          ],
+          valmis: "Lähtötason raportti on repositoryssa, ja pistemäärät on kirjattu ennen ensimmäistäkään korjausta.",
+          tallenna: "Lighthouse-raportti `project-docs/`-kansioon, pistemäärät työviikon 12 päiväkirjaan."
+        },
+        "12-2": {
+          miksi: "Asiakkaan väki kirjaa tunteja asiakaskäynneillä puhelimella. Selaimen laitesimulaattori ei paljasta kaikkea.",
+          osat: [
+            ["Valitse taitekohdat", "Valitse taitekohdat oman sisältösi mukaan: siitä leveydestä, jossa lomake tai taulukko alkaa ahtautua."],
+            ["Korjaa CSS", "Korjaa responsiivisuus omilla CSS-taitekohdilla niin, että kirjauslomake ja raportit mahtuvat puhelimen näytölle."],
+            ["Testaa puhelimella", "Tee kirjaus oikealla puhelimella alusta loppuun ja ota aika. Tavoite on alle 30 sekuntia."]
+          ],
+          valmis: "Kirjaus on tehty oikealla puhelimella alusta loppuun alle 30 sekunnissa.",
+          tallenna: "Kuvakaappaus puhelimelta ja mitattu kirjausaika työviikon 12 päiväkirjaan."
+        },
+        "12-3": {
+          miksi: "Saavutettavuus on webprofiilissa vaatimus, ei kaunistus. Sovellus, joka toimii näppäimistöllä ja ruudunlukijalla, on selkeämpi myös hiiren käyttäjälle.",
+          osat: [
+            ["Kulje näppäinpolku", "Kulje koko sovellus pelkällä näppäimistöllä: kirjautuminen, kirjaus, lista ja raportit. Merkitse jokainen kohta, jossa fokus katoaa tai jumittuu."],
+            ["Kytke labelit", "Kytke jokainen lomakekenttä label-elementtiin ja virheviesti ohjelmallisesti kenttäänsä."],
+            ["Korjaa hierarkia ja kontrastit", "Korjaa otsikkohierarkia ilman hyppyjä ja varmista kontrastit myös napeissa. CSS-ratkaisut tehdään itse."],
+            ["Lisää kaavion tekstivastine", "Anna jokaiselle kaaviolle tekstivastine: sama data taulukkona, jotta tieto on saatavilla ilman kuvaa."],
+            ["Kirjaa korjauslista", "Kirjaa jokainen korjaus omalle rivilleen korjauslistaan."]
+          ],
+          valmis: "Koko käyttöpolku kulkee pelkällä näppäimistöllä, jokaisella kentällä on label ja jokaisella kaaviolla tekstivastine.",
+          tallenna: "Korjauslista ja näppäinpolun kuvaus työviikon 12 päiväkirjaan."
+        },
+        "12-4": {
+          miksi: "Ennen/jälkeen-vertailu todistaa, mitkä korjaukset oikeasti paransivat sovellusta.",
+          osat: [
+            ["Aja Lighthouse uudelleen", "Aja sama mittaus samalle sivulle ja tallenna raportti repositoryyn."],
+            ["Kirjoita vertailu", "Kirjoita ennen/jälkeen-vertailu: pistemäärät ja ne korjaukset, jotka nostivat niitä."],
+            ["Tarkista tavoite", "Tarkista, että saavutettavuuspistemäärä on vähintään 90. Jos ei ole, palaa korjauslistaan."]
+          ],
+          valmis: "Saavutettavuuspistemäärä on vähintään 90, ja molemmat raportit ja vertailu ovat repositoryssa.",
+          tallenna: "Loppuraportti ja vertailu `project-docs/`-kansioon. Lähtö- ja lopputulokset numeroina työviikon 12 päiväkirjaan."
+        }
+      },
       help: {
         title: "Saavutettavuustarkistuslista ja taitekohdat",
         tree: "Näppäinpolku (testaa Tabilla)\nKirjautuminen → sposti → salasana → Kirjaudu\n  ↓\nKirjaus → projekti → tehtävälaji → tunnit → päivä → selite → Tallenna\n  ↓\nOmat kirjaukset → suodattimet → rivin muokkaa/poista\n  ↓\nRaportit → ryhmittely → aikaväli → kaavio → tekstivastine",
@@ -752,23 +1221,59 @@ window.NAYTTOPROJEKTI = {
 
     13: {
       type: "laatu",
-      feature: "Tietoturvariskien arviointi on dokumentoitu ja korjaukset tehty: validointi molemmissa päissä, roolipohjainen pääsy jokaisella API-reitillä, salaisuudet ympäristömuuttujissa ja XSS-tarkistus selityskentille.",
+      feature: "Jokainen rajapinnan reitti vastaa jokaiselle roolille odotetulla koodilla, ja selitekenttään kirjoitettu skripti näkyy pelkkänä tekstinä.",
       excerpt: "Jokainen näkee omat kirjauksensa ja omat yhteenvetonsa, mutta ei muiden. Tuntitiedot ovat herkkää tietoa.",
-      connection: "Kaikki reitit ovat nyt olemassa, joten ne voi käydä läpi kerralla: jokainen reitti jokaisella roolilla, ja löydökset korjataan ennen testausviikkoa.",
+      connection: "Kaikki reitit ovat nyt olemassa, joten ne voi käydä läpi kerralla: jokainen reitti jokaisella roolilla. Työaikatiedot ovat henkilöön sidottua tietoa, ja yksi vuotava raporttireitti vie luottamuksen koko järjestelmään. Löydökset korjataan nyt, jotta työviikon 14 testaus tehdään turvallista versiota vastaan.",
       deliverable: "Tietoturva-arvio jäännösriskeineen, ajettu reittitaulukko, korjaukset, salaisuudet .env-tiedostossa ja XSS-testin tulos.",
       why: "Työaikatiedot ovat henkilöön sidottua, palkkakeskusteluihin vaikuttavaa dataa: yksi vuotava raporttireitti vie luottamuksen koko järjestelmään. Asiakas sanoi sen itse: tuntitiedot ovat herkkää tietoa.",
       done: "Reittitaulukko on ajettu ja jokainen rivi täsmää odotettuun (poikkeamat korjattu ja uusintatestattu); skripti-syöte renderöityy tekstinä; repossa tai sen historiassa ei ole salaisuuksia; arviodokumentti on project-docs-kansiossa.",
       record: "Kirjoita työviikon 13 merkintään: viisi riskiluokkaa ja niiden ratkaisut, reittitaulukon poikkeamat ja korjaukset sekä se, mitä jäännösriskiä et voinut poistaa ja miksi.",
       skills: ["tietoturva-arviointi", "käyttöoikeustestaus", "ympäristömuuttujat", "XSS"],
       termit: ["XSS"],
-      steps: [
-        ["Riskien kartoitus.", "Käy läpi viisi riskiluokkaa: syötteet, käyttöoikeudet, salasanat, istunnot ja tietojen näkyvyys. Kirjaa jokaisesta riski, ratkaisu ja jäännösriski."],
-        ["Reittitaulukon ajo.", "Tee taulukko, jossa on jokainen API-reitti kertaa kolme roolia (kirjautumaton, työntekijä, projektipäällikkö). Kirjaa odotettu vastaus ennen ajoa ja aja sitten jokainen rivi."],
-        ["Korjaukset.", "Korjaa jokainen poikkeama ja uusintatestaa rivi. Poikkeama ilman uusintatestiä ei ole korjattu."],
-        ["Salaisuudet ympäristöön.", "Siirrä salaisuudet .env-tiedostoon, lisää se gitignoreen ja tarkista, ettei niitä ole Git-historiassa."],
-        ["XSS-testi.", "XSS tarkoittaa hyökkäystä, jossa syötekenttään kirjoitettu skripti ajetaan toisen käyttäjän selaimessa. Kirjaa selitteeksi <script>alert(1)</script> ja tarkista jokainen näkymä, jossa selite näkyy: syötteen pitää näkyä tekstinä."],
-        ["Arviodokumentti valmiiksi.", "Kokoa arvio, taulukko ja korjaukset yhdeksi dokumentiksi project-docs-kansioon."]
-      ],
+      tehtavat: {
+        "13-1": {
+          miksi: "Riskiluokat ohjaavat, mitä testaat ja korjaat. Kirjattu jäännösriski kertoo rehellisesti, mitä ei voitu poistaa.",
+          osat: [
+            ["Käy riskiluokat läpi", "Käy läpi viisi riskiluokkaa: syötteet, käyttöoikeudet, salasanat, istunnot ja tietojen näkyvyys."],
+            ["Kirjaa arvio", "Kirjaa jokaisesta riskiluokasta riski, ratkaisu ja jäännösriski."],
+            ["Tarkista kyselyt", "Tarkista, että SQL-kyselyt käyttävät parametreja eivätkä yhdistä käyttäjän syötettä merkkijonoon."]
+          ],
+          valmis: "Riskiarviossa on viisi riskiluokkaa, ja jokaisella on riski, ratkaisu ja jäännösriski.",
+          tallenna: "Arvio `project-docs/`-kansioon. Riskiluokat ja ratkaisut työviikon 13 päiväkirjaan.",
+          sanat: ["SQL"]
+        },
+        "13-2": {
+          miksi: "Reittitaulukko löytää sen, mitä käyttöliittymästä ei näe: reitin, joka vastaa väärälle roolille.",
+          osat: [
+            ["Tee reittitaulukko", "Tee taulukko, jossa on jokainen rajapinnan reitti kertaa kolme roolia: kirjautumaton, työntekijä ja projektipäällikkö."],
+            ["Kirjaa odotukset", "Kirjaa jokaiselle riville odotettu vastauskoodi ennen ajoa."],
+            ["Aja taulukko", "Aja jokainen rivi kolmella istunnolla ja kirjaa saatu vastauskoodi odotetun viereen."]
+          ],
+          valmis: "Jokaisella reittitaulukon rivillä on odotettu ja saatu vastaus, ja poikkeamat on merkitty.",
+          tallenna: "Ajettu reittitaulukko `project-docs/`-kansioon."
+        },
+        "13-3": {
+          miksi: "Poikkeama ilman uusintatestiä ei ole korjattu. Repositoryyn päätynyt salaisuus on vuotanut, vaikka tiedosto poistettaisiin myöhemmin.",
+          osat: [
+            ["Korjaa poikkeamat", "Korjaa jokainen reittitaulukon poikkeama ja aja rivi uudelleen."],
+            ["Siirrä salaisuudet", "Siirrä salaisuudet `.env`-tiedostoon ja varmista, että se on `.gitignore`-tiedostossa."],
+            ["Tarkista Git-historia", "Tarkista Git-historia salaisuuksien varalta, ei vain nykyistä tilaa."]
+          ],
+          valmis: "Jokainen reittitaulukon rivi täsmää odotettuun uusintatestin jälkeen, eikä repositoryssa tai sen historiassa ole salaisuuksia.",
+          tallenna: "Korjausten ja `.env`-järjestelyn commitit. Poikkeamat ja korjaukset työviikon 13 päiväkirjaan."
+        },
+        "13-4": {
+          miksi: "Selite on vapaata tekstiä, jonka projektipäällikkö näkee porautuessaan. Jos siihen kirjoitettu skripti suoritetaan, toisen käyttäjän istunto on vaarassa.",
+          osat: [
+            ["Syötä skripti", "XSS tarkoittaa hyökkäystä, jossa syötekenttään kirjoitettu skripti ajetaan toisen käyttäjän selaimessa. Kirjaa selitteeksi `<script>alert(1)</script>`."],
+            ["Tarkista näkymät", "Avaa jokainen näkymä, jossa selite näkyy. Syötteen pitää näkyä tekstinä, eikä konsolissa saa olla virhettä."],
+            ["Kokoa arvio", "Kokoa riskiarvio, reittitaulukko, korjaukset ja XSS-testin tulos yhdeksi dokumentiksi `project-docs/`-kansioon."]
+          ],
+          valmis: "Skriptisyöte näkyy tekstinä kaikissa näkymissä, ja tietoturva-arvio on yhtenä dokumenttina repositoryssa.",
+          tallenna: "XSS-testin kuvakaappaus ja tietoturva-arvio `project-docs/`-kansioon. Jäännösriski, jota et voinut poistaa, työviikon 13 päiväkirjaan.",
+          sanat: ["XSS"]
+        }
+      },
       help: {
         title: "Reittitaulukko ja riskilistan runko",
         tree: "RISKILUOKAT TÄSSÄ SOVELLUKSESSA\n1 Syötteet         validointi molemmissa päissä, SQL-parametrit\n2 Käyttöoikeudet   rooli + omistajuus jokaisella reitillä\n3 Salasanat        hash, ei lokeihin, ei siemendataan tuotannossa\n4 Istunnot         vanheneminen, uloskirjautuminen, evästeasetukset\n5 Näkyvyys         kuka näkee kenenkin tunnit ja yhteenvedot",
@@ -787,8 +1292,8 @@ window.NAYTTOPROJEKTI = {
 
     14: {
       type: "laatu",
-      feature: "Vähintään 12 suunniteltua testitapausta on ajettu kolmessa luokassa (normaali, rajat ja virhetilanteet) ja vähintään kaksi täydellistä virheenkorjausketjua on dokumentoitu.",
-      connection: "Tietoturvakorjausten jälkeen koko sovellus testataan kerralla: nyt on olemassa kaikki se, mitä testimatriisi on työviikolta 2 asti odottanut.",
+      feature: "Vähintään 12 suunniteltua testitapausta on ajettu odotusarvoja vasten, ja vähintään kaksi virhettä on korjattu täydellisinä virheenkorjausketjuina.",
+      connection: "Tietoturvakorjausten jälkeen koko sovellus testataan kerralla, koska nyt on olemassa kaikki se, mitä testimatriisi on työviikolta 2 asti odottanut. Raportointisovellus, jonka summiin ei voi luottaa, on hyödytön. Löydetyt virheet korjataan täydellisinä ketjuina, ja regressiotestit suojaavat laskentaa julkaisuun asti.",
       deliverable: "Täydennetty testimatriisi odotusarvoineen, ajetut testitulokset, vähintään kaksi täydellistä virheenkorjausketjua ja laskentamoduulin regressiotestit.",
       why: "Raportointisovellus, jonka summiin ei voi luottaa, on hyödytön. Ilman ennen ajoa kirjattua odotusarvoa testi ei todista mitään: se vain toteaa, mitä sattui tapahtumaan.",
       done: "Testiraportissa jokaisella tapauksella on luokka, odotettu ja havaittu tulos sekä ajankohta; vähintään kaksi ketjua on täydellisiä commit-viittauksineen; regressiotestit ajetaan komennolla ja menevät läpi.",
@@ -796,14 +1301,50 @@ window.NAYTTOPROJEKTI = {
       skills: ["testisuunnittelu", "virheenkorjaus", "regressiotestaus"],
       termit: ["T01"],
       resources: [["Lataa dokumentointipohjat (testimatriisi)", "downloads/nayton-dokumentointipohjat.docx", true]],
-      steps: [
-        ["Matriisin täydennys.", "Täydennä testimatriisi vähintään 12 tapaukseen. Jokainen testitapaus saa tunnuksen T01–T13, jotta siihen voi viitata päiväkirjassa ja korjausketjussa. Jaa tapaukset kolmeen luokkaan: normaali käyttö, rajat ja virhetilanteet."],
-        ["Odotetut tulokset ennen ajoa.", "Kirjoita jokaiselle tapaukselle odotettu tulos ennen kuin ajat sen. Tämä on koko testauksen ydin."],
-        ["Testiajot ja kirjaus.", "Aja testit ja kirjaa havaitut tulokset omaan sarakkeeseensa odotettujen viereen. Merkitse ajankohta."],
-        ["Virheanalyysi.", "Selvitä jokaisen poikkeaman syy: ei arvausta, vaan selaimen kehittäjätyökaluilla, lokeilla tai testiaineistolla todennettu syy."],
-        ["Korjausketjut committeineen.", "Korjaa löytyneet virheet täydellisinä ketjuina: havainto → toistamisohje → syy → korjauscommit → uusintatesti → regressiotesti."],
-        ["Regressiotestit.", "Lisää laskentamoduulille yksikkötestit regressiosuojaksi: viikkorajat, tyhjä viikko ja vuodenvaihde."]
-      ],
+      tehtavat: {
+        "14-1": {
+          miksi: "Ilman ennen ajoa kirjattua odotusarvoa testi ei todista mitään: se vain toteaa, mitä sattui tapahtumaan.",
+          osat: [
+            ["Täydennä tapaukset", "Täydennä testimatriisi vähintään 12 tapaukseen. Jokainen testitapaus saa tunnuksen T01–T13, jotta siihen voi viitata päiväkirjassa ja korjausketjussa."],
+            ["Jaa luokkiin", "Jaa tapaukset kolmeen luokkaan: normaali käyttö, rajat ja virhetilanteet."],
+            ["Kirjaa odotukset", "Kirjoita jokaiselle tapaukselle odotettu tulos, ennen kuin ajat sen."]
+          ],
+          valmis: "Matriisissa on vähintään 12 tapausta kolmessa luokassa, ja jokaisella on odotettu tulos ennen ajoa.",
+          tallenna: "Testimatriisi `project-docs/`-kansioon tai dokumentointipohjan testimatriisiin.",
+          sanat: ["T01"]
+        },
+        "14-2": {
+          miksi: "Kun havaittu tulos on odotetun vieressä, näet heti, mikä toimii ja mikä ei.",
+          osat: [
+            ["Aja tapaukset", "Aja jokainen testitapaus ja kirjaa havaittu tulos omaan sarakkeeseensa odotetun viereen, myös silloin, kun se on sama kuin odotus."],
+            ["Merkitse ajankohta", "Merkitse jokaiseen tapaukseen ajankohta ja tulos: läpi tai poikkeama."],
+            ["Laske tulos", "Laske, montako tapausta meni läpi ensimmäisellä ajolla."]
+          ],
+          valmis: "Testiraportissa jokaisella tapauksella on luokka, odotettu ja havaittu tulos sekä ajankohta.",
+          tallenna: "Testiraportti `project-docs/`-kansioon. Ensimmäisellä ajolla läpi menneiden määrä työviikon 14 päiväkirjaan."
+        },
+        "14-3": {
+          miksi: "Täydellinen ketju todistaa, että virhe on ymmärretty ja korjattu eikä korjaus rikkonut muuta.",
+          osat: [
+            ["Selvitä syy", "Selvitä jokaisen poikkeaman syy selaimen kehittäjätyökaluilla, lokeilla tai testiaineistolla. Arvaus ei riitä."],
+            ["Korjaa ketjuna", "Korjaa virhe ketjuna: havainto → toistamisohje → syy → korjauscommit → uusintatesti → regressiotesti."],
+            ["Kirjaa kaksi ketjua", "Kirjaa vähintään kaksi ketjua kokonaisina, kaikki kuusi kohtaa commit-viittauksineen."],
+            ["Tarkista aitous", "Älä keksi virheitä. Jos aitoja ei löydy, pyydä ohjaajaa merkitsemään vikatehtäviä, joista ketjut ajetaan."]
+          ],
+          valmis: "Vähintään kaksi virheenkorjausketjua on täydellisiä commit-viittauksineen ja perustuu aitoihin havaintoihin.",
+          tallenna: "Ketjut `project-docs/`-kansioon tai dokumentointipohjaan. Kaksi ketjua kokonaisina työviikon 14 päiväkirjaan."
+        },
+        "14-4": {
+          miksi: "Regressiotesti paljastaa heti, jos aiemmin toiminut laskenta menee rikki, kun koodia muutetaan työviikolla 15.",
+          osat: [
+            ["Kirjoita testit", "Lisää laskentamoduulille yksikkötestit viikkorajoille, tyhjälle viikolle ja vuodenvaihteelle."],
+            ["Aja komennolla", "Aja testit yhdellä komennolla puhtaassa työhakemistossa ilman käsin tehtyjä vaiheita."],
+            ["Tarkista tulos", "Tarkista, että kaikki testit menevät läpi, ja kirjaa ajotulos."]
+          ],
+          valmis: "Regressiotestit ajetaan yhdellä komennolla ja menevät läpi.",
+          tallenna: "Testikoodin commit ja ajotulos työviikon 14 päiväkirjaan."
+        }
+      },
       help: {
         title: "Virheenkorjausketjun ja testiraportin pohjat",
         tree: "TESTILUOKAT (13 tapausta, jako 4 / 4 / 5)\nnormaali   T01 kirjaus · T02 hallinta · T03 viikkosumma · T04 roolit\nrajat      T05 0,25 h ja 24 h · T06 tyhjä viikko\n           T07 sunnuntai ja vuodenvaihde · T08 tyhjä projekti\nvirhe      T09 virheelliset tunnit · T10 suora API-kutsu\n           T11 XSS-selite · T12 verkkovirhe · T13 istunto vanhenee",
@@ -822,22 +1363,57 @@ window.NAYTTOPROJEKTI = {
 
     15: {
       type: "laatu",
-      feature: "Koodi on refaktoroitu testit vihreinä, ja dokumentaatio on valmis: README, käyttöönotto-ohje, riippuvuustaulukko ja asiakkaan pikaohjeet molemmille rooleille.",
+      feature: "Uusi käyttäjä pääsee alkuun pelkillä ohjeilla, ja refaktoroitu koodi toimii samoin kuin ennen, mikä näkyy vihreinä testeinä.",
       excerpt: "Mukana on ohje, jolla uusi työntekijä pääsee alkuun kysymättä minulta mitään.",
-      connection: "Testit ovat vihreinä, joten koodia uskaltaa siistiä, ja käyttöönotto-ohje kirjoitetaan nyt, koska sitä testataan oikeasti työviikolla 16.",
+      connection: "Testit ovat vihreinä, joten koodia uskaltaa nyt siistiä: jos refaktorointi rikkoo jotain, regressiotestit kertovat sen heti. Samalla kirjoitat käyttöönotto-ohjeen ja pikaohjeet, koska niitä testataan oikeasti työviikolla 16. Ilman toimivaa ohjetta julkaisutestaus epäonnistuu.",
       deliverable: "Kolme dokumentoitua refaktorointia ennen/jälkeen-diffeineen, README ja käyttöönotto-ohje, riippuvuustaulukko sekä pikaohjeet työntekijälle ja projektipäällikölle.",
       why: "Ylläpidettävyys ja dokumentointi todennetaan tässä, ja ilman testattavaa käyttöönotto-ohjetta työviikon 16 julkaisutestaus epäonnistuu varmasti.",
       done: "Regressiotestit menevät läpi refaktoroinnin jälkeen; ennen/jälkeen-diffit ja perustelut ovat repossa; dokumentit ovat repossa ja ohjeet on kirjoitettu käyttäjälle, ei arvioijalle; lisenssin tila on kirjattu.",
       record: "Kirjoita työviikon 15 merkintään: kolme refaktorointikohdetta ja miksi valitsit juuri ne, mitä dokumentaatiota kirjoitit ja kenelle sekä lisenssikysymyksen tila.",
       skills: ["refaktorointi", "ylläpidettävyys", "dokumentointi"],
-      steps: [
-        ["Refaktorointikohteiden valinta perusteluineen.", "Valitse kolme kohdetta: pitkä funktio, toistuva koodi ja epäselvä nimi. Perustele jokainen valinta yhdellä lauseella."],
-        ["Refaktorointi testit vihreinä.", "Refaktoroi yksi kohde kerrallaan ja aja regressiotestit jokaisen jälkeen. Tallenna ennen/jälkeen-diffi."],
-        ["README ja käyttöönotto-ohje.", "Kirjoita käyttöönotto-ohje, jolla sovelluksen saa asennettua tyhjään ympäristöön vaihe vaiheelta. Tätä ohjetta testataan oikeasti työviikolla 16."],
-        ["Pikaohjeet rooleittain.", "Kirjoita työntekijän ohje (kirjaus) ja projektipäällikön ohje (projektit, tehtävälajit, raportit). Kirjoita käyttäjälle, älä arvioijalle."],
-        ["Riippuvuustaulukko.", "Kokoa taulukko: paketti → rooli tässä projektissa → versio. Jokaiselle riippuvuudelle pitää olla syy."],
-        ["Lisenssikysymys ohjaajalle.", "Kysy lisenssi ohjaajalta. Jos vastausta ei vielä ole, kirjaa se suunnitelmaan avoimeksi asiaksi. Älä päätä itse."]
-      ],
+      tehtavat: {
+        "15-1": {
+          miksi: "Refaktorointi eli rakenteen parannus ilman toiminnan muutosta tekee koodista helpomman ylläpitää. Testit todistavat, että toiminta ei muuttunut.",
+          osat: [
+            ["Valitse kohteet", "Valitse kolme kohdetta: pitkä funktio, toistuva koodi ja epäselvä nimi. Perustele jokainen valinta yhdellä lauseella."],
+            ["Refaktoroi yksi kerrallaan", "Refaktoroi yksi kohde kerrallaan ja aja regressiotestit jokaisen jälkeen."],
+            ["Tallenna diffit", "Tallenna jokaisesta ennen/jälkeen-diffi ja kirjoita, miksi jälkimmäinen on ylläpidettävämpi."]
+          ],
+          valmis: "Kolme refaktorointia on tehty, regressiotestit menevät läpi jokaisen jälkeen, ja diffit perusteluineen ovat repositoryssa.",
+          tallenna: "Ennen/jälkeen-diffit ja perustelut `project-docs/`-kansioon. Kohteet ja valinnan syyt työviikon 15 päiväkirjaan."
+        },
+        "15-2": {
+          miksi: "Asiakas haluaa ohjeen, jolla uusi työntekijä pääsee alkuun kysymättä häneltä mitään. Ohjetta testataan oikeasti työviikolla 16.",
+          osat: [
+            ["Täydennä README", "Täydennä README: mikä sovellus on ja kenelle, vaatimukset, käynnistys, tietokannan alustus ja testien ajo."],
+            ["Kirjoita käyttöönotto-ohje", "Kirjoita `project-docs/kayttoonotto.md`, jolla sovelluksen saa asennettua tyhjään ympäristöön vaihe vaiheelta."],
+            ["Dokumentoi ympäristömuuttujat", "Lisää esimerkkitiedosto `.env.esimerkki` ja kerro ohjeessa, mihin `.env` luodaan."],
+            ["Pyydä lukija", "Anna ohje toiselle luettavaksi ja pyydä häntä merkitsemään jokainen kohta, jota hän ei ymmärrä ilman lisäkysymyksiä."]
+          ],
+          valmis: "README ja käyttöönotto-ohje ovat repositoryssa, ja ohjetta voi seurata kirjaimellisesti ilman aiempaa tietoa projektista.",
+          tallenna: "`README.md` ja `project-docs/kayttoonotto.md` commitilla."
+        },
+        "15-3": {
+          miksi: "Pikaohjeet kirjoitetaan käyttäjälle, ei arvioijalle. Riippuvuustaulukko kertoo, miksi jokainen paketti on mukana.",
+          osat: [
+            ["Kirjoita työntekijän ohje", "Kirjoita `project-docs/pikaohje-tyontekija.md`: miten tunnit kirjataan."],
+            ["Kirjoita projektipäällikön ohje", "Kirjoita `project-docs/pikaohje-projektipaallikko.md`: projektit, tehtävälajit ja raportit."],
+            ["Kokoa riippuvuudet", "Kokoa taulukko: paketti → rooli tässä projektissa → versio. Jos paketille ei löydy roolia, harkitse sen poistoa."]
+          ],
+          valmis: "Molemmille rooleille on pikaohje käyttäjän kielellä, ja jokaisella riippuvuudella on taulukossa rooli ja versio.",
+          tallenna: "Pikaohjeet ja riippuvuustaulukko repositoryyn. Kenelle kirjoitit minkäkin ohjeen, työviikon 15 päiväkirjaan."
+        },
+        "15-4": {
+          miksi: "Lisenssi on ohjaajan päätös, jota ei tehdä itse eikä tekoälyllä. Toimeksiannon mukaan se kysytään viimeistään työviikolla 15.",
+          osat: [
+            ["Kysy ohjaajalta", "Kysy lisenssiä ohjaajalta, jos sitä ei ole vielä sovittu."],
+            ["Kirjaa tila", "Kirjaa vastaus suunnitelman Lisenssi-kenttään. Jos vastausta ei vielä ole, jätä kenttä avoimeksi asiaksi äläkä päätä itse."],
+            ["Tarkista LICENSE", "Jos lisenssi on sovittu, lisää `LICENSE`-tiedosto repositoryyn. Jos ei ole, kirjaa asia päiväkirjaan avoimena."]
+          ],
+          valmis: "Lisenssin tila on kirjattu suunnitelmaan: sovittu lisenssi on LICENSE-tiedostona, tai avoin asia on merkitty avoimeksi.",
+          tallenna: "Suunnitelman päivitys commitilla. Lisenssikysymyksen tila työviikon 15 päiväkirjaan."
+        }
+      },
       help: {
         title: "README-runko ja refaktorointiperustelu",
         tree: "README.md\n├─ Mikä sovellus on ja kenelle\n├─ Vaatimukset (Node-versio, käyttöjärjestelmä)\n├─ Asennus vaihe vaiheelta\n├─ Ympäristömuuttujat (.env.esimerkki)\n├─ Käynnistys: kehitys ja tuotanto\n├─ Tietokannan alustus\n├─ Testien ajo\n└─ Riippuvuudet ja niiden rooli\n\nproject-docs/\n├─ kayttoonotto.md      tyhjästä ympäristöstä toimivaan sovellukseen\n├─ pikaohje-tyontekija.md\n└─ pikaohje-projektipaallikko.md",
@@ -856,23 +1432,60 @@ window.NAYTTOPROJEKTI = {
 
     16: {
       type: "julkaisu",
-      feature: "Sisältö on jäädytetty, julkaisuehdokas (release candidate, RC) v1.0-rc1 on julkaistu ja merkitty Git-tagilla, ja nimetty ulkopuolinen henkilö on testannut sen molemmilla rooleilla pelkän kirjallisen ohjeen avulla.",
+      feature: "Ulkopuolinen testaaja on ottanut julkaisuehdokkaan v1.0-rc1 käyttöön pelkän kirjallisen ohjeen avulla ja kokeillut molempia rooleja.",
       excerpt: "Mukana on ohje, jolla uusi työntekijä pääsee alkuun kysymättä minulta mitään.",
-      connection: "Dokumentaatio on kirjoitettu; nyt se pannaan koetukselle oikeassa tilanteessa: ensin itse puhtaassa ympäristössä, sitten ulkopuolisen käsissä.",
+      connection: "Dokumentaatio on kirjoitettu ja sovellus testattu. Nyt jäädytät sisällön ja panet sekä sovelluksen että ohjeen koetukselle: ensin itse puhtaassa ympäristössä, sitten ulkopuolisen testaajan käsissä. Kun julkaisutestaus tehdään julkaisuehdokasta vasten, työviikko 17 jää kokonaan löydösten korjaamiseen ja v1.0:n julkaisuun.",
       deliverable: "Jäädytyspäätös ja issue-luokittelu, tagilla merkitty julkaisuehdokas (RC) julkisessa osoitteessa, oma asennuspöytäkirja, korjattu käyttöönotto-ohje, ulkopuolisen testauspöytäkirja ja estävien issueiden lista.",
       why: "Julkaisutestaus julkaisuehdokasta vasten jättää kokonaisen viikon puskuria: mitä tahansa testaaja löytää, korjaukselle on aikaa ennen v1.0:aa. Jäädytys estää viimeisten viikkojen valumisen uusiin ominaisuuksiin, ja oma puhdas asennus siivoaa ohjeen aukot ennen ulkopuolisen vuoroa.",
       done: "v1.0-rc1 on julkisessa osoitteessa ja merkitty tagilla; oma asennuspöytäkirja ja ulkopuolisen testauspöytäkirja (nimetty rooli, ajankohta, testaajan omat sanat erillään omasta tulkinnasta) ovat repossa; estävät virheet on kirjattu issueiksi (niitä ei korjata kiireellä tällä viikolla vaan seuraavalla).",
       record: "Kirjoita työviikon 16 merkintään: jäädytyspäätös ja mitä jätit v1.1-listalle, oman puhtaan asennuksen epäröintikohdat ja ohjeeseen tehdyt korjaukset sekä ulkopuolisen tärkeimmät havainnot sitaatteina.",
       skills: ["tuotantobuild", "ympäristökonfiguraatio", "versiotagit", "julkaisutestauksen järjestäminen"],
       termit: ["RC", "tagi"],
-      steps: [
-        ["Jäädytyspäätös ja issue-luokittelu.", "Päätä ja kirjaa: uusia ominaisuuksia ei enää lisätä. Luokittele jäljellä olevat issuet estäviksi tai v1.1-listalle."],
-        ["Build, asetukset ja julkaisuehdokkaan julkaisu.", "Tee tuotantobuild ja tarkista ympäristöasetukset: portti, tietokantatiedoston polku ja pysyvyys, salaisuudet ja NODE_ENV. Julkaise ja merkitse Git-tagilla v1.0-rc1. Tagi on versiomerkintä, joka kiinnitetään yhteen committiin, jotta juuri tämä versio löytyy myöhemmin."],
-        ["Oma puhdas asennus ohjeella.", "Asenna sovellus itse puhtaaseen ympäristöön pelkän käyttöönotto-ohjeen avulla. Pidä pöytäkirjaa jokaisesta kohdasta, jossa epäröit."],
-        ["Ohjeen korjaukset.", "Korjaa ohje pöytäkirjan perusteella ennen kuin annat sen ulkopuoliselle. Tallenna korjausdiffi."],
-        ["Ulkopuolisen julkaisutestaus.", "Nimetty ulkopuolinen henkilö testaa julkaistua julkaisuehdokasta pelkän kirjallisen ohjeen avulla, ilman suullista apua, molemmilla rooleilla."],
-        ["Havainnot pöytäkirjaan ja estävät issueiksi.", "Kirjaa havainnot testaajan omin sanoin ja oma tulkinta erikseen. Luokittele estävät virheet issueiksi seuraavan viikon korjattaviksi."]
-      ],
+      tehtavat: {
+        "16-1": {
+          miksi: "Jäädytys estää viimeisiä viikkoja valumasta uusiin ominaisuuksiin. Luokittelu kertoo, mikä on korjattava ennen v1.0:aa.",
+          osat: [
+            ["Kirjaa jäädytys", "Päätä ja kirjaa: uusia ominaisuuksia ei enää lisätä."],
+            ["Luokittele issuet", "Käy jäljellä olevat issuet läpi ja merkitse ne estäviksi tai v1.1-listalle."],
+            ["Kirjaa v1.1-lista", "Kirjaa, mitä jätit tietoisesti v1.1-listalle."]
+          ],
+          valmis: "Jäädytyspäätös on kirjattu, ja jokainen avoin issue on merkitty estäväksi tai v1.1-listalle.",
+          tallenna: "Jäädytyspäätös ja v1.1-lista työviikon 16 päiväkirjaan."
+        },
+        "16-2": {
+          miksi: "Julkaisuehdokas eli release candidate (RC) on lähes valmis versio, jota testataan ennen lopullista julkaisua. Tagi kiinnittää testattavan version.",
+          osat: [
+            ["Tee tuotantobuild", "Tee tuotantobuild puhtaassa hakemistossa."],
+            ["Tarkista asetukset", "Tarkista ympäristöasetukset: portti, tietokantatiedoston polku ja pysyvyys, salaisuudet ja `NODE_ENV`."],
+            ["Julkaise ja tee savutesti", "Julkaise ja aja savutesti julkisessa osoitteessa: kirjaus ja raportti. Tarkista, että lokit näkyvät alustan lokinäkymässä."],
+            ["Merkitse tagilla", "Merkitse versio Git-tagilla `v1.0-rc1` ja vie tagi etärepositoryyn. Tagi on versiomerkintä, joka kiinnitetään yhteen committiin."]
+          ],
+          valmis: "v1.0-rc1 on julkisessa osoitteessa ja merkitty tagilla, ja savutesti on ajettu.",
+          tallenna: "Tagi `v1.0-rc1` ja release GitHubissa. Savutestin tulos työviikon 16 päiväkirjaan.",
+          sanat: ["RC","tagi"]
+        },
+        "16-3": {
+          miksi: "Oma puhdas asennus löytää ohjeen aukot, ennen kuin ulkopuolinen testaaja joutuu niihin.",
+          osat: [
+            ["Asenna ohjeella", "Asenna sovellus puhtaaseen ympäristöön pelkän käyttöönotto-ohjeen avulla."],
+            ["Pidä pöytäkirjaa", "Kirjaa tiedostoon `project-docs/asennuspoytakirja-vk16.md` jokainen kohta, jossa epäröit: mitä tein, mihin pysähdyin ja mitä ohjeeseen lisättiin."],
+            ["Korjaa ohje", "Korjaa ohje pöytäkirjan perusteella, ennen kuin annat sen ulkopuoliselle. Tallenna korjausdiffi."]
+          ],
+          valmis: "Asennuspöytäkirja on repositoryssa, ja ohjetta on korjattu sen perusteella ennen ulkopuolisen testausta.",
+          tallenna: "Asennuspöytäkirja ja ohjeen korjausdiffi repositoryyn. Epäröintikohdat työviikon 16 päiväkirjaan."
+        },
+        "16-4": {
+          miksi: "Vain ulkopuolinen henkilö voi todistaa, että ohje riittää ilman sinua. Jokainen hänen kysymyksensä on ohjeen puute, ei testaajan vika.",
+          osat: [
+            ["Anna ohje ja osoite", "Anna nimetylle ulkopuoliselle käyttöönotto-ohje, julkinen osoite ja kirjallinen tehtävälista. Älä auta suullisesti."],
+            ["Testauta molemmat roolit", "Testaaja pääsee alkuun, kirjaa tunnin työntekijänä ja katsoo raportin projektipäällikkönä. Katso kellosta, kauanko alkuun pääseminen kesti."],
+            ["Kirjaa havainnot", "Kirjaa havainnot testaajan omin sanoin tiedostoon `project-docs/julkaisutestaus-vk16.md` ja oma tulkinta erikseen."],
+            ["Kirjaa estävät issueiksi", "Luokittele havainnot estäviksi tai v1.1-listalle ja kirjaa estävät issueiksi. Niitä ei korjata kiireellä tällä viikolla vaan työviikolla 17."]
+          ],
+          valmis: "Testauspöytäkirjassa on nimetty rooli, ajankohta, testaajan omat sanat ja oma tulkinta erikseen, ja estävät virheet ovat issueina.",
+          tallenna: "Julkaisutestauksen pöytäkirja ja estävien issueiden lista repositoryyn. Tärkeimmät havainnot sitaatteina työviikon 16 päiväkirjaan."
+        }
+      },
       help: {
         title: "Julkaisun tarkistuslista ja testauspöytäkirja",
         tree: "project-docs/\n├─ asennuspoytakirja-vk16.md   oma puhdas asennus, epäröintikohdat\n└─ julkaisutestaus-vk16.md     ulkopuolisen testaus, sitaatit\n\nTESTAAJAN TEHTÄVÄLISTA (annetaan kirjallisena)\n1 Pääse alkuun pelkällä ohjeella\n2 Kirjaudu sisään työntekijänä\n3 Kirjaa tunti\n4 Kirjaudu sisään projektipäällikkönä\n5 Katso raportti ja poraudu yhden henkilön kirjauksiin",
@@ -891,21 +1504,58 @@ window.NAYTTOPROJEKTI = {
 
     17: {
       type: "julkaisu",
-      feature: "Julkaisutestauksen estävät virheet on korjattu täydellisenä virheenkorjausketjuna, v1.0 on julkaistu ja merkitty tagilla, ja sovellus on luovutettu asiakkaalle.",
-      connection: "Edellisen viikon havainnot muuttuvat korjauksiksi, ja julkaisuehdokkaasta tulee v1.0. Loppuviikko on puskuria, jota ei täytetä uusilla ominaisuuksilla.",
+      feature: "Asiakas saa v1.0:n julkisesta osoitteesta ja luovutusviestin, jolla tiimi pääsee alkuun.",
+      connection: "Työviikon 16 julkaisutestauksen havainnot muuttuvat nyt korjauksiksi, ja julkaisuehdokkaasta tulee v1.0. Koska testaus tehtiin jo julkaisuehdokasta vasten, tämä viikko riittää estävien virheiden korjaamiseen ilman kiirettä. Loppuviikko on puskuria, jota ei täytetä uusilla ominaisuuksilla.",
       deliverable: "Kolmas virheenkorjausketju, v1.0-tagi ja release, julkaisutiedote, savutestin tulos ja luovutusviesti asiakkaalle.",
       why: "v1.0 ilman korjattuja estäviä virheitä on vain julkaisuehdokas uudella nimellä, ja koko viikon puskuri tekee julkaisusta hallitun tapahtuman, ei paniikkia. Luovutusviesti on asiakaslähtöisen viestinnän viimeinen näyte.",
       done: "v1.0 on julkisessa osoitteessa ja merkitty tagilla; kolmas ketju on täydellisenä repossa (tai kirjaus siitä, mistä aidosta havainnosta ketju ajettiin); savutestin tulos, julkaisutiedote ja luovutusviesti ovat repossa; viikolle jäi puskuriaikaa eikä mitään uutta aloitettu.",
       record: "Kirjoita työviikon 17 merkintään: mitkä estävät virheet korjattiin ja miten, v1.0:n tagi ja julkaisutiedotteen ydin sekä se, mitä jätit tietoisesti v1.1-listalle.",
       skills: ["julkaisu tuotantoon", "release-käytännöt", "regressiotestaus", "asiakasviestintä"],
-      steps: [
-        ["Estävien korjaus ketjuna.", "Korjaa työviikon 16 estävät havainnot täydellisenä ketjuna: havainto → toistamisohje → syy → korjauscommit → uusintatesti → regressiotesti. Jos estäviä ei löytynyt, aja ketju aiemmasta aidosta julkaisuehdokasvaiheen havainnosta. Keksittyjä ei kirjata."],
-        ["Regressioajo.", "Aja koko regressiotestisarja ennen julkaisua ja kirjaa tulos."],
-        ["v1.0-tagi ja release.", "Merkitse versio Git-tagilla v1.0 ja tee release eli julkaisumerkintä, johon liitetään versio ja sen kuvaus. Julkaise tuotantoon."],
-        ["Savutesti tuotannossa.", "Aja testipolut julkaistulle v1.0:lle: kirjaus ja raportti molemmilla rooleilla. Kirjaa tulos."],
-        ["Julkaisutiedote.", "Kirjoita julkaisutiedote: mitä sovellus tekee, mitkä ovat tunnetut rajoitteet ja mitä v1.1-listalla on."],
-        ["Luovutusviesti asiakkaalle.", "Kirjoita luovutusviesti asiakaskielellä: osoite, tunnukset ja pikaohjeet. Ei teknistä jargonia."]
-      ],
+      tehtavat: {
+        "17-1": {
+          miksi: "v1.0 ilman korjattuja estäviä virheitä on vain julkaisuehdokas uudella nimellä. Tämä on projektin kolmas virheenkorjausketju.",
+          osat: [
+            ["Korjaa ketjuna", "Korjaa työviikon 16 estävät havainnot täydellisenä ketjuna: havainto → toistamisohje → syy → korjauscommit → uusintatesti → regressiotesti."],
+            ["Tarkista lähtöhavainto", "Jos estäviä ei löytynyt, aja ketju aiemmasta aidosta julkaisuehdokasvaiheen havainnosta. Keksittyjä virheitä ei kirjata."],
+            ["Korjaa vain estävät", "Jätä muut havainnot v1.1-listalle. Lista on olemassa juuri tätä varten."]
+          ],
+          valmis: "Kolmas virheenkorjausketju on täydellisenä repositoryssa, ja siinä kerrotaan, mistä aidosta havainnosta se ajettiin.",
+          tallenna: "Ketju `project-docs/`-kansioon. Korjatut estävät virheet ja korjaustapa työviikon 17 päiväkirjaan."
+        },
+        "17-2": {
+          miksi: "Tagi ja release kiinnittävät sen version, jonka asiakas saa. Regressiotestit ajetaan ennen tagia, jotta julkaistu versio on testattu.",
+          osat: [
+            ["Aja regressiotestit", "Aja koko regressiotestisarja ennen tagia ja kirjaa tulos."],
+            ["Merkitse tagilla", "Merkitse versio Git-tagilla `v1.0` ja vie tagi etärepositoryyn."],
+            ["Tee release", "Tee GitHubiin release eli julkaisumerkintä, johon liitetään versio ja sen kuvaus."],
+            ["Julkaise tuotantoon", "Julkaise v1.0 tuotantoon samalla julkaisuputkella kuin julkaisuehdokas."]
+          ],
+          valmis: "v1.0 on julkisessa osoitteessa, ja se on merkitty tagilla ja releasella regressiotestien jälkeen.",
+          tallenna: "Tagi `v1.0` ja release GitHubissa. Regressioajon tulos työviikon 17 päiväkirjaan.",
+          sanat: ["tagi"]
+        },
+        "17-3": {
+          miksi: "Savutesti varmistaa, että julkaistu versio toimii, eikä vain oma kopiosi. Julkaisutiedote kertoo rehellisesti, mitä v1.0 tekee ja mitä ei.",
+          osat: [
+            ["Aja savutesti", "Aja testipolut julkaistulle v1.0:lle: kirjaus ja raportti molemmilla rooleilla. Kirjaa tulos."],
+            ["Kirjoita tiedote", "Kirjoita julkaisutiedote `project-docs/`-kansioon: mitä sovellus tekee, mitä kumpikin rooli voi tehdä, tunnetut rajoitteet ja v1.1-lista."],
+            ["Tarkista rajoitteet", "Lue tunnetut rajoitteet vielä kerran: ne kerrotaan rehellisesti, ei kaunistellen."]
+          ],
+          valmis: "Savutestin tulos ja julkaisutiedote ovat repositoryssa.",
+          tallenna: "Savutestin kirjaus ja julkaisutiedote repositoryyn. Tiedotteen ydin työviikon 17 päiväkirjaan."
+        },
+        "17-4": {
+          miksi: "Luovutusviesti on asiakaslähtöisen viestinnän viimeinen näyte. Tiedote on tekninen, viesti on asiakkaalle.",
+          osat: [
+            ["Kirjoita viesti", "Kirjoita luovutusviesti asiakaskielellä: osoite, tunnukset, miten pääsee alkuun ja mistä pikaohjeet löytyvät molemmille rooleille."],
+            ["Kerro rajat", "Kerro, mitä sovellus ei tee ja keneen otetaan yhteyttä, jos jokin ei toimi."],
+            ["Poista jargon", "Lue viesti ääneen ja poista jokainen sana, jota asiakas ei käyttäisi itse."],
+            ["Käytä puskuri tarkistuksiin", "Käytä loppuviikko tarkistuksiin. Älä aloita mitään uutta ominaisuutta."]
+          ],
+          valmis: "Luovutusviesti on repositoryssa ilman teknistä jargonia, ja viikolle jäi puskuriaikaa eikä mitään uutta aloitettu.",
+          tallenna: "Luovutusviesti `project-docs/`-kansioon. Se, mitä jätit tietoisesti v1.1-listalle, työviikon 17 päiväkirjaan."
+        }
+      },
       help: {
         title: "Julkaisutiedotteen ja luovutusviestin pohjat",
         tree: "git tag -a v1.0 -m \"Ensimmäinen tuotantoversio\"\ngit push origin v1.0\n→ release julkaisualustalle\n→ savutesti julkisessa osoitteessa\n→ julkaisutiedote project-docs-kansioon\n→ luovutusviesti asiakkaalle",
@@ -924,21 +1574,57 @@ window.NAYTTOPROJEKTI = {
 
     18: {
       type: "naytto",
-      feature: "Mitään uutta ei rakenneta: näyttöaineisto on täsmälinkitetty kaikkiin 32 vaatimukseen, 8–10 minuutin demo on harjoiteltu ja itsearviointi on kirjoitettu.",
-      connection: "Sovellus on luovutettu; viimeinen viikko kokoaa 17 työviikon aineiston niin, että arvioija löytää jokaisen työnäytteen.",
+      feature: "Arvioija löytää näyttömatriisin linkeistä työnäytteen jokaiseen 32 vaatimukseen, ja 8–10 minuutin demo on harjoiteltu.",
+      connection: "Sovellus on luovutettu, eikä mitään uutta enää rakenneta. Viimeinen viikko kokoaa 17 työviikon aineiston niin, että arvioija löytää jokaisen työnäytteen, koska osaaminen, jota arvioija ei löydä, ei ole hänelle olemassa. Demo ja itsearviointi näyttävät, mitä osaat itse perustella.",
       deliverable: "Täsmälinkitetty näyttömatriisi, harjoiteltu demorunko, kirjoitettu itsearviointi ja luovutettu näyttöpaketti.",
       why: "Näytössä arvioidaan se, mikä löytyy: osaaminen, jota arvioija ei löydä, ei ole arvioijalle olemassa. Viimeinen viikko on täsmälinkitystä, ei tuotantoa.",
       done: "Jokainen matriisin rivi osoittaa olemassa olevaan aineistoon ja linkki aukeaa; demo on ajettu kellon kanssa vähintään kerran toiselle henkilölle; itsearviointi sisältää konkreettisia tilanteita, ei yleislauseita.",
       record: "Kirjoita työviikon 18 merkintään: mitkä matriisin kohdat olivat heikoimmin todennettuja ja miten korjasit ne, demon kesto harjoituksessa sekä itsearvioinnin ydin.",
       skills: ["näyttöaineiston kokoaminen", "esittäminen", "itsearviointi"],
       resources: [["Avaa näyttömatriisi", "#view-naytto", false]],
-      steps: [
-        ["Matriisin täsmälinkitys.", "Käy kaikki 32 vaatimusta läpi ja liitä jokaiseen viikko, työnäyte ja toimiva linkki: commit, issue, dokumentti tai kuvakaappaus."],
-        ["Aukkotarkistus.", "Etsi kohdat, joissa linkki puuttuu tai osoittaa epämääräiseen aineistoon. Korjaa ne nyt, kun aikaa vielä on."],
-        ["Demoharjoitus toiselle ihmiselle.", "Harjoittele 8–10 minuutin demo kellon kanssa: kirjaus → raportti ja porautuminen → yksi tekninen ratkaisu (lasketut yhteenvedot) → yksi korjattu bugi ketjuineen → Git-historia → AI-lokin tarkistettu käyttö."],
-        ["Itsearviointi.", "Kirjoita itsearviointi: mikä omassa työskentelyssäsi onnistui, missä tarvitsit apua ja keneltä, mitä tekisit seuraavassa projektissa toisin. Käytä konkreettisia tilanteita."],
-        ["Puskuri ja luovutus.", "Tarkista aineiston aukot vielä kerran ja luovuta paketti. Jätä puskuria korjauksille."]
-      ],
+      tehtavat: {
+        "18-1": {
+          miksi: "Näytössä arvioidaan se, mikä löytyy. Toimiva linkki jokaisella rivillä säästää arvioijan aikaa ja näyttää työsi.",
+          osat: [
+            ["Käy vaatimukset läpi", "Käy kaikki 32 vaatimusta läpi ja liitä jokaiseen viikko, työnäyte ja toimiva linkki: commit, issue, dokumentti tai kuvakaappaus."],
+            ["Etsi aukot", "Etsi kohdat, joissa linkki puuttuu tai osoittaa epämääräiseen aineistoon."],
+            ["Korjaa aukot", "Korjaa heikoimmin todennetut kohdat nyt, kun aikaa vielä on."],
+            ["Tarkista aineisto", "Tarkista, että päiväkirja, AI-loki ja testiraportti ovat repositoryssa ja linkit aukeavat."]
+          ],
+          valmis: "Jokainen matriisin rivi osoittaa olemassa olevaan aineistoon, ja jokainen linkki aukeaa.",
+          tallenna: "Näyttömatriisi täsmälinkitettynä. Heikoimmin todennetut kohdat ja niiden korjaus työviikon 18 päiväkirjaan."
+        },
+        "18-2": {
+          miksi: "Demo näyttää 8–10 minuutissa, mitä rakensit ja miksi. Harjoitus kellon kanssa paljastaa, mihin aika oikeasti menee.",
+          osat: [
+            ["Tee demorunko", "Rakenna runko: kirjaus → raportti ja porautuminen → yksi tekninen ratkaisu (lasketut yhteenvedot) → yksi korjattu virhe ketjuineen → Git-historia → AI-lokin tarkistettu käyttö."],
+            ["Harjoittele kellon kanssa", "Esitä demo toiselle henkilölle ja ota aika. Tavoite on 8–10 minuuttia."],
+            ["Korjaa runkoa", "Korjaa runkoa sen mukaan, mihin aika meni ja mitä kuulija kysyi."]
+          ],
+          valmis: "Demo on ajettu kellon kanssa vähintään kerran toiselle henkilölle, ja sen kesto on kirjattu.",
+          tallenna: "Demorunko repositoryyn. Demon kesto harjoituksessa työviikon 18 päiväkirjaan."
+        },
+        "18-3": {
+          miksi: "Itsearviointi on osaamisvaatimuksen p11 työnäyte. Konkreettiset tilanteet näyttävät, että arvio perustuu omaan työhön.",
+          osat: [
+            ["Kirjoita onnistumiset", "Kirjoita, mikä omassa työskentelyssäsi onnistui. Nimeä tilanne ja työviikko."],
+            ["Kirjoita avun tarve", "Kirjoita, missä tarvitsit apua ja keneltä sait sen."],
+            ["Kirjoita, mitä tekisit toisin", "Kirjoita, mitä tekisit seuraavassa projektissa toisin ja miksi."]
+          ],
+          valmis: "Itsearvioinnissa on konkreettisia tilanteita työviikkoineen, ei yleislauseita.",
+          tallenna: "Itsearviointi repositoryyn. Sen ydin työviikon 18 päiväkirjaan."
+        },
+        "18-4": {
+          miksi: "Viimeinen tarkistus toisen henkilön kanssa löytää aukot, joita et itse enää huomaa.",
+          osat: [
+            ["Käytä puskuripäivä", "Käy aineisto läpi toisen henkilön kanssa ja korjaa löydetyt aukot. Mitään uutta ei rakenneta."],
+            ["Kokoa paketti", "Kokoa näyttöpaketti: täsmälinkitetty näyttömatriisi, projektipäiväkirja, AI-loki, demorunko, itsearviointi ja julkaistu v1.0."],
+            ["Luovuta", "Luovuta paketti arvioijalle ohjaajan kanssa sovitulla tavalla."]
+          ],
+          valmis: "Aukkojen tarkistus toisen henkilön kanssa on tehty, ja näyttöpaketti on luovutettu arvioijalle.",
+          tallenna: "Luovutettu paketti. Luovutuksen ajankohta ja sisältö työviikon 18 päiväkirjaan."
+        }
+      },
       example: "Itsearviointi: “Työviikolla 8 GROUP BY -viikkorajaus meni väärin; pyysin ohjaajalta apua strftime-muotoihin ja opin testaamaan aikarajat ensin.”",
       notEnough: "“Opin paljon ja projekti sujui hyvin”, ilman tilanteita, nimiä ja sitä, mitä tekisit toisin.",
       paivat: [

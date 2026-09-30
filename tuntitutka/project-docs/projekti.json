@@ -34,35 +34,63 @@
   },
   "vaiheet": [
     {
-      "tunnus": "A",
-      "lyhyt": "Ydin",
-      "otsikko": "Sovelluksen ydin: suunnitelma, julkaistu runko, roolit ja tuntikirjaus",
+      "tunnus": "1",
+      "lyhyt": "Valmistelu",
+      "otsikko": "Valmistelu ja julkaistu runko",
+      "kuvaus": "Otat työkalut käyttöön, teet hyväksytyn suunnitelman ja tietomallin ja viet tyhjän rungon julkiseen osoitteeseen. Tietomalli tehdään ensin, koska kaikki yhteenvedot lasketaan sen tauluista, ja julkaisu on helpointa korjata, kun rikottavaa on vähän.",
+      "kuvassa": [
+        "Työkalut → suunnitelma ja tietomalli → julkinen osoite",
+        "Julkaisuputki toimii, ennen kuin mitään voi rikkoa."
+      ],
       "viikot": [
         1,
         2,
-        3,
-        4,
-        5
+        3
       ],
       "vari": "#1a6fae"
     },
     {
-      "tunnus": "B",
-      "lyhyt": "Featuret",
-      "otsikko": "Featuret: hallinta, omat kirjaukset, lasketut yhteenvedot ja asiakaskatselmointi",
+      "tunnus": "2",
+      "lyhyt": "Kirjaaminen",
+      "otsikko": "Tuntien kirjaaminen",
+      "kuvaus": "Rakennat kirjautumisen ja roolit, tuntikirjauksen, projektien hallinnan ja omien kirjausten käsittelyn. Vaiheen lopussa työntekijät kirjaavat tunnit oikeisiin projekteihin ja sinä kirjaat omasi, joten raportteihin kertyy aitoa dataa.",
+      "kuvassa": [
+        "Roolit → tuntikirjaus → hallinta → omat kirjaukset",
+        "Kirjauksia kertyy, ja niistä voi laskea yhteenvedot."
+      ],
       "viikot": [
+        4,
+        5,
         6,
-        7,
-        8,
-        9,
-        10
+        7
       ],
       "vari": "#0e7490"
     },
     {
-      "tunnus": "C",
-      "lyhyt": "Valmiiksi",
-      "otsikko": "Valmiiksi: palautemuutos, mobiili, tietoturva, testaus ja laatu",
+      "tunnus": "3",
+      "lyhyt": "Yhteenvedot",
+      "otsikko": "Yhteenvedot ja asiakaskatselmointi",
+      "kuvaus": "Lasket kirjauksista yhteenvedot kolmella ryhmittelyllä ja teet niistä kaaviot. Asiakkaan roolissa oleva testaaja kokeilee väliversiota, ja hänen palautteensa ohjaa loppua.",
+      "kuvassa": [
+        "Laskenta → kaaviot → asiakaskatselmointi",
+        "Projektipäällikkö näkee ajantasaiset yhteenvedot."
+      ],
+      "viikot": [
+        8,
+        9,
+        10
+      ],
+      "vari": "#b83280"
+    },
+    {
+      "tunnus": "4",
+      "lyhyt": "Viimeistely",
+      "otsikko": "Viimeistely ja laatu",
+      "kuvaus": "Toteutat katselmoinnin tärkeimmän muutoksen, teet sovelluksesta puhelimella ja näppäimistöllä toimivan ja arvioit tietoturvan. Testaus ja dokumentaatio kootaan valmiiksi ennen julkaisua.",
+      "kuvassa": [
+        "Palautemuutos → mobiili → tietoturva → testaus → ohjeet",
+        "Sovellus kestää oikeat käyttäjät ja virheet."
+      ],
       "viikot": [
         11,
         12,
@@ -70,18 +98,23 @@
         14,
         15
       ],
-      "vari": "#b83280"
+      "vari": "#a16207"
     },
     {
-      "tunnus": "D",
-      "lyhyt": "Julkaisu",
-      "otsikko": "Julkaisu: RC ja julkaisutestaus, v1.0 ja näyttö",
+      "tunnus": "5",
+      "lyhyt": "Julkaisu ja näyttö",
+      "otsikko": "Julkaisu ja näyttö",
+      "kuvaus": "Ulkopuolinen testaaja kokeilee julkaisuehdokasta pelkän kirjallisen ohjeen avulla. Korjaat estävät virheet, julkaiset v1.0:n ja kokoat näyttöaineiston.",
+      "kuvassa": [
+        "Julkaisuehdokas → v1.0 → näyttö",
+        "Tiimi saa osoitteen ja ohjeen, jolla pääsee alkuun."
+      ],
       "viikot": [
         16,
         17,
         18
       ],
-      "vari": "#ca8a04"
+      "vari": "#6d28d9"
     }
   ],
   "kuvitukset": {
@@ -113,7 +146,7 @@
     "tekoalyMuistutus": "Laskenta, rakenne ja CSS tehdään itse.",
     "tunnus": "ympyra",
     "tyokiertoAlt": "Infografiikka: tuntikirjauksesta syntyy lasketut yhteenvedot viikoittain, henkilöittäin ja tehtävälajeittain.",
-    "vaiheetAlt": "Aikajana neljästä vaiheesta: Ydin työviikot 1–5, Featuret 6–10, Valmiiksi 11–15, Julkaisu 16–18.",
+    "vaiheetAlt": "Aikajana viidestä vaiheesta: Valmistelu työviikot 1–3, Kirjaaminen 4–7, Yhteenvedot 8–10, Viimeistely 11–15, Julkaisu ja näyttö 16–18.",
     "suunnitelmaAlt": "Kaavio suunnitelman kolmesta osasta: perustiedot, opiskelijan omat päätökset ja ohjaajan päätökset.",
     "testausAlt": "Testauksen kierto: suunnittele testi, aja, löydä virhe, korjaa ja uusintatestaa.",
     "tekoalyAlt": "Tekoälyn käytön neljä sääntöä: kysy, tarkista, testaa ja kirjaa."

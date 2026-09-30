@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="432" viewBox="0 0 880 432" role="img" aria-labelledby="title desc">
+<title id="title">Näin yhteenveto lasketaan kirjauksista</title>
+<desc id="desc">Havainnekuva, ei kuvakaappaus. Kirjaus-taulussa on viisi riviä: Aino suunnittelu 7,5 h, Aino palaveri 2,0 h, Eetu tuotanto 4,0 h, Eetu palaveri 1,5 h ja Helmi tuotanto 6,0 h. Kysely SELECT henkilö, SUM(tunnit) FROM kirjaus GROUP BY henkilö ajetaan jokaisella pyynnöllä. Se laskee yhteenvedon henkilöittäin: Aino 9,5 h, Eetu 5,5 h, Helmi 6,0 h, yhteensä 21,0 h. Muokkaus näkyy heti: kun Eetu muuttaa palaverikirjauksensa 1,5 tunnista 2,5 tuntiin, seuraava pyyntö laskee Eetulle 6,5 h. Summataulua ei ole, joten mitään ei tarvitse päivittää erikseen, eikä summa voi jäädä vanhaksi.</desc>
+<rect width="880" height="432" fill="#ffffff"/>
+<defs>
+  <marker id="nuoli" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#5c5347"/></marker>
+</defs>
+<text x="32" y="44" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Näin yhteenveto lasketaan kirjauksista</text>
+<text x="848" y="44" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="14" text-anchor="end">Havainnekuva</text>
+
+<!-- kirjaus-taulu -->
+<text x="32" y="80" fill="#155e75" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">kirjaus-taulu (SQLite)</text>
+<rect x="32" y="90" width="290" height="200" rx="10" fill="#fdfcf9" stroke="#0e7490" stroke-width="2"/>
+<text x="48" y="118" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700">henkilö</text>
+<text x="120" y="118" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700">tehtävälaji</text>
+<text x="306" y="118" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" text-anchor="end">tunnit</text>
+<path d="M44 128H310" stroke="#d4cbbb" stroke-width="1.5"/>
+<text x="48" y="152" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">Aino</text><text x="120" y="152" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">suunnittelu</text><text x="306" y="152" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15" text-anchor="end">7,5 h</text>
+<text x="48" y="180" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">Aino</text><text x="120" y="180" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">palaveri</text><text x="306" y="180" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15" text-anchor="end">2,0 h</text>
+<text x="48" y="208" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">Eetu</text><text x="120" y="208" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">tuotanto</text><text x="306" y="208" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15" text-anchor="end">4,0 h</text>
+<rect x="40" y="218" width="274" height="26" rx="5" fill="#fbeef6"/>
+<text x="48" y="236" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">Eetu</text><text x="120" y="236" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">palaveri</text><text x="306" y="236" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15" text-anchor="end">1,5 h</text>
+<text x="48" y="264" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">Helmi</text><text x="120" y="264" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">tuotanto</text><text x="306" y="264" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15" text-anchor="end">6,0 h</text>
+
+<!-- kysely -->
+<path d="M324 190H356" stroke="#5c5347" stroke-width="2.5" marker-end="url(#nuoli)"/>
+<text x="452" y="128" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="14" text-anchor="middle">kysely joka pyynnöllä</text>
+<rect x="362" y="138" width="180" height="106" rx="10" fill="#e3f2f6" stroke="#155e75" stroke-width="2"/>
+<text x="378" y="164" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">SELECT henkilö,</text>
+<text x="378" y="186" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">SUM(tunnit)</text>
+<text x="378" y="208" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">FROM kirjaus</text>
+<text x="378" y="230" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">GROUP BY henkilö</text>
+<path d="M544 190H576" stroke="#5c5347" stroke-width="2.5" marker-end="url(#nuoli)"/>
+
+<!-- tulos -->
+<text x="582" y="80" fill="#155e75" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">Yhteenveto henkilöittäin</text>
+<rect x="582" y="90" width="266" height="200" rx="10" fill="#fdfcf9" stroke="#0e7490" stroke-width="2"/>
+<text x="598" y="118" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700">henkilö</text>
+<text x="832" y="118" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" text-anchor="end">tunnit yhteensä</text>
+<path d="M594 128H836" stroke="#d4cbbb" stroke-width="1.5"/>
+<text x="598" y="156" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">Aino</text><text x="832" y="156" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15" text-anchor="end">9,5 h</text>
+<text x="598" y="186" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">Eetu</text><text x="832" y="186" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15" text-anchor="end">5,5 h</text>
+<text x="598" y="216" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">Helmi</text><text x="832" y="216" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15" text-anchor="end">6,0 h</text>
+<path d="M594 234H836" stroke="#d4cbbb" stroke-width="1.5"/>
+<text x="598" y="262" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">Yhteensä</text><text x="832" y="262" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" text-anchor="end">21,0 h</text>
+
+<!-- muokkaus -->
+<rect x="32" y="312" width="816" height="100" rx="10" fill="#fbeef6" stroke="#b83280" stroke-width="2"/>
+<text x="52" y="340" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">Muokkaus näkyy heti</text>
+<text x="52" y="366" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">Eetu muuttaa palaverikirjauksensa 1,5 tunnista 2,5 tuntiin. Seuraava pyyntö laskee Eetulle 6,5 h.</text>
+<text x="52" y="390" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">Summataulua ei ole, joten mitään ei tarvitse päivittää erikseen, eikä summa voi jäädä vanhaksi.</text>
+</svg>

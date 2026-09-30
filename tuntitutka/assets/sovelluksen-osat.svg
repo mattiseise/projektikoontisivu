@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="624" viewBox="0 0 960 624" role="img" aria-labelledby="title desc">
+<title id="title">Miten TuntiTutkan osat liittyvät toisiinsa</title>
+<desc id="desc">Havainnekuva, ei kuvakaappaus. Selaimessa toimiva Svelte-sovellus (client/) sisältää kirjausnäkymän, hallintanäkymät, jotka näkyvät vain projektipäällikölle, ja raporttinäkymän sekä reititys- ja kaaviokirjaston. Node.js- ja Express-palvelimessa (server/) middleware tarkistaa kirjautumisen ja roolin ennen reittiä ja palauttaa tarvittaessa 401 tai 403, reitit validoivat syötteen ja tarkistavat omistajuuden, ja laskentamoduuli laskee summat kyselyllä joka kerta. Rajapinta palauttaa JSONia. SQLite-tietokannassa ovat taulut kayttaja, projekti, projektityyppi, tehtavalaji, kirjaus ja projektin_jasen. Summataulua ei ole: summat lasketaan kirjaus-riveistä. Tietovirta 1: työntekijä tallentaa kirjauksen, selain lähettää sen reitille POST /api/kirjaukset, middleware tarkistaa kirjautumisen ja roolin, reitti validoi kirjauksen ja tallentaa uuden rivin kirjaus-tauluun. Tietovirta 2: projektipäällikkö avaa raportin, selain kutsuu reittiä GET /api/raportit, laskentamoduuli laskee summat kirjaus-riveistä joka pyynnöllä ja palauttaa JSONin, josta selain piirtää taulukon ja kaaviot. Julkaisussa Express tarjoilee Svelte-buildin ja /api-reitit samasta julkisesta osoitteesta työviikosta 3 alkaen. Kehityksessä Viten proxy ohjaa selaimen /api-kutsut Express-palvelimelle.</desc>
+<rect width="960" height="624" fill="#ffffff"/>
+<defs>
+  <marker id="nuoli1" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#0e7490"/></marker>
+  <marker id="nuoli2" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#b83280"/></marker>
+</defs>
+<text x="24" y="44" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Miten TuntiTutkan osat liittyvät toisiinsa?</text>
+<text x="936" y="44" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="14" text-anchor="end">Havainnekuva</text>
+
+<!-- Selain -->
+<rect x="24" y="70" width="260" height="312" rx="12" fill="#fdfcf9" stroke="#0e7490" stroke-width="2"/>
+<text x="44" y="102" fill="#155e75" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700">Selain · client/</text>
+<text x="44" y="124" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="15">Svelte + Vite</text>
+<rect x="40" y="140" width="228" height="58" rx="8" fill="#e3f2f6"/>
+<text x="54" y="165" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">Kirjausnäkymä</text>
+<text x="54" y="186" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">lomake ja omat kirjaukset</text>
+<rect x="40" y="210" width="228" height="58" rx="8" fill="#e3f2f6"/>
+<text x="54" y="235" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">Hallintanäkymät</text>
+<text x="54" y="256" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">vain projektipäällikölle</text>
+<rect x="40" y="280" width="228" height="58" rx="8" fill="#e3f2f6"/>
+<text x="54" y="305" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">Raporttinäkymä</text>
+<text x="54" y="326" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">taulukko ja kaaviot</text>
+<text x="44" y="364" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="14">+ reititys- ja kaaviokirjasto</text>
+
+<!-- Palvelin -->
+<rect x="332" y="70" width="280" height="312" rx="12" fill="#fdfcf9" stroke="#0e7490" stroke-width="2"/>
+<text x="352" y="102" fill="#155e75" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700">Palvelin · server/</text>
+<text x="352" y="124" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="15">Node.js + Express</text>
+<rect x="348" y="140" width="248" height="58" rx="8" fill="#e3f2f6"/>
+<text x="362" y="165" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">Middleware</text>
+<text x="362" y="186" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">401 tai 403 ennen reittiä</text>
+<rect x="348" y="210" width="248" height="58" rx="8" fill="#e3f2f6"/>
+<text x="362" y="235" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">Reitit /api/…</text>
+<text x="362" y="256" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">validointi ja omistajuus</text>
+<rect x="348" y="280" width="248" height="58" rx="8" fill="#e3f2f6"/>
+<text x="362" y="305" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">Laskentamoduuli</text>
+<text x="362" y="326" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">summat kyselyllä joka kerta</text>
+<text x="352" y="364" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="14">Rajapinta (API) palauttaa JSONia</text>
+
+<!-- Tietokanta -->
+<rect x="660" y="70" width="276" height="312" rx="12" fill="#fdfcf9" stroke="#0e7490" stroke-width="2"/>
+<text x="680" y="102" fill="#155e75" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700">SQLite-tietokanta</text>
+<text x="680" y="124" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="15">yksi tiedosto palvelimella</text>
+<text x="684" y="156" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">kayttaja</text>
+<text x="684" y="178" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">projekti</text>
+<text x="684" y="200" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">projektityyppi</text>
+<text x="684" y="222" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">tehtavalaji</text>
+<rect x="674" y="228" width="248" height="24" rx="5" fill="#e3f2f6"/>
+<text x="684" y="245" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">kirjaus</text>
+<text x="684" y="272" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">projektin_jasen</text>
+<rect x="676" y="286" width="244" height="82" rx="8" fill="#fbeef6" stroke="#b83280" stroke-width="2"/>
+<text x="692" y="310" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">Ei summataulua</text>
+<text x="692" y="332" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">summat lasketaan</text>
+<text x="692" y="352" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">kirjaus-riveistä</text>
+
+<!-- Tietovirta 1: kirjaus -->
+<text x="308" y="152" fill="#0e7490" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" text-anchor="middle">POST</text>
+<path d="M270 169H342" stroke="#0e7490" stroke-width="2.5" marker-end="url(#nuoli1)"/>
+<circle cx="308" cy="169" r="11" fill="#0e7490"/>
+<text x="308" y="174" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" text-anchor="middle">1</text>
+<path d="M598 239H668" stroke="#0e7490" stroke-width="2.5" marker-end="url(#nuoli1)"/>
+<circle cx="626" cy="239" r="11" fill="#0e7490"/>
+<text x="626" y="244" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" text-anchor="middle">1</text>
+
+<!-- Tietovirta 2: raportti -->
+<text x="308" y="285" fill="#b83280" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" text-anchor="middle">GET</text>
+<path d="M270 300H342" stroke="#b83280" stroke-width="2.5" marker-end="url(#nuoli2)"/>
+<circle cx="308" cy="300" r="11" fill="#b83280"/>
+<text x="308" y="305" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" text-anchor="middle">2</text>
+<path d="M346 324H276" stroke="#b83280" stroke-width="2.5" marker-end="url(#nuoli2)"/>
+<text x="308" y="342" fill="#b83280" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" text-anchor="middle">JSON</text>
+<path d="M672 250H648V309H604" fill="none" stroke="#b83280" stroke-width="2.5" marker-end="url(#nuoli2)"/>
+<circle cx="648" cy="284" r="11" fill="#b83280"/>
+<text x="648" y="289" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" text-anchor="middle">2</text>
+
+<!-- Selitteet -->
+<circle cx="38" cy="420" r="12" fill="#0e7490"/>
+<text x="38" y="425" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" text-anchor="middle">1</text>
+<text x="60" y="416" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15"><tspan font-weight="700">Työntekijä tallentaa kirjauksen:</tspan> selain lähettää sen reitille POST /api/kirjaukset.</text>
+<text x="60" y="437" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">Middleware tarkistaa kirjautumisen ja roolin, reitti validoi kirjauksen ja tallentaa uuden rivin.</text>
+<circle cx="38" cy="470" r="12" fill="#b83280"/>
+<text x="38" y="475" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" text-anchor="middle">2</text>
+<text x="60" y="466" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15"><tspan font-weight="700">Projektipäällikkö avaa raportin:</tspan> selain kutsuu reittiä GET /api/raportit/… ja saa JSONin.</text>
+<text x="60" y="487" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">Laskentamoduuli laskee summat kirjaus-riveistä joka pyynnöllä, ja selain piirtää taulukon ja kaaviot.</text>
+
+<!-- Julkaisu -->
+<rect x="24" y="512" width="912" height="92" rx="12" fill="#e3f2f6" stroke="#155e75" stroke-width="2"/>
+<text x="44" y="542" fill="#155e75" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">Julkaisussa yksi palvelin ja yksi osoite</text>
+<text x="44" y="568" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">Express tarjoilee Svelte-buildin ja /api-reitit samasta julkisesta osoitteesta työviikosta 3 alkaen.</text>
+<text x="44" y="590" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">Kehityksessä Viten proxy ohjaa selaimen /api-kutsut Express-palvelimelle.</text>
+</svg>

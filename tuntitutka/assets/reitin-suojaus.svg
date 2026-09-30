@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="572" viewBox="0 0 880 572" role="img" aria-labelledby="title desc">
+<title id="title">Näin pyyntö kulkee middlewaren läpi</title>
+<desc id="desc">Havainnekuva, ei kuvakaappaus. Pyyntö selaimelta, esimerkiksi GET /api/raportit/henkilot, kulkee kolmen vaiheen läpi. 1: tunnistusmiddleware tarkistaa, onko pyynnössä voimassa oleva istunto. Jos ei ole, palvelin vastaa 401 Kirjaudu sisään. 2: roolimiddleware tarkistaa, onko käyttäjällä reitin vaatima rooli. Jos ei ole, palvelin vastaa 403 Ei oikeuksia. 3: vasta sitten reitin käsittelijä hakee tai tallentaa tiedon ja vastaa 200, esimerkiksi raportin JSONilla. Esimerkki: työntekijä kutsuu reittiä GET /api/raportit/henkilot. Istunto on voimassa, mutta rooli ei ole projektipäällikkö, joten vastaus on 403. Piilotettu nappi ei ole suojaus: nämä tarkistukset tehdään palvelimella jokaisella pyynnöllä.</desc>
+<rect width="880" height="572" fill="#ffffff"/>
+<defs>
+  <marker id="nuoli" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#5c5347"/></marker>
+</defs>
+<text x="40" y="44" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Näin pyyntö kulkee middlewaren läpi</text>
+<text x="840" y="44" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="14" text-anchor="end">Havainnekuva</text>
+
+<!-- Pyyntö -->
+<rect x="40" y="70" width="420" height="62" rx="10" fill="#fdfcf9" stroke="#d4cbbb" stroke-width="2"/>
+<text x="60" y="96" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">Pyyntö selaimelta</text>
+<text x="60" y="119" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">esimerkiksi GET /api/raportit/henkilot</text>
+<path d="M250 134V154" stroke="#5c5347" stroke-width="2.5" marker-end="url(#nuoli)"/>
+
+<!-- 1 tunnistus -->
+<rect x="40" y="160" width="420" height="70" rx="10" fill="#e3f2f6" stroke="#0e7490" stroke-width="2"/>
+<text x="60" y="188" fill="#155e75" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">1  Tunnistusmiddleware</text>
+<text x="60" y="212" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">Onko pyynnössä voimassa oleva istunto?</text>
+<path d="M462 195H554" stroke="#5c5347" stroke-width="2.5" marker-end="url(#nuoli)"/>
+<text x="508" y="185" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Ei</text>
+<rect x="560" y="167" width="280" height="56" rx="10" fill="#fbeef6" stroke="#b83280" stroke-width="2"/>
+<text x="576" y="190" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">401 Kirjaudu sisään</text>
+<text x="576" y="212" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">ei istuntoa, tai se on vanhentunut</text>
+<path d="M250 232V252" stroke="#5c5347" stroke-width="2.5" marker-end="url(#nuoli)"/>
+<text x="262" y="248" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700">Kyllä</text>
+
+<!-- 2 rooli -->
+<rect x="40" y="258" width="420" height="70" rx="10" fill="#e3f2f6" stroke="#0e7490" stroke-width="2"/>
+<text x="60" y="286" fill="#155e75" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">2  Roolimiddleware</text>
+<text x="60" y="310" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">Onko käyttäjällä reitin vaatima rooli?</text>
+<path d="M462 293H554" stroke="#5c5347" stroke-width="2.5" marker-end="url(#nuoli)"/>
+<text x="508" y="283" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Ei</text>
+<rect x="560" y="265" width="280" height="56" rx="10" fill="#fbeef6" stroke="#b83280" stroke-width="2"/>
+<text x="576" y="288" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">403 Ei oikeuksia</text>
+<text x="576" y="310" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">tiedetään kuka, mutta ei saa tehdä</text>
+<path d="M250 330V350" stroke="#5c5347" stroke-width="2.5" marker-end="url(#nuoli)"/>
+<text x="262" y="346" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700">Kyllä</text>
+
+<!-- 3 reitti -->
+<rect x="40" y="356" width="420" height="70" rx="10" fill="#e3f2f6" stroke="#0e7490" stroke-width="2"/>
+<text x="60" y="384" fill="#155e75" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">3  Reitin käsittelijä</text>
+<text x="60" y="408" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">hakee tai tallentaa tiedon ja vastaa</text>
+<path d="M462 391H554" stroke="#5c5347" stroke-width="2.5" marker-end="url(#nuoli)"/>
+<rect x="560" y="363" width="280" height="56" rx="10" fill="#fdfcf9" stroke="#0e7490" stroke-width="2"/>
+<text x="576" y="386" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">200 ja vastaus</text>
+<text x="576" y="408" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">esimerkiksi raportin JSON</text>
+
+<!-- Esimerkki -->
+<rect x="40" y="450" width="800" height="66" rx="10" fill="#fdfcf9" stroke="#d4cbbb" stroke-width="2"/>
+<text x="60" y="476" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15"><tspan font-weight="700">Esimerkki:</tspan> työntekijä kutsuu reittiä GET /api/raportit/henkilot.</text>
+<text x="60" y="500" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">Istunto on voimassa (vaihe 1 läpi), mutta rooli ei ole projektipäällikkö, joten vastaus on 403.</text>
+<text x="40" y="550" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="15">Piilotettu nappi ei ole suojaus: nämä tarkistukset tehdään palvelimella jokaisella pyynnöllä.</text>
+</svg>
