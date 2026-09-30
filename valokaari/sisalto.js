@@ -162,7 +162,7 @@ window.NAYTTOPROJEKTI = {
     { termi: "P1", nimi: "Tärkeä jatko", selite: "Tehdään, kun P0 toimii ja on testattu. Valokaaressa leikkauspisteet, vuosivalinta, mobiili ja saavutettavuus.", viikko: 2 },
     { termi: "P2", nimi: "Valinnainen lisä", selite: "Saa jäädä projektin ulkopuolelle, jos aika ei riitä. Poisjättö on rajauspäätös, ei epäonnistuminen.", viikko: 2 },
     { termi: "rautalanka", nimi: "Käyttöliittymän luonnos", selite: "Yksinkertainen piirros siitä, mitä näkymässä on ja missä. Ei värejä, ei lopullista ulkoasua. Toteutus tarkistetaan sitä vasten.", viikko: 2 },
-    { termi: "viikkopalaveri", nimi: "Ohjaajan kanssa joka viikko", selite: "10 minuuttia: sovitut tehtävät, arviot ja edellisen viikon toteuma kirjataan issueihin, ohjaajan nimi ja päivä päiväkirjaan. Tämä on tiimissä sopimisen työnäyte.", viikko: 2 },
+    { termi: "viikkopalaveri", nimi: "Ohjaajan kanssa joka viikko", selite: "10 minuuttia: sovitut tehtävät, arviot ja edellisen viikon toteuma kirjataan issueihin, päivä ja osallistujien roolit päiväkirjaan. Tämä on tiimissä sopimisen työnäyte.", viikko: 2 },
     { termi: "proxy", nimi: "Välityspalvelin kehityksessä", selite: "Viten asetus, joka ohjaa selaimen /api-pyynnöt kehityspalvelimelta PHP-palvelimelle. Selain näkee yhden osoitteen, vaikka palvelimia on kaksi.", viikko: 3 },
     { termi: "build", nimi: "Tuotantobuild", selite: "Komento npm run build kääntää React-sovelluksen valmiiksi tiedostoiksi client/dist-kansioon. Kansio ei mene Gitiin: build tehdään julkaisualustalla.", viikko: 3 },
     { termi: "fetch", nimi: "Selaimen tapa hakea tietoa", selite: "JavaScriptin funktio, joka lähettää pyynnön rajapintaan ja palauttaa vastauksen. Valokaaressa kaikki fetch-kutsut ovat api.ts-tiedostossa.", viikko: 3 },
@@ -254,7 +254,7 @@ window.NAYTTOPROJEKTI = {
       "",
       arvo("rajaus"),
       "",
-      "## 4. Rajapintasopimus (ehdotettu luonnos, tarkennetaan työviikolla 3)",
+      "## 4. Rajapintasopimus (luonnos: sovitaan työviikolla 2, tarkennetaan työviikolla 3)",
       "",
       "`GET /api/daylight?city=Helsinki&year=2026` palauttaa JSON-olion: `location`",
       "(name, latitude, longitude), `year` ja `days` (date, daylightMinutes).",
@@ -339,7 +339,7 @@ window.NAYTTOPROJEKTI = {
       deliverable: "Asennetut työkalut versioineen, julkinen repository tarkistuslistoineen, käynnistyvä React + Vite -runko, PHP-palvelin, joka palauttaa JSON-vastauksen, kansiorakenne ja kysymyslista ohjaajalle.",
       why: "Ilman toimivaa ympäristöä ja repoa yksikään myöhempi viikko ei tuota näyttöaineistoa: Git-historia on versionhallinnan työnäyte, ja sen pitää alkaa ensimmäiseltä työviikolta. Kysymyslista on ainoa tapa saada rajaus ratkeamaan kysymällä, ei arvaamalla.",
       done: "Nimetty toinen henkilö (luokkakaveri tai ohjaaja) saa rungon käyntiin pelkän README:n avulla; ohjaaja on kuitannut julkisen repon tarkistuslistan ja hänet on lisätty repositoryn yhteistyökumppaniksi; kysymyslistassa on vähintään kuusi kysymystä.",
-      record: "Kirjoita työviikon 1 merkintään: asennetut työkalut versioineen, repositoryn osoite, ensimmäisen commitin tunnus, kysymyslistan kysymykset, kuka sai rungon käyntiin ohjeellasi ja mitkä julkisuusasiat jäivät avoimiksi.",
+      record: "Kirjoita työviikon 1 merkintään: asennetut työkalut versioineen, repositoryn osoite, ensimmäisen commitin tunnus, kysymyslistan kysymykset, kuka (rooli, esimerkiksi luokkakaveri) sai rungon käyntiin ohjeellasi ja mitkä julkisuusasiat jäivät avoimiksi.",
       skills: ["kehitysympäristö", "Git", "npm ja Vite", "PHP:n sisäänrakennettu palvelin"],
       termit: ["repository", "commit", "push", "backend", "frontend", "API", "JSON", "kehityspalvelin"],
       tehtavat: {
@@ -348,7 +348,7 @@ window.NAYTTOPROJEKTI = {
           osat: [
             ["Lue toimeksianto", "Lue Toimeksianto-sivu kokonaan ja alleviivaa asiakkaan pakolliset asiat, esimerkiksi vapaasti kirjoitettava paikkakunta, vertailu samassa kuvassa ja toimivuus puhelimella."],
             ["Luo projektikansio", "Luo kansio `valokaari/` ja sen alle kansiot `client/`, `server/` ja `project-docs/`. Kaikki projektin tiedostot tulevat näihin kansioihin."],
-            ["Kirjoita kysymykset", "Kirjoita jokaisesta epäselvästä kohdasta kysymys ohjaajalle tiedostoon `project-docs/kysymykset.md`. Esimerkki: mitä tapahtuu, jos kaksi kuntaa on samannimisiä?"],
+            ["Kirjoita kysymykset", "Kirjoita jokaisesta epäselvästä kohdasta kysymys ohjaajalle, joka toimii asiakkaan sijaisena, tiedostoon `project-docs/kysymykset.md`. Esimerkki: mitä tapahtuu, jos kaksi kuntaa on samannimisiä?"],
             ["Lisää sovittavat asiat", "Lisää listaan ohjaajan kanssa sovittavat asiat: lisenssi, repositoryn julkisuus ja tekijänimi. Ne on lueteltu toimeksiannon lopussa."],
             ["Laske kysymykset", "Tarkista, että listassa on vähintään kuusi kysymystä. Ohjaaja vastaa niihin työviikon 2 viikkopalaverissa."]
           ],
@@ -388,7 +388,7 @@ window.NAYTTOPROJEKTI = {
             ["Sovi tekijänimi", "Sovi ohjaajan kanssa, millä nimellä esiinnyt, ja kirjaa se suunnitelmalomakkeen Tekijä-kenttään. Jos olet alaikäinen, huoltajan suostumus hoidetaan ohjaajan kautta."],
             ["Luo repository", "Luo GitHub-repository, liitä se omaan kansioosi ja vie commitit sinne komennolla `git push`."],
             ["Lisää ohjaaja", "Lisää ohjaaja repositoryn yhteistyökumppaniksi (collaborator). Hän tarvitsee oikeuden työviikoilla 11 ja 15. Pyydä häntä kuittaamaan julkisuustarkistus."],
-            ["Pyydä toinen kokeilija", "Pyydä nimettyä toista henkilöä, esimerkiksi luokkakaveria, kloonaamaan repository ja käynnistämään molemmat palvelimet pelkän README:n avulla. Kirjaa, mihin hän pysähtyi."],
+            ["Pyydä toinen kokeilija", "Pyydä nimettyä toista henkilöä, esimerkiksi luokkakaveria, kloonaamaan repository ja käynnistämään molemmat palvelimet pelkän README:n avulla. Kirjaa hänen roolinsa, älä nimeä, ja se, mihin hän pysähtyi."],
             ["Korjaa README", "Korjaa README kohdasta, johon toinen henkilö pysähtyi, ja vie korjaus repositoryyn."]
           ],
           valmis: "Toinen henkilö sai rungon käyntiin pelkällä README:llä, ja ohjaaja on repositoryn yhteistyökumppani ja on kuitannut julkisuustarkistuksen.",
@@ -404,7 +404,7 @@ window.NAYTTOPROJEKTI = {
           "Luo React-runko: cd client && npm create vite@latest . -- --template react-ts, sitten npm install ja npm run dev.",
           "Luo server/public/index.php: header('Content-Type: application/json'); echo json_encode(['status' => 'ok']);",
           "Käynnistä PHP: php -S localhost:8000 -t server/public ja avaa http://localhost:8000.",
-          "Luo GitHub-repository, aja git init, tee ensimmäinen commit ja vie se GitHubiin (git push)."
+          "Aja git init ja tee ensimmäinen commit heti, kun Git on asennettu. Luo GitHub-repository julkisuustarkistuksen jälkeen ja vie commitit sinne (git push)."
         ],
         code: "ALOITUKSEN TARKISTUSLISTA\n[ ] php -v, node -v, npm -v ja git --version kirjattu README:hen\n[ ] npm run dev avaa React-rungon selaimessa\n[ ] php -S palauttaa {\"status\":\"ok\"} osoitteessa localhost:8000\n[ ] kansiot client/, server/ ja project-docs/ olemassa\n[ ] .gitignore estää node_modules/, client/dist/, vendor/ ja .env\n[ ] repositoryssa ei ole henkilötietoja eikä koulun tunnisteita\n[ ] tekijänimi sovittu ja ohjaaja lisätty collaboratoriksi\n[ ] kysymyslistassa vähintään 6 kysymystä\n[ ] ensimmäinen commit viety etärepositoryyn (push)\n[ ] toinen henkilö sai molemmat palvelimet käyntiin README:llä",
         test: "Kloonaa repository itse toiseen kansioon ja käynnistä molemmat palvelimet pelkän README:n ohjeilla, ennen kuin annat sen toiselle.",
@@ -415,13 +415,13 @@ window.NAYTTOPROJEKTI = {
           ["GitHub Docs: repositoryn luominen", "https://docs.github.com/en/repositories"]
         ]
       },
-      example: "Versiotaulukko README:ssä: työkalu → versio → tarkistuskomento (PHP 8.3.6 → php -v). Mukana kuvakaappaukset React-rungosta ja PHP:n JSON-vastauksesta, commit ”Perusta projekti: client, server ja project-docs” ja merkintä ”Aino sai palvelimet käyntiin, pysähtyi kohtaan php -S, koska portti puuttui ohjeesta”.",
+      example: "Versiotaulukko README:ssä: työkalu → versio → tarkistuskomento (PHP 8.3.6 → php -v). Mukana kuvakaappaukset React-rungosta ja PHP:n JSON-vastauksesta, commit ”Perusta projekti: client, server ja project-docs” ja merkintä ”Testaaja A (luokkakaveri) sai palvelimet käyntiin, pysähtyi kohtaan php -S, koska portti puuttui ohjeesta”.",
       notEnough: "”Asensin kaikki ja kaikki toimii” ilman versionumeroita, kuvakaappauksia, ensimmäistä committia ja toisen henkilön kokeilua: mitään ei voi todentaa jälkikäteen.",
       paivat: [
         ["Tarve", "Lue toimeksianto ja poimi asiakkaan ydinongelma: numeroita ei hahmoteta, kuva tarvitaan. Kirjaa kysymyslista ohjaajalle."],
-        ["Työkalut", "Asenna PHP, Node ja Git. Kirjaa versiot README:hen."],
+        ["Työkalut", "Asenna PHP, Node ja Git. Kirjaa versiot README:hen ja aloita versionhallinta komennolla git init."],
         ["Kaksi palvelinta", "Luo React-runko ja PHP:n index.php. Käynnistä molemmat ja ota kuvakaappaukset."],
-        ["Repository", "Luo GitHub-repository, tee julkisuustarkistukset, lisää ohjaaja yhteistyökumppaniksi (collaborator), commit ja push."],
+        ["Repository", "Tee julkisuustarkistukset, luo sitten GitHub-repository, lisää ohjaaja yhteistyökumppaniksi (collaborator) ja vie commitit sinne (push)."],
         ["Toisen henkilön testi", "Anna README toiselle henkilölle ja kirjaa, mihin hän pysähtyi. Korjaa ohje."]
       ]
     },
@@ -433,7 +433,7 @@ window.NAYTTOPROJEKTI = {
       connection: "Työviikon 1 kysymyslista saa ohjaajalta vastaukset, ja toimeksianto muuttuu priorisoiduiksi käyttäjätarinoiksi ja perustelluiksi päätöksiksi. Oma koeajo ratkaisee laskentatavan, ja issue-taulu jakaa työn puolen päivän paloiksi. Hyväksytty suunnitelma on se, jota vasten jokainen seuraava viikko rakennetaan ja arvioidaan.",
       deliverable: "project-docs/suunnitelma.md, ohjaajan vastaukset kysymyksiin, käyttäjätarinat P0/P1/P2-luokin, laskentatapavertailu koeajon tulosteella, paikkakuntatiedon muodon vertailu, rautalangat kolmesta näkymästä, komponenttijako ja issue-taulu arvioineen.",
       why: "Ilman priorisointia ominaisuuslista paisuu; ilman omaa koeajoa laskentatavan valinta on arvaus. Toiminnot jaetaan kolmeen luokkaan: P0 on pakollinen ydin, P1 tärkeä jatko ja P2 valinnainen lisä. Keskeneräinen P0 painaa arvioinnissa enemmän kuin puuttuva P2.",
-      done: "project-docs/suunnitelma.md on repossa ja ohjaaja on hyväksynyt rajauksen kirjatulla kommentilla; ohjaajan vastaukset kysymyksiin on kirjattu nimellä ja päivällä; jokaisella P0-tarinalla on GitHub-issue, hyväksymiskriteerit ja arvio tunteina; koeajon tuloste on päiväkirjassa.",
+      done: "project-docs/suunnitelma.md on repossa ja ohjaaja on hyväksynyt rajauksen kirjatulla kommentilla; ohjaajan vastaukset kysymyksiin on kirjattu päivämäärineen; jokaisella P0-tarinalla on GitHub-issue, hyväksymiskriteerit ja arvio tunteina; koeajon tuloste on päiväkirjassa.",
       record: "Kirjoita työviikon 2 merkintään: ohjaajan vastaukset omin sanoin, P0-rajaus, laskentatavan ja paikkakuntatiedon muodon valinta perusteluineen, koeajon tuloste ja linkki issue-tauluun sekä ohjaajan hyväksyntään.",
       skills: ["vaatimusmäärittely", "priorisointi", "vertailu omalla datalla", "työn ositus"],
       termit: ["GitHub-issue", "käyttäjätarina", "P0", "P1", "P2", "rautalanka", "viikkopalaveri"],
@@ -442,12 +442,12 @@ window.NAYTTOPROJEKTI = {
         "2-1": {
           miksi: "Käyttäjätarinat muuttavat toimeksiannon tarkistettaviksi vaatimuksiksi. Priorisointi estää ominaisuuslistan paisumisen.",
           osat: [
-            ["Pidä viikkopalaveri", "Käy kysymyslista läpi ohjaajan kanssa. Kirjaa jokaisen kysymyksen alle vastaus omin sanoin sekä ohjaajan nimi ja päivä. Kirjaamaton vastaus ei ole työnäyte."],
+            ["Pidä viikkopalaveri", "Käy kysymyslista läpi ohjaajan kanssa. Kirjaa jokaisen kysymyksen alle vastaus omin sanoin, vastaajan rooli (ohjaaja) ja päivä. Kirjaamaton vastaus ei ole työnäyte."],
             ["Varmista julkaisualusta", "Kysy ohjaajalta julkaisualusta ja testattu julkaisupolku ja kirjaa ne suunnitelmalomakkeeseen. Ilman niitä työviikon 3 julkaisua ei voi tehdä."],
             ["Kirjoita käyttäjätarinat", "Kirjoita toimeksiannosta tarinat muodossa ”Matkailijana haluan …, jotta …” tiedostoon `project-docs/kayttajatarinat.md`. Anna jokaiselle 2–4 hyväksymiskriteeriä."],
             ["Priorisoi ohjaajan kanssa", "Merkitse jokainen tarina: pakollinen ydin (P0), tärkeä jatko (P1) tai valinnainen lisä (P2). Ohjaaja toimii asiakkaan sijaisena. Kirjaa perustelu, älä pelkkää kirjainta."]
           ],
-          valmis: "Jokaisen kysymyksen alla on ohjaajan vastaus nimellä ja päivällä, ja jokaisella tarinalla on 2–4 hyväksymiskriteeriä, P-luokka ja perustelu.",
+          valmis: "Jokaisen kysymyksen alla on ohjaajan vastaus ja päivä, ja jokaisella tarinalla on 2–4 hyväksymiskriteeriä, P-luokka ja perustelu.",
           tallenna: "`project-docs/kysymykset.md` ja `project-docs/kayttajatarinat.md` commitilla. Ohjaajan vastaukset omin sanoin työviikon 2 päiväkirjaan.",
           sanat: ["viikkopalaveri", "käyttäjätarina", "P0", "P1", "P2"],
           esimerkki: "”Matkailijana haluan lisätä Utsjoen kaavioon, jotta näen, milloin siellä on kaamos.” Kriteerit: nimi hyväksytään isoilla ja pienillä kirjaimilla; kaamosjakso näkyy 0 minuutin tasona; sama paikka ei tule kahdesti. Luokka P0, koska kaamos on asiakkaan myyntiargumentti."
@@ -484,7 +484,7 @@ window.NAYTTOPROJEKTI = {
             ["Arvioi työmäärä", "Anna jokaiselle issuelle työmääräarvio tunteina ja P-luokka tunnisteena."],
             ["Täytä suunnitelma", "Täytä suunnitelmalomakkeen viikon 2 kentät: tavoite, käyttäjät, laskentatapa, paikkakuntatiedon muoto ja rajaus. Jätä ohjaajan asiat tyhjiksi, kunnes ne on sovittu."],
             ["Vie suunnitelma repositoryyn", "Lataa `suunnitelma.md`, tallenna se polkuun `project-docs/suunnitelma.md` ja tee commit ja push."],
-            ["Pyydä hyväksyntä", "Pyydä ohjaajaa nimeämään tarina, jonka valmistumista ei voi päätellä kriteereistä, ja korjaa se. Pyydä sitten hyväksyntä kirjattuna kommenttina, esimerkiksi issueen."]
+            ["Pyydä hyväksyntä", "Pyydä ohjaajaa nimeämään tarina, jonka valmistumista ei voi päätellä kriteereistä, ja korjaa se. Pyydä sitten hyväksyntä suunnitelmalle ja sen rajapintaluonnokselle kirjattuna kommenttina, esimerkiksi issueen."]
           ],
           valmis: "Jokaisella P0-tarinalla on issue, hyväksymiskriteerit ja arvio tunteina, ja ohjaajan hyväksyntä on kirjattu kommenttina.",
           tallenna: "`project-docs/suunnitelma.md` commitilla. Linkit issue-tauluun ja ohjaajan hyväksyntään työviikon 2 päiväkirjaan.",
@@ -503,7 +503,7 @@ window.NAYTTOPROJEKTI = {
         code: "KÄYTTÄJÄTARINAN POHJA\nMatkailijana haluan [toiminto], jotta [hyöty].\nHyväksymiskriteerit:\n- [havaittava ehto 1]\n- [havaittava ehto 2]\nPrioriteetti: P0 / P1 / P2 – perustelu: …\nArvio: … h\n\nVERTAILUTAULUKON POHJA\n| Kriteeri | Vaihtoehto A | Vaihtoehto B | Vaihtoehto C |\n| tarkkuus vs. referenssi | | | |\n| Utsjoki 21.12. → 0? | | | |\n| oma ymmärrys | | | |\n| testattavuus | | | |\nValinta ja se, mikä valinnasta jää huonommaksi: …",
         test: "Anna suunnitelma ohjaajalle ja pyydä häntä nimeämään yksi P0-tarina, jonka hyväksymiskriteereistä ei voi päätellä, milloin se on valmis. Korjaa se ennen hyväksyntää."
       },
-      example: "Vertailutaulukko: ”date_sun_info (PHP 8.3) antaa Helsingille 21.6. saman 18 h 56 min kuin referenssi; Utsjoella 21.6. se palauttaa true, ei aikaa → tarvitsen rajatarkistuksen joka tapauksessa. Valitsen oman yhtälön, koska haluan ymmärtää polaarijaksot, ja käytän date_sun_infoa referenssinä.” Ohjaajan kommentti issue #3:ssa: ”Rajaus hyväksytty 2. työviikolla, ML.”",
+      example: "Vertailutaulukko: ”date_sun_info (PHP 8.3) antaa Helsingille 21.6. saman 18 h 56 min kuin referenssi; Utsjoella 21.6. se palauttaa true, ei aikaa → tarvitsen rajatarkistuksen joka tapauksessa. Valitsen oman yhtälön, koska haluan ymmärtää polaarijaksot, ja käytän date_sun_infoa referenssinä.” Ohjaajan kommentti issue #3:ssa: ”Rajaus hyväksytty 2. työviikolla.”",
       notEnough: "Tekoälyn kirjoittama yleinen vertailu (”SQLite on kevyt ja suosittu”) ilman omaa koeajoa, omaa hakua ja ohjaajan kirjattua kommenttia."
     },
 
@@ -1048,11 +1048,11 @@ window.NAYTTOPROJEKTI = {
           osat: [
             ["Anna osoite ja tehtävät", "Anna nimetylle ulkopuoliselle julkinen osoite ja paperiset tehtävät. Hän esittää asiakasta, eikä hän ole oma ohjaava opettajasi."],
             ["Älä auta", "Älä selitä kesken kokeilun. Jokainen kysymys on sovelluksen puute, ei katselmoijan vika. Kirjaa kysymykset, joihin et vastannut."],
-            ["Kirjaa sitaatit", "Kirjoita katselmoijan sanat sanatarkasti sitaatteina sitä mukaa kuin hän puhuu."],
+            ["Kirjaa sitaatit", "Kirjoita katselmoijan sanat sanatarkasti sitaatteina sitä mukaa kuin hän puhuu. Merkitse puhujaksi rooli, esimerkiksi asiakkaan edustaja, älä nimeä."],
             ["Kirjaa pysähdykset", "Kirjaa, mihin hän pysähtyi ja kuinka kauan kukin tehtävä kesti."]
           ],
           valmis: "Muistiinpanoissa ovat katselmoijan rooli, ajankohta, vähintään viisi sanatarkkaa sitaattia ja tehtävien kestot.",
-          tallenna: "Sitaatit ja kestot heti tiedostoon `project-docs/katselmointi-vk10.md`."
+          tallenna: "Sitaatit ja kestot heti tiedostoon `project-docs/katselmointi-vk10.md` roolilla merkittyinä. Jos ohjaaja tarvitsee katselmoijan nimen, lähetä se hänelle Teamsissa."
         },
         "10-3": {
           miksi: "Sitaatti ja tulkinta erikseen ovat asiakaslähtöisen viestinnän työnäyte. Rajattu muutos mahtuu työviikkoon 11 vuosivalinnan rinnalle.",
@@ -1372,7 +1372,7 @@ window.NAYTTOPROJEKTI = {
         "15-1": {
           miksi: "Ylläpidettävyys todennetaan parhaiten toisen ihmisen löydöksistä. Testit todistavat, että toiminta ei muuttunut.",
           osat: [
-            ["Ota havainnot vastaan", "Kirjaa maanantain viikkopalaverissa ohjaajan kolme havaintoa: tiedosto, rivi ja mikä vaikeuttaa lukemista. Lisää päivämäärä ja ohjaajan nimi."],
+            ["Ota havainnot vastaan", "Kirjaa maanantain viikkopalaverissa ohjaajan kolme havaintoa: tiedosto, rivi ja mikä vaikeuttaa lukemista. Merkitse päivämäärä ja antajaksi rooli ohjaaja."],
             ["Kysy odotus", "Älä puolustele. Kysy jokaisesta havainnosta, mitä ohjaaja odotti näkevänsä."],
             ["Aja testit ennen", "Luo havainnolle oma haara ja aja testit ennen muutosta. Jos testit eivät kata kohtaa, kirjoita testi ensin."],
             ["Refaktoroi ja testaa", "Tee muutos ja aja testit uudelleen. Jos joudut muuttamaan testiä, kyse on toiminnan muutoksesta eikä refaktoroinnista."],
@@ -1420,7 +1420,7 @@ window.NAYTTOPROJEKTI = {
         code: "RIIPPUVUUSTAULUKKO\n| Paketti | Versio | Rooli tässä projektissa | Lisenssi |\n| react | 19.x | komponenttikirjasto | MIT |\n| recharts | 2.x | kaavion piirto | MIT |\n| tailwindcss | 4.x | tyyliluokat lomakkeelle ja listalle | MIT |\n| vitest | 2.x | TypeScript-testit | MIT |\n| phpunit/phpunit | 11.x | PHP-testit | BSD-3-Clause |\n\nKÄYTTÖÖNOTON ASKEL\n3. Käynnistä rajapinta:\n   php -S localhost:8000 -t server/public\n   Tarkista: http://localhost:8000/api/health → {\"status\":\"ok\"}",
         test: "Kloonaa repo tyhjään kansioon ja seuraa README:tä sanasta sanaan. Jokainen kohta, jossa joudut muistelemaan, on ohjeen puute."
       },
-      example: "Muistio: ”Havainto 1 (ohjaaja ML, 15. työviikon ma): index.php:n reititys ja validointi samassa 80 rivin funktiossa → jaettu route(), validate(), respond() → composer test 7/7 ennen ja jälkeen, diff #52.” README:n käyttöönotto kahdeksana komentona, riippuvuustaulukossa 7 pakettia lisensseineen.",
+      example: "Muistio: ”Havainto 1 (ohjaaja, 15. työviikon ma): index.php:n reititys ja validointi samassa 80 rivin funktiossa → jaettu route(), validate(), respond() → composer test 7/7 ennen ja jälkeen, diff #52.” README:n käyttöönotto kahdeksana komentona, riippuvuustaulukossa 7 pakettia lisensseineen.",
       notEnough: "Refaktoroinnit, jotka valitsit itse etukäteen ja jotka olit jo tehnyt, README arvioijalle (”tässä projektissa osoitan…”), tai lisenssit kirjattu muistista."
     },
 
@@ -1476,12 +1476,12 @@ window.NAYTTOPROJEKTI = {
           osat: [
             ["Kirjoita tehtävät", "Kirjoita testaajalle tehtävät: lisää Utsjoki ja Helsinki, vaihda vuodeksi 2028, lue tooltipista yksi päivä ja etsi leikkauspiste."],
             ["Anna ohje ja osoite", "Anna nimetylle ulkopuoliselle README, julkinen osoite ja tehtävät kirjallisina. Älä auta suullisesti."],
-            ["Kirjaa sitaatit", "Kirjaa hänen sanansa sitaatteina ja se, kuinka kauan alkuun pääseminen kesti."],
+            ["Kirjaa sitaatit", "Kirjaa hänen sanansa sitaatteina roolilla merkittyinä, esimerkiksi testaaja A, ja se, kuinka kauan alkuun pääseminen kesti."],
             ["Kirjoita pöytäkirja", "Kirjoita `project-docs/julkaisutestaus-vk16.md`: testaajan rooli, ajankohta, sitaatit ja oma tulkinta erikseen."],
             ["Kirjaa estävät issueiksi", "Kirjaa estävät virheet issueiksi työviikolla 17 korjattaviksi. Älä korjaa niitä kiireellä tällä viikolla."]
           ],
           valmis: "Testauspöytäkirjassa ovat rooli, ajankohta, sitaatit ja tulkinta erillään, ja estävät virheet ovat issueina korjaamatta.",
-          tallenna: "`project-docs/julkaisutestaus-vk16.md` commitilla. Tärkeimmät sitaatit työviikon 16 päiväkirjaan."
+          tallenna: "`project-docs/julkaisutestaus-vk16.md` commitilla, henkilöt rooleina. Tärkeimmät sitaatit työviikon 16 päiväkirjaan."
         }
       },
       help: {
@@ -1544,10 +1544,11 @@ window.NAYTTOPROJEKTI = {
             ["Viittaa katselmointiin", "Viittaa viestissä työviikon 10 katselmoijan sitaattiin ja kerro, mitä sen perusteella muutettiin."],
             ["Lähetä ohjaajalle", "Lähetä luovutusviesti ohjaajalle, joka toimii asiakkaan roolissa. Hän vastaa yhdellä asiakaskysymyksellä."],
             ["Vastaa asiakkaalle", "Vastaa kysymykseen asiakaskielellä ja kirjaa kysymys ja vastaus luovutusviestin perään."],
+            ["Perusta näyttömatriisi", "Luo `project-docs/nayttomatriisi.md`: jokaiselle 32 vaatimukselle rivi, jossa ovat tunnus, työnäytteen linkki ja viikko. Täytä linkit, jotka jo tiedät. Viimeistelet tiedoston työviikolla 18."],
             ["Jätä puskuri", "Käytä loppuviikko korjauksiin ja tarkistuksiin. Älä aloita uusia ominaisuuksia."]
           ],
-          valmis: "Julkaisutiedote ja luovutusviesti ovat repossa, ja ohjaajan asiakaskysymys ja vastauksesi on kirjattu.",
-          tallenna: "`julkaisutiedote.md` ja `luovutusviesti.md` kansioon `project-docs/` commitilla. Kysymys ja vastaus työviikon 17 päiväkirjaan."
+          valmis: "Julkaisutiedote ja luovutusviesti ovat repossa, ohjaajan asiakaskysymys ja vastauksesi on kirjattu, ja `nayttomatriisi.md` on perustettu.",
+          tallenna: "`julkaisutiedote.md`, `luovutusviesti.md` ja `nayttomatriisi.md` kansioon `project-docs/` commitilla. Kysymys ja vastaus työviikon 17 päiväkirjaan."
         }
       },
       help: {
@@ -1568,11 +1569,11 @@ window.NAYTTOPROJEKTI = {
 
     18: {
       type: "naytto",
-      feature: "Arvioija löytää näyttömatriisin linkeistä työnäytteen jokaiseen 32 vaatimukseen, ja 8–10 minuutin demo on harjoiteltu.",
+      feature: "Arvioija löytää tiedoston `project-docs/nayttomatriisi.md` linkeistä työnäytteen jokaiseen 32 vaatimukseen, ja 8–10 minuutin demo on harjoiteltu.",
       connection: "Sovellus on luovutettu, joten viimeisellä viikolla ei rakenneta mitään uutta. Kokoat 17 työviikon työnäytteet niin, että arvioija löytää jokaisen, ja harjoittelet demon, joka näyttää sekä käyttäjän työnkulun että sen takana olevan koodin. Itsearviointi sidotaan ihmisiin, jotka olivat mukana: katselmoija, julkaisutestaaja ja ohjaaja.",
-      deliverable: "Täsmälinkitetty näyttömatriisi, harjoiteltu demorunko, itsearviointi kolmesta tilanteesta ohjaajan vastakommentilla ja luovutettu näyttöpaketti.",
+      deliverable: "Täsmälinkitetty näyttömatriisi (project-docs/nayttomatriisi.md), harjoiteltu demorunko, itsearviointi kolmesta tilanteesta ohjaajan vastakommentilla ja luovutettu näyttöpaketti.",
       why: "Näytössä arvioidaan se, mikä löytyy: osaaminen, jota arvioija ei löydä, ei ole arvioijalle olemassa. Oman toiminnan arviointi tiimin jäsenenä todennetaan suhteessa niihin ihmisiin, joiden kanssa työskentelit, ei yleislauseilla.",
-      done: "Jokainen matriisin 32 riviä osoittaa olemassa olevaan aineistoon ja linkki aukeaa; demo on ajettu kellon kanssa vähintään kerran toiselle henkilölle; itsearviointi käsittelee työviikon 10 palautteen, työviikon 16 testaajan epäröinnin ja yhden viikkopalaverin, jossa sovittu muuttui, ja ohjaaja on kirjannut lyhyen vastakommentin.",
+      done: "Jokainen `nayttomatriisi.md`:n 32 rivistä osoittaa olemassa olevaan aineistoon ja linkki aukeaa; demo on ajettu kellon kanssa vähintään kerran toiselle henkilölle; itsearviointi käsittelee työviikon 10 palautteen, työviikon 16 testaajan epäröinnin ja yhden viikkopalaverin, jossa sovittu muuttui, ja ohjaaja on kirjannut lyhyen vastakommentin.",
       record: "Kirjoita työviikon 18 merkintään: mitkä matriisin kohdat olivat heikoimmin todennettuja ja miten korjasit ne, demon kesto harjoituksessa sekä itsearvioinnin ydin ja ohjaajan kommentti.",
       skills: ["näyttöaineiston kokoaminen", "esittäminen", "itsearviointi suhteessa tiimiin"],
       resources: [["Avaa näyttömatriisi", "#view-naytto", false]],
@@ -1580,13 +1581,13 @@ window.NAYTTOPROJEKTI = {
         "18-1": {
           miksi: "Näytössä arvioidaan se, mikä löytyy. Osaaminen, jota arvioija ei löydä, ei ole hänelle olemassa.",
           osat: [
-            ["Käy vaatimukset läpi", "Kirjaa jokaiselle näyttömatriisin 32 vaatimukselle työviikko, työnäyte ja linkki: commit, issue, dokumentti tai kuvakaappaus. Käytä matriisin rivien viikkomerkintöjä hakemistona."],
-            ["Avaa jokainen linkki", "Avaa jokainen linkki ja tarkista, että se osoittaa täsmälleen työnäytteeseen eikä repositoryn etusivulle."],
+            ["Täydennä näyttömatriisi", "Täydennä `project-docs/nayttomatriisi.md`:hen jokaiselle 32 vaatimukselle tunnus, työnäytteen linkki (commit, issue, tiedosto, tagi tai kuva) ja viikko. Sama työnäyte saa olla usealla rivillä."],
+            ["Avaa jokainen linkki", "Avaa jokainen linkki ja tarkista, että se osoittaa täsmälleen työnäytteeseen eikä repositoryn etusivulle. Sivun näyttömatriisin viikkomerkinnät auttavat löytämään työnäytteet."],
             ["Korjaa aukot", "Korjaa puuttuvat ja epämääräiset linkit. Älä rakenna mitään uutta: jos työnäyte puuttuu, kirjaa se rehellisesti."],
             ["Tarkista aineisto", "Tarkista, että projektipäiväkirja, AI-loki ja testiraportti ovat repossa ajan tasalla."]
           ],
-          valmis: "Jokainen 32 rivistä osoittaa olemassa olevaan työnäytteeseen, ja jokainen linkki aukeaa.",
-          tallenna: "Täsmälinkit luovutettavaan näyttöpakettiin, ja vastaava rasti sivun näyttömatriisiin. Heikoimmin todennetut kohdat työviikon 18 päiväkirjaan."
+          valmis: "`nayttomatriisi.md`:ssä on 32 riviä, jokainen osoittaa olemassa olevaan työnäytteeseen, ja jokainen linkki aukeaa.",
+          tallenna: "`project-docs/nayttomatriisi.md` commitilla. Sivun näyttömatriisin rastit ovat oma muistilistasi. Heikoimmin todennetut kohdat työviikon 18 päiväkirjaan."
         },
         "18-2": {
           miksi: "Demo näyttää arvioijalle, että osaat perustella tekemäsi. Harjoitus toiselle ihmiselle paljastaa kohdat, jotka venyvät tai jäävät epäselviksi.",
@@ -1606,15 +1607,15 @@ window.NAYTTOPROJEKTI = {
             ["Kirjoita testaustilanne", "Kirjoita, miten reagoit työviikon 16 testaajan epäröintiin."],
             ["Kirjoita palaveritilanne", "Kirjoita yhdestä viikkopalaverista, jossa sovittu muuttui: mitä sovittiin, mitä toteutui ja mitä tekisit toisin."],
             ["Pyydä vastakommentti", "Pyydä ohjaajalta lyhyt vastakommentti ja liitä se itsearviointiin."],
-            ["Luovuta paketti", "Tarkista aineiston aukot vielä kerran toisen henkilön kanssa. Luovuta arvioijalle näyttömatriisi, projektipäiväkirja, AI-loki ja julkaistu v1.0."]
+            ["Luovuta paketti", "Tarkista aineiston aukot vielä kerran toisen henkilön kanssa. Luovuta arvioijalle `nayttomatriisi.md`, projektipäiväkirja, AI-loki ja julkaistu v1.0."]
           ],
           valmis: "Itsearviointi käsittelee kolme nimettyä tilannetta, ohjaajan vastakommentti on liitetty, ja näyttöpaketti on luovutettu.",
-          tallenna: "`project-docs/itsearviointi.md` commitilla. Itsearvioinnin ydin ja ohjaajan kommentti työviikon 18 päiväkirjaan.",
+          tallenna: "`project-docs/itsearviointi.md` commitilla, henkilöt rooleina. Itsearvioinnin ydin ja ohjaajan kommentti työviikon 18 päiväkirjaan.",
           sanat: ["viikkopalaveri"]
         }
       },
-      example: "Itsearviointi: ”Työviikolla 10 katselmoija ei löytänyt lomaketta. Ensireaktioni oli selittää; kirjasin sen sitaattina ja tein issue #30:n. Työviikolla 16 testaaja pysähtyi PHP:n käynnistykseen, ja ymmärsin, että README oli kirjoitettu minulle, ei hänelle.” Ohjaajan kommentti: ”Palautteen kirjaaminen erillään tulkinnasta parani selvästi viikosta 10 viikkoon 16. ML.”",
-      notEnough: "”Opin paljon ja projekti sujui hyvin”, ilman tilanteita, nimiä ja sitä, mitä tekisit toisin, tai matriisi, jossa linkit osoittavat repon etusivulle.",
+      example: "Itsearviointi: ”Työviikolla 10 katselmoija ei löytänyt lomaketta. Ensireaktioni oli selittää; kirjasin sen sitaattina ja tein issue #30:n. Työviikolla 16 testaaja pysähtyi PHP:n käynnistykseen, ja ymmärsin, että README oli kirjoitettu minulle, ei hänelle.” Ohjaajan kommentti: ”Palautteen kirjaaminen erillään tulkinnasta parani selvästi viikosta 10 viikkoon 16.”",
+      notEnough: "”Opin paljon ja projekti sujui hyvin”, ilman tilanteita, rooleja ja sitä, mitä tekisit toisin, tai matriisi, jossa linkit osoittavat repon etusivulle.",
       paivat: [
         ["Sisältöjäädytys", "Viimeinen hyväksytty versio; matriisin täsmälinkitys alkaa."],
         ["Aineisto", "Päiväkirja, AI-loki, testiraportti ja linkkien tarkistus."],
@@ -1632,7 +1633,7 @@ window.NAYTTOPROJEKTI = {
     kansiKuvaus: "Päivänvalon visualisointi Suomen paikkakunnille: PHP-rajapinta, React-käyttöliittymä ja julkaisu tuotantoon",
     kansiHuomiot: [
       "Aikataulu on päivätön: työviikko 1 on se viikko, jolla opiskelija aloittaa, ja projekti kestää 18 työviikkoa.",
-      "Julkiseen repositoryyn ei laiteta henkilötietoja, koulun tunnisteita eikä muiden nimiä. Tekijänimestä sovitaan ohjaajan kanssa."
+      "Julkiseen repositoryyn ei laiteta henkilötietoja, koulun tunnisteita eikä muiden nimiä: henkilöistä kirjataan vain rooli, ja nimet lähetetään tarvittaessa ohjaajalle Teamsissa. Tekijänimestä sovitaan ohjaajan kanssa."
     ],
     viimeisetPaivat: [
       ["Ma", "Sisältöjäädytys: viimeinen hyväksytty versio, matriisin täsmälinkitys alkaa"],
@@ -1667,7 +1668,7 @@ window.NAYTTOPROJEKTI = {
       p0: "Pakollinen perusversio (P0): paikkakunnan nimi koordinaateiksi · päivänvalo joka päivälle rajoissa 0–1440 min · karkausvuosi oikein · usea paikka samassa kaaviossa yhteisellä asteikolla · paikan poisto · selkeä virheilmoitus tuntemattomasta paikasta · tooltip (päivä, paikka, kesto) · kaamos ja yötön yö korostettuina. P1: leikkauspisteet, vuosivalinta, mobiili ja saavutettavuus.",
       roolit: [
         ["Opiskelija", "Toteuttaa sovelluksen, tekee ja perustelee omat tekniset päätökset, kirjoittaa projektipäiväkirjaa ja AI-lokia sekä kokoaa näyttöaineiston. Vastaa siitä, että jokainen työnäyte löytyy repositorysta."],
-        ["Ohjaaja / opettaja", "Toimii asiakkaan sijaisena rajaus- ja priorisointipäätöksissä, valitsee ja kokeilee julkaisualustan ennen työviikkoa 1, pitää viikkopalaverit (10 min, voi olla 3–4 opiskelijan ryhmäkierros), tarjoaa kuntaluettelon varapolkuna työviikolle 5, tekee koodikatselmoinnin työviikolla 14, vastaa asiakaskysymyksellä työviikolla 17, kirjoittaa vastakommentin itsearviointiin työviikolla 18 ja päättää ohjaajalle kuuluvat asiat (lisenssi, repositoryn julkisuus, katselmoijien nimeäminen, perusteversio, arvioinnin järjestelyt)."],
+        ["Ohjaaja / opettaja", "Toimii asiakkaan sijaisena: vastaanottaa kysymyslistan ja viikkopalaverien tilannekatsaukset ja tekee rajaus- ja priorisointipäätökset, valitsee ja kokeilee julkaisualustan ennen työviikkoa 1, pitää viikkopalaverit (10 min, voi olla 3–4 opiskelijan ryhmäkierros), tarjoaa kuntaluettelon varapolkuna työviikolle 5, tekee koodikatselmoinnin työviikolla 14, vastaa asiakaskysymyksellä työviikolla 17, kirjoittaa vastakommentin itsearviointiin työviikolla 18 ja päättää ohjaajalle kuuluvat asiat (lisenssi, repositoryn julkisuus, katselmoijien nimeäminen, perusteversio, arvioinnin järjestelyt)."],
         ["Ulkopuolinen katselmoija (työviikko 10)", "Kokeilee väliversiota asiakkaan roolissa kolmen paikan testitehtävällä. Ei ole opiskelijan oma ohjaava opettaja: rooliin sopii työelämäedustaja, toinen opettaja tai toinen opiskelija. Nimeäminen viimeistään työviikolla 8."],
         ["Julkaisutestaaja (työviikko 16)", "Testaa julkaistun julkaisuehdokkaan pelkän README:n avulla ilman suullista apua: lisää paikkoja, vaihtaa vuoden, lukee tooltipin ja leikkauspisteen. Eri henkilö kuin työviikolla 10, jos mahdollista."],
         ["Arvioijat (työviikko 18)", "Ottavat vastaan demon ja näyttöaineiston. Arvioinnin ajankohta ja arvioijat sovitaan ohjaajan kanssa."]
@@ -1686,7 +1687,7 @@ window.NAYTTOPROJEKTI = {
         [14, "Testaus", "16 testitapausta kolmessa luokassa odotusarvoin ennen ajoa, ajettavat ja käsin ajettavat eroteltu, kaksi täydellistä ketjua bug-listalta. Ohjaajan koodikatselmointi tehdään tämän viikon aikana."],
         [16, "Julkaisuehdokas ja julkaisutestaus", "v1.0-rc1 tagilla ja julkisessa osoitteessa, oma asennuspöytäkirja, ulkopuolisen testauspöytäkirja, estävät issueina."],
         [17, "v1.0 ja luovutus", "Estävät korjattu kolmantena ketjuna, v1.0 tagilla, savutesti, julkaisutiedote, luovutusviesti ja asiakkaan kysymys vastauksineen."],
-        [18, "Näyttöaineisto", "Näyttömatriisi täsmälinkitettynä 32 vaatimukseen, demo harjoiteltuna, itsearviointi kolmesta tilanteesta ohjaajan vastakommentilla."]
+        [18, "Näyttöaineisto", "project-docs/nayttomatriisi.md täsmälinkitettynä 32 vaatimukseen (perustettu työviikolla 17), demo harjoiteltuna, itsearviointi kolmesta tilanteesta ohjaajan vastakommentilla."]
       ],
       tyonaytteet: {
         p1: ["1", "VS Code, Viten kehityspalvelin, PHP:n sisäänrakennettu palvelin ja selaimen kehittäjätyökalut käytössä: versiotaulukko, kuvakaappaukset ja käynnistyskomennot README:ssä"],
@@ -1696,7 +1697,7 @@ window.NAYTTOPROJEKTI = {
         p5: ["15", "Kolme refaktorointia ohjaajan koodikatselmoinnin nimetyistä havainnoista, ennen/jälkeen-diffit, perustelut, testit läpi"],
         p6: ["7 (rautalangat 2, täydentyy 12)", "Lomake, paikkalista ja kaavionäkymä rakennettu itse rautalankojen mukaan Tailwindilla; mobiili ja saavutettavuus"],
         p7: ["7, 11 (alku 5)", "Paikan lisäys, poisto, duplikaatin esto ja vuosivalinta käyttäjätarinoiden ja hyväksymiskriteerien mukaan; issue → commit -ketju"],
-        p8: ["2→17", "Viikkopalaveri ohjaajan kanssa: sovitut tehtävät, arviot ja toteuma issueihin, ohjaajan nimi ja päivä päiväkirjassa"],
+        p8: ["2→17", "Viikkopalaveri ohjaajan kanssa: sovitut tehtävät, arviot ja toteuma issueihin, päivä ja roolit päiväkirjassa"],
         p9: ["2 (todennus 3, 4, 11)", "Kaksi vertailua ja yhteinen päätös ohjaajan kanssa kirjattuna; yhdessä ratkotut ongelmat: julkaisu, napapiirin laskenta-ansat, merge-konflikti"],
         p10: ["10 (täydentyy 11)", "Katselmointi: ymmärtääkö asiakkaan roolissa oleva kaavion ilman selityksiä; muistio ja priorisoitu muutoslista, todennus muutoksella"],
         p11: ["18", "Itsearviointi kolmesta nimetystä tilanteesta (vk 10 palaute, vk 16 testaajan epäröinti, yksi viikkopalaveri) ja ohjaajan vastakommentti"],
@@ -1724,7 +1725,7 @@ window.NAYTTOPROJEKTI = {
       },
       dokumentaatio: {
         kayttajalle: "README kahdessa osassa: käyttöönotto tyhjään ympäristöön askel askeleelta (PHP, Node, kloonaus, riippuvuudet, build, käynnistys, portit) sekä kehittäjälle kansiorakenne, kehityskomennot, testien ajo ja rajapinnan kuvaus esimerkkipyynnöllä ja -vastauksella. Lisäksi asiakkaan pikaohje luovutusviestissä. Kirjoitetaan käyttäjälle, ei arvioijalle.",
-        arviointiin: "Projektipäiväkirja, AI-loki, tekninen suunnitelma ja rajapintasopimus, vertailutaulukot (työviikko 2), selvitystaulukko (3), katselmointimuistio (10), tietoturva-arvio (13), testiraportti ja virheenkorjausketjut (14), refaktorointimuistio (15), asennus- ja julkaisutestauspöytäkirjat (16), julkaisutiedote ja luovutusviesti kysymyksineen (17) sekä täsmälinkitetty näyttömatriisi ja itsearviointi (18).",
+        arviointiin: "Projektipäiväkirja, AI-loki, tekninen suunnitelma ja rajapintasopimus, vertailutaulukot (työviikko 2), selvitystaulukko (3), katselmointimuistio (10), tietoturva-arvio (13), testiraportti ja virheenkorjausketjut (14), refaktorointimuistio (15), asennus- ja julkaisutestauspöytäkirjat (16), julkaisutiedote ja luovutusviesti kysymyksineen (17) sekä täsmälinkitetty näyttömatriisi project-docs/nayttomatriisi.md ja itsearviointi (18).",
         vaatimus: "Käyttöönotto-ohjeen kovavaatimus: ulkopuolinen henkilö saa sovelluksen käyttöön pelkän kirjallisen ohjeen avulla ilman suullista apua. Tämä testataan työviikolla 16 kahdessa vaiheessa: ensin opiskelija itse puhtaassa ympäristössä, sitten ulkopuolinen julkaistulla julkaisuehdokkaalla."
       },
       tekoaly: [
@@ -1738,7 +1739,7 @@ window.NAYTTOPROJEKTI = {
         ["Suunnitelma ja päiväkirja", "project-docs/suunnitelma.md, api-sopimus.md, projektipaivakirja.md ja ai-loki.md. Päiväkirjasta on commit joka viikolta."],
         ["Laatuaineisto", "Testiraportti (16 tapausta), kolme virheenkorjausketjua, tietoturva-arvio uhkalistalla, Lighthouse-raportit ennen ja jälkeen, refaktorointimuistio."],
         ["Katselmoinnit", "Katselmointimuistio (työviikko 10), asennuspöytäkirja ja julkaisutestauksen pöytäkirja (16), asiakkaan kysymys ja vastaus (17)."],
-        ["Näyttöaineisto", "Täsmälinkitetty näyttömatriisi 32 vaatimukselle, demorunko ja itsearviointi ohjaajan vastakommentilla."]
+        ["Näyttöaineisto", "Täsmälinkitetty näyttömatriisi project-docs/nayttomatriisi.md 32 vaatimukselle, demorunko ja itsearviointi ohjaajan vastakommentilla."]
       ],
       huomiot: [
         ["Julkaisualusta ennen työviikkoa 1", "PHP:tä ei voi ajaa staattisilla alustoilla (GitHub Pages, Netlify). Ohjaaja valitsee alustan (esim. Render tai Fly.io Dockerfilella, Railway, oppilaitoksen PHP-palvelin), kokeilee sen itse PHP 8.2 + staattinen dist -yhdistelmällä ja antaa opiskelijalle testatun polun: build alustalla (Node-build → PHP), client/dist gitignoressa, automaattinen julkaisu main-haarasta, staattisten tiedostojen tarjoilu PHP:stä. Ilman tätä työviikkoa 3 ei voi tehdä, ja committattu dist tuottaa merkityksettömiä konflikteja jokaisessa haarassa työviikolta 6."],

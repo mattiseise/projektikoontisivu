@@ -27,9 +27,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap">
-  <link rel="stylesheet" href="styles.css?v2.7.1-20260930">
-  <script src="sisalto.js?v2.7.1-20260930" defer></script>
-  <script src="app.js?v2.7.1-20260930" defer></script>
+  <link rel="stylesheet" href="styles.css?v2.7.2-20260930">
+  <script src="sisalto.js?v2.7.2-20260930" defer></script>
+  <script src="app.js?v2.7.2-20260930" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#sisalto">Siirry sisältöön</a>
@@ -129,9 +129,9 @@
             <dt>Muistiot ja sopimukset <code>project-docs/</code>-kansiossa</dt><dd>Esimerkiksi rajapintasopimus, katselmointimuistio, tietoturva-arvio ja testiraportti. Tee muistio silloin, kun työvaihe pyytää sitä.</dd>
             <dt>Projektipäiväkirja</dt><dd>Viikon yhteenveto, perustelut ja linkit työnäytteisiin. Täytät kerran viikon lopussa, lataat ja viet tiedostoksi <code>project-docs/projektipaivakirja.md</code>.</dd>
             <dt>AI-loki</dt><dd>Mitä kysyit tekoälyltä ja mitä teit vastauksella: käytit, muutit tai hylkäsit.</dd>
-            <dt>Näyttömatriisi</dt><dd>Linkit työnäytteisiin, jotka osoittavat tutkinnon vaatimukset. Sama työnäyte voi osoittaa useita vaatimuksia.</dd>
+            <dt>Näyttömatriisi <code>project-docs/nayttomatriisi.md</code></dt><dd>Jokaiselle 32 vaatimukselle rivi: vaatimuksen tunnus, työnäytteen linkki (commit, issue, tiedosto, tagi tai kuva) ja viikko. Sama työnäyte voi olla usealla rivillä. Perustat tiedoston työviikolla 17 ja viimeistelet sen työviikolla 18. Sivun Näyttömatriisi-näkymän rastit ovat oma muistilistasi.</dd>
           </dl>
-          <p>Tehtävän tulos kirjataan issueen heti. Päiväkirjaan kirjoitat viikon yhteenvedon ja linkität tuloksiin. Sivuston rastit ja kentät tallentuvat vain tähän selaimeen: rasti ei ole palautus, työnäyte on aina repositoryssa.</p>
+          <p>Tehtävän tulos kirjataan issueen heti. Päiväkirjaan kirjoitat viikon yhteenvedon ja linkität tuloksiin. Henkilöistä kirjoitat repositoryyn vain roolin, esimerkiksi ohjaaja, asiakkaan edustaja tai testaaja A. Jos ohjaaja tarvitsee nimen, lähetät sen hänelle Teamsissa. Sivuston rastit ja kentät tallentuvat vain tähän selaimeen: rasti ei ole palautus, työnäyte on aina repositoryssa.</p>
         </details>
 
         <details class="view-section project-reference">
@@ -191,7 +191,7 @@
           <p>Haluan verkkosivullemme kuvan, joka näyttää päivän pituuden vuoden jokaisena päivänä millä tahansa Suomen paikkakunnalla. Asiakkaan pitää voida kirjoittaa paikkakunnan nimi, lisätä se kaavioon ja verrata sitä toiseen paikkaan samassa kuvassa, vaikka Helsinkiä Utsjokeen. Kun hän vie hiiren kaavion päälle, hänen pitää nähdä tarkka päivä, paikka ja se, kuinka monta tuntia ja minuuttia valoa sinä päivänä on. Kaamos ja yötön yö ovat meidän myyntiargumenttimme: haluan, että ne erottuvat kuvasta yhdellä katseella.</p>
           <p>Paikkakunnat eivät saa olla ennalta lukittu lista. Asiakkaat kysyvät Kilpisjärvestä, Inarista ja Kuusamosta, ja jos nimi kirjoitetaan väärin tai sitä ei tunneta, sovelluksen pitää sanoa se selvästi eikä jäädä tyhjäksi. Vuoden pitää olla valittavissa, koska teemme tarjoukset seuraavalle talvelle jo edellisenä keväänä, ja karkausvuoden pitää toimia oikein. Olisi hienoa, jos kuvassa näkyisivät myös ne päivät, joina kahdessa paikassa on yhtä pitkä päivä. Silloin voin sanoa asiakkaalle, että maaliskuun lopulla Rovaniemellä on yhtä valoisaa kuin Helsingissä.</p>
           <p>Haluan kokeilla toimivaa väliversiota noin puolivälissä omilla käsilläni: en halua kalvoesitystä vaan oikean sovelluksen, johon lisään kolme paikkaa ja katson, ymmärränkö kuvan ilman selityksiä. Valmis tarkoittaa minulle tätä: sovellus on verkossa osoitteessa, jonka voin laittaa sivuillemme, se toimii myös puhelimella, se näyttää Suomen paikkakunnat oikein kaamoksesta yöttömään yöhön, ja mukana on ohje, jolla saan sen käyntiin kysymättä keneltäkään.</p>
-          <p class="assignment-note">Revontuli Travel ja sen yrittäjä ovat kuvitteellisia. Ohjaava opettaja toimii asiakkaan sijaisena rajaus- ja priorisointipäätöksissä. Työviikon 10 katselmoinnissa asiakkaan roolia esittää ohjaajan nimeämä ulkopuolinen henkilö, ei oma ohjaava opettajasi.</p>
+          <p class="assignment-note">Revontuli Travel ja sen yrittäjä ovat kuvitteellisia. Ohjaava opettaja toimii asiakkaan sijaisena: hän vastaanottaa kysymyslistan ja viikkopalaverien tilannekatsaukset ja tekee rajaus- ja priorisointipäätökset. Työviikon 10 katselmoinnissa asiakkaan roolia esittää ohjaajan nimeämä ulkopuolinen henkilö, ei oma ohjaava opettajasi.</p>
         </div>
 
         <div class="card view-section">
@@ -208,13 +208,13 @@
         <div class="grid-2 view-section">
           <div class="card">
             <p class="section-label section-label-accent">Vaatimukset ja sovittu toteutustapa</p>
-            <p style="margin-top:8px"><strong>Backend eli palvelinpuoli · sovittu toteutustapa:</strong> PHP 8.2 tai uudempi ilman kehystä. Yksi rajapinta <code>GET /api/daylight?city=Helsinki&amp;year=2026</code> palauttaa paikan koordinaatit ja jokaisen päivän päivänvalon minuutteina JSON-muodossa. Rajapinnan muoto sovitaan kirjallisesti työviikolla 2 ennen koodia.</p>
+            <p style="margin-top:8px"><strong>Backend eli palvelinpuoli · sovittu toteutustapa:</strong> PHP 8.2 tai uudempi ilman kehystä. Yksi rajapinta <code>GET /api/daylight?city=Helsinki&amp;year=2026</code> palauttaa paikan koordinaatit ja jokaisen päivän päivänvalon minuutteina JSON-muodossa. Rajapinnan muoto sovitaan kirjallisesti ennen koodia: työviikolla 2 luonnoksena suunnitelmaan ja työviikolla 3 tarkennettuna sopimukseksi <code>project-docs/api-sopimus.md</code>.</p>
             <p style="margin-top:8px"><strong>Frontend eli selainpuoli · sovittu toteutustapa:</strong> React + TypeScript + Vite. Kaavio piirretään kaaviokirjastolla, joka on ainoa valmis käyttöliittymäkomponentti. Kirjasto on oma päätöksesi: valitset ja perustelet sen työviikolla 6. Tailwind CSS otetaan käyttöön työviikolla 7, kun lomake ja paikkalista rakennetaan alusta itse. Rajapintakutsut ovat omassa moduulissaan erillään kaaviosta.</p>
             <p style="margin-top:8px"><strong>Kansiot · sovittu toteutustapa:</strong> <code>client/</code> (React-sovellus), <code>server/</code> (PHP-rajapinta ja sen testit) ja <code>project-docs/</code> (suunnitelma, rajapintasopimus, päiväkirja, muistiot ja raportit).</p>
             <p style="margin-top:8px"><strong>P0-minimi · vaatimus:</strong> paikkakunnan nimi koordinaateiksi · päivänvalo joka päivälle rajoissa 0–1440 min · karkausvuosi oikein · usea paikka samassa kaaviossa yhteisellä asteikolla · paikan poisto · selkeä virheilmoitus tuntemattomasta paikasta · tooltip eli hiiren tai kosketuksen alle avautuva vihjeruutu (päivä, paikka, kesto) · kaamos ja yötön yö korostettuina.</p>
             <p style="margin-top:8px"><strong>P1 · vaatimus:</strong> leikkauspisteet, vuosivalinta, mobiilinäkymä ja saavutettavuus. <strong>P2 · valinnainen:</strong> kuvan jako linkkinä, paikkojen tallennus selaimeen.</p>
             <p style="margin-top:8px"><strong>Julkaisu · vaatimus:</strong> sovellus ja <code>/api/health</code> viedään julkiseen osoitteeseen jo työviikolla 3, ja samaa julkaisuputkea käytetään loppuun asti: julkaisuehdokas työviikolla 16 ja v1.0 työviikolla 17. Julkaisualustan valitsee ohjaaja, joka on kokeillut sen ennen projektin alkua. <strong>Ehdotus:</strong> oletusmalli on yksi PHP-palvelin, joka tarjoilee sekä buildatun sovelluksen että rajapinnan samasta osoitteesta. Build tehdään alustalla, ja <code>client/dist</code> on gitignoressa. Jos valitset toisen mallin, se on oma päätös, jonka perustelet suunnitelmassa työviikolla 3.</p>
-            <p style="margin-top:8px"><strong>Viikkopalaveri · sovittu työtapa:</strong> työviikoilla 2–17 pidetään ohjaajan kanssa 10 minuutin viikkopalaveri (voi olla 3–4 opiskelijan ryhmäkierros). Sovitut tehtävät, arviot ja edellisen viikon toteuma kirjataan issueihin, ohjaajan nimi ja päivä päiväkirjaan. Työviikolta 6 jokainen ominaisuus tehdään omassa haarassa ja yhdistetään pull requestilla eli yhdistämispyynnöllä, jonka katselmoit itse ennen yhdistämistä.</p>
+            <p style="margin-top:8px"><strong>Viikkopalaveri · sovittu työtapa:</strong> työviikoilla 2–17 pidetään ohjaajan kanssa 10 minuutin viikkopalaveri (voi olla 3–4 opiskelijan ryhmäkierros). Sovitut tehtävät, arviot ja edellisen viikon toteuma kirjataan issueihin, päivä ja osallistujien roolit päiväkirjaan. Työviikolta 6 jokainen ominaisuus tehdään omassa haarassa ja yhdistetään pull requestilla eli yhdistämispyynnöllä, jonka katselmoit itse ennen yhdistämistä.</p>
           </div>
           <div class="card">
             <p class="section-label">Pidä rajaus · vaatimus</p>
@@ -238,7 +238,7 @@
               <li><strong>Päivänvalon odotusarvot · sovittu toteutustapa:</strong> Ilmatieteen laitoksen auringonnousu- ja laskuajat tai timeanddate.com. Näistä haetaan testitapausten odotetut tulokset, ennen kuin oma laskenta ajetaan.</li>
               <li><strong>Laskentakaava · oma päätös:</strong> auringonnousuyhtälö (NOAA:n julkaisema) tai PHP:n sisäänrakennettu <code>date_sun_info</code>-funktio. Kumpaa käytät, on oma päätöksesi työviikolla 2, ja toista käytetään referenssinä.</li>
               <li><strong>Dokumentaatio · sovittu toteutustapa:</strong> PHP:n, Reactin, Viten, Tailwindin ja valitun kaaviokirjaston virallinen dokumentaatio on ensisijainen lähde. Jokainen asennettu paketti perustellaan ja kirjataan riippuvuustaulukkoon (paketti, rooli tässä projektissa, versio, lisenssi).</li>
-              <li><strong>Ei henkilötietoja · vaatimus:</strong> sovellus ei käsittele henkilötietoja, eikä testidataan tai repositoryyn kirjoiteta oikeiden ihmisten nimiä.</li>
+              <li><strong>Ei henkilötietoja · vaatimus:</strong> sovellus ei käsittele henkilötietoja, eikä testidataan tai repositoryyn kirjoiteta oikeiden ihmisten nimiä. Henkilöistä kirjataan vain rooli, esimerkiksi ohjaaja, asiakkaan edustaja tai testaaja A. Jos ohjaaja tarvitsee nimen, se lähetetään hänelle Teamsissa.</li>
             </ul>
             <p><strong>Tekoälyn raja · sovittu toteutustapa:</strong> tekoäly saa selittää virheilmoituksia, ehdottaa testitapauksia ja tarkistaa koodiasi. Päivänvalolaskenta, leikkauspisteiden logiikka, komponenttirakenne ja saavutettavuusratkaisut tehdään itse. Jokainen merkittävä käyttö kirjataan AI-lokiin.</p>
         </div>
@@ -319,7 +319,7 @@
             <li><strong>Työkalut:</strong> PHP 8.2 tai uudempi, Node LTS, Git ja VS Code. Selainpuolen runko syntyy komennolla <code>npm create vite@latest -- --template react-ts</code>, palvelin käynnistyy komennolla <code>php -S localhost:8000 -t server/public</code>.</li>
             <li><strong>Kirjastot:</strong> Tailwind CSS ja yksi kaaviokirjasto. Jokainen asennettu paketti perustellaan ja kirjataan riippuvuustaulukkoon (paketti, rooli, versio, lisenssi). Tarkista lisenssi ennen asennusta.</li>
             <li><strong>Aineisto:</strong> paikkakuntien koordinaatit avoimesta lähteestä lisenssi kirjattuna tai ulkoisesta geokoodausrajapinnasta; päivänvalon odotusarvot Ilmatieteen laitokselta tai timeanddate-sivulta. Ei henkilötietoja.</li>
-            <li><strong>Viikkopalaveri ja issuet:</strong> 10 minuuttia ohjaajan kanssa joka viikko työviikoilta 2–17. Sovitut tehtävät, arviot ja toteuma kirjataan issueihin, ohjaajan nimi ja päivä päiväkirjaan. Havaitut virheet kirjataan heti bug-issueiksi. Ohjaaja lisätään repositoryn yhteistyökumppaniksi (collaborator) työviikolla 1.</li>
+            <li><strong>Viikkopalaveri ja issuet:</strong> 10 minuuttia ohjaajan kanssa joka viikko työviikoilta 2–17. Sovitut tehtävät, arviot ja toteuma kirjataan issueihin, päivä ja osallistujien roolit päiväkirjaan. Havaitut virheet kirjataan heti bug-issueiksi. Ohjaaja lisätään repositoryn yhteistyökumppaniksi (collaborator) työviikolla 1.</li>
             <li><strong>Tekoälyn rajat:</strong> tekoäly saa selittää, ehdottaa ja tarkistaa. Päivänvalolaskenta, leikkauspisteiden logiikka, komponenttirakenne ja saavutettavuusratkaisut tehdään itse. Jokainen merkittävä käyttö kirjataan AI-lokiin.</li>
           </ul>
         </div>
@@ -1648,7 +1648,7 @@
 
           <div class="outcome-grid">
             <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
-            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> täsmälinkitetty näyttömatriisi, demorunko, <code>itsearviointi.md</code> ohjaajan kommentilla (p11).</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> täsmälinkitetty <code>project-docs/nayttomatriisi.md</code>, demorunko, <code>itsearviointi.md</code> ohjaajan kommentilla (p11).</p></div>
           </div>
 
           <section class="week-journal" data-week-journal="18">
@@ -1686,11 +1686,11 @@
 
         <div class="plan-prefilled" aria-label="Suunnitelman esitäytetty pohja">
           <p class="section-label">Esitäytetty pohja · tulee mukaan tiedostoon</p>
-          <p>Kohdat 1–3 ovat toimeksiannon vaatimuksia. Kohta 4 on ehdotettu luonnos, jonka tarkennat työviikolla 3. Kohdassa 5 on sovittu toteutustapa ja yksi ehdotus. Kohta 6 kuuluu ohjaajalle.</p>
+          <p>Kohdat 1–3 ovat toimeksiannon vaatimuksia. Kohta 4 on rajapinnan luonnos: se sovitaan tässä suunnitelmassa työviikolla 2 ja tarkennetaan sopimukseksi työviikolla 3. Kohdassa 5 on sovittu toteutustapa ja yksi ehdotus. Kohta 6 kuuluu ohjaajalle.</p>
           <article><h3>1 · Tavoite · vaatimus</h3><p>Lapin matkailuyrityksen verkkosivulle upotettava sovellus, joka näyttää kaaviona päivän pituuden Suomen paikkakunnilla vuoden jokaisena päivänä: käyttäjä kirjoittaa paikkakunnan, lisää sen kaavioon, vertaa useita paikkoja, näkee tooltipissa päivän ja keston ja erottaa kaamoksen ja yöttömän yön yhdellä katseella.</p></article>
           <article><h3>2 · Asiakas ja käyttäjät · vaatimus</h3><p>Revontuli Travelin yrittäjä (tilaaja) ja yrityksen asiakkaat, jotka suunnittelevat Lapin-matkaa ja haluavat ymmärtää valoisan ajan määrän eri paikoissa ja vuodenaikoina. Käyttäjä ei ole tekninen eikä lue numerotaulukoita.</p></article>
           <article><h3>3 · P0-rajaus · vaatimus</h3><p><strong>P0:</strong> paikkakunnan nimi koordinaateiksi · päivänvalo joka päivälle rajoissa 0–1440 min · karkausvuosi oikein · usea paikka yhteisellä asteikolla · paikan poisto · virheilmoitus tuntemattomasta paikasta · tooltip · kaamos ja yötön yö korostettuina.</p><p><strong>P1:</strong> leikkauspisteet, vuosivalinta, mobiilinäkymä ja saavutettavuus. <strong>P2:</strong> kuvan jako linkkinä, paikkojen tallennus selaimeen.</p></article>
-          <article><h3>4 · Rajapintasopimus · ehdotettu luonnos</h3><p><code>GET /api/daylight?city=Helsinki&amp;year=2026</code> palauttaa JSON-olion, jossa on <code>location</code> (nimi, leveys- ja pituusaste), <code>year</code> ja <code>days</code>-lista (<code>date</code>, <code>daylightMinutes</code>). Virheet palautetaan JSONina: 400 kun syöte on virheellinen, 404 kun paikkaa ei löydy, 502 kun ulkoinen palvelu ei vastaa. Sopimus kirjoitetaan tiedostoon <code>project-docs/api-sopimus.md</code> ennen koodia.</p></article>
+          <article><h3>4 · Rajapintasopimus · luonnos, sovitaan työviikolla 2</h3><p><code>GET /api/daylight?city=Helsinki&amp;year=2026</code> palauttaa JSON-olion, jossa on <code>location</code> (nimi, leveys- ja pituusaste), <code>year</code> ja <code>days</code>-lista (<code>date</code>, <code>daylightMinutes</code>). Virheet palautetaan JSONina: 400 kun syöte on virheellinen, 404 kun paikkaa ei löydy, 502 kun ulkoinen palvelu ei vastaa. Työviikolla 3 luonnos tarkennetaan sopimukseksi tiedostoon <code>project-docs/api-sopimus.md</code> ennen rajapinnan koodia.</p></article>
           <article><h3>5 · Teknologia ja työtapa · sovittu toteutustapa</h3><p>PHP 8.2+ ilman kehystä (backend), React + TypeScript + Vite (frontend), Tailwind CSS työviikolta 7, kaaviokirjasto oman vertailun mukaan. Laskenta, muotoilu ja leikkauspisteet omissa moduuleissaan erillään komponenteista. Lomake ja paikkalista rakennetaan alusta itse; valmista komponenttikittiä ei käytetä. Viikkopalaveri ohjaajan kanssa joka viikko, bug-issuet työviikolta 4, ominaisuushaarat ja pull requestit työviikolta 6.</p><p><strong>Ehdotus:</strong> julkaisumalli on yksi PHP-palvelin ja build alustalla. Toinen malli on oma päätös, jonka perustelet Julkaisumalli-kentässä.</p></article>
           <article><h3>6 · Avoimet asiat · sovi ohjaajan kanssa</h3><p>Lisenssi · repositoryn julkisuus, tekijänimi ja alaikäisen huoltajan suostumus · katselmoijien roolit työviikoille 10 ja 16 · julkaisualusta ja ohjaajan testattu polku · perusteversion siirtymäsääntö (OPH-6216-2025) · arvioinnin järjestelyt työviikolle 18.</p><small class="plan-open-note">Näitä ei päätetä itse eikä tekoälyllä. Tyhjä kenttä on oikea tulos siihen asti, kun asia on sovittu ohjaajan kanssa.</small></article>
         </div>
@@ -1785,7 +1785,7 @@
       <section class="view" data-view="naytto" id="view-naytto">
         <p class="view-eyebrow">Näyttöaineisto syntyy työn aikana</p>
         <h1 class="view-title">Näyttömatriisi</h1>
-        <p class="view-lead">Pelkkä valmis tuotos ei näytä koko osaamista. Työnäyte on yksi tuotos, joka osoittaa osaamisesi: commit, kuva, testitapaus tai muistio. Näyttöaineisto on kaikki työnäytteesi yhdessä. Sama työnäyte voi kelvata useaan kohtaan. Kokoa jokaisesta kohdasta linkki, commit, kuva, lokimerkintä tai päätösmuistio.</p>
+        <p class="view-lead">Pelkkä valmis tuotos ei näytä koko osaamista. Työnäyte on yksi tuotos, joka osoittaa osaamisesi: commit, kuva, testitapaus tai muistio. Näyttöaineisto on kaikki työnäytteesi yhdessä. Sama työnäyte voi kelvata useaan kohtaan. Kokoa jokaisesta kohdasta linkki, commit, kuva, lokimerkintä tai päätösmuistio tiedostoon <code>project-docs/nayttomatriisi.md</code>: vaatimuksen tunnus, työnäytteen linkki ja viikko. Perustat tiedoston työviikolla 17 ja viimeistelet sen työviikolla 18. Tämän sivun rastit ovat oma muistilistasi.</p>
 
         <div class="card card-tint evidence-summary"><strong data-evidence-count>0 / 32</strong><span>osaamisvaatimuksen työnäyte merkitty</span></div>
 
@@ -1802,7 +1802,7 @@
             <label class="matrix-row"><input type="checkbox" data-evidence="p6"><span><strong>tulkitsee suunnitelmia ja toteuttaa käyttöliittymän tai sen osia</strong> Lomake, paikkalista ja kaavionäkymä toteutettu työviikolla 7 työviikon 2 rautalankojen mukaan Tailwindilla ilman valmista komponenttikirjastoa; mobiili ja saavutettavuus työviikolla 12.</span></label>
             <label class="matrix-row"><input type="checkbox" data-evidence="p7"><span><strong>tulkitsee suunnitelmia ja toteuttaa ohjelmiston toimintoja</strong> Paikan lisäys, poisto ja duplikaatin esto työviikolla 7 sekä vuosivalinta työviikolla 11 käyttäjätarinoiden ja hyväksymiskriteerien perusteella; rajapinnan toiminnot työviikolla 5. Issue → commit -ketju näkyvissä.</span></label>
             <p class="matrix-group">Opiskelija toimii ohjelmistokehitystiimin jäsenenä</p>
-            <label class="matrix-row"><input type="checkbox" data-evidence="p8"><span><strong>sopii tehtävistä tiimin muiden jäsenten kanssa</strong> Viikkopalaveri ohjaajan kanssa työviikoilta 2–17: sovitut tehtävät, arviot ja edellisen viikon toteuma kirjattuina issueihin, ohjaajan nimi ja päivä päiväkirjassa.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p8"><span><strong>sopii tehtävistä tiimin muiden jäsenten kanssa</strong> Viikkopalaveri ohjaajan kanssa työviikoilta 2–17: sovitut tehtävät, arviot ja edellisen viikon toteuma kirjattuina issueihin, päivä ja osallistujien roolit päiväkirjassa.</span></label>
             <label class="matrix-row"><input type="checkbox" data-evidence="p9"><span><strong>etsii ratkaisuvaihtoehtoja ja ratkoo ongelmia yhdessä tiimin kanssa</strong> Kaksi vertailua työviikolla 2 (laskentatapa; paikkakuntatiedon muoto) ja yhteinen päätös ohjaajan kanssa kirjattuna; yhdessä ratkotut ongelmat nimettyinä työviikoilla 3 (julkaisu), 4 (napapiirin laskenta-ansat) ja 11 (merge-konflikti).</span></label>
             <label class="matrix-row"><input type="checkbox" data-evidence="p10"><span><strong>arvioi ratkaisujen toimivuuden yhdessä tiimin kanssa</strong> Katselmointi työviikolla 10: ymmärtääkö asiakkaan roolissa oleva henkilö kaavion ilman selityksiä ja mitä muutetaan. Muistio ja priorisoitu muutoslista, todennus työviikolla 11.</span></label>
             <label class="matrix-row"><input type="checkbox" data-evidence="p11"><span><strong>arvioi omaa toimintaa tiimin jäsenenä</strong> Itsearviointi työviikolla 18 kolmesta nimetystä tilanteesta (työviikon 10 palaute, työviikon 16 testaajan epäröinti, yksi viikkopalaveri, jossa sovittu muuttui) ja ohjaajan vastakommentti.</span></label>

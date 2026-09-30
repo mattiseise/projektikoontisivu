@@ -6,8 +6,8 @@
   "paivaton": true,
   "generoitu": "2026-09-30",
   "lahde": {
-    "sisalto.js": "55e5099aba78a584",
-    "index.html": "5c5d1927a2bac632"
+    "sisalto.js": "1cc71762092cfe43",
+    "index.html": "bfc365fd6387e8a9"
   },
   "viikot": [
     1,
@@ -142,7 +142,7 @@
         {
           "id": "2-1",
           "teksti": "Kirjaa ohjaajan vastaukset ja priorisoi käyttäjätarinat",
-          "valmis": "Jokaisen kysymyksen alla on ohjaajan vastaus nimellä ja päivällä, ja jokaisella tarinalla on 2–4 hyväksymiskriteeriä, P-luokka ja perustelu.",
+          "valmis": "Jokaisen kysymyksen alla on ohjaajan vastaus ja päivä, ja jokaisella tarinalla on 2–4 hyväksymiskriteeriä, P-luokka ja perustelu.",
           "tallenna": "`project-docs/kysymykset.md` ja `project-docs/kayttajatarinat.md` commitilla. Ohjaajan vastaukset omin sanoin työviikon 2 päiväkirjaan."
         },
         {
@@ -166,7 +166,7 @@
       ],
       "nayta": "`project-docs/suunnitelma.md`, ohjaajan vastaukset, koeajon tuloste päiväkirjassa, kaksi vertailutaulukkoa, rautalangat, issue-taulu ja ohjaajan kirjattu hyväksyntä (s1, s4, s5, s8, p8, p9; k5 ja s6 alkavat).",
       "tuotos": "project-docs/suunnitelma.md, ohjaajan vastaukset kysymyksiin, käyttäjätarinat P0/P1/P2-luokin, laskentatapavertailu koeajon tulosteella, paikkakuntatiedon muodon vertailu, rautalangat kolmesta näkymästä, komponenttijako ja issue-taulu arvioineen.",
-      "valmis": "project-docs/suunnitelma.md on repossa ja ohjaaja on hyväksynyt rajauksen kirjatulla kommentilla; ohjaajan vastaukset kysymyksiin on kirjattu nimellä ja päivällä; jokaisella P0-tarinalla on GitHub-issue, hyväksymiskriteerit ja arvio tunteina; koeajon tuloste on päiväkirjassa.",
+      "valmis": "project-docs/suunnitelma.md on repossa ja ohjaaja on hyväksynyt rajauksen kirjatulla kommentilla; ohjaajan vastaukset kysymyksiin on kirjattu päivämäärineen; jokaisella P0-tarinalla on GitHub-issue, hyväksymiskriteerit ja arvio tunteina; koeajon tuloste on päiväkirjassa.",
       "tarkistukset": [
         {
           "id": "tiedosto:project-docs/suunnitelma.md",
@@ -627,7 +627,7 @@
           "id": "10-2",
           "teksti": "Pidä katselmointi julkaistulla väliversiolla",
           "valmis": "Muistiinpanoissa ovat katselmoijan rooli, ajankohta, vähintään viisi sanatarkkaa sitaattia ja tehtävien kestot.",
-          "tallenna": "Sitaatit ja kestot heti tiedostoon `project-docs/katselmointi-vk10.md`."
+          "tallenna": "Sitaatit ja kestot heti tiedostoon `project-docs/katselmointi-vk10.md` roolilla merkittyinä. Jos ohjaaja tarvitsee katselmoijan nimen, lähetä se hänelle Teamsissa."
         },
         {
           "id": "10-3",
@@ -939,7 +939,7 @@
           "id": "16-4",
           "teksti": "Anna julkaisuehdokas ulkopuolisen testattavaksi",
           "valmis": "Testauspöytäkirjassa ovat rooli, ajankohta, sitaatit ja tulkinta erillään, ja estävät virheet ovat issueina korjaamatta.",
-          "tallenna": "`project-docs/julkaisutestaus-vk16.md` commitilla. Tärkeimmät sitaatit työviikon 16 päiväkirjaan."
+          "tallenna": "`project-docs/julkaisutestaus-vk16.md` commitilla, henkilöt rooleina. Tärkeimmät sitaatit työviikon 16 päiväkirjaan."
         }
       ],
       "nayta": "tag `v1.0-rc1`, oma asennuspöytäkirja, julkaisutestauksen pöytäkirja ja estävien issueiden lista (s3, s14, k6).",
@@ -1000,8 +1000,8 @@
         {
           "id": "17-3",
           "teksti": "Kirjoita julkaisutiedote ja luovuta sovellus asiakkaalle",
-          "valmis": "Julkaisutiedote ja luovutusviesti ovat repossa, ja ohjaajan asiakaskysymys ja vastauksesi on kirjattu.",
-          "tallenna": "`julkaisutiedote.md` ja `luovutusviesti.md` kansioon `project-docs/` commitilla. Kysymys ja vastaus työviikon 17 päiväkirjaan."
+          "valmis": "Julkaisutiedote ja luovutusviesti ovat repossa, ohjaajan asiakaskysymys ja vastauksesi on kirjattu, ja `nayttomatriisi.md` on perustettu.",
+          "tallenna": "`julkaisutiedote.md`, `luovutusviesti.md` ja `nayttomatriisi.md` kansioon `project-docs/` commitilla. Kysymys ja vastaus työviikon 17 päiväkirjaan."
         }
       ],
       "nayta": "tag `v1.0` ja release, kolmas virheenkorjausketju, savutestin kirjaus, `julkaisutiedote.md`, `luovutusviesti.md` ja asiakkaan kysymys vastauksineen (s14, k6, s2, p2).",
@@ -1018,6 +1018,12 @@
           "id": "tiedosto:luovutusviesti.md",
           "tyyppi": "tiedosto",
           "polku": "luovutusviesti.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "tiedosto:nayttomatriisi.md",
+          "tyyppi": "tiedosto",
+          "polku": "nayttomatriisi.md",
           "lahde": "auto"
         },
         {
@@ -1050,8 +1056,8 @@
         {
           "id": "18-1",
           "teksti": "Täsmälinkitä näyttömatriisin 32 vaatimusta työnäytteisiin",
-          "valmis": "Jokainen 32 rivistä osoittaa olemassa olevaan työnäytteeseen, ja jokainen linkki aukeaa.",
-          "tallenna": "Täsmälinkit luovutettavaan näyttöpakettiin, ja vastaava rasti sivun näyttömatriisiin. Heikoimmin todennetut kohdat työviikon 18 päiväkirjaan."
+          "valmis": "`nayttomatriisi.md`:ssä on 32 riviä, jokainen osoittaa olemassa olevaan työnäytteeseen, ja jokainen linkki aukeaa.",
+          "tallenna": "`project-docs/nayttomatriisi.md` commitilla. Sivun näyttömatriisin rastit ovat oma muistilistasi. Heikoimmin todennetut kohdat työviikon 18 päiväkirjaan."
         },
         {
           "id": "18-2",
@@ -1063,12 +1069,12 @@
           "id": "18-3",
           "teksti": "Kirjoita itsearviointi ja luovuta näyttöpaketti",
           "valmis": "Itsearviointi käsittelee kolme nimettyä tilannetta, ohjaajan vastakommentti on liitetty, ja näyttöpaketti on luovutettu.",
-          "tallenna": "`project-docs/itsearviointi.md` commitilla. Itsearvioinnin ydin ja ohjaajan kommentti työviikon 18 päiväkirjaan."
+          "tallenna": "`project-docs/itsearviointi.md` commitilla, henkilöt rooleina. Itsearvioinnin ydin ja ohjaajan kommentti työviikon 18 päiväkirjaan."
         }
       ],
-      "nayta": "täsmälinkitetty näyttömatriisi, demorunko, `itsearviointi.md` ohjaajan kommentilla (p11).",
-      "tuotos": "Täsmälinkitetty näyttömatriisi, harjoiteltu demorunko, itsearviointi kolmesta tilanteesta ohjaajan vastakommentilla ja luovutettu näyttöpaketti.",
-      "valmis": "Jokainen matriisin 32 riviä osoittaa olemassa olevaan aineistoon ja linkki aukeaa; demo on ajettu kellon kanssa vähintään kerran toiselle henkilölle; itsearviointi käsittelee työviikon 10 palautteen, työviikon 16 testaajan epäröinnin ja yhden viikkopalaverin, jossa sovittu muuttui, ja ohjaaja on kirjannut lyhyen vastakommentin.",
+      "nayta": "täsmälinkitetty `project-docs/nayttomatriisi.md`, demorunko, `itsearviointi.md` ohjaajan kommentilla (p11).",
+      "tuotos": "Täsmälinkitetty näyttömatriisi (project-docs/nayttomatriisi.md), harjoiteltu demorunko, itsearviointi kolmesta tilanteesta ohjaajan vastakommentilla ja luovutettu näyttöpaketti.",
+      "valmis": "Jokainen `nayttomatriisi.md`:n 32 rivistä osoittaa olemassa olevaan aineistoon ja linkki aukeaa; demo on ajettu kellon kanssa vähintään kerran toiselle henkilölle; itsearviointi käsittelee työviikon 10 palautteen, työviikon 16 testaajan epäröinnin ja yhden viikkopalaverin, jossa sovittu muuttui, ja ohjaaja on kirjannut lyhyen vastakommentin.",
       "tarkistukset": [
         {
           "id": "tiedosto:project-docs/itsearviointi.md",
