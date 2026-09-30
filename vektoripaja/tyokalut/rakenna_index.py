@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Vektoripajan index.html. Viikkojen tehtävät = 01-runko-v3.md § 8 lyhyiksi virkkeiksi pilkottuna."""
 import json, os, subprocess
+from html import escape
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -28,6 +29,33 @@ LOMAT = {
     53: ("Joululoma", "Joululoma jatkuu. Ei projektityötä eikä korvaavia tehtäviä."),
     1: ("Joululoma", "Joululoma päättyy su 10.1. Jatka ma 11.1. viikolla 2 tilatiedoston Seuraavana-kohdasta."),
     8: ("Talviloma", "Ei projektityötä eikä korvaavia tehtäviä. Jatka viikolla 9 näytön valmistelulla."),
+}
+
+# Näkyy aina heti viikon otsikon jälkeen, myös ilman JavaScriptiä.
+KOKONAISPROJEKTI = {
+    40: "Vektoripajassa Inkscapella tehty piirros muuttuu muokattavaksi 3D-malliksi, jonka voi viedä Blenderiin. Tällä viikolla laitat työkalut ja yhteisen repositoryn kuntoon sekä rajaat ensimmäisen toimivan version eli MVP:n. Näin seuraavien viikkojen toteutuksella on selkeä tavoite ja paikka, jossa muutokset säilyvät.",
+    41: "Ennen varsinaisia mallinnustoimintoja harjoittelet koko matkan tehtäväkortista testattuun ja ladattavaan sovellukseen. Pyörivä kuutio on pieni harjoitus, jolla varmistat, että kehitysympäristö, testit ja Windows-julkaisu toimivat yhdessä. Samaa työsykliä käytät myöhemmin Vektoripajan jokaisen ominaisuuden rakentamiseen.",
+    42: "Työkalut ja julkaisemisen harjoitus ovat valmiina varsinaisten mallinnustoimintojen rakentamista varten. Syysloma on projektin suunniteltu tauko, eikä tällä viikolla tehdä projektitehtäviä. Viikolla 43 jatkat piirroksen tuonnista tilatiedoston avulla.",
+    43: "Vektoripajan lähtöaineisto on käyttäjän Inkscapessa tekemä SVG-piirros. Tällä viikolla tuot sen polut sovellukseen ja tarkistat, että myös virheelliset tiedostot käsitellään hallitusti. Tuonti luo pohjan osien rakenteelle ja myöhemmille 3D-muodoille.",
+    44: "Piirroksen layerit ja ryhmät kertovat, mistä osista malli koostuu ja mitkä osat kuuluvat yhteen. Tällä viikolla säilytät tämän rakenteen Vektoripajassa, jotta käyttäjä voi käsitellä mallia osina. Sama rakenne tarvitaan myöhemmin osien siirtämiseen ja vientiin Blenderiin.",
+    45: "Nyt piirroksesta aletaan tehdä varsinaisia 3D-kappaleita. Revolve pyöräyttää profiilin akselin ympäri, jolloin siitä voi syntyä esimerkiksi maljakko tai pyörä. Segmenttisäädin ja kameran kierto auttavat käyttäjää muotoilemaan ja tarkastelemaan tätä ensimmäistä mallinnustoimintoa.",
+    46: "Revolven rinnalle tarvitaan tapa tehdä piirroksen viivasta putkimainen osa. Tällä viikolla lisäät inflaten ja sen sivumäärän säädön sekä suorat kameranäkymät ja näkymän lukituksen. Näin Vektoripajalla voi rakentaa erilaisia osia ja tarkastella niitä vakaasta suunnasta.",
+    47: "Kun osien muodot ovat valmiit, käyttäjän pitää voida koota niistä kokonainen malli. Tällä viikolla lisäät osien valinnan, siirron, kierron ja skaalauksen. Aiemmin rakennettu hierarkia varmistaa, että esimerkiksi vanhempaan kuuluva lapsiosa seuraa mukana.",
+    48: "Osan siirtäminen ja kiertäminen ei vielä riitä, jos liike tapahtuu väärän pisteen ympärillä. Tällä viikolla käyttäjä saa valita pivotin eli kierto- ja skaalauspisteen prosenttikentillä. Se täydentää osien muokkausta ja tekee esimerkiksi nivelen ympärillä kääntymisestä hallittavaa.",
+    49: "Vektoripajan mallin pitää olla käytettävissä myös sovelluksen ulkopuolella. Tällä viikolla viet sen OBJ-tiedostoksi ja varmistat Blenderissä, että nimetyt osat säilyvät erillisinä. Samalla dokumentoit virheen korjauksen ja lisäät testin, joka auttaa estämään saman virheen palaamisen.",
+    50: "Käyttäjän pitää voida jättää mallinnustyö kesken ja jatkaa sitä myöhemmin samasta tilanteesta. Tallennus ja avaus täydentävät ensimmäisen toimivan version, jossa piirros kulkee tuonnista muokkaukseen ja vientiin. Julkaiset tämän MVP:n versiona v0.1, jotta asiakkaat voivat kokeilla koko työnkulkua.",
+    51: "MVP on nyt valmis asiakkaiden kokeiltavaksi, joten tarkistat heidän kanssaan, vastaako se sovittua tarvetta. Katselmoinnin havainnot ja asiakkaiden prioriteetit ohjaavat korjauksia sekä joululoman jälkeistä jatkokehitystä. Tilatiedostoon kirjattu seuraava tehtävä auttaa jatkamaan samasta kohdasta tauon jälkeen.",
+    52: "Ensimmäinen toimiva versio on julkaistu ja asiakkaiden havainnot on kirjattu ennen joululomaa. Tämä viikko on suunniteltu tauko, eikä projektissa ole uusia tai korvaavia tehtäviä. Jatkokehityksen lähtökohta säilyy issueissa ja tilatiedostossa.",
+    53: "Joululoma jatkuu MVP:n katselmoinnin ja jatkokehityksen välissä. Tällä viikolla ei tehdä projektitehtäviä; sovittu seuraava työ odottaa tilatiedostossa. Asiakkaiden palaute toimii edelleen pohjana tammikuun korjauksille ja toimintojen järjestykselle.",
+    1: "Tämä on joululoman viimeinen viikko ennen paluuta Vektoripajan jatkokehitykseen. Projektitehtäviä ei ole vielä tällä viikolla. Viikolla 2 varmistat, että aiempi versio toimii, ja sovit asiakkaiden palautteen pohjalta seuraavien töiden järjestyksen.",
+    2: "Joululoman jälkeen varmistat ensin, että kehitysympäristö, sovellus ja aiemmat testit toimivat edelleen. Sen jälkeen sovit tärkeän jatkon järjestyksen asiakkaiden katselmointipalautteen perusteella ja teet yhden pienen korjauksen. Näin uudet ominaisuudet rakentuvat toimivan MVP:n ja todellisten käyttäjätarpeiden päälle.",
+    3: "Inkscape-piirros voi muuttua myös sen jälkeen, kun siitä on jo tehty malli. Tällä viikolla lisäät Päivitä SVG -toiminnon ja sovit, miten vanhat osat tunnistetaan uudesta piirroksesta. Oman haaran ja pull requestin avulla liität uuden toiminnon testattuna aiempaan sovellukseen.",
+    4: "Tämä viikko antaa tilaa varmistaa, että Vektoripajan pakollinen ydin on valmis ennen seuraavia laajennuksia. Korjaat ensin sovitut rästit ja etenet sen jälkeen asiakkaiden kanssa päätetyssä tärkeän jatkon järjestyksessä. Uusi testi ja toinen virheenkorjausketju auttavat pitämään myös jatkokehityksen laadun näkyvänä.",
+    5: "Valmiista mallinnustoiminnoista on hyötyä vain, jos käyttäjä pystyy käyttämään niiden säätimiä. Tällä viikolla parannat isoja säätimiä ja näppäimistökäyttöä sekä kokeilet sovellusta Lukijalla. Ennen ja jälkeen tehdyt tarkistukset näyttävät, miten muutokset parantavat Vektoripajan käytettävyyttä.",
+    6: "Vektoripajan pitää toimia myös ihmiselle, joka ei tunne sen kehitystä tai omista Python-kehitysympäristöä. Tällä viikolla julkaisutestaaja kulkee ohjeen avulla koko polun latauksesta omaan piirrokseen ja OBJ-vientiin. Julkaisuehdokkaan kokeilu paljastaa viimeiset esteet sovelluksessa ja käyttöohjeessa ennen v1.0:aa.",
+    7: "Julkaisutestissä löytyneet esteet korjataan, jotta Vektoripaja voidaan luovuttaa asiakkaiden käyttöön. Julkaiset version v1.0 ja pyydät asiakkaita vahvistamaan sovelluksen toimivuuden. Samalla kokoat työnäytteiden linkit, jotta projektin ratkaisut ja oma osaamisesi löytyvät näyttöä varten.",
+    8: "Vektoripaja v1.0 on julkaistu, ja seuraavana on projektin esittely sekä aineiston luovutus. Talviloma on suunniteltu tauko, eikä tällä viikolla ole projektitehtäviä. Viikolla 9 palaat demon ja näytön valmisteluun valmiin version pohjalta.",
+    9: "Projektin päätöksessä näytät sekä valmiin Vektoripajan että sen, miten rakensit sen. Demo yhdistää käyttäjän työnkulun, yhden teknisen ratkaisun, virheenkorjauksen ja versionhallinnan konkreettiseksi kokonaisuudeksi. Itsearviointi ja linkitetty aineisto täydentävät asiakkaalle ja arvioijalle tehtävän luovutuksen.",
 }
 
 VIIKOT = {
@@ -141,12 +169,22 @@ def eyebrow(w):
     return f'<p class="view-eyebrow" data-week-label="{PVM[w]}">Vaihe {t} · {l} · Viikko {w} · {PVM[w]}</p>'
 
 
+def project_connection(w):
+    return "\n".join([
+        f'          <section class="card" aria-labelledby="week-{w}-project-connection">',
+        f'            <h2 class="section-label" id="week-{w}-project-connection">Miten tämän viikon asiat liittyvät kokonaisprojektiin</h2>',
+        f'            <p>{escape(KOKONAISPROJEKTI[w])}</p>',
+        '          </section>',
+    ])
+
+
 def week_card(w):
     otsikko, tehtavat, nayta = VIIKOT[w]
     i = info[str(w)]
     out = [f'        <article class="week-card" id="week-{w}" data-week="{w}">',
            f'          {eyebrow(w)}',
            f'          <h1 class="view-title">{otsikko}</h1>',
+           project_connection(w),
            '',
            '          <div class="week-kicker" data-week-kicker hidden>',
            '            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>',
@@ -229,6 +267,7 @@ def holiday_card(w):
     return "\n".join([f'        <article class="holiday-card" id="week-{w}" data-week="{w}">',
                       f'          {eyebrow(w)}',
                       f'          <h1 class="view-title">{otsikko}</h1>',
+                      project_connection(w),
                       f'          <p>{teksti}</p>',
                       '        </article>'])
 
