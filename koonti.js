@@ -86,7 +86,7 @@
     const kat = kategoria(p.tyyppi);
     const tilatekstit = { kaynnissa: "Käynnissä", vapaa: "Vapaa", paattynyt: "Päättynyt" };
     const kuva = p.kuva
-      ? `<img src="${esc(p.kuva)}" alt="Kuvakaappaus projektin ${esc(p.nimi)} sivustosta" loading="lazy" width="640" height="400">`
+      ? `<img src="${esc(p.kuva)}" alt="${esc(p.kuvaAlt || `Kuvakaappaus projektin ${p.nimi} sivustosta`)}" loading="lazy" width="640" height="400">`
       : `<div class="placeholder">Ei kuvaa</div>`;
 
     const meta = [p.lukuvuosi, p.viikot, p.kesto, p.ryhma].filter(Boolean)

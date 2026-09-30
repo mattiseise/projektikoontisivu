@@ -21,6 +21,7 @@
  *   sivusto        julkaistu GitHub Pages -osoite
  *   repo           repositoryn osoite
  *   kuva           kuvat/<slug>.jpg tai tyhjä
+ *   kuvaAlt        kuvan alt-teksti, jos kuva ei ole kuvakaappaus sivustosta (esim. tavoitekuva)
  *   tutkinto       tutkinnon nimi
  *   diaarinumero   ePerusteiden diaarinumero
  *   vaatimuksia    osaamisvaatimusten kokonaismäärä
@@ -203,6 +204,7 @@ window.PROJEKTIT = [
     "sivusto": "https://mattiseise.github.io/projektikoontisivu/pelihylly/",
     "repo": "https://github.com/mattiseise/projektikoontisivu",
     "kuva": "kuvat/pelihylly.jpg",
+    "kuvaAlt": "Luonnos valmiista PeliHyllystä: jäsenen profiilisivu pelilistoineen selaimessa ja pelin tilan vaihto puhelimessa.",
     "tutkinto": "Tieto- ja viestintätekniikan perustutkinto",
     "diaarinumero": "OPH-6216-2025",
     "vaatimuksia": 32,
@@ -246,6 +248,7 @@ window.PROJEKTIT = [
     "sivusto": "https://mattiseise.github.io/projektikoontisivu/noppakauppa/",
     "repo": "https://github.com/mattiseise/projektikoontisivu",
     "kuva": "kuvat/noppakauppa.jpg",
+    "kuvaAlt": "Luonnos valmiista Nopan Nurkka -verkkokaupasta: pelit ja ostoskori selaimessa, henkilökunnan tilausnäkymä puhelimessa.",
     "tutkinto": "Tieto- ja viestintätekniikan perustutkinto",
     "diaarinumero": "OPH-6216-2025",
     "vaatimuksia": 32,
@@ -288,6 +291,7 @@ window.PROJEKTIT = [
     "sivusto": "https://mattiseise.github.io/projektikoontisivu/tuntitutka/",
     "repo": "https://github.com/mattiseise/projektikoontisivu",
     "kuva": "kuvat/tuntitutka.jpg",
+    "kuvaAlt": "Luonnos valmiista TuntiTutkasta: projektipäällikön viikkoyhteenvedot kaavioina selaimessa ja työntekijän tuntikirjaus puhelimessa.",
     "tutkinto": "Tieto- ja viestintätekniikan perustutkinto",
     "diaarinumero": "OPH-6216-2025",
     "vaatimuksia": 32,
@@ -329,6 +333,7 @@ window.PROJEKTIT = [
     "sivusto": "https://mattiseise.github.io/projektikoontisivu/valokaari/",
     "repo": "https://github.com/mattiseise/projektikoontisivu",
     "kuva": "kuvat/valokaari.jpg",
+    "kuvaAlt": "Luonnos valmiista Valokaaresta: päivän pituus vuoden jokaisena päivänä Helsingissä, Rovaniemellä ja Utsjoella, kaamos ja yötön yö korostettuina.",
     "tutkinto": "Tieto- ja viestintätekniikan perustutkinto",
     "diaarinumero": "OPH-6216-2025",
     "vaatimuksia": 32,
