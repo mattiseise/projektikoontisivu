@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520" role="img" aria-labelledby="title desc">
+<title id="title">Valokaaren osat ja niiden yhteys</title>
+<desc id="desc">Selaimessa toimiva React-sovellus lähettää PHP-rajapinnalle pyynnön, jossa on paikkakunta ja vuosi. PHP muuttaa paikkakunnan nimen koordinaateiksi paikkakunta-aineiston tai geokoodauspalvelun avulla, laskee jokaisen päivän päivänvalon minuutteina ja palauttaa tuloksen JSON-muodossa. Selain piirtää tuloksesta kaavion. Julkaisussa sama PHP-palvelin tarjoilee sekä sovelluksen että rajapinnan samasta osoitteesta. Havainnekuva, ei kuvakaappaus.</desc>
+<rect width="880" height="520" fill="#ffffff"/>
+<defs>
+  <marker id="nuoli" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#5c5347"/></marker>
+</defs>
+<text x="32" y="44" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Miten Valokaaren osat liittyvät toisiinsa?</text>
+
+<!-- Selain -->
+<rect x="32" y="74" width="330" height="300" rx="12" fill="#fdfcf9" stroke="#c2410c" stroke-width="2"/>
+<text x="52" y="108" fill="#9a3412" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700">Selain · client/</text>
+<text x="52" y="134" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="16">React + TypeScript + Vite</text>
+<rect x="52" y="152" width="290" height="58" rx="8" fill="#fdece3"/>
+<text x="68" y="178" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">Lomake ja paikkalista</text>
+<text x="68" y="199" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">käyttäjä lisää ja poistaa paikkoja</text>
+<rect x="52" y="222" width="290" height="58" rx="8" fill="#fdece3"/>
+<text x="68" y="248" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">Kaavio</text>
+<text x="68" y="269" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">valitsemasi kaaviokirjasto</text>
+<rect x="52" y="292" width="290" height="62" rx="8" fill="#fdece3"/>
+<text x="68" y="318" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">Muotoilu ja leikkauspisteet</text>
+<text x="68" y="340" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">omat moduulit testeineen</text>
+
+<!-- PHP -->
+<rect x="518" y="74" width="330" height="300" rx="12" fill="#fdfcf9" stroke="#c2410c" stroke-width="2"/>
+<text x="538" y="108" fill="#9a3412" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700">PHP-rajapinta · server/</text>
+<text x="538" y="134" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="16">PHP 8.2 ilman kehystä</text>
+<rect x="538" y="152" width="290" height="58" rx="8" fill="#fdece3"/>
+<text x="554" y="178" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">Paikkakunnan haku</text>
+<text x="554" y="199" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">nimi → koordinaatit</text>
+<rect x="538" y="222" width="290" height="58" rx="8" fill="#fdece3"/>
+<text x="554" y="248" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">Päivänvalolaskenta</text>
+<text x="554" y="269" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">minuutit 0–1440 joka päivälle</text>
+<rect x="538" y="292" width="290" height="62" rx="8" fill="#fdece3"/>
+<text x="554" y="318" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">Virheet hallitusti</text>
+<text x="554" y="340" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">400, 404 ja 502 selkein viestein</text>
+
+<!-- Pyyntö ja vastaus -->
+<path d="M368 170H510" stroke="#5c5347" stroke-width="2.5" marker-end="url(#nuoli)"/>
+<text x="440" y="158" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" text-anchor="middle">1 Pyyntö</text>
+<text x="440" y="194" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="middle">/api/daylight?city=</text>
+<text x="440" y="211" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="middle">Rovaniemi&amp;year=2026</text>
+<path d="M512 290H374" stroke="#5c5347" stroke-width="2.5" marker-end="url(#nuoli)"/>
+<text x="440" y="278" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" text-anchor="middle">2 Vastaus</text>
+<text x="440" y="314" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="middle">JSON: koordinaatit ja</text>
+<text x="440" y="331" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="middle">päivät minuutteina</text>
+
+<!-- Ulkoinen aineisto -->
+<rect x="578" y="404" width="270" height="52" rx="8" fill="#ffffff" stroke="#d4cbbb" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="713" y="426" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" text-anchor="middle">Paikkakunta-aineisto tai</text>
+<text x="713" y="446" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" text-anchor="middle">geokoodauspalvelu</text>
+<path d="M713 400V382" stroke="#5c5347" stroke-width="2" marker-end="url(#nuoli)"/>
+
+<!-- Julkaisu -->
+<rect x="32" y="404" width="516" height="92" rx="12" fill="#fdece3" stroke="#9a3412" stroke-width="2"/>
+<text x="52" y="434" fill="#9a3412" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">Julkaisussa yksi palvelin, yksi osoite</text>
+<text x="52" y="460" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">PHP tarjoilee buildatun sovelluksen (client/dist) ja /api-reitit.</text>
+<text x="52" y="481" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15">Kehityksessä Viten proxy ohjaa /api-kutsut PHP:lle.</text>
+</svg>

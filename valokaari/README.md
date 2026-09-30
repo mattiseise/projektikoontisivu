@@ -21,7 +21,7 @@ GitHub-repositoryyn.
 - **Tutkinnon osat:** Ohjelmointi (11 vaatimusta) · Ohjelmistokehittäjänä
   toimiminen (14) · Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla
   (7). Yhteensä 32 osaamisvaatimusta.
-- **Kesto:** 18 työviikkoa, neljä vaihetta (5 + 5 + 5 + 3). Katselmoinnit
+- **Kesto:** 18 työviikkoa, viisi vaihetta (3 + 2 + 5 + 5 + 3). Katselmoinnit
   työviikoilla 10 ja 16, julkaisuehdokas 16, v1.0 17, näyttö 18.
 - **Testauksen minimit:** 16 testitapausta (T01–T16) kolmessa luokassa,
   3 täydellistä virheenkorjausketjua, 2 ulkopuolista testaajaa.
@@ -71,7 +71,12 @@ työpaketissa. Näin sama aineisto käy eri ryhmille eri ajankohtina.
 | `kuvitukset.json` | SVG-kuvitusten tekstit ja värit |
 | `project-docs/projekti.json` | koonnin ja päivitysten lähde |
 | `opettajalle/` | hyväksytty viikkorunko, Linnean ja Börjen raportit |
-| `tyokalut/` | `tarkista.js`, `tee_kuvitukset.py`, `tee_lataukset.js`, `index.runko.html` |
+| `tyokalut/` | `tarkista.js`, `tee_kuvitukset.py`, `tee_lataukset.js`, `tee_vaihekuva.js` (vaihekuva `vaiheet`-datasta), `index.runko.html` |
+
+**Huom (moottori v2.7, 30.9.2026):** `index.html` on nykyään lähdetiedosto. Yhtenäisten viikko-ohjeiden
+aloitus, työvaiheiden otsikot ja vaihenimet on kirjoitettu siihen suoraan. `tyokalut/rakenna_index.py`
+ja `index.runko.html` ovat projektin alkuperäinen kertarakennus – älä aja niitä uudelleen, tai muutokset
+katoavat.
 
 ## Julkaisu ja esikatselu
 

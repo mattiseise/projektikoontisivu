@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 780" width="620" height="780" role="img" aria-labelledby="lp-title lp-desc" font-family="Arial, Helvetica, sans-serif">
+  <title id="lp-title">Havainnekuva: leikkauspiste päiväkohtaisesta datasta</title>
+  <desc id="lp-desc">Osa 1: Helsingin ja Rovaniemen päivänvalo 15.–23. maaliskuuta pisteinä. Rovaniemen päivä on aluksi lyhyempi, 19.3. yhtä pitkä ja sen jälkeen pidempi. Erotus Rovaniemi miinus Helsinki on päivittäin −6, −4, −3, −1, 0, +2, +3, +5 ja +6 minuuttia. Kun toleranssi on esimerkiksi 3 minuuttia, viisi peräkkäistä päivää 17.–21.3. ovat osumia, ja niistä tehdään yksi merkki jakson keskelle 19.3. Toleranssi on oma päätöksesi. Osa 2: Utsjoella ja Inarilla on kesällä molemmilla 1440 minuuttia, ja jaksot ovat päällekkäin noin 60 päivää. Erotus on silloin 0 joka päivä. Ilman peräkkäisten päivien yhdistämistä syntyisi noin 60 merkkiä, yhdistettynä yksi. Testitapaus T13 tarkistaa tämän. Luvut ovat pyöristettyjä esimerkkejä.</desc>
+  <rect x="0" y="0" width="620" height="780" fill="#ffffff"/>
+  <text x="16" y="30" font-size="18" font-weight="700" fill="#241f1a">Havainnekuva: leikkauspiste päiväkohtaisesta datasta</text>
+
+  <!-- Osa 1 -->
+  <rect x="12" y="48" width="596" height="396" rx="10" fill="#ffffff" stroke="#e8e1d6" stroke-width="2"/>
+  <circle cx="38" cy="76" r="13" fill="#9f1239"/>
+  <text x="38" y="81" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+  <text x="60" y="81" font-size="15" font-weight="700" fill="#241f1a">Käyrät ohittavat toisensa: Helsinki ja Rovaniemi 15.–23.3.</text>
+
+  <text x="74" y="106" font-size="13" fill="#5c5347" text-anchor="end">min</text>
+  <g stroke="#efe9df" stroke-width="1">
+    <line x1="80" y1="239.2" x2="580" y2="239.2"/>
+    <line x1="80" y1="196.2" x2="580" y2="196.2"/>
+    <line x1="80" y1="153.1" x2="580" y2="153.1"/>
+  </g>
+  <g font-size="13" fill="#5c5347" text-anchor="end">
+    <text x="74" y="244">700</text><text x="74" y="201">720</text><text x="74" y="158">740</text>
+  </g>
+  <line x1="80" y1="250" x2="580" y2="250" stroke="#5c5347" stroke-width="1.5"/>
+  <g font-size="14" fill="#5c5347" text-anchor="middle">
+    <text x="100" y="270">15.</text><text x="158" y="270">16.</text><text x="216" y="270">17.</text>
+    <text x="274" y="270">18.</text><text x="332" y="270">19.</text><text x="390" y="270">20.</text>
+    <text x="448" y="270">21.</text><text x="506" y="270">22.</text><text x="564" y="270">23.</text>
+  </g>
+
+  <line x1="332" y1="126" x2="332" y2="248" stroke="#c2410c" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <text x="340" y="120" font-size="14" font-weight="700" fill="#c2410c">yksi merkki: 19.3.</text>
+
+  <polyline points="100,226.3 158,215.5 216,202.6 274,191.8 332,178.9 390,168.2 448,155.2 506,144.5 564,131.5" fill="none" stroke="#9f1239" stroke-width="2.5"/>
+  <g fill="#9f1239">
+    <circle cx="100" cy="226.3" r="4"/><circle cx="158" cy="215.5" r="4"/><circle cx="216" cy="202.6" r="4"/>
+    <circle cx="274" cy="191.8" r="4"/><circle cx="390" cy="168.2" r="4"/><circle cx="448" cy="155.2" r="4"/>
+    <circle cx="506" cy="144.5" r="4"/><circle cx="564" cy="131.5" r="4"/>
+  </g>
+  <polyline points="100,239.2 158,224.2 216,209.1 274,194 332,178.9 390,163.8 448,148.8 506,133.7 564,118.6" fill="none" stroke="#1e3a8a" stroke-width="2.5" stroke-dasharray="7 5"/>
+  <g fill="#ffffff" stroke="#1e3a8a" stroke-width="2">
+    <rect x="96" y="235.2" width="8" height="8"/><rect x="154" y="220.2" width="8" height="8"/><rect x="212" y="205.1" width="8" height="8"/>
+    <rect x="270" y="190" width="8" height="8"/><rect x="386" y="159.8" width="8" height="8"/><rect x="444" y="144.8" width="8" height="8"/>
+    <rect x="502" y="129.7" width="8" height="8"/><rect x="560" y="114.6" width="8" height="8"/>
+  </g>
+  <path d="M332,168.9 L342,178.9 L332,188.9 L322,178.9 Z" fill="#c2410c" stroke="#ffffff" stroke-width="2"/>
+
+  <line x1="430" y1="202" x2="462" y2="202" stroke="#9f1239" stroke-width="2.5"/>
+  <text x="470" y="207" font-size="14" fill="#241f1a">Helsinki</text>
+  <line x1="430" y1="226" x2="462" y2="226" stroke="#1e3a8a" stroke-width="2.5" stroke-dasharray="7 5"/>
+  <text x="470" y="231" font-size="14" fill="#241f1a">Rovaniemi</text>
+
+  <text x="28" y="298" font-size="14" font-weight="700" fill="#241f1a">Erotus Rovaniemi − Helsinki (min)</text>
+  <g font-size="15" text-anchor="middle" fill="#241f1a">
+    <rect x="76" y="308" width="48" height="30" rx="4" fill="#f5f2ec" stroke="#e8e1d6"/><text x="100" y="329">−6</text>
+    <rect x="134" y="308" width="48" height="30" rx="4" fill="#f5f2ec" stroke="#e8e1d6"/><text x="158" y="329">−4</text>
+    <rect x="192" y="308" width="48" height="30" rx="4" fill="#fdece3" stroke="#c2410c" stroke-width="2"/><text x="216" y="329" font-weight="700">−3</text>
+    <rect x="250" y="308" width="48" height="30" rx="4" fill="#fdece3" stroke="#c2410c" stroke-width="2"/><text x="274" y="329" font-weight="700">−1</text>
+    <rect x="308" y="308" width="48" height="30" rx="4" fill="#fdece3" stroke="#c2410c" stroke-width="2"/><text x="332" y="329" font-weight="700">0</text>
+    <rect x="366" y="308" width="48" height="30" rx="4" fill="#fdece3" stroke="#c2410c" stroke-width="2"/><text x="390" y="329" font-weight="700">+2</text>
+    <rect x="424" y="308" width="48" height="30" rx="4" fill="#fdece3" stroke="#c2410c" stroke-width="2"/><text x="448" y="329" font-weight="700">+3</text>
+    <rect x="482" y="308" width="48" height="30" rx="4" fill="#f5f2ec" stroke="#e8e1d6"/><text x="506" y="329">+5</text>
+    <rect x="540" y="308" width="48" height="30" rx="4" fill="#f5f2ec" stroke="#e8e1d6"/><text x="564" y="329">+6</text>
+  </g>
+
+  <g font-size="14" fill="#241f1a">
+    <text x="28" y="364">Käyrät eivät leikkaa tarkasti, vaan vaihtavat järjestystä päivien välissä.</text>
+    <text x="28" y="386">Esimerkki: toleranssi 3 min. Erotus on enintään 3 min viitenä päivänä</text>
+    <text x="28" y="408">peräkkäin (17.–21.3.), joten niistä tulee yksi merkki jakson keskelle.</text>
+    <text x="28" y="430" font-weight="700" fill="#c2410c">Toleranssi on oma päätöksesi.</text>
+  </g>
+
+  <!-- Osa 2 -->
+  <rect x="12" y="460" width="596" height="308" rx="10" fill="#ffffff" stroke="#e8e1d6" stroke-width="2"/>
+  <circle cx="38" cy="488" r="13" fill="#9f1239"/>
+  <text x="38" y="493" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+  <text x="60" y="493" font-size="15" font-weight="700" fill="#241f1a">Käyrät kulkevat päällekkäin: Utsjoki ja Inari kesällä</text>
+
+  <g font-size="14" fill="#241f1a" text-anchor="end">
+    <text x="178" y="530">Utsjoki 1440 min</text>
+    <text x="178" y="560">Inari 1440 min</text>
+    <text x="178" y="595">Ilman yhdistämistä</text>
+    <text x="178" y="633">Yhdistettynä</text>
+  </g>
+  <g stroke="#e8e1d6" stroke-width="1">
+    <line x1="190" y1="508" x2="190" y2="642"/><line x1="288.3" y1="508" x2="288.3" y2="642"/>
+    <line x1="383.4" y1="508" x2="383.4" y2="642"/><line x1="481.7" y1="508" x2="481.7" y2="642"/>
+    <line x1="580" y1="508" x2="580" y2="642"/>
+  </g>
+  <rect x="237.6" y="516" width="228.3" height="18" rx="4" fill="#0f766e"/>
+  <rect x="259.8" y="546" width="187" height="18" rx="4" fill="#a16207"/>
+  <g fill="#c2410c">
+    <rect x="258.8" y="582" width="2" height="18"/><rect x="265.1" y="582" width="2" height="18"/><rect x="271.5" y="582" width="2" height="18"/>
+    <rect x="277.8" y="582" width="2" height="18"/><rect x="284.2" y="582" width="2" height="18"/><rect x="290.5" y="582" width="2" height="18"/>
+    <rect x="296.9" y="582" width="2" height="18"/><rect x="303.2" y="582" width="2" height="18"/><rect x="309.5" y="582" width="2" height="18"/>
+    <rect x="315.9" y="582" width="2" height="18"/><rect x="322.2" y="582" width="2" height="18"/><rect x="328.6" y="582" width="2" height="18"/>
+    <rect x="334.9" y="582" width="2" height="18"/><rect x="341.3" y="582" width="2" height="18"/><rect x="347.6" y="582" width="2" height="18"/>
+    <rect x="354" y="582" width="2" height="18"/><rect x="360.3" y="582" width="2" height="18"/><rect x="366.7" y="582" width="2" height="18"/>
+    <rect x="373" y="582" width="2" height="18"/><rect x="379.4" y="582" width="2" height="18"/><rect x="385.7" y="582" width="2" height="18"/>
+    <rect x="392" y="582" width="2" height="18"/><rect x="398.4" y="582" width="2" height="18"/><rect x="404.7" y="582" width="2" height="18"/>
+    <rect x="411.1" y="582" width="2" height="18"/><rect x="417.4" y="582" width="2" height="18"/><rect x="423.8" y="582" width="2" height="18"/>
+    <rect x="430.1" y="582" width="2" height="18"/><rect x="436.5" y="582" width="2" height="18"/><rect x="442.8" y="582" width="2" height="18"/>
+  </g>
+  <path d="M353.3,618 L363.3,628 L353.3,638 L343.3,628 Z" fill="#c2410c" stroke="#ffffff" stroke-width="2"/>
+  <g font-size="14" fill="#5c5347" text-anchor="middle">
+    <text x="239.2" y="662">touko</text><text x="335.9" y="662">kesä</text>
+    <text x="432.6" y="662">heinä</text><text x="530.9" y="662">elo</text>
+  </g>
+
+  <g font-size="14" fill="#241f1a">
+    <text x="28" y="690">Erotus on 0 joka päivä noin 60 päivän ajan.</text>
+    <text x="28" y="712">Ilman yhdistämistä syntyisi noin 60 merkkiä, yhdistettynä yksi.</text>
+    <text x="28" y="734" fill="#5c5347">Kuvassa on viiva joka toisesta päivästä.</text>
+    <text x="28" y="756" font-weight="700" fill="#c2410c">Testitapaus T13 tarkistaa tämän.</text>
+  </g>
+</svg>

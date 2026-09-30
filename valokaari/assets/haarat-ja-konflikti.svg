@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 500" width="620" height="500" role="img" aria-labelledby="hk-title hk-desc" font-family="Arial, Helvetica, sans-serif">
+  <title id="hk-title">Havainnekuva: kaksi haaraa samasta commitista</title>
+  <desc id="hk-desc">Main-haarasta lähtee maanantaina samasta commitista kaksi haaraa: feature/vuosivalinta ja feature/palaute-31. Vuosivalinta yhdistetään ensin main-haaraan pull requestilla 1. Kun palautehaara yhdistetään pull requestilla 2, Git pysähtyy konfliktiin, koska molemmat haarat muuttivat tiedostoa useLocations.ts. Konflikti ratkaistaan käsin omaksi commitiksi, ja sitten pull request 2 yhdistetään. Jos palautehaara luotaisiin vasta pull requestin 1 jälkeen, se sisältäisi jo vuosivalinnan, eikä konfliktia syntyisi. Haarojen nimet ovat esimerkkejä.</desc>
+  <rect x="0" y="0" width="620" height="500" fill="#ffffff"/>
+  <text x="16" y="30" font-size="18" font-weight="700" fill="#241f1a">Havainnekuva: kaksi haaraa samasta commitista</text>
+
+  <line x1="16" y1="100" x2="604" y2="100" stroke="#241f1a" stroke-width="4"/>
+  <text x="16" y="126" font-size="15" font-weight="700" fill="#241f1a">main</text>
+
+  <path d="M90,100 L140,190 L300,190 L360,100" fill="none" stroke="#0f766e" stroke-width="4"/>
+  <circle cx="190" cy="190" r="9" fill="#0f766e"/>
+  <circle cx="250" cy="190" r="9" fill="#0f766e"/>
+  <text x="150" y="218" font-size="14" font-weight="700" fill="#0f766e">feature/vuosivalinta</text>
+
+  <path d="M90,100 L140,300 L500,300 L560,100" fill="none" stroke="#a16207" stroke-width="4"/>
+  <circle cx="200" cy="300" r="9" fill="#a16207"/>
+  <circle cx="280" cy="300" r="9" fill="#a16207"/>
+  <text x="150" y="328" font-size="14" font-weight="700" fill="#a16207">feature/palaute-31</text>
+
+  <circle cx="400" cy="300" r="14" fill="#9f1239"/>
+  <text x="400" y="306" font-size="17" font-weight="700" fill="#ffffff" text-anchor="middle">!</text>
+  <text x="400" y="356" font-size="14" font-weight="700" fill="#9f1239" text-anchor="middle">konflikti: useLocations.ts</text>
+  <circle cx="470" cy="300" r="9" fill="#241f1a"/>
+  <text x="470" y="378" font-size="14" fill="#241f1a" text-anchor="middle">ratkaisu omana commitina</text>
+
+  <circle cx="90" cy="100" r="11" fill="#ffffff" stroke="#241f1a" stroke-width="3"/>
+  <text x="90" y="78" font-size="14" font-weight="700" fill="#241f1a" text-anchor="middle">maanantai</text>
+  <circle cx="360" cy="100" r="11" fill="#ffffff" stroke="#0f766e" stroke-width="3"/>
+  <text x="360" y="78" font-size="14" fill="#241f1a" text-anchor="middle">pull request 1 yhdistetty</text>
+  <circle cx="560" cy="100" r="11" fill="#ffffff" stroke="#a16207" stroke-width="3"/>
+  <text x="556" y="78" font-size="14" fill="#241f1a" text-anchor="middle">pull request 2</text>
+
+  <text x="310" y="238" font-size="14" fill="#5c5347">Molemmat haarat muuttavat</text>
+  <text x="310" y="258" font-size="14" fill="#5c5347">tiedostoa useLocations.ts.</text>
+
+  <rect x="12" y="406" width="596" height="82" rx="8" fill="#fef7f2" stroke="#e8e1d6" stroke-width="2"/>
+  <text x="28" y="432" font-size="14" fill="#241f1a"><tspan font-weight="700">Miksi maanantaina?</tspan> Jos palautehaara luodaan vasta pull requestin 1</text>
+  <text x="28" y="454" font-size="14" fill="#241f1a">jälkeen, se sisältää jo vuosivalinnan. Silloin Git yhdistää sen</text>
+  <text x="28" y="476" font-size="14" fill="#241f1a">suoraan, eikä konfliktia synny.</text>
+</svg>

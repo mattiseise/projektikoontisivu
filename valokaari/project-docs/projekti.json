@@ -35,22 +35,45 @@
   },
   "vaiheet": [
     {
-      "tunnus": "A",
-      "lyhyt": "Ydin",
-      "otsikko": "Ydin: työkalut, suunnitelma, julkaistu runko ja oikea päivänvalodata",
+      "tunnus": "1",
+      "lyhyt": "Valmistelu",
+      "otsikko": "Valmistelu ja julkaistu runko",
+      "kuvaus": "Otat työkalut käyttöön, teet hyväksytyn suunnitelman ja viet tyhjän sovelluksen julkiseen osoitteeseen. Julkaisu tehdään ensin, koska se on projektin todennäköisin kaatumiskohta.",
+      "kuvassa": [
+        "Työkalut → suunnitelma → julkinen osoite",
+        "Julkaisuputki toimii ennen kuin mitään voi rikkoa."
+      ],
       "viikot": [
         1,
         2,
-        3,
-        4,
-        5
+        3
       ],
       "vari": "#a16207"
     },
     {
-      "tunnus": "B",
-      "lyhyt": "Ominaisuudet",
-      "otsikko": "Ominaisuudet: kaavio, monta paikkaa, tooltip, leikkauspisteet ja asiakaskatselmointi",
+      "tunnus": "2",
+      "lyhyt": "Päivänvalodata",
+      "otsikko": "Oikea päivänvalodata",
+      "kuvaus": "Kirjoitat päivänvalolaskennan testeineen ja paikkakuntahaun. Rajapinta palauttaa minkä tahansa Suomen paikkakunnan vuoden oikein, myös kaamoksen ja yöttömän yön.",
+      "kuvassa": [
+        "Laskenta → paikkakuntahaku → rajapinta",
+        "Kaavio saa luotettavan datan."
+      ],
+      "viikot": [
+        4,
+        5
+      ],
+      "vari": "#c2410c"
+    },
+    {
+      "tunnus": "3",
+      "lyhyt": "Kaavio",
+      "otsikko": "Kaavio matkailijalle",
+      "kuvaus": "Rakennat kaavion, monen paikan vertailun, vihjeruudun ja leikkauspisteet. Asiakkaan edustaja kokeilee väliversiota ja kertoo, mitä muutetaan.",
+      "kuvassa": [
+        "Kaavio → monta paikkaa → vihjeruutu → leikkauspisteet",
+        "Väliversio asiakkaan kokeiltavana työviikolla 10."
+      ],
       "viikot": [
         6,
         7,
@@ -58,12 +81,17 @@
         9,
         10
       ],
-      "vari": "#c2410c"
+      "vari": "#9f1239"
     },
     {
-      "tunnus": "C",
-      "lyhyt": "Valmiiksi",
-      "otsikko": "Valmiiksi: palautemuutos, vuosivalinta ja responsiivisuus, tietoturva, testaus ja laatu",
+      "tunnus": "4",
+      "lyhyt": "Viimeistely",
+      "otsikko": "Viimeistely ja laatu",
+      "kuvaus": "Toteutat vuosivalinnan ja katselmoinnin tärkeimmän muutoksen, teet sovelluksesta mobiilissa ja näppäimistöllä toimivan ja arvioit tietoturvan. Testaus ja dokumentaatio kootaan valmiiksi.",
+      "kuvassa": [
+        "Palautemuutos → mobiili → tietoturva → testaus",
+        "Sovellus kestää oikeat käyttäjät ja virheet."
+      ],
       "viikot": [
         11,
         12,
@@ -71,18 +99,23 @@
         14,
         15
       ],
-      "vari": "#9f1239"
+      "vari": "#1e3a8a"
     },
     {
-      "tunnus": "D",
-      "lyhyt": "Julkaisu",
-      "otsikko": "Julkaisu: julkaisuehdokas ja julkaisutestaus, v1.0 ja näyttö",
+      "tunnus": "5",
+      "lyhyt": "Julkaisu ja näyttö",
+      "otsikko": "Julkaisu ja näyttö",
+      "kuvaus": "Ulkopuolinen testaaja kokeilee julkaisuehdokasta pelkän ohjeen avulla. Korjaat esteet, julkaiset v1.0:n ja esittelet työsi näytössä.",
+      "kuvassa": [
+        "Julkaisuehdokas → v1.0 → näyttö",
+        "Asiakas saa osoitteen, jonka voi laittaa sivuilleen."
+      ],
       "viikot": [
         16,
         17,
         18
       ],
-      "vari": "#1e3a8a"
+      "vari": "#0f766e"
     }
   ],
   "kuvitukset": {
@@ -122,7 +155,7 @@
     "tekoalyMuistutus": "Päivänvalolaskenta, leikkauspisteet, komponenttirakenne ja saavutettavuus tehdään itse.",
     "tunnus": "ympyra",
     "tyokiertoAlt": "Viisivaiheinen työkierto: issue, rajapinta, komponentti, testi ja julkaisu.",
-    "vaiheetAlt": "Aikajana neljästä vaiheesta: Ydin työviikot 1–5, Ominaisuudet 6–10, Valmiiksi 11–15, Julkaisu 16–18.",
+    "vaiheetAlt": "Aikajana viidestä vaiheesta: 1 Valmistelu työviikot 1–3, 2 Päivänvalodata 4–5, 3 Kaavio 6–10, 4 Viimeistely 11–15, 5 Julkaisu ja näyttö 16–18.",
     "suunnitelmaAlt": "Kaavio suunnitelman kolmesta osasta: tarve ja rajaus, opiskelijan omat päätökset ja rajapintasopimus.",
     "testausAlt": "Testauksen kierto: hae odotusarvo, aja testi, löydä virhe, korjaa ja uusintatestaa.",
     "tekoalyAlt": "Tekoälyn käytön neljä sääntöä: kysy, tarkista, testaa ja kirjaa."

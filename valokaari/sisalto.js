@@ -17,6 +17,7 @@ window.NAYTTOPROJEKTI = {
   paivaton: true,
   viikot: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
   tiivisSivupalkki: true,
+  yhtenaisetViikot: true,
   aloitusNappi: "Aloita Valokaaren teko",
   apuOtsikko: "Tarvitsen toteutusapua",
 
@@ -29,6 +30,8 @@ window.NAYTTOPROJEKTI = {
    */
   lopputulos: {
     kuvaus: "Valokaari piirtää Revontuli Travelin sivuille kaavion siitä, kuinka pitkä päivä on vuoden jokaisena päivänä millä tahansa Suomen paikkakunnalla. Käyttäjä vertaa useita paikkoja samassa kaaviossa, ja kaamos ja yötön yö erottuvat siitä heti.",
+    /* Aloituksen johdanto kertoo saman, joten kuvauslause näkyy vain työpaketissa. */
+    naytaKuvaus: false,
     kuva: "assets/lopputulos.jpg",
     leveys: 1120,
     korkeus: 700,
@@ -51,16 +54,33 @@ window.NAYTTOPROJEKTI = {
   /* ---- paperiaineiston kielisäädöt: päivätön aikataulu ---- */
   lataukset: {
     sarakePvm: "Ajoitus",
-    viikkoOtsikko: (num, dates, title) => "Työviikko " + num + " / 18 – " + title
+    viikkoOtsikko: (num, dates, title) => "Työviikko " + num + " / 18 – " + title,
+    aloitusHuomio: "Viikon työvaihe on tämän sivuston työohje. Kun toteutat muutoksen sovellukseen, kirjaa se GitHub-issueksi hyväksymiskriteereineen ja tee siitä commit. Testin tulos kirjataan issueen heti, viikon yhteenveto projektipäiväkirjaan viikon lopussa."
   },
 
-  /* ---- vaiheet ---- */
+  /* ---- vaiheet (moottori v2.7: numeroidut vaiheet, kuvaus näkyy aloituksessa ja vaihekuvassa) ---- */
   vaiheet: [
-    { tunnus: "A", lyhyt: "Ydin", otsikko: "Ydin: työkalut, suunnitelma, julkaistu runko ja oikea päivänvalodata", viikot: [1, 2, 3, 4, 5], vari: "#a16207" },
-    { tunnus: "B", lyhyt: "Ominaisuudet", otsikko: "Ominaisuudet: kaavio, monta paikkaa, tooltip, leikkauspisteet ja asiakaskatselmointi", viikot: [6, 7, 8, 9, 10], vari: "#c2410c" },
-    { tunnus: "C", lyhyt: "Valmiiksi", otsikko: "Valmiiksi: vuosivalinta ja palautemuutos, mobiili ja saavutettavuus, tietoturva, testaus ja laatu", viikot: [11, 12, 13, 14, 15], vari: "#9f1239" },
-    { tunnus: "D", lyhyt: "Julkaisu", otsikko: "Julkaisu: julkaisuehdokas ja julkaisutestaus, v1.0 ja näyttö", viikot: [16, 17, 18], vari: "#1e3a8a" }
+    { tunnus: "1", lyhyt: "Valmistelu", otsikko: "Valmistelu ja julkaistu runko", kuvaus: "Otat työkalut käyttöön, teet hyväksytyn suunnitelman ja viet tyhjän sovelluksen julkiseen osoitteeseen. Julkaisu tehdään ensin, koska se on projektin todennäköisin kaatumiskohta.", kuvassa: ["Työkalut → suunnitelma → julkinen osoite", "Julkaisuputki toimii ennen kuin mitään voi rikkoa."], viikot: [1, 2, 3], vari: "#a16207" },
+    { tunnus: "2", lyhyt: "Päivänvalodata", otsikko: "Oikea päivänvalodata", kuvaus: "Kirjoitat päivänvalolaskennan testeineen ja paikkakuntahaun. Rajapinta palauttaa minkä tahansa Suomen paikkakunnan vuoden oikein, myös kaamoksen ja yöttömän yön.", kuvassa: ["Laskenta → paikkakuntahaku → rajapinta", "Kaavio saa luotettavan datan."], viikot: [4, 5], vari: "#c2410c" },
+    { tunnus: "3", lyhyt: "Kaavio", otsikko: "Kaavio matkailijalle", kuvaus: "Rakennat kaavion, monen paikan vertailun, vihjeruudun ja leikkauspisteet. Asiakkaan edustaja kokeilee väliversiota ja kertoo, mitä muutetaan.", kuvassa: ["Kaavio → monta paikkaa → vihjeruutu → leikkauspisteet", "Väliversio asiakkaan kokeiltavana työviikolla 10."], viikot: [6, 7, 8, 9, 10], vari: "#9f1239" },
+    { tunnus: "4", lyhyt: "Viimeistely", otsikko: "Viimeistely ja laatu", kuvaus: "Toteutat vuosivalinnan ja katselmoinnin tärkeimmän muutoksen, teet sovelluksesta mobiilissa ja näppäimistöllä toimivan ja arvioit tietoturvan. Testaus ja dokumentaatio kootaan valmiiksi.", kuvassa: ["Palautemuutos → mobiili → tietoturva → testaus", "Sovellus kestää oikeat käyttäjät ja virheet."], viikot: [11, 12, 13, 14, 15], vari: "#1e3a8a" },
+    { tunnus: "5", lyhyt: "Julkaisu ja näyttö", otsikko: "Julkaisu ja näyttö", kuvaus: "Ulkopuolinen testaaja kokeilee julkaisuehdokasta pelkän ohjeen avulla. Korjaat esteet, julkaiset v1.0:n ja esittelet työsi näytössä.", kuvassa: ["Julkaisuehdokas → v1.0 → näyttö", "Asiakas saa osoitteen, jonka voi laittaa sivuilleen."], viikot: [16, 17, 18], vari: "#0f766e" }
   ],
+  poikkeamat: {
+    vaiheita: "viisi vaihetta: valmistelu ja päivänvalodata ovat eri tuloksia (julkinen osoite vs. oikea data), ja yhdessä ne olisivat viiden viikon vaihe ilman näkyvää välitulosta"
+  },
+  vaihekuva: {
+    kuva: "assets/projektin-vaiheet.svg", leveys: 880, korkeus: 844,
+    alt: "Valokaaren viisi vaihetta: 1 valmistelu ja julkaistu runko työviikoilla 1–3, 2 oikea päivänvalodata työviikoilla 4–5, 3 kaavio matkailijalle ja asiakaskatselmointi työviikoilla 6–10, 4 viimeistely ja laatu työviikoilla 11–15 sekä 5 julkaisu ja näyttö työviikoilla 16–18."
+  },
+  vaiheetJohdanto: "Ensin varmistat, että sovellus pääsee verkkoon ja että päivänvalodata on oikein. Vasta sitten rakennat kaavion, jonka varaan kaikki muu tulee. Asiakkaan palaute ohjaa viimeistelyä, ja lopuksi ulkopuolinen testaaja varmistaa, että julkaisu toimii ilman sinua.",
+  vaiheetHuomio: "Työviikot ovat järjestysnumeroita, eivät kalenteriviikkoja. Viikkopalaveri ohjaajan kanssa pidetään työviikoilla 2–17.",
+
+  /* ---- opiskelijalle näkyvä työn tasojen nimeäminen (moottori v2.7) ---- */
+  tekstit: {
+    goalListLabel: "Käyttäjän työnkulku",
+    tasksLead: "Tee työvaiheet järjestyksessä. Ensimmäinen keskeneräinen vaihe on auki. Kun toteutat muutoksen sovellukseen, kirjaa se GitHub-issueksi ja tee työ Työtapa-sivun kuudella askeleella."
+  },
 
   /* ---- viikkonavigaation lyhyet nimet ---- */
   viikkoNimet: {
@@ -199,7 +219,7 @@ window.NAYTTOPROJEKTI = {
       "Projekti: Valokaari, päivänvalon pituus Suomen paikkakunnilla. Suunnitelma",
       "täytetään työviikolla 2 ja päivitetään aina, kun päätös muuttuu.",
       "",
-      "## 1. Tavoite (esitäytetty toimeksiannosta)",
+      "## 1. Tavoite (vaatimus, esitäytetty toimeksiannosta)",
       "",
       "Lapin matkailuyrityksen verkkosivulle upotettava sovellus, joka näyttää",
       "kaaviona päivän pituuden Suomen paikkakunnilla vuoden jokaisena päivänä:",
@@ -211,7 +231,7 @@ window.NAYTTOPROJEKTI = {
       "",
       arvo("tavoite"),
       "",
-      "## 2. Asiakas ja käyttäjät (esitäytetty)",
+      "## 2. Asiakas ja käyttäjät (vaatimus, esitäytetty)",
       "",
       "Revontuli Travelin yrittäjä (tilaaja) ja yrityksen asiakkaat, jotka",
       "suunnittelevat Lapin-matkaa. Käyttäjä ei ole tekninen eikä lue numerotaulukoita.",
@@ -220,7 +240,7 @@ window.NAYTTOPROJEKTI = {
       "",
       arvo("kohde"),
       "",
-      "## 3. P0-rajaus (esitäytetty)",
+      "## 3. P0-rajaus (vaatimus, esitäytetty)",
       "",
       "**P0:** paikkakunnan nimi koordinaateiksi · päivänvalo joka päivälle rajoissa",
       "0–1440 min · karkausvuosi oikein · usea paikka yhteisellä asteikolla · paikan",
@@ -234,21 +254,23 @@ window.NAYTTOPROJEKTI = {
       "",
       arvo("rajaus"),
       "",
-      "## 4. Rajapintasopimus (esitäytetty luonnos, tarkennetaan työviikolla 3)",
+      "## 4. Rajapintasopimus (ehdotettu luonnos, tarkennetaan työviikolla 3)",
       "",
       "`GET /api/daylight?city=Helsinki&year=2026` palauttaa JSON-olion: `location`",
       "(name, latitude, longitude), `year` ja `days` (date, daylightMinutes).",
       "Virheet JSONina: 400 virheellinen syöte, 404 paikkaa ei löydy, 502 ulkoinen",
       "palvelu ei vastaa. Tarkka sopimus: `project-docs/api-sopimus.md`.",
       "",
-      "## 5. Teknologia ja työtapa (esitäytetty)",
+      "## 5. Teknologia ja työtapa (sovittu toteutustapa, esitäytetty)",
       "",
       "PHP 8.2+ ilman kehystä (backend), React + TypeScript + Vite (frontend),",
       "Tailwind CSS työviikolta 7, kaaviokirjasto oman vertailun mukaan. Laskenta,",
       "muotoilu ja leikkauspisteet omissa moduuleissaan. Lomake ja paikkalista",
-      "rakennetaan alusta itse. Oletusjulkaisumalli on yksi PHP-palvelin, build",
-      "alustalla. Viikkopalaveri ohjaajan kanssa joka viikko, bug-issuet työviikolta 4,",
-      "ominaisuushaarat ja pull requestit työviikolta 6.",
+      "rakennetaan alusta itse. Viikkopalaveri ohjaajan kanssa joka viikko, bug-issuet",
+      "työviikolta 4, ominaisuushaarat ja pull requestit työviikolta 6.",
+      "",
+      "Ehdotus: julkaisumalli on yksi PHP-palvelin ja build alustalla. Toinen malli on",
+      "oma päätös, joka perustellaan kohdassa 6.",
       "",
       "## 6. Omat päätökset perusteluineen",
       "",
@@ -276,7 +298,7 @@ window.NAYTTOPROJEKTI = {
       "",
       arvo("leikkauspiste"),
       "",
-      "## 7. Avoimet asiat – ohjaaja omistaa",
+      "## 7. Avoimet asiat – sovi ohjaajan kanssa, ohjaaja päättää",
       "",
       "Näitä ei päätetä itse eikä tekoälyllä. Tyhjä kenttä on oikea tulos siihen",
       "asti, kun asia on sovittu.",
@@ -312,22 +334,68 @@ window.NAYTTOPROJEKTI = {
   viikkoOhjeet: {
     1: {
       type: "pohjustus",
-      feature: "PHP:n sisäänrakennettu palvelin ja React + Vite -runko käynnistyvät omalla koneella, ja julkinen repository on olemassa ja tarkistettu.",
-      connection: "Työ alkaa työkaluista ja repositorysta: Git-historia on itsessään työnäyte, ja se alkaa ensimmäisestä työpäivästä. Valokaaressa on kaksi ajoympäristöä, PHP ja Node, ja molempien pitää toimia, ennen kuin mitään muuta kannattaa aloittaa.",
+      feature: "Toinen henkilö kloonaa julkisen repositoryn ja saa PHP-palvelimen ja React-rungon käyntiin pelkän README:n avulla.",
+      connection: "Lähtöaineisto on asiakkaan toimeksianto: siitä poimit pakolliset asiat ja epäselvät kohdat kysymyslistaksi. Samalla saat käyntiin sovelluksen kaksi ajoympäristöä, PHP:n ja Noden, ja perustat julkisen repositoryn, jonka Git-historia on työnäytteiden paikka koko projektin ajan. Ohjaajan vastaukset kysymyksiin ovat työviikon 2 suunnitelman pohja.",
       deliverable: "Asennetut työkalut versioineen, julkinen repository tarkistuslistoineen, käynnistyvä React + Vite -runko, PHP-palvelin, joka palauttaa JSON-vastauksen, kansiorakenne ja kysymyslista ohjaajalle.",
-      why: "Ilman toimivaa ympäristöä ja repoa yksikään myöhempi viikko ei tuota näyttöaineistoa: Git-historia on versionhallinnan työnäyte, ja sen pitää alkaa päivästä 1. Kysymyslista on ainoa tapa saada rajaus ratkeamaan kysymällä, ei arvaamalla.",
+      why: "Ilman toimivaa ympäristöä ja repoa yksikään myöhempi viikko ei tuota näyttöaineistoa: Git-historia on versionhallinnan työnäyte, ja sen pitää alkaa ensimmäiseltä työviikolta. Kysymyslista on ainoa tapa saada rajaus ratkeamaan kysymällä, ei arvaamalla.",
       done: "Nimetty toinen henkilö (luokkakaveri tai ohjaaja) saa rungon käyntiin pelkän README:n avulla; ohjaaja on kuitannut julkisen repon tarkistuslistan ja hänet on lisätty repositoryn yhteistyökumppaniksi; kysymyslistassa on vähintään kuusi kysymystä.",
       record: "Kirjoita työviikon 1 merkintään: asennetut työkalut versioineen, repositoryn osoite, ensimmäisen commitin tunnus, kysymyslistan kysymykset, kuka sai rungon käyntiin ohjeellasi ja mitkä julkisuusasiat jäivät avoimiksi.",
       skills: ["kehitysympäristö", "Git", "npm ja Vite", "PHP:n sisäänrakennettu palvelin"],
       termit: ["repository", "commit", "push", "backend", "frontend", "API", "JSON", "kehityspalvelin"],
-      steps: [
-        ["Työkalut ja versiot.", "Asenna PHP 8.2 tai uudempi, Node LTS, Git ja VS Code. Kirjaa jokaisesta versionumero ja tarkistuskomento README:hen (`php -v`, `node -v`, `npm -v`, `git --version`). Pelkkä ”asensin” ei riitä työnäytteeksi."],
-        ["Repository ja julkisuustarkistus.", "Luo GitHub-repository ja käy läpi julkisen repon tarkistuslista: ei henkilötietoja, ei koulun tunnisteita, ei muiden nimiä. Sovi tekijänimestä ohjaajan kanssa. Jos olet alaikäinen, huoltajan suostumus hoidetaan ohjaajan kautta. Lisää ohjaaja yhteistyökumppaniksi (collaborator): hän tarvitsee oikeuden työviikoilla 11 ja 15."],
-        ["React + Vite -runko käyntiin.", "Luo `client/`-kansioon React + TypeScript -projekti Vitellä ja käynnistä kehityspalvelin komennolla `npm run dev`. Ota kuvakaappaus selaimessa näkyvästä rungosta. Tailwindia ei asenneta vielä: se tulee työviikolla 7, kun sitä oikeasti tarvitaan."],
-        ["PHP-palvelin käyntiin.", "Luo `server/public/index.php`, joka palauttaa `{\"status\":\"ok\"}` JSON-muodossa oikealla sisältötyypillä, ja käynnistä PHP:n sisäänrakennettu palvelin komennolla `php -S localhost:8000 -t server/public`. Avaa osoite selaimessa ja ota kuvakaappaus."],
-        ["Toimeksianto ja kysymyslista.", "Lue toimeksianto läpi ja alleviivaa pakolliset asiat. Kirjoita jokaisesta epäselvästä kohdasta kysymys ohjaajalle tiedostoon `project-docs/kysymykset.md`. Tavoite on vähintään kuusi kysymystä, esimerkiksi: mitä tapahtuu, jos kaksi kuntaa on samannimisiä?"],
-        ["Commit, push ja toisen henkilön testi.", "Tee ensimmäinen commit, jonka viesti kertoo projektin perustamisesta, ja vie se etärepositoryyn (push). Pyydä nimettyä toista henkilöä kloonaamaan repo ja käynnistämään molemmat palvelimet pelkän README:n avulla. Kirjaa, mihin hän pysähtyi."]
-      ],
+      tehtavat: {
+        "1-1": {
+          miksi: "Kysymyslista ratkaisee epäselvät kohdat kysymällä, ei arvaamalla. Ohjaajan vastaukset ovat työviikon 2 suunnitelman pohja.",
+          osat: [
+            ["Lue toimeksianto", "Lue Toimeksianto-sivu kokonaan ja alleviivaa asiakkaan pakolliset asiat, esimerkiksi vapaasti kirjoitettava paikkakunta, vertailu samassa kuvassa ja toimivuus puhelimella."],
+            ["Luo projektikansio", "Luo kansio `valokaari/` ja sen alle kansiot `client/`, `server/` ja `project-docs/`. Kaikki projektin tiedostot tulevat näihin kansioihin."],
+            ["Kirjoita kysymykset", "Kirjoita jokaisesta epäselvästä kohdasta kysymys ohjaajalle tiedostoon `project-docs/kysymykset.md`. Esimerkki: mitä tapahtuu, jos kaksi kuntaa on samannimisiä?"],
+            ["Lisää sovittavat asiat", "Lisää listaan ohjaajan kanssa sovittavat asiat: lisenssi, repositoryn julkisuus ja tekijänimi. Ne on lueteltu toimeksiannon lopussa."],
+            ["Laske kysymykset", "Tarkista, että listassa on vähintään kuusi kysymystä. Ohjaaja vastaa niihin työviikon 2 viikkopalaverissa."]
+          ],
+          valmis: "`project-docs/kysymykset.md` sisältää vähintään kuusi kysymystä, ja lisenssi, julkisuus ja tekijänimi ovat mukana.",
+          tallenna: "`project-docs/kysymykset.md`. Se tulee repositoryyn ensimmäisessä commitissa. Kysymykset myös työviikon 1 päiväkirjaan."
+        },
+        "1-2": {
+          miksi: "Versiotaulukko todistaa, millä ympäristöllä työ on tehty. Se auttaa myös toista henkilöä saamaan rungon käyntiin.",
+          osat: [
+            ["Asenna työkalut", "Asenna PHP 8.2 tai uudempi, Node LTS, Git ja VS Code."],
+            ["Tarkista versiot", "Aja komennot `php -v`, `node -v`, `npm -v` ja `git --version`. Jokaisen pitää tulostaa versionumero."],
+            ["Kirjaa versiotaulukko", "Kirjoita `README.md`:hen taulukko: työkalu, versio ja tarkistuskomento. Pelkkä ”asensin” ei riitä työnäytteeksi."],
+            ["Aloita versionhallinta", "Aja `git init` projektikansiossa ja tee ensimmäinen commit, jonka viesti kertoo projektin perustamisesta. Mukaan tulevat README ja kysymyslista."]
+          ],
+          valmis: "README:n taulukossa on neljän työkalun versio ja tarkistuskomento, ja `git log` näyttää ensimmäisen commitin.",
+          tallenna: "`README.md` ensimmäisessä commitissa. Asennetut versiot myös työviikon 1 päiväkirjaan.",
+          sanat: ["commit"]
+        },
+        "1-3": {
+          miksi: "Valokaaressa on kaksi ajoympäristöä, Node ja PHP. Molempien pitää toimia omalla koneella, ennen kuin niiden välille rakennetaan yhteys työviikolla 3.",
+          osat: [
+            ["Luo React-runko", "Luo `client/`-kansioon React + TypeScript -projekti Vitellä. Älä asenna Tailwindia vielä: se otetaan käyttöön työviikolla 7, kun sitä tarvitaan."],
+            ["Käynnistä kehityspalvelin", "Aja `npm run dev` ja avaa osoite selaimessa. Ota kuvakaappaus näkyvästä rungosta."],
+            ["Kirjoita PHP-vastaus", "Luo `server/public/index.php`, joka palauttaa `{\"status\":\"ok\"}` JSON-muodossa oikealla sisältötyypillä `application/json`."],
+            ["Käynnistä PHP-palvelin", "Aja `php -S localhost:8000 -t server/public`, avaa `http://localhost:8000` ja ota kuvakaappaus vastauksesta."],
+            ["Kirjaa käynnistys", "Kirjoita README:hen molempien palvelinten käynnistyskomennot ja osoitteet. Toinen henkilö käyttää niitä viikon lopussa."],
+            ["Lisää .gitignore", "Luo `.gitignore`, joka jättää pois kansiot `node_modules/`, `client/dist/` ja `vendor/` sekä tiedoston `.env`. Tee commit."]
+          ],
+          valmis: "`npm run dev` näyttää React-rungon, `localhost:8000` palauttaa `{\"status\":\"ok\"}`, ja README kertoo molempien käynnistyksen.",
+          tallenna: "Kuvakaappaukset `project-docs/`-kansioon ja koodi commitilla.",
+          sanat: ["frontend", "backend", "kehityspalvelin", "JSON"]
+        },
+        "1-4": {
+          miksi: "Julkinen repository on koko projektin työnäytteiden paikka. Toisen henkilön kokeilu näyttää, kertooko README oikeasti, miten runko käynnistyy.",
+          osat: [
+            ["Tee julkisuustarkistus", "Tarkista, ettei repositoryyn tule henkilötietoja, koulun tunnisteita eikä muiden nimiä."],
+            ["Sovi tekijänimi", "Sovi ohjaajan kanssa, millä nimellä esiinnyt, ja kirjaa se suunnitelmalomakkeen Tekijä-kenttään. Jos olet alaikäinen, huoltajan suostumus hoidetaan ohjaajan kautta."],
+            ["Luo repository", "Luo GitHub-repository, liitä se omaan kansioosi ja vie commitit sinne komennolla `git push`."],
+            ["Lisää ohjaaja", "Lisää ohjaaja repositoryn yhteistyökumppaniksi (collaborator). Hän tarvitsee oikeuden työviikoilla 11 ja 15. Pyydä häntä kuittaamaan julkisuustarkistus."],
+            ["Pyydä toinen kokeilija", "Pyydä nimettyä toista henkilöä, esimerkiksi luokkakaveria, kloonaamaan repository ja käynnistämään molemmat palvelimet pelkän README:n avulla. Kirjaa, mihin hän pysähtyi."],
+            ["Korjaa README", "Korjaa README kohdasta, johon toinen henkilö pysähtyi, ja vie korjaus repositoryyn."]
+          ],
+          valmis: "Toinen henkilö sai rungon käyntiin pelkällä README:llä, ja ohjaaja on repositoryn yhteistyökumppani ja on kuitannut julkisuustarkistuksen.",
+          tallenna: "Repositoryn osoite, toisen henkilön pysähtymiskohta ja avoimiksi jääneet julkisuusasiat työviikon 1 päiväkirjaan.",
+          sanat: ["repository", "push"]
+        }
+      },
       help: {
         title: "Perusta kehitysympäristö ja repository",
         tree: "valokaari/\n├─ client/               React + TypeScript + Vite\n│  ├─ src/\n│  └─ vite.config.ts\n├─ server/\n│  ├─ public/index.php   palauttaa {\"status\":\"ok\"}\n│  └─ src/               Daylight.php, Geocoder.php (tulevat vk 4–5)\n├─ project-docs/         suunnitelma, päiväkirja, muistiot\n├─ README.md\n└─ .gitignore            node_modules/, client/dist/, vendor/, .env",
@@ -360,9 +428,9 @@ window.NAYTTOPROJEKTI = {
 
     2: {
       type: "pohjustus",
-      feature: "Hyväksytty tekninen suunnitelma: ohjaajan vastaukset kysymyslistaan, priorisoidut käyttäjätarinat, kaksi vertailua omalla koeajolla, rautalangat, komponenttijako ja issue-taulu työmääräarvioineen.",
+      feature: "Ohjaaja on hyväksynyt suunnitelman, jossa jokaisella pakollisen ytimen tarinalla on issue, hyväksymiskriteerit ja työmääräarvio.",
       excerpt: "Kaamos ja yötön yö ovat meidän myyntiargumenttimme: haluan, että ne erottuvat kuvasta yhdellä katseella.",
-      connection: "Työviikon 1 kysymyslista saa vastaukset, ja toimeksianto muuttuu priorisoiduiksi käyttäjätarinoiksi ja päätöksiksi, joiden varaan koko loppuprojekti rakentuu. Tämä on ensimmäinen kirjattu viikkopalaveri ohjaajan kanssa.",
+      connection: "Työviikon 1 kysymyslista saa ohjaajalta vastaukset, ja toimeksianto muuttuu priorisoiduiksi käyttäjätarinoiksi ja perustelluiksi päätöksiksi. Oma koeajo ratkaisee laskentatavan, ja issue-taulu jakaa työn puolen päivän paloiksi. Hyväksytty suunnitelma on se, jota vasten jokainen seuraava viikko rakennetaan ja arvioidaan.",
       deliverable: "project-docs/suunnitelma.md, ohjaajan vastaukset kysymyksiin, käyttäjätarinat P0/P1/P2-luokin, laskentatapavertailu koeajon tulosteella, paikkakuntatiedon muodon vertailu, rautalangat kolmesta näkymästä, komponenttijako ja issue-taulu arvioineen.",
       why: "Ilman priorisointia ominaisuuslista paisuu; ilman omaa koeajoa laskentatavan valinta on arvaus. Toiminnot jaetaan kolmeen luokkaan: P0 on pakollinen ydin, P1 tärkeä jatko ja P2 valinnainen lisä. Keskeneräinen P0 painaa arvioinnissa enemmän kuin puuttuva P2.",
       done: "project-docs/suunnitelma.md on repossa ja ohjaaja on hyväksynyt rajauksen kirjatulla kommentilla; ohjaajan vastaukset kysymyksiin on kirjattu nimellä ja päivällä; jokaisella P0-tarinalla on GitHub-issue, hyväksymiskriteerit ja arvio tunteina; koeajon tuloste on päiväkirjassa.",
@@ -370,14 +438,59 @@ window.NAYTTOPROJEKTI = {
       skills: ["vaatimusmäärittely", "priorisointi", "vertailu omalla datalla", "työn ositus"],
       termit: ["GitHub-issue", "käyttäjätarina", "P0", "P1", "P2", "rautalanka", "viikkopalaveri"],
       resources: [["Avaa suunnitelmalomake", "#view-suunnitelma", false]],
-      steps: [
-        ["Ohjaajan vastaukset.", "Pidä viikkopalaveri ohjaajan kanssa ja kirjaa jokainen vastaus kysymyslistaan: nimi, päivä, vastaus omin sanoin. Vastaus, jota ei kirjattu, ei ole työnäyte."],
-        ["Käyttäjätarinat.", "Kirjoita toimeksiannosta käyttäjätarinat (vaatimus käyttäjän näkökulmasta) muodossa ”Matkailijana haluan … jotta …” ja anna jokaiselle 2–4 hyväksymiskriteeriä. Esimerkki: ”Matkailijana haluan lisätä Utsjoen kaavioon, jotta näen, milloin siellä on kaamos” → kriteerit: nimi hyväksytään isoilla ja pienillä kirjaimilla; kaamosjakso näkyy 0 minuutin tasona; sama paikka ei tule kahdesti."],
-        ["Priorisointi ohjaajan kanssa.", "Merkitse jokainen tarina P0, P1 tai P2 yhdessä ohjaajan kanssa (hän toimii asiakkaan sijaisena). Kirjaa perustelut, älä vain kirjaimia."],
-        ["Laskentatavan vertailu ja koeajo.", "Vertaa kolmea tapaa laskea päivänvalo: oma auringonnousuyhtälö, PHP:n sisäänrakennettu `date_sun_info` ja valmis kirjasto. Aja koeajo komennolla `php -r` Helsingille 21.6. ja liitä tuloste päiväkirjaan. Vertaa tulosta Ilmatieteen laitoksen tai timeanddate-sivun arvoon. Päätä ohjaajan kanssa, mikä toteutetaan ja mikä jää referenssiksi."],
-        ["Paikkakuntatiedon muoto.", "Vertaa JSON-tiedostoa ja SQLite-tietokantaa oman hakusi kannalta: miten haet nimellä, miten normalisoit ä:n ja ö:n, kuinka paljon dataa on (noin 300 kuntaa). Ulkoinen geokoodausrajapinta on vaihtoehto vain perustellusti: se tuo verkkovirheet ja käyttörajat mukaan. Datan hankinta ei ole tämän viikon työ: ohjaaja tarjoaa kuntaluettelon varapolkuna työviikolla 5."],
-        ["Rautalangat, komponenttijako ja issuet.", "Piirrä rautalangat (yksinkertaiset näkymäluonnokset) lomakkeesta, paikkalistasta ja kaaviosta. Nimeä komponentit ja kunkin vastuu yhdellä lauseella. Pilko P0-tarinat GitHub-issueiksi, noin puolen tai yhden päivän kokoisiksi, ja anna jokaiselle työmääräarvio tunteina. Täytä suunnitelmalomake ja lataa suunnitelma.md repositoryyn."]
-      ],
+      tehtavat: {
+        "2-1": {
+          miksi: "Käyttäjätarinat muuttavat toimeksiannon tarkistettaviksi vaatimuksiksi. Priorisointi estää ominaisuuslistan paisumisen.",
+          osat: [
+            ["Pidä viikkopalaveri", "Käy kysymyslista läpi ohjaajan kanssa. Kirjaa jokaisen kysymyksen alle vastaus omin sanoin sekä ohjaajan nimi ja päivä. Kirjaamaton vastaus ei ole työnäyte."],
+            ["Varmista julkaisualusta", "Kysy ohjaajalta julkaisualusta ja testattu julkaisupolku ja kirjaa ne suunnitelmalomakkeeseen. Ilman niitä työviikon 3 julkaisua ei voi tehdä."],
+            ["Kirjoita käyttäjätarinat", "Kirjoita toimeksiannosta tarinat muodossa ”Matkailijana haluan …, jotta …” tiedostoon `project-docs/kayttajatarinat.md`. Anna jokaiselle 2–4 hyväksymiskriteeriä."],
+            ["Priorisoi ohjaajan kanssa", "Merkitse jokainen tarina: pakollinen ydin (P0), tärkeä jatko (P1) tai valinnainen lisä (P2). Ohjaaja toimii asiakkaan sijaisena. Kirjaa perustelu, älä pelkkää kirjainta."]
+          ],
+          valmis: "Jokaisen kysymyksen alla on ohjaajan vastaus nimellä ja päivällä, ja jokaisella tarinalla on 2–4 hyväksymiskriteeriä, P-luokka ja perustelu.",
+          tallenna: "`project-docs/kysymykset.md` ja `project-docs/kayttajatarinat.md` commitilla. Ohjaajan vastaukset omin sanoin työviikon 2 päiväkirjaan.",
+          sanat: ["viikkopalaveri", "käyttäjätarina", "P0", "P1", "P2"],
+          esimerkki: "”Matkailijana haluan lisätä Utsjoen kaavioon, jotta näen, milloin siellä on kaamos.” Kriteerit: nimi hyväksytään isoilla ja pienillä kirjaimilla; kaamosjakso näkyy 0 minuutin tasona; sama paikka ei tule kahdesti. Luokka P0, koska kaamos on asiakkaan myyntiargumentti."
+        },
+        "2-2": {
+          miksi: "Ilman omaa koeajoa laskentatavan valinta on arvaus. Tietomuodon valinta ratkaisee, miten työviikon 5 haku nimellä toteutetaan.",
+          osat: [
+            ["Vertaa laskentatavat", "Vertaa omaa auringonnousuyhtälöä, PHP:n `date_sun_info`-funktiota ja valmista kirjastoa tiedostossa `project-docs/vertailu-laskenta.md`: tarkkuus, käytös napapiirin pohjoispuolella, oma ymmärrys ja testattavuus."],
+            ["Aja koeajo", "Aja `date_sun_info` Helsingille 21.6. komennolla `php -r` ja liitä tuloste päiväkirjaan. Vertaa tulosta Ilmatieteen laitoksen tai timeanddate-sivun arvoon."],
+            ["Vertaa tietomuodot", "Vertaa JSON-tiedostoa ja SQLite-tietokantaa tiedostossa `project-docs/vertailu-tietomuoto.md`: haku nimellä, ä:n ja ö:n normalisointi ja noin 300 kunnan datamäärä."],
+            ["Punnitse ulkoinen haku", "Valitse ulkoinen geokoodausrajapinta vain perustellusti, koska se tuo verkkovirheet ja käyttörajat. Dataa ei hankita vielä: se tehdään työviikolla 5, ja ohjaajalla on silloin varalla kuntaluettelo."],
+            ["Päätä ohjaajan kanssa", "Päätä, mikä laskentatapa toteutetaan ja mikä jää referenssiksi, sekä paikkakuntatiedon muoto ja aiottu tietolähde lisensseineen. Kirjaa valinnat perusteluineen suunnitelmalomakkeeseen."]
+          ],
+          valmis: "Kummassakin vertailutaulukossa on vaihtoehdot, kriteerit ja valinta perusteluineen, ja koeajon tuloste on päiväkirjassa.",
+          tallenna: "Vertailutaulukot `project-docs/`-kansioon commitilla. Valinnat suunnitelman kenttiin Laskentatapa ja Paikkakuntatiedon muoto.",
+          sanat: ["JSON", "geokoodaus"]
+        },
+        "2-3": {
+          miksi: "Rautalanka näyttää ennen koodia, mitä näkymässä on ja missä. Työviikon 7 toteutus tarkistetaan sitä vasten.",
+          osat: [
+            ["Piirrä lomake", "Piirrä rautalanka lomakkeesta, jolla paikkakunta lisätään. Tallenna kuva nimellä `project-docs/rautalangat/lomake.png`."],
+            ["Piirrä paikkalista", "Piirrä lista kaavioon lisätyistä paikoista poistonappeineen ja tallenna se nimellä `rautalangat/lista.png`."],
+            ["Piirrä kaavio", "Piirrä kaavio, jossa näkyvät vihjeruutu, kaamos ja yötön yö, ja tallenna se nimellä `rautalangat/kaavio.png`."],
+            ["Nimeä komponentit", "Nimeä näkymän komponentit ja kirjoita kunkin vastuu yhdellä lauseella suunnitelmalomakkeen Komponenttijako-kenttään."]
+          ],
+          valmis: "Kansiossa `project-docs/rautalangat/` on kolme rautalankaa, ja jokaisella komponentilla on nimi ja yhden lauseen vastuu.",
+          tallenna: "Rautalangat commitilla `project-docs/rautalangat/`-kansioon. Komponenttijako suunnitelmaan.",
+          sanat: ["rautalanka", "komponentti"]
+        },
+        "2-4": {
+          miksi: "Issue-taulu työmääräarvioineen on viikkopalaverien ja työviikon 7 arvio vs. toteuma -vertailun pohja. Hyväksytty suunnitelma lukitsee rajauksen ennen koodia.",
+          osat: [
+            ["Pilko issueiksi", "Tee jokaisesta pakollisen ytimen (P0) tarinasta yksi tai useampi GitHub-issue, noin puolen tai yhden päivän kokoinen. Kopioi hyväksymiskriteerit issueen."],
+            ["Arvioi työmäärä", "Anna jokaiselle issuelle työmääräarvio tunteina ja P-luokka tunnisteena."],
+            ["Täytä suunnitelma", "Täytä suunnitelmalomakkeen viikon 2 kentät: tavoite, käyttäjät, laskentatapa, paikkakuntatiedon muoto ja rajaus. Jätä ohjaajan asiat tyhjiksi, kunnes ne on sovittu."],
+            ["Vie suunnitelma repositoryyn", "Lataa `suunnitelma.md`, tallenna se polkuun `project-docs/suunnitelma.md` ja tee commit ja push."],
+            ["Pyydä hyväksyntä", "Pyydä ohjaajaa nimeämään tarina, jonka valmistumista ei voi päätellä kriteereistä, ja korjaa se. Pyydä sitten hyväksyntä kirjattuna kommenttina, esimerkiksi issueen."]
+          ],
+          valmis: "Jokaisella P0-tarinalla on issue, hyväksymiskriteerit ja arvio tunteina, ja ohjaajan hyväksyntä on kirjattu kommenttina.",
+          tallenna: "`project-docs/suunnitelma.md` commitilla. Linkit issue-tauluun ja ohjaajan hyväksyntään työviikon 2 päiväkirjaan.",
+          sanat: ["GitHub-issue", "P0"]
+        }
+      },
       help: {
         title: "Suunnitelman ja koeajon pohjat",
         tree: "project-docs/\n├─ kysymykset.md          kysymys → ohjaajan vastaus (nimi, päivä)\n├─ suunnitelma.md         ladataan tältä sivulta\n├─ kayttajatarinat.md     tarina, kriteerit, P-luokka\n├─ vertailu-laskenta.md   3 tapaa × kriteerit + koeajon tuloste\n├─ vertailu-tietomuoto.md JSON vs. SQLite omalla haulla\n└─ rautalangat/           lomake.png, lista.png, kaavio.png",
@@ -396,23 +509,66 @@ window.NAYTTOPROJEKTI = {
 
     3: {
       type: "feature",
-      feature: "Sovellus, jossa on yksi oma React-komponentti, ja PHP-rajapinnan /api/health ovat julkisessa osoitteessa; kehityksessä Viten proxy ohjaa /api-kutsut PHP:hen; rajapintasopimus ja React-selvitys ovat repossa.",
+      feature: "Kuka tahansa voi avata Valokaaren julkisesta osoitteesta ja nähdä, että selain saa yhteyden PHP-rajapintaan.",
       excerpt: "Valmis tarkoittaa minulle tätä: sovellus on verkossa osoitteessa, jonka voin laittaa sivuillemme.",
-      connection: "Tyhjä sivu tuotannossa voittaa valmiin sivun localhostissa. Julkaisuputki rakennetaan nyt, kun sovelluksessa ei ole vielä mitään rikottavaa, ja samaa putkea käytetään julkaisuehdokkaaseen ja v1.0:aan asti. Ensimmäinen oma komponentti pohjustaa työviikon 6 kaaviotyön.",
+      connection: "Työviikoilla 1–2 syntyivät kehitysympäristö ja hyväksytty suunnitelma, mutta sovellus toimii vasta omalla koneella. Nyt viet rungon julkiseen osoitteeseen ja teet ensimmäisen yhteyden selaimesta PHP-rajapintaan, koska julkaisu on projektin todennäköisin kaatumiskohta ja se on helpointa korjata, kun rikottavaa on vähän. Samaa julkaisuputkea ja rajapintakutsun mallia käytät julkaisuehdokkaaseen asti, ja kaavion data haetaan samalla tavalla työviikolla 6.",
       deliverable: "Julkinen osoite, jossa sovellus ja /api/health vastaavat; HealthStatus-komponentti; vite.config.ts:n proxy-asetus; julkaisumallin perustelu; project-docs/api-sopimus.md; project-docs/react-vite-selvitys.md taulukkona omista P0-tarinoista.",
       why: "Julkaisu on projektin todennäköisin kaatumiskohta, koska PHP:tä ei voi ajaa staattisilla alustoilla. Siksi se tehdään ensimmäisenä ja siihen on varapolku. Yksi palvelin, joka tarjoilee sekä buildatun sovelluksen että rajapinnan samasta osoitteesta, säästää CORS-asetukset, kaksi ympäristöä ja kaksi nukkuvaa ilmaispalvelua.",
       done: "Toinen henkilö avaa julkisen osoitteen ja /api/health omalla laitteellaan ja näkee HealthStatus-komponentin ilmoittavan ”ok”; alustan lokinäkymästä on kuvakaappaus; build tehdään alustalla ja client/dist on gitignoressa; api-sopimus.md ja selvitystaulukko ovat repossa.",
       record: "Kirjoita työviikon 3 merkintään: valittu julkaisumalli ja alusta perusteluineen, mihin julkaisu jumitti ja miten se ratkesi (tai varapolun käyttö), proxy-asetuksen sisältö ja se, mitä selvitystaulukko paljasti ulkopuolelta tulevista osista.",
       skills: ["julkaisu tuotantoon", "Vite-proxy ja build", "React-komponentti ja fetch", "rajapintasopimus"],
       termit: ["proxy", "build", "fetch", "komponentti"],
-      steps: [
-        ["Maanantai: julkaisumalli ja ensimmäinen julkaisuyritys.", "Valitse julkaisumalli suunnitelman kriteereillä. Oletus on yksi PHP-palvelin, joka tarjoilee client/dist-kansion ja /api-reitit. Seuraa ohjaajan antamaa testattua polkua ja tee ensimmäinen julkaisuyritys heti maanantaina, vaikka sovellus on lähes tyhjä."],
-        ["/api/health ja proxy.", "Toteuta server/public/index.php:hen reititys: /api/health palauttaa JSONin, muut polut tarjoilevat buildatun sovelluksen. Lisää vite.config.ts:ään proxy, joka ohjaa kehityspalvelimen /api-pyynnöt osoitteeseen http://localhost:8000. Selain näkee yhden osoitteen, vaikka palvelimia on kaksi."],
-        ["HealthStatus-komponentti.", "Kirjoita ensimmäinen oma komponentti: se hakee fetchillä /api/health, pitää vastauksen tilassa (useState) ja näyttää ”Rajapinta: ok” tai virheen. Käytä suhteellista osoitetta /api/health, niin sama koodi toimii proxyn kautta ja tuotannossa."],
-        ["Torstai: varapolun tarkistus.", "Jos julkinen osoite ei toimi torstaihin mennessä, kirjaa virhe ja alustan loki päiväkirjaan, tee bug-issue ja jatka työviikkoon 4. Ohjaaja antaa varapolun maanantain viikkopalaverissa. Julkaisun jumi ei ole sinun vikasi, mutta kirjaamatta jäänyt jumi on."],
-        ["Rajapintasopimus.", "Kirjoita project-docs/api-sopimus.md: osoite, parametrit (city, year), vastauksen JSON-muoto esimerkillä, virhevastaukset 400, 404 ja 502 esimerkeillä. Tätä vasten sekä PHP että React rakennetaan työviikoilla 5 ja 6."],
-        ["Selvitys taulukkona ja toisen henkilön testi.", "Kirjoita react-vite-selvitys.md taulukkona omista P0-tarinoista: tarina → mikä osa tehdään Reactilla ja Vitellä → mikä tulee ulkopuolelta (kaavio, laskenta, tyylit) → mistä. Pyydä toista henkilöä avaamaan julkinen osoite omalla laitteellaan ja kirjaa tulos."]
-      ],
+      tehtavat: {
+        "3-1": {
+          miksi: "Julkaisu on projektin todennäköisin kaatumiskohta. Kun aloitat sen lähes tyhjällä sovelluksella, virheet löytyvät ennen kuin rikottavaa on paljon.",
+          osat: [
+            ["Valitse julkaisumalli", "Valitse malli suunnitelman kriteereillä. Oletus on yksi PHP-palvelin, joka tarjoilee `client/dist`-kansion ja `/api`-reitit samasta osoitteesta."],
+            ["Seuraa testattua polkua", "Avaa ohjaajan antama testattu julkaisupolku ja tee sen vaiheet omalle repositorylle."],
+            ["Tee build alustalla", "Aseta alusta ajamaan `npm ci && npm run build` client-kansiossa. Varmista, että `client/dist/` on .gitignoressa, jotta buildia ei viedä repositoryyn."],
+            ["Julkaise heti", "Tee ensimmäinen julkaisuyritys jo viikon ensimmäisenä päivänä, vaikka sovelluksessa ei ole vielä juuri mitään."],
+            ["Ota lokista kuva", "Kun julkaisu onnistuu, ota kuvakaappaus alustan lokinäkymästä."]
+          ],
+          valmis: "Julkinen osoite avaa sovelluksen rungon, build tehdään alustalla ja `client/dist` on .gitignoressa.",
+          tallenna: "Julkinen osoite ja julkaisumallin perustelu työviikon 3 päiväkirjaan. Lokin kuvakaappaus `project-docs/`-kansioon.",
+          sanat: ["build"]
+        },
+        "3-2": {
+          miksi: "Terveystarkistus kertoo yhdellä kutsulla, että rajapinta vastaa. Proxyn ansiosta selain käyttää kehityksessä samaa osoitetta kuin tuotannossa.",
+          osat: [
+            ["Reititä pyynnöt", "Kirjoita `server/public/index.php`:hen reititys: `/api`-alkuiset polut ajavat rajapintakoodin, muut polut palauttavat buildatun sovelluksen."],
+            ["Palauta tila", "Toteuta `GET /api/health`, joka palauttaa JSONin `{\"status\":\"ok\"}`. Kokeile sitä curlilla osoitteessa `http://localhost:8000/api/health`."],
+            ["Lisää proxy", "Lisää `vite.config.ts`:ään proxy, joka ohjaa kehityspalvelimen `/api`-pyynnöt osoitteeseen `http://localhost:8000`."],
+            ["Kokeile proxyä", "Avaa `http://localhost:5173/api/health`. Saman JSONin pitää näkyä, vaikka palvelimia on kaksi."]
+          ],
+          valmis: "`/api/health` vastaa sekä PHP:n osoitteessa localhost:8000 että Viten kautta osoitteessa localhost:5173.",
+          tallenna: "Commit ja push. Proxy-asetus näkyy repositoryn `vite.config.ts`-tiedostossa.",
+          sanat: ["proxy"]
+        },
+        "3-3": {
+          miksi: "Ensimmäinen oma komponentti harjoittelee samaa kaavaa, jolla työviikolla 6 haetaan kaavion data: hae, pidä tilassa ja näytä.",
+          osat: [
+            ["Hae tila", "Kirjoita komponentti `HealthStatus`, joka hakee fetchillä osoitteen `/api/health`. Suhteellinen osoite toimii sekä proxyn kautta että tuotannossa."],
+            ["Näytä vastaus", "Tallenna vastaus useStatella ja näytä ”Rajapinta: ok” tai selkeä virheteksti."],
+            ["Julkaise ja tarkista", "Julkaise muutos ja avaa julkinen osoite. HealthStatusin pitää näyttää ”ok” myös tuotannossa."],
+            ["Tarkista julkaisu torstaina", "Jos julkinen osoite ei vielä toimi, kirjaa virhe ja alustan loki päiväkirjaan, tee bug-issue ja jatka työviikkoon 4. Ohjaaja antaa varapolun viikkopalaverissa."]
+          ],
+          valmis: "HealthStatus näyttää ”Rajapinta: ok” julkisessa osoitteessa, tai julkaisun jumi on kirjattu päiväkirjaan ja bug-issueen lokeineen. Kirjaamatta jäänyt jumi ei riitä.",
+          tallenna: "`HealthStatus.tsx` commitilla repositoryyn. Kuvakaappaus tuotannon ”ok”-tilasta työviikon 3 päiväkirjaan.",
+          sanat: ["fetch", "komponentti"]
+        },
+        "3-4": {
+          miksi: "Sopimus kertoo ennen koodia, mitä PHP palauttaa ja mitä React odottaa. Selvitys näyttää, mitkä osat teet itse ja mitkä tulevat ulkopuolelta.",
+          osat: [
+            ["Kirjoita sopimus", "Kirjoita `project-docs/api-sopimus.md`: osoite, parametrit `city` ja `year` sekä vastauksen JSON-muoto esimerkillä."],
+            ["Kirjaa virhevastaukset", "Lisää sopimukseen virhevastaukset 400, 404 ja 502 esimerkkeineen. PHP ja React rakennetaan tätä vasten työviikoilla 5 ja 6."],
+            ["Tee selvitystaulukko", "Kirjoita `project-docs/react-vite-selvitys.md` taulukkona omista pakollisen ytimen (P0) tarinoista: mikä tehdään Reactilla ja Vitellä, mikä tulee ulkopuolelta ja mistä."],
+            ["Pyydä toinen testaaja", "Pyydä toista henkilöä avaamaan julkinen osoite ja `/api/health` omalla laitteellaan. Kirjaa tulos päiväkirjaan."]
+          ],
+          valmis: "`api-sopimus.md` ja selvitystaulukko ovat repositoryssa, ja toinen henkilö on kuitannut julkisen osoitteen toimivan omalla laitteellaan.",
+          tallenna: "Molemmat tiedostot `project-docs/`-kansioon commitilla. Toisen henkilön kuittaus työviikon 3 päiväkirjaan.",
+          sanat: ["JSON"]
+        }
+      },
       help: {
         title: "Yhden palvelimen julkaisumalli ja proxy",
         tree: "TUOTANTO (yksi palvelin)\nselain → https://osoite/           → PHP tarjoilee client/dist/index.html\nselain → https://osoite/api/health → PHP: index.php reitittää\n\nKEHITYS (kaksi palvelinta, yksi osoite)\nselain → http://localhost:5173/           → Vite dev\nselain → http://localhost:5173/api/health → Vite proxy → http://localhost:8000\n\nJULKAISUPUTKI\ngit push main → alusta ajaa: npm ci && npm run build (client) → PHP käynnistyy\nclient/dist/ on .gitignoressa: build tehdään alustalla, ei omalla koneella",
@@ -431,23 +587,55 @@ window.NAYTTOPROJEKTI = {
 
     4: {
       type: "feature",
-      feature: "PHP-moduuli Daylight laskee yhden päivän päivänvalon minuutit koordinaateille ja koko vuoden listan; arvot pysyvät välillä 0–1440, karkausvuosi tuottaa 366 päivää, ja testit T01–T04 menevät läpi komennolla.",
+      feature: "Testiajo näyttää, että Daylight laskee Helsingin ja Utsjoen testipäivät oikein, myös kaamoksen 0 minuuttia ja yöttömän yön 1440 minuuttia.",
       excerpt: "Kukaan ei hahmota numeroista, kuinka jyrkästi päivän pituus muuttuu, kun siirtyy Helsingistä napapiirin pohjoispuolelle.",
-      connection: "Työviikon 2 laskentatapapäätös muuttuu koodiksi. Tämä on sovelluksen ydinlogiikka: jos laskenta on väärin, kaunis kaavio näyttää väärää tietoa. Siksi odotusarvot haetaan ulkoisesta lähteestä, ennen kuin riviäkään koodia kirjoitetaan.",
+      connection: "Työviikon 2 laskentatapapäätös muuttuu nyt koodiksi, ja työviikolla 3 julkaistu runko saa ensimmäisen oikean moduulinsa. Odotusarvot haetaan ulkoisesta lähteestä ennen koodia, koska väärä laskenta näkyisi kauniissakin kaaviossa vääränä tietona. Valmis Daylight-moduuli on se, jonka varaan työviikon 5 rajapinta ja kaikki kaaviot rakentuvat.",
       deliverable: "server/src/Daylight.php, testitiedosto ja testiajon tuloste T01–T04 odotusarvoineen ja lähteineen, vertailu date_sun_info-referenssiin ja bug-issuet löydetyistä virheistä.",
       why: "Napapiirin pohjoispuoli rikkoo naiivin kaavan: tuntikulman kosini menee yli yhden, ja tulos on NaN eikä 0 tai 1440. Tämä on odotettu virhe, ei sinun vikasi. Sen löytäminen, kirjaaminen ja korjaaminen on ensimmäinen aito virheenkorjausketjun raaka-aine.",
       done: "Testit T01–T04 menevät läpi komennolla (`composer test` tai `php tests/run.php`); vuosi 2028 palauttaa 366 riviä ja 2027 365; mikään arvo ei ole alle 0 tai yli 1440; poikkeamat referenssiin on kirjattu ja selitetty; löydetyt virheet ovat bug-issueina.",
       record: "Kirjoita työviikon 4 merkintään: mistä odotusarvot haettiin, mikä kaava tai funktio on käytössä, mikä meni ensin pieleen Utsjoella ja miten korjasit sen, testiajon tuloste ja poikkeamat referenssiin.",
       skills: ["rakenteinen ohjelmointi", "yksikkötestit PHP:llä", "rajatapaukset", "referenssiin vertaaminen"],
       termit: ["T01", "yksikkötesti", "Composer", "bug-issue"],
-      steps: [
-        ["Odotusarvot ennen koodia.", "Hae Ilmatieteen laitoksen tai timeanddate-sivun auringonnousu- ja laskuajat ja laske niistä päivänvalo minuutteina: T01 Helsinki 21.6.2026 ≈ 18 h 56 min, T02 Helsinki 21.12.2026 ≈ 5 h 49 min, T03 Utsjoki 21.12.2026 = 0 min, T04 Utsjoki 21.6.2026 = 1440 min. Kirjaa lähde ja toleranssi ±3 min testitiedostoon. Testitapaukset numeroidaan T01, T02 ja niin edelleen."],
-        ["Testit ensin.", "Kirjoita neljä yksikkötestiä (yhden funktion testi ilman selainta), jotka kutsuvat `Daylight::minutesForDate(lat, lon, date)` ja vertaavat tulosta odotusarvoon. Valitse PHPUnit Composerin kautta tai oma `tests/run.php`-skripti. Aja testit: niiden pitää epäonnistua, koska moduulia ei vielä ole."],
-        ["Yhden päivän laskenta.", "Toteuta laskenta valitsemallasi tavalla. Oma yhtälö: päivän numero → auringon deklinaatio → tuntikulma → päivänvalo. Jos käytät date_sun_infoa, käsittele paluuarvot true (aurinko ei laske) ja false (aurinko ei nouse). Rajaa tulos aina välille 0–1440."],
-        ["Koko vuosi ja karkausvuosi.", "Toteuta `Daylight::yearFor(lat, lon, year)`, joka palauttaa listan päivistä muodossa {date, daylightMinutes}. Laske päivien määrä kalenterista, älä oleta 365:tä. Tarkista 2027 (365) ja 2028 (366)."],
-        ["Vertaa referenssiin ja kirjaa virheet.", "Aja oma laskenta ja date_sun_info rinnakkain kolmelle paikalle ja neljälle päivälle. Kirjaa poikkeamat ja niiden syy (refraktio, aikavyöhyke, pyöristys). Jokainen löydetty virhe kirjataan heti GitHub-issueksi tunnisteella bug: mitä odotit, mitä tapahtui. Näistä issueista otetaan työviikon 14 virheenkorjausketjut."],
-        ["Viikkopalaveri ja commit.", "Käy ohjaajan kanssa läpi, miten Utsjoen tapaus ratkesi. Se on yhdessä ratkottu ongelma: kirjaa se. Committaa moduuli ja testit erillisinä committeina."]
-      ],
+      tehtavat: {
+        "4-1": {
+          miksi: "Odotusarvo omasta koodista todistaa vain, että koodi tekee saman kuin eilen. Ulkoinen lähde paljastaa, jos laskenta on väärin.",
+          osat: [
+            ["Hae odotusarvot", "Hae Ilmatieteen laitoksen tai timeanddate-sivun auringonnousu- ja laskuajat ja laske niistä päivänvalo minuutteina."],
+            ["Kirjaa testitapaukset", "Kirjaa testitiedostoon: T01 Helsinki 21.6.2026 ≈ 18 h 56 min, T02 Helsinki 21.12.2026 ≈ 5 h 49 min, T03 Utsjoki 21.12.2026 = 0 min ja T04 Utsjoki 21.6.2026 = 1440 min."],
+            ["Kirjaa lähde ja toleranssi", "Merkitse jokaiselle testitapaukselle lähde ja toleranssi ±3 min. Numeroi tapaukset T01, T02 ja niin edelleen koko projektin ajan."],
+            ["Kirjoita yksikkötestit", "Valitse PHPUnit Composerin kautta tai oma skripti `tests/run.php`. Kirjoita neljä testiä, jotka kutsuvat `Daylight::minutesForDate(lat, lon, date)` ja vertaavat tulosta odotusarvoon."],
+            ["Katso testien epäonnistuvan", "Aja testit. Niiden pitää epäonnistua, koska moduulia ei vielä ole. Muuten testi ei mittaa mitään."]
+          ],
+          valmis: "Testitiedostossa ovat T01–T04 odotusarvoineen, lähteineen ja toleransseineen, ja testiajo epäonnistuu, koska moduuli puuttuu.",
+          tallenna: "Testitiedosto omana commitinaan (`tests/DaylightTest.php` tai `tests/run.php`). Odotusarvojen lähde työviikon 4 päiväkirjaan.",
+          sanat: ["T01", "yksikkötesti", "Composer"]
+        },
+        "4-2": {
+          miksi: "Tämä on sovelluksen ydinlogiikka: jos laskenta on väärin, kaunis kaavio näyttää väärää tietoa.",
+          osat: [
+            ["Laske yksi päivä", "Toteuta `Daylight::minutesForDate(lat, lon, date)` valitsemallasi tavalla. Oma yhtälö etenee näin: päivän numero → auringon deklinaatio → tuntikulma → päivänvalo."],
+            ["Käsittele polaarijaksot", "Omassa yhtälössä tarkista arvo ennen acos-kutsua. `date_sun_info` palauttaa polaarijaksolla arvon true (aurinko ei laske) tai false (aurinko ei nouse)."],
+            ["Rajaa tulos", "Rajaa jokainen tulos välille 0–1440 minuuttia."],
+            ["Laske koko vuosi", "Toteuta `Daylight::yearFor(lat, lon, year)`, joka palauttaa listan `{date, daylightMinutes}`. Laske päivien määrä kalenterista, älä oleta 365:tä."],
+            ["Tarkista karkausvuosi", "Tarkista, että vuosi 2027 antaa 365 riviä ja vuosi 2028 antaa 366 riviä."]
+          ],
+          valmis: "`yearFor` palauttaa vuodelle 2027 365 riviä ja vuodelle 2028 366 riviä, eikä mikään arvo ole alle 0 tai yli 1440.",
+          tallenna: "`server/src/Daylight.php` omana commitinaan, erillään testeistä. Käytetty kaava tai funktio työviikon 4 päiväkirjaan."
+        },
+        "4-3": {
+          miksi: "Poikkeama referenssiin on joko selitettävä ero tai virhe. Jokainen kirjattu virhe on työviikon 14 virheenkorjausketjujen raaka-ainetta.",
+          osat: [
+            ["Aja testit", "Aja testit komennolla `composer test` tai `php tests/run.php`, kunnes testitapaukset T01–T04 menevät läpi."],
+            ["Kirjaa virheet heti", "Kirjaa jokainen löytynyt virhe heti GitHub-issueksi tunnisteella bug: mitä odotit ja mitä tapahtui. Utsjoen NaN on odotettu virhe, ei sinun vikasi."],
+            ["Vertaa referenssiin", "Aja oma laskenta ja `date_sun_info` rinnakkain kolmelle paikalle ja neljälle päivälle. Kirjaa jokainen poikkeama taulukkoon."],
+            ["Selitä poikkeamat", "Kirjaa jokaiselle poikkeamalle syy: refraktio, aikavyöhyke tai pyöristys. Selittämättömästä poikkeamasta tehdään bug-issue."],
+            ["Käy Utsjoki läpi ohjaajan kanssa", "Näytä viikkopalaverissa, miten Utsjoen tapaus ratkesi, ja kirjaa se päiväkirjaan yhdessä ratkottuna ongelmana."]
+          ],
+          valmis: "T01–T04 menevät läpi komennolla, poikkeamat referenssiin on selitetty, ja jokainen löydetty virhe on bug-issueena.",
+          tallenna: "Testiajon tuloste ja vertailu referenssiin työviikon 4 päiväkirjaan.",
+          sanat: ["bug-issue"]
+        }
+      },
       help: {
         title: "Päivänvalolaskennan ansat ja testipohja",
         tree: "server/\n├─ src/Daylight.php        minutesForDate(), yearFor()\n├─ tests/DaylightTest.php  T01–T04 (PHPUnit) TAI\n├─ tests/run.php           T01–T04 omana skriptinä\n└─ composer.json           \"scripts\": { \"test\": \"phpunit tests\" }\n\nANSAT – NÄMÄ OVAT ODOTETTUJA, EIVÄT OMA VIKA\n1 acos(x), kun x > 1 tai x < -1 → NaN. Napapiirin pohjoispuolella\n  kesällä ja talvella. Ratkaisu: tarkista arvoalue ennen acos-kutsua:\n  x >= 1 → 0 min (kaamos), x <= -1 → 1440 min (yötön yö).\n2 Refraktio: ilmakehä taittaa valon, joten aurinko näkyy ennen kuin se\n  on horisontissa. Ilman -0,833° korjausta Rovaniemi 21.6. antaa\n  n. 23 h 30 min, ei 24 h. Referenssit käyttävät korjausta.\n3 date_sun_info palauttaa polaarijaksoilla true/false, ei aikaleimaa.\n  Tarkista tyyppi ennen kuin lasket erotusta.\n4 Aikavyöhyke: laske päivän pituus, älä kellonaikoja. Erotus\n  nousu → lasku ei riipu vyöhykkeestä, kellonajat riippuvat.",
@@ -471,23 +659,66 @@ window.NAYTTOPROJEKTI = {
 
     5: {
       type: "feature",
-      feature: "GET /api/daylight?city=&year= palauttaa sopimuksen mukaisen JSONin oikealle paikkakunnalle; tuntematon nimi antaa 404-virheen ja virheellinen syöte 400-virheen JSONina.",
+      feature: "Kun kirjoitat curl-komentoon Suomen paikkakunnan, rajapinta palauttaa sen vuoden päivänvalon, ja tuntematon nimi antaa selvän virheilmoituksen.",
       excerpt: "Paikkakunnat eivät saa olla ennalta lukittu lista.",
-      connection: "Työviikon 4 laskenta ja työviikon 2 tietomuotopäätös kytketään rajapintaan, jonka sopimus kirjoitettiin työviikolla 3. Viikon lopussa selain voisi jo hakea dataa, vaikka kaaviota ei vielä ole.",
+      connection: "Työviikon 4 Daylight-moduuli laskee päivänvalon koordinaateille, mutta käyttäjä kirjoittaa paikkakunnan nimen. Nyt kytket nimihaun ja laskennan rajapintaan, jonka muoto sovittiin työviikon 3 sopimuksessa. Viikon lopussa rajapinta palauttaa minkä tahansa Suomen paikkakunnan vuoden, ja työviikolla 6 selain piirtää siitä ensimmäisen kaavion.",
       deliverable: "server/src/Geocoder.php, paikkakuntatiedosto lisenssimerkintöineen (JSON tai SQLite), rajapinnan reititys ja validointi index.php:ssä, curl-tulosteet T05–T07.",
       why: "Ilman nimen normalisointia ”utsjoki” ja ”Utsjoki” ovat eri paikkoja, ja ilman validointia rajapinta laskee vuoden 999999 päivät loputtomiin. Tietolähteen lisenssi kirjataan nyt, koska jälkikäteen sitä ei muista.",
       done: "T05 (Helsinki 2026 → 200, 365 riviä, nimi ja koordinaatit), T06 (”utsjoki” pienillä → 200 Utsjoki) ja T07 (”Tuntematonkylä” → 404 JSON-virhe) antavat curlilla kirjatut vastaukset; paikkakuntatiedoston lähde ja lisenssi ovat README:ssä; syötteiden pituus ja vuosiväli tarkistetaan.",
       record: "Kirjoita työviikon 5 merkintään: mistä paikkakuntadata tuli ja millä lisenssillä (tai käytitkö ohjaajan kuntaluetteloa), miten normalisoit nimen, mitkä rajat annoit syötteille ja T05–T07:n tulosteet.",
       skills: ["tietovaraston käyttö", "syötteiden validointi", "JSON-rajapinta", "curl-testaus"],
       termit: ["geokoodaus", "curl"],
-      steps: [
-        ["Paikkakuntadata käyttöön.", "Ota käyttöön paikkakuntien koordinaatit valitsemassasi muodossa. Oma hankinta avoimesta lähteestä (GeoNames tai Maanmittauslaitos, lisenssi CC BY 4.0) on sallittu, jos se valmistuu tiistaihin mennessä; muuten käytä ohjaajan kuntaluetteloa. Kirjaa lähde, lisenssi ja päivämäärä README:hen heti."],
-        ["Geocoder-moduuli.", "Toteuta `Geocoder::find(name)`, joka palauttaa paikan nimen ja koordinaatit tai null. Normalisoi haku: pienet kirjaimet mb_strtolower-funktiolla (ä ja ö eivät toimi tavallisella strtolower-funktiolla), ylimääräiset välilyönnit pois. Geokoodaus tarkoittaa juuri tätä: nimestä koordinaateiksi."],
-        ["Validointi.", "Tarkista syötteet ennen laskentaa: city ei tyhjä eikä yli 100 merkkiä, year kokonaisluku välillä 1900–2100. Virheellinen syöte → HTTP 400 ja JSON {\"error\": \"…\"}. Tuntematon paikka → 404. Kirjaa rajat api-sopimus.md-tiedostoon."],
-        ["Rajapinnan reitti.", "Kytke index.php:hen reitti /api/daylight: lue parametrit, validoi, hae koordinaatit Geocoderilla, laske vuosi Daylight-moduulilla ja palauta sopimuksen mukainen JSON. Pidä reititys, validointi, haku ja laskenta erillisinä funktioina."],
-        ["curl-testit T05–T07.", "Kirjaa odotetut vastaukset ennen ajoa ja aja curl-komennolla (hakee osoitteen ilman selainta): T05 Helsinki 2026, T06 ”utsjoki”, T07 ”Tuntematonkylä”. Liitä tulosteet päiväkirjaan. Jos jokin poikkeaa, bug-issue ja korjaus."],
-        ["Viikkopalaveri.", "Kirjaa toteumat issueihin ja sovi seuraavan viikon kaaviokirjastovertailun kriteerit ohjaajan kanssa."]
-      ],
+      tehtavat: {
+        "5-1": {
+          miksi: "Sovellus tarvitsee jokaiselle paikkakunnalle koordinaatit. Tietolähteen lisenssi kirjataan heti, koska jälkikäteen sitä ei muista.",
+          osat: [
+            ["Hanki koordinaatit", "Hanki paikkakuntien koordinaatit avoimesta lähteestä, esimerkiksi GeoNames tai Maanmittauslaitos (lisenssi CC BY 4.0)."],
+            ["Tarkista tiistaina", "Jos oma hankinta ei ole valmis tiistaihin mennessä, ota ohjaajan kuntaluettelo käyttöön ja jatka sillä."],
+            ["Tallenna valitsemassasi muodossa", "Tallenna data työviikolla 2 valitsemassasi muodossa: `server/data/paikkakunnat.json` tai `server/data/paikkakunnat.sqlite`."],
+            ["Kirjaa lähde README:hen", "Kirjaa README:hen heti tietolähde, lisenssi, hakupäivä ja rivien määrä."]
+          ],
+          valmis: "Paikkakuntatiedosto on repositoryssa, ja README kertoo sen lähteen, lisenssin ja hakupäivän.",
+          tallenna: "Paikkakuntatiedosto `server/data/`-kansioon commitilla. Datan alkuperä ja lisenssi, tai ohjaajan kuntaluettelon käyttö, työviikon 5 päiväkirjaan.",
+          sanat: ["JSON"]
+        },
+        "5-2": {
+          miksi: "Ilman nimen normalisointia ”utsjoki” ja ”Utsjoki” ovat eri paikkoja, ja asiakas saa virheilmoituksen oikein kirjoitetusta nimestä.",
+          osat: [
+            ["Kirjoita haku", "Toteuta `Geocoder::find(name)` tiedostoon `server/src/Geocoder.php`. Se palauttaa paikan nimen ja koordinaatit tai null, jos paikkaa ei löydy."],
+            ["Normalisoi kirjaimet", "Muuta haettava nimi pieniksi kirjaimiksi funktiolla `mb_strtolower`. Tavallinen `strtolower` ei käsittele ä:tä ja ö:tä oikein."],
+            ["Poista välilyönnit", "Poista nimen alusta ja lopusta ylimääräiset välilyönnit. Vertaa tulosta samalla tavalla normalisoituun avaimeen."],
+            ["Kokeile hankalat nimet", "Kokeile hakua nimillä ”Utsjoki”, ” utsjoki ” ja ”ÄÄNEKOSKI”. Jokaisen pitää löytää oikea paikka."]
+          ],
+          valmis: "`Geocoder::find` löytää paikan isoilla ja pienillä kirjaimilla, ä:llä ja ö:llä sekä ylimääräisillä välilyönneillä ja palauttaa tuntemattomalle nimelle null.",
+          tallenna: "`server/src/Geocoder.php` commitilla. Normalisoinnin tapa työviikon 5 päiväkirjaan.",
+          sanat: ["geokoodaus"]
+        },
+        "5-3": {
+          miksi: "Rajapinta on sopimus selaimen ja PHP:n välillä. Validointi estää esimerkiksi vuoden 999999 laskemisen loputtomiin.",
+          osat: [
+            ["Validoi syötteet", "Tarkista ennen laskentaa, että `city` ei ole tyhjä eikä yli 100 merkkiä ja että `year` on kokonaisluku välillä 1900–2100."],
+            ["Palauta virheet JSONina", "Virheellinen syöte palauttaa HTTP-koodin 400 ja vastauksen `{\"error\": \"…\"}`. Tuntematon paikka palauttaa koodin 404 samassa muodossa."],
+            ["Kytke reitti", "Lisää `index.php`:hen reitti `/api/daylight`: lue parametrit, validoi, hae koordinaatit Geocoderilla, laske vuosi Daylightilla ja palauta sopimuksen mukainen vastaus."],
+            ["Erota vastuut", "Pidä reititys, validointi, haku ja laskenta erillisinä funktioina, jotta voit testata ja korjata ne yksi kerrallaan."],
+            ["Päivitä sopimus", "Kirjaa syötteiden rajat tiedostoon `project-docs/api-sopimus.md`."]
+          ],
+          valmis: "`/api/daylight` palauttaa sopimuksen mukaisen JSONin, virheellinen syöte antaa koodin 400 ja tuntematon paikka koodin 404, molemmat JSONina.",
+          tallenna: "Reitti ja validointi commitilla. Syötteiden rajat `api-sopimus.md`:hen ja työviikon 5 päiväkirjaan.",
+          sanat: ["JSON"]
+        },
+        "5-4": {
+          miksi: "Curl testaa rajapinnan suoraan ilman selainta. Näin tiedät myöhemmin, onko virhe PHP:ssä vai selaimen koodissa.",
+          osat: [
+            ["Kirjaa odotukset", "Kirjaa testitapausten odotetut vastaukset ennen ajoa: T05 Helsinki 2026 → 200 ja 365 riviä, T06 ”utsjoki” → 200 Utsjoki, T07 ”Tuntematonkylä” → 404 ja virheilmoitus."],
+            ["Aja curl", "Aja jokainen testitapaus komennolla `curl -i` ja tallenna tuloste."],
+            ["Vertaa ja korjaa", "Jos saatu vastaus poikkeaa odotetusta, tee bug-issue, korjaa ja aja testi uudelleen."],
+            ["Pidä viikkopalaveri", "Kirjaa toteumat issueihin ja sovi ohjaajan kanssa työviikon 6 kaaviokirjastovertailun kriteerit."]
+          ],
+          valmis: "T05–T07 antavat curlilla odotetut vastaukset, ja jokaisen tuloste on kirjattu.",
+          tallenna: "curl-tulosteet T05–T07 työviikon 5 päiväkirjaan.",
+          sanat: ["curl", "bug-issue"]
+        }
+      },
       help: {
         title: "Rajapinnan reititys ja curl-testit",
         tree: "server/\n├─ public/index.php      reititys: /api/health, /api/daylight, muuten dist\n├─ src/Daylight.php      vk 4\n├─ src/Geocoder.php      find(name) → ['name','lat','lon'] | null\n├─ data/paikkakunnat.json  TAI data/paikkakunnat.sqlite\n└─ README.md             tietolähde, lisenssi, päivä\n\nVASTAUS (api-sopimus.md)\n{ \"location\": { \"name\": \"Utsjoki\", \"latitude\": 69.91, \"longitude\": 27.03 },\n  \"year\": 2026,\n  \"days\": [ { \"date\": \"2026-01-01\", \"daylightMinutes\": 0 }, … ] }\nVIRHE\n404 { \"error\": \"Paikkakuntaa ei löydy\", \"city\": \"Tuntematonkylä\" }\n400 { \"error\": \"Vuosi pitää olla välillä 1900–2100\" }",
@@ -506,23 +737,55 @@ window.NAYTTOPROJEKTI = {
 
     6: {
       type: "feature",
-      feature: "Selain hakee Helsingin datan omasta rajapinnasta ja piirtää sen viivakaaviona; lataus- ja virhetila näkyvät; kaaviokirjasto on valittu vertailulla, ja työ tehtiin ensimmäisessä ominaisuushaarassa.",
+      feature: "Julkaistussa sovelluksessa näkyy Helsingin päivän pituus koko vuodelta viivakaaviona, ja sammutettu rajapinta näyttää käyttäjälle virheilmoituksen.",
       excerpt: "Haluan verkkosivullemme kuvan, joka näyttää päivän pituuden vuoden jokaisena päivänä millä tahansa Suomen paikkakunnalla.",
-      connection: "Rajapinta on valmis, joten nyt selain alkaa käyttää sitä. Työviikon 3 HealthStatus-komponentti näytti tavan: fetch, tila, ehdollinen renderöinti. Nyt sama tehdään oikealle datalle ja piirretään kaaviokirjastolla. Tästä viikosta alkaen jokainen ominaisuus tehdään omassa haarassa.",
+      connection: "Työviikon 5 rajapinta palauttaa minkä tahansa paikkakunnan vuoden, joten nyt selain alkaa käyttää sitä. Haet datan samalla fetch-kaavalla kuin työviikon 3 HealthStatus-komponentti ja piirrät sen kaaviokirjastolla, jonka valitset oman kokeilun perusteella. Valinta vaikuttaa tooltipiin, merkintöihin ja saavutettavuuteen työviikoilla 8, 9 ja 12, ja tästä viikosta alkaen jokainen ominaisuus tehdään omassa haarassa.",
       deliverable: "Kaaviokirjastovertailu kokeilusarakkeella, client/src/api.ts, DaylightChart-komponentti, ensimmäinen pull request, kuvakaappaus julkaistusta kaaviosta ja T16:n virhetilasta.",
       why: "Kaaviokirjasto on projektin tärkein ulkoinen komponentti: sen valinta vaikuttaa tooltipiin, merkintöihin ja saavutettavuuteen viikoilla 8, 9 ja 12. Vertailu ilman omaa kokeilua on kielimallin taulukko; yksi koeasennus paljastaa, mitä dokumentaatio ei kerro. Rajapintakutsut pidetään omassa moduulissa, jotta kaavio ei tiedä mitään fetchistä.",
       done: "Kaavio näkyy julkaistussa versiossa; api.ts sisältää kaikki rajapintakutsut ja vastauksen TypeScript-tyypin; T16 on kirjattu ja ajettu: kun PHP-palvelin sammutetaan, selain näyttää virheilmoituksen eikä tyhjää sivua; ensimmäinen pull request on yhdistetty itsekatselmoinnin jälkeen.",
       record: "Kirjoita työviikon 6 merkintään: kolme vertailtua kirjastoa ja kokeilusarakkeen havainnot, valinta ja se, mikä siitä jää huonommaksi, api.ts:n rajapinta (funktion nimi ja tyyppi), T16:n tulos ja pull requestin linkki.",
       skills: ["ulkoisen komponentin valinta", "fetch ja TypeScript-tyypit", "React-tila ja ehdollinen renderöinti", "ominaisuushaara ja pull request"],
       termit: ["ominaisuushaara", "pull request"],
-      steps: [
-        ["Haara ja issue.", "Luo ominaisuushaara (oma Git-haara yhdelle ominaisuudelle), esimerkiksi feature/ensimmainen-kaavio, ja tarkenna issueen hyväksymiskriteerit. Tästä viikosta alkaen main-haaraan ei committata suoraan."],
-        ["Kaaviokirjastovertailu kokeilulla.", "Vertaa kolmea kirjastoa (esimerkiksi Recharts, Chart.js react-chartjs-2:n kanssa, Apache ECharts): paketin koko omasta npm-tulosteesta, lisenssi, React-tuki, tooltipin ja merkintöjen tuki, näppäimistötuki, dokumentaatio. Asenna vähintään yksi koeasennuksena ja piirrä sillä yksi sarja. Kirjaa valinta ja riippuvuustaulukon rivi."],
-        ["api.ts.", "Kirjoita client/src/api.ts: TypeScript-tyyppi rajapinnan vastaukselle (sama kuin api-sopimus.md), funktio fetchDaylight(city, year), joka palauttaa datan tai heittää virheen viestillä. Kaikki fetch-kutsut ovat tässä tiedostossa, ei komponenteissa."],
-        ["DaylightChart.", "Toteuta komponentti, joka saa datan propsina ja piirtää viivakaavion: x-akselilla päivä, y-akselilla tunnit 0–24. Emokomponentti hakee Helsingin datan, näyttää ”Ladataan…” ja virhetilan ehdollisesti."],
-        ["T16 ja julkaisu.", "Kirjaa T16 ennen ajoa: ”kun PHP-palvelin on sammutettu, sivu näyttää virheilmoituksen eikä tyhjää kaaviota”. Sammuta palvelin, aja testi, kirjaa tulos. Avaa pull request, lue muutokset itse läpi, yhdistä ja julkaise."],
-        ["Viikkopalaveri.", "Näytä ohjaajalle kaavio julkaistusta osoitteesta ja kirjaa toteumat issueihin."]
-      ],
+      tehtavat: {
+        "6-1": {
+          miksi: "Kaaviokirjasto on projektin tärkein ulkoinen komponentti. Yksi koeasennus paljastaa, mitä dokumentaatio ei kerro.",
+          osat: [
+            ["Luo haara", "Luo ominaisuushaara, esimerkiksi `feature/ensimmainen-kaavio`, ja tarkenna issueen hyväksymiskriteerit. Tästä viikosta alkaen `main`-haaraan ei committata suoraan."],
+            ["Vertaa kolme kirjastoa", "Vertaa kolmea kirjastoa, esimerkiksi Recharts, Chart.js ja Apache ECharts: lisenssi, React-tuki, tooltip- ja merkintätuki, näppäimistötuki ja dokumentaatio."],
+            ["Mittaa koko itse", "Hae jokaisen paketin koko ja lisenssi omasta tulosteesta komennolla `npm view <paketti> dist.unpackedSize license`."],
+            ["Tee koeasennus", "Asenna vähintään yksi kirjasto ja piirrä sillä yksi sarja. Kirjaa vertailun kokeilusarakkeeseen, mitä tapahtui ja kauanko se kesti."],
+            ["Kirjaa valinta", "Kirjaa valinta ja se, mikä siitä jää huonommaksi, suunnitelman Kaaviokirjasto-kenttään. Lisää riippuvuustaulukkoon rivi: paketti, rooli, versio ja lisenssi."]
+          ],
+          valmis: "Vertailussa on kolme kirjastoa, omat kokotulosteet ja kokeilusarake, ja valinta on suunnitelmassa ja riippuvuustaulukossa.",
+          tallenna: "`project-docs/vertailu-kaaviokirjasto.md` commitilla haaraan. Valinta ja kokeilun havainnot työviikon 6 päiväkirjaan.",
+          sanat: ["ominaisuushaara"]
+        },
+        "6-2": {
+          miksi: "Rajapintakutsut pidetään omassa moduulissaan, jotta kaavio ei tiedä mitään fetchistä. Sama rakenne kantaa monen paikan kaavioon työviikolla 7.",
+          osat: [
+            ["Kirjoita tyyppi", "Kirjoita `client/src/api.ts`:ään TypeScript-tyyppi rajapinnan vastaukselle. Sen pitää vastata `api-sopimus.md`:n muotoa."],
+            ["Kirjoita hakufunktio", "Kirjoita `fetchDaylight(city, year)`, joka palauttaa datan tai heittää virheen rajapinnan virheviestillä. Kaikki fetch-kutsut ovat tässä tiedostossa, eivät komponenteissa."],
+            ["Piirrä kaavio", "Toteuta `DaylightChart`, joka saa datan propsina ja piirtää viivakaavion: x-akselilla päivä ja y-akselilla tunnit 0–24."],
+            ["Näytä lataus ja virhe", "Anna emokomponentin hakea Helsingin data. Se näyttää ensin tekstin ”Ladataan…” ja virheen sattuessa käyttäjälle luettavan virheilmoituksen."]
+          ],
+          valmis: "Helsingin vuosi piirtyy viivakaavioksi, `api.ts` sisältää kaikki rajapintakutsut ja vastauksen tyypin, ja lataus- ja virhetila näkyvät.",
+          tallenna: "`api.ts` ja `DaylightChart` commitilla haaraan. Hakufunktion nimi ja tyyppi työviikon 6 päiväkirjaan.",
+          sanat: ["fetch", "komponentti"]
+        },
+        "6-3": {
+          miksi: "Virhetila on osa toimeksiantoa: sovellus ei saa jäädä tyhjäksi. Ensimmäinen pull request aloittaa työtavan, jota käytät loppuun asti.",
+          osat: [
+            ["Kirjaa T16", "Kirjaa testitapaus T16 ennen ajoa: kun PHP-palvelin on sammutettu, sivu näyttää virheilmoituksen eikä tyhjää kaaviota."],
+            ["Aja T16", "Sammuta PHP-palvelin, lataa sivu ja kirjaa tulos. Ota kuvakaappaus virhetilasta."],
+            ["Avaa pull request", "Avaa pull request ja kirjoita kuvaukseen, mitä muutit ja miten testasit."],
+            ["Katselmoi ja yhdistä", "Lue muutokset läpi kuin toisen tekemänä. Yhdistä pull request `main`-haaraan vasta sen jälkeen."],
+            ["Julkaise ja näytä", "Julkaise ja avaa kaavio julkisesta osoitteesta. Näytä se ohjaajalle viikkopalaverissa ja kirjaa toteumat issueihin."]
+          ],
+          valmis: "T16 on kirjattu ja ajettu, ensimmäinen pull request on yhdistetty itsekatselmoinnin jälkeen, ja kaavio näkyy julkaistussa versiossa.",
+          tallenna: "Kuvakaappaukset julkaistusta kaaviosta ja T16:n virhetilasta sekä pull requestin linkki työviikon 6 päiväkirjaan.",
+          sanat: ["pull request"]
+        }
+      },
       help: {
         title: "api.ts:n rakenne ja kaaviokirjaston vertailupohja",
         tree: "client/src/\n├─ api.ts              tyypit + fetchDaylight(city, year)\n├─ components/\n│  ├─ HealthStatus.tsx  vk 3\n│  └─ DaylightChart.tsx saa datan propsina, ei hae itse\n└─ App.tsx             hakee datan, tila: loading | error | data\n\nVASTAUKSEN TYYPPI (api.ts)\ntype DaylightDay = { date: string; daylightMinutes: number };\ntype DaylightResponse = {\n  location: { name: string; latitude: number; longitude: number };\n  year: number;\n  days: DaylightDay[];\n};",
@@ -541,23 +804,66 @@ window.NAYTTOPROJEKTI = {
 
     7: {
       type: "feature",
-      feature: "Lomake lisää paikan, lista näyttää mukana olevat paikat poistonapilla, sama paikka ei tule kahdesti, jokaisella sarjalla on oma väri ja kaikki paikat näkyvät samalla 0–24 h asteikolla. Lomake ja lista on rakennettu alusta itse Tailwindilla.",
+      feature: "Käyttäjä lisää ja poistaa paikkoja lomakkeella, ja Helsinki, Tampere, Rovaniemi ja Utsjoki näkyvät samassa kaaviossa eri väreillä samalla 0–24 h asteikolla.",
       excerpt: "Asiakkaan pitää voida kirjoittaa paikkakunnan nimi, lisätä se kaavioon ja verrata sitä toiseen paikkaan samassa kuvassa, vaikka Helsinkiä Utsjokeen.",
-      connection: "Yhden sarjan kaavio kasvaa vertailuksi. Tämä on projektin itse rakennettu näkymä: ei valmista komponenttikittiä, vaan omat komponentit ja Tailwindin tyyliluokat. Tilanhallinta kootaan yhteen omaan hookiin, jotta työviikon 11 vuosivalinta voi käyttää samaa tilaa.",
+      connection: "Työviikon 6 kaavio näyttää yhden paikan, mutta asiakas haluaa verrata paikkoja samassa kuvassa. Rakennat lomakkeen ja paikkalistan itse Tailwindilla työviikon 2 rautalankojen mukaan ja kokoat paikkojen tilan omaan useLocations-hookiin. Samaa tilaa käyttää työviikon 11 vuosivalinta.",
       deliverable: "Tailwind-asennus perusteluineen, LocationForm- ja LocationList-komponentit, useLocations-hook, T08–T09:n tulokset, arvio vs. toteuma -taulukko viikkopalaverien kirjauksista.",
       why: "Käyttöliittymän toteuttaminen suunnitelmasta on oma vaatimuksensa, ja se todennetaan vain näkymällä, jonka olet rakentanut itse rautalangan mukaan. Yhteinen asteikko on vertailun ehto: jos jokainen sarja skaalautuu omaan maksimiinsa, Utsjoen kaamos ja Helsingin talvi näyttävät samalta.",
       done: "T08: Helsinki, Tampere, Rovaniemi ja Utsjoki näkyvät samassa kaaviossa eri väreillä ja yhteisellä asteikolla; T09: sama paikka toistamiseen hylätään ilmoituksella; paikan voi poistaa listasta; Tailwind on riippuvuustaulukossa perusteltuna; arvio vs. toteuma -taulukko on päiväkirjassa.",
       record: "Kirjoita työviikon 7 merkintään: komponenttien vastuut, mitä Tailwind ratkaisi tässä näkymässä ja mitä ei, miten duplikaatti tunnistetaan, T08–T09:n tulokset ja arvio vs. toteuma -taulukon opetus.",
       skills: ["komponenttijako ja propsit", "oma hook ja tila", "Tailwind perusteltuna tuontina", "arvio vs. toteuma"],
       termit: ["hook"],
-      steps: [
-        ["Haara ja Tailwind.", "Luo ominaisuushaara. Asenna ja konfiguroi Tailwind CSS ja kirjaa riippuvuustaulukkoon, mitä se ratkaisee tässä näkymässä (välit, värit, lomakkeen ulkoasu ilman omaa CSS-tiedostoa) ja mitä ei (rakenne, saavutettavuus, tila). Tämä on toinen perusteltu ulkoinen komponentti."],
-        ["useLocations-hook.", "Kirjoita oma hook (funktio, jolla komponentti käyttää tilaa), joka pitää listan paikoista tiloineen: ladataan, valmis, virhe. Se tarjoaa funktiot addLocation(name) ja removeLocation(name). Duplikaatti tarkistetaan normalisoidusta nimestä ennen hakua."],
-        ["LocationForm ja LocationList.", "Rakenna lomake (tekstikenttä, lisäysnappi, label kytkettynä kenttään) ja lista (nimi, värimerkki, poistonappi) rautalangan mukaan. Ei valmista komponenttikittiä: rakenne ja luokat ovat sinun."],
-        ["Värit ja asteikko.", "Anna jokaiselle paikalle väri kiinteästä paletista lisäysjärjestyksessä ja käytä samaa väriä listassa ja kaaviossa. Kiinnitä y-akseli välille 0–24 h."],
-        ["T08–T09.", "Kirjaa odotukset ennen ajoa. T08: neljä paikkaa samassa kaaviossa. T09: ”Helsinki” toistamiseen hylätään ilmoituksella ”Helsinki on jo kaaviossa”. Ota kuvakaappaukset."],
-        ["Arvio vs. toteuma ja viikkopalaveri.", "Kokoa taulukko viikkopalaverien kirjauksista: issue, arvio, toteuma, ero. Kirjaa, missä arvio petti eniten ja miksi, ja päivitä suunnitelman arviot loppuviikoille."]
-      ],
+      tehtavat: {
+        "7-1": {
+          miksi: "Käyttöliittymän toteuttaminen suunnitelmasta todennetaan vain näkymällä, jonka olet rakentanut itse rautalangan mukaan.",
+          osat: [
+            ["Luo haara ja asenna Tailwind", "Luo ominaisuushaara ja asenna Tailwind CSS Viten ohjeen mukaan. Tarkista, että yksi luokka vaikuttaa, ennen kuin kirjoitat lisää."],
+            ["Perustele Tailwind", "Kirjaa riippuvuustaulukkoon, mitä Tailwind ratkaisee tässä näkymässä (välit, värit, lomakkeen ulkoasu) ja mitä ei (rakenne, saavutettavuus, tila)."],
+            ["Kirjoita useLocations", "Kirjoita hook `useLocations`, joka pitää listan paikoista tiloineen (ladataan, valmis, virhe) ja tarjoaa funktiot `addLocation(name)` ja `removeLocation(name)`."],
+            ["Rakenna lomake", "Rakenna rautalangan mukaan `LocationForm`: tekstikenttä, lisäysnappi ja kenttään kytketty label. Älä käytä valmista komponenttikittiä."],
+            ["Rakenna lista", "Rakenna `LocationList`, jossa jokaisella paikalla on nimi, värimerkki ja poistonappi. Tarkista, että paikan voi poistaa."],
+            ["Päivitä komponenttijako", "Päivitä suunnitelman Komponenttijako-kenttään `LocationForm`, `LocationList` ja `useLocations` sekä kunkin vastuu yhdellä lauseella."]
+          ],
+          valmis: "Lomakkeella lisätty paikka näkyy listassa ja kaaviossa, ja poistonappi poistaa sen molemmista.",
+          tallenna: "Komponentit ja hook commitilla haaraan. Tailwind-perustelu riippuvuustaulukkoon ja komponenttien vastuut työviikon 7 päiväkirjaan.",
+          sanat: ["hook", "komponentti"]
+        },
+        "7-2": {
+          miksi: "Yhteinen asteikko on vertailun ehto. Jos jokainen sarja skaalautuu omaan maksimiinsa, Utsjoen kaamos ja Helsingin talvi näyttävät samalta.",
+          osat: [
+            ["Tunnista duplikaatti", "Vertaa `addLocation`-funktiossa normalisoitua nimeä (välilyönnit pois, pienet kirjaimet) ennen hakua. Sama paikka palauttaa lomakkeelle ilmoituksen eikä tee uutta hakua."],
+            ["Anna värit", "Anna jokaiselle paikalle väri kiinteästä paletista lisäysjärjestyksessä. Käytä samaa väriä listassa ja kaaviossa."],
+            ["Kiinnitä asteikko", "Kiinnitä kaavion y-akseli välille 0–24 h, jotta kaikki paikat näkyvät samalla asteikolla."],
+            ["Kokeile kirjoitusasut", "Lisää ”Utsjoki”, ” utsjoki ” ja ”UTSJOKI”. Listaan saa tulla vain yksi rivi."]
+          ],
+          valmis: "Sama paikka eri kirjoitusasuilla hylätään ilmoituksella, jokaisella sarjalla on oma väri, ja y-akseli on 0–24 h kaikilla paikoilla.",
+          tallenna: "Muutokset commitilla haaraan. Duplikaatin tunnistustapa työviikon 7 päiväkirjaan."
+        },
+        "7-3": {
+          miksi: "Nämä ovat ensimmäiset käsin ajettavat selaintestit. Odotus kirjataan ennen ajoa, jotta tulos ei muovaudu sen mukaan, mitä näit.",
+          osat: [
+            ["Kirjaa odotukset", "Kirjaa testitapaukset ennen ajoa. T08: Helsinki, Tampere, Rovaniemi ja Utsjoki näkyvät samassa kaaviossa eri väreillä. T09: toinen ”Helsinki” hylätään ilmoituksella ”Helsinki on jo kaaviossa”."],
+            ["Aja T08", "Lisää neljä paikkaa ja tarkista värit ja yhteinen asteikko. Ota kuvakaappaus."],
+            ["Aja T09", "Lisää Helsinki uudelleen ja tarkista, että lista pysyy neljän rivin pituisena. Ota kuvakaappaus ilmoituksesta."],
+            ["Yhdistä ja julkaise", "Avaa pull request, katselmoi se itse, yhdistä ja julkaise."]
+          ],
+          valmis: "T08 ja T09 on kirjattu ennen ajoa, molemmat menevät läpi, ja kummastakin on kuvakaappaus.",
+          tallenna: "T08:n ja T09:n tulokset kuvakaappauksineen työviikon 7 päiväkirjaan.",
+          sanat: ["pull request"]
+        },
+        "7-4": {
+          miksi: "Vertailu näyttää, missä arviosi pettävät. Loppuviikkojen arviot osuvat paremmin, kun opit omasta datastasi.",
+          osat: [
+            ["Kokoa taulukko", "Kokoa viikkopalaverien kirjauksista taulukko: issue, arvio tunteina, toteuma tunteina ja ero."],
+            ["Etsi suurin ero", "Kirjaa, missä arvio petti eniten ja miksi."],
+            ["Päivitä arviot", "Päivitä suunnitelman ja issueiden työmääräarviot loppuviikoille, jos arvio petti."],
+            ["Käy läpi palaverissa", "Käy taulukko läpi ohjaajan kanssa viikkopalaverissa ja kirjaa toteumat issueihin."]
+          ],
+          valmis: "Arvio vs. toteuma -taulukko on tehty viikkopalaverien kirjauksista, ja suurimman eron syy on kirjattu.",
+          tallenna: "Arvio vs. toteuma -taulukko ja sen opetus työviikon 7 päiväkirjaan.",
+          sanat: ["viikkopalaveri"]
+        }
+      },
       help: {
         title: "Tailwind-sanasto tähän näkymään ja hookin rakenne",
         tree: "client/src/\n├─ hooks/useLocations.ts     tila + addLocation + removeLocation\n├─ components/\n│  ├─ LocationForm.tsx       props: onAdd(name)\n│  ├─ LocationList.tsx       props: locations, onRemove(name)\n│  └─ DaylightChart.tsx      props: locations (useita sarjoja)\n└─ App.tsx                   kutsuu useLocations, jakaa propsit\n\nTAILWIND-LUOKAT, JOTKA RIITTÄVÄT LOMAKKEESEEN JA LISTAAN\nasettelu: flex, flex-col, gap-2, gap-4, items-center, justify-between\nvälit:    p-2, p-4, px-3, py-2, mt-4, mb-2\nteksti:   text-sm, text-lg, font-semibold, text-gray-700\nkenttä:   border, rounded, w-full, focus:outline-none, focus:ring-2\nnappi:    bg-orange-600, text-white, rounded, hover:bg-orange-700, disabled:opacity-50\nvirhe:    text-red-700, bg-red-50, border-red-200",
@@ -576,23 +882,55 @@ window.NAYTTOPROJEKTI = {
 
     8: {
       type: "feature",
-      feature: "Tooltip näyttää päivän, paikan ja keston luettavassa muodossa, ja kaamos (0 min) sekä yötön yö (1440 min) erottuvat kaaviosta.",
+      feature: "Kun matkailija vie hiiren tai sormen kaavion päälle, hän näkee esimerkiksi ”21. kesäkuuta · Rovaniemi · 24 h”, ja kaamos ja yötön yö erottuvat kaaviosta nimettyinä alueina.",
       excerpt: "Kun hän vie hiiren kaavion päälle, hänen pitää nähdä tarkka päivä, paikka ja se, kuinka monta tuntia ja minuuttia valoa sinä päivänä on.",
-      connection: "Data on oikein ja paikkoja on monta, mutta minuutit eivät kerro matkailijalle mitään. Muotoilu tehdään omassa moduulissa testeineen, ja kaavio vain käyttää sitä. Ääripäiden korostus on asiakkaan myyntiargumentti, joten se ei ole koristus.",
+      connection: "Työviikon 7 kaavio näyttää monta paikkaa oikealla datalla, mutta pelkät minuutit eivät kerro matkailijalle mitään. Nyt kirjoitat muotoilun omaan testattuun moduuliin, lisäät vihjeruudun ja korostat kaamoksen ja yöttömän yön, jotka ovat asiakkaan myyntiargumentti. Samaa format.ts-moduulia käyttävät työviikon 9 leikkauspisteet ja työviikon 12 näppäimistön kiertoreitti.",
       deliverable: "client/src/format.ts ja sen Vitest-testit T10–T11, tooltip-komponentti, kaamoksen ja yöttömän yön korostus, kirjattu näppäimistörajoite ja päätös kiertoreitistä.",
       why: "Muotoilu on logiikkaa, ja logiikka testataan ilman selainta. ”0 min” ja ”24 h” ovat rajatapaukset, jotka menevät helposti väärin (”0 h 0 min”, ”24 h 0 min”). Näppäimistötuki riippuu kirjastosta, joten rajoite kirjataan rehellisesti ja kiertoreitti päätetään nyt, toteutetaan työviikolla 12.",
       done: "T10 ja T11 menevät läpi komennolla `npm test`; tooltip toimii hiirellä ja kosketuksella ja näyttää esimerkiksi ”21. kesäkuuta · Rovaniemi · 24 h”; Utsjoen kaamosjaksot ja yöttömän yön jaksot erottuvat kaaviosta; päiväkirjassa on kirjattu, mitä kirjasto tukee näppäimistöllä, ja päätös kiertoreitistä (datataulukko vai päivävalitsin) perusteluineen.",
       record: "Kirjoita työviikon 8 merkintään: format.ts:n funktiot ja niiden testit, miten tooltip on toteutettu kirjaston keinoin, miten ääripäät korostetaan, ja näppäimistörajoite sekä kiertoreitin valinta perusteluineen.",
       skills: ["muotoilulogiikka moduulina", "Vitest-yksikkötestit", "kaaviokirjaston tooltip ja merkinnät", "rajoitteen kirjaaminen"],
       termit: ["tooltip", "Vitest"],
-      steps: [
-        ["Haara ja testit ensin.", "Luo ominaisuushaara. Asenna Vitest ja kirjoita testit format.ts:lle ennen toteutusta: T10 formatMinutes(0) → ”0 min”, formatMinutes(1440) → ”24 h”, formatMinutes(61) → ”1 h 1 min”; T11 formatDate(”2026-06-21”) → ”21. kesäkuuta”. Aja ja katso niiden epäonnistuvan."],
-        ["format.ts.", "Toteuta molemmat funktiot puhtaina funktioina: ne eivät koske DOMiin eivätkä kaavioon. Käytä suomen kuukausien nimiä partitiivissa (”kesäkuuta”). Aja testit, kunnes ne menevät läpi."],
-        ["Tooltip.", "Toteuta kaaviokirjaston tooltip omalla sisällöllä: päivä, paikka, kesto, format.ts:n funktioilla. Testaa hiirellä ja puhelimen kosketuksella. Tooltipin pitää nimetä paikka myös silloin, kun sarjoja on neljä."],
-        ["Ääripäiden korostus.", "Korosta 0 minuutin ja 1440 minuutin jaksot kirjaston merkintätuella (viite-alue, viiteviiva tai erillinen merkintä) ja nimeä ne kaaviossa ”kaamos” ja ”yötön yö”. Testaa Utsjoen ja Rovaniemen datalla: Rovaniemellä yötön yö on lyhyt, Utsjoella pitkä."],
-        ["Näppäimistörajoite ja kiertoreitin päätös.", "Kokeile tooltipia pelkällä näppäimistöllä. Kirjaa, mitä kirjasto tukee ja mitä ei. Päätä kiertoreitti työviikolle 12: datataulukko kaavion alla (tiivistettynä esimerkiksi kuukauden 1. ja 15. päivä) vai päivävalitsin, joka näyttää valitun päivän arvot kaikille paikoille. Perustele ja kirjaa suunnitelmaan; tämä on samalla kirjaston rajoitteen selvitys."],
-        ["Pull request ja viikkopalaveri.", "Yhdistä, julkaise ja näytä ohjaajalle Utsjoen kaavio korostuksineen."]
-      ],
+      tehtavat: {
+        "8-1": {
+          miksi: "Muotoilu on logiikkaa, ja logiikka testataan ilman selainta. ”0 min” ja ”24 h” ovat rajatapauksia, jotka menevät helposti väärin.",
+          osat: [
+            ["Luo haara ja asenna Vitest", "Luo ominaisuushaara ja asenna Vitest. Lisää `package.json`:iin skripti `\"test\": \"vitest run\"`."],
+            ["Kirjoita T10", "Kirjoita testitapaus T10 tiedostoon `format.test.ts`: `formatMinutes(0)` → ”0 min”, `formatMinutes(61)` → ”1 h 1 min” ja `formatMinutes(1440)` → ”24 h”."],
+            ["Kirjoita T11", "Kirjoita testitapaus T11: `formatDate(\"2026-06-21\")` → ”21. kesäkuuta”. Aja testit ja katso niiden epäonnistuvan."],
+            ["Toteuta funktiot", "Toteuta molemmat funktiot `format.ts`:ään puhtaina funktioina, jotka eivät koske sivuun eivätkä kaavioon. Käytä kuukausien nimiä partitiivissa."],
+            ["Aja testit läpi", "Aja `npm test`, kunnes T10 ja T11 menevät läpi."]
+          ],
+          valmis: "`npm test` ajaa T10:n ja T11:n läpi, eikä `format.ts` käytä kaaviota eikä sivun elementtejä.",
+          tallenna: "`format.ts` ja `format.test.ts` commitilla haaraan. Funktiot ja niiden testit työviikon 8 päiväkirjaan.",
+          sanat: ["Vitest", "yksikkötesti"]
+        },
+        "8-2": {
+          miksi: "Asiakas haluaa nähdä tarkan päivän, paikan ja keston. Näppäimistötuki riippuu kirjastosta, joten rajoite kirjataan nyt ja ratkaistaan työviikolla 12.",
+          osat: [
+            ["Rakenna tooltip", "Toteuta kaaviokirjaston tooltip omalla sisällöllä: päivä, paikka ja kesto `format.ts`:n funktioilla, esimerkiksi ”21. kesäkuuta · Rovaniemi · 24 h”."],
+            ["Testaa hiirellä ja sormella", "Testaa tooltip hiirellä ja puhelimen kosketuksella. Paikan nimen pitää näkyä myös silloin, kun sarjoja on neljä."],
+            ["Kokeile näppäimistöllä", "Kokeile tooltipia pelkällä näppäimistöllä ja kirjaa, mitä kirjasto tukee ja mitä ei. ”Tab ei siirry pisteisiin” on kelvollinen havainto."],
+            ["Päätä kiertoreitti", "Valitse työviikolle 12 kiertoreitti: datataulukko kaavion alla tai päivävalitsin, joka näyttää valitun päivän arvot kaikille paikoille. Kirjaa päätös perusteluineen suunnitelmaan."]
+          ],
+          valmis: "Tooltip näyttää päivän, paikan ja keston hiirellä ja kosketuksella, ja näppäimistörajoite ja kiertoreitin päätös on kirjattu.",
+          tallenna: "Tooltip-komponentti commitilla haaraan. Näppäimistörajoite ja kiertoreitin perustelu suunnitelmaan ja työviikon 8 päiväkirjaan.",
+          sanat: ["tooltip"]
+        },
+        "8-3": {
+          miksi: "Kaamos ja yötön yö ovat asiakkaan myyntiargumentti. Niiden pitää erottua kuvasta yhdellä katseella.",
+          osat: [
+            ["Merkitse ääripäät", "Korosta 0 minuutin ja 1440 minuutin jaksot kirjaston merkintätuella, esimerkiksi viitealueella tai viiteviivalla."],
+            ["Nimeä jaksot", "Nimeä jaksot kaaviossa sanoilla ”kaamos” ja ”yötön yö”. Pelkkä väri ei kerro, mitä alue tarkoittaa."],
+            ["Testaa Lapin datalla", "Lisää Utsjoki ja Rovaniemi. Rovaniemellä yötön yö on lyhyt ja Utsjoella pitkä, ja Utsjoella näkyy myös kaamos."],
+            ["Yhdistä ja julkaise", "Avaa pull request, katselmoi se itse, yhdistä ja julkaise. Näytä ohjaajalle viikkopalaverissa Utsjoen kaavio korostuksineen."],
+            ["Tarkista katselmoijat", "Tarkista palaverissa, että ohjaaja on nimennyt työviikkojen 10 ja 16 katselmoijat ja päättänyt lisenssin. Kirjaa ne suunnitelmaan tai avoimiksi asioiksi."]
+          ],
+          valmis: "Julkaistussa kaaviossa Utsjoen kaamos ja yöttömän yön jaksot erottuvat nimettyinä alueina.",
+          tallenna: "Kuvakaappaus Utsjoen kaaviosta korostuksineen työviikon 8 päiväkirjaan.",
+          sanat: ["pull request"]
+        }
+      },
       help: {
         title: "format.ts:n testipohja ja korostuksen periaate",
         tree: "client/src/\n├─ format.ts             formatMinutes(min), formatDate(iso)\n├─ format.test.ts        T10, T11 (Vitest)\n└─ components/\n   ├─ DaylightTooltip.tsx  saa kirjastolta pisteen, käyttää format.ts\n   └─ DaylightChart.tsx    lisää viitealueet 0 ja 1440\n\npackage.json: \"scripts\": { \"test\": \"vitest run\" }",
@@ -611,22 +949,62 @@ window.NAYTTOPROJEKTI = {
 
     9: {
       type: "feature",
-      feature: "Sovellus laskee ja merkitsee kaavioon päivät, joina kahden paikan päivänvalo on yhtä pitkä tai lähes yhtä pitkä, ja merkin tooltip nimeää päivän, molemmat paikat ja keston.",
+      feature: "Kaavio merkitsee päivät, joina kahden paikan päivä on yhtä pitkä, ja merkin tooltip kertoo esimerkiksi ”19. maaliskuuta · Helsinki ja Rovaniemi · noin 12 h”.",
       excerpt: "Silloin voin sanoa asiakkaalle, että maaliskuun lopulla Rovaniemellä on yhtä valoisaa kuin Helsingissä.",
-      connection: "Data on päiväkohtaista, joten kaksi käyrää ei leikkaa tarkasti vaan ohittaa toisensa. Määritelmä ja toleranssi ovat sinun päätöksiäsi, ja ne testataan omalla datalla. Laskenta on puhdas funktio erillään kaaviosta, kuten format.ts.",
+      connection: "Työviikon 8 kaavio näyttää monen paikan päivänvalon luettavasti, ja nyt lisäät toimeksiannon toiveen: päivät, joina kahdessa paikassa on yhtä pitkä päivä. Koska data on päiväkohtaista, käyrät eivät leikkaa tarkasti vaan ohittavat toisensa, joten määritelmä ja toleranssi ovat sinun päätöksiäsi. Valmiit merkit ovat mukana väliversiossa, jota asiakas kokeilee työviikolla 10.",
       deliverable: "Leikkauspisteen määritelmä ja toleranssi suunnitelmassa, client/src/intersections.ts ja sen testit T12–T13, merkit kaaviossa omalla tooltipilla.",
       why: "Tämä on projektin käsitteellisesti vaikein viikko: tasauspäivien ympärillä kaikki paikat ovat lähellä 12 tuntia, ja yöttömän yön aikana kahdessa Lapin paikassa on molemmissa 1440 minuuttia viikkojen ajan. Ilman peräkkäisten päivien yhdistämistä kaavio täyttyy kymmenistä merkeistä ja lakkaa kertomasta mitään.",
       done: "T12: Helsinki–Rovaniemi antaa leikkauksen maalis- ja syyskuussa, ei kesäkuussa; T13: Utsjoki–Inari antaa yöttömän yön ajalta yhden merkin, ei kymmeniä; testit menevät läpi komennolla; kaaviossa on merkki, jonka tooltip nimeää molemmat paikat ja päivän; määritelmä ja toleranssi ovat suunnitelmassa perusteltuina.",
       record: "Kirjoita työviikon 9 merkintään: valittu määritelmä ja toleranssi perusteluineen, miten peräkkäiset päivät yhdistetään, T12–T13:n tulokset ja se, mitä tasauspäivät tekivät ensimmäiselle versiolle.",
       skills: ["algoritmin määrittely ja toleranssi", "puhdas funktio ja testit", "kaavion merkinnät", "rajatapaukset omalla datalla"],
       termit: ["leikkauspiste", "toleranssi"],
-      steps: [
-        ["Määritelmä paperilla.", "Piirrä kaksi käyrää: Helsinki ja Rovaniemi maaliskuussa (ohittavat toisensa) ja Utsjoki ja Inari kesäkuussa (molemmat 1440 pitkään). Päätä: onko leikkaus merkinvaihto (a − b vaihtaa etumerkkiä), erotus alle toleranssin, vai molemmat? Mikä toleranssi minuutteina? Kirjaa päätös ja perustelu suunnitelmaan."],
-        ["Testit ensin.", "Kirjoita T12 ja T13 Vitestillä oikealla rajapintadatalla (tallenna vastaukset testiaineistoksi). T12: Helsinki–Rovaniemi → merkit maalis- ja syyskuussa, ei kesäkuussa. T13: Utsjoki–Inari → yöttömän yön jakso tuottaa yhden merkin, ei yhtä per päivä."],
-        ["intersections.ts.", "Toteuta findIntersections(seriesA, seriesB, toleranceMin) puhtaana funktiona, joka palauttaa listan {date, minutesA, minutesB}. Yhdistä peräkkäiset osumat yhdeksi merkiksi (jakson ensimmäinen päivä tai keskipäivä). Laske parit kaikille paikoille, kun paikkoja on useampi kuin kaksi."],
-        ["Merkit kaavioon.", "Piirrä merkit kaavioon kirjaston merkintätuella (piste, viiteviiva tai erillinen sarja) ja anna niille oma tooltip: ”19. maaliskuuta · Helsinki ja Rovaniemi · noin 12 h”. Jos kirjasto ei tue merkintöjä, piirrä ne erillisenä sarjana, jossa vain leikkauspäivillä on arvo."],
-        ["Pull request ja viikkopalaveri.", "Yhdistä, julkaise ja näytä ohjaajalle Helsinki–Rovaniemi-esimerkki. Kirjaa bug-issuet, jos tasauspäivät tuottivat ylimääräisiä merkkejä."]
-      ],
+      tehtavat: {
+        "9-1": {
+          miksi: "Päiväkohtainen data ei leikkaa tarkasti, vaan käyrät ohittavat toisensa. Määritelmä on oma päätöksesi, ja se ratkaisee, mitä kaavio näyttää.",
+          osat: [
+            ["Piirrä ohitus", "Piirrä paperille Helsingin ja Rovaniemen käyrät maaliskuussa. Merkitse päivät, joiden välissä käyrät vaihtavat järjestystä."],
+            ["Piirrä yhteinen jakso", "Piirrä Utsjoen ja Inarin käyrät kesäkuussa. Molemmissa on 1440 minuuttia viikkojen ajan."],
+            ["Valitse sääntö", "Päätä, onko leikkaus merkinvaihto, erotus enintään toleranssin verran vai molemmat. Päätä toleranssi minuutteina."],
+            ["Perustele esimerkillä", "Kirjoita, montako merkkiä sääntösi tuottaa Utsjoki–Inari-parille kesällä ja miksi se on oikea määrä."],
+            ["Kirjaa suunnitelmaan", "Kirjaa määritelmä, toleranssi ja perustelu suunnitelman kenttään Leikkauspisteen määritelmä ja toleranssi."]
+          ],
+          valmis: "Suunnitelmassa on leikkauspisteen määritelmä, toleranssi minuutteina ja perustelu, joka kertoo Utsjoki–Inari-parin merkkien määrän.",
+          tallenna: "Suunnitelma commitilla. Kuva paperipiirroksesta `project-docs/`-kansioon ja päätös työviikon 9 päiväkirjaan.",
+          sanat: ["leikkauspiste", "toleranssi"],
+          apu: {
+            otsikko: "Havainnekuva: miten leikkauspiste syntyy päiväkohtaisesta datasta",
+            images: [
+              ["assets/leikkauspisteet.svg", "Havainnekuva kahdessa osassa. Osa 1: Helsingin ja Rovaniemen päivänvalo 15.–23. maaliskuuta pisteinä. Rovaniemen päivä on aluksi lyhyempi ja 19.3. yhtä pitkä, sen jälkeen pidempi. Erotus Rovaniemi miinus Helsinki on päivittäin −6, −4, −3, −1, 0, +2, +3, +5 ja +6 minuuttia. Kun toleranssi on esimerkiksi 4 minuuttia, kuusi peräkkäistä päivää 16.–21.3. ovat osumia, ja niistä tehdään yksi merkki jakson keskelle. Osa 2: Utsjoella ja Inarilla on kesällä molemmilla 1440 minuuttia noin 60 päivän ajan. Ilman yhdistämistä syntyisi noin 60 merkkiä, yhdistettynä yksi merkki.", "Havainnekuva leikkauspisteen logiikasta. Luvut ovat pyöristettyjä esimerkkejä, eivät odotusarvoja. Toleranssi on oma päätöksesi."]
+            ]
+          }
+        },
+        "9-2": {
+          miksi: "Laskenta on puhdas funktio erillään kaaviosta, kuten `format.ts`, joten sen voi testata oikealla datalla ilman selainta.",
+          osat: [
+            ["Tallenna testiaineisto", "Tallenna rajapinnan vastaukset Helsingille, Rovaniemelle, Utsjoelle ja Inarille vuodelta 2026 kansioon `client/src/test-data/`."],
+            ["Kirjoita testit ensin", "Kirjoita testitapaukset Vitestillä ennen ajoa. T12: Helsinki–Rovaniemi antaa merkit maalis- ja syyskuussa, ei kesäkuussa. T13: Utsjoki–Inari antaa yöttömältä yöltä yhden merkin."],
+            ["Toteuta funktio", "Toteuta `findIntersections(seriesA, seriesB, toleranceMin)` tiedostoon `intersections.ts`. Se palauttaa listan `{date, minutesA, minutesB}` määritelmäsi mukaan."],
+            ["Yhdistä peräkkäiset osumat", "Yhdistä peräkkäiset osumapäivät yhdeksi merkiksi, jonka päivä on jakson ensimmäinen tai keskimmäinen päivä."],
+            ["Laske kaikki parit", "Kun paikkoja on enemmän kuin kaksi, laske jokainen pari ja anna merkille molempien paikkojen nimet."],
+            ["Aja testit läpi", "Aja `npm test`, kunnes T12 ja T13 menevät läpi."]
+          ],
+          valmis: "T12 ja T13 menevät läpi komennolla `npm test`, ja Utsjoki–Inari-pari tuottaa yöttömältä yöltä yhden merkin.",
+          tallenna: "`intersections.ts`, sen testit ja testiaineisto commitilla haaraan. T12:n ja T13:n tulokset työviikon 9 päiväkirjaan.",
+          sanat: ["Vitest"]
+        },
+        "9-3": {
+          miksi: "Asiakas haluaa voida sanoa, että maaliskuun lopulla Rovaniemellä on yhtä valoisaa kuin Helsingissä. Merkki ja sen tooltip näyttävät sen.",
+          osat: [
+            ["Piirrä merkit", "Piirrä merkit kirjaston merkintätuella, esimerkiksi pisteinä tai viiteviivoina. Jos tukea ei ole, piirrä erillinen sarja, jossa vain leikkauspäivillä on arvo."],
+            ["Lisää merkin tooltip", "Anna merkille oma tooltip `format.ts`:n funktioilla, esimerkiksi ”19. maaliskuuta · Helsinki ja Rovaniemi · noin 12 h”."],
+            ["Tarkista tasauspäivät", "Lisää Helsinki, Rovaniemi ja Utsjoki. Jos maaliskuussa on enemmän kuin yksi merkki paria kohden, tee bug-issue."],
+            ["Yhdistä ja julkaise", "Avaa pull request, katselmoi se itse, yhdistä ja julkaise. Näytä ohjaajalle viikkopalaverissa Helsinki–Rovaniemi-esimerkki."]
+          ],
+          valmis: "Julkaistussa kaaviossa on Helsinki–Rovaniemi-merkki maaliskuussa, ja sen tooltip nimeää päivän, molemmat paikat ja keston.",
+          tallenna: "Kuvakaappaus maaliskuun merkistä ja sen tooltipista työviikon 9 päiväkirjaan.",
+          sanat: ["tooltip", "bug-issue"]
+        }
+      },
       help: {
         title: "Leikkauspisteen laskennan runko",
         tree: "client/src/\n├─ intersections.ts        findIntersections(a, b, tolerance) → Intersection[]\n├─ intersections.test.ts   T12, T13 tallennetulla rajapintadatalla\n└─ test-data/\n   ├─ helsinki-2026.json    curl-tuloste tallennettuna\n   ├─ rovaniemi-2026.json\n   ├─ utsjoki-2026.json\n   └─ inari-2026.json\n\nPIIRROS 1 · Helsinki (─) ja Rovaniemi (···) maalis–syyskuu\n 24h │        ···········\n     │     ···           ···\n 12h │──··─────────────────··──   ← ohittavat toisensa n. 19.3. ja 26.9.\n     │ ··                     ··\n  0h │\n\nPIIRROS 2 · Utsjoki ja Inari kesäkuu: molemmat 1440 viikkoja\n 24h │ ═══════════════════════   ← erotus 0 joka päivä → YKSI merkki, ei n. 60",
@@ -645,21 +1023,51 @@ window.NAYTTOPROJEKTI = {
 
     10: {
       type: "katselmointi",
-      feature: "Nimetty ulkopuolinen henkilö on kokeillut julkaistua väliversiota asiakkaan roolissa, ja hänen havaintonsa ovat muistiossa sitaatteina erillään omasta tulkinnastasi, muutokset issueina.",
+      feature: "Nimetty ulkopuolinen henkilö on kokeillut julkaistua väliversiota asiakkaan roolissa, ja hänen sanansa ja niistä tehdyt muutokset ovat muistiossa ja issueina.",
       excerpt: "Haluan kokeilla toimivaa väliversiota noin puolivälissä omilla käsilläni: en halua kalvoesitystä vaan oikean sovelluksen, johon lisään kolme paikkaa ja katson, ymmärränkö kuvan ilman selityksiä.",
-      connection: "Vaihe B päättyy siihen, että joku muu kuin sinä käyttää sovellusta. Asiakkaan roolia esittää ohjaajan nimeämä ulkopuolinen henkilö, ei oma ohjaava opettajasi. Tämä on se osa projektia, jota ei voi tuottaa tekoälyllä.",
+      connection: "Työviikoilla 6–9 rakensit kaavion, vertailun, vihjeruudun ja leikkauspisteet, ja nyt joku muu kuin sinä käyttää niitä ensimmäistä kertaa. Asiakkaan roolia esittää ohjaajan nimeämä ulkopuolinen henkilö, joka lisää kolme paikkaa julkaistuun väliversioon ilman selityksiä. Hänen havaintonsa ohjaavat vaihetta 4, ja tärkein muutos toteutetaan työviikolla 11.",
       deliverable: "Asiakaskielinen esittely, kolmen paikan testitehtävä, katselmointimuistio (rooli, ajankohta, sitaatit, oma tulkinta erikseen) ja priorisoidut muutosissuet.",
       why: "Palaute, joka kerätään, ennen kuin on myöhäistä muuttaa, on halvin palaute. Testaajan omat sanat erillään tulkinnasta ovat asiakaslähtöisen viestinnän työnäyte: kun kirjoitat ”käyttäjä ei löytänyt poistonappia”, se on tulkintasi; kun kirjoitat ”’Miten tän saa pois?’”, se on havainto.",
       done: "Katselmointimuistio on repossa: katselmoijan rooli ja ajankohta, vähintään viisi sitaattia, oma tulkinta erillään, priorisoidut muutokset issueina P-luokin; ohjaajan kanssa on rajattu tärkein muutos enintään kahden päivän työksi työviikolle 11.",
       record: "Kirjoita työviikon 10 merkintään: kuka katselmoi ja missä roolissa, mitä hän sanoi sanatarkasti, mitä tulkitsit siitä, mikä muutos valittiin työviikolle 11 ja miksi juuri se.",
       skills: ["asiakaslähtöinen viestintä", "katselmoinnin järjestäminen", "palautteen kirjaaminen", "priorisointi palautteesta"],
-      steps: [
-        ["Herätä alusta ja valmistele esittely.", "Ilmaisalustat nukkuvat käyttämättä: avaa julkinen osoite 10 minuuttia ennen tilaisuutta. Kirjoita asiakaskielinen esittely, korkeintaan kolme virkettä ilman teknistä sanastoa: mitä kuva kertoo matkailijalle."],
-        ["Testitehtävä paperille.", "Kirjoita katselmoijalle kolme tehtävää: 1) lisää Helsinki, Rovaniemi ja Utsjoki, 2) kerro, milloin Utsjoella on kaamos, 3) kerro, milloin Rovaniemellä on yhtä valoisaa kuin Helsingissä. Älä auta suullisesti: jokainen kysymys on sovelluksen puute, ei katselmoijan vika."],
-        ["Katselmointi.", "Anna osoite ja tehtävät nimetylle ulkopuoliselle. Kirjoita hänen sanansa sanatarkasti sitaatteina sitä mukaa. Kirjaa myös, mihin hän pysähtyi ja kuinka kauan."],
-        ["Muistio kahdessa osassa.", "Kirjoita project-docs/katselmointi-vk10.md: ensin sitaatit, sitten oma tulkinta ja päätökset erillään. Jokainen muutosehdotus GitHub-issueksi P-luokalla."],
-        ["Viikkopalaveri: rajaus työviikolle 11.", "Valitse ohjaajan kanssa tärkein muutos ja rajaa se enintään kahden päivän työksi; suurempi jaetaan ja loppu on P1. Tarkista samalla, koskeeko muutos useLocations-tiedostoa: se ratkaisee työviikon 11 konfliktisuunnitelman."]
-      ],
+      tehtavat: {
+        "10-1": {
+          miksi: "Asiakas haluaa kokeilla oikeaa sovellusta omin käsin. Valmiit tehtävät ja lyhyt esittely antavat hänelle mahdollisuuden onnistua ilman selityksiä.",
+          osat: [
+            ["Kirjoita esittely", "Kirjoita enintään kolmen virkkeen esittely ilman teknistä sanastoa: mitä kuva kertoo matkailijalle."],
+            ["Kirjoita testitehtävät", "Kirjoita paperille kolme tehtävää: lisää Helsinki, Rovaniemi ja Utsjoki; kerro, milloin Utsjoella on kaamos; kerro, milloin Rovaniemellä on yhtä valoisaa kuin Helsingissä."],
+            ["Tarkista puhelimella", "Avaa julkinen osoite omalla puhelimella ennen tilaisuutta ja tarkista, että väliversio toimii."],
+            ["Herätä alusta", "Avaa julkinen osoite 10 minuuttia ennen tilaisuutta. Ilmaisalustat nukkuvat käyttämättöminä, ja ensimmäinen lataus voi kestää kauan."]
+          ],
+          valmis: "Esittely on enintään kolme virkettä ilman teknisiä sanoja, testitehtävät ovat paperilla, ja julkinen osoite vastaa ennen tilaisuutta.",
+          tallenna: "Esittely ja testitehtävät tiedostoon `project-docs/katselmointi-vk10.md` kohtaan Tehtävät, jotka annettiin."
+        },
+        "10-2": {
+          miksi: "Palaute, joka kerätään ennen kuin on myöhäistä muuttaa, on halvinta. Testaajan omat sanat ovat havaintoja, sinun tulkintasi ei ole.",
+          osat: [
+            ["Anna osoite ja tehtävät", "Anna nimetylle ulkopuoliselle julkinen osoite ja paperiset tehtävät. Hän esittää asiakasta, eikä hän ole oma ohjaava opettajasi."],
+            ["Älä auta", "Älä selitä kesken kokeilun. Jokainen kysymys on sovelluksen puute, ei katselmoijan vika. Kirjaa kysymykset, joihin et vastannut."],
+            ["Kirjaa sitaatit", "Kirjoita katselmoijan sanat sanatarkasti sitaatteina sitä mukaa kuin hän puhuu."],
+            ["Kirjaa pysähdykset", "Kirjaa, mihin hän pysähtyi ja kuinka kauan kukin tehtävä kesti."]
+          ],
+          valmis: "Muistiinpanoissa ovat katselmoijan rooli, ajankohta, vähintään viisi sanatarkkaa sitaattia ja tehtävien kestot.",
+          tallenna: "Sitaatit ja kestot heti tiedostoon `project-docs/katselmointi-vk10.md`."
+        },
+        "10-3": {
+          miksi: "Sitaatti ja tulkinta erikseen ovat asiakaslähtöisen viestinnän työnäyte. Rajattu muutos mahtuu työviikkoon 11 vuosivalinnan rinnalle.",
+          osat: [
+            ["Kirjoita sitaatit ensin", "Kirjoita muistioon ensin sitaatit numeroituina. Kirjoita sitten oma tulkinta ja päätökset erillisiin kappaleisiin, jotka alkavat sanalla ”Tulkinta:”."],
+            ["Tee muutoksista issuet", "Tee jokaisesta muutosehdotuksesta GitHub-issue ja anna sille P-luokka: pakollinen (P0), tärkeä (P1) tai valinnainen (P2)."],
+            ["Rajaa ohjaajan kanssa", "Valitse viikkopalaverissa ohjaajan kanssa tärkein muutos ja rajaa se enintään kahden päivän työksi. Suurempi muutos jaetaan, ja loppu on P1."],
+            ["Tarkista tilatiedosto", "Tarkista, koskeeko valittu muutos tiedostoa `useLocations.ts`. Se ratkaisee, syntyykö työviikolla 11 konflikti vai tarvitaanko ohjaajan varapolkua."],
+            ["Päivitä rajaus", "Päivitä suunnitelman Rajaus-kenttä, jos katselmointi muutti sitä, mitä ei toteuteta."]
+          ],
+          valmis: "Muistiossa ovat rooli, ajankohta, vähintään viisi sitaattia ja tulkinta erillään, muutokset ovat issueina P-luokkineen, ja tärkein muutos on rajattu enintään kahteen päivään.",
+          tallenna: "`project-docs/katselmointi-vk10.md` commitilla. Valittu muutos ja sen perustelu työviikon 10 päiväkirjaan.",
+          sanat: ["P0", "P1", "P2", "viikkopalaveri"]
+        }
+      },
       help: {
         title: "Katselmointimuistion pohja",
         tree: "project-docs/katselmointi-vk10.md\n├─ 1 Katselmoija: rooli (asiakas), ajankohta, kesto\n├─ 2 Tehtävät, jotka annettiin\n├─ 3 Sitaatit (sanatarkasti, numeroituina)\n├─ 4 Oma tulkinta sitaatti kerrallaan\n├─ 5 Päätökset: issue, P-luokka, viikko\n└─ 6 Mitä ei muuteta ja miksi",
@@ -678,23 +1086,62 @@ window.NAYTTOPROJEKTI = {
 
     11: {
       type: "feature",
-      feature: "Käyttäjä valitsee vuoden ja kaikki paikat haetaan uudelleen; katselmoinnin tärkein muutos on toteutettu; molemmat tehtiin omissa haaroissa, ja niiden välinen merge-konflikti on ratkaistu hallitusti.",
+      feature: "Käyttäjä valitsee vuoden, esimerkiksi karkausvuoden 2028, ja kaikki paikat päivittyvät, ja katselmoinnin tärkein muutos näkyy julkaistussa versiossa.",
       excerpt: "Vuoden pitää olla valittavissa, koska teemme tarjoukset seuraavalle talvelle jo edellisenä keväänä, ja karkausvuoden pitää toimia oikein.",
-      connection: "Palaute muuttuu koodiksi, ja toimeksiannon vuosivalinta toteutuu. Molemmat koskevat samaa tilatiedostoa useLocations, joten kaksi haaraa törmää. Se on tarkoitus: ominaisuuden liittäminen olemassa olevaan versioon hallitusti on oma vaatimuksensa, ja yksin tehdyssä projektissa konflikti ei synny itsestään.",
+      connection: "Työviikon 10 katselmointi antoi tärkeimmän muutoksen, ja toimeksiannon vuosivalinta on vielä tekemättä. Molemmat muuttavat työviikolla 7 tehtyä useLocations-tilaa, joten kaksi samasta kohdasta alkavaa haaraa törmää tarkoituksella. Kun konflikti on ratkaistu, sovelluksessa ovat kaikki toiminnot, ja vaiheen 4 muut viikot tekevät niistä käytettäviä ja luotettavia.",
       deliverable: "YearSelect-komponentti, vuoden tila useLocations-hookissa, T14:n tulos, palautemuutos, kaksi pull requestia, konfliktin ratkaisun commit ja muutokset tuotannossa.",
       why: "Merge-konflikti on Git-taidon kohta, jonka moni oppii vasta työelämässä paniikissa. Tässä se tehdään tarkoituksella pienessä mittakaavassa: kaksi haaraa, yksi tiedosto, ohjaaja vierellä. Vuosivalinta tehdään ensin, koska se on toimeksiannon P0 ja palautemuutoksen koko on epävarma.",
       done: "Kaksi pull requestia on yhdistetty; konfliktin ratkaisun commit näkyy historiassa; T14: vuosi 2028 näyttää tuotannossa 366 pistettä ja 2027 365; katselmointimuistion päätös on kuitattu linkillä; jos konfliktia ei syntynyt, ohjaajan commit ja sen ratkaisu on kirjattu.",
       record: "Kirjoita työviikon 11 merkintään: molempien haarojen nimet ja pull requestit, mikä konflikti syntyi ja miten ratkaisit sen (mitä valitsit ja miksi), T14:n tulos ja mikä palautemuutos toteutettiin.",
       skills: ["Git-haarat ja konfliktin ratkaisu", "tilan laajentaminen hookissa", "uudelleenhaku", "pull request -kuvaus"],
       termit: ["merge-konflikti"],
-      steps: [
-        ["Maanantai: kaksi haaraa samasta commitista.", "Luo molemmat ominaisuushaarat samasta main-haaran commitista: feature/vuosivalinta ja feature/palaute-31 (issuen numero). Jos loisit toisen vasta ensimmäisen yhdistämisen jälkeen, konfliktia ei syntyisi."],
-        ["Vuosivalinta ensin.", "Lisää vuosi useLocations-hookin tilaan ja YearSelect-komponentti (select-elementti, label kytkettynä). Vuoden vaihto hakee kaikkien paikkojen datan uudelleen api.ts:n kautta ja näyttää lataustilan. Kirjaa T14 ennen ajoa: ”2028 → jokaisella sarjalla 366 pistettä, 2027 → 365”."],
-        ["Ensimmäinen pull request.", "Avaa pull request vuosivalinnasta, katselmoi itse, yhdistä main-haaraan ja julkaise. Aja T14 tuotannossa."],
-        ["Palautemuutos toisessa haarassa.", "Toteuta katselmoinnin rajattu muutos toisessa haarassa, joka luotiin maanantaina. Kun avaat pull requestin, Git ilmoittaa merge-konfliktista (kaksi haaraa on muuttanut samaa kohtaa useLocations-tiedostossa)."],
-        ["Konfliktin ratkaisu.", "Avaa konfliktitiedosto, lue molemmat versiot merkkien <<<<<<< ja >>>>>>> välistä ja päätä rivi riviltä, mikä jää. Aja testit ja sovellus, ennen kuin committaat ratkaisun. Commit-viesti kertoo, mitä valitsit. Jos konfliktia ei synny (muutos ei koskenut samaa tiedostoa), ohjaaja tekee maanantaina sovitun pienen commitin main-haaraan ja ratkaiset siitä syntyvän konfliktin."],
-        ["Yhdistä, julkaise, kuittaa.", "Yhdistä toinen pull request, julkaise ja kuittaa katselmointimuistion päätös linkillä. Viikkopalaverissa käy konfliktin ratkaisu läpi ohjaajan kanssa: se on yhdessä ratkottu ongelma."]
-      ],
+      tehtavat: {
+        "11-1": {
+          miksi: "Merge-konflikti syntyy vain, jos molemmat haarat alkavat samasta kohdasta ja muuttavat samaa tiedostoa. Harjoittelet sen nyt pienessä mittakaavassa ohjaaja vierelläsi.",
+          osat: [
+            ["Päivitä main", "Siirry `main`-haaraan ja hae uusin versio komennoilla `git switch main` ja `git pull`."],
+            ["Luo vuosivalinnan haara", "Luo haara komennolla `git switch -c feature/vuosivalinta`."],
+            ["Luo palautteen haara", "Palaa `main`-haaraan ja luo samasta commitista toinen haara, esimerkiksi `feature/palaute-31`. Numero on katselmoinnin issuen numero."],
+            ["Tarkista lähtökohta", "Aja `git log --oneline --graph --all` ja tarkista, että molemmat haarat alkavat samasta commitista. Myöhemmin luotu haara ei tuottaisi konfliktia."]
+          ],
+          valmis: "Molemmat haarat on luotu maanantaina, ja `git log --graph` näyttää niiden alkavan samasta `main`-commitista.",
+          tallenna: "Haarojen nimet ja lähtöcommitin tunnus työviikon 11 päiväkirjaan.",
+          sanat: ["ominaisuushaara", "merge-konflikti"],
+          apu: {
+            otsikko: "Havainnekuva: miksi molemmat haarat luodaan maanantaina",
+            images: [
+              ["assets/haarat-ja-konflikti.svg", "Havainnekuva kahdesta haarasta. Main-haarasta lähtee maanantaina samasta commitista kaksi haaraa: feature/vuosivalinta ja feature/palaute-31. Vuosivalinta yhdistetään ensin pull requestilla 1. Kun palautehaara yhdistetään pull requestilla 2, Git pysähtyy konfliktiin, koska molemmat haarat muuttivat tiedostoa useLocations.ts. Ratkaisu tehdään käsin omaksi commitiksi. Jos palautehaara luotaisiin vasta pull requestin 1 jälkeen, siinä olisi jo vuosivalinta, eikä konfliktia syntyisi.", "Havainnekuva haarojen järjestyksestä ja konfliktin synnystä. Haarojen nimet ovat esimerkkejä."]
+            ]
+          }
+        },
+        "11-2": {
+          miksi: "Vuosivalinta on toimeksiannon vaatimus, koska tarjoukset tehdään seuraavalle talvelle jo keväällä. Se tehdään ensin, koska palautemuutoksen koko on epävarma.",
+          osat: [
+            ["Lisää vuosi tilaan", "Lisää vuosi `useLocations`-hookin tilaan. Vuoden vaihto hakee kaikkien paikkojen datan uudelleen `api.ts`:n kautta ja näyttää lataustilan."],
+            ["Rakenna YearSelect", "Rakenna `YearSelect`-komponentti: select-elementti ja siihen kytketty label."],
+            ["Kirjaa T14", "Kirjaa testitapaus T14 ennen ajoa: vuosi 2028 → jokaisella sarjalla 366 pistettä, vuosi 2027 → 365 pistettä."],
+            ["Yhdistä pull request", "Avaa pull request vuosivalinnasta, katselmoi se itse, yhdistä `main`-haaraan ja julkaise."],
+            ["Aja T14 tuotannossa", "Aja T14 julkaistussa versiossa ja kirjaa tulos."]
+          ],
+          valmis: "Julkaistussa versiossa vuosi 2028 näyttää jokaisella sarjalla 366 pistettä ja vuosi 2027 365 pistettä, ja vuosivalinnan pull request on yhdistetty.",
+          tallenna: "T14:n tulos ja pull requestin linkki työviikon 11 päiväkirjaan.",
+          sanat: ["pull request", "hook"]
+        },
+        "11-3": {
+          miksi: "Ominaisuuden liittäminen olemassa olevaan versioon hallitusti on oma vaatimuksensa. Moni oppii konfliktin ratkaisun vasta työelämässä kiireen keskellä.",
+          osat: [
+            ["Toteuta muutos", "Toteuta työviikolla 10 rajattu muutos maanantaina luodussa toisessa haarassa. Älä ohjaa muutosta väkisin tiedostoon `useLocations.ts`."],
+            ["Avaa pull request", "Avaa pull request. Git ilmoittaa merge-konfliktista, jos molemmat haarat ovat muuttaneet samaa kohtaa tiedostossa `useLocations.ts`."],
+            ["Tarkista konflikti", "Jos konfliktia ei synny, pyydä ohjaajaa tekemään sovittu pieni commit `main`-haaraan ja yhdistä se haaraasi. Kirjaa tämä päiväkirjaan."],
+            ["Ratkaise rivi riviltä", "Lue molemmat versiot merkkien `<<<<<<<` ja `>>>>>>>` välistä ja päätä rivi riviltä, mikä jää. Yleensä molemmat muutokset säilyvät."],
+            ["Testaa ennen commitia", "Aja `npm test` ja käynnistä sovellus. Tee ratkaisusta commit, jonka viesti kertoo, mitä valitsit."],
+            ["Yhdistä ja kuittaa", "Yhdistä toinen pull request, julkaise ja kuittaa katselmointimuistion päätös linkillä. Käy ratkaisu läpi ohjaajan kanssa viikkopalaverissa."]
+          ],
+          valmis: "Toinen pull request on yhdistetty, konfliktin ratkaisun commit näkyy historiassa, ja katselmointimuistion päätös on kuitattu linkillä.",
+          tallenna: "Konfliktin sisältö ja ratkaisun perustelu työviikon 11 päiväkirjaan. Linkki muutokseen katselmointimuistioon.",
+          sanat: ["merge-konflikti", "pull request"]
+        }
+      },
       help: {
         title: "Konfliktin synty ja ratkaisu askel askeleelta",
         tree: "main ──●── (ma) ──────────────────────●──────────●── main\n         \\                             /            /\n          ├─ feature/vuosivalinta ──●──┘ PR #1      /\n          └─ feature/palaute-31 ────────●──────────┘ PR #2 → konflikti\n\nMolemmat haarat muokkaavat client/src/hooks/useLocations.ts\n→ PR #2 ei yhdisty automaattisesti → ratkaistaan käsin\n\nKONFLIKTIMERKIT TIEDOSTOSSA\n<<<<<<< HEAD\n  (main-haaran versio: vuosivalinta)\n=======\n  (oman haaran versio: palautemuutos)\n>>>>>>> feature/palaute-31",
@@ -713,22 +1160,53 @@ window.NAYTTOPROJEKTI = {
 
     12: {
       type: "laatu",
-      feature: "Sovellus toimii puhelimella ja näppäimistöllä: asettelu mukautuu, työviikon 8 kiertoreitti on toteutettu, ja Lighthouse-raportit ennen ja jälkeen osoittavat korjaukset.",
+      feature: "Matkailija käyttää sovellusta puhelimella ilman vaakasuuntaista rullausta, ja valitun päivän arvot saa luettua myös pelkällä näppäimistöllä.",
       excerpt: "Se toimii myös puhelimella.",
-      connection: "Ominaisuudet ovat valmiit, nyt ne tehdään käytettäviksi kaikille. Työviikolla 8 kirjattu näppäimistörajoite saa nyt ratkaisunsa. Saavutettavuus ei ole koristus vaan vaatimus: matkailija lukee kuvan puhelimella junassa.",
+      connection: "Työviikon 11 jälkeen sovelluksessa ovat kaikki toiminnot, ja nyt teet niistä käytettäviä puhelimella ja näppäimistöllä. Toimeksianto vaatii, että sovellus toimii puhelimella, ja työviikolla 8 kirjattu näppäimistörajoite saa nyt ratkaisunsa. Lighthouse-mittaus ennen ja jälkeen osoittaa korjausten vaikutuksen, ennen kuin työviikolla 13 arvioit tietoturvan.",
       deliverable: "Kuvakaappaukset omalta puhelimelta ennen ja jälkeen, Tailwindin taitekohtien korjaukset, kiertoreitin komponentti (datataulukko tai päivävalitsin), Lighthouse-raportit ennen ja jälkeen.",
       why: "Kaavio, joka on 1 200 pikseliä leveä, on puhelimella lukukelvoton, ja tooltip, joka aukeaa vain hiirellä, sulkee näppäimistökäyttäjät ulos. Lighthouse antaa ennen ja jälkeen -luvut, joita ei voi keksiä.",
       done: "Sovellus toimii oikealla puhelimella ilman vaakasuuntaista rullausta; jokainen lomakkeen kenttä on saavutettavissa Tab-näppäimellä ja sillä on label; kiertoreitti näyttää valitun päivän arvot kaikille paikoille ilman hiirtä; Lighthouse-saavutettavuuspisteet ennen ja jälkeen on kirjattu ja jälkeen-luku on korkeampi tai syy on selitetty.",
       record: "Kirjoita työviikon 12 merkintään: mitä puhelimella meni rikki ja miten korjasit, mikä kiertoreitti toteutettiin, Lighthouse-luvut ennen ja jälkeen ja mitkä korjaukset nostivat lukua.",
       skills: ["responsiivinen asettelu Tailwindilla", "näppäinkäyttö ja label-kytkennät", "Lighthouse-mittaus", "kirjaston rajoitteen kiertäminen"],
       termit: ["Lighthouse"],
-      steps: [
-        ["Mittaa ensin.", "Aja Lighthouse (Chromen kehittäjätyökalut → Lighthouse → Accessibility) julkaistulle versiolle ja tallenna raportti. Avaa sovellus omalla puhelimella ja ota kuvakaappaukset. Kirjaa jokainen ongelma, ennen kuin korjaat mitään."],
-        ["Puhelin.", "Korjaa asettelu Tailwindin taitekohdilla (sm:, md:): lomake ja lista allekkain kapealla, kaavio täyttää leveyden ja pysyy luettavana. Testaa oikealla laitteella, ei vain selaimen kapealla ikkunalla."],
-        ["Kiertoreitti.", "Toteuta työviikolla 8 valittu kiertoreitti: päivävalitsin, joka näyttää valitun päivän arvot kaikille paikoille format.ts:n muodossa, tai tiivistetty datataulukko kaavion alla. Sen pitää toimia pelkällä näppäimistöllä."],
-        ["Näppäimistö ja kontrasti.", "Käy sovellus läpi Tab-näppäimellä: järjestys, näkyvä kohdistus, jokaiselle kentälle label, napeille kuvaava teksti. Tarkista kontrastit Tailwindin väreillä ja otsikkohierarkia (yksi h1, sitten h2)."],
-        ["Mittaa jälkeen ja julkaise.", "Aja Lighthouse uudelleen, tallenna raportti ja vertaa. Pull request, julkaisu, viikkopalaveri."]
-      ],
+      tehtavat: {
+        "12-1": {
+          miksi: "Matkailija katsoo kuvaa usein puhelimella. Mittaus ennen korjauksia antaa luvut, joihin jälkeen-mittausta verrataan.",
+          osat: [
+            ["Aja Lighthouse ennen", "Aja Lighthouse julkaistulle versiolle: Chromen kehittäjätyökalut → Lighthouse → Accessibility. Tallenna raportti HTML:nä nimellä `lighthouse-ennen.html`."],
+            ["Kuvaa puhelimella", "Avaa sovellus omalla puhelimella ja ota kuvakaappaukset. Kirjaa jokainen ongelma, ennen kuin korjaat mitään."],
+            ["Korjaa taitekohdilla", "Luo haara ja korjaa asettelu Tailwindin taitekohdilla `sm:` ja `md:`: kapealla näytöllä lomake ja lista allekkain, kaavio koko leveydellä."],
+            ["Testaa oikealla laitteella", "Testaa korjaus oikealla puhelimella, ei vain selaimen kapealla ikkunalla. Vaakasuuntaista rullausta ei saa olla. Ota jälkeen-kuvakaappaus."]
+          ],
+          valmis: "Sovellus toimii oikealla puhelimella ilman vaakasuuntaista rullausta, ja ennen- ja jälkeen-kuvakaappaukset sekä Lighthouse-raportti ennen korjauksia ovat tallessa.",
+          tallenna: "Raportti ja kuvakaappaukset kansioon `project-docs/saavutettavuus/`. Puhelimella rikki menneet kohdat työviikon 12 päiväkirjaan.",
+          sanat: ["Lighthouse"]
+        },
+        "12-2": {
+          miksi: "Tooltip, joka aukeaa vain hiirellä, sulkee näppäimistön käyttäjät ulos. Työviikolla 8 kirjattu rajoite saa nyt ratkaisunsa.",
+          osat: [
+            ["Rakenna kiertoreitti", "Toteuta työviikolla 8 valittu kiertoreitti: päivävalitsin tai tiivistetty datataulukko, joka näyttää valitun päivän arvot kaikille paikoille `format.ts`:n muodossa."],
+            ["Testaa ilman hiirtä", "Lisää Utsjoki, vaihda vuosi ja lue 15. tammikuuta arvo pelkällä näppäimistöllä."],
+            ["Käy läpi Tab-järjestys", "Kulje sovellus läpi Tab-näppäimellä. Järjestyksen pitää olla looginen, ja kohdistuksen pitää näkyä joka kohdassa."],
+            ["Tarkista labelit ja napit", "Tarkista, että jokaisella kentällä on kytketty label ja jokaisella napilla kuvaava teksti."],
+            ["Tarkista kontrasti ja otsikot", "Tarkista, että tekstin kontrasti on vähintään 4,5:1 ja että sivulla on yksi h1 ja sen alla h2-otsikot."]
+          ],
+          valmis: "Kiertoreitti näyttää valitun päivän arvot kaikille paikoille ilman hiirtä, ja jokainen kenttä on saavutettavissa Tab-näppäimellä ja sillä on label.",
+          tallenna: "Kiertoreitin komponentti commitilla haaraan. Toteutettu kiertoreitti työviikon 12 päiväkirjaan."
+        },
+        "12-3": {
+          miksi: "Ennen ja jälkeen -luvut osoittavat, mitä korjaukset saivat aikaan. Niitä ei voi keksiä jälkikäteen.",
+          osat: [
+            ["Aja Lighthouse jälkeen", "Aja Lighthouse korjatulle versiolle samalla tavalla ja tallenna raportti nimellä `lighthouse-jalkeen.html`."],
+            ["Vertaa lukuja", "Vertaa saavutettavuuspisteitä. Jos jälkeen-luku ei ole korkeampi, kirjaa syy."],
+            ["Kirjaa korjaukset", "Kirjaa, mitkä korjaukset nostivat lukua, esimerkiksi label-kytkennät, kontrasti tai näkyvä kohdistus."],
+            ["Yhdistä ja julkaise", "Avaa pull request, katselmoi se itse, yhdistä ja julkaise. Käy luvut läpi ohjaajan kanssa viikkopalaverissa."]
+          ],
+          valmis: "Lighthouse-saavutettavuuspisteet ennen ja jälkeen on kirjattu, ja jälkeen-luku on korkeampi tai syy on selitetty.",
+          tallenna: "`lighthouse-jalkeen.html` kansioon `project-docs/saavutettavuus/`. Luvut ennen ja jälkeen työviikon 12 päiväkirjaan.",
+          sanat: ["pull request"]
+        }
+      },
       help: {
         title: "Saavutettavuuden tarkistuslista",
         tree: "project-docs/saavutettavuus/\n├─ lighthouse-ennen.html\n├─ lighthouse-jalkeen.html\n├─ puhelin-ennen.png\n└─ puhelin-jalkeen.png\n\nclient/src/components/\n└─ DaySelector.tsx  TAI  DataTable.tsx   (vk 8:n päätös)",
@@ -747,22 +1225,56 @@ window.NAYTTOPROJEKTI = {
 
     13: {
       type: "laatu",
-      feature: "Oman sovelluksen uhkalista on kirjoitettu ja testattu: rajapinta hylkää huonot syötteet hallitusti, paikan nimi näytetään turvallisesti, yhden paikan virhe ei kaada muita, eikä repossa ole salaisuuksia.",
+      feature: "Väärä syöte, script-tagi paikan nimenä tai tuntematon paikka ei kaada sovellusta, ja jokainen testattu uhka on kirjattu uhkalistaan.",
       excerpt: "Jos nimi kirjoitetaan väärin tai sitä ei tunneta, sovelluksen pitää sanoa se selvästi eikä jäädä tyhjäksi.",
-      connection: "Sovellus on julkinen, joten kuka tahansa voi lähettää sille mitä tahansa. Tämä viikko arvioi, mitä silloin tapahtuu. Suuri osa on työviikon 5 validoinnin todentamista, mutta uhkalista pakottaa ajattelemaan oman sovelluksen näkökulmasta, ei yleisen listan.",
+      connection: "Sovellus on julkinen, joten kuka tahansa voi lähettää sille mitä tahansa. Työviikon 5 validointi ja työviikon 7 lomake joutuvat nyt koetukselle oman uhkalistan kautta, ja yhden paikan virhe erotetaan muista. Korjattu sovellus on valmis työviikon 14 testiraporttiin.",
       deliverable: "project-docs/tietoturva-arvio.md: uhkalista (uhka, testi, tulos, toimenpide), syötetaulukko T15 curlilla ajettuna, XSS-testin kuvakaappaus, Promise.allSettled-käsittely yhden paikan virheelle, korjauscommitit.",
       why: "Tietoturvan arviointi on oma vaatimuksensa, ja arviointi tarkoittaa omaa uhkalistaa, ei kopioitua yleislistaa. year=999999 voi ajaa palvelimen laskemaan miljoonia päiviä; paikan nimi <script> voi suorittaa koodia, jos se sijoitetaan väärin. Molemmat testataan omalla sovelluksella.",
       done: "Uhkalistassa on 5–8 riviä omasta sovelluksesta muodossa uhka → testi → tulos → toimenpide; T15:n syötetaulukko on ajettu curlilla ja jokainen rivi, jolla saatu poikkesi odotetusta, on korjattu tai issueina; XSS-testi näyttää nimen tekstinä; tuntematon paikka listassa ei kaada muita sarjoja; git log ja tiedostot eivät sisällä avaimia tai salasanoja.",
       record: "Kirjoita työviikon 13 merkintään: uhkalistan rivit ja mitkä niistä paljastivat korjattavaa, T15:n poikkeamat, XSS-testin tulos ja se, miten yhden paikan virhe nyt käsitellään.",
       skills: ["tietoturvan arviointi omalla uhkalistalla", "syötteiden rajaaminen", "XSS-testaus", "virheenkäsittely rinnakkaisissa hauissa"],
       termit: ["XSS", "CORS"],
-      steps: [
-        ["Uhkalista omasta sovelluksesta.", "Kirjoita 5–8 riviä: mikä voi mennä pieleen juuri tässä sovelluksessa. Esimerkiksi: ylipitkä year → pitkä silmukka; paikan nimi <script> → suoritetaan sivulla (XSS eli cross-site scripting); ylipitkä city → muistin käyttö; ulkoinen geokoodauspalvelu ei vastaa → pyyntö jää jumiin; salaisuudet repossa; CORS eli selaimen alkuperärajoitus, jos sovellus ja rajapinta ovat eri osoitteissa. Jokaiselle riville testi ja odotettu tulos ennen ajoa."],
-        ["T15: syötetaulukko curlilla.", "Aja syötteet: tyhjä city, 200 merkin city, year=1800, year=abc, year=999999, city=<script>alert(1)</script>. Kirjaa saatu HTTP-koodi ja vastaus jokaiselle. Vertaa odotettuun."],
-        ["XSS-testi selaimessa.", "Lisää lomakkeella paikka nimellä <script>alert(1)</script>. Odotettu: rajapinta palauttaa 404, ja nimi näkyy listassa ja virheilmoituksessa tekstinä, ei suoritu. React suojaa tekstisisällön itse, mutta tarkista, ettet käytä dangerouslySetInnerHTML-ominaisuutta missään. Kuvakaappaus."],
-        ["Yhden paikan virhe.", "Muuta useLocations käyttämään Promise.allSettled-funktiota tai käsittele jokaisen paikan virhe erikseen: kun ”Tuntematonkylä” epäonnistuu, muut sarjat pysyvät kaaviossa ja virhe näkyy listassa sen paikan kohdalla. Testaa neljällä paikalla, joista yksi on väärin kirjoitettu."],
-        ["Salaisuudet ja korjaukset.", "Tarkista git log ja tiedostot: ei avaimia, salasanoja eikä .env-tiedostoa repossa. Korjaa vain uhkalistan rivit, joilla saatu poikkesi odotetusta; muut kirjataan issueiksi. Jos aikaa jää, toteuta samannimisten paikkojen käsittely (P1). Pull request, julkaisu, viikkopalaveri."]
-      ],
+      tehtavat: {
+        "13-1": {
+          miksi: "Julkiselle sovellukselle voi lähettää mitä tahansa. Oma uhkalista pakottaa ajattelemaan juuri tätä sovellusta, ei yleistä listaa.",
+          osat: [
+            ["Kirjoita uhkat", "Kirjoita tiedostoon `project-docs/tietoturva-arvio.md` 5–8 riviä siitä, mikä voi mennä pieleen juuri Valokaaressa, esimerkiksi ylipitkä vuosi, script-tagi paikan nimenä tai ylipitkä nimi."],
+            ["Lisää ympäristön uhkat", "Lisää tarvittaessa rivit ulkoisen geokoodauspalvelun katkokselle, salaisuuksille repossa ja CORS-asetukselle, jos sovellus ja rajapinta ovat eri osoitteissa."],
+            ["Kirjaa testit ennen ajoa", "Kirjoita jokaiselle riville testi ja odotettu tulos ennen ajoa. Testitapaus T15 on näistä syötteistä koottu taulukko."],
+            ["Aja T15 curlilla", "Aja syötteet: tyhjä `city`, 200 merkin `city`, `year=1800`, `year=abc`, `year=999999` ja `city=<script>alert(1)</script>`. Kirjaa HTTP-koodi ja vastaus."],
+            ["Vertaa odotettuun", "Merkitse jokaiselle riville, poikkeaako saatu tulos odotetusta."]
+          ],
+          valmis: "Uhkalistassa on 5–8 riviä muodossa uhka → testi → tulos → toimenpide, ja T15:n jokaisella syötteellä on kirjattu saatu vastaus.",
+          tallenna: "`project-docs/tietoturva-arvio.md` commitilla. T15:n poikkeamat työviikon 13 päiväkirjaan.",
+          sanat: ["curl", "CORS"]
+        },
+        "13-2": {
+          miksi: "Jos paikan nimi sijoitetaan sivulle väärin, selain voi suorittaa sen koodina. Testi tehdään omalla sovelluksella, ei oletuksella.",
+          osat: [
+            ["Lisää vaarallinen nimi", "Lisää lomakkeella paikka nimellä `<script>alert(1)</script>`."],
+            ["Tarkista vastaus", "Tarkista, että rajapinta palauttaa koodin 404 ja nimi näkyy listassa ja virheilmoituksessa tekstinä. Ilmoitusikkunaa ei saa tulla."],
+            ["Etsi ohitukset", "Hae koodista `dangerouslySetInnerHTML`. React suojaa tekstisisällön itse, mutta tämä ominaisuus ohittaa suojan."],
+            ["Ota kuvakaappaus", "Ota kuvakaappaus, jossa nimi näkyy tekstinä, ja lisää testi uhkalistan riviksi."]
+          ],
+          valmis: "Nimi `<script>alert(1)</script>` näkyy listassa ja virheilmoituksessa tekstinä, eikä koodissa ole `dangerouslySetInnerHTML`-kohtaa.",
+          tallenna: "XSS-testin kuvakaappaus `project-docs/`-kansioon ja tulos uhkalistaan.",
+          sanat: ["XSS"]
+        },
+        "13-3": {
+          miksi: "Yksi väärin kirjoitettu nimi ei saa tyhjentää koko kaaviota. Salaisuus julkisessa repossa on julkinen, vaikka sen poistaisi myöhemmin.",
+          osat: [
+            ["Erota paikkojen virheet", "Muuta `useLocations` käyttämään `Promise.allSettled`-funktiota tai käsittele jokaisen paikan virhe erikseen. Virhe näkyy listassa sen paikan kohdalla."],
+            ["Testaa neljällä paikalla", "Lisää Helsinki, Rovaniemi, ”Tuntematonkylä” ja Utsjoki. Kolmen oikean paikan pitää pysyä kaaviossa."],
+            ["Tarkista salaisuudet", "Hae komennon `git log --all -p` tulosteesta ja tiedostoista avaimia ja salasanoja. Varmista, ettei `.env`-tiedosto ole repossa."],
+            ["Korjaa poikkeavat rivit", "Korjaa vain uhkalistan rivit, joilla saatu tulos poikkesi odotetusta. Kirjaa muut havainnot issueiksi."],
+            ["Käytä jäänyt aika", "Jos aikaa jää, toteuta samannimisten paikkojen käsittely, joka on tärkeä jatko (P1). Muuten kirjaa se issueksi."],
+            ["Yhdistä ja julkaise", "Avaa pull request, katselmoi se itse, yhdistä ja julkaise. Käy uhkalista läpi ohjaajan kanssa viikkopalaverissa."]
+          ],
+          valmis: "Väärin kirjoitettu paikka ei poista muita sarjoja, repossa ei ole avaimia eikä salasanoja, ja jokainen poikkeava uhkalistan rivi on korjattu tai issueena.",
+          tallenna: "Korjauscommitit ja salaisuustarkistuksen tulos uhkalistaan. Yhden paikan virheen käsittely työviikon 13 päiväkirjaan.",
+          sanat: ["P1", "pull request"]
+        }
+      },
       help: {
         title: "Uhkalistan ja syötetaulukon pohjat",
         tree: "project-docs/tietoturva-arvio.md\n├─ 1 Uhkalista: uhka → testi → tulos → toimenpide (5–8 riviä)\n├─ 2 T15 syötetaulukko: syöte → odotettu → saatu\n├─ 3 XSS-testi: kuvakaappaus\n├─ 4 Salaisuustarkistus: git log --all -p | grep -i key/secret/password\n└─ 5 Mitä jätettiin issueiksi ja miksi",
@@ -781,22 +1293,54 @@ window.NAYTTOPROJEKTI = {
 
     14: {
       type: "laatu",
-      feature: "Testiraportti kokoaa 16 testitapausta kolmessa luokassa odotusarvoineen, testit ajetaan komennolla PHP:llä ja TypeScriptillä, ja vähintään kaksi täydellistä virheenkorjausketjua on kirjattu aidoista havainnoista.",
+      feature: "Yksi raportti näyttää kaikki 16 testitapausta tuloksineen, ja kaksi aitoa virhettä on korjattu ja todennettu regressiotestillä.",
       excerpt: "Se näyttää Suomen paikkakunnat oikein kaamoksesta yöttömään yöhön.",
-      connection: "Testit T01–T16 on kirjattu ja ajettu viikoilla 4–13 sitä mukaa kuin toiminnot valmistuivat. Tämä viikko kokoaa ne yhdeksi raportiksi, ajaa kaiken uudelleen julkaistua versiota vasten ja kirjaa virheenkorjausketjut bug-issuelistalta.",
+      connection: "Testitapaukset T01–T16 on kirjattu ja ajettu työviikoilla 4–13 sitä mukaa kuin toiminnot valmistuivat. Nyt kokoat ne yhdeksi raportiksi, ajat kaiken uudelleen julkaistua versiota vasten ja kirjaat virheenkorjausketjut bug-issuelistan aidoista havainnoista. Raportti on osa aineistoa, jota ulkopuolinen testaaja ja arvioija käyttävät vaiheessa 5.",
       deliverable: "project-docs/testiraportti.md (16 tapausta: luokka, odotettu, saatu, tila, lähde, ajettava vai käsin), testiajojen tulosteet PHP:stä ja Vitestistä, kaksi täydellistä virheenkorjausketjua commit-linkein.",
       why: "Testaaminen on oma vaatimuksensa, ja virheiden etsiminen ja korjaaminen toinen. Ketju havainto → toistamisohje → syy → korjauscommit → uusintatesti → regressiotesti on se muoto, jolla korjaus todennetaan. Regressiotesti tarkoittaa, että vanhat testit ajetaan uudelleen korjauksen jälkeen: korjaus ei saa rikkoa aiemmin toiminutta.",
       done: "Raportissa on 16 tapausta luokiteltuina (normaali 6, rajat 6, virheet 4) odotusarvoin ja lähtein; komennolla ajettavat (T01–T07, T10–T13, T15) ja käsin ajettavat selaintestit (T08, T09, T14, T16) on eroteltu; `composer test` tai `php tests/run.php` ja `npm test` menevät läpi ja tulosteet ovat repossa; kaksi ketjua on kirjattu aidoista bug-issueista täydellisinä.",
       record: "Kirjoita työviikon 14 merkintään: montako testiä meni läpi ensimmäisellä ajolla, mikä ei mennyt ja miksi, kahden ketjun havainnot ja syyt sekä se, mikä regressiotesti paljasti jotain.",
       skills: ["testiraportin kokoaminen", "ajettavat ja käsin ajettavat testit", "virheenkorjausketju", "regressiotestaus"],
       termit: ["regressiotesti"],
-      steps: [
-        ["Kokoa raportti.", "Listaa T01–T16 yhteen taulukkoon: tunnus, luokka (normaali / raja / virhe), syöte, odotettu tulos ja sen lähde, ajotapa (komento vai selain), tulos, tila. Odotusarvot tulevat viikkojen 4–13 kirjauksista, ei omasta koodista."],
-        ["Aja kaikki uudelleen.", "Aja PHP-testit (`composer test` tai `php tests/run.php`) ja Vitest-testit (`npm test`) ja tallenna tulosteet. Aja selaintestit T08, T09, T14 ja T16 julkaistua versiota vasten ja kirjaa kuvakaappaukset."],
-        ["Valitse kaksi aitoa havaintoa.", "Avaa bug-issuelista (työviikoilta 4–13). Valitse kaksi havaintoa, joilla on selkeä toistamisohje. Jos lista on tyhjä, kerro ohjaajalle: hän merkitsee vikatehtäviä. Keksittyjä bugeja ei kirjata."],
-        ["Kirjaa ketjut täydellisinä.", "Jokaisesta: havainto (issue), toistamisohje askelina, syy (mikä koodissa oli väärin ja miksi), korjauscommit linkkinä, uusintatesti (sama testi läpi) ja regressiotesti (koko testisarja läpi korjauksen jälkeen)."],
-        ["Viikkopalaveri ja koodikatselmoinnin sopiminen.", "Sovi ohjaajan kanssa, että hän lukee koodin tämän viikon aikana ja tuo kolme nimettyä havaintoa työviikon 15 maanantaipalaveriin."]
-      ],
+      tehtavat: {
+        "14-1": {
+          miksi: "Testaaminen on oma vaatimuksensa. Raportti näyttää yhdellä silmäyksellä, mitä on testattu, millä odotusarvolla ja miten.",
+          osat: [
+            ["Kokoa taulukko", "Listaa testitapaukset T01–T16 tiedostoon `project-docs/testiraportti.md`: tunnus, luokka, syöte, odotettu tulos, lähde, ajotapa, tulos ja tila."],
+            ["Luokittele", "Jaa tapaukset kolmeen luokkaan: normaali käyttö (6), rajat (6) ja virhetilanteet (4)."],
+            ["Hae odotusarvot kirjauksista", "Ota odotusarvot ja lähteet työviikkojen 4–13 kirjauksista, ei omasta koodista eikä muistista."],
+            ["Erottele ajotavat", "Merkitse komennolla ajettavat (T01–T07, T10–T13, T15) ja käsin ajettavat selaintestit (T08, T09, T14, T16)."]
+          ],
+          valmis: "Raportissa on 16 testitapausta kolmessa luokassa, jokaisella on odotusarvo ja lähde, ja ajotapa on merkitty.",
+          tallenna: "`project-docs/testiraportti.md` commitilla.",
+          sanat: ["T01"]
+        },
+        "14-2": {
+          miksi: "Uusintajo julkaistua versiota vasten näyttää, toimiiko aiemmin toiminut yhä. Tuloste tekstinä on työnäyte, pelkkä ”läpi” ei ole.",
+          osat: [
+            ["Aja PHP-testit", "Aja `composer test` tai `php tests/run.php` ja tallenna tuloste tekstinä raporttiin."],
+            ["Aja Vitest-testit", "Aja `npm test` client-kansiossa ja tallenna tuloste tekstinä raporttiin."],
+            ["Aja selaintestit", "Aja testitapaukset T08, T09, T14 ja T16 julkaistua versiota vasten ja ota kuvakaappaukset."],
+            ["Kirjaa tilat", "Kirjaa raporttiin jokaisen testin tila. Jos jokin ei mene läpi, tee bug-issue."]
+          ],
+          valmis: "`composer test` tai `php tests/run.php` ja `npm test` menevät läpi, ja tulosteet ja selaintestien kuvakaappaukset ovat raportissa.",
+          tallenna: "Tulosteet ja kuvakaappaukset `testiraportti.md`:hen. Ensimmäisen ajon tulos työviikon 14 päiväkirjaan.",
+          sanat: ["Vitest", "bug-issue"]
+        },
+        "14-3": {
+          miksi: "Ketju havainnosta regressiotestiin on se muoto, jolla korjaus todennetaan. Työviikon 17 kolmas ketju tehdään samalla tavalla.",
+          osat: [
+            ["Valitse aidot havainnot", "Valitse bug-issuelistalta työviikoilta 4–13 kaksi havaintoa, joilla on selkeä toistamisohje. Keksittyjä virheitä ei kirjata."],
+            ["Tarkista lista", "Jos bug-issuelista on tyhjä, kerro ohjaajalle. Hän merkitsee vikatehtäviä, joista saat aidot havainnot."],
+            ["Kirjaa ketjun alku", "Kirjaa kummastakin havainto (issue), toistamisohje askelina ja syy: mikä koodissa oli väärin ja miksi."],
+            ["Kirjaa ketjun loppu", "Lisää korjauscommit linkkinä, uusintatesti (sama testi läpi) ja regressiotesti (koko testisarja läpi korjauksen jälkeen)."],
+            ["Sovi koodikatselmointi", "Sovi viikkopalaverissa, että ohjaaja lukee koodisi tällä viikolla ja tuo kolme nimettyä havaintoa työviikon 15 maanantaipalaveriin."]
+          ],
+          valmis: "Raportissa on kaksi ketjua aidoista bug-issueista, ja kummassakin ovat kaikki kuusi osaa havainnosta regressiotestiin.",
+          tallenna: "Ketjut `testiraportti.md`:hen commit-linkkeineen. Havainnot ja syyt työviikon 14 päiväkirjaan.",
+          sanat: ["regressiotesti", "bug-issue"]
+        }
+      },
       help: {
         title: "Testiraportin ja ketjun pohjat",
         tree: "project-docs/\n├─ testiraportti.md\n│  ├─ 1 Yhteenveto: 16 tapausta, läpi/ei läpi, luokat\n│  ├─ 2 Taulukko T01–T16\n│  ├─ 3 Tulosteet: composer test / php tests/run.php, npm test\n│  ├─ 4 Selaintestit kuvakaappauksin\n│  └─ 5 Virheenkorjausketjut 1 ja 2\n└─ (ketju 3 tulee työviikolla 17)\n\nLUOKAT\nnormaali: T01 T02 T05 T06 T08 T11\nrajat:    T03 T04 T10 T12 T13 T14\nvirheet:  T07 T09 T15 T16",
@@ -815,22 +1359,55 @@ window.NAYTTOPROJEKTI = {
 
     15: {
       type: "laatu",
-      feature: "Ohjaajan koodikatselmoinnin kolme havaintoa on refaktoroitu ja dokumentoitu, README kertoo käyttöönoton ja rajapinnan, riippuvuustaulukko on tehty tulosteista ja LICENSE on repossa tai kirjattu avoimeksi.",
+      feature: "Joku muu kuin sinä voi lukea koodin ja saada sovelluksen käyntiin README:n avulla, ja ohjaajan kolme havaintoa on korjattu niin, että testit menevät yhä läpi.",
       excerpt: "Mukana on ohje, jolla saan sen käyntiin kysymättä keneltäkään.",
-      connection: "Sovellus toimii; nyt siitä tehdään ylläpidettävä ja dokumentoitu. Refaktorointi tarkoittaa rakenteen parannusta ilman toiminnan muutosta, ja testit todistavat, että toiminta ei muuttunut. Havainnot tulevat ohjaajalta, ei listasta, jonka kirjoitit itse etukäteen.",
+      connection: "Sovellus toimii ja on testattu, ja nyt siitä tehdään ylläpidettävä ja dokumentoitu. Työviikolla 14 sovitun koodikatselmoinnin havainnot refaktoroidaan testien suojassa, ja README kirjoitetaan käyttäjälle. Työviikolla 16 ulkopuolinen testaaja asentaa ja käyttää sovellusta pelkän README:n avulla.",
       deliverable: "Refaktorointimuistio (kolme havaintoa, ennen ja jälkeen -diffit, perustelut, testit läpi), README käyttäjälle ja kehittäjälle, riippuvuustaulukko lisensseineen, LICENSE-tiedosto tai kirjattu avoin asia.",
       why: "Ylläpidettävä koodi on oma vaatimuksensa, ja se todennetaan parhaiten toisen ihmisen löydöksistä: koodi, jota toinen ei ymmärrä, ei ole ylläpidettävää. README testataan työviikolla 16 ulkopuolisella, joten se kirjoitetaan käyttäjälle, ei arvioijalle.",
       done: "Kolme ohjaajan nimeämää havaintoa on refaktoroitu, jokaisesta on diff-linkki, perustelu ja testiajo läpi; README sisältää käyttöönoton tyhjään ympäristöön, kehityskomennot, rajapinnan kuvauksen esimerkkivastauksella ja riippuvuustaulukon `npm ls --depth=0`- ja `composer show`-tulosteista lisensseineen; LICENSE on repossa tai suunnitelmassa on avoin asia päivämäärällä.",
       record: "Kirjoita työviikon 15 merkintään: ohjaajan kolme havaintoa ja mitä muutit, miten testit todistivat toiminnan säilyneen, README:n rakenne ja riippuvuustaulukon lisenssit sekä LICENSE-tilanne.",
       skills: ["refaktorointi testien suojassa", "koodikatselmoinnin vastaanotto", "README käyttäjälle", "riippuvuuksien ja lisenssien kirjaaminen"],
       termit: ["refaktorointi"],
-      steps: [
-        ["Maanantai: ohjaajan havainnot.", "Ota viikkopalaverissa vastaan ohjaajan kolme nimettyä havaintoa (tiedosto, rivi, mikä vaikeuttaa lukemista). Kirjaa ne päivämäärällä ja nimellä. Älä puolustele: kysy, mitä hän odotti näkevänsä."],
-        ["Refaktoroi yksi kerrallaan.", "Jokaisesta havainnosta oma haara ja commit: aja testit ennen, tee muutos, aja testit jälkeen. Tallenna diff-linkki ja perustelu muistioon. Jos testit eivät kata muutettua kohtaa, kirjoita testi ensin."],
-        ["README käyttäjälle ja kehittäjälle.", "Kirjoita kaksi osaa: 1) käyttöönotto tyhjään ympäristöön askel askeleelta (PHP, Node, komennot, portit, build), 2) kehittäjälle: kansiorakenne, kehityskomennot, testien ajo, rajapinnan kuvaus esimerkkipyynnöllä ja -vastauksella. Kirjoita niin, että työviikon 16 testaaja onnistuu ilman sinua."],
-        ["Riippuvuustaulukko tulosteista.", "Aja `npm ls --depth=0` client-kansiossa ja `composer show` server-kansiossa. Kirjoita taulukko: paketti, versio, rooli tässä projektissa, lisenssi (tarkista paketin omasta package.json- tai composer.json-tiedostosta, älä muistista)."],
-        ["LICENSE ja julkaisu.", "Lisää LICENSE ohjaajan päätöksen mukaan. Jos päätöstä ei ole, kirjaa suunnitelmaan avoin asia päivämäärällä; älä valitse itse. Pull request, julkaisu."]
-      ],
+      tehtavat: {
+        "15-1": {
+          miksi: "Ylläpidettävyys todennetaan parhaiten toisen ihmisen löydöksistä. Testit todistavat, että toiminta ei muuttunut.",
+          osat: [
+            ["Ota havainnot vastaan", "Kirjaa maanantain viikkopalaverissa ohjaajan kolme havaintoa: tiedosto, rivi ja mikä vaikeuttaa lukemista. Lisää päivämäärä ja ohjaajan nimi."],
+            ["Kysy odotus", "Älä puolustele. Kysy jokaisesta havainnosta, mitä ohjaaja odotti näkevänsä."],
+            ["Aja testit ennen", "Luo havainnolle oma haara ja aja testit ennen muutosta. Jos testit eivät kata kohtaa, kirjoita testi ensin."],
+            ["Refaktoroi ja testaa", "Tee muutos ja aja testit uudelleen. Jos joudut muuttamaan testiä, kyse on toiminnan muutoksesta eikä refaktoroinnista."],
+            ["Kirjaa muistioon", "Kirjaa tiedostoon `project-docs/refaktorointi-vk15.md` jokaisesta havainnosta diff-linkki, perustelu ja testiajon tulos ennen ja jälkeen."],
+            ["Päivitä komponenttijako", "Päivitä suunnitelman Komponenttijako-kenttä, jos refaktorointi muutti komponenttien vastuita."]
+          ],
+          valmis: "Kaikki kolme havaintoa on refaktoroitu, ja jokaisesta on muistiossa diff-linkki, perustelu ja testiajo läpi ennen ja jälkeen.",
+          tallenna: "`project-docs/refaktorointi-vk15.md` commitilla. Havainnot ja muutokset työviikon 15 päiväkirjaan.",
+          sanat: ["refaktorointi", "viikkopalaveri"]
+        },
+        "15-2": {
+          miksi: "README testataan työviikolla 16 ulkopuolisella, joten se kirjoitetaan käyttäjälle, ei arvioijalle. Testaajan pitää onnistua ilman sinua.",
+          osat: [
+            ["Kirjoita käyttöönotto", "Kirjoita README:hen käyttöönotto tyhjään ympäristöön numeroituina komentoina: PHP, Node, kloonaus, riippuvuudet, build, portit ja käynnistys."],
+            ["Kirjoita kehittäjäosa", "Kirjoita kehittäjälle kansiorakenne, kehityskomennot ja testien ajo."],
+            ["Kuvaa rajapinta", "Kuvaa `GET /api/daylight` esimerkkipyynnöllä, esimerkkivastauksella ja virhekoodeilla 400, 404 ja 502."],
+            ["Aja riippuvuustulosteet", "Aja `npm ls --depth=0` client-kansiossa ja `composer show` server-kansiossa."],
+            ["Kokoa riippuvuustaulukko", "Kirjoita taulukko: paketti, versio, rooli tässä projektissa ja lisenssi. Tarkista lisenssi paketin omasta tiedostosta, älä muistista. Poista riippuvuus, jolla ei ole roolia."]
+          ],
+          valmis: "README sisältää käyttöönoton tyhjään ympäristöön, kehityskomennot, rajapinnan kuvauksen esimerkkivastauksella ja riippuvuustaulukon lisensseineen tulosteista.",
+          tallenna: "`README.md` commitilla. README:n rakenne ja riippuvuuksien lisenssit työviikon 15 päiväkirjaan.",
+          sanat: ["build"]
+        },
+        "15-3": {
+          miksi: "Lisenssi on ohjaajan kanssa sovittava asia. Ilman sitä kukaan ei tiedä, saako koodia käyttää.",
+          osat: [
+            ["Tarkista päätös", "Tarkista suunnitelman Lisenssi-kentästä, onko ohjaaja päättänyt lisenssin. Päätöksen piti tulla viimeistään työviikolla 8."],
+            ["Lisää tai kirjaa avoimeksi", "Jos päätös on tehty, lisää sen mukainen `LICENSE`-tiedosto. Muuten kirjaa suunnitelmaan avoin asia päivämäärällä. Älä valitse lisenssiä itse."],
+            ["Yhdistä ja julkaise", "Avaa viikon muutoksista pull request, katselmoi se itse, yhdistä ja julkaise."]
+          ],
+          valmis: "`LICENSE` on repossa, tai suunnitelmassa on lisenssi avoimena asiana päivämäärällä.",
+          tallenna: "`LICENSE` tai päivitetty `project-docs/suunnitelma.md` commitilla. LICENSE-tilanne työviikon 15 päiväkirjaan.",
+          sanat: ["pull request"]
+        }
+      },
       help: {
         title: "Refaktorointimuistion ja README:n rakenne",
         tree: "project-docs/refaktorointi-vk15.md\n├─ Havainto 1: ohjaaja, päivä, tiedosto:rivi, mitä hän odotti\n│  ├─ ennen (koodilainaus tai diff-linkki)\n│  ├─ jälkeen\n│  ├─ perustelu\n│  └─ testit: ennen … / jälkeen … läpi\n├─ Havainto 2 …\n└─ Havainto 3 …\n\nREADME.md\n├─ Mitä Valokaari tekee (3 riviä)\n├─ Käyttöönotto tyhjään ympäristöön (numeroidut askeleet)\n├─ Kehitys: komennot, kansiot, testit\n├─ Rajapinta: GET /api/daylight, esimerkkipyyntö ja -vastaus, virheet\n├─ Riippuvuudet: taulukko lisensseineen\n├─ Tietolähde ja lisenssi (paikkakunnat)\n└─ Lisenssi",
@@ -849,22 +1426,64 @@ window.NAYTTOPROJEKTI = {
 
     16: {
       type: "julkaisu",
-      feature: "Sisältö on jäädytetty, julkaisuehdokas v1.0-rc1 on julkaistu ja merkitty Git-tagilla, ja nimetty ulkopuolinen henkilö on testannut sen pelkän kirjallisen ohjeen avulla.",
+      feature: "Nimetty ulkopuolinen henkilö on saanut julkaisuehdokkaan v1.0-rc1 käyttöön pelkän README:n ja julkisen osoitteen avulla, ja hänen havaintonsa on kirjattu.",
       excerpt: "Mukana on ohje, jolla saan sen käyntiin kysymättä keneltäkään.",
-      connection: "README on kirjoitettu; nyt se pannaan koetukselle: ensin itse puhtaassa ympäristössä, sitten ulkopuolisen käsissä. Julkaisuehdokas eli RC (release candidate) on versio, joka voisi olla v1.0, jos testaaja ei löydä estäviä virheitä.",
+      connection: "Työviikon 15 README ja siistitty koodi pannaan nyt koetukselle: ensin itse puhtaassa ympäristössä, sitten ulkopuolisen testaajan käsissä. Jäädytys estää uusien ominaisuuksien lisäämisen, ja tagilla merkitty julkaisuehdokas on se versio, jota testataan. Testaajan löytämät estävät virheet korjataan työviikolla 17 ennen v1.0:aa.",
       deliverable: "Jäädytyspäätös ja issue-luokittelu, tagilla merkitty julkaisuehdokas julkisessa osoitteessa, oma asennuspöytäkirja, korjattu README, ulkopuolisen testauspöytäkirja ja estävien issueiden lista.",
       why: "Julkaisutestaus julkaisuehdokasta vasten jättää kokonaisen viikon puskuria: mitä tahansa testaaja löytää, korjaukselle on aikaa ennen v1.0:aa. Jäädytys estää viimeisten viikkojen valumisen uusiin ominaisuuksiin.",
       done: "v1.0-rc1 on julkisessa osoitteessa ja merkitty tagilla; oma asennuspöytäkirja (toinen kone tai tyhjä kansio) ja ulkopuolisen testauspöytäkirja (nimetty rooli, ajankohta, testaajan omat sanat erillään tulkinnasta) ovat repossa; estävät virheet on kirjattu issueiksi, ei korjattu kiireellä tällä viikolla.",
       record: "Kirjoita työviikon 16 merkintään: jäädytyspäätös ja mitä jätit v1.1-listalle, oman asennuksen epäröintikohdat ja README:hen tehdyt korjaukset sekä ulkopuolisen tärkeimmät havainnot sitaatteina.",
       skills: ["sisältöjäädytys", "Git-tag ja release", "puhdas asennus ohjeella", "julkaisutestauksen järjestäminen"],
       termit: ["RC", "Git-tag"],
-      steps: [
-        ["Jäädytyspäätös.", "Päätä ja kirjaa: uusia ominaisuuksia ei enää lisätä. Luokittele jäljellä olevat issuet estäviksi (rikkoo P0:n) tai v1.1-listalle."],
-        ["Julkaisuehdokas tagilla.", "Julkaise nykyinen main ja merkitse se Git-tagilla v1.0-rc1 (rc = release candidate eli julkaisuehdokas). Vie tag etärepositoryyn ja tee siitä GitHub-release, jonka kuvaus kertoo, mitä versio sisältää."],
-        ["Oma puhdas asennus.", "Asenna sovellus toiselle koneelle tai tyhjään kansioon pelkän README:n avulla: PHP, Node, kloonaus, riippuvuudet, build, käynnistys. Pidä pöytäkirjaa jokaisesta kohdasta, jossa epäröit tai jouduit muistelemaan. Korjaa README, ennen kuin annat sen kenellekään."],
-        ["Ulkopuolisen julkaisutestaus.", "Anna nimetylle ulkopuoliselle README ja julkinen osoite ilman suullista apua. Testitehtävät kirjallisena: lisää Utsjoki ja Helsinki, valitse vuosi 2028, lue tooltipista yksi päivä, etsi leikkauspiste. Kirjaa hänen sanansa sitaatteina."],
-        ["Pöytäkirja ja estävät issueiksi.", "Kirjoita testauspöytäkirja: rooli, ajankohta, sitaatit, oma tulkinta erikseen. Luokittele estävät virheet issueiksi seuraavan viikon korjattaviksi. Älä korjaa kiireellä tällä viikolla."]
-      ],
+      tehtavat: {
+        "16-1": {
+          miksi: "Jäädytys estää viimeisten viikkojen valumisen uusiin ominaisuuksiin. Luokittelu kertoo, mitä on pakko korjata ennen v1.0:aa.",
+          osat: [
+            ["Kirjaa jäädytys", "Kirjaa päätös, ettei uusia ominaisuuksia enää lisätä. Merkitse päätös ja päivä työviikon 16 päiväkirjaan."],
+            ["Luokittele issuet", "Merkitse avoin issue estäväksi, jos se rikkoo pakollisen ytimen (P0) tai estää käytön. Muut siirtyvät v1.1-listalle."],
+            ["Päivitä rajaus", "Kirjaa v1.1-listalle siirretyt asiat suunnitelman Rajaus-kenttään."]
+          ],
+          valmis: "Jäädytyspäätös on kirjattu, ja jokainen avoin issue on merkitty estäväksi tai v1.1-listalle.",
+          tallenna: "Luokittelu issueiden tunnisteina GitHubissa. Jäädytyspäätös ja v1.1-lista työviikon 16 päiväkirjaan.",
+          sanat: ["P0"]
+        },
+        "16-2": {
+          miksi: "Julkaisuehdokas on versio, josta voi tulla v1.0, jos testaaja ei löydä estäviä virheitä. Tag kiinnittää testattavan version.",
+          osat: [
+            ["Julkaise main", "Julkaise nykyinen `main` ja tarkista, että build syntyy alustalla puhtaasta haarasta."],
+            ["Luo tag", "Merkitse versio Git-tagilla `v1.0-rc1` (rc tulee sanoista release candidate eli julkaisuehdokas): `git tag -a v1.0-rc1 -m \"Julkaisuehdokas 1\"`."],
+            ["Vie tag", "Vie tag etärepositoryyn komennolla `git push origin v1.0-rc1`."],
+            ["Tee release", "Tee tagista GitHub-release, jonka kuvaus kertoo, mitä versio sisältää."],
+            ["Kokeile julkista osoitetta", "Avaa julkinen osoite ja kokeile paikan lisäystä, tooltipia ja vuosivalintaa."]
+          ],
+          valmis: "`v1.0-rc1` on julkisessa osoitteessa, tag on etärepositoryssa, ja releasella on sisältökuvaus.",
+          tallenna: "Tag ja release GitHubissa. Releasen linkki työviikon 16 päiväkirjaan.",
+          sanat: ["RC", "Git-tag", "build"]
+        },
+        "16-3": {
+          miksi: "Oma koneesi muistaa asioita, joita README ei kerro. Puhdas asennus paljastaa ne, ennen kuin ulkopuolinen testaaja kohtaa ne.",
+          osat: [
+            ["Valitse puhdas ympäristö", "Käytä toista konetta, uutta käyttäjää tai tyhjää kansiota ilman `node_modules`- ja `vendor`-kansioita."],
+            ["Asenna ohjeen mukaan", "Asenna pelkän README:n avulla: PHP, Node, kloonaus, riippuvuudet, build ja käynnistys."],
+            ["Pidä pöytäkirjaa", "Kirjaa tiedostoon `project-docs/asennuspoytakirja-vk16.md` jokainen kohta, jossa epäröit tai jouduit muistelemaan."],
+            ["Korjaa README", "Korjaa README jokaisesta pöytäkirjan kohdasta, ennen kuin annat sen kenellekään."]
+          ],
+          valmis: "Asennus onnistui puhtaassa ympäristössä pelkällä README:llä, ja pöytäkirjan jokainen epäröintikohta on korjattu README:hen.",
+          tallenna: "`project-docs/asennuspoytakirja-vk16.md` ja korjattu `README.md` commitilla. Epäröintikohdat ja korjaukset työviikon 16 päiväkirjaan."
+        },
+        "16-4": {
+          miksi: "Julkaisuehdokkaan testaus jättää viikon puskurin korjauksille ennen v1.0:aa. Testaajan kysymykset ovat ohjeen puutteita.",
+          osat: [
+            ["Kirjoita tehtävät", "Kirjoita testaajalle tehtävät: lisää Utsjoki ja Helsinki, vaihda vuodeksi 2028, lue tooltipista yksi päivä ja etsi leikkauspiste."],
+            ["Anna ohje ja osoite", "Anna nimetylle ulkopuoliselle README, julkinen osoite ja tehtävät kirjallisina. Älä auta suullisesti."],
+            ["Kirjaa sitaatit", "Kirjaa hänen sanansa sitaatteina ja se, kuinka kauan alkuun pääseminen kesti."],
+            ["Kirjoita pöytäkirja", "Kirjoita `project-docs/julkaisutestaus-vk16.md`: testaajan rooli, ajankohta, sitaatit ja oma tulkinta erikseen."],
+            ["Kirjaa estävät issueiksi", "Kirjaa estävät virheet issueiksi työviikolla 17 korjattaviksi. Älä korjaa niitä kiireellä tällä viikolla."]
+          ],
+          valmis: "Testauspöytäkirjassa ovat rooli, ajankohta, sitaatit ja tulkinta erillään, ja estävät virheet ovat issueina korjaamatta.",
+          tallenna: "`project-docs/julkaisutestaus-vk16.md` commitilla. Tärkeimmät sitaatit työviikon 16 päiväkirjaan."
+        }
+      },
       help: {
         title: "Julkaisun tarkistuslista ja testauspöytäkirja",
         tree: "project-docs/\n├─ asennuspoytakirja-vk16.md   oma puhdas asennus, epäröintikohdat, README-korjaukset\n└─ julkaisutestaus-vk16.md     ulkopuolisen testaus, sitaatit, estävät\n\nTESTAAJAN TEHTÄVÄLISTA (annetaan kirjallisena)\n1 Avaa osoite ja lisää Utsjoki ja Helsinki\n2 Vaihda vuosi 2028:aan\n3 Lue tooltipista, montako tuntia Utsjoella on valoa 15. tammikuuta\n4 Etsi päivä, jona Helsingissä ja Utsjoella on yhtä pitkä päivä\n5 (kehittäjätestaaja) Käynnistä sovellus omalla koneella README:n ohjeilla",
@@ -883,23 +1502,54 @@ window.NAYTTOPROJEKTI = {
 
     17: {
       type: "julkaisu",
-      feature: "Julkaisutestauksen estävät virheet on korjattu täydellisenä virheenkorjausketjuna, v1.0 on julkaistu ja merkitty tagilla, ja sovellus on luovutettu asiakkaan roolissa toimivalle ohjaajalle, joka on vastannut kysymyksellä.",
+      feature: "Asiakas saa julkisen osoitteen, josta v1.0 toimii, ja luovutusviestin, johon hän on vastannut kysymyksellä.",
       excerpt: "Valmis tarkoittaa minulle tätä: sovellus on verkossa osoitteessa, jonka voin laittaa sivuillemme.",
-      connection: "Edellisen viikon havainnot muuttuvat korjauksiksi, ja julkaisuehdokkaasta tulee v1.0. Luovutusviesti saa vastaanottajan: ohjaaja lukee sen asiakkaan roolissa ja kysyy yhden asiakaskysymyksen, johon vastaat. Loppuviikko on puskuria, jota ei täytetä uusilla ominaisuuksilla.",
+      connection: "Työviikon 16 testaajan havainnot muuttuvat korjauksiksi, ja julkaisuehdokkaasta tulee v1.0. Luovutusviesti saa vastaanottajan, kun ohjaaja lukee sen asiakkaan roolissa ja kysyy yhden asiakaskysymyksen. Loppuviikko on puskuria, jota ei täytetä uusilla ominaisuuksilla, joten työviikolla 18 voit keskittyä näyttöön.",
       deliverable: "Kolmas virheenkorjausketju, regressioajo, v1.0-tag ja release, savutestin tulos, julkaisutiedote, luovutusviesti sekä asiakkaan kysymys ja vastaus.",
       why: "v1.0 ilman korjattuja estäviä virheitä on vain julkaisuehdokas uudella nimellä. Luovutusviesti ilman vastaanottajaa on kirjoitusharjoitus; kun ohjaaja vastaa kysymyksellä, se on asiakasviestintää.",
       done: "v1.0 on julkisessa osoitteessa ja merkitty tagilla; kolmas ketju on täydellisenä repossa (estävästä virheestä tai bug-listan aidosta havainnosta); regressioajo ja savutesti on kirjattu; julkaisutiedote ja luovutusviesti ovat repossa; ohjaajan asiakaskysymys ja vastauksesi on kirjattu; viikolle jäi puskuriaikaa eikä mitään uutta aloitettu.",
       record: "Kirjoita työviikon 17 merkintään: mitkä estävät korjattiin ja miten, v1.0:n tagi ja tiedotteen ydin, mitä jätit v1.1-listalle, ohjaajan asiakaskysymys ja vastauksesi.",
       skills: ["julkaisu tuotantoon", "release-käytännöt", "regressiotestaus", "asiakasviestintä"],
       termit: ["savutesti"],
-      steps: [
-        ["Estävien korjaus ketjuna.", "Korjaa työviikon 16 estävät havainnot täydellisenä ketjuna: havainto → toistamisohje → syy → korjauscommit → uusintatesti → regressiotesti. Jos estäviä ei löytynyt, ota kolmas ketju bug-issuelistan aidosta havainnosta. Keksittyjä ei kirjata."],
-        ["Regressioajo.", "Aja koko testisarja (PHP ja Vitest) ja selaintestit ennen julkaisua. Kirjaa tulos."],
-        ["v1.0-tag ja release.", "Merkitse versio Git-tagilla v1.0, vie se etärepositoryyn ja tee release. Julkaise tuotantoon."],
-        ["Savutesti tuotannossa.", "Savutesti on nopea tarkistus julkaisun jälkeen: lisää paikka, lue tooltip, vaihda vuosi, etsi leikkauspiste julkaistussa v1.0:ssa. Kirjaa tulos."],
-        ["Julkaisutiedote ja luovutusviesti.", "Kirjoita julkaisutiedote (mitä sovellus tekee, tunnetut rajoitteet, v1.1-lista) ja luovutusviesti asiakaskielellä: osoite, mitä kuvasta näkee, mitä sovellus ei tee, kehen ottaa yhteyttä. Viittaa työviikon 10 katselmoijan sitaattiin ja siihen, mitä sen perusteella muutettiin."],
-        ["Asiakkaan kysymys.", "Lähetä luovutusviesti ohjaajalle asiakkaan roolissa. Hän vastaa yhdellä asiakaskysymyksellä (esimerkiksi ”Voinko lisätä tämän suoraan sivuillemme?”). Vastaa siihen asiakaskielellä ja kirjaa molemmat repoon."]
-      ],
+      tehtavat: {
+        "17-1": {
+          miksi: "v1.0 ilman korjattuja estäviä virheitä on vain julkaisuehdokas uudella nimellä.",
+          osat: [
+            ["Valitse korjattava", "Ota työviikon 16 estävät issuet. Jos estäviä ei löytynyt, valitse kolmas ketju bug-issuelistan aidosta havainnosta. Keksittyjä virheitä ei kirjata."],
+            ["Kirjaa ketjun alku", "Kirjaa havainto, toistamisohje ja syy samalla tavalla kuin työviikon 14 ketjuissa."],
+            ["Korjaa ja uusintatestaa", "Tee korjaus omana commitinaan ja aja sama testi uudelleen."],
+            ["Aja regressiotestit", "Aja koko testisarja (PHP ja Vitest) ja selaintestit ennen julkaisua ja kirjaa tulos."]
+          ],
+          valmis: "Kolmas ketju on raportissa havainnosta regressiotestiin, ja koko testisarja menee läpi korjauksen jälkeen.",
+          tallenna: "Ketju `testiraportti.md`:hen commit-linkkeineen. Korjatut estävät virheet työviikon 17 päiväkirjaan.",
+          sanat: ["regressiotesti", "bug-issue"]
+        },
+        "17-2": {
+          miksi: "Tag kiinnittää version, jonka asiakas saa. Savutesti varmistaa heti julkaisun jälkeen, että tärkeimmät toiminnot toimivat oikeassa osoitteessa.",
+          osat: [
+            ["Luo tag", "Merkitse versio komennolla `git tag -a v1.0 -m \"Ensimmäinen tuotantoversio\"` ja vie se komennolla `git push origin v1.0`."],
+            ["Tee release", "Tee tagista GitHub-release ja julkaise versio tuotantoon."],
+            ["Aja savutesti", "Kokeile julkaistussa v1.0:ssa paikan lisäystä, tooltipia, vuoden vaihtoa ja leikkauspistettä."],
+            ["Kirjaa tulos", "Kirjaa savutestin tulos ja julkinen osoite. Jos jokin toiminto ei toimi, tee bug-issue."]
+          ],
+          valmis: "v1.0 on julkisessa osoitteessa ja merkitty tagilla, ja savutestin neljä toimintoa on kirjattu toimiviksi.",
+          tallenna: "Tag ja release GitHubissa. Savutestin tulos ja tiedotteen ydin työviikon 17 päiväkirjaan.",
+          sanat: ["Git-tag", "savutesti"]
+        },
+        "17-3": {
+          miksi: "Luovutusviesti ilman vastaanottajaa on kirjoitusharjoitus. Kun ohjaaja vastaa asiakkaan roolissa, se on asiakasviestintää.",
+          osat: [
+            ["Kirjoita julkaisutiedote", "Kirjoita `project-docs/julkaisutiedote.md`: mitä sovellus tekee, mitä testattiin, tunnetut rajoitteet ja v1.1-lista."],
+            ["Kirjoita luovutusviesti", "Kirjoita `project-docs/luovutusviesti.md` asiakaskielellä: osoite, mitä kuvasta näkee, mitä sovellus ei tee ja kehen ottaa yhteyttä."],
+            ["Viittaa katselmointiin", "Viittaa viestissä työviikon 10 katselmoijan sitaattiin ja kerro, mitä sen perusteella muutettiin."],
+            ["Lähetä ohjaajalle", "Lähetä luovutusviesti ohjaajalle, joka toimii asiakkaan roolissa. Hän vastaa yhdellä asiakaskysymyksellä."],
+            ["Vastaa asiakkaalle", "Vastaa kysymykseen asiakaskielellä ja kirjaa kysymys ja vastaus luovutusviestin perään."],
+            ["Jätä puskuri", "Käytä loppuviikko korjauksiin ja tarkistuksiin. Älä aloita uusia ominaisuuksia."]
+          ],
+          valmis: "Julkaisutiedote ja luovutusviesti ovat repossa, ja ohjaajan asiakaskysymys ja vastauksesi on kirjattu.",
+          tallenna: "`julkaisutiedote.md` ja `luovutusviesti.md` kansioon `project-docs/` commitilla. Kysymys ja vastaus työviikon 17 päiväkirjaan."
+        }
+      },
       help: {
         title: "Julkaisutiedotteen ja luovutusviestin pohjat",
         tree: "git tag -a v1.0 -m \"Ensimmäinen tuotantoversio\"\ngit push origin v1.0\n→ release GitHubissa\n→ julkaisu tuotantoon\n→ savutesti julkisessa osoitteessa\n→ project-docs/julkaisutiedote.md\n→ project-docs/luovutusviesti.md (+ asiakkaan kysymys ja vastaus)",
@@ -918,21 +1568,51 @@ window.NAYTTOPROJEKTI = {
 
     18: {
       type: "naytto",
-      feature: "Mitään uutta ei rakenneta: näyttöaineisto on täsmälinkitetty kaikkiin 32 vaatimukseen, 8–10 minuutin demo on harjoiteltu toiselle henkilölle ja itsearviointi on kirjoitettu kolmesta nimetystä tilanteesta.",
-      connection: "Sovellus on luovutettu; viimeinen viikko kokoaa 17 työviikon aineiston niin, että arvioija löytää jokaisen työnäytteen. Itsearviointi sidotaan ihmisiin, jotka olivat mukana: katselmoija, julkaisutestaaja ja ohjaaja.",
+      feature: "Arvioija löytää näyttömatriisin linkeistä työnäytteen jokaiseen 32 vaatimukseen, ja 8–10 minuutin demo on harjoiteltu.",
+      connection: "Sovellus on luovutettu, joten viimeisellä viikolla ei rakenneta mitään uutta. Kokoat 17 työviikon työnäytteet niin, että arvioija löytää jokaisen, ja harjoittelet demon, joka näyttää sekä käyttäjän työnkulun että sen takana olevan koodin. Itsearviointi sidotaan ihmisiin, jotka olivat mukana: katselmoija, julkaisutestaaja ja ohjaaja.",
       deliverable: "Täsmälinkitetty näyttömatriisi, harjoiteltu demorunko, itsearviointi kolmesta tilanteesta ohjaajan vastakommentilla ja luovutettu näyttöpaketti.",
       why: "Näytössä arvioidaan se, mikä löytyy: osaaminen, jota arvioija ei löydä, ei ole arvioijalle olemassa. Oman toiminnan arviointi tiimin jäsenenä todennetaan suhteessa niihin ihmisiin, joiden kanssa työskentelit, ei yleislauseilla.",
       done: "Jokainen matriisin 32 riviä osoittaa olemassa olevaan aineistoon ja linkki aukeaa; demo on ajettu kellon kanssa vähintään kerran toiselle henkilölle; itsearviointi käsittelee työviikon 10 palautteen, työviikon 16 testaajan epäröinnin ja yhden viikkopalaverin, jossa sovittu muuttui, ja ohjaaja on kirjannut lyhyen vastakommentin.",
       record: "Kirjoita työviikon 18 merkintään: mitkä matriisin kohdat olivat heikoimmin todennettuja ja miten korjasit ne, demon kesto harjoituksessa sekä itsearvioinnin ydin ja ohjaajan kommentti.",
       skills: ["näyttöaineiston kokoaminen", "esittäminen", "itsearviointi suhteessa tiimiin"],
       resources: [["Avaa näyttömatriisi", "#view-naytto", false]],
-      steps: [
-        ["Matriisin täsmälinkitys.", "Käy kaikki 32 vaatimusta läpi ja liitä jokaiseen työviikko, työnäyte ja toimiva linkki: commit, issue, dokumentti tai kuvakaappaus. Käytä näyttömatriisin rivien viikkomerkintöjä hakemistona."],
-        ["Aukkotarkistus.", "Etsi kohdat, joissa linkki puuttuu tai osoittaa epämääräiseen aineistoon. Korjaa ne nyt, kun aikaa vielä on. Älä rakenna mitään uutta: jos työnäyte puuttuu, kirjaa se rehellisesti."],
-        ["Demoharjoitus toiselle ihmiselle.", "Harjoittele 8–10 minuutin demo kellon kanssa: paikan lisäys → tooltip → kaamos ja yötön yö Utsjoella → leikkauspiste Helsinki–Rovaniemi → Daylight-moduuli ja sen testit → yksi virheenkorjausketju → Git-historia haaroineen → AI-lokin tarkistettu käyttö."],
-        ["Itsearviointi kolmesta tilanteesta.", "Kirjoita project-docs/itsearviointi.md: 1) miten otit vastaan työviikon 10 katselmoijan palautteen ja mitä siitä seurasi, 2) miten reagoit työviikon 16 testaajan epäröintiin, 3) yksi viikkopalaveri, jossa sovittu muuttui: mitä sovittiin, mitä toteutui, mitä tekisit toisin. Pyydä ohjaajalta lyhyt vastakommentti ja liitä se."],
-        ["Puskuri ja luovutus.", "Tarkista aineiston aukot vielä kerran toisen henkilön kanssa ja luovuta paketti. Jätä puskuria korjauksille."]
-      ],
+      tehtavat: {
+        "18-1": {
+          miksi: "Näytössä arvioidaan se, mikä löytyy. Osaaminen, jota arvioija ei löydä, ei ole hänelle olemassa.",
+          osat: [
+            ["Käy vaatimukset läpi", "Kirjaa jokaiselle näyttömatriisin 32 vaatimukselle työviikko, työnäyte ja linkki: commit, issue, dokumentti tai kuvakaappaus. Käytä matriisin rivien viikkomerkintöjä hakemistona."],
+            ["Avaa jokainen linkki", "Avaa jokainen linkki ja tarkista, että se osoittaa täsmälleen työnäytteeseen eikä repositoryn etusivulle."],
+            ["Korjaa aukot", "Korjaa puuttuvat ja epämääräiset linkit. Älä rakenna mitään uutta: jos työnäyte puuttuu, kirjaa se rehellisesti."],
+            ["Tarkista aineisto", "Tarkista, että projektipäiväkirja, AI-loki ja testiraportti ovat repossa ajan tasalla."]
+          ],
+          valmis: "Jokainen 32 rivistä osoittaa olemassa olevaan työnäytteeseen, ja jokainen linkki aukeaa.",
+          tallenna: "Täsmälinkit luovutettavaan näyttöpakettiin, ja vastaava rasti sivun näyttömatriisiin. Heikoimmin todennetut kohdat työviikon 18 päiväkirjaan."
+        },
+        "18-2": {
+          miksi: "Demo näyttää arvioijalle, että osaat perustella tekemäsi. Harjoitus toiselle ihmiselle paljastaa kohdat, jotka venyvät tai jäävät epäselviksi.",
+          osat: [
+            ["Kirjoita demorunko", "Kirjoita demon järjestys: paikan lisäys, tooltip, kaamos ja yötön yö Utsjoella sekä leikkauspiste Helsinki–Rovaniemi."],
+            ["Lisää tekninen osa", "Jatka runkoa: Daylight-moduuli ja sen testit, yksi virheenkorjausketju, Git-historia haaroineen ja AI-lokin tarkistettu käyttö."],
+            ["Harjoittele kellon kanssa", "Esitä demo kellon kanssa toiselle henkilölle ja kirjaa kesto. Tavoite on 8–10 minuuttia."],
+            ["Korjaa runko", "Lyhennä tai selkeytä kohdat, joissa kuulija pysähtyi tai aika venyi."]
+          ],
+          valmis: "Demo on esitetty kellon kanssa vähintään kerran toiselle henkilölle, ja kesto on kirjattu.",
+          tallenna: "Demorunko `project-docs/`-kansioon. Harjoituksen kesto työviikon 18 päiväkirjaan."
+        },
+        "18-3": {
+          miksi: "Oman toiminnan arviointi tiimin jäsenenä todennetaan suhteessa ihmisiin, joiden kanssa työskentelit, ei yleislauseilla.",
+          osat: [
+            ["Kirjoita palautetilanne", "Kirjoita tiedostoon `project-docs/itsearviointi.md`, miten otit vastaan työviikon 10 katselmoijan palautteen ja mitä siitä seurasi."],
+            ["Kirjoita testaustilanne", "Kirjoita, miten reagoit työviikon 16 testaajan epäröintiin."],
+            ["Kirjoita palaveritilanne", "Kirjoita yhdestä viikkopalaverista, jossa sovittu muuttui: mitä sovittiin, mitä toteutui ja mitä tekisit toisin."],
+            ["Pyydä vastakommentti", "Pyydä ohjaajalta lyhyt vastakommentti ja liitä se itsearviointiin."],
+            ["Luovuta paketti", "Tarkista aineiston aukot vielä kerran toisen henkilön kanssa. Luovuta arvioijalle näyttömatriisi, projektipäiväkirja, AI-loki ja julkaistu v1.0."]
+          ],
+          valmis: "Itsearviointi käsittelee kolme nimettyä tilannetta, ohjaajan vastakommentti on liitetty, ja näyttöpaketti on luovutettu.",
+          tallenna: "`project-docs/itsearviointi.md` commitilla. Itsearvioinnin ydin ja ohjaajan kommentti työviikon 18 päiväkirjaan.",
+          sanat: ["viikkopalaveri"]
+        }
+      },
       example: "Itsearviointi: ”Työviikolla 10 katselmoija ei löytänyt lomaketta. Ensireaktioni oli selittää; kirjasin sen sitaattina ja tein issue #30:n. Työviikolla 16 testaaja pysähtyi PHP:n käynnistykseen, ja ymmärsin, että README oli kirjoitettu minulle, ei hänelle.” Ohjaajan kommentti: ”Palautteen kirjaaminen erillään tulkinnasta parani selvästi viikosta 10 viikkoon 16. ML.”",
       notEnough: "”Opin paljon ja projekti sujui hyvin”, ilman tilanteita, nimiä ja sitä, mitä tekisit toisin, tai matriisi, jossa linkit osoittavat repon etusivulle.",
       paivat: [
