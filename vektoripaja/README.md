@@ -55,9 +55,9 @@ chrome --headless --no-pdf-header-footer --print-to-pdf=downloads/vektoripaja-ty
 
 ## Kuvaohjeiden kuvat
 
-`kuvakaappaukset.json` listaa 28 kuvaohjetta: 24 uutta kuvaa, aiempi issue-mallikuva ja kolme vielä kuvattavaa näkymää. Uudet kuvat sisältävät omia kuvakaappauksia, verkkolähteiden esimerkkejä sekä kaksi kuvaksi ladottua paikallista tulostetta. Erot ja versiot kerrotaan kuvateksteissä.
+`kuvakaappaukset.json` listaa 28 kuvaohjetta, joista jokaisella on kuva. Mukana on 27 lisättyä kuvaa sekä aiempi issue-mallikuva. Kuvat sisältävät omia kuvakaappauksia, verkkolähteiden esimerkkejä sekä kaksi kuvaksi ladottua paikallista tulostetta. Erot ja versiot kerrotaan kuvateksteissä.
 
-[Lähteet, käyttöehdot ja puuttuvat näkymät](assets/kuvakaappaukset/LAHTEET.md). Verkkokuvan `pvm` on lisäyspäivä. Aluemerkinnät koskevat vain kuvassa näkyviä vaiheita.
+[Lähteet, käyttöehdot ja rajaukset](assets/kuvakaappaukset/LAHTEET.md). Verkkokuvan `pvm` kertoo alkuperäisen ajankohdan, jos se tunnetaan, ja lisäyspäivän. Aluemerkinnät koskevat vain kuvassa näkyviä vaiheita.
 
 ## Tiedot ja yksityisyys
 

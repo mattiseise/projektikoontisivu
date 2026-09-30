@@ -158,10 +158,16 @@ Lähde: https://github.com/cli/cli/issues/14521
 
 modification: Rajattu julkinen GitHub CLI -esimerkki; ei Vektoripajan repository.
 
-## Vielä kuvattavat näkymät
+## windows-pura-kaikki
 
-- windows-pura-kaikki: oma Windowsin purkuikkuna.
-- copilot-tilatiedosto: PROJEKTIN-TILA.md liitettynä M365-keskusteluun.
-- copilot-kopioi-vastaus: vastauksen Copy-painike.
+Omat kuvakaappaukset Windows 11:n Resurssienhallinnasta 30.9.2026. Kuvattu projektin lähdekoodin pohjapakettia käyttäen. Kohdekansio asetettiin kuvausta varten esimerkkipoluksi C:\Vektoripaja-esimerkki; purkua ei suoritettu. Pikavalikko ja purkuikkuna yhdistettiin vierekkäin. Kuva rajaa pois muun työpöydän ja henkilökohtaiset tiedostot.
 
-Näihin ei lisätty keksittyä käyttöliittymää tai väärän sovelluksen kuvaa. Olemassa oleva github-uusi-issue-malli.png säilyy aiempana mallikuvana.
+## copilot-tilatiedosto ja copilot-kopioi-vastaus
+
+Lähde: [Copilot Chat in Microsoft 365 – Copilot for All, Prepared for PSU, April 2026](https://bpb-us-e1.wpmucdn.com/sites.psu.edu/dist/a/4295/files/2026/04/Welcome-to-Copilot-Chat.pdf), PDF:n sivut 19 ja 16. Tekijä PDF:n metatiedon mukaan Brent Ellis, Microsoft. Kuvakaappaukset irrotettiin koulutusmateriaalista; tiedostoliitteen kolme näkymää yhdistettiin. Käyttöliittymän sisältöä ei muutettu. Kuvan liite on HSDE Syllabus - Demo.docx eikä PROJEKTIN-TILA.md. Copy-kuva näyttää vastauksen toimintorivin, ei keskustelun sisältöä.
+
+Kuvat ovat opetuksessa käytettäviä Microsoft 365 Copilotin käyttöliittymäesimerkkejä. Kuvakaappausten käyttöehdot ovat Microsoftin ohjeessa. Used with permission from Microsoft. Materiaalille ei tässä väitetä Creative Commons -lisenssiä. [Microsoftin kuvakaappausten käyttöohje](https://www.microsoft.com/en-us/legal/intellectualproperty/permissions).
+
+## Kuvaohjeiden kattavuus
+
+Kaikilla 28 kuvaohjeella on kuvatiedosto. Olemassa oleva github-uusi-issue-malli.png säilyy aiempana mallikuvana. Verkkolähteiden kuvat ja paikalliset tulostekuvat erotetaan omista käyttöliittymäkaappauksista kuvateksteissä.
