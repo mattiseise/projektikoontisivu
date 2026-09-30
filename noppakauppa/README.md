@@ -53,6 +53,8 @@ staattinen HTTP-palvelin (esimerkiksi `python3 -m http.server`).
 | `app.js` | geneerinen moottori: **ei muokata projektikohtaisesti** |
 | `styles.css` | ulkoasu; projektikohtaista vain `:root`-lohkon paletti |
 | `kuvitukset.json` | SVG-kuvitusten tekstit ja värit |
+| `assets/sovelluksen-osat.svg`, `assets/tilauksen-kulku.svg`, `assets/roolisuojaus.svg` | käsin kirjoitetut havainnekuvat: kaupan osat (aloitus), tilauksen kulku (työvaiheet 9-1 ja 13-2) ja kahden tason suojaus (työvaihe 12-1) |
+| `assets/projektin-vaiheet.svg` | vaihekuva, generoidaan `sisalto.js`:n `vaiheet`-datasta |
 | `project-docs/projekti.json` | projektin konfiguraatio ja koontikortin tiedot |
 | `tyokalut/` | generaattorit ja tarkistusskripti; kopioituvat rungosta, ei muokata |
 
@@ -62,6 +64,7 @@ staattinen HTTP-palvelin (esimerkiksi `python3 -m http.server`).
 python3 tyokalut/tee_kuvitukset.py    # SVG-kuvitukset + faviconit (vaatii Pillow'n)
 npm install docx
 node tyokalut/tee_lataukset.js        # docx-tiedostot + tyokalut/tyopaketti-print.html
+node tyokalut/tee_vaihekuva.js        # assets/projektin-vaiheet.svg vaiheet-datasta
 node tyokalut/tarkista.js             # savutesti: index.html ja sisalto.js synkassa
 ```
 
@@ -74,6 +77,20 @@ Työpaketin PDF tulostetaan Chromen headless-tilassa:
 
 `node tyokalut/tarkista.js` on nollatoleranssiportti: se ajetaan aina sisältömuutosten
 jälkeen, ja sen pitää päättyä ilman virheitä.
+
+## Yhtenäiset viikko-ohjeet (moottori v2.7)
+
+`sisalto.js`:ssä on `yhtenaisetViikot: true`. Aloitus kertoo, mitä rakennetaan ja miten
+edetään, ja näyttää viisi numeroitua vaihetta (`vaiheet`, `vaihekuva`). Jokaisella
+työviikolla on oma yhteys kokonaisprojektiin (`connection`), yksi tavoite (`feature`) ja
+työvaiheet (`tehtavat`: miksi, osatehtävät, valmis kun, tallenna). Rinnakkaista
+`steps`-listaa ei ole. Tehtävätunnukset (71) ja niiden järjestys ovat ennallaan.
+
+Työn tasot: **työvaihe** on sivun viikko-ohjeen kohta, **GitHub-issue** yksi rajattu
+muutos kauppaan ja **työtapa** Työtapa-sivun kuusi askelta, joilla issue tehdään.
+Testitapaukset kirjataan `project-docs/testimatriisi.md`:hen työviikosta 3 alkaen ja
+käyttäjätarinat `project-docs/kayttajatarinat.md`:hen, koska suunnitelman lataus korvaa
+koko `suunnitelma.md`:n.
 
 ## Tiedot ja yksityisyys
 

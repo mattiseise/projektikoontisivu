@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="600" viewBox="0 0 880 600" role="img" aria-labelledby="title desc">
+<title id="title">Havainnekuva: hallinnan suojaus kahdella tasolla</title>
+<desc id="desc">Taso 1 on selaimessa. Kun käyttäjä avaa osoitteen /hallinta/tuotteet, vue-routerin reitin vartija tarkistaa auth-storesta, onko rooli henkilökunta. Jos ei ole, käyttäjä ohjataan pois. Jos on, näkymä aukeaa. Tämä taso vain ohjaa käyttäjää eikä suojaa kantaa, koska suora kutsu ohittaa selaimen. Suora curl-kutsu ohittaa tason 1 ja päätyy suoraan tasolle 2, samoin hallintanäkymän kutsut. Taso 2 on rajapinnassa: FastAPI-riippuvuus, esimerkiksi vaadi_henkilokunta, tarkistaa jokaisen hallintakutsun ennen kuin kantaan kirjoitetaan. Kutsu ilman istuntoa saa vastauksen 401 ei kirjautunut. Kutsu asiakkaan istunnolla saa vastauksen 403 ei oikeuksia. Kutsu henkilökunnan istunnolla onnistuu, ja vastaus on 200 tai 201. Havainnekuva, ei kuvakaappaus valmiista kaupasta.</desc>
+<rect width="880" height="600" fill="#ffffff"/>
+<defs>
+  <marker id="nuoli" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#5c5347"/></marker>
+</defs>
+<text x="24" y="44" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Miten hallinta suojataan kahdella tasolla?</text>
+
+<!-- Taso 1 -->
+<rect x="24" y="66" width="832" height="190" rx="12" fill="#fdf5ef" stroke="#c2410c" stroke-width="2"/>
+<text x="44" y="96" fill="#9a3412" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700">Taso 1 · selain: reitin vartija</text>
+<text x="44" y="118" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="14">vue-router tarkistaa auth-storesta roolin ennen hallintasivua</text>
+<rect x="48" y="136" width="220" height="56" rx="8" fill="#ffffff" stroke="#5c5347" stroke-width="1.5"/>
+<text x="64" y="159" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="14">Käyttäjä avaa</text>
+<text x="64" y="180" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">/hallinta/tuotteet</text>
+<path d="M268 164H312" stroke="#5c5347" stroke-width="2" marker-end="url(#nuoli)"/>
+<rect x="318" y="136" width="180" height="56" rx="8" fill="#ffffff" stroke="#5c5347" stroke-width="1.5"/>
+<text x="334" y="159" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="14">Onko rooli</text>
+<text x="334" y="180" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">henkilökunta?</text>
+<path d="M498 152L542 146" stroke="#5c5347" stroke-width="2" marker-end="url(#nuoli)"/>
+<path d="M498 176L542 190" stroke="#5c5347" stroke-width="2" marker-end="url(#nuoli)"/>
+<rect x="548" y="126" width="284" height="38" rx="8" fill="#ffffff" stroke="#c03434" stroke-width="1.5"/>
+<text x="564" y="150" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14"><tspan font-weight="700">ei</tspan> → ohjataan pois</text>
+<rect x="548" y="172" width="284" height="38" rx="8" fill="#ffffff" stroke="#2b6e6e" stroke-width="1.5"/>
+<text x="564" y="196" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14"><tspan font-weight="700">kyllä</tspan> → näkymä aukeaa</text>
+<text x="44" y="238" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="14" font-style="italic">Tämä taso vain ohjaa käyttäjää. Se ei suojaa kantaa.</text>
+
+<!-- Väli: kutsut tasolle 2 -->
+<rect x="48" y="272" width="300" height="40" rx="8" fill="#ffffff" stroke="#5c5347" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="64" y="297" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">Suora curl-kutsu ohittaa tason 1</text>
+<path d="M198 312V326" stroke="#5c5347" stroke-width="2" marker-end="url(#nuoli)"/>
+<path d="M740 210V326" stroke="#5c5347" stroke-width="2" marker-end="url(#nuoli)"/>
+<text x="728" y="297" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="end">hallintanäkymän kutsut</text>
+
+<!-- Taso 2 -->
+<rect x="24" y="332" width="832" height="248" rx="12" fill="#fdf5ef" stroke="#9a3412" stroke-width="3"/>
+<text x="44" y="362" fill="#9a3412" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700">Taso 2 · rajapinta: roolitarkistus jokaisessa hallintakutsussa</text>
+<text x="44" y="384" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="14">FastAPI-riippuvuus, esimerkiksi vaadi_henkilokunta, ennen kuin kantaan kirjoitetaan</text>
+
+<rect x="48" y="400" width="300" height="46" rx="8" fill="#ffffff" stroke="#5c5347" stroke-width="1.5"/>
+<text x="64" y="428" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">Ei istuntoa</text>
+<path d="M348 423H414" stroke="#5c5347" stroke-width="2" marker-end="url(#nuoli)"/>
+<rect x="420" y="400" width="412" height="46" rx="8" fill="#ffffff" stroke="#c03434" stroke-width="2"/>
+<text x="436" y="428" fill="#c03434" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">401 · ei kirjautunut</text>
+
+<rect x="48" y="456" width="300" height="46" rx="8" fill="#ffffff" stroke="#5c5347" stroke-width="1.5"/>
+<text x="64" y="484" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">Asiakkaan istunto</text>
+<path d="M348 479H414" stroke="#5c5347" stroke-width="2" marker-end="url(#nuoli)"/>
+<rect x="420" y="456" width="412" height="46" rx="8" fill="#ffffff" stroke="#c03434" stroke-width="2"/>
+<text x="436" y="484" fill="#c03434" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">403 · ei oikeuksia</text>
+
+<rect x="48" y="512" width="300" height="46" rx="8" fill="#ffffff" stroke="#5c5347" stroke-width="1.5"/>
+<text x="64" y="540" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">Henkilökunnan istunto</text>
+<path d="M348 535H414" stroke="#5c5347" stroke-width="2" marker-end="url(#nuoli)"/>
+<rect x="420" y="512" width="412" height="46" rx="8" fill="#ffffff" stroke="#2b6e6e" stroke-width="2"/>
+<text x="436" y="540" fill="#2b6e6e" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">Muutos tehdään · 200 tai 201</text>
+</svg>

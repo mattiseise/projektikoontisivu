@@ -4,10 +4,10 @@
   "nimi": "NoppaKauppa",
   "kieli": "fi",
   "paivaton": true,
-  "generoitu": "2026-09-28",
+  "generoitu": "2026-09-30",
   "lahde": {
-    "sisalto.js": "c4d5542e918934a2",
-    "index.html": "d9c2cf628377af7e"
+    "sisalto.js": "651e5227a0711c6a",
+    "index.html": "9c52cf18f3387aea"
   },
   "viikot": [
     1,
@@ -74,30 +74,44 @@
     "1": {
       "jarjestys": 1,
       "tyyppi": "pohjustus",
-      "vaihe": "A",
+      "vaihe": "1",
       "otsikko": "Aloitus: toimeksianto ja työympäristö",
       "tehtavat": [
         {
           "id": "1-1",
-          "teksti": "Lue toimeksianto ja kirjaa vähintään kuusi kysymystä ohjaajalle tai asiakkaalle."
+          "teksti": "Kirjoita kysymyslista toimeksiannosta",
+          "valmis": "Kysymyslistassa on vähintään kuusi kysymystä, ja jokaisen perässä on ohjaajan vastaus tai merkintä avoimesta asiasta.",
+          "tallenna": "Kysymyslista tiedostoksi `project-docs/kysymykset.md` (viet sen repositoryyn työvaiheessa 3). Vastaukset omin sanoin työviikon 1 päiväkirjaan."
         },
         {
           "id": "1-2",
-          "teksti": "Sovi julkisen repositoryn asiat ja käynnistä ohjaajan kanssa katselmoijien etsintä viikkoja 10 ja 16 varten."
+          "teksti": "Sovi repositoryn julkisuus ja katselmoijien etsintä",
+          "valmis": "Repositoryn julkisuus ja tekijänimi on sovittu tai kirjattu avoimeksi asiaksi, ja katselmoijien etsintä on käynnissä.",
+          "tallenna": "Sovitut ja avoimet asiat suunnitelmalomakkeelle. Katselmoijien etsinnän tila työviikon 1 päiväkirjaan."
         },
         {
           "id": "1-3",
-          "teksti": "Luo repository ja kansiorakenne: `frontend/`, `backend/` ja `project-docs/`."
+          "teksti": "Luo repository ja kansiorakenne",
+          "valmis": "Repository on GitHubissa, siinä ovat kolme kansiota, README ja .gitignore, ja ensimmäinen commit näkyy historiassa.",
+          "tallenna": "Repositoryn osoite ja ensimmäisen commitin tunnus työviikon 1 päiväkirjaan."
         },
         {
           "id": "1-4",
-          "teksti": "Alusta Vite+Vue-projekti ja FastAPI-sovellus ja käynnistä molemmat kehityspalvelimet."
+          "teksti": "Käynnistä Vue-frontend ja FastAPI-backend omalla koneella",
+          "valmis": "Molemmat kehityspalvelimet vastaavat selaimessa README:n komennoilla, ja backendin `/docs`-sivu aukeaa.",
+          "tallenna": "Käynnistyskomennot README:hen commitilla ja työviikon 1 päiväkirjaan."
         }
       ],
-      "nayta": "repositoryn linkki, ensimmäisen commitin tunnus ja kysymyslista `project-docs`-kansiossa.",
+      "nayta": "repositoryn linkki, ensimmäisen commitin tunnus, käynnistyskomennot README:ssä ja kysymyslista tiedostossa `project-docs/kysymykset.md`.",
       "tuotos": "Kysymyslista ohjaajalle, repository kansiorakenteineen sekä käynnistyvät Vite- ja FastAPI-kehityspalvelimet.",
       "valmis": "Molemmat kehityspalvelimet käynnistyvät ohjeen komennoilla; repository on GitHubissa README:n ja ensimmäisen commitin kanssa; kysymyslista on ohjaajalla ja vastaukset tai avoimet asiat, mukaan lukien katselmoijien tilanne, on kirjattu.",
       "tarkistukset": [
+        {
+          "id": "tiedosto:project-docs/kysymykset.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/kysymykset.md",
+          "lahde": "auto"
+        },
         {
           "id": "tiedosto:README.md",
           "tyyppi": "tiedosto",
@@ -122,34 +136,48 @@
     "2": {
       "jarjestys": 2,
       "tyyppi": "pohjustus",
-      "vaihe": "A",
+      "vaihe": "1",
       "otsikko": "Suunnitelma ja tietomalli",
       "tehtavat": [
         {
           "id": "2-1",
-          "teksti": "Kirjoita käyttäjätarinat toimeksiannosta ja priorisoi ne P0-, P1- ja P2-tasoille."
+          "teksti": "Kirjoita ja priorisoi käyttäjätarinat",
+          "valmis": "Jokaisella tarinalla on hyväksymiskriteerit, luokka P0, P1 tai P2 perusteluineen ja työmääräarvio, ja maksunvälitys on kirjattu pois rajatuksi.",
+          "tallenna": "Tarinat tiedostoksi `project-docs/kayttajatarinat.md` commitilla. Suunnitelman lataus ei korvaa tätä tiedostoa."
         },
         {
           "id": "2-2",
-          "teksti": "Piirrä tietomalli: tuote, kategoria, käyttäjä rooleineen, tilaus ja tilausrivi."
+          "teksti": "Päätä tuoteteema ja piirrä tietomalli",
+          "valmis": "Teema on päätetty perusteluineen, ja tietomallikaaviosta näkee viisi taulua, niiden suhteet ja sen, mihin tilausrivin hinta tallentuu.",
+          "tallenna": "Kaavio `project-docs/`-kansioon. Teema ja tietomalli suunnitelmalomakkeelle, josta lataat `project-docs/suunnitelma.md`:n."
         },
         {
           "id": "2-3",
-          "teksti": "Vertaa tietovarastovaihtoehdot (SQLite, JSON-tiedosto, PostgreSQL) ja perustele valinta."
+          "teksti": "Vertaa kolme tietovarastoa ja perustele valinta",
+          "valmis": "Vertailussa on kolme vaihtoehtoa kolmella perusteella, jokaisen haitta ja valinta perusteltuna kaupan omalla datalla.",
+          "tallenna": "Vertailu suunnitelmalomakkeelle ja siitä `project-docs/suunnitelma.md`:hen."
         },
         {
           "id": "2-4",
-          "teksti": "Luonnostele rautalangat, hyväksytä ne ja pilko P0 vähintään kahdeksaksi issueksi."
+          "teksti": "Hyväksytä rautalangat ja pilko työ issueiksi",
+          "valmis": "Rautalankojen hyväksyntä on kirjattu hyväksyjän sanoin, komponenttijako on suunnitelmassa, ja GitHubissa on vähintään kahdeksan P0-issueta valmis kun -ehtoineen.",
+          "tallenna": "Rautalangat kansioon `project-docs/rautalangat/` ja issuen numerot tiedostoon `kayttajatarinat.md`. Hyväksyjä, hänen sanansa ja issue-listan linkki työviikon 2 päiväkirjaan."
         }
       ],
-      "nayta": "`suunnitelma.md`, tietomallikuva, issue-listan linkki ja hyväksyntämerkintä.",
-      "tuotos": "suunnitelma.md tarinoineen, tietomallikaavio, tietovarastovertailu, hyväksytyt rautalangat ja vähintään kahdeksan issueta.",
-      "valmis": "suunnitelma.md:ssä on tarinat prioriteetteineen, tietomallikaavio, tietovarastoperustelu ja teemapäätös; issueita on vähintään kahdeksan ja P0 on merkitty; rautalankojen hyväksyntä on kirjattu: kuka hyväksyi ja mitä hän sanoi. Hyväksyjäksi käy ohjaaja asiakkaan äänenä, jos katselmoijaa ei ole vielä nimetty.",
+      "nayta": "`suunnitelma.md`, `kayttajatarinat.md`, tietomallikuva, issue-listan linkki ja hyväksyntämerkintä.",
+      "tuotos": "suunnitelma.md, kayttajatarinat.md, tietomallikaavio, tietovarastovertailu, hyväksytyt rautalangat ja vähintään kahdeksan issueta.",
+      "valmis": "Käyttäjätarinat prioriteetteineen ja arvioineen ovat tiedostossa kayttajatarinat.md; suunnitelma.md:ssä on teemapäätös, tietomalli ja tietovarastoperustelu, ja tietomallikaavio on project-docs-kansiossa; issueita on vähintään kahdeksan ja P0 on merkitty; rautalankojen hyväksyntä on kirjattu: kuka hyväksyi ja mitä hän sanoi. Hyväksyjäksi käy ohjaaja asiakkaan äänenä, jos katselmoijaa ei ole vielä nimetty.",
       "tarkistukset": [
         {
-          "id": "tiedosto:suunnitelma.md",
+          "id": "tiedosto:project-docs/kayttajatarinat.md",
           "tyyppi": "tiedosto",
-          "polku": "suunnitelma.md",
+          "polku": "project-docs/kayttajatarinat.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "tiedosto:project-docs/suunnitelma.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/suunnitelma.md",
           "lahde": "auto"
         },
         {
@@ -170,30 +198,44 @@
     "3": {
       "jarjestys": 3,
       "tyyppi": "feature",
-      "vaihe": "A",
+      "vaihe": "2",
       "otsikko": "Tuotelista kannasta",
       "tehtavat": [
         {
           "id": "3-1",
-          "teksti": "Luo SQLite-kanta ja seed-skripti noin 20 oman teeman tuotteella."
+          "teksti": "Luo SQLite-kanta ja seed-data omalle teemalle",
+          "valmis": "Kannassa on noin 20 oman teeman tuotetta kategorioineen, ja ne syntyvät uudelleen yhdellä seed-skriptin ajolla.",
+          "tallenna": "Taulujen luonti ja seed-skripti `backend/`-kansioon commitilla. Seed-datan kentät ja niiden perustelu työviikon 3 päiväkirjaan."
         },
         {
           "id": "3-2",
-          "teksti": "Toteuta `GET /api/tuotteet` ja kokeile se FastAPI:n /docs-sivulla."
+          "teksti": "Toteuta `GET /api/tuotteet` ja kokeile sitä /docs-sivulla",
+          "valmis": "`GET /api/tuotteet` palauttaa kannan tuotteet JSONina, ja se on kokeiltu /docs-sivulla ennen frontendin koodaamista.",
+          "tallenna": "Endpoint commitilla. Vastauksen muoto työviikon 3 päiväkirjaan."
         },
         {
           "id": "3-3",
-          "teksti": "Rakenna TuoteLista- ja TuoteKortti-komponentit itse ilman valmista käyttöliittymän komponenttikirjastoa."
+          "teksti": "Rakenna TuoteLista- ja TuoteKortti-komponentit itse",
+          "valmis": "Kehityspalvelin näyttää kannasta tulevat tuotteet itse rakennetuissa komponenteissa.",
+          "tallenna": "Komponentit commitilla. Kuvakaappaus tuotelistasta työviikon 3 päiväkirjaan."
         },
         {
           "id": "3-4",
-          "teksti": "Käsittele lataus-, tyhjä- ja virhetilat sekä kirjaa ja aja testitapaukset T01 ja T02."
+          "teksti": "Toteuta tuotelistan kolme tilaa ja testaa ne",
+          "valmis": "Lataus-, tyhjä- ja virhetila näkyvät käyttäjälle, sammutettu backend antaa virheilmoituksen, ja T01:n ja T02:n odotettu ja toteutunut tulos ovat testimatriisissa.",
+          "tallenna": "Testitapaukset T01 ja T02 tiedostoon `project-docs/testimatriisi.md` commitilla. Tulos lyhyesti työviikon 3 päiväkirjaan."
         }
       ],
-      "nayta": "commit-linkki, kuvakaappaus tuotelistasta ja testitapausten T01–T02 tulokset päiväkirjassa.",
+      "nayta": "commit-linkki, kuvakaappaus tuotelistasta ja testitapausten T01–T02 tulokset tiedostossa `project-docs/testimatriisi.md`.",
       "tuotos": "SQLite-kanta seed-datalla, GET /api/tuotteet, TuoteLista- ja TuoteKortti-komponentit sekä testitapaukset T01–T02.",
       "valmis": "Kehityspalvelin näyttää kannasta tulevat tuotteet; API palauttaa JSONia, mikä on testattu /docs-sivulta; kun backend sammutetaan, käyttäjä näkee virheilmoituksen eikä tyhjää ruutua.",
       "tarkistukset": [
+        {
+          "id": "tiedosto:project-docs/testimatriisi.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/testimatriisi.md",
+          "lahde": "auto"
+        },
         {
           "id": "paivakirja:3",
           "tyyppi": "paivakirja",
@@ -212,24 +254,32 @@
     "4": {
       "jarjestys": 4,
       "tyyppi": "feature",
-      "vaihe": "A",
+      "vaihe": "2",
       "otsikko": "Kategoriat ja reititys",
       "tehtavat": [
         {
           "id": "4-1",
-          "teksti": "Asenna ja konfiguroi vue-router ja kirjaa, miksi ulkoinen reitityskomponentti tarvitaan."
+          "teksti": "Ota vue-router käyttöön ja perustele valinta",
+          "valmis": "Reitit on määritelty vue-routerilla, reittikartta on suunnitelmassa ja valinnan perustelu on kirjoitettu.",
+          "tallenna": "Reittikartta suunnitelmalomakkeen komponenttijako ja sivukartta -kenttään. Perustelu työviikon 4 päiväkirjaan."
         },
         {
           "id": "4-2",
-          "teksti": "Toteuta kategorialistaus ja kategoriakohtainen tuotenäkymä."
+          "teksti": "Toteuta kategorialistaus ja kategorian tuotenäkymä",
+          "valmis": "Kategorian valinta näyttää vain sen kategorian tuotteet omassa osoitteessaan.",
+          "tallenna": "Endpoint ja näkymät commitilla."
         },
         {
           "id": "4-3",
-          "teksti": "Toteuta tuotesivu reittiparametrilla ja 404-reitti."
+          "teksti": "Toteuta tuotesivu ja 404-näkymä",
+          "valmis": "Jokaisella tuotteella on oma osoite, joka toimii suoraan avattuna ja päivityksellä, ja tuntematon osoite näyttää 404-näkymän.",
+          "tallenna": "Näkymät ja reitit commitilla."
         },
         {
           "id": "4-4",
-          "teksti": "Päätä responsiivisuuden taitekohdat, rakenna saavutettavuuden perusta sisään ja testaa oikealla puhelimella."
+          "teksti": "Tee navigaatiosta puhelimella ja näppäimistöllä toimiva",
+          "valmis": "Navigointi toimii omalla puhelimella, perusnäkymissä pääsee liikkumaan näppäimistöllä, ja taitekohdat on kirjattu perusteluineen.",
+          "tallenna": "Taitekohdat suunnitelmalomakkeelle. Kuvakaappaus puhelimelta ja puhelintestin havainnot työviikon 4 päiväkirjaan."
         }
       ],
       "nayta": "commit, reittikartta suunnitelmassa ja kuvakaappaus omalta puhelimelta.",
@@ -254,27 +304,35 @@
     "5": {
       "jarjestys": 5,
       "tyyppi": "feature",
-      "vaihe": "A",
+      "vaihe": "2",
       "otsikko": "Ensijulkaisu",
       "tehtavat": [
         {
           "id": "5-1",
-          "teksti": "Vertaa vähintään kolme julkaisuvaihtoehtoa ja valitse perustellen."
+          "teksti": "Vertaa julkaisualustat ja valitse perustellen",
+          "valmis": "Suunnitelmassa on vähintään kolmen alustan vertailu rajoitteineen ja perusteltu valinta.",
+          "tallenna": "Vertailu ja valinta suunnitelmalomakkeen julkaisualusta-kenttään ja siitä `project-docs/suunnitelma.md`:hen."
         },
         {
           "id": "5-2",
-          "teksti": "Konfiguroi tuotanto-build ja ympäristömuuttujat; `.env` ei mene repositoryyn."
+          "teksti": "Erota kehitys- ja tuotantoasetukset",
+          "valmis": "Build onnistuu, rajapinnan osoite tulee ympäristömuuttujasta, ja `.env.example` on repositoryssa mutta `.env` ei.",
+          "tallenna": "Asetukset ja `.env.example` commitilla."
         },
         {
           "id": "5-3",
-          "teksti": "Julkaise kauppa ja savutestaa julkinen osoite toisella laitteella (T03)."
+          "teksti": "Julkaise kauppa ja savutestaa se toisella laitteella",
+          "valmis": "Julkinen osoite näyttää tuotelistan kannasta puhelimella ja toisella koneella, ja testitapauksen T03 tulos on testimatriisissa.",
+          "tallenna": "Julkinen osoite ja lokin kuvakaappaus työviikon 5 päiväkirjaan. Testitapaus T03 tiedostoon `project-docs/testimatriisi.md`."
         },
         {
           "id": "5-4",
-          "teksti": "Aloita käyttöönotto-ohje READMEen."
+          "teksti": "Aloita käyttöönotto-ohje READMEen",
+          "valmis": "README:ssä on käyttöönoton ensimmäinen versio: käynnistys, ympäristömuuttujat ja julkaisu.",
+          "tallenna": "README commitilla repositoryyn."
         }
       ],
-      "nayta": "julkinen URL, julkaisulokin kuvakaappaus, vertailutaulukko suunnitelmassa ja T03:n tulos.",
+      "nayta": "julkinen URL, julkaisulokin kuvakaappaus, vertailutaulukko suunnitelmassa ja T03:n tulos testimatriisissa.",
       "tuotos": "Julkaistu frontend ja backend, alustavertailu suunnitelmassa, ympäristömuuttujat kunnossa, käyttöönotto-ohjeen alku READMEssä ja testi T03.",
       "valmis": "Julkinen URL näyttää tuotelistan kannasta; osoite toimii puhelimella ja toisella koneella; salaisuudet ja .env-tiedosto eivät ole repositoryssä.",
       "tarkistukset": [
@@ -296,27 +354,35 @@
     "6": {
       "jarjestys": 6,
       "tyyppi": "feature",
-      "vaihe": "B",
+      "vaihe": "3",
       "otsikko": "Sanahaku",
       "tehtavat": [
         {
           "id": "6-1",
-          "teksti": "Toteuta haku-endpoint kyselyparametrilla parametrisoidulla SQL:llä ja kirjaa, miksi parametrisointi tehdään."
+          "teksti": "Toteuta haku parametrisoidulla kyselyllä",
+          "valmis": "Haku nimen osalla löytää tuotteen (esimerkiksi ”nop” → ”Nopanheitto”), ja haku `'; DROP TABLE tuote; --` palauttaa nolla osumaa kaatamatta mitään.",
+          "tallenna": "Endpoint commitilla. Selitys parametrisoinnista työviikon 6 päiväkirjaan."
         },
         {
           "id": "6-2",
-          "teksti": "Rakenna hakukenttä ja tuloslista."
+          "teksti": "Rakenna hakukenttä ja tuloslista",
+          "valmis": "Hakukenttään kirjoitettu nimen osa näyttää osuvat tuotteet rajapinnasta, ja hakutavan valinta on perusteltu.",
+          "tallenna": "Komponentti commitilla. Hakutavan perustelu ja kuvakaappaus hakudemosta työviikon 6 päiväkirjaan."
         },
         {
           "id": "6-3",
-          "teksti": "Käsittele tyhjä tulos opastavalla tekstillä ja backend-virhe omalla viestillään."
+          "teksti": "Näytä haun tyhjä tulos ja virhe omina viesteinään",
+          "valmis": "Tyhjä tulos ja backend-virhe näyttävät eri viestin, eikä kumpikaan jätä ruutua tyhjäksi.",
+          "tallenna": "Muutokset commitilla."
         },
         {
           "id": "6-4",
-          "teksti": "Kirjaa ja aja testitapaukset T04 ja T05."
+          "teksti": "Aja testitapaukset T04 ja T05",
+          "valmis": "T04:n ja T05:n odotettu ja toteutunut tulos ovat testimatriisissa, eikä erikoismerkkihaku muuttanut kantaa.",
+          "tallenna": "Testitapaukset tiedostoon `project-docs/testimatriisi.md` commitilla. Tulokset lyhyesti työviikon 6 päiväkirjaan."
         }
       ],
-      "nayta": "commit, testitapausten T04–T05 tulokset ja kuvakaappaus hakudemosta.",
+      "nayta": "commit, testitapausten T04–T05 tulokset testimatriisissa ja kuvakaappaus hakudemosta.",
       "tuotos": "Haku-endpoint parametrisoidulla SQL-kyselyllä, hakukenttä ja tuloslista, tyhjän tuloksen ja virheen käsittely sekä testitapaukset T04–T05.",
       "valmis": "Haku ”nop” löytää ”Nopanheitto”-tuotteen; haku merkkijonolla '; DROP TABLE palauttaa nolla osumaa eikä kaada mitään; tyhjä tulos opastaa käyttäjää.",
       "tarkistukset": [
@@ -338,30 +404,44 @@
     "7": {
       "jarjestys": 7,
       "tyyppi": "feature",
-      "vaihe": "B",
+      "vaihe": "3",
       "otsikko": "Ostoskori",
       "tehtavat": [
         {
           "id": "7-1",
-          "teksti": "Vertaa korin tallennusvaihtoehdot ja tee päätös ohjaajan kanssa kirjaten."
+          "teksti": "Vertaa korin tallennustavat ja päätä ohjaajan kanssa",
+          "valmis": "Päätösmuistiossa on kaksi todellista vaihtoehtoa hyötyineen ja haittoineen, päätös ja ohjaajan kommentti.",
+          "tallenna": "Vertailu päätösmuistioksi `project-docs/paatos-ostoskori.md`. Päätös ja perustelu suunnitelmaan."
         },
         {
           "id": "7-2",
-          "teksti": "Toteuta kori-store haarassa `feature/ostoskori` ja yhdistä se pull requestilla."
+          "teksti": "Toteuta kori-store haarassa `feature/ostoskori`",
+          "valmis": "Store lisää, poistaa ja muuttaa määriä oikein, summa täsmää, ja kori säilyy sivun päivityksessä.",
+          "tallenna": "Store pieninä commiteina haaraan `feature/ostoskori`."
         },
         {
           "id": "7-3",
-          "teksti": "Rakenna korinäkymä määränmuutoksineen ja summineen."
+          "teksti": "Rakenna korinäkymä ja yhdistä haara pull requestilla",
+          "valmis": "Korinäkymä toimii main-haarassa, pull request on yhdistetty, ja mahdollinen konflikti on ratkaistu ja kirjattu.",
+          "tallenna": "Pull requestin linkki ja konfliktin ratkaisu työviikon 7 päiväkirjaan."
         },
         {
           "id": "7-4",
-          "teksti": "Kirjaa ja aja testitapaukset T06 ja T07 sekä kirjaa virheenkorjausketju K1."
+          "teksti": "Aja testitapaukset T06–T07 ja kirjaa ketju K1",
+          "valmis": "T06:n ja T07:n tulokset ovat testimatriisissa, ja K1-ketju on kokonainen havainnosta regressiotestiin.",
+          "tallenna": "Testitapaukset tiedostoon `project-docs/testimatriisi.md`. K1-ketju kokonaisena työviikon 7 päiväkirjaan."
         }
       ],
-      "nayta": "pull requestin linkki, päätösmuistio, testitapausten T06–T07 tulokset ja K1-ketju päiväkirjassa.",
+      "nayta": "pull requestin linkki, päätösmuistio, testitapausten T06–T07 tulokset testimatriisissa ja K1-ketju päiväkirjassa.",
       "tuotos": "Kori-store, korinäkymä määränmuutoksineen ja summineen, yhdistetty pull request, päätösmuistio korin tallennuksesta, testitapaukset T06–T07 ja virheenkorjausketju K1.",
       "valmis": "Tuotteita voi lisätä ja poistaa, määrää muuttaa ja summa täsmää; kori säilyy sivun päivityksessä; pull request on yhdistetty ja mahdollinen konflikti on ratkaistu.",
       "tarkistukset": [
+        {
+          "id": "tiedosto:project-docs/paatos-ostoskori.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/paatos-ostoskori.md",
+          "lahde": "auto"
+        },
         {
           "id": "pr:yhdistetty",
           "tyyppi": "pr",
@@ -386,30 +466,44 @@
     "8": {
       "jarjestys": 8,
       "tyyppi": "feature",
-      "vaihe": "B",
+      "vaihe": "3",
       "otsikko": "Tunnukset ja istunto",
       "tehtavat": [
         {
           "id": "8-1",
-          "teksti": "Vertaa istuntoratkaisut (JWT ja eväste-sessio) ja kirjaa päätös perusteluineen ohjaajan kommentilla."
+          "teksti": "Vertaa istuntoratkaisut ja päätä ohjaajan kanssa",
+          "valmis": "Päätösmuistiossa ovat molempien vaihtoehtojen hyödyt ja haitat omin sanoin, päätös ja ohjaajan kommentti.",
+          "tallenna": "Vertailu päätösmuistioksi `project-docs/paatos-istunto.md`. Päätös ja perustelu suunnitelmaan."
         },
         {
           "id": "8-2",
-          "teksti": "Toteuta rekisteröityminen validointeineen ja salasanan hashaus."
+          "teksti": "Toteuta rekisteröityminen ja salasanan hashaus",
+          "valmis": "Rekisteröityminen luo käyttäjän roolikenttineen, ja kannassa on vain hashattuja salasanoja.",
+          "tallenna": "Endpoint commitilla. Kuvakaappaus kantariveistä, joissa hash näkyy, työviikon 8 päiväkirjaan."
         },
         {
           "id": "8-3",
-          "teksti": "Toteuta kirjautuminen, uloskirjautuminen ja auth-store Piniaan."
+          "teksti": "Toteuta kirjautuminen, uloskirjautuminen ja auth-store",
+          "valmis": "Kirjautumistila säilyy sivun päivityksessä, uloskirjautuminen tyhjentää sen, eikä virheilmoitus paljasta, kumpi meni väärin.",
+          "tallenna": "Kirjautuminen, auth-store ja lomakkeet commitilla."
         },
         {
           "id": "8-4",
-          "teksti": "Kirjaa ja aja testitapaukset T08 ja T09."
+          "teksti": "Aja testitapaukset T08 ja T09",
+          "valmis": "T08:n ja T09:n odotettu ja toteutunut tulos ovat testimatriisissa, eikä kirjautunut tila palaa uloskirjautumisen jälkeen.",
+          "tallenna": "Testitapaukset tiedostoon `project-docs/testimatriisi.md` commitilla. Tulokset lyhyesti työviikon 8 päiväkirjaan."
         }
       ],
-      "nayta": "päätösmuistio, kuvakaappaus kantariveistä (hash näkyy, salasana ei) ja testitapausten T08–T09 tulokset.",
-      "tuotos": "Users-taulu roolikenttineen, rekisteröityminen ja kirjautuminen, auth-store, päätösmuistio istuntoratkaisusta ja testitapaukset T08–T09.",
+      "nayta": "päätösmuistio, kuvakaappaus kantariveistä (hash näkyy, salasana ei) ja testitapausten T08–T09 tulokset testimatriisissa.",
+      "tuotos": "Käyttäjätaulu (kayttaja) roolikenttineen, rekisteröityminen ja kirjautuminen, auth-store, päätösmuistio istuntoratkaisusta ja testitapaukset T08–T09.",
       "valmis": "Kannassa ei näy yhtään selkokielistä salasanaa; väärä salasana ja tuntematon tunnus antavat saman yleisen virheilmoituksen; kirjautumistila säilyy sivun päivityksessä ja uloskirjautuminen tyhjentää sen.",
       "tarkistukset": [
+        {
+          "id": "tiedosto:project-docs/paatos-istunto.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/paatos-istunto.md",
+          "lahde": "auto"
+        },
         {
           "id": "paivakirja:8",
           "tyyppi": "paivakirja",
@@ -428,27 +522,35 @@
     "9": {
       "jarjestys": 9,
       "tyyppi": "feature",
-      "vaihe": "B",
+      "vaihe": "3",
       "otsikko": "Tilaus ja tilaushistoria",
       "tehtavat": [
         {
           "id": "9-1",
-          "teksti": "Toteuta tilauksen luonti transaktiona: tilaus ja rivit tallentuvat yhtenä kokonaisuutena."
+          "teksti": "Tallenna tilaus transaktiona tilaushetken hinnoilla",
+          "valmis": "Tilaus tallentuu kantaan riveineen ja tilaushetken hinnoilla, keskeytetty tilaus ei jätä puolikasta riviä, ja kirjautumaton saa virhekoodin 401.",
+          "tallenna": "Endpoint commitilla, joka viittaa issueen. Transaktion toteutustapa työviikon 9 päiväkirjaan."
         },
         {
           "id": "9-2",
-          "teksti": "Rakenna tilauslomake ja valitse validointiin perusteltu ulkoinen paketti tai perustele oma validointi."
+          "teksti": "Rakenna tilauslomake ja perustele validointiratkaisu",
+          "valmis": "Tilauslomake lähettää korin rajapintaan, kori tyhjenee vain onnistuneesta tilauksesta, ja validointiratkaisu on perusteltu suunnitelmassa.",
+          "tallenna": "Lomake commitilla. Lisäpaketin tai oman validoinnin perustelu suunnitelmaan."
         },
         {
           "id": "9-3",
-          "teksti": "Toteuta tilaushistorianäkymä, joka näyttää vain omat tilaukset."
+          "teksti": "Toteuta tilaushistoria, joka näyttää vain omat tilaukset",
+          "valmis": "Historia näyttää vain kirjautuneen käyttäjän omat tilaukset, eikä vanhan tilauksen summa muutu hinnanmuutoksesta.",
+          "tallenna": "Näkymä ja endpoint commitilla. Kuvakaappaus historiasta työviikon 9 päiväkirjaan."
         },
         {
           "id": "9-4",
-          "teksti": "Kirjaa ja aja testitapaukset T10 ja T11."
+          "teksti": "Aja testitapaukset T10 ja T11",
+          "valmis": "T10:n ja T11:n odotettu ja toteutunut tulos ovat testimatriisissa.",
+          "tallenna": "Testitapaukset tiedostoon `project-docs/testimatriisi.md` commitilla. Tulokset lyhyesti työviikon 9 päiväkirjaan."
         }
       ],
-      "nayta": "commit, lisäpaketin perustelu suunnitelmassa, testitapausten T10–T11 tulokset ja kuvakaappaus historiasta.",
+      "nayta": "commit, lisäpaketin perustelu suunnitelmassa, testitapausten T10–T11 tulokset testimatriisissa ja kuvakaappaus historiasta.",
       "tuotos": "Tilauksen luonti transaktiona, tilauslomake validointeineen, tilaushistorianäkymä, perustelu k4-lisäpaketista ja testitapaukset T10–T11.",
       "valmis": "Tilaus näkyy kannassa riveineen ja tilaushetken hinnoilla; historia näyttää vain omat tilaukset; tyhjää koria ei voi tilata eikä kirjautumaton pääse tilaamaan.",
       "tarkistukset": [
@@ -470,30 +572,44 @@
     "10": {
       "jarjestys": 10,
       "tyyppi": "katselmointi",
-      "vaihe": "B",
+      "vaihe": "3",
       "otsikko": "Asiakaskatselmointi",
       "tehtavat": [
         {
           "id": "10-1",
-          "teksti": "Kutsu nimetty ulkopuolinen asiakkaan rooliin ja laadi kolmen tehtävän tehtävärata."
+          "teksti": "Sovi katselmoija ja kirjoita kolmen tehtävän rata",
+          "valmis": "Katselmoija ja aika on sovittu, ja tehtävärata ja ympäristön tiedot ovat muistiossa valmiina.",
+          "tallenna": "Muistiopohja tiedostoon `project-docs/katselmointimuistio.md`."
         },
         {
           "id": "10-2",
-          "teksti": "Vedä katselmointi julkisessa osoitteessa ja kirjaa sitaatit ja oma tulkinta erikseen."
+          "teksti": "Vedä katselmointi ja kirjaa sitaatit erillään tulkinnasta",
+          "valmis": "Muistiossa on nimetty rooli, testaajan sanat sitaatteina ja oma tulkinta erillään niistä.",
+          "tallenna": "Havainnot `project-docs/katselmointimuistio.md`:hen. Kolme vaikuttavinta sitaattia työviikon 10 päiväkirjaan."
         },
         {
           "id": "10-3",
-          "teksti": "Muuta palaute issueiksi ja priorisoi ne ohjaajan kanssa."
+          "teksti": "Muuta palaute issueiksi ja priorisoi ne ohjaajan kanssa",
+          "valmis": "Vähintään kolme palautekohtaa on issueina prioriteetteineen, ja sovitut muutokset ovat muistiossa.",
+          "tallenna": "Issueiden numerot ja prioriteetit muistioon ja työviikon 10 päiväkirjaan."
         },
         {
           "id": "10-4",
-          "teksti": "Kirjoita asiakkaalle yhteenveto ilman teknistä jargonia."
+          "teksti": "Kirjoita asiakkaalle yhteenveto ilman teknistä jargonia",
+          "valmis": "Yhteenveto kertoo ilman teknistä jargonia, mitä testattiin, mitä löytyi ja mitä seuraavaksi tehdään, ja ohjaaja erottaa muistiosta sitaatit ja tulkinnan.",
+          "tallenna": "Yhteenveto muistion loppuun tiedostoon `project-docs/katselmointimuistio.md`."
         }
       ],
       "nayta": "katselmointimuistio `project-docs`-kansiossa ja palauteissueiden linkit.",
       "tuotos": "Katselmointimuistio rooleineen ja sitaatteineen, vähintään kolme palauteissueta prioriteetteineen ja asiakaskielinen yhteenveto.",
       "valmis": "Katselmointimuistiossa on nimetty rooli, testaajan omat sanat ja niistä erillään oma tulkinta; vähintään kolme palautekohtaa on issueina prioriteetteineen; asiakasyhteenveto on kirjoitettu.",
       "tarkistukset": [
+        {
+          "id": "tiedosto:project-docs/katselmointimuistio.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/katselmointimuistio.md",
+          "lahde": "auto"
+        },
         {
           "id": "paivakirja:10",
           "tyyppi": "paivakirja",
@@ -512,29 +628,37 @@
     "11": {
       "jarjestys": 11,
       "tyyppi": "feature",
-      "vaihe": "C",
+      "vaihe": "4",
       "otsikko": "Palautemuutos ja omat tiedot",
       "tehtavat": [
         {
           "id": "11-1",
-          "teksti": "Toteuta katselmoinnin tärkein muutos ketjuna: issue, haara, commit ja tuotanto."
+          "teksti": "Vie tärkein palautemuutos tuotantoon asti",
+          "valmis": "Muutos näkyy julkaistussa versiossa, issue on suljettu committiin viitaten, ja testaajan kuittaus on muistiossa.",
+          "tallenna": "Ketju issuesta committiin ja tuotantolinkkiin työviikon 11 päiväkirjaan."
         },
         {
           "id": "11-2",
-          "teksti": "Toteuta omien asiakastietojen muokkaus; käyttäjätunnusta ei voi vaihtaa."
+          "teksti": "Toteuta omien yhteystietojen muokkaus",
+          "valmis": "Omia yhteystietoja voi muokata ja ne tallentuvat, mutta käyttäjätunnusta ei voi vaihtaa.",
+          "tallenna": "Lomake ja endpoint commitilla."
         },
         {
           "id": "11-3",
-          "teksti": "Päivitä suunnitelma ja työmääräarviot toteutuneen perusteella."
+          "teksti": "Päivitä työmääräarviot toteutuneen perusteella",
+          "valmis": "Arvioissa näkyvät toteutunut aika ja poikkeaman syy, ja päivitys on omana committinaan.",
+          "tallenna": "Päivitetyt arviot ja suunnitelma commitilla `project-docs/`-kansioon."
         },
         {
           "id": "11-4",
-          "teksti": "Kirjaa virheenkorjausketju K2 aidosta havainnosta."
+          "teksti": "Kirjaa virheenkorjausketju K2 aidosta havainnosta",
+          "valmis": "K2-ketju on kokonainen: havainto, toistamisohje, syy, korjauscommit, uusintatesti ja regressiotesti.",
+          "tallenna": "K2-ketju kokonaisena työviikon 11 päiväkirjaan."
         }
       ],
-      "nayta": "ketju issuesta committiin ja tuotantolinkkiin, K2-ketju ja suunnitelman muutoshistoria.",
+      "nayta": "ketju issuesta committiin ja tuotantolinkkiin, K2-ketju ja päivitettyjen arvioiden muutoshistoria.",
       "tuotos": "Palautemuutos issuesta tuotantoon, omien tietojen muokkauslomake, päivitetyt työmääräarviot suunnitelmassa ja virheenkorjausketju K2.",
-      "valmis": "Muutos näkyy julkaistussa versiossa ja issue sulkeutuu committiin viitaten; omia tietoja voi muokata mutta käyttäjätunnusta ei; suunnitelmassa näkyy päivitetty arvio perusteluineen.",
+      "valmis": "Muutos näkyy julkaistussa versiossa ja issue sulkeutuu committiin viitaten; omia tietoja voi muokata mutta käyttäjätunnusta ei; suunnitelma-aineistossa (kayttajatarinat.md) näkyy päivitetty arvio perusteluineen.",
       "tarkistukset": [
         {
           "id": "paivakirja:11",
@@ -554,27 +678,35 @@
     "12": {
       "jarjestys": 12,
       "tyyppi": "feature",
-      "vaihe": "C",
+      "vaihe": "4",
       "otsikko": "Tuotehallinta ja roolisuojaus",
       "tehtavat": [
         {
           "id": "12-1",
-          "teksti": "Toteuta roolipohjainen pääsynhallinta: reitin vartija (route guard) frontendissä ja roolitarkistus rajapinnassa."
+          "teksti": "Suojaa hallinta rajapinnassa ja käyttöliittymässä",
+          "valmis": "Hallintaendpointit palauttavat 401 ilman istuntoa ja 403 asiakkaan istunnolla, ja asiakas ohjataan pois hallintareiteiltä.",
+          "tallenna": "Suojaus commitilla. Kuvaus molemmista tasoista työviikon 12 päiväkirjaan."
         },
         {
           "id": "12-2",
-          "teksti": "Rakenna tuotehallintanäkymä lisäys-, muokkaus- ja poistolomakkeineen."
+          "teksti": "Rakenna henkilökunnan tuotehallintanäkymä",
+          "valmis": "Henkilökunta voi lisätä, muokata ja poistaa tuotteita selaimessa, ja lisätty tuote näkyy heti kaupan puolella.",
+          "tallenna": "Näkymä ja endpointit commitilla. Kuvakaappaus hallintanäkymästä työviikon 12 päiväkirjaan."
         },
         {
           "id": "12-3",
-          "teksti": "Validoi syötteet sekä frontendissä että backendissä."
+          "teksti": "Validoi tuotetiedot sekä lomakkeessa että backendissä",
+          "valmis": "Negatiivinen hinta ja puuttuva pakollinen kenttä hylätään sekä lomakkeessa että suorassa rajapintakutsussa.",
+          "tallenna": "Validoinnit commitilla."
         },
         {
           "id": "12-4",
-          "teksti": "Kirjaa ja aja testitapaukset T12 ja T13, joissa asiakasrooli yrittää hallintaan myös suoralla rajapintakutsulla."
+          "teksti": "Aja testitapaukset T12 ja T13 molemmilla rooleilla",
+          "valmis": "T12:n ja T13:n tulokset curl-vastauksineen ovat testimatriisissa: 401 ilman istuntoa, 403 asiakkaana ja onnistunut lisäys henkilökuntana.",
+          "tallenna": "Testitapaukset tiedostoon `project-docs/testimatriisi.md` commitilla. curl-kutsujen vastaukset työviikon 12 päiväkirjaan."
         }
       ],
-      "nayta": "testitapausten T12–T13 tulokset curl-kutsun vastauksineen, commit ja kuvakaappaus hallintanäkymästä.",
+      "nayta": "testitapausten T12–T13 tulokset curl-kutsun vastauksineen testimatriisissa, commit ja kuvakaappaus hallintanäkymästä.",
       "tuotos": "Roolipohjainen pääsynhallinta kahdella tasolla, tuotehallintanäkymä lomakkeineen, validoinnit molemmilla puolilla ja testitapaukset T12–T13.",
       "valmis": "Asiakasroolilla suora URL hallintanäkymään ohjaa pois ja suora rajapintakutsu palauttaa virhekoodin 401 (ei kirjautunut) tai 403 (ei oikeuksia); henkilökunnan lisäämä tuote näkyy heti kaupan puolella.",
       "tarkistukset": [
@@ -596,27 +728,35 @@
     "13": {
       "jarjestys": 13,
       "tyyppi": "feature",
-      "vaihe": "C",
+      "vaihe": "4",
       "otsikko": "Tilaukset ja saavutettavuus",
       "tehtavat": [
         {
           "id": "13-1",
-          "teksti": "Toteuta henkilökunnan tilauslistaus suodatuksella: uudet ja käsitellyt."
+          "teksti": "Toteuta henkilökunnan tilauslistaus suodatuksella",
+          "valmis": "Henkilökunta näkee kaikkien asiakkaiden tilaukset uusimmat ensin ja voi suodattaa uudet ja käsitellyt, mutta asiakas ei pääse näkymään.",
+          "tallenna": "Endpoint ja näkymä commitilla. Näytettävien tietojen perustelu työviikon 13 päiväkirjaan."
         },
         {
           "id": "13-2",
-          "teksti": "Toteuta tilauksen tila ja sen muutos, näytä tila asiakkaan historiassa ja aja testitapaus T14."
+          "teksti": "Merkitse tilaus käsitellyksi ja näytä tila asiakkaalle",
+          "valmis": "Henkilökunnan käsitellyksi-merkintä näkyy asiakkaan historiassa, asiakas näkee yhä vain omat tilauksensa, ja T14:n tulos on testimatriisissa.",
+          "tallenna": "Muutokset commitilla. Testitapaus T14 testimatriisiin ja kuvakaappaukset molemmilla rooleilla työviikon 13 päiväkirjaan."
         },
         {
           "id": "13-3",
-          "teksti": "Tee saavutettavuustarkistus koko sovellukselle ja korjaa löydökset."
+          "teksti": "Mittaa saavutettavuus Lighthousella ja tarkistuslistalla",
+          "valmis": "Lighthouse-raportti ennen korjauksia on tallennettu, ja löydökset on kirjattu näkymä kerrallaan.",
+          "tallenna": "Raportti tiedostoon `project-docs/lighthouse-ennen.*`. Löydöslista työviikon 13 päiväkirjaan."
         },
         {
           "id": "13-4",
-          "teksti": "Aja Lighthouse ennen ja jälkeen korjausten ja tallenna raportit."
+          "teksti": "Korjaa saavutettavuuslöydökset ja mittaa uudelleen",
+          "valmis": "Vähintään yksi puute on korjattu, ostopolun voi kulkea pelkällä näppäimistöllä, ja molemmat Lighthouse-raportit ovat tallessa.",
+          "tallenna": "Raportti tiedostoon `project-docs/lighthouse-jalkeen.*` ja korjaukset commitilla. Pisteet ennen ja jälkeen työviikon 13 päiväkirjaan."
         }
       ],
-      "nayta": "n tulos, kuvakaappaukset molemmilla rooleilla ja Lighthouse-raportit ennen ja jälkeen.",
+      "nayta": "n tulos testimatriisissa, kuvakaappaukset molemmilla rooleilla ja Lighthouse-raportit ennen ja jälkeen.",
       "tuotos": "Henkilökunnan tilauslistaus suodatuksineen, tilan muutos ja sen näkyminen asiakkaalle, testitapaus T14 sekä Lighthouse-raportit ennen ja jälkeen korjausten.",
       "valmis": "Henkilökunta näkee kaikkien tilaukset ja asiakas vain omansa; käsitellyksi-merkintä näkyy asiakkaalle; ostopolun voi kulkea läpi pelkällä näppäimistöllä; Lighthouse-raportit ennen ja jälkeen on tallennettu ja vähintään yksi saavutettavuuspuute on korjattu.",
       "tarkistukset": [
@@ -638,24 +778,32 @@
     "14": {
       "jarjestys": 14,
       "tyyppi": "laatu",
-      "vaihe": "C",
+      "vaihe": "4",
       "otsikko": "Tietoturvaviikko",
       "tehtavat": [
         {
           "id": "14-1",
-          "teksti": "Käy sovellus läpi tietoturvan tarkistuslistalla kohta kohdalta."
+          "teksti": "Käy kauppa läpi tietoturvan tarkistuslistalla",
+          "valmis": "Arviotiedostossa on jokaisen tarkistuslistan kohdan nykytila.",
+          "tallenna": "`project-docs/tietoturva-arvio.md` commitilla."
         },
         {
           "id": "14-2",
-          "teksti": "Testaa hyökkääjän silmin: SQL-injektio, XSS, IDOR ja hallinnan rajapinta ilman istuntoa."
+          "teksti": "Tee neljä hyökkäystestiä omaa kauppaa vastaan",
+          "valmis": "Neljä hyökkäystestiä on ajettu julkaistua versiota vasten, ja jokaisesta on kirjattu syöte, odotus ja tulos.",
+          "tallenna": "Hyökkäystestien kirjaukset `project-docs/tietoturva-arvio.md`:hen."
         },
         {
           "id": "14-3",
-          "teksti": "Korjaa löydökset ja kirjaa virheenkorjausketju K3."
+          "teksti": "Korjaa löydökset ja kirjaa virheenkorjausketju K3",
+          "valmis": "Vähintään kaksi kovennusta on tehty, jokainen korjaus on uusinta- ja regressiotestattu, ja K3-ketju on kokonainen.",
+          "tallenna": "Korjauscommitit repositoryyn. K3-ketju kokonaisena työviikon 14 päiväkirjaan."
         },
         {
           "id": "14-4",
-          "teksti": "Kirjoita `tietoturva-arvio.md` ja käy se läpi ohjaajan kanssa."
+          "teksti": "Kirjoita `tietoturva-arvio.md` ja käy se läpi ohjaajan kanssa",
+          "valmis": "Jokaisella riskillä on ratkaisu tai perusteltu jäännösriski, ja ohjaajan läpikäynti on kirjattu.",
+          "tallenna": "`project-docs/tietoturva-arvio.md` commitilla. Ohjaajan kommentit työviikon 14 päiväkirjaan."
         }
       ],
       "nayta": "`tietoturva-arvio.md`, hyökkäystestien kirjaukset, K3-ketju ja korjauscommitit.",
@@ -663,9 +811,9 @@
       "valmis": "tietoturva-arvio.md:ssä jokaisella tunnistetulla riskillä on ratkaisu tai perusteltu jäännösriski; vähintään yksi aito löydös on korjattu täydellisenä K3-ketjuna; ohjaajan läpikäynti on kirjattu.",
       "tarkistukset": [
         {
-          "id": "tiedosto:tietoturva-arvio.md",
+          "id": "tiedosto:project-docs/tietoturva-arvio.md",
           "tyyppi": "tiedosto",
-          "polku": "tietoturva-arvio.md",
+          "polku": "project-docs/tietoturva-arvio.md",
           "lahde": "auto"
         },
         {
@@ -686,20 +834,26 @@
     "15": {
       "jarjestys": 15,
       "tyyppi": "laatu",
-      "vaihe": "C",
+      "vaihe": "4",
       "otsikko": "Testaus ja regressio",
       "tehtavat": [
         {
           "id": "15-1",
-          "teksti": "Aja koko testimatriisi T01–T14 julkaistua versiota vasten ja kirjaa jokaisen rivin toteutunut tulos."
+          "teksti": "Aja koko testimatriisi julkaistua versiota vasten",
+          "valmis": "Matriisin jokaisella rivillä on odotettu ja toteutunut tulos julkaistua versiota vasten, ja poikkeamat ovat issueina.",
+          "tallenna": "Tulostaulukko tiedostoon `project-docs/testimatriisi.md` commitilla."
         },
         {
           "id": "15-2",
-          "teksti": "Aja viikkojen 13 ja 14 korjausten regressiotestit."
+          "teksti": "Aja työviikkojen 13 ja 14 korjausten regressiotestit",
+          "valmis": "Jokaiselle työviikkojen 13 ja 14 korjaukselle on ajettu regressiotesti, ja tulokset ovat testimatriisissa.",
+          "tallenna": "Regressioajojen tulokset tiedostoon `project-docs/testimatriisi.md`."
         },
         {
           "id": "15-3",
-          "teksti": "Refaktoroi vähintään yksi, enintään kaksi kohdetta ja aja matriisin osumat uudelleen."
+          "teksti": "Refaktoroi yksi tai kaksi kohdetta testit välissä",
+          "valmis": "Refaktorointicommiteissa testit on ajettu ennen ja jälkeen, eikä yhdenkään rivin tulos muuttunut.",
+          "tallenna": "Refaktorointicommitit perusteluineen. Mitä refaktoroit ja miksi työviikon 15 päiväkirjaan."
         }
       ],
       "nayta": "testimatriisin tulostaulukko `project-docs`-kansiossa, refaktorointicommitit ja poikkeamaissuet.",
@@ -724,30 +878,44 @@
     "16": {
       "jarjestys": 16,
       "tyyppi": "katselmointi",
-      "vaihe": "D",
+      "vaihe": "5",
       "otsikko": "Julkaisuehdokas ja julkaisutestaus",
       "tehtavat": [
         {
           "id": "16-1",
-          "teksti": "Jäädytä sisältö, julkaise julkaisuehdokas (RC) ja merkitse git-tag `v1.0-rc1`."
+          "teksti": "Siivoa repository ja viimeistele ohjeet",
+          "valmis": "Repositoryssa ei ole turhia tiedostoja eikä salaisuuksia, ja README, asiakasohje ja CREDITS ovat valmiit.",
+          "tallenna": "Siivous ja ohjeet commitilla. Mitä siivosit, työviikon 16 päiväkirjaan."
         },
         {
           "id": "16-2",
-          "teksti": "Siivoa repository ja viimeistele käyttöönotto- ja käyttöohje."
+          "teksti": "Jäädytä sisältö ja julkaise julkaisuehdokas `v1.0-rc1`",
+          "valmis": "Tagi `v1.0-rc1` osoittaa siihen versioon, joka on julkaistu ja testataan.",
+          "tallenna": "Tagi GitHubiin. Jäädytyksen hetki työviikon 16 päiväkirjaan."
         },
         {
           "id": "16-3",
-          "teksti": "Järjestä julkaisutestaus: nimetty ulkopuolinen ja puhdas ympäristö ilman suullista apua."
+          "teksti": "Järjestä julkaisutestaus puhtaassa ympäristössä",
+          "valmis": "Testaaja aloittaa tyhjästä selaimesta pelkän kirjoitetun ohjeen avulla, ja pöytäkirjan alku on täytetty.",
+          "tallenna": "Pöytäkirja tiedostoon `project-docs/julkaisutesti.md`."
         },
         {
           "id": "16-4",
-          "teksti": "Kirjaa havainnot testaajan sanoin ja luokittele estävät ja ei-estävät löydökset."
+          "teksti": "Kirjaa havainnot ja luokittele löydökset",
+          "valmis": "Testaaja pääsi rekisteröitymisestä testitilaukseen ilman suullista apua, tai jokainen epäröinti on korjauslistalla. Estävät löydökset on listattu erikseen.",
+          "tallenna": "Havainnot, korjauslista ja luokittelu tiedostoon `project-docs/julkaisutesti.md`."
         }
       ],
       "nayta": "`v1.0-rc1`-tag, julkaisutestin pöytäkirja ja ohjeen korjauslista.",
       "tuotos": "Tagi v1.0-rc1, siivottu repository, valmis käyttöönotto- ja käyttöohje, julkaisutestin pöytäkirja ja ohjeen korjauslista.",
       "valmis": "Testaaja pääsi ohjeen avulla rekisteröitymisestä testitilaukseen asti ilman suullista apua, tai jokainen epäröintikohta on kirjattu ohjeen korjauslistaksi; estävät virheet on listattu erikseen.",
       "tarkistukset": [
+        {
+          "id": "tiedosto:project-docs/julkaisutesti.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/julkaisutesti.md",
+          "lahde": "auto"
+        },
         {
           "id": "tagi:v1.0-rc1",
           "tyyppi": "tagi",
@@ -772,30 +940,50 @@
     "17": {
       "jarjestys": 17,
       "tyyppi": "julkaisu",
-      "vaihe": "D",
+      "vaihe": "5",
       "otsikko": "Julkaisu v1.0",
       "tehtavat": [
         {
           "id": "17-1",
-          "teksti": "Korjaa julkaisutestauksen estävät löydökset; ei-estävät kirjataan tunnetuiksi puutteiksi."
+          "teksti": "Korjaa julkaisutestin estävät löydökset",
+          "valmis": "Estävät löydökset on korjattu ja regressiotestattu, ja ei-estävät ovat README:ssä tunnettuina puutteina.",
+          "tallenna": "Korjauscommitit repositoryyn. Mitä korjasit ja mitä jäi puutteiksi, työviikon 17 päiväkirjaan."
         },
         {
           "id": "17-2",
-          "teksti": "Julkaise versio 1.0 ja merkitse git-tag."
+          "teksti": "Viimeistele dokumentaatio ulkopuolisen silmin",
+          "valmis": "Puhtaaseen kansioon kloonattu kauppa käynnistyy pelkän README:n ohjeilla.",
+          "tallenna": "README ja asiakasohje commitilla."
         },
         {
           "id": "17-3",
-          "teksti": "Viimeistele dokumentaatio: käyttöönotto, käynnistys, riippuvuudet, ympäristömuuttujat ja tunnetut puutteet."
+          "teksti": "Julkaise versio 1.0 ja kirjoita julkaisumuistio",
+          "valmis": "Tagi `v1.0` on olemassa, julkinen osoite toimii, ja julkaisumuistio kertoo mukana olevat ja pois rajatut asiat.",
+          "tallenna": "Julkaisumuistio tiedostoon `project-docs/julkaisumuistio.md`. Tuotanto-URL työviikon 17 päiväkirjaan."
         },
         {
           "id": "17-4",
-          "teksti": "Kirjoita asiakkaan luovutusviesti selkokielellä."
+          "teksti": "Kirjoita asiakkaalle luovutusviesti selkokielellä",
+          "valmis": "Luovutusviesti kertoo yleiskielellä, mitä tehtiin, mitä rajattiin pois, miten kauppaa käytetään ja mitä seuraava versio voisi sisältää.",
+          "tallenna": "Luovutusviesti tiedostoon `project-docs/luovutusviesti.md`."
         }
       ],
       "nayta": "`v1.0`-tag ja julkaisumuistio, tuotanto-URL sekä luovutusviesti `project-docs`-kansiossa.",
       "tuotos": "Tagi v1.0, julkaisumuistio, valmis dokumentaatio ja asiakkaan luovutusviesti.",
       "valmis": "Tagi v1.0 on olemassa; julkinen osoite toimii; README:n avulla ulkopuolinen saa kehitysympäristön käyntiin; luovutusviesti ja tunnetut puutteet on kirjattu.",
       "tarkistukset": [
+        {
+          "id": "tiedosto:project-docs/julkaisumuistio.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/julkaisumuistio.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "tiedosto:project-docs/luovutusviesti.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/luovutusviesti.md",
+          "lahde": "auto"
+        },
         {
           "id": "tagi:v1.0",
           "tyyppi": "tagi",
@@ -820,30 +1008,50 @@
     "18": {
       "jarjestys": 18,
       "tyyppi": "naytto",
-      "vaihe": "D",
+      "vaihe": "5",
       "otsikko": "Näyttö",
       "tehtavat": [
         {
           "id": "18-1",
-          "teksti": "Linkitä kaikkien 32 vaatimuksen työnäytteet näyttömatriisiin."
+          "teksti": "Linkitä kaikkien 32 vaatimuksen työnäytteet",
+          "valmis": "Näyttömatriisin jokaisella rivillä on toimiva linkki työnäytteeseen.",
+          "tallenna": "Linkitetty matriisi ohjaajan kanssa sovittuun paikkaan, esimerkiksi tiedostoon `project-docs/nayttomatriisi.md`. Sivun rastit ovat vain muistilista."
         },
         {
           "id": "18-2",
-          "teksti": "Harjoittele 8–10 minuutin demo ja aja se kellon kanssa."
+          "teksti": "Harjoittele 8–10 minuutin demo kellon kanssa",
+          "valmis": "Demo on ajettu kellon kanssa vähintään kerran toiselle ihmiselle, ja runko on korjattu palautteen perusteella.",
+          "tallenna": "Demorunko tiedostoon `project-docs/demo.md`. Kuulijan palaute työviikon 18 päiväkirjaan."
         },
         {
           "id": "18-3",
-          "teksti": "Kirjoita itsearviointi konkreettisin esimerkein."
+          "teksti": "Kirjoita itsearviointi konkreettisin esimerkein",
+          "valmis": "Itsearviointi nimeää konkreettisia tilanteita, ei tunnelmia.",
+          "tallenna": "Itsearviointi projektipäiväkirjan viimeisenä merkintänä (työviikko 18)."
         },
         {
           "id": "18-4",
-          "teksti": "Luovuta aineisto sovitulla tavalla."
+          "teksti": "Luovuta aineisto sovitulla tavalla",
+          "valmis": "Aineisto on luovutettu sovitulla tavalla, ja kaikki linkit toimivat ulkopuoliselle.",
+          "tallenna": "Luovutuksen tapa ja ajankohta työviikon 18 päiväkirjaan."
         }
       ],
-      "nayta": "täytetty näyttömatriisi, demorunko ja itsearviointi päiväkirjan viimeisenä merkintänä.",
+      "nayta": "linkitetty näyttömatriisi, demorunko ja itsearviointi päiväkirjan viimeisenä merkintänä.",
       "tuotos": "Täytetty näyttömatriisi toimivine linkkeineen, harjoiteltu demorunko ja itsearviointi päiväkirjan viimeisenä merkintänä.",
       "valmis": "Matriisin jokaisella rivillä on toimiva linkki; demo on ajettu kellon kanssa vähintään kerran toiselle ihmiselle; itsearviointi nimeää konkreettisia tilanteita.",
       "tarkistukset": [
+        {
+          "id": "tiedosto:project-docs/nayttomatriisi.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/nayttomatriisi.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "tiedosto:project-docs/demo.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/demo.md",
+          "lahde": "auto"
+        },
         {
           "id": "paivakirja:18",
           "tyyppi": "paivakirja",

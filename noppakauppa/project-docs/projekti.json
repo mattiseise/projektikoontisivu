@@ -34,22 +34,45 @@
   },
   "vaiheet": [
     {
-      "tunnus": "A",
-      "lyhyt": "Ydin",
-      "otsikko": "Kaupan ydin: toimeksianto, tietomalli ja julkaistu tuotelista",
+      "tunnus": "1",
+      "lyhyt": "Valmistelu",
+      "otsikko": "Toimeksianto ja suunnitelma",
+      "kuvaus": "Selvität asiakkaan tarpeen kysymyslistalla, pystytät repositoryn ja molemmat kehityspalvelimet ja teet suunnitelman: käyttäjätarinat, tietomallin ja GitHub-issuet. Suunnitelma tehdään ennen koodia, koska ostoskori ja tilaus rakentuvat tietomallin varaan.",
+      "kuvassa": [
+        "Kysymyslista → työympäristö → suunnitelma ja issuet",
+        "Tiedät, mitä rakennat ja missä järjestyksessä."
+      ],
       "viikot": [
         1,
-        2,
-        3,
-        4,
-        5
+        2
       ],
       "vari": "#8d5a2b"
     },
     {
-      "tunnus": "B",
+      "tunnus": "2",
+      "lyhyt": "Tuotteet verkkoon",
+      "otsikko": "Tuotteet näkyviin ja verkkoon",
+      "kuvaus": "Tuotteet tulevat SQLite-kannasta rajapinnan kautta itse rakennettuihin Vue-komponentteihin, kategoriat ja tuotesivut saavat omat osoitteensa, ja kauppa julkaistaan. Julkaisu tehdään jo nyt, koska sen ongelmat on helpointa korjata, kun rikottavaa on vähän.",
+      "kuvassa": [
+        "Kanta → rajapinta → komponentit → reitit → julkaisu",
+        "Tuotteet näkyvät julkisessa osoitteessa."
+      ],
+      "viikot": [
+        3,
+        4,
+        5
+      ],
+      "vari": "#1a6fae"
+    },
+    {
+      "tunnus": "3",
       "lyhyt": "Ostopolku",
-      "otsikko": "Ostopolku: haku, kori, tunnukset, tilaus ja asiakaskatselmointi",
+      "otsikko": "Asiakkaan ostopolku",
+      "kuvaus": "Rakennat ostopolun samassa järjestyksessä kuin asiakas sen kulkee: haku, ostoskori, tunnukset ja tilaus. Lopuksi ulkopuolinen henkilö kokeilee kauppaa asiakkaan roolissa, ja hänen palautteensa ohjaa seuraavaa vaihetta.",
+      "kuvassa": [
+        "Haku → ostoskori → tunnukset → tilaus → katselmointi",
+        "Asiakas löytää pelin ja tilaa sen ilman verkkomaksua."
+      ],
       "viikot": [
         6,
         7,
@@ -57,12 +80,17 @@
         9,
         10
       ],
-      "vari": "#1a6fae"
+      "vari": "#c03434"
     },
     {
-      "tunnus": "C",
-      "lyhyt": "Valmiiksi",
-      "otsikko": "Valmiiksi: palautemuutos, henkilökunnan työkalut, tietoturva ja laatu",
+      "tunnus": "4",
+      "lyhyt": "Viimeistely",
+      "otsikko": "Henkilökunta, tietoturva ja laatu",
+      "kuvaus": "Toteutat tärkeimmän palautemuutoksen, henkilökunnan tuote- ja tilausnäkymät roolisuojauksella ja saavutettavuustarkistuksen. Ominaisuuslista päättyy työviikolla 13, minkä jälkeen koettelet tietoturvan omin hyökkäystestein ja ajat koko testimatriisin julkaistua versiota vasten.",
+      "kuvassa": [
+        "Palaute → henkilökunnan näkymät → tietoturva → testit",
+        "Kauppa kestää oikeat käyttäjät ja hyökkäysyritykset."
+      ],
       "viikot": [
         11,
         12,
@@ -70,18 +98,23 @@
         14,
         15
       ],
-      "vari": "#c03434"
+      "vari": "#2b6e6e"
     },
     {
-      "tunnus": "D",
+      "tunnus": "5",
       "lyhyt": "Julkaisu",
       "otsikko": "Julkaisu ja näyttö",
+      "kuvaus": "Jäädytät sisällön julkaisuehdokkaaksi, ja ulkopuolinen testaaja ottaa kaupan käyttöön pelkän kirjoitetun ohjeen avulla. Korjaat estävät löydökset, luovutat version 1.0 asiakkaalle ja osoitat osaamisesi näytössä.",
+      "kuvassa": [
+        "Julkaisuehdokas → julkaisutesti → v1.0 → näyttö",
+        "Asiakas saa kaupan, jonka voi ottaa käyttöön ohjeella."
+      ],
       "viikot": [
         16,
         17,
         18
       ],
-      "vari": "#2b6e6e"
+      "vari": "#6d3fa0"
     }
   ],
   "kuvitukset": {
@@ -94,7 +127,7 @@
     ],
     "tyokiertoOtsikko": "TYÖKIERTO",
     "tyokiertoAlt": "Infografiikka työkierrosta: tarina, komponentti, API, testi ja julkaisu peräkkäisinä askelina, joita terrakotanvärinen nuoli yhdistää.",
-    "vaiheetAlt": "Aikajana neljästä vaiheesta A–D väreineen: Ydin, Ostopolku, Valmiiksi ja Julkaisu, viikot 1–18 ilman päivämääriä.",
+    "vaiheetAlt": "Aikajana viidestä vaiheesta väreineen: 1 valmistelu, 2 tuotteet verkkoon, 3 ostopolku, 4 viimeistely ja 5 julkaisu, työviikot 1–18 ilman päivämääriä.",
     "suunnitelma": [
       "Tavoite ja asiakas",
       "Omat päätökset",

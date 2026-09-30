@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="604" viewBox="0 0 880 604" role="img" aria-labelledby="title desc">
+<title id="title">Havainnekuva: NoppaKaupan osat ja niiden yhteys</title>
+<desc id="desc">Asiakas selaa, hakee ja tilaa, ja henkilökunta hallitsee tuotteita ja tilauksia. Molemmat käyttävät kauppaa selaimessa. Selaimen Vue-sovelluksessa (frontend/, Vue 3, Vite, Pinia ja vue-router) ovat kaupan näkymät eli kategoriat, haku, tuotesivu, kori ja tilaus, Pinia-storet ostoskorille ja kirjautumistilalle sekä henkilökunnan hallintanäkymät, joista reitin vartija ohjaa muut käyttäjät pois. 1 Pyyntö: selain lähettää fetch-kutsun rajapinnan osoitteeseen /api/… istuntotiedon kanssa. 2 Vastaus: rajapinta palauttaa JSONin tai virhekoodin. FastAPI-rajapinnassa (backend/, Python) ovat endpointit tuotteille, haulle, kirjautumiselle ja tilauksille, salasanojen hashaus ja istunto sekä roolitarkistus, joka palauttaa 401, jos käyttäjä ei ole kirjautunut, ja 403, jos hänellä ei ole oikeuksia. Rajapinta käyttää SQLite-kantaa parametrisoiduilla kyselyillä. Kannassa ovat taulut tuote, kategoria, kayttaja rooleineen, tilaus tiloineen ja tilausrivi tilaushetken hintoineen. Julkaisu työviikosta 5 alkaen: frontendin build ja backend ovat julkaisualustalla, rajapinnan osoite ja salaisuudet ovat ympäristömuuttujissa, ja CORS sallii vain kaupan oman osoitteen. Havainnekuva, ei kuvakaappaus valmiista kaupasta.</desc>
+<rect width="880" height="604" fill="#ffffff"/>
+<defs>
+  <marker id="nuoli" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#5c5347"/></marker>
+</defs>
+<text x="24" y="44" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Miten NoppaKaupan osat liittyvät toisiinsa?</text>
+
+<!-- Käyttäjät -->
+<rect x="24" y="66" width="182" height="60" rx="10" fill="#ffffff" stroke="#5c5347" stroke-width="2"/>
+<text x="40" y="91" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">Asiakas</text>
+<text x="40" y="113" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="14">selaa, hakee ja tilaa</text>
+<rect x="218" y="66" width="182" height="60" rx="10" fill="#ffffff" stroke="#5c5347" stroke-width="2"/>
+<text x="234" y="91" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">Henkilökunta</text>
+<text x="234" y="113" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="14">tuotteet ja tilaukset</text>
+<path d="M115 126V142" stroke="#5c5347" stroke-width="2" marker-end="url(#nuoli)"/>
+<path d="M309 126V142" stroke="#5c5347" stroke-width="2" marker-end="url(#nuoli)"/>
+
+<!-- Selain -->
+<rect x="24" y="148" width="376" height="298" rx="12" fill="#fdf5ef" stroke="#c2410c" stroke-width="2"/>
+<text x="44" y="178" fill="#9a3412" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700">Selain · frontend/</text>
+<text x="44" y="200" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="14">Vue 3 + Vite + Pinia + vue-router</text>
+<rect x="44" y="214" width="336" height="62" rx="8" fill="#fbeee5"/>
+<text x="60" y="240" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">Kaupan näkymät</text>
+<text x="60" y="262" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">kategoriat, haku, tuotesivu, kori, tilaus</text>
+<rect x="44" y="288" width="336" height="62" rx="8" fill="#fbeee5"/>
+<text x="60" y="314" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">Pinia-storet</text>
+<text x="60" y="336" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">ostoskori ja kirjautumistila</text>
+<rect x="44" y="362" width="336" height="66" rx="8" fill="#fbeee5"/>
+<text x="60" y="388" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">Henkilökunnan näkymät</text>
+<text x="60" y="410" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">reitin vartija ohjaa muut pois</text>
+
+<!-- Pyyntö ja vastaus -->
+<text x="460" y="222" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" text-anchor="middle">1 Pyyntö</text>
+<path d="M404 236H512" stroke="#5c5347" stroke-width="2.5" marker-end="url(#nuoli)"/>
+<text x="460" y="258" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="middle">fetch /api/…</text>
+<text x="460" y="275" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="middle">+ istunto</text>
+<text x="460" y="318" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" text-anchor="middle">2 Vastaus</text>
+<path d="M516 332H408" stroke="#5c5347" stroke-width="2.5" marker-end="url(#nuoli)"/>
+<text x="460" y="354" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="middle">JSON tai</text>
+<text x="460" y="371" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="13" text-anchor="middle">virhekoodi</text>
+
+<!-- Rajapinta -->
+<rect x="520" y="148" width="336" height="298" rx="12" fill="#fdf5ef" stroke="#c2410c" stroke-width="2"/>
+<text x="540" y="178" fill="#9a3412" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700">Rajapinta · backend/</text>
+<text x="540" y="200" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="14">Python + FastAPI</text>
+<rect x="540" y="214" width="296" height="62" rx="8" fill="#fbeee5"/>
+<text x="556" y="240" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">Endpointit /api/…</text>
+<text x="556" y="262" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">tuotteet, haku, kirjaudu, tilaukset</text>
+<rect x="540" y="288" width="296" height="62" rx="8" fill="#fbeee5"/>
+<text x="556" y="314" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">Salasanat ja istunto</text>
+<text x="556" y="336" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">kantaan vain hash</text>
+<rect x="540" y="362" width="296" height="66" rx="8" fill="#fbeee5"/>
+<text x="556" y="388" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">Roolitarkistus</text>
+<text x="556" y="410" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">401 ei kirjautunut · 403 ei oikeuksia</text>
+
+<!-- Kanta -->
+<path d="M688 446V476" stroke="#5c5347" stroke-width="2" marker-end="url(#nuoli)"/>
+<text x="700" y="466" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="13">parametrisoidut kyselyt</text>
+<rect x="520" y="482" width="336" height="104" rx="12" fill="#ffffff" stroke="#9a3412" stroke-width="2"/>
+<text x="540" y="510" fill="#9a3412" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">SQLite-kanta</text>
+<text x="540" y="534" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">tuote · kategoria · kayttaja (rooli)</text>
+<text x="540" y="556" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">tilaus (tila) · tilausrivi (hinta)</text>
+<text x="540" y="576" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="13">hinta tallentuu tilaushetkellä</text>
+
+<!-- Julkaisu -->
+<rect x="24" y="482" width="476" height="104" rx="12" fill="#fbeee5" stroke="#9a3412" stroke-width="2"/>
+<text x="44" y="510" fill="#9a3412" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">Julkaisu työviikosta 5 alkaen</text>
+<text x="44" y="534" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">Frontendin build (dist/) ja backend julkaisualustalla.</text>
+<text x="44" y="555" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">Rajapinnan osoite ja salaisuudet ympäristömuuttujissa.</text>
+<text x="44" y="576" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">CORS sallii vain kaupan oman osoitteen.</text>
+</svg>

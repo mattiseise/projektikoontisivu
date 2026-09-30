@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="612" viewBox="0 0 880 612" role="img" aria-labelledby="title desc">
+<title id="title">Havainnekuva: miten tilaus tallentuu ja muuttuu</title>
+<desc id="desc">1 Asiakas lähettää tilauslomakkeelta korin ja yhteystiedot osoitteeseen POST /api/tilaukset. 2 Rajapinta tarkistaa, että käyttäjä on kirjautunut ja kori ei ole tyhjä. Jos ei ole kirjautunut, vastaus on 401 ei kirjautunut, ja tyhjästä korista tulee virhe. 3 Tilaus ja kaikki sen rivit tallentuvat samassa transaktiossa: BEGIN, tilaus, tilausrivit ja COMMIT. Jokainen rivi saa tuotteen hinnan tilaushetkellä. Jos virhe tulee kesken, ROLLBACK peruu kaiken: kantaan ei jää puolikasta tilausta, eikä kori tyhjene. 4 Onnistuneen tilauksen jälkeen kori tyhjenee, ja tilaus näkyy asiakkaan historiassa tilassa uusi. 5 Työviikolla 13 henkilökunta merkitsee tilauksen käsitellyksi, ja sama tila näkyy asiakkaan historiassa. Tilat ovat uusi ja käsitelty, ja vain henkilökunta voi muuttaa tilaa. Havainnekuva, ei kuvakaappaus valmiista kaupasta.</desc>
+<rect width="880" height="612" fill="#ffffff"/>
+<defs>
+  <marker id="nuoli" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#5c5347"/></marker>
+</defs>
+<text x="24" y="44" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Miten tilaus tallentuu ja muuttuu?</text>
+<text x="24" y="70" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="15">Työviikko 9: tilaus transaktiona · työviikko 13: tilan muutos</text>
+
+<!-- 1 -->
+<rect x="24" y="90" width="520" height="74" rx="10" fill="#fdf5ef" stroke="#c2410c" stroke-width="2"/>
+<circle cx="58" cy="127" r="18" fill="#9a3412"/>
+<text x="58" y="134" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="middle">1</text>
+<text x="92" y="119" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">Asiakas lähettää tilauksen</text>
+<text x="92" y="144" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">kori ja yhteystiedot · POST /api/tilaukset</text>
+<path d="M284 164V184" stroke="#5c5347" stroke-width="2" marker-end="url(#nuoli)"/>
+
+<!-- 2 -->
+<rect x="24" y="190" width="520" height="74" rx="10" fill="#fdf5ef" stroke="#c2410c" stroke-width="2"/>
+<circle cx="58" cy="227" r="18" fill="#9a3412"/>
+<text x="58" y="234" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="middle">2</text>
+<text x="92" y="219" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">Rajapinta tarkistaa pyynnön</text>
+<text x="92" y="244" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">kirjautunut käyttäjä ja kori, joka ei ole tyhjä</text>
+<path d="M544 227H584" stroke="#5c5347" stroke-width="2" marker-end="url(#nuoli)"/>
+<rect x="590" y="190" width="266" height="74" rx="10" fill="#ffffff" stroke="#c03434" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="606" y="214" fill="#c03434" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">Hylätään</text>
+<text x="606" y="236" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">ei kirjautunut → 401</text>
+<text x="606" y="255" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">tyhjä kori → virhe</text>
+<path d="M284 264V284" stroke="#5c5347" stroke-width="2" marker-end="url(#nuoli)"/>
+
+<!-- 3 -->
+<rect x="24" y="290" width="520" height="96" rx="10" fill="#fdf5ef" stroke="#c2410c" stroke-width="2"/>
+<circle cx="58" cy="338" r="18" fill="#9a3412"/>
+<text x="58" y="345" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="middle">3</text>
+<text x="92" y="318" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">Transaktio: kaikki tai ei mitään</text>
+<text x="92" y="343" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">BEGIN → tilaus → tilausrivit → COMMIT</text>
+<text x="92" y="366" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">jokainen rivi saa hinnan tilaushetkellä</text>
+<path d="M544 338H584" stroke="#5c5347" stroke-width="2" marker-end="url(#nuoli)"/>
+<rect x="590" y="290" width="266" height="96" rx="10" fill="#ffffff" stroke="#c03434" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="606" y="315" fill="#c03434" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">Virhe kesken → ROLLBACK</text>
+<text x="606" y="343" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">ei puolikasta tilausta kantaan</text>
+<text x="606" y="366" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">kori ei tyhjene</text>
+<path d="M284 386V406" stroke="#5c5347" stroke-width="2" marker-end="url(#nuoli)"/>
+
+<!-- 4 -->
+<rect x="24" y="412" width="520" height="74" rx="10" fill="#fdf5ef" stroke="#c2410c" stroke-width="2"/>
+<circle cx="58" cy="449" r="18" fill="#9a3412"/>
+<text x="58" y="456" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="middle">4</text>
+<text x="92" y="441" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">Kori tyhjenee</text>
+<text x="92" y="466" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">tilaus näkyy asiakkaan historiassa tilassa uusi</text>
+<path d="M284 486V506" stroke="#5c5347" stroke-width="2" marker-end="url(#nuoli)"/>
+
+<!-- 5 -->
+<rect x="24" y="512" width="520" height="74" rx="10" fill="#ffffff" stroke="#2b6e6e" stroke-width="2"/>
+<circle cx="58" cy="549" r="18" fill="#2b6e6e"/>
+<text x="58" y="556" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="middle">5</text>
+<text x="92" y="541" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">Henkilökunta merkitsee käsitellyksi</text>
+<text x="92" y="566" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="14">työviikko 13 · sama tila näkyy asiakkaan historiassa</text>
+<text x="606" y="541" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="14">Tilat: uusi → käsitelty</text>
+<text x="606" y="563" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="14">Vain henkilökunta voi</text>
+<text x="606" y="582" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="14">muuttaa tilaa.</text>
+</svg>
