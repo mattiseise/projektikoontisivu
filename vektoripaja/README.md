@@ -12,9 +12,16 @@ avustaa VS Codessa. Opiskelija päättää ja tarkistaa.
   toimiminen (14) ja Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla (7): 31 vaatimusta.
 - Pedagoginen tarkistus: Linnea-portti hyväksyi viikkorungon kierroksella 3, **23.9.2026**
   (`material-pipeline-output/vektoripaja/01-runko-v3.md`, auditit `audit/linnea-r1…r3.md`).
-- Moottori v2.4.1 opt-in-ominaisuuksin: oma teema (`teema`), työsykli (`sykli`),
+- Moottori v2.7.4 (sama kuin muissa näyttöprojekteissa) opt-in-ominaisuuksin: oma teema (`teema`),
+  yhtenäiset viikko-ohjeet (`yhtenaisetViikot`, staattisesti `rakenna_index.py`:llä), työsykli (`sykli`),
   viikkorutiini, "Jos et tiedä, mitä tehdä" (`josJumissa`), kuvaohjeet (`kuvakaappaukset.json`),
   vuodenvaihde (`vuosi: [2026, 2027]`) ja lyhyt viikko 51 (`lyhyetViikot`).
+- **Saavutettava ulkoasu (oppijalla näkövamma):** värit, fonttikoko, kirjain-, sana- ja rivivälit,
+  rivinpituus, 2 px reunat, 3 px fokus ja yksipalstaisuus tulevat `teema`-lohkosta ja jaetun
+  `styles.css`:n `html[data-teema]`-säännöistä. Moottorin päivityksessä ulkoasu todennetaan
+  vertaamalla lasketut tyylit ennen ja jälkeen kaikissa näkymissä leveänä ja kapeana (v2.7.4:
+  0 tyylieroa). Vaihekuva `assets/projektin-vaiheet.svg` tehdään `tyokalut/tee_projektikuvat.py`:llä
+  suuremmalla tekstillä; jaettu `tee_vaihekuva.js` ei kirjoita sitä (ei `vaihekuva`-kenttää).
 
 Sivusto on staattinen ja julkaistaan koontisivun repositoryn mukana GitHub Pagesiin:
 <https://mattiseise.github.io/projektikoontisivu/vektoripaja/>
@@ -47,7 +54,8 @@ python tyokalut/tee_kuvitukset.py     # faviconit ja AI-merkki (vaatii Pillow'n)
 node tyokalut/tarkista.js             # nollatoleranssi virheille
 ```
 
-PDF:t Chromen headless-tilassa:
+PDF:t headless-selaimella (Google Chrome voi jäädä roikkumaan tulostuksen jälkeen; Playwrightin
+`chrome-headless-shell` sulkeutuu itse):
 
 ```
 chrome --headless --no-pdf-header-footer --print-to-pdf=downloads/vektoripaja-tyopaketti.pdf tyokalut/tyopaketti-print.html

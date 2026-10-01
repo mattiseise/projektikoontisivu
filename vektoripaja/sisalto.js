@@ -39,7 +39,12 @@ window.NAYTTOPROJEKTI = {
     riviSavy: "#f3fafd"
   },
 
-  lataukset: { tehtavaNumero: (i, n) => `Työvaihe ${i} / ${n}` },
+  lataukset: {
+    tehtavaNumero: (i, n) => `Työvaihe ${i} / ${n}`,
+    /* moottori v2.7: työpaketin aloitusosion tekstit datasta (ennen kovakoodattuina moottorissa) */
+    aloitusVaiheetOtsikko: () => "Projektin viisi vaihetta",
+    aloitusHuomio: "Viikon työvaihe on työohje. Kun rakennat muutosta sovellukseen, tee siitä GitHub-issue ja käytä työsykliä. Kirjaa testitulos issueen ja viikon yhteenveto päiväkirjaan."
+  },
 
   /* ---- opiskelijan teema (brief 6.1). Teematesti hyväksytty 23.9.2026: yksi väri ja tilasymbolit. ---- */
   teema: {
@@ -138,7 +143,7 @@ window.NAYTTOPROJEKTI = {
 
   /* ---- viikkorutiini: sama joka viikko (runko v3 § 6.1) ---- */
   viikkorutiini: {
-    otsikko: "Viikkorutiini",
+    otsikko: "Viikkorutiini: palaveri ja tallennus",
     johdanto: "Nämä rastit eivät ole viikon tehtäviä. Ne ovat joka viikon vakiotehtävät.",
     kohdat: [
       { milloin: "Maanantai", teksti: "Aloita uusi Copilot-keskustelu. Liitä siihen tilatiedosto." },
