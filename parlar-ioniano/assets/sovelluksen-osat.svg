@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="692" viewBox="0 0 880 692" role="img" aria-labelledby="title desc">
+<title id="title">How the parts of Parlar Ioniano fit together</title>
+<desc id="desc">Illustration of how the parts of Parlar Ioniano fit together, not a screenshot. Your 58-page reference PDF is the only source of truth for the language content: you type every form from it and check the site against it, and an invented form is a bug. The data folder holds the language content as JSON files typed from the PDF: letters.json for the alphabet and IPA, words.json for the vocabulary in four keys, grammar.json for the pronouns and articles, numbers.json for the number words and rules, and phrases.json for the dialogues and the coming later topics; tools/check-data.html checks every file. Your JavaScript in the js folder fetches and renders the data: data.js with loadJSON, the one shared loader; render.js with renderTable for the tables; numbers.js with pure functions and no DOM code; and the page scripts, such as alphabet.js. It builds elements with textContent, not innerHTML. The pages are what the learner sees: index.html with Home, the credit and the terms; alphabet.html with the letters and IPA; pronouns.html with eight tables in tabs; nouns.html with an accordion of matrices; numbers.html with the converter built by hand; and phrasebook.html with the cards, the dialogue and the search. Below the code, the tests: tests/tests.html runs tests/numbers.test.js against js/numbers.js with expected values from the PDF, and each test case is a numbered row in project-docs/test-matrix.md. Below the pages, what comes from a CDN with pinned versions: Bootstrap CSS and JS with an integrity hash, Bootstrap Icons and the Google font; css/style.css overrides Bootstrap's variables. The release path runs from your folder served by Live Server at http://localhost, to the Git repository where you push to main and tag v0.5 and v1.0, to GitHub Pages, the public URL over HTTPS.</desc>
+<rect width="880" height="692" fill="#ffffff"/>
+<defs><marker id="nuoli" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#5c5347"/></marker></defs>
+<g font-family="Arial, Helvetica, sans-serif">
+<text x="32" y="44" fill="#241f1a" font-size="26" font-weight="700">How the parts of Parlar Ioniano fit together</text>
+<text x="32" y="70" fill="#5c5347" font-size="14">Illustration, not a screenshot · function names in the implementation help are suggestions</text>
+<rect x="32" y="92" width="150" height="360" rx="12" fill="#fbf5e6" stroke="#a87b00" stroke-width="2"/>
+<text x="46" y="120" fill="#7a5a00" font-size="17" font-weight="700">Reference PDF</text>
+<text x="46" y="140" fill="#5c5347" font-size="13">58 pages, yours</text>
+<text x="46" y="176" fill="#241f1a" font-size="14">The only source of</text>
+<text x="46" y="198" fill="#241f1a" font-size="14">truth for the</text>
+<text x="46" y="220" fill="#241f1a" font-size="14">language content.</text>
+<text x="46" y="264" fill="#241f1a" font-size="14">You type every</text>
+<text x="46" y="286" fill="#241f1a" font-size="14">form from it and</text>
+<text x="46" y="308" fill="#241f1a" font-size="14">check the site</text>
+<text x="46" y="330" fill="#241f1a" font-size="14">against it.</text>
+<text x="46" y="374" fill="#241f1a" font-size="14">An invented form</text>
+<text x="46" y="396" fill="#241f1a" font-size="14">is a bug.</text>
+<rect x="208" y="92" width="196" height="360" rx="12" fill="#fdfcf9" stroke="#1e56a0" stroke-width="2"/>
+<text x="222" y="120" fill="#143e78" font-size="17" font-weight="700">data/ · JSON</text>
+<text x="222" y="140" fill="#5c5347" font-size="13">typed from the PDF</text>
+<rect x="218" y="150" width="176" height="44" rx="6" fill="#e7eef8"/>
+<text x="228" y="169" fill="#241f1a" font-size="14" font-weight="700">letters.json</text>
+<text x="228" y="187" fill="#241f1a" font-size="13">alphabet and IPA</text>
+<rect x="218" y="200" width="176" height="44" rx="6" fill="#e7eef8"/>
+<text x="228" y="219" fill="#241f1a" font-size="14" font-weight="700">words.json</text>
+<text x="228" y="237" fill="#241f1a" font-size="13">vocabulary, four keys</text>
+<rect x="218" y="250" width="176" height="44" rx="6" fill="#e7eef8"/>
+<text x="228" y="269" fill="#241f1a" font-size="14" font-weight="700">grammar.json</text>
+<text x="228" y="287" fill="#241f1a" font-size="13">pronouns, articles</text>
+<rect x="218" y="300" width="176" height="44" rx="6" fill="#e7eef8"/>
+<text x="228" y="319" fill="#241f1a" font-size="14" font-weight="700">numbers.json</text>
+<text x="228" y="337" fill="#241f1a" font-size="13">number words, rules</text>
+<rect x="218" y="350" width="176" height="44" rx="6" fill="#e7eef8"/>
+<text x="228" y="369" fill="#241f1a" font-size="14" font-weight="700">phrases.json</text>
+<text x="228" y="387" fill="#241f1a" font-size="13">dialogues, coming later</text>
+<text x="222" y="422" fill="#5c5347" font-size="13">tools/check-data.html</text>
+<text x="222" y="440" fill="#5c5347" font-size="13">checks every file</text>
+<rect x="430" y="92" width="196" height="360" rx="12" fill="#fdfcf9" stroke="#1e56a0" stroke-width="2"/>
+<text x="444" y="120" fill="#143e78" font-size="17" font-weight="700">js/ · your code</text>
+<text x="444" y="140" fill="#5c5347" font-size="13">fetches and renders</text>
+<rect x="440" y="150" width="176" height="44" rx="6" fill="#e7eef8"/>
+<text x="450" y="169" fill="#241f1a" font-size="14" font-weight="700">data.js</text>
+<text x="450" y="187" fill="#241f1a" font-size="13">loadJSON(), one loader</text>
+<rect x="440" y="200" width="176" height="44" rx="6" fill="#e7eef8"/>
+<text x="450" y="219" fill="#241f1a" font-size="14" font-weight="700">render.js</text>
+<text x="450" y="237" fill="#241f1a" font-size="13">renderTable() for tables</text>
+<rect x="440" y="250" width="176" height="44" rx="6" fill="#e7eef8"/>
+<text x="450" y="269" fill="#241f1a" font-size="14" font-weight="700">numbers.js</text>
+<text x="450" y="287" fill="#241f1a" font-size="13">pure functions, no DOM</text>
+<rect x="440" y="300" width="176" height="44" rx="6" fill="#e7eef8"/>
+<text x="450" y="319" fill="#241f1a" font-size="14" font-weight="700">page scripts</text>
+<text x="450" y="337" fill="#241f1a" font-size="13">alphabet.js and the rest</text>
+<text x="444" y="372" fill="#5c5347" font-size="13">builds elements with</text>
+<text x="444" y="390" fill="#5c5347" font-size="13">textContent, not innerHTML</text>
+<rect x="652" y="92" width="196" height="360" rx="12" fill="#fdfcf9" stroke="#1e56a0" stroke-width="2"/>
+<text x="666" y="120" fill="#143e78" font-size="17" font-weight="700">Pages · HTML</text>
+<text x="666" y="140" fill="#5c5347" font-size="13">what the learner sees</text>
+<rect x="662" y="150" width="176" height="44" rx="6" fill="#e7eef8"/>
+<text x="672" y="169" fill="#241f1a" font-size="14" font-weight="700">index.html</text>
+<text x="672" y="187" fill="#241f1a" font-size="13">Home, credit, terms</text>
+<rect x="662" y="200" width="176" height="44" rx="6" fill="#e7eef8"/>
+<text x="672" y="219" fill="#241f1a" font-size="14" font-weight="700">alphabet.html</text>
+<text x="672" y="237" fill="#241f1a" font-size="13">letters and IPA</text>
+<rect x="662" y="250" width="176" height="44" rx="6" fill="#e7eef8"/>
+<text x="672" y="269" fill="#241f1a" font-size="14" font-weight="700">pronouns.html</text>
+<text x="672" y="287" fill="#241f1a" font-size="13">eight tables in tabs</text>
+<rect x="662" y="300" width="176" height="44" rx="6" fill="#e7eef8"/>
+<text x="672" y="319" fill="#241f1a" font-size="14" font-weight="700">nouns.html</text>
+<text x="672" y="337" fill="#241f1a" font-size="13">accordion of matrices</text>
+<rect x="662" y="350" width="176" height="44" rx="6" fill="#e7eef8"/>
+<text x="672" y="369" fill="#241f1a" font-size="14" font-weight="700">numbers.html</text>
+<text x="672" y="387" fill="#241f1a" font-size="13">converter, built by hand</text>
+<rect x="662" y="400" width="176" height="44" rx="6" fill="#e7eef8"/>
+<text x="672" y="419" fill="#241f1a" font-size="14" font-weight="700">phrasebook.html</text>
+<text x="672" y="437" fill="#241f1a" font-size="13">cards, dialogue, search</text>
+<path d="M184 272H205" stroke="#5c5347" stroke-width="2" marker-end="url(#nuoli)"/>
+<path d="M406 272H427" stroke="#5c5347" stroke-width="2" marker-end="url(#nuoli)"/>
+<path d="M628 272H649" stroke="#5c5347" stroke-width="2" marker-end="url(#nuoli)"/>
+<rect x="208" y="474" width="418" height="112" rx="10" fill="#fdfcf9" stroke="#5c5347" stroke-width="1.5"/>
+<text x="222" y="500" fill="#241f1a" font-size="16" font-weight="700">Tests</text>
+<text x="222" y="522" fill="#241f1a" font-size="13">tests/tests.html runs numbers.test.js against</text>
+<text x="222" y="540" fill="#241f1a" font-size="13">js/numbers.js, with expected values from the PDF.</text>
+<text x="222" y="558" fill="#241f1a" font-size="13">Each test case is a numbered row in test-matrix.md.</text>
+<rect x="652" y="474" width="196" height="112" rx="10" fill="#fdfcf9" stroke="#5c5347" stroke-width="1.5"/>
+<text x="666" y="500" fill="#241f1a" font-size="16" font-weight="700">From a CDN, pinned</text>
+<text x="666" y="522" fill="#241f1a" font-size="13">Bootstrap CSS and JS</text>
+<text x="666" y="540" fill="#241f1a" font-size="13">with an integrity hash,</text>
+<text x="666" y="558" fill="#241f1a" font-size="13">Bootstrap Icons, the font.</text>
+<text x="666" y="574" fill="#241f1a" font-size="13">style.css overrides them.</text>
+<path d="M528 474V456" stroke="#5c5347" stroke-width="2" marker-end="url(#nuoli)"/>
+<path d="M750 474V456" stroke="#5c5347" stroke-width="2" marker-end="url(#nuoli)"/>
+<text x="32" y="612" fill="#143e78" font-size="15" font-weight="700">Release path</text>
+<rect x="32" y="622" width="250" height="56" rx="10" fill="#f3f7fc" stroke="#143e78" stroke-width="1.5"/>
+<text x="46" y="645" fill="#143e78" font-size="15" font-weight="700">Your folder</text>
+<text x="46" y="665" fill="#241f1a" font-size="13">Live Server at http://localhost</text>
+<rect x="316" y="622" width="250" height="56" rx="10" fill="#f3f7fc" stroke="#143e78" stroke-width="1.5"/>
+<text x="330" y="645" fill="#143e78" font-size="15" font-weight="700">Git repository</text>
+<text x="330" y="665" fill="#241f1a" font-size="13">push to main · tags v0.5, v1.0</text>
+<rect x="598" y="622" width="250" height="56" rx="10" fill="#f3f7fc" stroke="#143e78" stroke-width="1.5"/>
+<text x="612" y="645" fill="#143e78" font-size="15" font-weight="700">GitHub Pages</text>
+<text x="612" y="665" fill="#241f1a" font-size="13">the public URL, over HTTPS</text>
+<path d="M284 650H312" stroke="#5c5347" stroke-width="2" marker-end="url(#nuoli)"/>
+<path d="M568 650H594" stroke="#5c5347" stroke-width="2" marker-end="url(#nuoli)"/>
+</g></svg>

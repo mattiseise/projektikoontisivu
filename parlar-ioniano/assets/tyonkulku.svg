@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="700" viewBox="0 0 880 700" role="img" aria-labelledby="title desc">
+<title id="title">How a learner uses Parlar Ioniano</title>
+<desc id="desc">Illustration of the learner's workflow on the finished site, not a screenshot. 1 Open the public URL: on a phone or a laptop, the Home page says what Ionian is, credits the author and shows the terms of use, and the navbar leads to every page. 2 Look things up: the Alphabet page shows how each letter is pronounced with its IPA value, the pronouns are in tabs, and an accordion shows which article goes with which gender in a gender by number table. 3 Convert a number: the learner types a number, for example 319, and reads it in Ionian words, and the result is also announced to a screen reader. 4 Learn the café dialogue: the learner searches the phrasebook, for example for thank, sees one matching card, and reads the dialogue in Ionian, in English or both; unfinished topics say coming later.</desc>
+<rect width="880" height="700" fill="#ffffff"/>
+<defs>
+  <marker id="nuoli" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#5c5347"/></marker>
+</defs>
+<g font-family="Arial, Helvetica, sans-serif">
+<text x="32" y="44" fill="#241f1a" font-size="26" font-weight="700">How a learner uses Parlar Ioniano</text>
+<text x="32" y="70" fill="#5c5347" font-size="15">Illustration of the finished site's workflow · not a screenshot</text>
+
+<!-- 1 Open the public URL -->
+<rect x="32" y="92" width="816" height="132" rx="12" fill="#f3f7fc" stroke="#1e56a0" stroke-width="2"/>
+<circle cx="70" cy="126" r="20" fill="#1e56a0"/>
+<text x="70" y="134" fill="#ffffff" font-size="22" font-weight="700" text-anchor="middle">1</text>
+<text x="110" y="130" fill="#143e78" font-size="20" font-weight="700">Open the public URL</text>
+<text x="110" y="156" fill="#241f1a" font-size="15">On a phone or a laptop. Home says what Ionian</text>
+<text x="110" y="178" fill="#241f1a" font-size="15">is, credits you as the author and shows the</text>
+<text x="110" y="200" fill="#241f1a" font-size="15">terms of use. The navbar leads to every page.</text>
+<rect x="540" y="106" width="284" height="106" rx="6" fill="#ffffff" stroke="#5c5347" stroke-width="1.5"/>
+<rect x="540" y="106" width="284" height="22" rx="6" fill="#d4cbbb"/>
+<text x="552" y="122" fill="#241f1a" font-size="13">…github.io/parlar-ioniano</text>
+<rect x="552" y="136" width="260" height="22" rx="4" fill="#1e56a0"/>
+<text x="562" y="152" fill="#ffffff" font-size="13">Home · Alphabet · Numbers · …</text>
+<text x="552" y="182" fill="#241f1a" font-size="15" font-weight="700">Ionian, Lingua Ioniana</text>
+<text x="552" y="202" fill="#5c5347" font-size="13">© the author · terms of use</text>
+
+<path d="M70 226V236" stroke="#5c5347" stroke-width="2" marker-end="url(#nuoli)"/>
+
+<!-- 2 Look things up -->
+<rect x="32" y="240" width="816" height="132" rx="12" fill="#f3f7fc" stroke="#1e56a0" stroke-width="2"/>
+<circle cx="70" cy="274" r="20" fill="#1e56a0"/>
+<text x="70" y="282" fill="#ffffff" font-size="22" font-weight="700" text-anchor="middle">2</text>
+<text x="110" y="278" fill="#143e78" font-size="20" font-weight="700">Look things up</text>
+<text x="110" y="304" fill="#241f1a" font-size="15">Alphabet: how each letter is pronounced, with</text>
+<text x="110" y="326" fill="#241f1a" font-size="15">its IPA value. Pronouns in tabs, and which</text>
+<text x="110" y="348" fill="#241f1a" font-size="15">article goes with which gender in an accordion.</text>
+<rect x="540" y="254" width="284" height="26" rx="4" fill="#ffffff" stroke="#1e56a0" stroke-width="1.5"/>
+<text x="552" y="272" fill="#143e78" font-size="13" font-weight="700">Definite articles</text>
+<path d="M800 263L806 270L812 263" fill="none" stroke="#143e78" stroke-width="2"/>
+<rect x="540" y="286" width="284" height="74" fill="#ffffff" stroke="#5c5347" stroke-width="1"/>
+<rect x="540" y="286" width="284" height="24" fill="#e7eef8"/>
+<text x="616" y="303" fill="#241f1a" font-size="13" font-weight="700">Masc.</text>
+<text x="690" y="303" fill="#241f1a" font-size="13" font-weight="700">Fem.</text>
+<text x="760" y="303" fill="#241f1a" font-size="13" font-weight="700">Neut.</text>
+<text x="550" y="328" fill="#241f1a" font-size="13">Sing.</text>
+<text x="550" y="352" fill="#241f1a" font-size="13">Plur.</text>
+<path d="M540 335H824M600 286V360" stroke="#d4cbbb" stroke-width="1"/>
+<rect x="616" y="319" width="40" height="8" rx="2" fill="#9db4d6"/>
+<rect x="690" y="319" width="40" height="8" rx="2" fill="#9db4d6"/>
+<rect x="760" y="319" width="40" height="8" rx="2" fill="#9db4d6"/>
+<rect x="616" y="343" width="40" height="8" rx="2" fill="#9db4d6"/>
+<rect x="690" y="343" width="40" height="8" rx="2" fill="#9db4d6"/>
+<rect x="760" y="343" width="40" height="8" rx="2" fill="#9db4d6"/>
+
+<path d="M70 374V384" stroke="#5c5347" stroke-width="2" marker-end="url(#nuoli)"/>
+
+<!-- 3 Convert a number -->
+<rect x="32" y="388" width="816" height="132" rx="12" fill="#f3f7fc" stroke="#1e56a0" stroke-width="2"/>
+<circle cx="70" cy="422" r="20" fill="#1e56a0"/>
+<text x="70" y="430" fill="#ffffff" font-size="22" font-weight="700" text-anchor="middle">3</text>
+<text x="110" y="426" fill="#143e78" font-size="20" font-weight="700">Convert a number</text>
+<text x="110" y="452" fill="#241f1a" font-size="15">Type a number, for example 319, and read it</text>
+<text x="110" y="474" fill="#241f1a" font-size="15">in Ionian words. The result is also announced</text>
+<text x="110" y="496" fill="#241f1a" font-size="15">to a screen reader.</text>
+<text x="540" y="418" fill="#5c5347" font-size="13">Number</text>
+<rect x="540" y="426" width="112" height="36" rx="4" fill="#ffffff" stroke="#1e56a0" stroke-width="2"/>
+<text x="556" y="451" fill="#241f1a" font-size="18">319</text>
+<path d="M662 444H700" stroke="#5c5347" stroke-width="2" marker-end="url(#nuoli)"/>
+<rect x="710" y="426" width="114" height="36" rx="4" fill="#e7eef8" stroke="#1e56a0" stroke-width="1.5"/>
+<rect x="722" y="440" width="90" height="9" rx="2" fill="#9db4d6"/>
+<text x="710" y="484" fill="#5c5347" font-size="13">in Ionian words</text>
+
+<path d="M70 522V532" stroke="#5c5347" stroke-width="2" marker-end="url(#nuoli)"/>
+
+<!-- 4 Learn the café dialogue -->
+<rect x="32" y="536" width="816" height="132" rx="12" fill="#f3f7fc" stroke="#1e56a0" stroke-width="2"/>
+<circle cx="70" cy="570" r="20" fill="#1e56a0"/>
+<text x="70" y="578" fill="#ffffff" font-size="22" font-weight="700" text-anchor="middle">4</text>
+<text x="110" y="574" fill="#143e78" font-size="20" font-weight="700">Learn the café dialogue</text>
+<text x="110" y="600" fill="#241f1a" font-size="15">Search the phrasebook, for example for "thank",</text>
+<text x="110" y="622" fill="#241f1a" font-size="15">and read the dialogue in Ionian, English or both.</text>
+<text x="110" y="644" fill="#241f1a" font-size="15">Unfinished topics say "coming later".</text>
+<rect x="540" y="550" width="134" height="28" rx="4" fill="#ffffff" stroke="#1e56a0" stroke-width="2"/>
+<text x="552" y="569" fill="#241f1a" font-size="15">thank</text>
+<text x="686" y="569" fill="#5c5347" font-size="13">1 match</text>
+<rect x="540" y="586" width="134" height="72" rx="6" fill="#ffffff" stroke="#1e56a0" stroke-width="1.5"/>
+<rect x="552" y="598" width="80" height="9" rx="2" fill="#9db4d6"/>
+<text x="552" y="628" fill="#241f1a" font-size="13">thank you</text>
+<text x="552" y="646" fill="#5c5347" font-size="13">phrase</text>
+<text x="686" y="606" fill="#5c5347" font-size="13">café dialogue</text>
+<rect x="686" y="616" width="50" height="28" rx="4" fill="#1e56a0"/>
+<text x="711" y="635" fill="#ffffff" font-size="13" text-anchor="middle">Ionian</text>
+<rect x="736" y="616" width="56" height="28" fill="#ffffff" stroke="#1e56a0" stroke-width="1.5"/>
+<text x="764" y="635" fill="#143e78" font-size="13" text-anchor="middle">English</text>
+<rect x="792" y="616" width="42" height="28" rx="4" fill="#ffffff" stroke="#1e56a0" stroke-width="1.5"/>
+<text x="813" y="635" fill="#143e78" font-size="13" text-anchor="middle">Both</text>
+</g>
+</svg>

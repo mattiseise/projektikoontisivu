@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="800" viewBox="0 0 880 800" role="img" aria-labelledby="title desc">
+<title id="title">Parlar Ioniano: project phases</title>
+<desc id="desc">1. Foundations: a published shell and JSON data (weeks 36–38): You turn the brief into a plan and GitHub issues, publish an empty site, and set the pattern every page follows: content in JSON files, one shared loader and a Bootstrap shell. They come first because every later page is built on the publishing path, the data pattern and the navbar. 2. Grammar views and the half-way review (weeks 39–44): You build the Pronouns and the Nouns &amp; Articles pages from data with one reusable render function and tag v0.5 before the break. In week 44 the client's representative and a tester use v0.5, and their findings decide what the last weeks change. No project work · week 41 · Autumn break · week 42 · No project work · week 43. 3. Complete site: converter, phrasebook, quality (weeks 45–47): You build the number converter test-first, the phrasebook with its search and the change the client chose in week 44. Then you run the whole test matrix and the accessibility, validation and security passes, so the site is complete and proven before a stranger tries it. 4. Release v1.0 and demonstration (weeks 48–49): A stranger runs the project from your README and an outside tester learns the café dialogue from the site alone. You release v1.0, link every requirement to its work sample and hand over on Friday 4 December.</desc>
+<rect width="880" height="800" fill="#ffffff"/>
+<defs><marker id="nuoli" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="none" stroke="#5c5347" stroke-width="1.4"/></marker></defs>
+<text x="40" y="49" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700">What gets built in each phase?</text>
+<rect x="90" y="78" width="752" height="158" rx="12" fill="#ffffff" stroke="#1e56a0" stroke-width="2"/>
+<circle cx="45" cy="107" r="24" fill="#1e56a0"/>
+<text x="45" y="117" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="middle">1</text>
+<text x="112" y="114" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Foundations: a published shell and JSON data</text>
+<text x="112" y="140" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="20">Weeks 36–38</text>
+<text x="112" y="176" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="21">Brief → plan → first deploy → JSON data → Bootstrap</text>
+<text x="112" y="206" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="21">Week 38: Home and Alphabet live at the public URL.</text>
+<path d="M45 136V250" stroke="#d4cbbb" stroke-width="2" marker-end="url(#nuoli)"/>
+<rect x="90" y="256" width="752" height="188" rx="12" fill="#ffffff" stroke="#a87b00" stroke-width="2"/>
+<circle cx="45" cy="285" r="24" fill="#a87b00"/>
+<text x="45" y="295" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="middle">2</text>
+<text x="112" y="292" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Grammar views and the half-way review</text>
+<text x="112" y="318" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="20">Weeks 39–44</text>
+<text x="112" y="354" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="21">Pronouns → nouns &amp; articles → v0.5 → review</text>
+<text x="112" y="384" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="21">Week 44: the findings re-prioritise the backlog.</text>
+<text x="112" y="418" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="18" font-style="italic">No project work · week 41 · Autumn break · week 42 · No project work · week 43</text>
+<path d="M45 314V458" stroke="#d4cbbb" stroke-width="2" marker-end="url(#nuoli)"/>
+<rect x="90" y="464" width="752" height="158" rx="12" fill="#ffffff" stroke="#b0473a" stroke-width="2"/>
+<circle cx="45" cy="493" r="24" fill="#b0473a"/>
+<text x="45" y="503" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="middle">3</text>
+<text x="112" y="500" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Complete site: converter, phrasebook, quality</text>
+<text x="112" y="526" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="20">Weeks 45–47</text>
+<text x="112" y="562" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="21">Converter → phrasebook &amp; search → test matrix</text>
+<text x="112" y="592" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="21">Week 47: every must-have page tested and accessible.</text>
+<path d="M45 522V636" stroke="#d4cbbb" stroke-width="2" marker-end="url(#nuoli)"/>
+<rect x="90" y="642" width="752" height="132" rx="12" fill="#ffffff" stroke="#6d28d9" stroke-width="2"/>
+<circle cx="45" cy="671" r="24" fill="#6d28d9"/>
+<text x="45" y="681" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="middle">4</text>
+<text x="112" y="678" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Release v1.0 and demonstration</text>
+<text x="822" y="678" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="20" text-anchor="end">Weeks 48–49</text>
+<text x="112" y="714" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="21">RC → clean clone → user test → v1.0 → demo</text>
+<text x="112" y="744" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="21">Fri 4 Dec: v1.0 public, evidence linked, handed over.</text>
+</svg>

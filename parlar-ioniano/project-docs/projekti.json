@@ -34,9 +34,14 @@
   },
   "vaiheet": [
     {
-      "tunnus": "A",
+      "tunnus": "1",
       "lyhyt": "Foundations",
-      "otsikko": "Foundations: brief, toolchain, plan and a published shell",
+      "otsikko": "Foundations: a published shell and JSON data",
+      "kuvaus": "You turn the brief into a plan and GitHub issues, publish an empty site, and set the pattern every page follows: content in JSON files, one shared loader and a Bootstrap shell. They come first because every later page is built on the publishing path, the data pattern and the navbar.",
+      "kuvassa": [
+        "Brief → plan → first deploy → JSON data → Bootstrap",
+        "Week 38: Home and Alphabet live at the public URL."
+      ],
       "viikot": [
         36,
         37,
@@ -45,9 +50,14 @@
       "vari": "#1e56a0"
     },
     {
-      "tunnus": "B",
+      "tunnus": "2",
       "lyhyt": "Grammar views",
-      "otsikko": "Grammar views: data-driven tables and the client review",
+      "otsikko": "Grammar views and the half-way review",
+      "kuvaus": "You build the Pronouns and the Nouns & Articles pages from data with one reusable render function and tag v0.5 before the break. In week 44 the client's representative and a tester use v0.5, and their findings decide what the last weeks change.",
+      "kuvassa": [
+        "Pronouns → nouns & articles → v0.5 → review",
+        "Week 44: the findings re-prioritise the backlog."
+      ],
       "viikot": [
         39,
         40,
@@ -59,9 +69,14 @@
       "vari": "#a87b00"
     },
     {
-      "tunnus": "C",
-      "lyhyt": "Finish",
-      "otsikko": "Finish: feedback change, quality and testing",
+      "tunnus": "3",
+      "lyhyt": "Complete site",
+      "otsikko": "Complete site: converter, phrasebook, quality",
+      "kuvaus": "You build the number converter test-first, the phrasebook with its search and the change the client chose in week 44. Then you run the whole test matrix and the accessibility, validation and security passes, so the site is complete and proven before a stranger tries it.",
+      "kuvassa": [
+        "Converter → phrasebook & search → test matrix",
+        "Week 47: every must-have page tested and accessible."
+      ],
       "viikot": [
         45,
         46,
@@ -70,9 +85,14 @@
       "vari": "#b0473a"
     },
     {
-      "tunnus": "D",
+      "tunnus": "4",
       "lyhyt": "Release",
-      "otsikko": "Release and demonstration",
+      "otsikko": "Release v1.0 and demonstration",
+      "kuvaus": "A stranger runs the project from your README and an outside tester learns the café dialogue from the site alone. You release v1.0, link every requirement to its work sample and hand over on Friday 4 December.",
+      "kuvassa": [
+        "RC → clean clone → user test → v1.0 → demo",
+        "Fri 4 Dec: v1.0 public, evidence linked, handed over."
+      ],
       "viikot": [
         48,
         49
@@ -90,7 +110,7 @@
     ],
     "tyokiertoOtsikko": "WORKFLOW",
     "tyokiertoAlt": "The weekly workflow: site map, component, data, test, publish",
-    "vaiheetAlt": "The four phases of the project",
+    "vaiheetAlt": "The four phases of the project: 1 Foundations, 2 Grammar views, 3 Complete site, 4 Release",
     "suunnitelma": [
       "Goal & audience",
       "My decisions",
@@ -125,7 +145,7 @@
     "POLKU_OTSIKKO": "How the site grows",
     "POLKU_H2": "The site is built one view at a time",
     "POLKU_OHJE": "it tells you what exists after the week that did not exist before.",
-    "POLKU_KUVA_ALT": "The four phases: Foundations, Grammar views, Finish, Release",
+    "POLKU_KUVA_ALT": "The four phases: 1 Foundations, 2 Grammar views, 3 Complete site, 4 Release",
     "POLKU_KUVA_OTSIKKO": "Four phases.",
     "POLKU_KUVA_TEKSTI": "Foundations first, then the grammar views, then quality and testing, and finally the release and the demonstration.",
     "HERO_KUVA_ALT": "Weekly workflow: site map, component, data, test, publish",

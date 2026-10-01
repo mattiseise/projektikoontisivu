@@ -17,6 +17,16 @@ The site is fully static. Published as a subfolder of the projektikoontisivu rep
 | `app.js` | generic engine — **never edited per project** |
 | `styles.css` | look and feel; only the `:root` palette is project-specific |
 | `kuvitukset.json` | texts and colours for the generated SVG illustrations |
+| `assets/tyonkulku.svg`, `assets/sovelluksen-osat.svg`, `assets/virheketju.svg` | hand-written illustrations: the learner's workflow, the site's parts, the debugging chain (edit as SVG) |
+| `assets/projektin-vaiheet.svg` | the four phases, generated from `vaiheet` with `node tyokalut/tee_vaihekuva.js` |
+
+## Weekly guide (engine v2.7, unified weeks)
+
+Every week has the same order: how the week connects to the whole project, the week goal, the
+numbered work steps (`tehtavat` in `sisalto.js`, with parts to tick), help, the end-of-week check and
+the project journal. A *work step* is an item on this site, a *GitHub issue* is one change to the
+student's site, and the *working method* is the six steps used for every issue. Task ids and their
+order are unchanged, so earlier ticks carry over into the parts.
 
 ## Local preview
 

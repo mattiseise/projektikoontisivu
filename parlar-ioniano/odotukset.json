@@ -4,10 +4,10 @@
   "nimi": "Parlar Ioniano",
   "kieli": "en",
   "paivaton": false,
-  "generoitu": "2026-09-28",
+  "generoitu": "2026-10-01",
   "lahde": {
-    "sisalto.js": "0d20e7f5fa088c42",
-    "index.html": "1603e76302c1d1d7"
+    "sisalto.js": "6533af2dafa63867",
+    "index.html": "16103c049f67d8f3"
   },
   "viikot": [
     36,
@@ -67,30 +67,50 @@
     "36": {
       "jarjestys": 1,
       "tyyppi": "pohjustus",
-      "vaihe": "A",
+      "vaihe": "1",
       "otsikko": "Kickoff, toolchain and the first deploy",
       "tehtavat": [
         {
           "id": "36-1",
-          "teksti": "Hold the kickoff talk: bring your question list and record every answer as a decision, an open item or an assumption."
+          "teksti": "Hold the kickoff talk and record every answer",
+          "valmis": "Every question in the kickoff notes has an answer marked decision, open item or assumption, and the must-have scope (P0) is agreed.",
+          "tallenna": "The kickoff notes with the question list in `project-docs/`. The open questions and their answers go into the week 36 journal entry."
         },
         {
           "id": "36-2",
-          "teksti": "Set up VS Code, the site folder served over http://localhost and the public repository — privacy check first, two-factor authentication (2FA) on."
+          "teksti": "Set up the tools and the public repository",
+          "valmis": "`index.html` opens through http://localhost, the public repository has a README, the privacy check is done and 2FA is on.",
+          "tallenna": "The repository link and the first commit hash go into the week 36 journal entry."
         },
         {
           "id": "36-3",
-          "teksti": "Create a hotspot on your phone, connect your computer to it, and publish the empty site to GitHub Pages over your own connection."
+          "teksti": "Publish the empty site over your phone's hotspot",
+          "valmis": "The public URL opens on your phone and on a device that has never seen the project, and the DevTools console shows no red errors.",
+          "tallenna": "The phone screenshot in `project-docs/evidence/week-36/`. The network notes and the screenshot link go into the week 36 journal entry."
         },
         {
           "id": "36-4",
-          "teksti": "Draft the technical plan below and split the P0 pages into prioritised issues."
+          "teksti": "Draft the plan and turn the P0 pages into GitHub issues",
+          "valmis": "The plan draft is committed, and every must-have page (P0) has an issue with a done-when condition and a size estimate.",
+          "tallenna": "`project-docs/technical-plan.md` committed and the issues in the repository. The issue numbers go into the week 36 journal entry."
         }
       ],
       "nayta": "Kickoff notes with the question list, the repository with its README, the first deploy live at the public URL, the plan draft, the P0 backlog — and the phone screenshot in project-docs/evidence/week-36/.",
       "tuotos": "Kickoff notes with a question list, a public repository with a privacy check done, the site folder served by a local web server on your computer, the first deploy published over your phone hotspot and live at the public URL, the technical plan drafted and the P0 backlog — the ordered list of what is still to do — as issues.",
       "valmis": "The public URL opens on a device that has never seen the project, and another person understands from the README and the plan what is being built and for whom.",
       "tarkistukset": [
+        {
+          "id": "tiedosto:project-docs/technical-plan.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/technical-plan.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "tiedosto:index.html",
+          "tyyppi": "tiedosto",
+          "polku": "index.html",
+          "lahde": "auto"
+        },
         {
           "id": "tiedosto:README.md",
           "tyyppi": "tiedosto",
@@ -126,24 +146,30 @@
     "37": {
       "jarjestys": 2,
       "tyyppi": "feature",
-      "vaihe": "A",
+      "vaihe": "1",
       "otsikko": "Content becomes data: the Alphabet view",
       "tehtavat": [
         {
           "id": "37-1",
-          "teksti": "Type data/letters.json and the first records of data/words.json from your PDF (pages 7, 9–11, 12 and 41) and document the data-store decision in the plan."
+          "teksti": "Justify the data store and type the first data from your PDF",
+          "valmis": "`data/letters.json` and the first ten records of `data/words.json` are typed from the PDF, and the plan justifies the agreed data store against at least one alternative.",
+          "tallenna": "The JSON files committed in `data/` and the justification in `project-docs/technical-plan.md`. The PDF pages you typed go into the week 37 journal entry."
         },
         {
           "id": "37-2",
-          "teksti": "Build js/data.js as the shared loader and the Alphabet & Pronunciation page on a runtime fetch with loading and error states."
+          "teksti": "Build the shared loader and the Alphabet page",
+          "valmis": "The Alphabet & Pronunciation page renders from `data/letters.json` at the public URL, and a renamed file shows your error message instead of a blank page.",
+          "tallenna": "`js/data.js` and the Alphabet page committed and deployed. The commit links go into the week 37 journal entry."
         },
         {
           "id": "37-3",
-          "teksti": "Run tools/check-data.html, add one check of your own and prove it fails on a planted error."
+          "teksti": "Check the data and prove the check catches an error",
+          "valmis": "`tools/check-data.html` reports \"content OK\", reports an error when you break one line, and the alphabet table matches the PDF.",
+          "tallenna": "`tools/check-data.html` committed. What the check caught and its pass/fail report go into the week 37 journal entry."
         }
       ],
       "nayta": "data/letters.json and data/words.json, js/data.js, the Alphabet page live at the public URL, and the tools/check-data.html report pass/fail in the journal.",
-      "tuotos": "data/letters.json and the first records of data/words.json typed from the PDF (pages 7, 9–11, 12 and 41), a documented data-store decision in the plan, js/data.js as the one loader every page uses, the Alphabet & Pronunciation page live with real loading and error states, and tools/check-data.html reporting on every data file.",
+      "tuotos": "data/letters.json and the first records of data/words.json typed from the PDF (pages 7, 9–11, 12 and 41), the agreed data store justified in the plan against at least one alternative, js/data.js as the one loader every page uses, the Alphabet & Pronunciation page live with real loading and error states, and tools/check-data.html reporting on every data file.",
       "valmis": "The public URL shows the alphabet table rendered from data/letters.json, and tools/check-data.html reports \"content OK\" — and reports an error when you deliberately break one line.",
       "tarkistukset": [
         {
@@ -193,20 +219,26 @@
     "38": {
       "jarjestys": 3,
       "tyyppi": "feature",
-      "vaihe": "A",
+      "vaihe": "1",
       "otsikko": "Bootstrap shell and the component decision",
       "tehtavat": [
         {
           "id": "38-1",
-          "teksti": "Write the comparison memo: Bootstrap, one other component library and the no-library option, with your own transferred-KB and Lighthouse measurements."
+          "teksti": "Write the component-library comparison memo",
+          "valmis": "`project-docs/library-comparison.md` covers all three options with your own before-numbers and the supervisor's view, and the plan names your components.",
+          "tallenna": "`project-docs/library-comparison.md` committed and the decision on the Plan page. The three options and the decision go into the week 38 journal entry."
         },
         {
           "id": "38-2",
-          "teksti": "Load Bootstrap from the CDN with a pinned version, configure the theme in css/style.css, and build the navbar, the grid and the Home page."
+          "teksti": "Take Bootstrap into use and build the shared shell",
+          "valmis": "Bootstrap loads from the CDN with a pinned version, the navbar works from every page and collapses on a phone, and Home shows the credit and the terms.",
+          "tallenna": "The pages and `css/style.css` committed and deployed. Which components you use and where you wrote your own CSS go into the week 38 journal entry."
         },
         {
           "id": "38-3",
-          "teksti": "Measure again from the DevTools Network panel and record the before/after numbers in the memo."
+          "teksti": "Measure again and record the before/after numbers",
+          "valmis": "The memo has the before and after numbers side by side and at least one named limit.",
+          "tallenna": "`project-docs/library-comparison.md` with the before/after pair, committed. Your measurements go into the week 38 journal entry."
         }
       ],
       "nayta": "The comparison memo with your own measured numbers is in project-docs/, the navbar works from every page on the public URL and collapses correctly on a phone, and the Home page shows the credit and terms.",
@@ -217,6 +249,12 @@
           "id": "tiedosto:css/style.css",
           "tyyppi": "tiedosto",
           "polku": "css/style.css",
+          "lahde": "auto"
+        },
+        {
+          "id": "tiedosto:project-docs/library-comparison.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/library-comparison.md",
           "lahde": "auto"
         },
         {
@@ -242,20 +280,26 @@
     "39": {
       "jarjestys": 4,
       "tyyppi": "feature",
-      "vaihe": "B",
+      "vaihe": "2",
       "otsikko": "Pronouns: one function, eight tables",
       "tehtavat": [
         {
           "id": "39-1",
-          "teksti": "Design the pronouns section of data/grammar.json so one shape serves all eight tables, and type the data from PDF pages 13–18 and 22–26."
+          "teksti": "Design the pronoun data and type it from the PDF",
+          "valmis": "`data/grammar.json` has eight pronoun sets in the same shape, and `tools/check-data.html` passes.",
+          "tallenna": "`data/grammar.json` committed. The shape and the PDF pages you typed go into the week 39 journal entry."
         },
         {
           "id": "39-2",
-          "teksti": "Write the reusable renderTable() in js/render.js and wire the eight tables into Bootstrap tabs."
+          "teksti": "Write renderTable() and wire the eight tables into tabs",
+          "valmis": "All eight pronoun tables render at the public URL through one renderTable(), the tabs work with the keyboard, and wide tables scroll on a phone.",
+          "tallenna": "`js/render.js` and the Pronouns page committed. How renderTable() stays generic goes into the week 39 journal entry."
         },
         {
           "id": "39-3",
-          "teksti": "Make the loading and error states real and capture both as screenshots."
+          "teksti": "Prove the loading and error states with screenshots",
+          "valmis": "Both screenshots show your own states, and the phone check passes.",
+          "tallenna": "The screenshots in `project-docs/evidence/week-39/`, linked in the week 39 journal entry."
         }
       ],
       "nayta": "All eight pronoun tables render on the public URL from data/grammar.json, the tabs can be operated with the keyboard alone, wide tables scroll horizontally on a phone, and renaming the JSON shows your error state.",
@@ -297,29 +341,37 @@
     "40": {
       "jarjestys": 5,
       "tyyppi": "feature",
-      "vaihe": "B",
+      "vaihe": "2",
       "otsikko": "Nouns, articles and gender — and v0.5",
       "tehtavat": [
         {
           "id": "40-1",
-          "teksti": "Add the nouns and articles sections to data/grammar.json from PDF pages 8 and 19–21, including the elision rules."
+          "teksti": "Model the gender-by-number data and type it from the PDF",
+          "valmis": "The nouns and articles sections in `data/grammar.json` match PDF pages 8 and 19–21, and `tools/check-data.html` passes.",
+          "tallenna": "`data/grammar.json` committed. How the gender × number shape drove the data design goes into the week 40 journal entry."
         },
         {
           "id": "40-2",
-          "teksti": "Render the gender-by-number matrices with the reused renderTable() inside a Bootstrap accordion, and add the example sentences."
+          "teksti": "Build the Nouns & Articles page with an accordion",
+          "valmis": "The Nouns & Articles page renders every matrix through renderTable() at the public URL, and the accordion works with the keyboard alone.",
+          "tallenna": "The page committed and deployed. Why the accordion earns its place on a long page goes into the week 40 journal entry."
         },
         {
           "id": "40-3",
-          "teksti": "Tag v0.5 and deploy it."
+          "teksti": "Tag v0.5 and deploy it",
+          "valmis": "The v0.5 tag is on GitHub and the deployed site matches it.",
+          "tallenna": "The tag in the repository. The tag and what you left for the review to judge go into the week 40 journal entry."
         },
         {
           "id": "40-4",
-          "teksti": "Book the week-44 review in writing: names, date and tasks into project-docs/review-agreement.md."
+          "teksti": "Book the week-44 review in writing",
+          "valmis": "`project-docs/review-agreement.md` is committed with the roles, the date, the place and the three tasks.",
+          "tallenna": "`project-docs/review-agreement.md` committed. The booked review details go into the week 40 journal entry."
         }
       ],
-      "nayta": "The four grammar pages render correctly on the public URL, the accordion opens and closes with the keyboard alone, v0.5 is tagged, and the review agreement (names + date) is committed in project-docs/.",
-      "tuotos": "The nouns and articles sections added to data/grammar.json from the PDF, the gender×number matrices rendered by the week-39 function, the rule sections wrapped in a Bootstrap accordion built from the same data, example sentences from the PDF, the v0.5 git tag, and a written agreement of the review: client's and tester's names, date and place for week 44.",
-      "valmis": "The four grammar pages render correctly on the public URL, the accordion opens and closes with the keyboard alone, v0.5 is tagged, and the review agreement (names + date) is committed in project-docs/.",
+      "nayta": "The four grammar pages render correctly on the public URL, the accordion opens and closes with the keyboard alone, v0.5 is tagged, and the review agreement (roles + date) is committed in project-docs/.",
+      "tuotos": "The nouns and articles sections added to data/grammar.json from the PDF, the gender×number matrices rendered by the week-39 function, the rule sections wrapped in a Bootstrap accordion built from the same data, example sentences from the PDF, the v0.5 git tag, and a written agreement of the review: the client's representative and the tester by role, the date and the place for week 44.",
+      "valmis": "The four grammar pages render correctly on the public URL, the accordion opens and closes with the keyboard alone, v0.5 is tagged, and the review agreement (roles + date) is committed in project-docs/.",
       "tarkistukset": [
         {
           "id": "tiedosto:project-docs/review-agreement.md",
@@ -356,24 +408,32 @@
     "44": {
       "jarjestys": 6,
       "tyyppi": "katselmointi",
-      "vaihe": "B",
+      "vaihe": "2",
       "otsikko": "Client review and re-plan",
       "tehtavat": [
         {
           "id": "44-1",
-          "teksti": "Run the review session and record the tester's findings verbatim, separated from your interpretation."
+          "teksti": "Run the review and record the findings verbatim",
+          "valmis": "`project-docs/review-2026-w44.md` separates the tester's words from your interpretation, and every finding has a decision.",
+          "tallenna": "`project-docs/review-2026-w44.md` committed. The three most surprising findings in the tester's words, with the tester's role and the date, go into the week 44 journal entry."
         },
         {
           "id": "44-2",
-          "teksti": "Turn the client's decisions into issues and re-prioritise the backlog, comparing estimates with reality."
+          "teksti": "Turn the decisions into issues and re-plan the backlog",
+          "valmis": "Every accepted finding is an issue with a done-when condition, the backlog is re-prioritised, and the estimate-versus-actual difference is written down.",
+          "tallenna": "The issues in the repository. What you re-prioritised and why, and the estimate comparison, go into the week 44 journal entry."
         },
         {
           "id": "44-3",
-          "teksti": "Fix a small batch and document debugging chain 1/3 end to end."
+          "teksti": "Fix a small batch and write debugging chain 1/3",
+          "valmis": "Chain 1/3 in `project-docs/debugging-chains.md` runs from the tester's words to a regression test, with the fix commit linked.",
+          "tallenna": "`project-docs/debugging-chains.md` and the regression test row in `project-docs/test-matrix.md`, committed. The chain links go into the week 44 journal entry."
         },
         {
           "id": "44-4",
-          "teksti": "Check the t12 open item (device-security policy) with the supervisor and update the plan."
+          "teksti": "Check the device-security open item with the supervisor",
+          "valmis": "The plan's device-security item shows the supervisor's answer or is still marked open, and the plan is committed.",
+          "tallenna": "`project-docs/technical-plan.md` committed. The answer, or that it is still open, goes into the week 44 journal entry."
         }
       ],
       "nayta": "project-docs/review-2026-w44.md with the two voices separated, the updated backlog, the fix commits, and chain 1 in debugging-chains.md.",
@@ -387,9 +447,15 @@
           "lahde": "auto"
         },
         {
-          "id": "tiedosto:debugging-chains.md",
+          "id": "tiedosto:project-docs/debugging-chains.md",
           "tyyppi": "tiedosto",
-          "polku": "debugging-chains.md",
+          "polku": "project-docs/debugging-chains.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "tiedosto:project-docs/test-matrix.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/test-matrix.md",
           "lahde": "auto"
         },
         {
@@ -415,20 +481,26 @@
     "45": {
       "jarjestys": 7,
       "tyyppi": "feature",
-      "vaihe": "C",
+      "vaihe": "3",
       "otsikko": "The number converter — built from scratch",
       "tehtavat": [
         {
           "id": "45-1",
-          "teksti": "Write the converter tests first: expected values from PDF pages 42–45, committed while still red."
+          "teksti": "Write the converter tests first, from the PDF",
+          "valmis": "`tests/numbers.test.js` has at least 6 converter tests whose names cite PDF pages, and a commit shows them all red before the implementation.",
+          "tallenna": "The all-red commit and `tests/numbers.test.js`. The test-first evidence goes into the week 45 journal entry."
         },
         {
           "id": "45-2",
-          "teksti": "Implement numberToIonian and the ordinal helpers in js/numbers.js as small pure functions until tests/tests.html reports 0 failed."
+          "teksti": "Implement the converter as small pure functions",
+          "valmis": "`tests/tests.html` reports 0 failed, and `js/numbers.js` contains no DOM or fetch code.",
+          "tallenna": "`js/numbers.js` and `data/numbers.json`, committed test by test. The function breakdown and the two hardest rules go into the week 45 journal entry."
         },
         {
           "id": "45-3",
-          "teksti": "Build the converter's user interface (UI) from scratch — no Bootstrap components — and ship the week-44 feedback change."
+          "teksti": "Build the converter UI by hand and ship the feedback change",
+          "valmis": "On the public URL at least 0–999 999 converts correctly, junk input gets a clear message, and the feedback change is live and linked to its finding.",
+          "tallenna": "The Numbers page and the merge commit. The feedback-change link goes into the week 45 journal entry."
         }
       ],
       "nayta": "tests/numbers.test.js with PDF-cited expectations, js/numbers.js, the Numbers page live, and the feedback-change commit linked to its finding.",
@@ -482,28 +554,36 @@
     "46": {
       "jarjestys": 8,
       "tyyppi": "feature",
-      "vaihe": "C",
+      "vaihe": "3",
       "otsikko": "Phrasebook, word cards and search",
       "tehtavat": [
         {
           "id": "46-1",
-          "teksti": "Complete data/words.json and write data/phrases.json from PDF pages 12 and 51–56, marking pages 57–58 as “coming later”."
+          "teksti": "Finish the word and phrase data from the PDF",
+          "valmis": "Both files match the PDF, pages 57–58 say \"coming later\", and `tools/check-data.html` passes.",
+          "tallenna": "`data/words.json` and `data/phrases.json` committed. The \"coming later\" decision goes into the week 46 journal entry."
         },
         {
           "id": "46-2",
-          "teksti": "Render the vocabulary as a Bootstrap card grid and build the dialogue viewer with the Ionian/English toggle."
+          "teksti": "Build the word cards and the dialogue viewer",
+          "valmis": "On the public URL the cards drop to one column on a phone, and the dialogue switches between Ionian and English.",
+          "tallenna": "The Phrasebook page committed and deployed, linked in the week 46 journal entry."
         },
         {
           "id": "46-3",
-          "teksti": "Build the search that filters the cards in memory, render with textContent, and prove the XSS string appears as text."
+          "teksti": "Build the search and prove it cannot be tricked",
+          "valmis": "Typing \"thank\" finds the \"thank you\" card with a live match count, and the attack string renders as harmless text.",
+          "tallenna": "The screenshot in `project-docs/evidence/week-46/`. How the filter works and why textContent is safe go into the week 46 journal entry."
         },
         {
           "id": "46-4",
-          "teksti": "Fill the test matrix to at least 12 cases and commit LICENSE and CREDITS per the client's decision."
+          "teksti": "Plan the whole test matrix and commit the licence files",
+          "valmis": "The test matrix has at least 12 cases with the expected results filled in, LICENSE and CREDITS are committed, and chain 2/3 is written up.",
+          "tallenna": "`project-docs/test-matrix.md`, `LICENSE` and `CREDITS` committed. The state of chain 2/3 goes into the week 46 journal entry."
         }
       ],
       "nayta": "The Phrasebook live with the card grid and search, the XSS screenshot, the full test matrix with expected results filled in, and the LICENSE/CREDITS commits.",
-      "tuotos": "data/words.json completed and data/phrases.json written (basic vocabulary p. 12, greetings and dialogues pp. 51–56), the vocabulary rendered as a responsive Bootstrap card grid, the dialogue viewer with the toggle, a search box that filters in memory and renders with textContent, the remaining test matrix planned (including the broken-network case), the LICENSE/CREDITS files per the client's decision, and debugging chain 2/3 completed if it started in week 45.",
+      "tuotos": "data/words.json completed and data/phrases.json written (basic vocabulary p. 12, greetings and dialogues pp. 51–56), the vocabulary rendered as a responsive Bootstrap card grid, the dialogue viewer with the toggle, a search box that filters in memory and renders with textContent, the remaining test matrix planned (including the broken-network case), the LICENSE file with the licence agreed with the supervisor and the CREDITS file, and debugging chain 2/3 completed if it started in week 45 or started from a real bug this week.",
       "valmis": "A beginner can find 'thank you' by typing 'thank' on the public URL, the cards filter as you type with a live match count, the dialogues toggle between languages, searching for the T10 attack string (the img-onerror line in the test matrix) renders as harmless text, and the full test matrix (at least 12 cases) exists with the expected results filled in.",
       "tarkistukset": [
         {
@@ -541,24 +621,32 @@
     "47": {
       "jarjestys": 9,
       "tyyppi": "laatu",
-      "vaihe": "C",
+      "vaihe": "3",
       "otsikko": "Quality and testing week",
       "tehtavat": [
         {
           "id": "47-1",
-          "teksti": "Execute the whole test matrix against the public URL and fill the observed column with dates."
+          "teksti": "Run the whole test matrix against the public URL",
+          "valmis": "Every row has an observed result and a date, the failures are marked, and both test pages are green on main.",
+          "tallenna": "`project-docs/test-matrix.md` committed. The failures the matrix caught go into the week 47 journal entry."
         },
         {
           "id": "47-2",
-          "teksti": "Complete debugging chain 3/3 and compile chains 1–3 into one document."
+          "teksti": "Complete debugging chain 3/3 and compile all three",
+          "valmis": "`project-docs/debugging-chains.md` has three complete chains in the same format, each ending in a regression test in the matrix.",
+          "tallenna": "`project-docs/debugging-chains.md` committed. The chain 3/3 links go into the week 47 journal entry."
         },
         {
           "id": "47-3",
-          "teksti": "Run the accessibility audit and the W3C HTML validation: fix keyboard, contrast, alt, labels and markup errors, and record the Lighthouse before/after pairs."
+          "teksti": "Audit accessibility and validate every page",
+          "valmis": "Every page has a Lighthouse before/after pair and passes the W3C HTML validator without errors.",
+          "tallenna": "`project-docs/lighthouse/` and `project-docs/html-validation.md` committed. The Lighthouse pairs and what the validator found go into the week 47 journal entry."
         },
         {
           "id": "47-4",
-          "teksti": "Review the CDN dependencies (version pinned, integrity hash) and run the no-secrets check, then refactor in small commits with the tests green in between."
+          "teksti": "Review what you load, then refactor with the tests green",
+          "valmis": "`project-docs/security-review.md` lists every external file with its version, no secrets are found, and the refactor commits have green tests in between.",
+          "tallenna": "`project-docs/security-review.md` and the refactor commit series. What the refactor changed structurally goes into the week 47 journal entry."
         }
       ],
       "nayta": "The executed test matrix, debugging-chains.md with three complete chains, the Lighthouse pairs in project-docs/lighthouse/, html-validation.md and security-review.md, and the refactor commit series.",
@@ -566,15 +654,15 @@
       "valmis": "The matrix has every row filled with observed results and dates, three complete chains are in debugging-chains.md, the after-Lighthouse accessibility score is recorded next to its before-pair, every page validates without errors, and tests/tests.html plus tools/check-data.html are both green on main.",
       "tarkistukset": [
         {
-          "id": "tiedosto:html-validation.md",
+          "id": "tiedosto:project-docs/html-validation.md",
           "tyyppi": "tiedosto",
-          "polku": "html-validation.md",
+          "polku": "project-docs/html-validation.md",
           "lahde": "auto"
         },
         {
-          "id": "tiedosto:security-review.md",
+          "id": "tiedosto:project-docs/security-review.md",
           "tyyppi": "tiedosto",
-          "polku": "security-review.md",
+          "polku": "project-docs/security-review.md",
           "lahde": "auto"
         },
         {
@@ -606,40 +694,60 @@
     "48": {
       "jarjestys": 10,
       "tyyppi": "julkaisu",
-      "vaihe": "D",
+      "vaihe": "4",
       "otsikko": "Release candidate, user test and v1.0",
       "tehtavat": [
         {
           "id": "48-1",
-          "teksti": "Freeze the content and tag the release candidate (RC)."
+          "teksti": "Freeze the content and tag the release candidate (RC)",
+          "valmis": "The release candidate tag is pushed, and the public URL serves it with a clean console.",
+          "tallenna": "The RC tag in the repository, linked in the week 48 journal entry."
         },
         {
           "id": "48-2",
-          "teksti": "Run the clean-environment test from a fresh clone using only the README, fixing the README where it fails."
+          "teksti": "Run the project from a fresh clone with the README only",
+          "valmis": "The fresh clone runs with the README steps only.",
+          "tallenna": "The clean-clone notes and the README fix commits. The clean-environment result goes into the week 48 journal entry."
         },
         {
           "id": "48-3",
-          "teksti": "Run the external user test with a written task card, recording the tester's words verbatim and separately."
+          "teksti": "Run the user test with one written task",
+          "valmis": "The tester reached and read the café dialogue using only the site and your written instructions, and every hesitation has a fix.",
+          "tallenna": "`project-docs/user-test-2026-w48.md` and the fix commits. The tester's words and the fixes they produced go into the week 48 journal entry."
         },
         {
           "id": "48-4",
-          "teksti": "Write the deployment-path description from your own artefacts and release v1.0."
+          "teksti": "Describe the deployment path and release v1.0",
+          "valmis": "v1.0 is tagged, released and live at the public URL, `deployment-path.md` uses your own screenshots, and `evidence-matrix.md` exists.",
+          "tallenna": "`project-docs/deployment-path.md`, `project-docs/release-notes-v1.0.md`, `project-docs/evidence-matrix.md` and the v1.0 release. The release link goes into the week 48 journal entry."
         }
       ],
-      "nayta": "The clean-clone notes, user-test-2026-w48.md, deployment-path.md, the instruction-fix commits and the v1.0 release.",
+      "nayta": "The clean-clone notes, user-test-2026-w48.md, deployment-path.md, the instruction-fix commits, the v1.0 release and the started project-docs/evidence-matrix.md.",
       "tuotos": "A content-frozen release candidate, a clean-environment run (a fresh clone on another machine, README steps only), the external user test with the tester's words recorded verbatim and separated from your interpretation, every hesitation turned into an instruction fix, the deployment-path description built from your own artefacts (t11), the finished README and user documentation, and the v1.0 tag + GitHub release.",
       "valmis": "The tester reached and read the café dialogue using only the site and your written instructions — no spoken help; the fresh clone runs with the README steps only; v1.0 is tagged, released and live at the public URL.",
       "tarkistukset": [
         {
-          "id": "tiedosto:user-test-2026-w48.md",
+          "id": "tiedosto:project-docs/evidence-matrix.md",
           "tyyppi": "tiedosto",
-          "polku": "user-test-2026-w48.md",
+          "polku": "project-docs/evidence-matrix.md",
           "lahde": "auto"
         },
         {
-          "id": "tiedosto:deployment-path.md",
+          "id": "tiedosto:project-docs/user-test-2026-w48.md",
           "tyyppi": "tiedosto",
-          "polku": "deployment-path.md",
+          "polku": "project-docs/user-test-2026-w48.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "tiedosto:project-docs/deployment-path.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/deployment-path.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "tiedosto:project-docs/release-notes-v1.0.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/release-notes-v1.0.md",
           "lahde": "auto"
         },
         {
@@ -671,26 +779,38 @@
     "49": {
       "jarjestys": 11,
       "tyyppi": "naytto",
-      "vaihe": "D",
+      "vaihe": "4",
       "otsikko": "Demonstration week",
       "tehtavat": [
         {
           "id": "49-1",
-          "teksti": "Link all 44 matrix rows below to their exact work samples."
+          "teksti": "Link all 44 requirements to their exact work samples",
+          "valmis": "All 44 rows in `project-docs/evidence-matrix.md` have a working, exact link.",
+          "tallenna": "`project-docs/evidence-matrix.md` committed. The final commit hash goes into the week 49 journal entry."
         },
         {
           "id": "49-2",
-          "teksti": "Commit the final project journal and AI log, and write the self-assessment."
+          "teksti": "Commit the journal and AI log, and write the self-assessment",
+          "valmis": "The journal covers all 11 weeks, the AI log is committed with every entry verified, and the self-assessment is committed.",
+          "tallenna": "`project-docs/project-journal.md`, `project-docs/AI-log.md` and the self-assessment in `project-docs/`. What it says about your weakest and strongest requirement goes into the week 49 journal entry."
         },
         {
           "id": "49-3",
-          "teksti": "Rehearse the 8–10 minute demo twice with a timer and hand over on Friday."
+          "teksti": "Rehearse the demo twice and hand over on Friday",
+          "valmis": "The demo ran inside 10 minutes in both rehearsals, and the handover package is delivered on Friday 4 December.",
+          "tallenna": "The demo structure with its timings goes into the week 49 journal entry."
         }
       ],
-      "nayta": "The fully linked matrix, project-docs with the final journal, AI log and self-assessment, and the handover confirmation.",
-      "tuotos": "The evidence matrix below fully linked (a commit, file, screenshot or memo per requirement), the final project journal and AI log committed, the demo rehearsed with a timer, the self-assessment written, and the handover done on Friday 4 Dec.",
-      "valmis": "Every matrix row has a working link, the journal covers all 11 weeks, the demo ran inside 10 minutes in rehearsal, and the handover package is complete on Friday.",
+      "nayta": "project-docs/evidence-matrix.md fully linked, project-docs with the final journal, AI log and self-assessment, and the handover confirmation.",
+      "tuotos": "project-docs/evidence-matrix.md fully linked (a commit, file, screenshot or memo per requirement), the final project journal and AI log committed, the demo rehearsed with a timer, the self-assessment written, and the handover done on Friday 4 Dec.",
+      "valmis": "Every row in project-docs/evidence-matrix.md has a working link, the journal covers all 11 weeks, the demo ran inside 10 minutes in rehearsal, and the handover package is complete on Friday.",
       "tarkistukset": [
+        {
+          "id": "tiedosto:project-docs/AI-log.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/AI-log.md",
+          "lahde": "auto"
+        },
         {
           "id": "paivakirja:49",
           "tyyppi": "paivakirja",
