@@ -1290,12 +1290,12 @@ window.NAYTTOPROJEKTI = {
     },
     41: {
       "type": "feature",
-      "feature": "Saat valmiiksi tehdyn kuution pyörimään oman tietokoneesi ruudulla.",
-      "connection": "Tämän viikon tarkoitus on saada työkalut toimintakuntoon: asennat kirjastot ja käynnistät pohjassa valmiina olevan kuutiosovelluksen sekä sen testit. Et kirjoita tai teetä koodia, suunnittele kuution laskentaa tai muuta valmista testiä. Varsinaisten mallinnustoimintojen rakentaminen ja tehtäväkorttien työsykli alkavat viikolla 43.",
+      "feature": "Saat valmiiksi tehdyn kuution pyörimään oman tietokoneesi ruudulla GitHub Copilotin avulla.",
+      "connection": "Tämän viikon tarkoitus on saada työkalut toimintakuntoon: asennat kirjastot ja käynnistät pohjassa valmiina olevan kuutiosovelluksen GitHub Copilotin avulla. GitHub Copilot auttaa käynnistämisessä; kuution koodi ja testi ovat jo valmiina, eikä niitä muuteta. Varsinaisten mallinnustoimintojen rakentaminen ja tehtäväkorttien työsykli alkavat viikolla 43.",
       "deliverable": "Toimiva Python-ympäristö ja ruudulla pyörivä valmis kuutio.",
       "why": "Kun valmis esimerkkisovellus toimii, tiedät että työkalut ovat valmiina myöhempää rakentamista varten.",
-      "done": "Ympäristötarkistus näyttää Ympäristö on kunnossa. Komento python main.py avaa ikkunan, jossa kuutio pyörii. Valmis testi test_1_kiertokulma menee läpi ja itsetesti näyttää ITSETESTI LÄPI. Tämän viikon valmistuminen ei vaadi tehtäväkortteja, julkaisua tai koodin kirjoittamista.",
-      "record": "Kirjaa [[tiedosto:projektipaivakirja|projektipäiväkirjaan]], mitä työkaluja otit käyttöön, näkyikö pyörivä kuutio ja mitä ympäristötarkistus, valmis testi sekä itsetesti ilmoittivat. Jos jokin jäi kesken, kirjaa virhe ja kohta, josta jatkat. Viikolla 41 ei ole selitettävää funktiota.",
+      "done": "Ympäristötarkistus näyttää Ympäristö on kunnossa. GitHub Copilotin avulla käynnistetty valmis main.py avaa ikkunan, jossa kuutio pyörii. Valmis testi test_1_kiertokulma menee läpi ja itsetesti näyttää ITSETESTI LÄPI. Tämän viikon valmistuminen ei vaadi tehtäväkortteja, julkaisua tai koodin kirjoittamista.",
+      "record": "Kirjaa [[tiedosto:projektipaivakirja|projektipäiväkirjaan]], mitä työkaluja otit käyttöön, miten GitHub Copilot auttoi käynnistämisessä ja näkyikö pyörivä kuutio ja mitä ympäristötarkistus, valmis testi sekä itsetesti ilmoittivat. Jos jokin jäi kesken, kirjaa virhe ja kohta, josta jatkat. Viikolla 41 ei ole selitettävää funktiota.",
       "skills": [
         "Kehitysympäristön käyttöönotto",
         "Virtuaaliympäristö ja kirjastojen asennus",
@@ -1551,12 +1551,24 @@ window.NAYTTOPROJEKTI = {
           "miksi": "Ruudulla pyörivä kuutio varmistaa, että Python, Qt ja 3D-näkymä toimivat yhdessä.",
           "osat": [
             {
-              "otsikko": "Käynnistä valmis kuutio",
-              "missa": "VS Code, repositoryn terminaali",
-              "tee": "Aja komento. Ohje: [[ohje:komento]].",
-              "naet": "Ikkuna avautuu ja sininen kuutio pyörii mustalla taustalla kuten viikon alun esimerkissä. Et luo tai muuta Python-tiedostoja. Jos saat virheen, kopioi se ohjaajalle. Ohje: [[ohje:teams]].",
-              "koodi": "python main.py",
-              "koodiOtsikko": "Komento: kopioi tämä"
+              "otsikko": "Avaa GitHub Copilot Chat",
+              "missa": "VS Code, avattu Vektoripajan repository",
+              "tee": "Avaa GitHub Copilotin keskustelu VS Codessa.",
+              "naet": "Copilotin viestikenttä on näkyvissä samassa VS Code -ikkunassa kuin repository. Käytät GitHub Copilotia, jonka otit käyttöön viikolla 40; et selaimen Microsoft 365 Copilotia."
+            },
+            {
+              "otsikko": "Pyydä käynnistämään valmis kuutio",
+              "missa": "VS Code, GitHub Copilot Chat",
+              "tee": "Kopioi käynnistyspyyntö viestikenttään. Lähetä viesti.",
+              "naet": "Copilot käynnistää valmiin main.py-tiedoston projektin .venv-ympäristössä tai antaa käynnistyskomennon. Jos se ehdottaa koodimuutoksia, älä hyväksy niitä: muistuta, että tämän viikon tehtävä on vain valmiin sovelluksen käynnistäminen.",
+              "koodi": "Tämän viikon tavoitteena on vain saada valmiiksi tehty kuutio pyörimään ruudulla ja varmistaa, että työkalut toimivat. Kuutiosovellus ja testi ovat jo tässä repositoryssa.\n\nAuta käynnistämään valmis main.py projektin .venv-ympäristön Pythonilla. Saat tarkistaa ympäristön ja ajaa käynnistyskomennon. Älä luo, muokkaa tai poista tiedostoja, kirjoita koodia tai muuta testejä. Jos et voi ajaa komentoa, anna täsmällinen komento, jonka suoritan VS Coden terminaalissa. Jos käynnistys epäonnistuu, kerro virhe ja ympäristöstä tarkistettava asia; älä korjaa sovelluksen koodia.",
+              "koodiOtsikko": "Käynnistyspyyntö: kopioi GitHub Copilotiin"
+            },
+            {
+              "otsikko": "Tarkista käynnistyminen",
+              "missa": "VS Code ja kuutiosovelluksen ikkuna",
+              "tee": "Jos Copilot antoi vain komennon, aja se repositoryn terminaalissa. Ohje: [[ohje:komento]].",
+              "naet": "Ikkuna avautuu ja sininen kuutio pyörii mustalla taustalla kuten viikon alun esimerkissä. Tavallinen käynnistyskomento aktivoidussa .venv-ympäristössä on python main.py. Jos käynnistys epäonnistuu, lähetä virhe ohjaajalle. Ohje: [[ohje:teams]]. Kuutiosovelluksen ja testien tiedostot ovat ennallaan."
             },
             {
               "otsikko": "Katso pyörimistä ja sulje ikkuna",

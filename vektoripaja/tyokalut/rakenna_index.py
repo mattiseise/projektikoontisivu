@@ -81,7 +81,7 @@ def project_connection(w):
         f'            <p>{escape(i["feature"])}</p>',
         *(['            <figure class="cube-preview">',
            '              <img src="assets/kuutio-pyorii.gif" width="480" height="360" alt="Sininen kuutio pyörii mustalla taustalla. Tämä on viikon tavoiteltu lopputulos." loading="lazy">',
-           '              <figcaption>Tältä valmis harjoitussovellus näyttää. Saat tämän kuution pyörimään omalla ruudullasi asentamalla työkalut ja käynnistämällä valmiin pohjan. Animaatio näyttää yhden täyden kierroksen.</figcaption>',
+           '              <figcaption>Tältä valmis harjoitussovellus näyttää. Saat tämän kuution pyörimään omalla ruudullasi asentamalla työkalut ja käynnistämällä valmiin pohjan GitHub Copilotin avulla. Animaatio näyttää yhden täyden kierroksen.</figcaption>',
            '            </figure>'] if w == 41 else []),
         '          </section>'])
 
