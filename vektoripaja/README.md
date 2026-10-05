@@ -45,7 +45,7 @@ Sivusto on staattinen ja julkaistaan koontisivun repositoryn mukana GitHub Pages
 | `kuvakaappaukset.json` | kuvaohjeiden lähde: mitä kuvataan, alt-tekstit ja numeroidut kohdat |
 | `pohjat/` | opiskelijan repositoryn pohjatiedostot: `PROJEKTIN-TILA.md`, `tehtavakortti.md`, `copilot-instructions.md` ja `havainto.md` (tulevat repositoryyn ohjaajan pull requestilla) |
 | `pohjat/python-pohja/project-docs/` | **generoitu** (`tyokalut/tee_pohjat.js` tiedostokorteista): dokumenttipohjat suunnitelma, projektipäiväkirja (työviikot päivämäärineen), AI-loki, kysymykset, kirjastot, tietoturva, katselmointi, julkaisutesti, saavutettavuus ja `kuvat/` |
-| `pohjat/python-pohja/` | viikon 41 Python-pohja: julkaisu (`release.yml`, `vektoripaja.spec`, `rakenna_exe.bat`), itsetesti, teema, `requirements.txt` ja `tarkista_ymparisto.py`; pakataan tiedostoksi `pohjat/vektoripaja-pohja.zip` |
+| `pohjat/python-pohja/` | viikon 41 valmis kuutiosovellus ja testi: julkaisu (`release.yml`, `vektoripaja.spec`, `rakenna_exe.bat`), itsetesti, teema, `requirements.txt` ja `tarkista_ymparisto.py`; pakataan tiedostoksi `pohjat/vektoripaja-pohja.zip` |
 | `app.js` | geneerinen moottori — **ei muokata projektikohtaisesti** |
 | `styles.css` | ulkoasu; projektikohtaista vain `:root`-lohkon paletti |
 | `kuvitukset.json` | faviconin ja AI-merkin lähde (sivun SVG-kuvitukset on jätetty pois) |
@@ -74,8 +74,8 @@ chrome --headless --no-pdf-header-footer --print-to-pdf=downloads/vektoripaja-ty
 ## Kuvaohjeiden kuvat
 
 Aloitusnäkymä kertoo tavoitteen ja viisi vaihetta. Jokaisen työviikon alussa on vaihepolku,
-yksi yhteys kokonaisprojektiin ja lyhyt tavoite. Projektin 128 työvaihetta on jaettu 807
-osatehtävään (selkeysuudistus 5.10.2026: yksi osatehtävä on yksi toimenpide, ja jokaisessa on
+yksi yhteys kokonaisprojektiin ja lyhyt tavoite. Projektin 126 työvaihetta on jaettu
+osatehtäviin (selkeysuudistus 5.10.2026: yksi osatehtävä on yksi toimenpide, ja jokaisessa on
 Missä, Tee ja Näet nyt). Vanhat tehtävätunnukset säilyvät, ja moottori siirtää aiemmat rastit
 osatehtäviin (`versio`, `vanha`, `perii`). Viikon työvaihe on viikon sivun osa; GitHub-issue on
 tehtäväkortti, johon työsykliä käytetään. Sisältö on lukutestattu ilman taustatietoa kolmesti
@@ -97,3 +97,17 @@ Suunnitelma, projektipäiväkirja ja AI-loki kirjoitetaan VS Codessa opiskelijan
 ennen 5.10.2026 selaimeen kirjoitettu teksti ladataan siirtymänapista. Sivusto ei lähetä tietoja palvelimelle. Opiskelijan
 repository on julkinen: itsearviointi, ohjaajan kommentit sekä testaajien nimet ja sanatarkat
 lausumat toimitetaan ohjaajalle Teamsissa tai sähköpostilla, eivät repositoryyn.
+
+## Viikko 41: työkalujen käyttöönotto
+
+Viikon tavoite on saada valmiiksi tehty kuutio pyörimään opiskelijan ruudulla.
+Python-pohjassa ovat valmiina `vektoripaja/ikkuna.py`, `vektoripaja/kierto.py` ja
+`tests/test_kierto.py`. Opiskelija purkaa pohjan, asentaa kirjastot, käynnistää
+sovelluksen ja ajaa valmiit tarkistukset. Koodin teettämistä, testin kirjoittamista,
+tehtäväkortteja tai releasea ei vaadita tällä viikolla. Aiemmat dokumentit ja
+selaimen tekstit säilytetään viikon kahdessa ensimmäisessä valmistelukohdassa.
+Asiakkaiden vastaukset ja kirjastojen lisenssit käsitellään viikolla 43.
+
+`assets/kuutio-pyorii.gif` on renderöity valmiin kuution geometriasta, väreistä ja
+kiertokulma-funktiosta: 480 × 360, yksi täysi kierros noin kahdessa sekunnissa.
+Animaatio toistuu kerran ja jää paikalleen; kuvateksti ja alt-teksti kertovat tavoitteen.

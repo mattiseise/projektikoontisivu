@@ -13,7 +13,7 @@ def main() -> int:
 
         return aja()
 
-    # Tiedosto vektoripaja/ikkuna.py tehdään viikon 41 kortissa #1.
+    # Valmis kuutioharjoitus: viikon 41 tehtävä on ottaa ympäristö käyttöön.
     from vektoripaja.ikkuna import kaynnista
 
     return kaynnista()

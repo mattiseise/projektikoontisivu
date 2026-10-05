@@ -953,3 +953,8 @@ html[data-teema] .substep-row-rich input:focus-visible + .substep-label .task-bo
 :where(html[data-teema]) .migrate-empty { border-left: var(--bw) solid var(--ink); padding: .5em .8em; }
 :where(html[data-teema]) .doc-card-inline { margin-top: 1.5em; }
 :where(html[data-teema]) .journal-repo-steps { padding-left: 1.6em; gap: .6em; }
+
+/* Viikon 41 valmis kuutio: kuva mahtuu myös kapeaan näkymään. */
+.cube-preview { margin: 1.5rem 0 0; }
+.cube-preview img { display: block; max-width: 100%; height: auto; }
+.cube-preview figcaption { margin-top: .75rem; }

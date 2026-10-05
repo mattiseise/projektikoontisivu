@@ -12,8 +12,8 @@
 
 ### Missä työnäyte on?
 
-## Vko 41 – Harjoitus: pyörivä kuutio julki (5.–9.10.2026)
-> Kirjaa: Releasen v0.0.41 osoite, korttien #1 ja #2 issuenumerot, Sovittu viikkopalaverissa -kommentti (kortin #1 issuen numero ja sana Sovittu-kommentti tai kommentin osoite. Ohje: Kopioi osoite, issuen numero tai commitin tunnus, kohta Issuen kommentin osoite), testien 1 ja 2 odotetut ja havaitut tulokset (myös lisätesti, jos teit sen), tekninen päätös ja käyttöliittymävaatimus suunnitelmassa, asiakkaiden vastaukset tiedostossa kysymykset.md, ympäristön tarkistuksen tulos (viimeinen rivi paperiltasi), kirjastot ja lisenssit README:ssä sekä viikon funktio kiertokulma selityspohjalla. Funktion koodi on tiedostossa vektoripaja/kierto.py: hae siitä sanat if, for ja while Match Whole Word -valinnalla (Alt+W). Jos osumia ei ole, kirjoita "ei valintaa" ja "ei toistoa". Kirjoita kohtaan Missä työnäyte on? kaikki nämä näyttömatriisin vaatimukset: käyttää ohjelmointieditoria tai kehitysympäristöä, testaa ohjelman toimintoja, sopii tehtävistä tiimin muiden jäsenten kanssa, selvittää kehitystiimin kanssa asiakkaan tarpeet, jakaa kehitystiimin kanssa toteutettavat toiminnot tehtäviksi, käyttää versionhallintaa, julkaisee ohjelman tuotantoympäristöön, ottaa käyttöön ja konfiguroi ohjelmistokomponenttikirjaston käyttöön soveltuvan kehittämisympäristön sekä tuo kehittämisympäristöön ulkoisia komponentteja.
+## Vko 41 – Työkalut käyttöön: valmis kuutio (5.–9.10.2026)
+> Kirjaa: Kirjaa projektipäiväkirjaan, mitä työkaluja otit käyttöön, näkyikö pyörivä kuutio ja mitä ympäristötarkistus, valmis testi sekä itsetesti ilmoittivat. Jos jokin jäi kesken, kirjaa virhe ja kohta, josta jatkat. Viikolla 41 ei ole selitettävää funktiota.
 
 ### Mitä tein ja miten?
 
