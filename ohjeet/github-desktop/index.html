@@ -6,7 +6,7 @@
   <title>GitHub Desktop — projektin tallennus kuvineen</title>
   <meta name="description" content="Opiskelijan kuvaohje: GitHub Desktopin asennus, oman repositoryn luonti sekä tiedostojen tallennus commitilla ja lähetys GitHubiin ilman Git-komentoja.">
   <link rel="stylesheet" href="style.css?v=20261005-unity">
-  <script src="ohje.js?v=20261005-unity" defer></script>
+  <script src="ohje.js?v=20261005-minecraft" defer></script>
 </head>
 <body>
 <a class="skip" href="#sisalto">Siirry ohjeeseen</a>
@@ -14,7 +14,7 @@
   <p class="eyebrow">Projektin ensimmäinen työviikko · Windows</p>
   <h1>GitHub Desktop<br><span>Git käyttöön kuvien avulla</span></h1>
   <p class="lead">Tallenna projektin koodi ja dokumentit muutoshistoriaan ja vie ne GitHubiin. Näin ohjaaja löytää työnäytteesi ja voit palata aiempaan versioon.</p>
-  <p id="projektihuomio">Ohje sopii PeliHyllyyn, TuntiTutkaan, NoppaKauppaan, Valokaareen ja KahvilaKoodiin.</p>
+  <p id="projektihuomio">Ohje sopii PeliHyllyyn, TuntiTutkaan, NoppaKauppaan, Valokaareen, KahvilaKoodiin ja BittiBiomiin.</p>
   <a id="paluu" class="button" href="../../">Palaa projektikoontiin</a>
 </header>
 <main id="sisalto">
@@ -26,7 +26,7 @@
       <li><strong>GitHub</strong><span>Publish ensimmäisellä kerralla, sitten Push</span></li>
     </ol>
     <p><strong>Commit tallentaa paikallisesti. Push lähettää tallennuksen GitHubiin.</strong> Pelkkä tallennus editorissa tai commit ei vielä vie tiedostoja verkkoon. Myöskään projektisivun rastit eivät siirrä tiedostoja repositoryyn.</p>
-    <p>Tällä ohjeella hoidat Gitin perustoiminnot ilman komentoriviä. Sovelluksen asentamiseen ja käynnistämiseen tarvittavat Node-, PHP- tai Python-komennot sekä Unityn työvaiheet teet edelleen oman projektisi ohjeesta.</p>
+    <p>Tällä ohjeella hoidat Gitin perustoiminnot ilman komentoriviä. Sovelluksen asentamiseen ja käynnistämiseen tarvittavat Node-, PHP- tai Python-komennot sekä Unityn ja Minecraft-paketin työvaiheet teet edelleen oman projektisi ohjeesta.</p>
   </section>
   <nav class="contents" aria-label="Ohjeen sisällysluettelo">
     <h2>Aloita tilanteesi mukaan</h2>
@@ -152,6 +152,13 @@
 │  └─ projektipaivakirja.md
 ├─ README.md
 └─ .gitignore        Unityn pohja: Library, Temp ja Builds jäävät pois</code></pre>
+    <pre class="tree" data-vain="minecraft" hidden><code><span class="project-name">oma-projekti</span>/
+├─ resourcepack/     pack.mcmeta, pack.png ja assets
+├─ datapack/         reseptit, saavutus ja funktiot (viikolla 43)
+├─ project-docs/
+│  └─ evidence/
+├─ README.md
+└─ .gitignore        käyttöjärjestelmän piilotiedostot pois</code></pre>
     <p>Git ei tallenna tyhjiä kansioita. Jos kansion pitää näkyä jo ensimmäisessä commitissa, lisää siihen tarkoituksenmukainen README tai tyhjä <code>.gitkeep</code>-tiedosto. Kun sovelluksen oikeat tiedostot ovat kansiossa, ne pitävät sen mukana.</p>
     <details data-vain="web">
       <summary>.gitignore-esimerkki näille projekteille</summary>
@@ -183,6 +190,15 @@ vendor/</code></pre>
 *.csproj
 *.sln</code></pre>
       <p>Unity luo Library- ja Temp-kansiot uudelleen itse. Builds-kansion testiversiot eivät kuulu versionhallintaan.</p>
+    </details>
+    <details data-vain="minecraft" hidden>
+      <summary>.gitignore Minecraft-paketille</summary>
+      <p>Tee tiedosto VS Codella repositoryn juureen. GitHubin valmiissa pohjissa ei ole Minecraft-pakettia, ja tähän riittää lyhyt lista:</p>
+      <pre><code>.DS_Store
+Thumbs.db
+desktop.ini
+*.aup3</code></pre>
+      <p>Pelin oma <code>.minecraft</code>-kansio ja testimaailmat eivät ole repositoryssa, joten niitä ei tarvitse rajata. Älä kopioi niitä repositoryyn. Audacityn projektitiedosto <code>.aup3</code> on iso: repositoryyn tulee vain valmis <code>.ogg</code>-ääni.</p>
     </details>
     <p><strong>Tarkista valittavat tiedostot:</strong> mukaan tulevat oma koodi, README ja työnäytteet. Salasanat, avaimet, oikeiden käyttäjien tiedot ja asennetut riippuvuuskansiot jäävät pois. Jos salaisuus ehti jo committiin, <code>.gitignore</code> ei poista sitä historiasta: pyydä ohjaajalta apua ennen lähettämistä.</p>
   </section>
@@ -250,7 +266,7 @@ vendor/</code></pre>
       <dt>Lähetys pyytää ensin hakemaan muutoksia</dt>
       <dd>Valitse Fetch origin ja Pull origin. Tarkista muutokset. Ristiriidassa ota ohjaaja mukaan; älä yritä pakottaa lähetystä.</dd>
       <dt>GitHub torjuu suuren tiedoston</dt>
-      <dd>GitHub estää yli 100 MiB:n tiedostot tavallisessa Git-lähetyksessä. Älä lisää node_modules-kansiota, Unityn Library-kansiota, asennuspaketteja tai suuria videoita repoosi. Jos tiedosto ehti jo committiin, pyydä ohjaajalta apua ennen uutta lähetysyritystä.</dd>
+      <dd>GitHub estää yli 100 MiB:n tiedostot tavallisessa Git-lähetyksessä. Älä lisää node_modules-kansiota, Unityn Library-kansiota, Minecraftin pelikansiota, asennuspaketteja tai suuria videoita repoosi. Jos tiedosto ehti jo committiin, pyydä ohjaajalta apua ennen uutta lähetysyritystä.</dd>
     </dl>
     <h3>Ensimmäisen viikon lopputarkistus</h3>
     <ul>
