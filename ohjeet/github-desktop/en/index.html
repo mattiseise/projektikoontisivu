@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GitHub Desktop — save your project, step by step with pictures</title>
+  <meta name="description" content="Student guide with pictures: install GitHub Desktop, set up your own repository, save files with a commit and send them to GitHub without Git commands.">
+  <link rel="stylesheet" href="../style.css?v=20261005-en">
+  <script src="../ohje.js?v=20261005-en" defer></script>
+</head>
+<body>
+<a class="skip" href="#sisalto">Skip to the guide</a>
+<header>
+  <p class="eyebrow">First week of the project · Windows · <a id="kieli" href="../" hreflang="fi" lang="fi">Suomeksi</a></p>
+  <h1>GitHub Desktop<br><span>Git with pictures</span></h1>
+  <p class="lead">Save your project’s code and documents in the change history and send them to GitHub. This way your instructor finds your evidence of work, and you can go back to an earlier version.</p>
+  <p id="projektihuomio">This guide is for Ping Pong Tanks. The same guide in Finnish serves the other projects.</p>
+  <a id="paluu" class="button" href="../../../">Back to the project overview</a>
+</header>
+<main id="sisalto">
+  <section aria-labelledby="ketju">
+    <h2 id="ketju">The whole chain</h2>
+    <ol class="flow">
+      <li><strong>Project folder</strong><span>Files on your own computer</span></li>
+      <li><strong>Commit</strong><span>A named save in the change history</span></li>
+      <li><strong>GitHub</strong><span>Publish the first time, then Push</span></li>
+    </ol>
+    <p><strong>A commit saves on your computer. A push sends the saved work to GitHub.</strong> Saving in the editor or making a commit does not yet put your files online. Ticking boxes on the project site does not move files into your repository either.</p>
+    <p>This guide covers the basic Git actions without the command line. Unity steps, such as creating the project and making a build, still come from your own project’s weekly instructions.</p>
+  </section>
+  <nav class="contents" aria-label="Contents of the guide">
+    <h2>Start from where you are</h2>
+    <ol>
+      <li><a href="#asennus">Download and install GitHub Desktop</a></li>
+      <li><a href="#kirjautuminen">Sign in and check your author details</a></li>
+      <li><a href="#valitse">Choose: new folder, existing folder or clone</a></li>
+      <li><a href="#tiedostot">Put the files in the right folder</a></li>
+      <li><a href="#commit">Make a commit</a></li>
+      <li><a href="#julkaise">Publish the repository the first time</a></li>
+      <li><a href="#push">Send later changes and check the result</a></li>
+    </ol>
+    <a href="#ongelmat">If something does not work →</a>
+  </nav>
+  <section id="asennus">
+    <p class="step">1 · Do once</p>
+    <h2>Download and install</h2>
+    <ol>
+      <li>Open the <a href="https://desktop.github.com/download/">official GitHub Desktop download page</a>.</li>
+      <li>Choose <strong>Download for Windows (64bit)</strong>. You need Windows 10 or newer, 64-bit.</li>
+      <li>Open the downloaded <strong>GitHubDesktopSetup.exe</strong> from your browser’s downloads or from the Downloads folder in File Explorer. The app opens after the installation.</li>
+    </ol>
+    <figure>
+      <a href="../kuvat/lataa-windows.png"><img src="../kuvat/lataa-windows.png" alt="The GitHub Desktop download page: the Windows download button is below the heading." width="1265" height="712"></a>
+      <figcaption>Picture 1. Choose the Windows download button. Screenshot of the official download page, 30 Sep 2026. <a href="../kuvat/lataa-windows.png">Open the picture in full size</a>.</figcaption>
+    </figure>
+    <p class="source">More detail: <a href="https://docs.github.com/en/desktop/installing-and-authenticating-to-github-desktop/installing-github-desktop">GitHub Docs — installing</a>.</p>
+    <p><strong>On a school computer:</strong> if installing is blocked, ask your instructor to install it or for the school’s software centre instructions.</p>
+  </section>
+  <section id="kirjautuminen">
+    <p class="step">2 · Do once</p>
+    <h2>Sign in and check your author details</h2>
+    <ol>
+      <li>You need your own GitHub account. Agree on your author name and whether the project is public with your instructor, as your project’s instructions say.</li>
+      <li>On the start screen, choose <strong>Sign in to GitHub.com</strong>. If the app is already open, the same action is under <strong>File → Options → Accounts</strong>.</li>
+      <li>Choose <strong>Continue with browser</strong>, sign in in the browser and allow GitHub Desktop to connect to your account. Go back to the app the way the browser suggests.</li>
+      <li>Open <strong>File → Options → Git</strong>. Check <strong>Name</strong> and <strong>Email</strong>. Use the agreed author name and your account’s noreply address, so that your personal email does not show in public commits. Choose <strong>Save</strong>.</li>
+    </ol>
+    <figure class="compact">
+      <a href="../kuvat/windows-sign-in-github.png"><img src="../kuvat/windows-sign-in-github.png" alt="The Options window on Windows: under Accounts there is a Sign Into GitHub.com button." width="1232" height="1088"></a>
+      <figcaption>Picture 2. Signing in is under Accounts. Picture: GitHub Docs. <a href="../kuvat/windows-sign-in-github.png">Open the picture in full size</a>.</figcaption>
+    </figure>
+    <figure class="compact">
+      <a href="../kuvat/windows-select-git-pane.png"><img src="../kuvat/windows-select-git-pane.png" alt="The Git settings in the Options window: Name and Email set the author details of your commits. The example uses a noreply email address." width="1799" height="1640"></a>
+      <figcaption>Picture 3. The name and address in the picture are GitHub’s examples. Use your own agreed details. Picture: GitHub Docs. <a href="../kuvat/windows-select-git-pane.png">Open the picture in full size</a>.</figcaption>
+    </figure>
+    <p class="source">Sources: <a href="https://docs.github.com/en/desktop/installing-and-authenticating-to-github-desktop/authenticating-to-github-in-github-desktop">signing in</a> and <a href="https://docs.github.com/en/desktop/configuring-and-customizing-github-desktop/configuring-git-for-github-desktop">author settings</a>.</p>
+    <p><strong>Version as evidence:</strong> you find the GitHub Desktop version under <strong>Help → About GitHub Desktop</strong>. Desktop has its own built-in Git, so a separate <code>git --version</code> may not work on the command line after installing only Desktop. On this Desktop route, write down the Desktop version number and where you found it in your tool table or journal.</p>
+  </section>
+  <section id="valitse">
+    <p class="step">3 · Choose one route</p>
+    <h2>Where is your project now?</h2>
+    <ul class="routes">
+      <li><a href="#uusi"><strong>A · No project folder yet</strong><span>Create a new local repository.</span></a></li>
+      <li><a href="#olemassa"><strong>B · The files are already on your computer</strong><span>Put the existing folder under version control.</span></a></li>
+      <li><a href="#kloonaa"><strong>C · Your repo is already on GitHub</strong><span>Clone it. Do not create a second repository.</span></a></li>
+    </ul>
+    <p><strong>Your own work repository is not the same as the project’s instruction site.</strong> Use the address of your own repository; the repository of these learning materials is not where you hand in your work.</p>
+    <h3 id="uusi">A · Create a new local repository</h3>
+    <ol>
+      <li>Choose <strong>File → New repository</strong>.</li>
+      <li>Type your project’s name in the <strong>Name</strong> field, for example <code class="project-name">my-project</code>.</li>
+      <li>Choose the <strong>Local path</strong>: the folder <em>under</em> which the project folder is created. Desktop adds the Name to it. Check the final path at the bottom of the window.</li>
+      <li>Choose <strong>Initialize this repository with a README</strong>. You can leave Git ignore and License at None and add your project’s own <code>.gitignore</code> next. The licence is agreed with your instructor.</li>
+      <li>Choose <strong>Create repository</strong>. The folder is now on your computer. The README creates the first save, <strong>Initial commit</strong>. Go on to <a href="#tiedostot">adding your files</a>.</li>
+    </ol>
+    <figure>
+      <a href="../kuvat/uusi-repository.png"><img src="../kuvat/uusi-repository.png" alt="The Create a new repository window: name oma-projekti, a local folder, and Initialize this repository with a README selected." width="963" height="662"></a>
+      <figcaption>Picture 4. The example creates oma-projekti. Use your own project name and the path on your own computer. Own screenshot, GitHub Desktop 3.6.6 / Windows. <a href="../kuvat/uusi-repository.png">Open the picture in full size</a>.</figcaption>
+    </figure>
+    <p class="source">Source: <a href="https://docs.github.com/en/desktop/overview/creating-your-first-repository-using-github-desktop">GitHub Docs — your first repository</a>.</p>
+    <h3 id="olemassa">B · Add an existing project folder</h3>
+    <ol>
+      <li>Choose <strong>File → Add local repository → Choose</strong>.</li>
+      <li>Choose the <strong>project’s root folder</strong>: the one with your README, your project folders and project-docs. In a Unity project it is the folder that contains Assets, Packages and ProjectSettings. Do not choose only a subfolder.</li>
+      <li>Choose <strong>Add repository</strong>. If the folder already has Git version control, it is added to Desktop.</li>
+      <li>If you see the message <strong>This directory does not appear to be a Git repository</strong>, choose the <strong>create a repository</strong> link in the message. Check that the final path is exactly your current project folder. If you already have a README, leave its checkbox empty. Choose <strong>Create repository</strong>.</li>
+    </ol>
+    <figure class="compact">
+      <a href="../kuvat/add-local-repository-windows.png"><img src="../kuvat/add-local-repository-windows.png" alt="The File menu on Windows: Add local repository is highlighted." width="659" height="338"></a>
+      <figcaption>Picture 5. An existing folder is added with Add local repository. Picture: GitHub Docs. <a href="../kuvat/add-local-repository-windows.png">Open the picture in full size</a>.</figcaption>
+    </figure>
+    <figure>
+      <a href="../kuvat/valmis-kansio.png"><img src="../kuvat/valmis-kansio.png" alt="The Add local repository window shows the path of an existing project folder and a create a repository link, because the folder has no Git version control yet." width="963" height="662"></a>
+      <figcaption>Picture 6. When the folder has no Git yet, start from the create a repository link. Own screenshot, GitHub Desktop 3.6.6 / Windows. <a href="../kuvat/valmis-kansio.png">Open the picture in full size</a>.</figcaption>
+    </figure>
+    <p>You do not need to move your existing files. Go on to <a href="#commit">checking them and making a commit</a>.</p>
+    <p class="source">More: <a href="https://docs.github.com/en/desktop/adding-and-cloning-repositories/adding-a-repository-from-your-local-computer-to-github-desktop">adding a local repository</a>.</p>
+    <h3 id="kloonaa">C · Clone your own existing GitHub repository</h3>
+    <ol>
+      <li>Copy the address of <strong>your own repository</strong> from the browser.</li>
+      <li>Choose <strong>File → Clone repository → URL</strong>. Paste the address in the Repository URL field.</li>
+      <li>Choose the <strong>Local path</strong>: a new, separate folder. Choose <strong>Clone</strong>.</li>
+    </ol>
+    <figure>
+      <a href="../kuvat/clone-choose-button-url-windows.png"><img src="../kuvat/clone-choose-button-url-windows.png" alt="The Clone a repository window on Windows: the URL tab, the repository address, Local path and the Clone button." width="1016" height="614"></a>
+      <figcaption>Picture 7. octocat/Spoon-Knife in the picture is an example. Replace it with the address of your own repo. Picture: GitHub Docs. <a href="../kuvat/clone-choose-button-url-windows.png">Open the picture in full size</a>.</figcaption>
+    </figure>
+    <p>Cloning also brings the history and the connection to GitHub. You do not publish it again with Publish repository. You also use this route when your project asks you to test the setup from another folder or on another computer.</p>
+    <p class="source">Source: <a href="https://docs.github.com/en/desktop/adding-and-cloning-repositories/cloning-and-forking-repositories-from-github-desktop">GitHub Docs — cloning</a>.</p>
+  </section>
+  <section id="tiedostot">
+    <p class="step">4 · Before every commit</p>
+    <h2>Put the files in the right folder</h2>
+    <ol>
+      <li>Check <strong>Current repository</strong> in the top left corner of Desktop: your own project is selected.</li>
+      <li>Open <strong>Repository → Show in Explorer</strong>. You see exactly the folder that Desktop follows.</li>
+      <li>Save your work in this folder. Copy documents and screenshots you wrote earlier into its <strong>project-docs</strong> subfolder: select the files in File Explorer, press <strong>Ctrl+C</strong>, open project-docs and press <strong>Ctrl+V</strong>. Do not drag files into the Desktop window.</li>
+      <li>Add a <code>.gitignore</code> to the root folder <strong>before the commit</strong>. Use the content your project needs. Check the file name: it must be <code>.gitignore</code>, not <code>.gitignore.txt</code>.</li>
+    </ol>
+    <pre class="tree" data-vain="web"><code><span class="project-name">my-project</span>/
+├─ <span id="client-name">client</span>/       the app’s user interface
+├─ <span id="server-name">server</span>/       the server code
+├─ project-docs/
+│  └─ questions.md
+├─ README.md
+└─ .gitignore</code></pre>
+    <pre class="tree" data-vain="unity" hidden><code><span class="project-name">my-project</span>/
+├─ Assets/           scenes, scripts and art
+├─ Packages/         Unity’s package list
+├─ ProjectSettings/  project settings
+├─ project-docs/
+│  └─ gdd.md
+├─ README.md
+└─ .gitignore        Unity template: Library, Temp and builds stay out</code></pre>
+    <p>Git does not save empty folders. If a folder must show in the first commit, add a suitable README or an empty <code>.gitkeep</code> file to it. Once the real project files are in the folder, they keep it in.</p>
+    <details data-vain="web">
+      <summary>.gitignore example for these projects</summary>
+      <p>A shared starting point. Add to it from your own project’s instructions. <code>.env.example</code> may only contain empty or made-up example values.</p>
+      <pre><code>node_modules/
+.env
+.env.*
+!.env.example
+*.db
+*.db-shm
+*.db-wal
+__pycache__/
+.venv/
+venv/
+client/dist/
+frontend/dist/
+vendor/</code></pre>
+    </details>
+    <details data-vain="unity" hidden>
+      <summary>.gitignore for a Unity project</summary>
+      <p>Use GitHub’s ready-made Unity template before your first commit. Open <a href="https://github.com/github/gitignore/blob/main/Unity.gitignore">Unity.gitignore</a>, choose <strong>Download raw file</strong> and save the file in the root folder with the name <code>.gitignore</code>. If you create the repository on GitHub (route C), you can instead choose <strong>Add .gitignore → Unity</strong> there. The most important lines of the template are these:</p>
+      <pre><code>/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+*.csproj
+*.sln</code></pre>
+      <p>Unity creates the Library and Temp folders again by itself. Test builds do not belong in version control.</p>
+    </details>
+    <p><strong>Check the selected files:</strong> your own code, the README and your evidence of work go in. Passwords, keys, real users’ data and installed dependency folders stay out. If a secret already got into a commit, <code>.gitignore</code> does not remove it from the history: ask your instructor for help before sending.</p>
+  </section>
+  <section id="commit">
+    <p class="step">5 · A named save on your computer</p>
+    <h2>Make a commit</h2>
+    <ol>
+      <li>Open the <strong>Changes</strong> tab in Desktop. Your saved changes are listed there.</li>
+      <li>Open the files in the list and check the changes. Tick the files that belong to this save. The first time, at least the README, .gitignore and your project files are included.</li>
+      <li>Write in the <strong>Summary</strong> field what you changed, for example <strong>Unity project and README</strong>. Later a good message is, for example, <strong>Fix shell bounce angle #12</strong>. Description is an optional extra explanation.</li>
+      <li>Choose <strong>Commit … files to main</strong> (the branch on the button may be another one). The save shows on the <strong>History</strong> tab.</li>
+    </ol>
+    <figure>
+      <a href="../kuvat/muutokset-ja-commit.png"><img src="../kuvat/muutokset-ja-commit.png" alt="The Changes view in GitHub Desktop with three selected files: .gitignore, project-docs/kysymykset.md and README.md. The Summary is README ja kysymyslista, and at the bottom is Commit 3 files to main." width="963" height="662"></a>
+      <figcaption>Picture 8. On the left you choose the files and write the message. On the right you check the changes. The Finnish file names are an example. Own screenshot, GitHub Desktop 3.6.6 / Windows. <a href="../kuvat/muutokset-ja-commit.png">Open the picture in full size</a>.</figcaption>
+    </figure>
+    <p><strong>Go on to sending.</strong> An empty Changes list means that the selected changes have been committed. It does not tell you whether they are on GitHub.</p>
+    <p class="source">Source: <a href="https://docs.github.com/en/desktop/making-changes-in-a-branch/committing-and-reviewing-changes-to-your-project-in-github-desktop">GitHub Docs — reviewing and committing changes</a>.</p>
+  </section>
+  <section id="julkaise">
+    <p class="step">6 · Only the first send of a new repo</p>
+    <h2>Publish the repository to GitHub</h2>
+    <p>If the repo is new and only on your computer, the top bar shows <strong>Publish repository</strong>. If you cloned your own GitHub repo, go straight to <a href="#push">Push origin</a>.</p>
+    <ol>
+      <li>Go through your project’s privacy check with your instructor <strong>before publishing</strong>. Also check the author details of your commits and the content of your files.</li>
+      <li>Choose <strong>Publish repository</strong>. Check the name and that the repo goes to your own account.</li>
+      <li><strong>Keep this code private</strong> means a private repository. Keep the tick until public or private is agreed. Remove it only if you have agreed on a public repo with your instructor. If your project’s done-when condition needs a public repo, sort it out with your instructor before you tick the task as done.</li>
+      <li>Choose <strong>Publish repository</strong> in the window. This creates the GitHub repo and sends your local commits there.</li>
+    </ol>
+    <figure>
+      <a href="../kuvat/julkaise-repository.png"><img src="../kuvat/julkaise-repository.png" alt="The Publish repository window shows the name oma-projekti and Keep this code private ticked. At the bottom of the window is the Publish repository button." width="963" height="662"></a>
+      <figcaption>Picture 9. In the picture the tick keeps the repo private. Choose what you agreed for your project. Own screenshot, GitHub Desktop 3.6.6 / Windows. <a href="../kuvat/julkaise-repository.png">Open the picture in full size</a>.</figcaption>
+    </figure>
+    <p>Publishing the repository saves the code on GitHub. Publishing the game itself online is a separate, later work step in your project.</p>
+    <p class="source">Source: <a href="https://docs.github.com/en/desktop/overview/creating-your-first-repository-using-github-desktop">GitHub Docs — publishing your first repository</a>.</p>
+  </section>
+  <section id="push">
+    <p class="step">7 · Repeat after every change</p>
+    <h2>Send your changes and check on GitHub</h2>
+    <ol>
+      <li>Save your files and make a <a href="#commit">commit</a>.</li>
+      <li>Choose <strong>Push origin</strong> in the top bar. Wait until sending is finished. If the button says <strong>Fetch origin</strong> and there are no commits to send, still do the next step.</li>
+      <li>Open <strong>Repository → View on GitHub</strong>. Check in the browser that the right repository and branch are open, your newest commit shows, and for example your README contains the text you just wrote.</li>
+      <li>Write your repo address and the commit ID in the week’s journal. Add your instructor as a collaborator if your project asks for it; see <a href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/repository-access-and-collaboration/inviting-collaborators-to-a-personal-repository">GitHub’s guide to collaborators</a>.</li>
+    </ol>
+    <figure>
+      <a href="../kuvat/push-to-origin.png"><img src="../kuvat/push-to-origin.png" alt="The Push origin button is highlighted in the GitHub Desktop top bar. The arrow with one commit shows that a send is waiting." width="1448" height="208"></a>
+      <figcaption>Picture 10. Push origin sends your commits. The repo hi-desktop in the picture is GitHub’s example. Picture: GitHub Docs. <a href="../kuvat/push-to-origin.png">Open the picture in full size</a>.</figcaption>
+    </figure>
+    <p class="routine"><strong>Daily routine:</strong> right repo → saved files → check Changes → clear commit message → Push origin → check on GitHub.</p>
+    <p>If you work on several computers or together with others, choose <strong>Fetch origin</strong> at the start of your work and, if needed, <strong>Pull origin</strong>. Pull brings the changes others have sent to your computer. If there is a conflict, ask your instructor for help before you go on.</p>
+    <p class="source">Source: <a href="https://docs.github.com/en/desktop/making-changes-in-a-branch/pushing-changes-to-github-from-github-desktop">GitHub Docs — Push</a>.</p>
+  </section>
+  <section id="ongelmat">
+    <h2>If something does not work</h2>
+    <dl>
+      <dt>A file does not show in the Changes list</dt>
+      <dd>Save it in the editor. Check Current repository and Show in Explorer: is the file inside exactly this folder? Also check .gitignore. If the file has not changed since the last commit, it should not show in the Changes list.</dd>
+      <dt>The Commit button does not work</dt>
+      <dd>Write a Summary and select at least one changed file. If there are no changes, you do not need a new commit.</dd>
+      <dt>The commit shows in History, but the file is not on GitHub</dt>
+      <dd>Choose Publish repository for a new local repo or Push origin for a repo you already published. Check in the browser that you have the right repository and the same branch open.</dd>
+      <dt>Desktop says the repository already exists</dt>
+      <dd>Check on GitHub whether your project repo already exists. Clone the existing repo on route C. If the changes in your current folder must be combined with it, ask your instructor for help; do not delete files or history.</dd>
+      <dt>Sending asks you to fetch changes first</dt>
+      <dd>Choose Fetch origin and Pull origin. Check the changes. If there is a conflict, ask your instructor; do not try to force the send.</dd>
+      <dt>GitHub rejects a large file</dt>
+      <dd>GitHub blocks files over 100 MiB in a normal Git push. Do not add node_modules, Unity’s Library folder, installers or large videos to your repo. If such a file already got into a commit, ask your instructor for help before you try sending again.</dd>
+    </dl>
+    <h3>End-of-first-week check</h3>
+    <ul>
+      <li>Your own repository opens on GitHub, and public or private is as agreed with your instructor.</li>
+      <li>The README, .gitignore, your question list and the work done so far are included.</li>
+      <li>Your own content commit shows in the history; the automatic Initial commit alone does not cover the files you added later.</li>
+      <li>Secrets and dependency folders stay out.</li>
+      <li>The repository address and the commit ID are in your journal.</li>
+    </ul>
+    <p>Go back to your project’s weekly instructions and do its other done-when checks.</p>
+    <a id="paluu-lopussa" class="button" href="../../../">Back to the project overview</a>
+  </section>
+</main>
+<footer>
+  <h2>Picture sources</h2>
+  <p>Own screenshots: 1, 4, 6, 8 and 9, taken on 30 Sep 2026. The app pictures show GitHub Desktop 3.6.6 on Windows. The interface may look slightly different in another version. Some example names in the pictures are in Finnish.</p>
+  <p>Pictures 2, 3, 5, 7 and 10: <a href="https://github.com/github/docs/tree/main/assets/images/help/desktop">GitHub Docs / GitHub, Inc.</a>, used unchanged. Licence <a href="https://github.com/github/docs/blob/main/LICENSE">Creative Commons Attribution 4.0 (CC BY 4.0)</a>. The source instructions for the pictures are linked next to the steps. The example accounts and repositories in the pictures do not belong to students.</p>
+  <p>Guide checked on 5 Oct 2026. <a href="#sisalto">Back to the top ↑</a></p>
+</footer>
+</body>
+</html>
