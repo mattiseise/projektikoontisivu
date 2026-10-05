@@ -103,7 +103,8 @@ lausumat toimitetaan ohjaajalle Teamsissa tai sähköpostilla, eivät repository
 Viikon tavoite on saada valmiiksi tehty kuutio pyörimään opiskelijan ruudulla.
 Python-pohjassa ovat valmiina `vektoripaja/ikkuna.py`, `vektoripaja/kierto.py` ja
 `tests/test_kierto.py`. Opiskelija purkaa pohjan, asentaa kirjastot, käynnistää
-sovelluksen ja ajaa valmiit tarkistukset. Koodin teettämistä, testin kirjoittamista,
+sovelluksen GitHub Copilotin avulla ja ajaa valmiit tarkistukset. Copilotin
+tehtävä on auttaa käynnistyskomennossa; sovelluksen koodia tai testiä ei muuteta. Koodin teettämistä, testin kirjoittamista,
 tehtäväkortteja tai releasea ei vaadita tällä viikolla. Aiemmat dokumentit ja
 selaimen tekstit säilytetään viikon kahdessa ensimmäisessä valmistelukohdassa.
 Asiakkaiden vastaukset ja kirjastojen lisenssit käsitellään viikolla 43.
