@@ -31,8 +31,8 @@ LOMAT = {
 
 VIIKOT = {
     40: ("Aloitus: työkalut ja projektin rajaus", [("40-1", "Valmistele työkalut"), ("40-6", "Ota GitHub ja GitHub Copilot käyttöön"), ("40-7", "Aseta Git"), ("40-2", "Perusta projektin repository"), ("40-5", "Kirjaa työkalujen versiot"), ("40-3", "Rajaa ensimmäinen versio"), ("40-8", "Lähetä kysymykset asiakkaille"), ("40-4", "Mittaa agentin krediittikulutus")], "repositoryn osoite, pakollinen ydin eli MVP tiedostossa [[tiedosto:suunnitelma|`project-docs/suunnitelma.md`]] GitHubissa ja agenttipyynnön hinta viikon kirjauksessa."),
-    41: ("Harjoitus: pyörivä kuutio julki", [("41-0", "Siirrä dokumentit repositoryyn"), ("41-7", "Siirrä selaimen tekstit dokumentteihin"), ("41-5", "Kirjaa asiakkaiden vastaukset"), ("41-8", "Kirjaa tekninen päätös ja käyttöliittymävaatimus"), ("41-1", "Pura harjoitussovelluksen pohja"), ("41-6", "Asenna harjoitussovelluksen kirjastot"), ("41-9", "Kirjaa kirjastojen lisenssit README:hen"), ("41-2", "Määrittele kuution testi"), ("41-3", "Rakenna pyörivä kuutio"), ("41-4", "Julkaise harjoitussovellus")], "releasen v0.0.41 osoite, korttien #1 ja #2 issuet suljettuina sekä testien 1 ja 2 tulokset issueissa."),
-    43: ("Piirroksen tuonti (SVG)", [("43-1", "Piirrä tuonnin testiaineisto"), ("43-7", "Tallenna tuonnin testiaineisto"), ("43-2", "Määrittele tuonnin rajapinta ja testit"), ("43-3", "Suunnittele sovelluksen rakenne"), ("43-4", "Rakenna SVG-tuonti"), ("43-8", "Tarkista ja kirjaa SVG-tuonti"), ("43-9", "Kokeile SVG-kirjaston rajoitteita"), ("43-5", "Kirjaa SVG-kirjaston rajoitteet"), ("43-6", "Julkaise SVG-tuonti")], "oma SVG-tiedosto, testit 3–5 tuonnin kortin issuessa, [[tiedosto:kirjastot|`project-docs/kirjastot.md`]] ja release v0.0.43."),
+    41: ("Työkalut käyttöön: valmis kuutio", [("41-0", "Viimeistele viikon 40 dokumentit tarvittaessa"), ("41-7", "Siirrä aiemmat selaimen tekstit talteen tarvittaessa"), ("41-1", "Pura valmis kuutiosovellus"), ("41-6", "Asenna harjoitussovelluksen kirjastot"), ("41-3", "Käynnistä valmis kuutio"), ("41-2", "Aja valmiit tarkistukset")], "ympäristötarkistuksen tulos, ruudulla pyörivä kuutio sekä valmiin testin ja itsetestin tulokset viikon kirjauksessa."),
+    43: ("Piirroksen tuonti (SVG)", [("43-10", "Kirjaa asiakkaiden vastaukset"), ("43-1", "Piirrä tuonnin testiaineisto"), ("43-7", "Tallenna tuonnin testiaineisto"), ("43-2", "Määrittele tuonnin rajapinta ja testit"), ("43-3", "Suunnittele sovelluksen rakenne"), ("43-4", "Rakenna SVG-tuonti"), ("43-8", "Tarkista ja kirjaa SVG-tuonti"), ("43-9", "Kokeile SVG-kirjaston rajoitteita"), ("43-5", "Kirjaa SVG-kirjaston rajoitteet"), ("43-11", "Kirjaa kirjastojen lisenssit README:hen"), ("43-6", "Julkaise SVG-tuonti")], "oma SVG-tiedosto, testit 3–5 tuonnin kortin issuessa, [[tiedosto:kirjastot|`project-docs/kirjastot.md`]] ja release v0.0.43."),
     44: ("Piirroksen ryhmistä mallin osiksi", [("44-1", "Määrittele osien rakenteen rajapinta ja testit"), ("44-2", "Suunnittele osien hierarkian kortti"), ("44-6", "Rakenna osien hierarkia"), ("44-3", "Päätä osan valinnan toiminta"), ("44-4", "Vertaa revolven valintatapoja"), ("44-5", "Julkaise osien hierarkia")], "rajapinta [[tiedosto:suunnitelma|suunnitelmassa]], testit 6–8 ja maailmamuunnoksen lisätesti hierarkian kortin issuessa, hierarkiapaneeli releasessa v0.0.44 ja valinnan päätös [[tiedosto:suunnitelma|suunnitelmassa]]."),
     45: ("Profiilista pyörähdyskappale (revolve)", [("45-1", "Sovi pyörähdyskappaleen toiminta"), ("45-6", "Piirrä maljakon puoliprofiili"), ("45-2", "Määrittele pyörähdyskappaleen testit"), ("45-7", "Kirjaa Copilot-kysymyksesi"), ("45-3", "Suunnittele pyörähdyskappaleen kortti"), ("45-8", "Rakenna pyörähdyskappale"), ("45-4", "Suunnittele segmenttisäätimen kortti"), ("45-9", "Rakenna segmenttisäädin"), ("45-5", "Julkaise pyörähdyskappale")], "testit 9–11 revolven ja segmenttisäätimen korttien issueissa, profiili testiaineisto/maljakko.svg GitHubissa, pyörähdyskappale releasessa v0.0.45 ja sovittu valintatapa issue-kommenttina."),
     46: ("Viivasta putki ja mallin näkymät", [("46-1", "Määrittele putken ja kameran testit"), ("46-2", "Rakenna viivasta putki"), ("46-4", "Kirjaa putkigeometrian rajoitteet"), ("46-3", "Rakenna suorat näkymät"), ("46-6", "Tallenna keskeneräinen kamera, jos se siirtyy"), ("46-5", "Julkaise putki ja suorat näkymät")], "testit 12–14 issueissa, putki ja suorat näkymät releasessa v0.0.46 ja putkigeometrian rajoitteet [[tiedosto:kirjastot|`kirjastot.md`]]:ssä."),
@@ -79,6 +79,10 @@ def project_connection(w):
         f'            <p>{escape(i["connection"])}</p>',
         '            <h2 class="section-label project-week-goal">Viikon tavoite</h2>',
         f'            <p>{escape(i["feature"])}</p>',
+        *(['            <figure class="cube-preview">',
+           '              <img src="assets/kuutio-pyorii.gif" width="480" height="360" alt="Sininen kuutio pyörii mustalla taustalla. Tämä on viikon tavoiteltu lopputulos." loading="lazy">',
+           '              <figcaption>Tältä valmis harjoitussovellus näyttää. Saat tämän kuution pyörimään omalla ruudullasi asentamalla työkalut ja käynnistämällä valmiin pohjan. Animaatio näyttää yhden täyden kierroksen.</figcaption>',
+           '            </figure>'] if w == 41 else []),
         '          </section>'])
 
 
@@ -176,25 +180,25 @@ MATRIISI = [
         ("Opiskelija käyttää ohjelmistokehitysympäristöä", [
             ("p1", "käyttää ohjelmointieditoria tai kehitysympäristöä", "VS Code, GitHub Copilot, Pythonin virtuaaliympäristö ja pytest käytössä viikoilta 40 ja 41. Versiot README:ssä. Paluuviikon ajo viikolla 2."),
             ("p2", "etsii ja korjaa virheitä ohjelmakoodista", "Kolme virheenkorjausketjua havaintoissueista viikoilla 49, 4 ja 7: havainto, toistamisohje, syy omin sanoin, korjauscommit, uusintatesti ja regressiotesti."),
-            ("p3", "testaa ohjelman toimintoja", "Testit 1–26 ja lisätestit viikoilta 41, 43–50 ja 3–5, myös maailmamuunnoksen lisätesti (44). Kirjoitat odotetun tuloksen itse testikoodiin ennen toteutusta. Tulokset issueissa.")]),
+            ("p3", "testaa ohjelman toimintoja", "Testit 1–26 ja lisätestit viikoilta 41, 43–50 ja 3–5, myös maailmamuunnoksen lisätesti (44). Viikon 41 testit ovat valmiina pohjassa, ja niiden ajon tulokset kirjataan päiväkirjaan. Viikosta 43 alkaen kirjoitat odotetun tuloksen itse testikoodiin ennen toteutusta. Tulokset issueissa.")]),
         ("Opiskelija ohjelmoi", [
             ("p4", "käyttää rakenteista ohjelmointia toteutuksissa", "Kolme funktiota selityspohjalla: hierarkian muunnos (viikko 44), pivotin syötteen tarkistus (48) ja OBJ-objektijako (49). Lisäksi maailmamuunnos puhtaana funktiona (44). Rajapinta ennen toteutusta. Selitys ääneen seuraavan viikon palaverissa."),
             ("p6", "tulkitsee suunnitelmia ja toteuttaa käyttöliittymän tai sen osia", "Hierarkiapaneeli (44), view lock (46), transformipaneeli (47–48) sekä isot kahvat ja näppäimistökäyttö (5) käyttöliittymävaatimuksesi mukaan. Accessibility Insights ennen ja jälkeen."),
             ("p7", "tulkitsee suunnitelmia ja toteuttaa ohjelmiston toimintoja", "MVP-kuvauksesta tehtäväkortit ja toiminnot: tuonti (43), revolve (45), inflate (46) ja transformit (47) hyväksymiskriteerien mukaan.")]),
         ("Opiskelija toimii ohjelmistokehitystiimin jäsenenä", [
-            ("p8", "sopii tehtävistä tiimin muiden jäsenten kanssa", "Issue-kommentit \"Sovittu viikkopalaverissa pp.kk.\" joka viikolta 41–7."),
+            ("p8", "sopii tehtävistä tiimin muiden jäsenten kanssa", "Issue-kommentit \"Sovittu viikkopalaverissa pp.kk.\" joka työviikolta 43–7."),
             ("p9", "etsii ratkaisuvaihtoehtoja ja ratkoo ongelmia yhdessä tiimin kanssa", "Revolven valintatavan vertailu ja yhteinen päätös (44–45). Osien tunnistustapa Päivitä SVG -toimintoon (3)."),
             ("p10", "arvioi ratkaisujen toimivuuden yhdessä tiimin kanssa", "Katselmointi asiakkaiden kanssa (51). Palaverin arvio MVP:n ratkaisuista tärkeää jatkoa varten (2)."),
             ("p11", "arvioi omaa toimintaa tiimin jäsenenä", "Itsearviointi kolmesta tilanteesta viikolla 9. Se lähetetään ohjaajalle Teamsissa. Päiväkirjaan kirjataan vain tilanteiden päivät ja issue-numerot.")]),
     ], ("p5", "kirjoittaa ylläpidettävää ohjelmakoodia")),
     ("Ohjelmistokehittäjänä toimiminen", [
         ("Opiskelija kommunikoi asiakkaan kanssa", [
-            ("s1", "selvittää kehitystiimin kanssa asiakkaan tarpeet", "Kysymyslista asiakkaille (40). Vastaukset tiedostossa <code>project-docs/kysymykset.md</code> (41). MVP omin sanoin."),
+            ("s1", "selvittää kehitystiimin kanssa asiakkaan tarpeet", "Kysymyslista asiakkaille (40). Vastaukset tiedostossa <code>project-docs/kysymykset.md</code> (43). MVP omin sanoin."),
             ("s2", "viestii tekniset asiat asiakaslähtöisesti", "Viiden minuutin demo katselmoinnissa (51). README ja käyttöohje käyttäjälle (6)."),
             ("s3", "osallistuu version katselmointiin", "<code>project-docs/katselmointi.md</code>: asiakkaiden sanat, oma tulkinta ja sovitut muutokset (51).")]),
         ("Opiskelija suunnittelee ohjelmiston toteutuksen", [
             ("s4", "asettaa kehitystiimin kanssa toteutettavat toiminnot tärkeysjärjestykseen", "Karsinta pakolliseen ytimeen, tärkeään jatkoon ja jatkolistaan perusteluineen (40). Asiakkaiden prioriteetit (51). Tärkeän jatkon järjestys palaverissa (2)."),
-            ("s5", "jakaa kehitystiimin kanssa toteutettavat toiminnot tehtäviksi", "Tehtäväkortit hyväksymiskriteereineen viikolta 41 alkaen. Oma rajausehdotus ja tarkistusrivi issueissa."),
+            ("s5", "jakaa kehitystiimin kanssa toteutettavat toiminnot tehtäviksi", "Tehtäväkortit hyväksymiskriteereineen viikolta 43 alkaen. Oma rajausehdotus ja tarkistusrivi issueissa."),
             ("s6", "suunnittelee ja arvioi kehitystiimin kanssa tehtävien toteuttamista", "Kaistan valinta ja toteuman vertailu Raportoi-askeleessa. Krediittimittaus (40). Tärkeän jatkon tuntiarviot (2).")]),
         ("Opiskelija kehittää ohjelmiston toimintalogiikkaa ja tietovarastoyhteyksiä", [
             ("s7", "kehittää ohjelmiston toimintalogiikkaa", "Hierarkia, revolve, inflate, transformit ja pivot (44–48) sekä Päivitä SVG (3)."),
@@ -203,9 +207,9 @@ MATRIISI = [
             ("s10", "hyödyntää rajapintoja ja käsittelee tietoa", "Tiedoston avaus QFileDialogilla ja SVG:n luku svgelementsillä (43), .obj-vienti trimeshillä (49) ja JSON (50)."),
             ("s11", "arvioi ohjelmiston tietoturvaa", "Testi 4: haitallinen SVG (43). Testi 22: rikottu tallennus (50). Tietoturva-arvio <code>project-docs/tietoturva.md</code>: uhka, testi, tulos ja toimenpide.")]),
         ("Opiskelija versioi ja julkaisee ohjelman", [
-            ("s12", "käyttää versionhallintaa", "Commitit rivillä <code>Closes #N</code> koko projektin ajan. Tagit: harjoitus v0.0.41, viikkoversiot v0.0.43–v0.0.49, v0.1, v1.0-rc1 ja v1.0."),
+            ("s12", "käyttää versionhallintaa", "Commitit rivillä <code>Closes #N</code> koko projektin ajan. Tagit: viikkoversiot v0.0.43–v0.0.49, v0.1, v1.0-rc1 ja v1.0."),
             ("s13", "liittää ohjelman osan olemassa olevaan versioon", "Päivitä SVG omassa haarassa, pull request ja merge päähaaraan, kun kaikki testit menevät läpi (3)."),
-            ("s14", "julkaisee ohjelman tuotantoympäristöön", "Release GitHub Actionsilla: Windows-versio, itsetesti ja zip. Harjoitus (41), viikkoversiot (43–49), MVP v0.1 (50) ja v1.0 (7).")]),
+            ("s14", "julkaisee ohjelman tuotantoympäristöön", "Release GitHub Actionsilla: Windows-versio, itsetesti ja zip. Viikkoversiot (43–49), MVP v0.1 (50) ja v1.0 (7).")]),
     ], None),
     ("Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla", [
         ("Opiskelija käyttää kehitysympäristöä", [

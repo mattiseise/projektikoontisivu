@@ -1,6 +1,7 @@
 # tests/
 
-Testit kirjoitat itse tähän kansioon. Tiedoston ja testifunktion nimen pitää alkaa `test_`.
-Esimerkiksi tiedosto `test_kierto.py` ja funktio `test_1_kiertokulma`.
+Viikon 41 testi `test_kierto.py` on valmiina. Aja se komennolla
+`python -m pytest -v`. Et kirjoita tai muuta testiä tällä viikolla.
 
-Aja testit terminaalissa komennolla `pytest` tai VS Coden Testing-paneelista.
+Viikosta 43 alkaen luot uusien toimintojen testit viikon ohjeiden mukaan.
+Tiedoston ja testifunktion nimen pitää alkaa `test_`.

@@ -17,8 +17,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="styles.css?v2.8-20261005">
-  <script src="sisalto.js?v2.8-20261005" defer></script>
+  <link rel="stylesheet" href="styles.css?v2.8-20261005-kuutio">
+  <script src="sisalto.js?v2.8-20261005-kuutio" defer></script>
   <script src="app.js?v2.8-20261005" defer></script>
 </head>
 <body>
@@ -86,7 +86,7 @@
             <figcaption>Vaiheet näyttävät, mitä sovellukseen syntyy ja miksi. Jokaisella viikolla on oma viikon sivu, jossa ovat viikon työvaiheet. Viikon sivu avautuu sivupalkin viikkolistasta.</figcaption>
           </figure>
           <ol class="project-roadmap-list">
-            <li><strong>Valmistelu · viikot 40–41.</strong> Otat työkalut käyttöön ja julkaiset kuutioharjoituksen. Näin opit tekemään, testaamaan ja julkaisemaan pienen muutoksen. <a href="#week-40" data-open-week="40">Avaa aloitusviikko →</a></li>
+            <li><strong>Valmistelu · viikot 40–41.</strong> Otat työkalut käyttöön ja käynnistät valmiin kuutioharjoituksen. Kuutio ja sen testi ovat pohjassa valmiina. <a href="#week-40" data-open-week="40">Avaa aloitusviikko →</a></li>
             <li><strong>Piirroksesta 3D-malliksi · viikot 43–47.</strong> Tuot SVG-piirroksen, muodostat sen osista 3D-kappaleita ja lisäät osien muokkaamisen. Tässä vaiheessa syntyy sovelluksen päätoiminto: piirroksesta tulee 3D-malli. <a href="#week-43" data-open-week="43">Avaa piirroksen tuonti →</a></li>
             <li><strong>Ensimmäinen toimiva versio · viikot 48–51.</strong> Viimeistelet muokkaamisen, tallennuksen ja viennin. Silloin pakollinen ydin on valmis. Asiakkaat kokeilevat versiota ennen joulua ja kertovat, mitä parannetaan. <a href="#week-48" data-open-week="48">Avaa viimeistely →</a></li>
             <li><strong>Parannukset · viikot 2–5.</strong> Korjaat puutteet ja teet sovitut jatkotoiminnot. Keskeneräiset pakollisen ytimen toiminnot tehdään ensin. <a href="#week-2" data-open-week="2">Avaa paluuviikko →</a></li>
@@ -188,7 +188,7 @@
         <div class="grid-2 view-section">
           <div class="card" id="tekninen-ehdotus" tabindex="-1">
             <p class="section-label section-label-accent">Ehdotettu toteutustapa</p>
-            <p style="margin-top:8px"><strong>Tekninen ehdotus:</strong> Python, PySide6, PyVista, trimesh ja pytest. PySide6 tekee ikkunan ja painikkeet. PyVista piirtää 3D-näkymän. trimesh tekee 3D-kappaleet ja .obj-tiedoston. pytest ajaa testit. Päätät viikolla 41, hyväksytkö ehdotuksen.</p>
+            <p style="margin-top:8px"><strong>Tekninen ehdotus:</strong> Python, PySide6, PyVista, trimesh ja pytest. PySide6 tekee ikkunan ja painikkeet. PyVista piirtää 3D-näkymän. trimesh tekee 3D-kappaleet ja .obj-tiedoston. pytest ajaa testit. Viikolla 41 otat tämän valmiin ympäristön käyttöön; mahdollisesta tekniikan muutoksesta sovitaan ohjaajan kanssa ennen myöhempää rakentamista.</p>
             <p style="margin-top:8px"><strong>Valmiit osat:</strong> svgelements lukee SVG:n. trimesh tekee pyörähdyskappaleen ja .obj-tiedoston. PyVista tekee putken ja näyttää mallin suoraan edestä, sivulta ja ylhäältä.</p>
             <p id="pakollinen-ydin" style="margin-top:8px"><strong>Pakollinen ydin ennen joulua:</strong> SVG-tuonti, layerit ja ryhmät osiksi, pyörähdyskappale eli revolve 3–32 segmentillä, putki eli inflate 3–8 sivulla, valinta, siirto, kierto ja skaalaus, kiertopiste eli pivot, suorat näkymät, kameran lukitus eli view lock, .obj-vienti sekä tallennus. JSON on ehdotettu tallennusmuoto. Vertailet vaihtoehtoja viikolla 50 ja perustelet valintasi tiedostossa [[tiedosto:suunnitelma|suunnitelma.md]].</p>
             <p style="margin-top:8px"><strong>Tärkeä jatko loman jälkeen:</strong> Päivitä SVG, kierto tasakulmiin, pieni esikatseluikkuna, kierto lapselle eli osalle, joka liikkuu toisen osan mukana, ja lapsen alaosille, oma teema ja isot kahvat, ortografinen näkymä ja view lockin pikanäppäin. Kahva on tartuntakohta, josta osaa siirretään tai kierretään. Ortografisessa näkymässä kaukana olevat osat eivät pienene kuten valokuvassa.</p>
@@ -208,7 +208,7 @@
           <ul>
             <li>Omat Inkscape-piirroksesi. Ne ovat testiaineisto ja demon aineisto.</li>
             <li>PySide6:n, PyVistan, trimeshin ja svgelementsin dokumentaatio sekä työvaiheiden toteutusapu.</li>
-            <li>Kirjastot asennetaan pip:llä eli Pythonin paketinhallinnalla. Kirjaa jokaisen kirjaston lisenssi README:hen eli repositoryn etusivun ohjeeseen viikolla 41.</li>
+            <li>Kirjastot asennetaan pip:llä eli Pythonin paketinhallinnalla. Kirjastojen käyttöönotto tehdään viikolla 41. Lisenssit selvitetään ennen sovelluksen julkaisua.</li>
             <li>Kuvat: viikkojen työvaiheissa on kuvallisia ohjeita, joissa tärkeät kohdat on numeroitu.</li>
           </ul>
           <p><strong>Tekoälyn raja:</strong> tekoäly kirjoittaa suurimman osan koodista. Sinä teet tehtäväkortit, arkkitehtuuripäätökset ja testien odotetut tulokset. Arkkitehtuuripäätökset ovat päätöksiä sovelluksen rakenteesta: kansiot, moduulit ja rajapinnat. Moduuli on tiedosto tai kansio, jolla on yksi vastuu. Rajapinta on funktion nimi, syöte ja paluuarvo. Sinä tarkistat jokaisen tuotoksen ja päätät: hyväksyn, korjautan tai hylkään.</p>
@@ -260,7 +260,7 @@
           <summary>Kolme kaistaa</summary>
           <p class="view-lead" style="margin-top:8px">Kaista on toteutustapa. Valitset kaistan jokaiselle kortille. Kirjaat valinnan ja perusteen korttiin.</p>
           <div class="principle-grid">
-            <div class="card"><span class="num">1</span><h3>Tiedosto-kaista</h3><p>Yksi tiedosto kerrallaan. Microsoft 365 Copilot kirjoittaa koodin yksi tiedosto kerrallaan. Luet sen ja kopioit sen VS Codeen.</p><small>Viikosta 41 · ei kuluta GitHub Copilotin krediittejä.</small></div>
+            <div class="card"><span class="num">1</span><h3>Tiedosto-kaista</h3><p>Yksi tiedosto kerrallaan. Microsoft 365 Copilot kirjoittaa koodin yksi tiedosto kerrallaan. Luet sen ja kopioit sen VS Codeen.</p><small>Viikosta 43 · ei kuluta GitHub Copilotin krediittejä.</small></div>
             <div class="card"><span class="num">2</span><h3>Täydennys-kaista</h3><p>Kommentti ja täydennys. Kirjoitat kommentin VS Codeen. GitHub Copilot ehdottaa koodia. Hyväksyt ehdotuksen Tab-näppäimellä. Testit kirjoitetaan tällä kaistalla.</p><small>Viikosta 43 · täydennykset ovat ilmaisia.</small></div>
             <div class="card"><span class="num">3</span><h3>Agentti-kaista</h3><p>Agenttitila. GitHub Copilot muokkaa useaa tiedostoa kerralla. Luet jokaisen muutoksen, ennen kuin hyväksyt sen.</p><small>Viikosta 44 · kuluttaa krediittejä.</small></div>
           </div>
@@ -294,7 +294,7 @@
           <ul class="tooling-list">
             <li><strong>Työkalut:</strong> VS Code ja sen Python-laajennus, Git, Python 3.13, Inkscape ja Blender. Git on versionhallintaohjelma omalla koneellasi. GitHub on verkkopalvelu, jossa repositorysi on.</li>
             <li><strong>Tekoäly:</strong> Copilot BC:n tunnuksella selaimessa ja GitHub Copilot VS Codessa.</li>
-            <li><strong>Kirjastot:</strong> PySide6, PyVista, pyvistaqt, trimesh, numpy, svgelements ja pytest. Ne asennetaan viikolla 41. Kirjaa lisenssit README:hen.</li>
+            <li><strong>Kirjastot:</strong> PySide6, PyVista, pyvistaqt, trimesh, numpy, svgelements ja pytest. Ne asennetaan viikolla 41. Selvitä lisenssit ennen sovelluksen julkaisua.</li>
             <li><strong>Julkisuuden raja:</strong> repository on julkinen. Lähetä itsearviointi sekä testaajien ja katselmoijien nimet ja sanatarkat lausumat ohjaajalle Teamsissa. Ohjaajan kommentit pysyvät Teamsissa. Kirjaa repositoryyn vain rooli, esimerkiksi julkaisutestaaja.</li>
             <li><strong>Tekoälyn raja:</strong> tekoäly kirjoittaa koodin. Sinä päätät, testaat ja selität.</li>
           </ul>

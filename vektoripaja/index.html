@@ -17,8 +17,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="styles.css?v2.8-20261005">
-  <script src="sisalto.js?v2.8-20261005" defer></script>
+  <link rel="stylesheet" href="styles.css?v2.8-20261005-kuutio">
+  <script src="sisalto.js?v2.8-20261005-kuutio" defer></script>
   <script src="app.js?v2.8-20261005" defer></script>
 </head>
 <body>
@@ -86,7 +86,7 @@
             <figcaption>Vaiheet näyttävät, mitä sovellukseen syntyy ja miksi. Jokaisella viikolla on oma viikon sivu, jossa ovat viikon työvaiheet. Viikon sivu avautuu sivupalkin viikkolistasta.</figcaption>
           </figure>
           <ol class="project-roadmap-list">
-            <li><strong>Valmistelu · viikot 40–41.</strong> Otat työkalut käyttöön ja julkaiset kuutioharjoituksen. Näin opit tekemään, testaamaan ja julkaisemaan pienen muutoksen. <a href="#week-40" data-open-week="40">Avaa aloitusviikko →</a></li>
+            <li><strong>Valmistelu · viikot 40–41.</strong> Otat työkalut käyttöön ja käynnistät valmiin kuutioharjoituksen. Kuutio ja sen testi ovat pohjassa valmiina. <a href="#week-40" data-open-week="40">Avaa aloitusviikko →</a></li>
             <li><strong>Piirroksesta 3D-malliksi · viikot 43–47.</strong> Tuot SVG-piirroksen, muodostat sen osista 3D-kappaleita ja lisäät osien muokkaamisen. Tässä vaiheessa syntyy sovelluksen päätoiminto: piirroksesta tulee 3D-malli. <a href="#week-43" data-open-week="43">Avaa piirroksen tuonti →</a></li>
             <li><strong>Ensimmäinen toimiva versio · viikot 48–51.</strong> Viimeistelet muokkaamisen, tallennuksen ja viennin. Silloin pakollinen ydin on valmis. Asiakkaat kokeilevat versiota ennen joulua ja kertovat, mitä parannetaan. <a href="#week-48" data-open-week="48">Avaa viimeistely →</a></li>
             <li><strong>Parannukset · viikot 2–5.</strong> Korjaat puutteet ja teet sovitut jatkotoiminnot. Keskeneräiset pakollisen ytimen toiminnot tehdään ensin. <a href="#week-2" data-open-week="2">Avaa paluuviikko →</a></li>
@@ -188,7 +188,7 @@
         <div class="grid-2 view-section">
           <div class="card" id="tekninen-ehdotus" tabindex="-1">
             <p class="section-label section-label-accent">Ehdotettu toteutustapa</p>
-            <p style="margin-top:8px"><strong>Tekninen ehdotus:</strong> Python, PySide6, PyVista, trimesh ja pytest. PySide6 tekee ikkunan ja painikkeet. PyVista piirtää 3D-näkymän. trimesh tekee 3D-kappaleet ja .obj-tiedoston. pytest ajaa testit. Päätät viikolla 41, hyväksytkö ehdotuksen.</p>
+            <p style="margin-top:8px"><strong>Tekninen ehdotus:</strong> Python, PySide6, PyVista, trimesh ja pytest. PySide6 tekee ikkunan ja painikkeet. PyVista piirtää 3D-näkymän. trimesh tekee 3D-kappaleet ja .obj-tiedoston. pytest ajaa testit. Viikolla 41 otat tämän valmiin ympäristön käyttöön; mahdollisesta tekniikan muutoksesta sovitaan ohjaajan kanssa ennen myöhempää rakentamista.</p>
             <p style="margin-top:8px"><strong>Valmiit osat:</strong> svgelements lukee SVG:n. trimesh tekee pyörähdyskappaleen ja .obj-tiedoston. PyVista tekee putken ja näyttää mallin suoraan edestä, sivulta ja ylhäältä.</p>
             <p id="pakollinen-ydin" style="margin-top:8px"><strong>Pakollinen ydin ennen joulua:</strong> SVG-tuonti, layerit ja ryhmät osiksi, pyörähdyskappale eli revolve 3–32 segmentillä, putki eli inflate 3–8 sivulla, valinta, siirto, kierto ja skaalaus, kiertopiste eli pivot, suorat näkymät, kameran lukitus eli view lock, .obj-vienti sekä tallennus. JSON on ehdotettu tallennusmuoto. Vertailet vaihtoehtoja viikolla 50 ja perustelet valintasi tiedostossa [[tiedosto:suunnitelma|suunnitelma.md]].</p>
             <p style="margin-top:8px"><strong>Tärkeä jatko loman jälkeen:</strong> Päivitä SVG, kierto tasakulmiin, pieni esikatseluikkuna, kierto lapselle eli osalle, joka liikkuu toisen osan mukana, ja lapsen alaosille, oma teema ja isot kahvat, ortografinen näkymä ja view lockin pikanäppäin. Kahva on tartuntakohta, josta osaa siirretään tai kierretään. Ortografisessa näkymässä kaukana olevat osat eivät pienene kuten valokuvassa.</p>
@@ -208,7 +208,7 @@
           <ul>
             <li>Omat Inkscape-piirroksesi. Ne ovat testiaineisto ja demon aineisto.</li>
             <li>PySide6:n, PyVistan, trimeshin ja svgelementsin dokumentaatio sekä työvaiheiden toteutusapu.</li>
-            <li>Kirjastot asennetaan pip:llä eli Pythonin paketinhallinnalla. Kirjaa jokaisen kirjaston lisenssi README:hen eli repositoryn etusivun ohjeeseen viikolla 41.</li>
+            <li>Kirjastot asennetaan pip:llä eli Pythonin paketinhallinnalla. Kirjastojen käyttöönotto tehdään viikolla 41. Lisenssit selvitetään ennen sovelluksen julkaisua.</li>
             <li>Kuvat: viikkojen työvaiheissa on kuvallisia ohjeita, joissa tärkeät kohdat on numeroitu.</li>
           </ul>
           <p><strong>Tekoälyn raja:</strong> tekoäly kirjoittaa suurimman osan koodista. Sinä teet tehtäväkortit, arkkitehtuuripäätökset ja testien odotetut tulokset. Arkkitehtuuripäätökset ovat päätöksiä sovelluksen rakenteesta: kansiot, moduulit ja rajapinnat. Moduuli on tiedosto tai kansio, jolla on yksi vastuu. Rajapinta on funktion nimi, syöte ja paluuarvo. Sinä tarkistat jokaisen tuotoksen ja päätät: hyväksyn, korjautan tai hylkään.</p>
@@ -260,7 +260,7 @@
           <summary>Kolme kaistaa</summary>
           <p class="view-lead" style="margin-top:8px">Kaista on toteutustapa. Valitset kaistan jokaiselle kortille. Kirjaat valinnan ja perusteen korttiin.</p>
           <div class="principle-grid">
-            <div class="card"><span class="num">1</span><h3>Tiedosto-kaista</h3><p>Yksi tiedosto kerrallaan. Microsoft 365 Copilot kirjoittaa koodin yksi tiedosto kerrallaan. Luet sen ja kopioit sen VS Codeen.</p><small>Viikosta 41 · ei kuluta GitHub Copilotin krediittejä.</small></div>
+            <div class="card"><span class="num">1</span><h3>Tiedosto-kaista</h3><p>Yksi tiedosto kerrallaan. Microsoft 365 Copilot kirjoittaa koodin yksi tiedosto kerrallaan. Luet sen ja kopioit sen VS Codeen.</p><small>Viikosta 43 · ei kuluta GitHub Copilotin krediittejä.</small></div>
             <div class="card"><span class="num">2</span><h3>Täydennys-kaista</h3><p>Kommentti ja täydennys. Kirjoitat kommentin VS Codeen. GitHub Copilot ehdottaa koodia. Hyväksyt ehdotuksen Tab-näppäimellä. Testit kirjoitetaan tällä kaistalla.</p><small>Viikosta 43 · täydennykset ovat ilmaisia.</small></div>
             <div class="card"><span class="num">3</span><h3>Agentti-kaista</h3><p>Agenttitila. GitHub Copilot muokkaa useaa tiedostoa kerralla. Luet jokaisen muutoksen, ennen kuin hyväksyt sen.</p><small>Viikosta 44 · kuluttaa krediittejä.</small></div>
           </div>
@@ -294,7 +294,7 @@
           <ul class="tooling-list">
             <li><strong>Työkalut:</strong> VS Code ja sen Python-laajennus, Git, Python 3.13, Inkscape ja Blender. Git on versionhallintaohjelma omalla koneellasi. GitHub on verkkopalvelu, jossa repositorysi on.</li>
             <li><strong>Tekoäly:</strong> Copilot BC:n tunnuksella selaimessa ja GitHub Copilot VS Codessa.</li>
-            <li><strong>Kirjastot:</strong> PySide6, PyVista, pyvistaqt, trimesh, numpy, svgelements ja pytest. Ne asennetaan viikolla 41. Kirjaa lisenssit README:hen.</li>
+            <li><strong>Kirjastot:</strong> PySide6, PyVista, pyvistaqt, trimesh, numpy, svgelements ja pytest. Ne asennetaan viikolla 41. Selvitä lisenssit ennen sovelluksen julkaisua.</li>
             <li><strong>Julkisuuden raja:</strong> repository on julkinen. Lähetä itsearviointi sekä testaajien ja katselmoijien nimet ja sanatarkat lausumat ohjaajalle Teamsissa. Ohjaajan kommentit pysyvät Teamsissa. Kirjaa repositoryyn vain rooli, esimerkiksi julkaisutestaaja.</li>
             <li><strong>Tekoälyn raja:</strong> tekoäly kirjoittaa koodin. Sinä päätät, testaat ja selität.</li>
           </ul>
@@ -396,28 +396,28 @@
 
         <article class="week-card" id="week-41" data-week="41">
           <p class="view-eyebrow" data-week-label="5.–9.10.">Vaihe 1 · Valmistelu · Viikko 41 · 5.–9.10.</p>
-          <h1 class="view-title">Harjoitus: pyörivä kuutio julki</h1>
+          <h1 class="view-title">Työkalut käyttöön: valmis kuutio</h1>
 <nav class="project-phase-path" aria-label="Projektin vaiheet"><a href="#week-40" data-open-week="40" aria-current="step">1. Valmistelu</a><a href="#week-43" data-open-week="43">2. 3D-malli</a><a href="#week-48" data-open-week="48">3. Kokeiltava versio</a><a href="#week-2" data-open-week="2">4. Parannukset</a><a href="#week-6" data-open-week="6">5. Julkaisu ja näyttö</a></nav>
           <section class="card project-connection" aria-labelledby="week-41-project-connection">
             <h2 class="section-label" id="week-41-project-connection">Miten tämän viikon asiat liittyvät kokonaisprojektiin</h2>
-            <p>Ennen varsinaisia mallinnustoimintoja harjoittelet koko matkan tehtäväkortista testattuun ja ladattavaan sovellukseen. Pyörivä kuutio on pieni harjoitus, jolla varmistat, että kehitysympäristö, testit ja Windows-julkaisu toimivat yhdessä. Samaa työsykliä käytät myöhemmin Vektoripajan jokaisen ominaisuuden rakentamiseen.</p>
+            <p>Tämän viikon tarkoitus on saada työkalut toimintakuntoon: asennat kirjastot ja käynnistät pohjassa valmiina olevan kuutiosovelluksen sekä sen testit. Et kirjoita tai teetä koodia, suunnittele kuution laskentaa tai muuta valmista testiä. Varsinaisten mallinnustoimintojen rakentaminen ja tehtäväkorttien työsykli alkavat viikolla 43.</p>
             <h2 class="section-label project-week-goal">Viikon tavoite</h2>
-            <p>Windowsissa käynnistyy ladattu harjoitussovellus, jossa kuutio pyörii.</p>
+            <p>Saat valmiiksi tehdyn kuution pyörimään oman tietokoneesi ruudulla.</p>
+            <figure class="cube-preview">
+              <img src="assets/kuutio-pyorii.gif" width="480" height="360" alt="Sininen kuutio pyörii mustalla taustalla. Tämä on viikon tavoiteltu lopputulos." loading="lazy">
+              <figcaption>Tältä valmis harjoitussovellus näyttää. Saat tämän kuution pyörimään omalla ruudullasi asentamalla työkalut ja käynnistämällä valmiin pohjan. Animaatio näyttää yhden täyden kierroksen.</figcaption>
+            </figure>
           </section>
 
           <section class="view-section">
-            <div class="section-heading-row"><h2>Viikon työvaiheet</h2><span class="week-status" data-week-status>0 / 10</span></div>
+            <div class="section-heading-row"><h2>Viikon työvaiheet</h2><span class="week-status" data-week-status>0 / 6</span></div>
             <div class="task-list">
-            <label class="task-row"><input type="checkbox" data-task="41-0"><span class="task-box" aria-hidden="true"></span><span class="task-text">Siirrä dokumentit repositoryyn</span></label>
-            <label class="task-row"><input type="checkbox" data-task="41-7"><span class="task-box" aria-hidden="true"></span><span class="task-text">Siirrä selaimen tekstit dokumentteihin</span></label>
-            <label class="task-row"><input type="checkbox" data-task="41-5"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjaa asiakkaiden vastaukset</span></label>
-            <label class="task-row"><input type="checkbox" data-task="41-8"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjaa tekninen päätös ja käyttöliittymävaatimus</span></label>
-            <label class="task-row"><input type="checkbox" data-task="41-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Pura harjoitussovelluksen pohja</span></label>
+            <label class="task-row"><input type="checkbox" data-task="41-0"><span class="task-box" aria-hidden="true"></span><span class="task-text">Viimeistele viikon 40 dokumentit tarvittaessa</span></label>
+            <label class="task-row"><input type="checkbox" data-task="41-7"><span class="task-box" aria-hidden="true"></span><span class="task-text">Siirrä aiemmat selaimen tekstit talteen tarvittaessa</span></label>
+            <label class="task-row"><input type="checkbox" data-task="41-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Pura valmis kuutiosovellus</span></label>
             <label class="task-row"><input type="checkbox" data-task="41-6"><span class="task-box" aria-hidden="true"></span><span class="task-text">Asenna harjoitussovelluksen kirjastot</span></label>
-            <label class="task-row"><input type="checkbox" data-task="41-9"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjaa kirjastojen lisenssit README:hen</span></label>
-            <label class="task-row"><input type="checkbox" data-task="41-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Määrittele kuution testi</span></label>
-            <label class="task-row"><input type="checkbox" data-task="41-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Rakenna pyörivä kuutio</span></label>
-            <label class="task-row"><input type="checkbox" data-task="41-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Julkaise harjoitussovellus</span></label>
+            <label class="task-row"><input type="checkbox" data-task="41-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Käynnistä valmis kuutio</span></label>
+            <label class="task-row"><input type="checkbox" data-task="41-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Aja valmiit tarkistukset</span></label>
             </div>
           </section>
 
@@ -426,22 +426,11 @@
             <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat"></nav>
             <ol data-lesson-list></ol>
           </section>
-          <details class="view-section week-workflow">
-            <summary>Työsykli GitHub-issuen tekemiseen</summary>
-            <p>Käytä tätä, kun tehtäväkortti pyytää toteuttamaan muutoksen työsyklillä. Yksi kierros on yksi GitHub-issue.</p>
-            <section data-week-cycle hidden></section>
-          </details>
-          <details class="view-section">
-<summary>Lisätehtävä, jos viikon tavoite on valmis</summary>
-<ol>
-<li><strong>Tee lisätehtävä.</strong> Lisätesti on ylimääräinen testi ilman numeroa. Mitä odotat, kun aika on negatiivinen, esimerkiksi <code>kiertokulma(-1, 0.5)</code>? Kirjoita odotettu tulos kortin #1 issueen kommentiksi ennen ajoa. Suljettuunkin issueen voi kommentoida. Avaa sitten tiedosto <code>tests/test_kierto.py</code>, paina Ctrl+End ja kaksi kertaa Enter. def-rivin alussa ei ole välilyöntejä: jos VS Code sisensi rivin, paina Backspace, kunnes kursori on rivin alussa. Kirjoita rivi <code>def test_lisa_negatiivinen_aika():</code> ja paina Enter. VS Code sisentää seuraavan rivin neljällä välilyönnillä: kirjoita siihen <code>assert kiertokulma(-1, 0.5) == </code> ja oma tuloksesi. Aja testit. Ohje: [[ohje:pytest]]. Lisätesti ajettiin, kun tulosteessa on rivi, jossa on test_lisa_negatiivinen_aika ja PASSED tai FAILED. Kirjoita havaittu tulos samaan issueen. Jos lisätesti ei mene läpi, poista se tiedostosta ennen committia, koska Actions ajaa kaikki testit julkaisussa. Tee lopuksi commit ja push. Ohje: [[ohje:commit]].</li>
-</ol>
-</details>
 
           <section class="card view-section week-finish">
             <h2>Viikon lopputarkistus</h2>
             <h3>Toiminta on tarkistettu, kun</h3><p class="checkpoint"></p>
-            <h3>Työnäyte talteen</h3><p class="evidence">releasen v0.0.41 osoite, korttien #1 ja #2 issuet suljettuina sekä testien 1 ja 2 tulokset issueissa.</p>
+            <h3>Työnäyte talteen</h3><p class="evidence">ympäristötarkistuksen tulos, ruudulla pyörivä kuutio sekä valmiin testin ja itsetestin tulokset viikon kirjauksessa.</p>
           </section>
           <details class="view-section">
             <summary>Mitä osaamista viikon työ osoittaa?</summary>
@@ -481,8 +470,9 @@
           </section>
 
           <section class="view-section">
-            <div class="section-heading-row"><h2>Viikon työvaiheet</h2><span class="week-status" data-week-status>0 / 9</span></div>
+            <div class="section-heading-row"><h2>Viikon työvaiheet</h2><span class="week-status" data-week-status>0 / 11</span></div>
             <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="43-10"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjaa asiakkaiden vastaukset</span></label>
             <label class="task-row"><input type="checkbox" data-task="43-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Piirrä tuonnin testiaineisto</span></label>
             <label class="task-row"><input type="checkbox" data-task="43-7"><span class="task-box" aria-hidden="true"></span><span class="task-text">Tallenna tuonnin testiaineisto</span></label>
             <label class="task-row"><input type="checkbox" data-task="43-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Määrittele tuonnin rajapinta ja testit</span></label>
@@ -491,6 +481,7 @@
             <label class="task-row"><input type="checkbox" data-task="43-8"><span class="task-box" aria-hidden="true"></span><span class="task-text">Tarkista ja kirjaa SVG-tuonti</span></label>
             <label class="task-row"><input type="checkbox" data-task="43-9"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kokeile SVG-kirjaston rajoitteita</span></label>
             <label class="task-row"><input type="checkbox" data-task="43-5"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjaa SVG-kirjaston rajoitteet</span></label>
+            <label class="task-row"><input type="checkbox" data-task="43-11"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjaa kirjastojen lisenssit README:hen</span></label>
             <label class="task-row"><input type="checkbox" data-task="43-6"><span class="task-box" aria-hidden="true"></span><span class="task-text">Julkaise SVG-tuonti</span></label>
             </div>
           </section>
@@ -1496,14 +1487,14 @@
             <p class="matrix-group">Opiskelija käyttää ohjelmistokehitysympäristöä</p>
             <label class="matrix-row"><input type="checkbox" data-evidence="p1"><span><strong>käyttää ohjelmointieditoria tai kehitysympäristöä</strong> VS Code, GitHub Copilot, Pythonin virtuaaliympäristö ja pytest käytössä viikoilta 40 ja 41. Versiot README:ssä. Paluuviikon ajo viikolla 2.</span></label>
             <label class="matrix-row"><input type="checkbox" data-evidence="p2"><span><strong>etsii ja korjaa virheitä ohjelmakoodista</strong> Kolme virheenkorjausketjua havaintoissueista viikoilla 49, 4 ja 7: havainto, toistamisohje, syy omin sanoin, korjauscommit, uusintatesti ja regressiotesti.</span></label>
-            <label class="matrix-row"><input type="checkbox" data-evidence="p3"><span><strong>testaa ohjelman toimintoja</strong> Testit 1–26 ja lisätestit viikoilta 41, 43–50 ja 3–5, myös maailmamuunnoksen lisätesti (44). Kirjoitat odotetun tuloksen itse testikoodiin ennen toteutusta. Tulokset issueissa.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p3"><span><strong>testaa ohjelman toimintoja</strong> Testit 1–26 ja lisätestit viikoilta 41, 43–50 ja 3–5, myös maailmamuunnoksen lisätesti (44). Viikon 41 testit ovat valmiina pohjassa, ja niiden ajon tulokset kirjataan päiväkirjaan. Viikosta 43 alkaen kirjoitat odotetun tuloksen itse testikoodiin ennen toteutusta. Tulokset issueissa.</span></label>
             <p class="matrix-group">Opiskelija ohjelmoi</p>
             <label class="matrix-row"><input type="checkbox" data-evidence="p4"><span><strong>käyttää rakenteista ohjelmointia toteutuksissa</strong> Kolme funktiota selityspohjalla: hierarkian muunnos (viikko 44), pivotin syötteen tarkistus (48) ja OBJ-objektijako (49). Lisäksi maailmamuunnos puhtaana funktiona (44). Rajapinta ennen toteutusta. Selitys ääneen seuraavan viikon palaverissa.</span></label>
             <p class="footnote">Vaatimus <strong>kirjoittaa ylläpidettävää ohjelmakoodia</strong> osoitetaan tässä näytössä muulla tavalla. Tästä ei ole rastia. Ohjaaja sopii tavan kanssasi.</p>
             <label class="matrix-row"><input type="checkbox" data-evidence="p6"><span><strong>tulkitsee suunnitelmia ja toteuttaa käyttöliittymän tai sen osia</strong> Hierarkiapaneeli (44), view lock (46), transformipaneeli (47–48) sekä isot kahvat ja näppäimistökäyttö (5) käyttöliittymävaatimuksesi mukaan. Accessibility Insights ennen ja jälkeen.</span></label>
             <label class="matrix-row"><input type="checkbox" data-evidence="p7"><span><strong>tulkitsee suunnitelmia ja toteuttaa ohjelmiston toimintoja</strong> MVP-kuvauksesta tehtäväkortit ja toiminnot: tuonti (43), revolve (45), inflate (46) ja transformit (47) hyväksymiskriteerien mukaan.</span></label>
             <p class="matrix-group">Opiskelija toimii ohjelmistokehitystiimin jäsenenä</p>
-            <label class="matrix-row"><input type="checkbox" data-evidence="p8"><span><strong>sopii tehtävistä tiimin muiden jäsenten kanssa</strong> Issue-kommentit "Sovittu viikkopalaverissa pp.kk." joka viikolta 41–7.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p8"><span><strong>sopii tehtävistä tiimin muiden jäsenten kanssa</strong> Issue-kommentit "Sovittu viikkopalaverissa pp.kk." joka työviikolta 43–7.</span></label>
             <label class="matrix-row"><input type="checkbox" data-evidence="p9"><span><strong>etsii ratkaisuvaihtoehtoja ja ratkoo ongelmia yhdessä tiimin kanssa</strong> Revolven valintatavan vertailu ja yhteinen päätös (44–45). Osien tunnistustapa Päivitä SVG -toimintoon (3).</span></label>
             <label class="matrix-row"><input type="checkbox" data-evidence="p10"><span><strong>arvioi ratkaisujen toimivuuden yhdessä tiimin kanssa</strong> Katselmointi asiakkaiden kanssa (51). Palaverin arvio MVP:n ratkaisuista tärkeää jatkoa varten (2).</span></label>
             <label class="matrix-row"><input type="checkbox" data-evidence="p11"><span><strong>arvioi omaa toimintaa tiimin jäsenenä</strong> Itsearviointi kolmesta tilanteesta viikolla 9. Se lähetetään ohjaajalle Teamsissa. Päiväkirjaan kirjataan vain tilanteiden päivät ja issue-numerot.</span></label>
@@ -1514,12 +1505,12 @@
           <summary><span class="matrix-title">Ohjelmistokehittäjänä toimiminen</span><span class="matrix-count">14 vaatimusta</span></summary>
           <div class="matrix-list">
             <p class="matrix-group">Opiskelija kommunikoi asiakkaan kanssa</p>
-            <label class="matrix-row"><input type="checkbox" data-evidence="s1"><span><strong>selvittää kehitystiimin kanssa asiakkaan tarpeet</strong> Kysymyslista asiakkaille (40). Vastaukset tiedostossa <code>project-docs/kysymykset.md</code> (41). MVP omin sanoin.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s1"><span><strong>selvittää kehitystiimin kanssa asiakkaan tarpeet</strong> Kysymyslista asiakkaille (40). Vastaukset tiedostossa <code>project-docs/kysymykset.md</code> (43). MVP omin sanoin.</span></label>
             <label class="matrix-row"><input type="checkbox" data-evidence="s2"><span><strong>viestii tekniset asiat asiakaslähtöisesti</strong> Viiden minuutin demo katselmoinnissa (51). README ja käyttöohje käyttäjälle (6).</span></label>
             <label class="matrix-row"><input type="checkbox" data-evidence="s3"><span><strong>osallistuu version katselmointiin</strong> <code>project-docs/katselmointi.md</code>: asiakkaiden sanat, oma tulkinta ja sovitut muutokset (51).</span></label>
             <p class="matrix-group">Opiskelija suunnittelee ohjelmiston toteutuksen</p>
             <label class="matrix-row"><input type="checkbox" data-evidence="s4"><span><strong>asettaa kehitystiimin kanssa toteutettavat toiminnot tärkeysjärjestykseen</strong> Karsinta pakolliseen ytimeen, tärkeään jatkoon ja jatkolistaan perusteluineen (40). Asiakkaiden prioriteetit (51). Tärkeän jatkon järjestys palaverissa (2).</span></label>
-            <label class="matrix-row"><input type="checkbox" data-evidence="s5"><span><strong>jakaa kehitystiimin kanssa toteutettavat toiminnot tehtäviksi</strong> Tehtäväkortit hyväksymiskriteereineen viikolta 41 alkaen. Oma rajausehdotus ja tarkistusrivi issueissa.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s5"><span><strong>jakaa kehitystiimin kanssa toteutettavat toiminnot tehtäviksi</strong> Tehtäväkortit hyväksymiskriteereineen viikolta 43 alkaen. Oma rajausehdotus ja tarkistusrivi issueissa.</span></label>
             <label class="matrix-row"><input type="checkbox" data-evidence="s6"><span><strong>suunnittelee ja arvioi kehitystiimin kanssa tehtävien toteuttamista</strong> Kaistan valinta ja toteuman vertailu Raportoi-askeleessa. Krediittimittaus (40). Tärkeän jatkon tuntiarviot (2).</span></label>
             <p class="matrix-group">Opiskelija kehittää ohjelmiston toimintalogiikkaa ja tietovarastoyhteyksiä</p>
             <label class="matrix-row"><input type="checkbox" data-evidence="s7"><span><strong>kehittää ohjelmiston toimintalogiikkaa</strong> Hierarkia, revolve, inflate, transformit ja pivot (44–48) sekä Päivitä SVG (3).</span></label>
@@ -1528,9 +1519,9 @@
             <label class="matrix-row"><input type="checkbox" data-evidence="s10"><span><strong>hyödyntää rajapintoja ja käsittelee tietoa</strong> Tiedoston avaus QFileDialogilla ja SVG:n luku svgelementsillä (43), .obj-vienti trimeshillä (49) ja JSON (50).</span></label>
             <label class="matrix-row"><input type="checkbox" data-evidence="s11"><span><strong>arvioi ohjelmiston tietoturvaa</strong> Testi 4: haitallinen SVG (43). Testi 22: rikottu tallennus (50). Tietoturva-arvio <code>project-docs/tietoturva.md</code>: uhka, testi, tulos ja toimenpide.</span></label>
             <p class="matrix-group">Opiskelija versioi ja julkaisee ohjelman</p>
-            <label class="matrix-row"><input type="checkbox" data-evidence="s12"><span><strong>käyttää versionhallintaa</strong> Commitit rivillä <code>Closes #N</code> koko projektin ajan. Tagit: harjoitus v0.0.41, viikkoversiot v0.0.43–v0.0.49, v0.1, v1.0-rc1 ja v1.0.</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s12"><span><strong>käyttää versionhallintaa</strong> Commitit rivillä <code>Closes #N</code> koko projektin ajan. Tagit: viikkoversiot v0.0.43–v0.0.49, v0.1, v1.0-rc1 ja v1.0.</span></label>
             <label class="matrix-row"><input type="checkbox" data-evidence="s13"><span><strong>liittää ohjelman osan olemassa olevaan versioon</strong> Päivitä SVG omassa haarassa, pull request ja merge päähaaraan, kun kaikki testit menevät läpi (3).</span></label>
-            <label class="matrix-row"><input type="checkbox" data-evidence="s14"><span><strong>julkaisee ohjelman tuotantoympäristöön</strong> Release GitHub Actionsilla: Windows-versio, itsetesti ja zip. Harjoitus (41), viikkoversiot (43–49), MVP v0.1 (50) ja v1.0 (7).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s14"><span><strong>julkaisee ohjelman tuotantoympäristöön</strong> Release GitHub Actionsilla: Windows-versio, itsetesti ja zip. Viikkoversiot (43–49), MVP v0.1 (50) ja v1.0 (7).</span></label>
           </div>
         </details>
 

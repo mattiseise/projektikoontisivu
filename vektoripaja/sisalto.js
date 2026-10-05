@@ -130,7 +130,7 @@ window.NAYTTOPROJEKTI = {
 
   /* ---- vaiheet ---- */
   vaiheet: [
-    { tunnus: "1", lyhyt: "Valmistelu", otsikko: "Valmistellaan työkalut ja työtapa", kuvaus: "Viikot 40–41: työkalut ja kuutioharjoitus. Opit tekemään, testaamaan ja julkaisemaan. Syysloma viikolla 42.", viikot: [40, 41, 42], vari: "#1fa4e3" },
+    { tunnus: "1", lyhyt: "Valmistelu", otsikko: "Valmistellaan työkalut ja työtapa", kuvaus: "Viikot 40–41: työkalut käyttöön ja valmis kuutio ruudulle. Syysloma viikolla 42.", viikot: [40, 41, 42], vari: "#1fa4e3" },
     { tunnus: "2", lyhyt: "3D-malli", otsikko: "Rakennetaan piirroksesta 3D-malli", kuvaus: "Viikot 43–47: piirroksen tuonti, osat, muodot ja muokkaaminen. Pakollisen ytimen toiminnot syntyvät.", viikot: [43, 44, 45, 46, 47], vari: "#1fa4e3" },
     { tunnus: "3", lyhyt: "Kokeiltava versio", otsikko: "Tehdään ensimmäinen toimiva versio", kuvaus: "Viikot 48–51: kiertopiste, vienti, tallennus ja asiakkaiden kokeilu. Joululoma viikoilla 52–1.", viikot: [48, 49, 50, 51, 52, 53, 1], vari: "#1fa4e3" },
     { tunnus: "4", lyhyt: "Parannukset", otsikko: "Parannetaan asiakkaiden palautteen perusteella", kuvaus: "Viikot 2–5: korjaukset ja sovitut jatkotoiminnot. Palaute ohjaa seuraavia muutoksia.", viikot: [2, 3, 4, 5], vari: "#1fa4e3" },
@@ -140,7 +140,7 @@ window.NAYTTOPROJEKTI = {
   /* ---- viikkonavigaation lyhyet nimet ---- */
   viikkoNimet: {
     40: "Aloitus: työkalut ja projektin rajaus",
-    41: "Harjoitus: pyörivä kuutio julki",
+    41: "Työkalut käyttöön: valmis kuutio",
     42: "Syysloma",
     43: "Piirroksen tuonti (SVG)",
     44: "Piirroksen ryhmistä mallin osiksi",
@@ -1289,273 +1289,326 @@ window.NAYTTOPROJEKTI = {
       kuvaohjeet: ["python-asennus", "github-noreply", "vscode-kloonaus", "github-collaborators", "vscode-commit-push", "github-kayttonakyma"]
     },
     41: {
-      type: "feature",
-      feature: "Windowsissa käynnistyy ladattu harjoitussovellus, jossa kuutio pyörii.",
-      excerpt: "Haluamme kokeilla jokaista välivaihetta, emme vain katsoa kuvakaappauksia.",
-      connection: "Ennen varsinaisia mallinnustoimintoja harjoittelet koko matkan tehtäväkortista testattuun ja ladattavaan sovellukseen. Pyörivä kuutio on pieni harjoitus, jolla varmistat, että kehitysympäristö, testit ja Windows-julkaisu toimivat yhdessä. Samaa työsykliä käytät myöhemmin Vektoripajan jokaisen ominaisuuden rakentamiseen.",
-      deliverable: "Dokumentit repositoryssa · päätökset suunnitelmassa · ikkuna, jossa kuutio pyörii · testit 1 ja 2 · release-zip GitHubissa · kaksi issueta suljettuna commit-viestillä.",
-      why: "Jos opit työsyklin vasta SVG-tuonnin kanssa, uusi työtapa ja vaikea tehtävä tulevat yhtä aikaa. Silloin et tiedä, johtuuko ongelma työtavasta vai tehtävästä.",
-      done: "Releasen zipistä purettu sovellus käynnistyy, ja kuutio pyörii. Actionsin ajo on vihreä, eli itsetesti meni läpi. `pytest` näyttää, että testi 1 menee läpi. Korttien #1 ja #2 issuet on suljettu commitilla.",
-      record: "Releasen v0.0.41 osoite, korttien #1 ja #2 issuenumerot, Sovittu viikkopalaverissa -kommentti (kortin #1 issuen numero ja sana Sovittu-kommentti tai kommentin osoite. Ohje: [[ohje:kopioi-osoite]], kohta Issuen kommentin osoite), testien 1 ja 2 odotetut ja havaitut tulokset (myös lisätesti, jos teit sen), tekninen päätös ja käyttöliittymävaatimus [[tiedosto:suunnitelma|suunnitelmassa]], asiakkaiden vastaukset tiedostossa [[tiedosto:kysymykset|kysymykset.md]], ympäristön tarkistuksen tulos (viimeinen rivi paperiltasi), kirjastot ja lisenssit README:ssä sekä viikon funktio kiertokulma selityspohjalla. Funktion koodi on tiedostossa vektoripaja/kierto.py: hae siitä sanat if, for ja while Match Whole Word -valinnalla (Alt+W). Jos osumia ei ole, kirjoita \"ei valintaa\" ja \"ei toistoa\". Kirjoita kohtaan Missä työnäyte on? kaikki nämä näyttömatriisin vaatimukset: käyttää ohjelmointieditoria tai kehitysympäristöä, testaa ohjelman toimintoja, sopii tehtävistä tiimin muiden jäsenten kanssa, selvittää kehitystiimin kanssa asiakkaan tarpeet, jakaa kehitystiimin kanssa toteutettavat toiminnot tehtäviksi, käyttää versionhallintaa, julkaisee ohjelman tuotantoympäristöön, ottaa käyttöön ja konfiguroi ohjelmistokomponenttikirjaston käyttöön soveltuvan kehittämisympäristön sekä tuo kehittämisympäristöön ulkoisia komponentteja.",
-      funktio: "kiertokulma(aika, nopeus) (testi 1)",
-      skills: ["Tehtäväkortti ja hyväksymiskriteerit", "Tekninen pohja: PySide6, PyVista, trimesh ja pytest", "Testi ennen koodia", "Julkaisu releasena GitHub Actionsilla"],
-      termit: ["työsykli", "tehtäväkortti", "issue", "kaista", "testi", "tekninen pohja", "requirements.txt", "tagi", "GitHub Actions", "paketointi", "itsetesti", "release", "zip"],
-      tehtavat: {
+      "type": "feature",
+      "feature": "Saat valmiiksi tehdyn kuution pyörimään oman tietokoneesi ruudulla.",
+      "connection": "Tämän viikon tarkoitus on saada työkalut toimintakuntoon: asennat kirjastot ja käynnistät pohjassa valmiina olevan kuutiosovelluksen sekä sen testit. Et kirjoita tai teetä koodia, suunnittele kuution laskentaa tai muuta valmista testiä. Varsinaisten mallinnustoimintojen rakentaminen ja tehtäväkorttien työsykli alkavat viikolla 43.",
+      "deliverable": "Toimiva Python-ympäristö ja ruudulla pyörivä valmis kuutio.",
+      "why": "Kun valmis esimerkkisovellus toimii, tiedät että työkalut ovat valmiina myöhempää rakentamista varten.",
+      "done": "Ympäristötarkistus näyttää Ympäristö on kunnossa. Komento python main.py avaa ikkunan, jossa kuutio pyörii. Valmis testi test_1_kiertokulma menee läpi ja itsetesti näyttää ITSETESTI LÄPI. Tämän viikon valmistuminen ei vaadi tehtäväkortteja, julkaisua tai koodin kirjoittamista.",
+      "record": "Kirjaa [[tiedosto:projektipaivakirja|projektipäiväkirjaan]], mitä työkaluja otit käyttöön, näkyikö pyörivä kuutio ja mitä ympäristötarkistus, valmis testi sekä itsetesti ilmoittivat. Jos jokin jäi kesken, kirjaa virhe ja kohta, josta jatkat. Viikolla 41 ei ole selitettävää funktiota.",
+      "skills": [
+        "Kehitysympäristön käyttöönotto",
+        "Virtuaaliympäristö ja kirjastojen asennus",
+        "Valmiin sovelluksen käynnistys",
+        "Valmiiden testien ajo"
+      ],
+      "termit": [
+        "virtuaaliympäristö",
+        "requirements.txt",
+        "testi",
+        "itsetesti",
+        "zip"
+      ],
+      "tehtavat": {
         "41-0": {
-          miksi: "Ohjaajan pull request tuo repositoryyn dokumentit, joihin kirjoitat tästä viikosta alkaen VS Codessa. Jos kirjoitit viikolla 40 pakollisen ytimen eli MVP:n omaan tiedostoon MVP.md, siirrät sen tekstin [[tiedosto:suunnitelma|suunnitelmaan]].",
-          osat: [
-            { otsikko: "Hyväksy ohjaajan pull request", missa: "Selain, GitHub, ja sen jälkeen VS Code", tee: "Jos VS Coden Explorerissa on jo kansio .github, hyväksyit pull requestin viikolla 40: rastita tämä osatehtävä ja siirry osatehtävään 2. Muuten tee pull requestin ohje loppuun asti, myös sen viimeinen vaihe Git: Pull. Ohje: [[ohje:pull-request]].", naet: "Pull requestin sivulla lukee Merged, ja VS Coden Explorerissa on kansio project-docs ja kansio .github. Ohjaajan pull request toi repositoryyn dokumentit ja pohjat. Jos Pull requests -sivulla ei ole avointa pull requestia, tee ensin vain ohjeen viimeinen vaihe Git: Pull. Jos kansio .github tulee silloin näkyviin, pull request oli jo hyväksytty, etkä lähetä viestiä." },
-            { otsikko: "Tarkista dokumentit", missa: "VS Code, Explorer, kansio project-docs", tee: "Jos kansion project-docs tiedostot eivät näy sisennettyinä, napsauta kansion nimeä. Ohje: [[ohje:avaa-tiedosto]].", naet: "Kansiossa ovat [[tiedosto:ai-loki|ai-loki.md]], [[tiedosto:julkaisutesti|julkaisutesti.md]], [[tiedosto:katselmointi|katselmointi.md]], [[tiedosto:kirjastot|kirjastot.md]], [[tiedosto:kysymykset|kysymykset.md]], [[tiedosto:projektipaivakirja|projektipaivakirja.md]], [[tiedosto:saavutettavuus|saavutettavuus.md]], [[tiedosto:suunnitelma|suunnitelma.md]] ja [[tiedosto:tietoturva|tietoturva.md]] sekä kansio kuvat. Kansiossa voi olla myös tiedostoja, jotka olivat siellä jo ennen pull requestia, esimerkiksi oma MVP.md tai määrittelytiedosto LowPoly_Vector3D_Specification_Styled.md. Ne saavat jäädä. Jos pull requestin tiedostoja ei näy, tee pull requestin ohjeen viimeinen vaihe Git: Pull uudelleen. Tiedostot on kuvattu [[tyotapa#dokumentit|Työtapa-näkymän osiossa Dokumentit]]." },
-            { otsikko: "Etsi otsikko MVP omin sanoin", missa: "VS Code, tiedosto [[tiedosto:suunnitelma|project-docs/suunnitelma.md]]", tee: "Jos sinulla ei ole omaa tiedostoa MVP.md kansiossa project-docs eikä Explorerin ylimmällä tasolla, rastita osatehtävät 3–6. Muuten avaa [[tiedosto:suunnitelma|suunnitelma.md]] ja etsi otsikko. Ohje: [[ohje:etsi-otsikko]].", naet: "Kursori on tyhjällä rivillä otsikon ### MVP omin sanoin (viikko 40) ohjerivin jälkeen.", koodi: "### MVP omin sanoin (viikko 40)", koodiOtsikko: "Otsikko: kopioi tämä hakuun" },
-            { otsikko: "Kopioi tiedoston MVP.md teksti", missa: "VS Code, tiedosto MVP.md kansiossa project-docs tai Explorerin ylimmällä tasolla", tee: "Kopioi tiedoston MVP.md koko sisältö. Ohje: [[ohje:kopioi-tiedosto]].", naet: "Koko teksti on leikepöydällä, myös rivit, jotka alkavat merkillä #. Tiedoston MVP.md teksti on ennallaan." },
-            { otsikko: "Liitä teksti suunnitelmaan", missa: "VS Code, välilehti [[tiedosto:suunnitelma|suunnitelma.md]] editorin yläreunassa", tee: "Valitse välilehti [[tiedosto:suunnitelma|suunnitelma.md]]. Paina Ctrl+V ja sitten Ctrl+S.", naet: "Tiedoston MVP.md teksti on otsikon ### MVP omin sanoin (viikko 40) ohjerivin jälkeen, ja sen #-rivit saavat jäädä. Jos otsikon jälkeen oli jo tekstiä, se jäi paikalleen. Tiedosto MVP.md jää kansioon ennalleen, etkä poista sitä." },
-            { otsikko: "Tee commit ja push", missa: "VS Code, Source Control", tee: "Tee commit ja push. Ohje: [[ohje:commit]]. Changes-listassa on vain [[tiedosto:suunnitelma|suunnitelma.md]].", naet: "GitHubin commit-listassa ylimpänä on commit-viestisi. Kun avaat sen, näet tiedoston [[tiedosto:suunnitelma|suunnitelma.md]] muutokset.", koodi: "Siirrä tiedoston MVP.md teksti suunnitelmaan", koodiOtsikko: "Commit-viesti: kopioi tämä" }
+          "miksi": "Ohjaajan pull request tuo repositoryyn dokumentit, joihin kirjoitat tästä viikosta alkaen VS Codessa. Jos kirjoitit viikolla 40 pakollisen ytimen eli MVP:n omaan tiedostoon MVP.md, siirrät sen tekstin [[tiedosto:suunnitelma|suunnitelmaan]].",
+          "osat": [
+            {
+              "otsikko": "Hyväksy ohjaajan pull request",
+              "missa": "Selain, GitHub, ja sen jälkeen VS Code",
+              "tee": "Jos VS Coden Explorerissa on jo kansio .github, hyväksyit pull requestin viikolla 40: rastita tämä osatehtävä ja siirry osatehtävään 2. Muuten tee pull requestin ohje loppuun asti, myös sen viimeinen vaihe Git: Pull. Ohje: [[ohje:pull-request]].",
+              "naet": "Pull requestin sivulla lukee Merged, ja VS Coden Explorerissa on kansio project-docs ja kansio .github. Ohjaajan pull request toi repositoryyn dokumentit ja pohjat. Jos Pull requests -sivulla ei ole avointa pull requestia, tee ensin vain ohjeen viimeinen vaihe Git: Pull. Jos kansio .github tulee silloin näkyviin, pull request oli jo hyväksytty, etkä lähetä viestiä."
+            },
+            {
+              "otsikko": "Tarkista dokumentit",
+              "missa": "VS Code, Explorer, kansio project-docs",
+              "tee": "Jos kansion project-docs tiedostot eivät näy sisennettyinä, napsauta kansion nimeä. Ohje: [[ohje:avaa-tiedosto]].",
+              "naet": "Kansiossa ovat [[tiedosto:ai-loki|ai-loki.md]], [[tiedosto:julkaisutesti|julkaisutesti.md]], [[tiedosto:katselmointi|katselmointi.md]], [[tiedosto:kirjastot|kirjastot.md]], [[tiedosto:kysymykset|kysymykset.md]], [[tiedosto:projektipaivakirja|projektipaivakirja.md]], [[tiedosto:saavutettavuus|saavutettavuus.md]], [[tiedosto:suunnitelma|suunnitelma.md]] ja [[tiedosto:tietoturva|tietoturva.md]] sekä kansio kuvat. Kansiossa voi olla myös tiedostoja, jotka olivat siellä jo ennen pull requestia, esimerkiksi oma MVP.md tai määrittelytiedosto LowPoly_Vector3D_Specification_Styled.md. Ne saavat jäädä. Jos pull requestin tiedostoja ei näy, tee pull requestin ohjeen viimeinen vaihe Git: Pull uudelleen. Tiedostot on kuvattu [[tyotapa#dokumentit|Työtapa-näkymän osiossa Dokumentit]]."
+            },
+            {
+              "otsikko": "Etsi otsikko MVP omin sanoin",
+              "missa": "VS Code, tiedosto [[tiedosto:suunnitelma|project-docs/suunnitelma.md]]",
+              "tee": "Jos sinulla ei ole omaa tiedostoa MVP.md kansiossa project-docs eikä Explorerin ylimmällä tasolla, rastita osatehtävät 3–6. Muuten avaa [[tiedosto:suunnitelma|suunnitelma.md]] ja etsi otsikko. Ohje: [[ohje:etsi-otsikko]].",
+              "naet": "Kursori on tyhjällä rivillä otsikon ### MVP omin sanoin (viikko 40) ohjerivin jälkeen.",
+              "koodi": "### MVP omin sanoin (viikko 40)",
+              "koodiOtsikko": "Otsikko: kopioi tämä hakuun"
+            },
+            {
+              "otsikko": "Kopioi tiedoston MVP.md teksti",
+              "missa": "VS Code, tiedosto MVP.md kansiossa project-docs tai Explorerin ylimmällä tasolla",
+              "tee": "Kopioi tiedoston MVP.md koko sisältö. Ohje: [[ohje:kopioi-tiedosto]].",
+              "naet": "Koko teksti on leikepöydällä, myös rivit, jotka alkavat merkillä #. Tiedoston MVP.md teksti on ennallaan."
+            },
+            {
+              "otsikko": "Liitä teksti suunnitelmaan",
+              "missa": "VS Code, välilehti [[tiedosto:suunnitelma|suunnitelma.md]] editorin yläreunassa",
+              "tee": "Valitse välilehti [[tiedosto:suunnitelma|suunnitelma.md]]. Paina Ctrl+V ja sitten Ctrl+S.",
+              "naet": "Tiedoston MVP.md teksti on otsikon ### MVP omin sanoin (viikko 40) ohjerivin jälkeen, ja sen #-rivit saavat jäädä. Jos otsikon jälkeen oli jo tekstiä, se jäi paikalleen. Tiedosto MVP.md jää kansioon ennalleen, etkä poista sitä."
+            },
+            {
+              "otsikko": "Tee commit ja push",
+              "missa": "VS Code, Source Control",
+              "tee": "Tee commit ja push. Ohje: [[ohje:commit]]. Changes-listassa on vain [[tiedosto:suunnitelma|suunnitelma.md]].",
+              "naet": "GitHubin commit-listassa ylimpänä on commit-viestisi. Kun avaat sen, näet tiedoston [[tiedosto:suunnitelma|suunnitelma.md]] muutokset.",
+              "koodi": "Siirrä tiedoston MVP.md teksti suunnitelmaan",
+              "koodiOtsikko": "Commit-viesti: kopioi tämä"
+            }
           ],
-          valmis: "Dokumentit ovat repositoryssa ja omalla koneellasi. Jos sinulla oli tiedosto MVP.md, sen teksti on [[tiedosto:suunnitelma|suunnitelmassa]] GitHubissa.",
-          tallenna: "Tiedoston MVP.md teksti tiedostossa [[tiedosto:suunnitelma|suunnitelma.md]] GitHubissa.",
-          sanat: ["pull request", "MVP"]
+          "valmis": "Dokumentit ovat repositoryssa ja omalla koneellasi. Jos sinulla oli tiedosto MVP.md, sen teksti on [[tiedosto:suunnitelma|suunnitelmassa]] GitHubissa.",
+          "tallenna": "Tiedoston MVP.md teksti tiedostossa [[tiedosto:suunnitelma|suunnitelma.md]] GitHubissa.",
+          "sanat": [
+            "pull request",
+            "MVP"
+          ]
         },
         "41-7": {
-          perii: ["41-0"],
-          siirtyma: true,
-          miksi: "Viikolla 40 sivulla oli kirjoituskentät [[tiedosto:suunnitelma|suunnitelmalle]], [[tiedosto:projektipaivakirja|päiväkirjalle]] ja [[tiedosto:ai-loki|AI-lokille]]. Niihin kirjoitettu teksti on vain siinä selaimessa, jolla kirjoitit, joten siirrät sen repositoryn tiedostoihin. Etsi aina ensin kohdetiedoston otsikko ja kopioi teksti vasta sen jälkeen, koska haku ja kopiointi käyttävät samaa leikepöytää.",
-          osat: [
-            { otsikko: "Lataa sivulle kirjoittamasi teksti", missa: "Tämän työvaiheen alku, ennen osatehtävää 1", tee: "Valitse painike Lataa selaimen muistin tekstit. Valitse se vain kerran.", naet: "Selain lataa tiedoston vektoripaja-selaimen-tekstit.md Lataukset-kansioon. Jos painikkeen tilalla lukee, ettei selaimen muistissa ole tekstiä, sivu on rastittanut tämän työvaiheen kaikki osatehtävät valmiiksi. Jatka silloin seuraavasta työvaiheesta." },
-            { otsikko: "Avaa ladattu tiedosto VS Codessa", missa: "VS Code, ylävalikko", tee: "Valitse File ja sitten Open File. Valitse vasemmasta reunasta Lataukset ja avaa tiedosto vektoripaja-selaimen-tekstit.md.", naet: "Tiedosto on auki omalla välilehdellään. Jokainen ##-rivi kertoo kohdetiedoston, esimerkiksi ## 1. Tiedosto [[tiedosto:suunnitelma|project-docs/suunnitelma.md]], ja sen jälkeen ovat sen tiedoston kohdat. Kohta alkaa ###-rivillä, esimerkiksi ### Otsikon \"MVP omin sanoin (viikko 40)\" alle, ja jatkuu seuraavaan #-merkillä alkavaan riviin asti." },
-            { otsikko: "Etsi otsikko suunnitelmasta", missa: "VS Code, tiedosto [[tiedosto:suunnitelma|project-docs/suunnitelma.md]]", tee: "Valitse ladatusta tiedostosta ensimmäinen kohta, jonka ###-riviä ei ole vielä paperillasi. Jos se kuuluu tiedostoon [[tiedosto:suunnitelma|suunnitelma.md]], avaa tiedosto ja etsi otsikko, joka on kohdan ###-rivillä lainausmerkkien sisällä. Ohje: [[ohje:etsi-otsikko]].", naet: "Kohta kuuluu tiedostoon, jonka nimi on lähimmällä ##-rivillä kohdan yläpuolella. Kursori on tyhjällä rivillä otsikon >-ohjerivin jälkeen. Muiden tiedostojen kohdissa ohitat tämän osatehtävän." },
-            { otsikko: "Etsi kohta päiväkirjasta", missa: "VS Code, tiedosto [[tiedosto:projektipaivakirja|project-docs/projektipaivakirja.md]]", tee: "Jos kohta kuuluu tiedostoon [[tiedosto:projektipaivakirja|projektipaivakirja.md]], avaa se ja hae kohdan viikkoa, esimerkiksi Vko 40. Ohje: [[ohje:etsi-otsikko]], vaiheet 1–3. Paina sitten alanuolinäppäintä, kunnes kursori on tyhjällä rivillä kohdassa mainitun otsikon jälkeen.", naet: "Kun kohta kuuluu tiedostoon [[tiedosto:projektipaivakirja|projektipaivakirja.md]], sen ###-rivi on esimerkiksi ### Otsikon \"Vko 40 – Aloitus: työkalut ja projektin rajaus\" alle, kohtaan \"Mitä tein ja miten?\". Hakusana on Vko ja viikon numero: viikon 40 kohdissa voit kopioida hakusanan. Jos kohdassa on toinen viikko, kirjoita hakuun Vko ja sen viikon numero. Otsikoiden ### Mitä tein ja miten?, ### Miksi tein näin? ja ### Missä työnäyte on? jälkeen ei ole >-riviä, joten kursori on suoraan otsikon jälkeisellä tyhjällä rivillä. Otsikkoa ### Mistä jatkan? ei ole: liitä kohdan Mistä jatkan? teksti otsikon ### Mitä tein ja miten? jälkeen. Jos otsikon jälkeen on jo tekstiä, paina alanuolinäppäintä, kunnes kursori on ensimmäisellä tyhjällä rivillä tekstin jälkeen. Muiden tiedostojen kohdissa ohitat tämän osatehtävän.", koodi: "Vko 40", koodiOtsikko: "Hakusana: kopioi tämä hakuun" },
-            { otsikko: "Siirry AI-lokin loppuun", missa: "VS Code, tiedosto [[tiedosto:ai-loki|project-docs/ai-loki.md]]", tee: "Jos kohta kuuluu tiedostoon [[tiedosto:ai-loki|ai-loki.md]], avaa se ja paina Ctrl+End ja Enter. Kirjoita kohdan ###-rivi, esimerkiksi ### Merkintä 1, ja paina Enter.", naet: "Kursori on tiedoston lopussa tyhjällä rivillä otsikkorivin ### Merkintä 1 jälkeen. Siirretty merkintä jää vanhaan muotoon, ja se on oikein: tiedostokortin [[tiedosto:ai-loki|ai-loki.md]] muotoa käytät uusissa merkinnöissä. Tiedoston [[tiedosto:ai-loki|ai-loki.md]] kohdissa et etsi otsikkoa. Muiden tiedostojen kohdissa ohitat tämän osatehtävän." },
-            { otsikko: "Kopioi kohdan teksti", missa: "VS Code, välilehti vektoripaja-selaimen-tekstit.md editorin yläreunassa", tee: "Napsauta ladatussa tiedostossa kohdan ensimmäistä tekstiriviä ja paina Home. Pidä Shift-näppäin pohjassa ja paina nuolta alas, kunnes kursori on seuraavan #-merkillä alkavan rivin alussa, ja paina Ctrl+C.", naet: "Kohdan tekstirivit ovat maalattuina ja leikepöydällä, mutta ###-rivi ei ole. Jos kohta on tiedoston viimeinen, maalaa loppuun asti näppäimillä Shift+Ctrl+End ja paina Ctrl+C." },
-            { otsikko: "Liitä teksti kohdetiedostoon", missa: "VS Code, kohdetiedoston välilehti editorin yläreunassa", tee: "Valitse kohdetiedoston välilehti ja paina Ctrl+V ja sitten Ctrl+S. Kirjoita kohdan ###-rivi paperille.", naet: "Teksti on siinä kohdassa, johon veit kursorin osatehtävissä 3–5. Jos otsikon jälkeen oli jo tekstiä, esimerkiksi tiedoston MVP.md teksti työvaiheesta 1, se jäi paikalleen. Molemmat tekstit saavat jäädä, vaikka ne olisivat lähes samat. Seuraavaksi teet osatehtävät 3–7 ladatun tiedoston seuraavalle kohdalle. Kun jokaisen kohdan ###-rivi on paperilla, rastitat osatehtävät 3–7." },
-            { otsikko: "Tee commit ja push", missa: "VS Code, Source Control", tee: "Tee commit ja push. Ohje: [[ohje:commit]]. Changes-listassa ovat ne dokumentit, joihin liitit tekstiä.", naet: "GitHubin commit-listassa ylimpänä on commit-viestisi. Kun avaat sen, näet niiden tiedostojen muutokset, joihin liitit tekstiä. Ladattu tiedosto ei ole Changes-listassa, koska se on Lataukset-kansiossa.", koodi: "Siirrä selaimen tekstit dokumentteihin", koodiOtsikko: "Commit-viesti: kopioi tämä" }
+          "perii": [
+            "41-0"
           ],
-          valmis: "Sivulle kirjoittamasi teksti on dokumenteissa GitHubissa.",
-          tallenna: "Siirretyt tekstit tiedostoissa [[tiedosto:suunnitelma|suunnitelma.md]], [[tiedosto:projektipaivakirja|projektipaivakirja.md]] ja [[tiedosto:ai-loki|ai-loki.md]] GitHubissa.",
-          sanat: ["MVP"]
-        },
-        "41-5": {
-          perii: ["41-1"],
-          miksi: "Asiakkaiden vastaukset ohjaavat harjoitussovellusta ja koko projektia. Kirjaat ne tiedostoon, jotta ne ovat tallessa repositoryssa.",
-          osat: [
-            { otsikko: "Käy viikkopalaveri", missa: "Viikkopalaveri ohjaajan kanssa maanantaina tai tiistaina", tee: "Kerro ohjaajalle, mitä teit viikolla 40 ja mihin jäit, ja kysy, onko korteista #1 (pyörivä kuutio) ja #2 (julkaisu tagilla v0.0.41) jotain sovittavaa. Kysy sitten asiakkaiden vastaukset kysymyksiisi ja kirjoita vastaukset, vastaajat ja sopimus paperille.", naet: "Jokaiseen kysymykseen on vastaus tai tieto, että asia on vielä auki. Paperilla on myös palaverin päivä ja se, mitä korteista sovittiin. Jos niistä ei sovittu mitään, teet kortit viikon työvaiheiden mukaan. Kirjoitat sopimuksen kortin #1 issueen kommentiksi Sovittu viikkopalaverissa työvaiheessa Rakenna pyörivä kuutio. Viikolla 40 ei ollut funktiota, joten kerrot vain työstäsi. Tämä palaveri on myös viikkorutiinin palaverikohta, joten rastita se viikkorutiinissa." },
-            { otsikko: "Avaa kysymykset", missa: "VS Code, Explorer", tee: "Avaa tiedosto [[tiedosto:kysymykset|project-docs/kysymykset.md]]. Ohje: [[ohje:avaa-tiedosto]].", naet: "Tiedostossa on kolme otsikkoa, esimerkiksi ### 1. (kirjoita kysymys). Jokaisen otsikon jälkeen ovat rivit - Vastaus (viikko 41): ja - Vastaaja: asiakas 1 / asiakas 2. Jos kirjoitit kysymykset tähän tiedostoon jo viikolla 40, otsikoissa on kysymyksesi, ja osatehtävät 3 ja 4 ovat valmiit." },
-            { otsikko: "Lisää otsikot lisäkysymyksille", missa: "Tiedosto [[tiedosto:kysymykset|kysymykset.md]], tiedoston loppu", tee: "Jos lähetit asiakkaille enintään kolme kysymystä, rastita tämä osatehtävä. Muuten kopioi lisäkysymyksen pohja, paina tiedostossa Ctrl+End ja Enter ja paina Ctrl+V.", naet: "Tiedoston lopussa on otsikko ### 4. (kirjoita kysymys) ja sen jälkeen rivit Vastaus ja Vastaaja. Jos lähetit yli neljä kysymystä, tee tämä osatehtävä uudelleen jokaiselle lisäkysymykselle ja vaihda uuden otsikon numeroksi seuraava numero, esimerkiksi 5.", koodi: "### 4. (kirjoita kysymys)\n- Vastaus (viikko 41): \n- Vastaaja: asiakas 1 / asiakas 2", koodiOtsikko: "Lisäkysymyksen pohja: kopioi tarvittaessa" },
-            { otsikko: "Kirjoita kysymyksesi tiedostoon", missa: "Tiedosto [[tiedosto:kysymykset|kysymykset.md]] ja Teams-viesti, jonka lähetit asiakkaille viikolla 40", tee: "Maalaa Teams-viestistä hiirellä yhden kysymyksen teksti ilman sen numeroa ja paina Ctrl+C. Ohje: [[ohje:teams]], kohta Jos kopioit viestin Teamsista. Napsauta saman numeron otsikossa juuri ennen merkkiä ( ja paina Shift+End ja sitten Ctrl+V.", naet: "Otsikon numeron perässä on kysymyksesi, eikä tekstiä (kirjoita kysymys) ole. Tee sama jokaiselle kysymykselle. Jos lähetit alle kolme kysymystä, maalaa ylimääräiset otsikot riveineen ja paina Delete." },
-            { otsikko: "Kirjoita vastaukset", missa: "Tiedosto [[tiedosto:kysymykset|kysymykset.md]], jokaisen kysymyksen rivit Vastaus ja Vastaaja", tee: "Kirjoita rivin - Vastaus (viikko 41): perään asiakkaan vastaus. Napsauta rivillä - Vastaaja: juuri ennen sanaa asiakas, paina Shift+End ja kirjoita vastaajan rooli, asiakas 1 tai asiakas 2.", naet: "Jokaisen kysymyksen jälkeen on vastaus ja rooli, esimerkiksi - Vastaaja: asiakas 2. Jos molemmat asiakkaat vastasivat samaan kysymykseen, Vastaus-rivillä ovat molempien vastaukset ja Vastaaja-rivillä lukee asiakas 1 ja asiakas 2. Asiakas 1 on Antti Honkasalo ja asiakas 2 on Matti Seise. Et kirjoita nimiä, koska repository on julkinen. Jos asia jäi auki, Vastaus-rivillä lukee auki, sovitaan viikolla ja ohjaajan kertoman viikon numero, esimerkiksi auki, sovitaan viikolla 43. Vastaaja-rivi jää silloin ennalleen. Jos ohjaaja ei kertonut viikkoa, kirjoita 43, koska viikko 42 on syysloma." },
-            { otsikko: "Tee commit ja push", missa: "VS Code, Source Control", tee: "Tee commit ja push. Ohje: [[ohje:commit]]. Changes-listassa on vain [[tiedosto:kysymykset|kysymykset.md]].", naet: "GitHubin commit-listassa ylimpänä on commit-viestisi. Kun avaat sen, näet tiedoston [[tiedosto:kysymykset|kysymykset.md]] muutokset.", koodi: "Kirjaa asiakkaiden vastaukset", koodiOtsikko: "Commit-viesti: kopioi tämä" }
+          "siirtyma": true,
+          "miksi": "Viikolla 40 sivulla oli kirjoituskentät [[tiedosto:suunnitelma|suunnitelmalle]], [[tiedosto:projektipaivakirja|päiväkirjalle]] ja [[tiedosto:ai-loki|AI-lokille]]. Niihin kirjoitettu teksti on vain siinä selaimessa, jolla kirjoitit, joten siirrät sen repositoryn tiedostoihin. Etsi aina ensin kohdetiedoston otsikko ja kopioi teksti vasta sen jälkeen, koska haku ja kopiointi käyttävät samaa leikepöytää.",
+          "osat": [
+            {
+              "otsikko": "Lataa sivulle kirjoittamasi teksti",
+              "missa": "Tämän työvaiheen alku, ennen osatehtävää 1",
+              "tee": "Valitse painike Lataa selaimen muistin tekstit. Valitse se vain kerran.",
+              "naet": "Selain lataa tiedoston vektoripaja-selaimen-tekstit.md Lataukset-kansioon. Jos painikkeen tilalla lukee, ettei selaimen muistissa ole tekstiä, sivu on rastittanut tämän työvaiheen kaikki osatehtävät valmiiksi. Jatka silloin seuraavasta työvaiheesta."
+            },
+            {
+              "otsikko": "Avaa ladattu tiedosto VS Codessa",
+              "missa": "VS Code, ylävalikko",
+              "tee": "Valitse File ja sitten Open File. Valitse vasemmasta reunasta Lataukset ja avaa tiedosto vektoripaja-selaimen-tekstit.md.",
+              "naet": "Tiedosto on auki omalla välilehdellään. Jokainen ##-rivi kertoo kohdetiedoston, esimerkiksi ## 1. Tiedosto [[tiedosto:suunnitelma|project-docs/suunnitelma.md]], ja sen jälkeen ovat sen tiedoston kohdat. Kohta alkaa ###-rivillä, esimerkiksi ### Otsikon \"MVP omin sanoin (viikko 40)\" alle, ja jatkuu seuraavaan #-merkillä alkavaan riviin asti."
+            },
+            {
+              "otsikko": "Etsi otsikko suunnitelmasta",
+              "missa": "VS Code, tiedosto [[tiedosto:suunnitelma|project-docs/suunnitelma.md]]",
+              "tee": "Valitse ladatusta tiedostosta ensimmäinen kohta, jonka ###-riviä ei ole vielä paperillasi. Jos se kuuluu tiedostoon [[tiedosto:suunnitelma|suunnitelma.md]], avaa tiedosto ja etsi otsikko, joka on kohdan ###-rivillä lainausmerkkien sisällä. Ohje: [[ohje:etsi-otsikko]].",
+              "naet": "Kohta kuuluu tiedostoon, jonka nimi on lähimmällä ##-rivillä kohdan yläpuolella. Kursori on tyhjällä rivillä otsikon >-ohjerivin jälkeen. Muiden tiedostojen kohdissa ohitat tämän osatehtävän."
+            },
+            {
+              "otsikko": "Etsi kohta päiväkirjasta",
+              "missa": "VS Code, tiedosto [[tiedosto:projektipaivakirja|project-docs/projektipaivakirja.md]]",
+              "tee": "Jos kohta kuuluu tiedostoon [[tiedosto:projektipaivakirja|projektipaivakirja.md]], avaa se ja hae kohdan viikkoa, esimerkiksi Vko 40. Ohje: [[ohje:etsi-otsikko]], vaiheet 1–3. Paina sitten alanuolinäppäintä, kunnes kursori on tyhjällä rivillä kohdassa mainitun otsikon jälkeen.",
+              "naet": "Kun kohta kuuluu tiedostoon [[tiedosto:projektipaivakirja|projektipaivakirja.md]], sen ###-rivi on esimerkiksi ### Otsikon \"Vko 40 – Aloitus: työkalut ja projektin rajaus\" alle, kohtaan \"Mitä tein ja miten?\". Hakusana on Vko ja viikon numero: viikon 40 kohdissa voit kopioida hakusanan. Jos kohdassa on toinen viikko, kirjoita hakuun Vko ja sen viikon numero. Otsikoiden ### Mitä tein ja miten?, ### Miksi tein näin? ja ### Missä työnäyte on? jälkeen ei ole >-riviä, joten kursori on suoraan otsikon jälkeisellä tyhjällä rivillä. Otsikkoa ### Mistä jatkan? ei ole: liitä kohdan Mistä jatkan? teksti otsikon ### Mitä tein ja miten? jälkeen. Jos otsikon jälkeen on jo tekstiä, paina alanuolinäppäintä, kunnes kursori on ensimmäisellä tyhjällä rivillä tekstin jälkeen. Muiden tiedostojen kohdissa ohitat tämän osatehtävän.",
+              "koodi": "Vko 40",
+              "koodiOtsikko": "Hakusana: kopioi tämä hakuun"
+            },
+            {
+              "otsikko": "Siirry AI-lokin loppuun",
+              "missa": "VS Code, tiedosto [[tiedosto:ai-loki|project-docs/ai-loki.md]]",
+              "tee": "Jos kohta kuuluu tiedostoon [[tiedosto:ai-loki|ai-loki.md]], avaa se ja paina Ctrl+End ja Enter. Kirjoita kohdan ###-rivi, esimerkiksi ### Merkintä 1, ja paina Enter.",
+              "naet": "Kursori on tiedoston lopussa tyhjällä rivillä otsikkorivin ### Merkintä 1 jälkeen. Siirretty merkintä jää vanhaan muotoon, ja se on oikein: tiedostokortin [[tiedosto:ai-loki|ai-loki.md]] muotoa käytät uusissa merkinnöissä. Tiedoston [[tiedosto:ai-loki|ai-loki.md]] kohdissa et etsi otsikkoa. Muiden tiedostojen kohdissa ohitat tämän osatehtävän."
+            },
+            {
+              "otsikko": "Kopioi kohdan teksti",
+              "missa": "VS Code, välilehti vektoripaja-selaimen-tekstit.md editorin yläreunassa",
+              "tee": "Napsauta ladatussa tiedostossa kohdan ensimmäistä tekstiriviä ja paina Home. Pidä Shift-näppäin pohjassa ja paina nuolta alas, kunnes kursori on seuraavan #-merkillä alkavan rivin alussa, ja paina Ctrl+C.",
+              "naet": "Kohdan tekstirivit ovat maalattuina ja leikepöydällä, mutta ###-rivi ei ole. Jos kohta on tiedoston viimeinen, maalaa loppuun asti näppäimillä Shift+Ctrl+End ja paina Ctrl+C."
+            },
+            {
+              "otsikko": "Liitä teksti kohdetiedostoon",
+              "missa": "VS Code, kohdetiedoston välilehti editorin yläreunassa",
+              "tee": "Valitse kohdetiedoston välilehti ja paina Ctrl+V ja sitten Ctrl+S. Kirjoita kohdan ###-rivi paperille.",
+              "naet": "Teksti on siinä kohdassa, johon veit kursorin osatehtävissä 3–5. Jos otsikon jälkeen oli jo tekstiä, esimerkiksi tiedoston MVP.md teksti työvaiheesta 1, se jäi paikalleen. Molemmat tekstit saavat jäädä, vaikka ne olisivat lähes samat. Seuraavaksi teet osatehtävät 3–7 ladatun tiedoston seuraavalle kohdalle. Kun jokaisen kohdan ###-rivi on paperilla, rastitat osatehtävät 3–7."
+            },
+            {
+              "otsikko": "Tee commit ja push",
+              "missa": "VS Code, Source Control",
+              "tee": "Tee commit ja push. Ohje: [[ohje:commit]]. Changes-listassa ovat ne dokumentit, joihin liitit tekstiä.",
+              "naet": "GitHubin commit-listassa ylimpänä on commit-viestisi. Kun avaat sen, näet niiden tiedostojen muutokset, joihin liitit tekstiä. Ladattu tiedosto ei ole Changes-listassa, koska se on Lataukset-kansiossa.",
+              "koodi": "Siirrä selaimen tekstit dokumentteihin",
+              "koodiOtsikko": "Commit-viesti: kopioi tämä"
+            }
           ],
-          valmis: "Asiakkaiden vastaukset ovat tiedostossa [[tiedosto:kysymykset|kysymykset.md]] GitHubissa.",
-          tallenna: "Vastaukset tiedostossa [[tiedosto:kysymykset|kysymykset.md]] GitHubissa.",
-          esimerkki: "Reseptikirjan kysymys ja vastaus:\n### 1. Pitääkö reseptin voida tulostaa?\n- Vastaus (viikko 41): Ei ensimmäisessä versiossa. Tulostus on jatkolistalla.\n- Vastaaja: asiakas 1",
-          eiRiita: "### 1. Onko kaikki ok?\n- Vastaus: joo\nKysymys ei kysy mitään tarkkaa, ja vastaajan rooli puuttuu.",
-          sanat: []
-        },
-        "41-8": {
-          perii: ["41-1"],
-          miksi: "Tekninen päätös ja käyttöliittymävaatimus ohjaavat harjoitussovellusta ja koko projektia. [[toimeksianto|Toimeksianto]] pyytää isot painikkeet ja hyvän kontrastin, ja kortin #1 hyväksymiskriteeri käyttää käyttöliittymävaatimuksen värejä.",
-          osat: [
-            { otsikko: "Lue tekninen ehdotus", missa: "Vektoripaja-sivusto, [[toimeksianto|Toimeksianto]], kohta Ehdotettu toteutustapa", tee: "Lue [[toimeksianto#tekninen-ehdotus|toimeksiannon kohta Ehdotettu toteutustapa]]: tekninen ehdotus ja pakollinen ydin ennen joulua.", naet: "Tiedät neljä pääkirjastoa: PySide6, PyVista, trimesh ja pytest. Kirjastot pyvistaqt, numpy ja svgelements asennetaan niiden apuna." },
-            { otsikko: "Etsi päätöksen otsikko", missa: "VS Code, tiedosto [[tiedosto:suunnitelma|project-docs/suunnitelma.md]]", tee: "Avaa tiedosto [[tiedosto:suunnitelma|project-docs/suunnitelma.md]]. Ohje: [[ohje:avaa-tiedosto]]. Etsi otsikko. Ohje: [[ohje:etsi-otsikko]].", naet: "Kursori on tyhjällä rivillä otsikon ### Tekninen pohja: hyväksynkö ehdotuksen ja miksi (viikko 41) ohjerivin jälkeen.", koodi: "### Tekninen pohja: hyväksynkö ehdotuksen ja miksi (viikko 41)", koodiOtsikko: "Otsikko: kopioi tämä hakuun" },
-            { otsikko: "Kirjoita päätös teknisestä pohjasta", missa: "Tiedosto [[tiedosto:suunnitelma|suunnitelma.md]], otsikko Tekninen pohja: hyväksynkö ehdotuksen ja miksi (viikko 41)", tee: "Kirjoita, hyväksytkö ehdotuksen. Perustele päätös vähintään kahdella pakollisen ytimen toiminnolla ja paina Ctrl+S.", naet: "Otsikon jälkeen on päätös ja peruste, jossa mainitaan pakollisen ytimen toimintoja, esimerkiksi SVG-tuonti ja .obj-vienti." },
-            { otsikko: "Lähetä viesti, jos et hyväksy ehdotusta", missa: "Teams, keskustelu ohjaajan kanssa", tee: "Jos hyväksyit ehdotuksen, rastita tämä osatehtävä. Muuten kopioi viesti, täydennä ___-kohdat ja lähetä se ohjaajalle. Ohje: [[ohje:teams]].", naet: "Viesti on lähetetty. Työvaihe Asenna harjoitussovelluksen kirjastot odottaa ohjaajan vastausta. Jatka sillä välin tämän työvaiheen osatehtävästä 5 ja sitten työvaiheesta Pura harjoitussovelluksen pohja. Avaa se otsikon Viikon työvaiheet jälkeen olevalla painikkeella Avaa kaikki työvaiheet. Ohjaajan vastauksen luet osatehtävässä 8.", koodi: "Hei Matti,\nen hyväksy Vektoripajan teknistä ehdotusta sellaisenaan.\nSyy: ___\nEhdotan tilalle: ___\nKirjoitin päätöksen ja perusteen suunnitelmaan.", koodiOtsikko: "Viesti ohjaajalle: kopioi tämä" },
-            { otsikko: "Etsi käyttöliittymävaatimuksen otsikko", missa: "VS Code, tiedosto [[tiedosto:suunnitelma|suunnitelma.md]]", tee: "Etsi samasta tiedostosta otsikko. Ohje: [[ohje:etsi-otsikko]].", naet: "Kursori on tyhjällä rivillä otsikon ### Käyttöliittymävaatimus (viikko 41) ohjerivin jälkeen.", koodi: "### Käyttöliittymävaatimus (viikko 41)", koodiOtsikko: "Otsikko: kopioi tämä hakuun" },
-            { otsikko: "Kirjoita käyttöliittymävaatimus", missa: "Tiedosto [[tiedosto:suunnitelma|suunnitelma.md]], otsikko Käyttöliittymävaatimus (viikko 41)", tee: "Kopioi mallirivit ja liitä ne kursorin kohtaan. Vaihda arvot omiksesi tai pidä malliarvot ja paina Ctrl+S.", naet: "Otsikon jälkeen on neljä riviä. Värikoodi on #-merkki ja kuusi merkkiä, esimerkiksi #000000 on musta. Lyhenne px tarkoittaa pikseliä. Jos et ole varma arvoista, pidä malliarvot: mallin värit ovat sovelluksen pohjan värit, ja tarkistat vaatimuksen uudelleen viikolla 5. Kortin #1 hyväksymiskriteeri käyttää näistä riveistä vain värejä: ikkuna käyttää tiedoston vektoripaja/teema.py värejä, ja taustaväri on sama kuin tässä. Tekstin kokoa ja painikkeiden kokoa et lisää korttiin.", koodi: "- Taustaväri: #000000\n- Tekstin väri: #1fa4e3\n- Tekstin koko: 18 px\n- Painikkeiden koko: vähintään 48 × 48 px", koodiOtsikko: "Mallirivit: kopioi ja vaihda arvot" },
-            { otsikko: "Tee commit ja push", missa: "VS Code, Source Control", tee: "Tee commit ja push. Ohje: [[ohje:commit]]. Changes-listassa on vain [[tiedosto:suunnitelma|suunnitelma.md]].", naet: "GitHubin commit-listassa ylimpänä on commit-viestisi. Kun avaat sen, näet tiedoston [[tiedosto:suunnitelma|suunnitelma.md]] muutokset.", koodi: "Kirjaa tekninen päätös ja käyttöliittymävaatimus", koodiOtsikko: "Commit-viesti: kopioi tämä" },
-            { otsikko: "Lue ohjaajan vastaus", missa: "Teams, keskustelu ohjaajan kanssa", tee: "Jos et lähettänyt viestiä osatehtävässä 4, rastita tämä osatehtävä. Muuten lue ohjaajan vastaus ja toimi sen mukaan, ennen kuin aloitat työvaiheen Asenna harjoitussovelluksen kirjastot.", naet: "Jos ohjaaja pitää ehdotetun tekniikan, jatkat työvaiheesta Asenna harjoitussovelluksen kirjastot sellaisenaan. Jos ohjaaja muuttaa tekniikkaa, hänen vastauksensa kertoo, mitä teet. Odottaessasi voit tehdä työvaiheet Pura harjoitussovelluksen pohja ja Määrittele kuution testi. Avaa ne otsikon Viikon työvaiheet jälkeen olevalla painikkeella Avaa kaikki työvaiheet. Jos vastausta ei ole tullut seuraavana työpäivänä, lähetä muistutus. Ohje: [[ohje:teams]].", koodi: "Hei Matti,\nmuistutan viestistäni Vektoripajan teknisestä ehdotuksesta. Tarvitsen vastauksen, ennen kuin asennan harjoitussovelluksen kirjastot.", koodiOtsikko: "Viesti: kopioi tämä, jos lähetät muistutuksen" }
-          ],
-          valmis: "Tekninen päätös ja käyttöliittymävaatimus ovat [[tiedosto:suunnitelma|suunnitelmassa]] GitHubissa.",
-          tallenna: "Päätökset tiedostossa [[tiedosto:suunnitelma|suunnitelma.md]] GitHubissa.",
-          esimerkki: "Reseptikirjan päätös: \"Hyväksyn ehdotuksen. SQLite tallentaa reseptit, ja Flask näyttää haun selaimessa. Molempia tarvitaan pakolliseen ytimeen: reseptin lisäykseen ja hakuun.\"",
-          eiRiita: "\"Hyväksyn, koska Copilot suositteli tätä.\" Perustelussa ei ole yhtään pakollisen ytimen toimintoa.",
-          sanat: []
+          "valmis": "Sivulle kirjoittamasi teksti on dokumenteissa GitHubissa.",
+          "tallenna": "Siirretyt tekstit tiedostoissa [[tiedosto:suunnitelma|suunnitelma.md]], [[tiedosto:projektipaivakirja|projektipaivakirja.md]] ja [[tiedosto:ai-loki|ai-loki.md]] GitHubissa.",
+          "sanat": [
+            "MVP"
+          ]
         },
         "41-1": {
-          versio: "2026-10-05",
-          miksi: "Pohjassa ovat valmiina julkaisun ja itsetestin tiedostot sekä kirjastojen lista requirements.txt. Pohjassa ei ole .exe-tiedostoa: sen tekee GitHub Actions myöhemmin.",
-          osat: [
-            { vanha: 3, otsikko: "Lataa pohja", missa: "Selain, Vektoripaja-sivusto", tee: "Lataa [vektoripaja-pohja.zip](pohjat/vektoripaja-pohja.zip).", naet: "Selain tallentaa tiedoston vektoripaja-pohja.zip Lataukset-kansioon." },
-            { vanha: 3, otsikko: "Avaa repositoryn kansio Resurssienhallinnassa", missa: "VS Code, Explorer", tee: "Napsauta tiedostoa README.md hiiren oikealla painikkeella. Valitse Reveal in File Explorer.", naet: "Resurssienhallinta aukeaa repositoryn kansioon. Siinä näkyy README.md." },
-            { vanha: 3, otsikko: "Kopioi kansion polku", missa: "Resurssienhallinnan osoiterivi ikkunan yläreunassa", tee: "Napsauta osoiterivin tyhjää kohtaa kansioiden nimien oikealla puolella. Paina Ctrl+C.", naet: "Osoiterivi muuttuu tekstiksi, esimerkiksi C:\\Users\\…\\Vektoripaja. Polku on leikepöydällä." },
-            { vanha: 3, otsikko: "Valitse Pura kaikki", missa: "Resurssienhallinta", tee: "Valitse vasemmasta reunasta Lataukset. Napsauta tiedostoa vektoripaja-pohja.zip hiiren oikealla painikkeella ja valitse Pura kaikki.", naet: "Purkuikkuna aukeaa. Sen yläosassa lukee Valitse kohde ja pura tiedostot, ja kentässä on kohdekansion polku. [[kuvaohje:windows-pura-kaikki|Kuvaohjeen kohdat 1–3]] näyttävät saman ikkunan." },
-            { vanha: 3, otsikko: "Vaihda kohdekansioksi repository", missa: "Purkuikkuna Valitse kohde ja pura tiedostot, kohdekansion kenttä", tee: "Napsauta kenttää. Paina Ctrl+A ja sitten Ctrl+V.", naet: "Kentässä on repositoryn kansion polku, sama kuin osoiterivillä." },
-            { vanha: 3, otsikko: "Pura pohja", missa: "Purkuikkuna Valitse kohde ja pura tiedostot", tee: "Valitse Pura. Jos Windows kysyy, korvataanko tiedostot, valitse Ohita nämä tiedostot.", naet: "Windows purkaa tiedostot suoraan repositoryn kansioon. Dokumenttisi säilyvät ennallaan." },
-            { vanha: 3, otsikko: "Tarkista purku", missa: "VS Code, Explorer", tee: "Katso Explorerin tiedostolistaa.", naet: "Explorerissa ovat kansiot vektoripaja, tests ja esimerkit sekä tiedostot .gitignore, LUE_MINUT.txt, main.py, pytest.ini, rakenna_exe.bat, requirements.txt, tarkista_ymparisto.py ja vektoripaja.spec. Uutta alikansiota ei ole. Jos Explorerissa on uusi kansio, esimerkiksi vektoripaja-pohja, tai tiedostoja puuttuu, purku meni väärään kansioon. Tee silloin osatehtävät 2–6 uudelleen ja poista uusi kansio: napsauta sitä hiiren oikealla painikkeella, valitse Delete ja sitten Move to Recycle Bin." },
-            { otsikko: "Tarkista teeman värit", missa: "VS Code, tiedosto vektoripaja/teema.py", tee: "Avaa tiedosto teema.py pienillä kirjaimilla kirjoitetusta kansiosta vektoripaja, älä ylimmästä rivistä VEKTORIPAJA. Ohje: [[ohje:avaa-tiedosto]]. Vertaa rivin TAUSTA väriä käyttöliittymävaatimuksesi taustaväriin ja rivin KOROSTUS väriä tekstin väriin.", naet: "Värit ovat samat kuin [[tiedosto:suunnitelma|suunnitelmassa]], esimerkiksi TAUSTA = \"#000000\". Jos värit eivät ole samat, vaihda väri niin, että #-merkki jää lainausmerkkien sisälle, ja paina Ctrl+S. Tekstin kokoa ja painikkeiden kokoa ei ole tässä tiedostossa, etkä tarkista niitä nyt." }
+          "versio": "2026-10-05",
+          "miksi": "Valmis harjoitussovellus näyttää pyörivän kuution. Sekä kuution koodi että testi ovat pohjassa. Sinun tehtäväsi on purkaa tiedostot ja saada ympäristö toimimaan.",
+          "osat": [
+            {
+              "vanha": 3,
+              "otsikko": "Lataa pohja",
+              "missa": "Selain, Vektoripaja-sivusto",
+              "tee": "Lataa [vektoripaja-pohja.zip](pohjat/vektoripaja-pohja.zip).",
+              "naet": "Selain tallentaa tiedoston vektoripaja-pohja.zip Lataukset-kansioon."
+            },
+            {
+              "vanha": 3,
+              "otsikko": "Avaa repositoryn kansio Resurssienhallinnassa",
+              "missa": "VS Code, Explorer",
+              "tee": "Napsauta tiedostoa README.md hiiren oikealla painikkeella. Valitse Reveal in File Explorer.",
+              "naet": "Resurssienhallinta aukeaa repositoryn kansioon. Siinä näkyy README.md."
+            },
+            {
+              "vanha": 3,
+              "otsikko": "Kopioi kansion polku",
+              "missa": "Resurssienhallinnan osoiterivi ikkunan yläreunassa",
+              "tee": "Napsauta osoiterivin tyhjää kohtaa kansioiden nimien oikealla puolella. Paina Ctrl+C.",
+              "naet": "Osoiterivi muuttuu tekstiksi, esimerkiksi C:\\Users\\…\\Vektoripaja. Polku on leikepöydällä."
+            },
+            {
+              "vanha": 3,
+              "otsikko": "Valitse Pura kaikki",
+              "missa": "Resurssienhallinta",
+              "tee": "Valitse vasemmasta reunasta Lataukset. Napsauta tiedostoa vektoripaja-pohja.zip hiiren oikealla painikkeella ja valitse Pura kaikki.",
+              "naet": "Purkuikkuna aukeaa. Sen yläosassa lukee Valitse kohde ja pura tiedostot, ja kentässä on kohdekansion polku. [[kuvaohje:windows-pura-kaikki|Kuvaohjeen kohdat 1–3]] näyttävät saman ikkunan."
+            },
+            {
+              "vanha": 3,
+              "otsikko": "Vaihda kohdekansioksi repository",
+              "missa": "Purkuikkuna Valitse kohde ja pura tiedostot, kohdekansion kenttä",
+              "tee": "Napsauta kenttää. Paina Ctrl+A ja sitten Ctrl+V.",
+              "naet": "Kentässä on repositoryn kansion polku, sama kuin osoiterivillä."
+            },
+            {
+              "vanha": 3,
+              "otsikko": "Pura pohja",
+              "missa": "Purkuikkuna Valitse kohde ja pura tiedostot",
+              "tee": "Valitse Pura. Jos Windows kysyy, korvataanko tiedostot, valitse Ohita nämä tiedostot.",
+              "naet": "Windows purkaa tiedostot suoraan repositoryn kansioon. Dokumenttisi säilyvät ennallaan."
+            },
+            {
+              "vanha": 3,
+              "otsikko": "Tarkista purku",
+              "missa": "VS Code, Explorer",
+              "tee": "Katso Explorerin tiedostolistaa.",
+              "naet": "Repositoryn juuressa ovat main.py, requirements.txt ja tarkista_ymparisto.py. Kansiossa vektoripaja ovat valmiit ikkuna.py, kierto.py, teema.py ja teema.qss. Kansiossa tests on valmis test_kierto.py. Jos tiedostot ovat uudessa alikansiossa, esimerkiksi vektoripaja-pohja, pura zip uudelleen suoraan repositoryn kansioon. Jos sinulla on jo itse tehty ikkuna.py, kierto.py tai test_kierto.py, säilytä ne ja pyydä ohjaajaa tarkistamaan pohjan päivitys."
+            }
           ],
-          valmis: "Pohjan tiedostot ovat repositoryn kansiossa, dokumentit ovat ennallaan, ja teeman värit ovat samat kuin käyttöliittymävaatimuksessasi.",
-          tallenna: "Pohjan tiedostot menevät GitHubiin commitilla työvaiheessa Kirjaa kirjastojen lisenssit README:hen.",
-          sanat: []
+          "valmis": "Valmis kuutiosovellus ja sen testi ovat repositoryn kansiossa. Omat dokumenttisi säilyivät.",
+          "tallenna": "Pohjan tiedostot tallennetaan GitHubiin työvaiheessa Käynnistä valmis kuutio.",
+          "sanat": []
         },
         "41-6": {
-          perii: ["41-1"],
-          miksi: "Harjoitus tarvitsee saman ympäristön kuin varsinainen sovellus. Asennat kirjastot projektin omaan virtuaaliympäristöön.",
-          osat: [
-            { otsikko: "Luo virtuaaliympäristö", missa: "VS Code", tee: "Luo virtuaaliympäristö [[kuvaohje:vscode-create-environment|kuvaohjeen]] mukaan.", naet: "Explorerissa on kansio .venv, ja oikeaan alakulmaan tulee ilmoitus valmiista ympäristöstä. Jos komentoa Python: Create Environment ei löydy tai listassa ei ole Python 3.13:a, tee osatehtävä 2." },
-            { otsikko: "Korjaa ympäristön luonti", missa: "VS Code, Extensions-näkymä vasemmassa reunassa", tee: "Jos kansio .venv syntyi osatehtävässä 1, rastita tämä osatehtävä. Muuten paina Ctrl+Shift+X ja kirjoita hakukenttään Python.", naet: "Listassa on laajennus Python. Jos sen painikkeessa lukee Install, valitse Install. Sulje sitten VS Code sulkupainikkeesta, avaa se uudelleen ja avaa repository. Ohje: [[ohje:avaa-repository]]. Tee sen jälkeen osatehtävä 1 alusta. Jos osatehtävän 1 listassa ei ollut Python 3.13:a, lataa [Pythonin Windows-sivulta](https://www.python.org/downloads/windows/) uusimman Python 3.13 -version Windows installer (64-bit). Asenna se [[kuvaohje:python-asennus|kuvaohjeen]] mukaan, avaa repository ja tee osatehtävä 1 alusta. Jos kansiota .venv ei vieläkään synny, tee osatehtävät 6 ja 7." },
-            { otsikko: "Avaa uusi terminaali", missa: "VS Code, ylävalikko", tee: "Avaa terminaali. Ohje: [[ohje:terminaali]].", naet: "Terminaalin rivi alkaa (.venv). Jos terminaalissa lukee running scripts is disabled, tee [[ohje:terminaali|terminaaliohjeen]] viimeinen vaihe." },
-            { otsikko: "Asenna kirjastot", missa: "Terminaali", tee: "Aja komento. Ohje: [[ohje:komento]]. Asennus kestää muutaman minuutin.", naet: "Lopussa on rivi, joka alkaa sanoilla Successfully installed, ja sen perässä kirjastojen nimet. Jos sen jälkeen on [notice]-rivejä, ne eivät haittaa. Jos lopussa on rivejä, jotka alkavat sanalla ERROR, tee osatehtävät 6 ja 7.", koodi: "pip install -r requirements.txt", koodiOtsikko: "Komento: kopioi tämä" },
-            { otsikko: "Tarkista ympäristö", missa: "Terminaali", tee: "Aja komento. Ohje: [[ohje:komento]]. Kirjoita viimeisen rivin teksti paperille.", naet: "Rivien alussa lukee OK. Viimeisellä rivillä lukee Ympäristö on kunnossa. [[kuvaohje:tarkista-ymparisto|Katso kuvaohje]]. Jos rivi alkaa sanalla KORJAA, tee ensin rivin jälkeinen ohje ja aja komento uudelleen. Jos jonkin rivin alussa ei silloinkaan lue OK, tee osatehtävät 6 ja 7.", koodi: "python tarkista_ymparisto.py", koodiOtsikko: "Komento: kopioi tämä" },
-            { otsikko: "Tarkista Python-versio, jos jokin epäonnistui", missa: "Terminaali", tee: "Jos osatehtävät 1–5 onnistuivat, rastita tämä osatehtävä ja osatehtävä 7. Muuten aja komento. Ohje: [[ohje:komento]].", naet: "Terminaalissa on rivi, joka alkaa sanalla Python, esimerkiksi Python 3.13.1. Jos terminaali sanoo, ettei komentoa löydy, sekin on tulos. Tarvitset tuloksen osatehtävän 7 viestissä.", koodi: "python --version", koodiOtsikko: "Komento: kopioi tämä" },
-            { otsikko: "Lähetä virhe ohjaajalle", missa: "Teams, keskustelu ohjaajan kanssa, ja VS Coden terminaali", tee: "Kopioi viesti ja liitä se Teamsiin. Ohje: [[ohje:teams]]. Täydennä ___-kohdat ennen lähettämistä: maalaa tulos ja virherivit terminaalissa hiirellä, paina Ctrl+C ja liitä ne viestiin näppäimillä Ctrl+V.", naet: "Viesti on lähetetty. Jos virherivejä oli paljon, lähetit niistä kuvan ohjeen [[ohje:teams]] kohdan Jos lähetät kuvan mukaan. Jatka sillä välin työvaiheesta Määrittele kuution testi ja palaa tähän työvaiheeseen, kun ohjaaja vastaa. Avaa se otsikon Viikon työvaiheet jälkeen olevalla painikkeella Avaa kaikki työvaiheet. Jos vastausta ei ole tullut seuraavana työpäivänä, lähetä sama viesti uudelleen ja kirjoita sen alkuun Muistutus.", koodi: "Hei Matti,\nviikon 41 työvaihe Asenna harjoitussovelluksen kirjastot ei onnistu.\nOsatehtävä, jossa virhe tuli: ___\nKomento python --version tulostaa: ___\nVirherivit terminaalista: ___", koodiOtsikko: "Viesti: kopioi tämä" }
+          "miksi": "Harjoitus tarvitsee saman ympäristön kuin varsinainen sovellus. Asennat kirjastot projektin omaan virtuaaliympäristöön.",
+          "osat": [
+            {
+              "otsikko": "Luo virtuaaliympäristö",
+              "missa": "VS Code",
+              "tee": "Luo virtuaaliympäristö [[kuvaohje:vscode-create-environment|kuvaohjeen]] mukaan.",
+              "naet": "Explorerissa on kansio .venv, ja oikeaan alakulmaan tulee ilmoitus valmiista ympäristöstä. Jos komentoa Python: Create Environment ei löydy tai listassa ei ole Python 3.13:a, tee osatehtävä 2."
+            },
+            {
+              "otsikko": "Korjaa ympäristön luonti",
+              "missa": "VS Code, Extensions-näkymä vasemmassa reunassa",
+              "tee": "Jos kansio .venv syntyi osatehtävässä 1, rastita tämä osatehtävä. Muuten paina Ctrl+Shift+X ja kirjoita hakukenttään Python.",
+              "naet": "Listassa on laajennus Python. Jos sen painikkeessa lukee Install, valitse Install. Sulje sitten VS Code sulkupainikkeesta, avaa se uudelleen ja avaa repository. Ohje: [[ohje:avaa-repository]]. Tee sen jälkeen osatehtävä 1 alusta. Jos osatehtävän 1 listassa ei ollut Python 3.13:a, lataa [Pythonin Windows-sivulta](https://www.python.org/downloads/windows/) uusimman Python 3.13 -version Windows installer (64-bit). Asenna se [[kuvaohje:python-asennus|kuvaohjeen]] mukaan, avaa repository ja tee osatehtävä 1 alusta. Jos kansiota .venv ei vieläkään synny, tee osatehtävät 6 ja 7."
+            },
+            {
+              "otsikko": "Avaa uusi terminaali",
+              "missa": "VS Code, ylävalikko",
+              "tee": "Avaa terminaali. Ohje: [[ohje:terminaali]].",
+              "naet": "Terminaalin rivi alkaa (.venv). Jos terminaalissa lukee running scripts is disabled, tee [[ohje:terminaali|terminaaliohjeen]] viimeinen vaihe."
+            },
+            {
+              "otsikko": "Asenna kirjastot",
+              "missa": "Terminaali",
+              "tee": "Aja komento. Ohje: [[ohje:komento]]. Asennus kestää muutaman minuutin.",
+              "naet": "Lopussa on rivi, joka alkaa sanoilla Successfully installed, ja sen perässä kirjastojen nimet. Jos sen jälkeen on [notice]-rivejä, ne eivät haittaa. Jos lopussa on rivejä, jotka alkavat sanalla ERROR, tee osatehtävät 6 ja 7.",
+              "koodi": "pip install -r requirements.txt",
+              "koodiOtsikko": "Komento: kopioi tämä"
+            },
+            {
+              "otsikko": "Tarkista ympäristö",
+              "missa": "Terminaali",
+              "tee": "Aja komento. Ohje: [[ohje:komento]]. Kirjoita viimeisen rivin teksti paperille.",
+              "naet": "Rivien alussa lukee OK. Viimeisellä rivillä lukee Ympäristö on kunnossa. [[kuvaohje:tarkista-ymparisto|Katso kuvaohje]]. Jos rivi alkaa sanalla KORJAA, tee ensin rivin jälkeinen ohje ja aja komento uudelleen. Jos jonkin rivin alussa ei silloinkaan lue OK, tee osatehtävät 6 ja 7.",
+              "koodi": "python tarkista_ymparisto.py",
+              "koodiOtsikko": "Komento: kopioi tämä"
+            },
+            {
+              "otsikko": "Tarkista Python-versio, jos jokin epäonnistui",
+              "missa": "Terminaali",
+              "tee": "Jos osatehtävät 1–5 onnistuivat, rastita tämä osatehtävä ja osatehtävä 7. Muuten aja komento. Ohje: [[ohje:komento]].",
+              "naet": "Terminaalissa on rivi, joka alkaa sanalla Python, esimerkiksi Python 3.13.1. Jos terminaali sanoo, ettei komentoa löydy, sekin on tulos. Tarvitset tuloksen osatehtävän 7 viestissä.",
+              "koodi": "python --version",
+              "koodiOtsikko": "Komento: kopioi tämä"
+            },
+            {
+              "otsikko": "Lähetä virhe ohjaajalle",
+              "missa": "Teams, keskustelu ohjaajan kanssa, ja VS Coden terminaali",
+              "tee": "Kopioi viesti ja liitä se Teamsiin. Ohje: [[ohje:teams]]. Täydennä ___-kohdat ennen lähettämistä: maalaa tulos ja virherivit terminaalissa hiirellä, paina Ctrl+C ja liitä ne viestiin näppäimillä Ctrl+V.",
+              "naet": "Viesti on lähetetty. Odota ohjaajan vastausta ennen kuution käynnistystä ja testejä. Jos vastausta ei ole tullut seuraavana työpäivänä, lähetä muistutus. Ohje: [[ohje:teams]].",
+              "koodi": "Hei Matti,\nviikon 41 työvaihe Asenna harjoitussovelluksen kirjastot ei onnistu.\nOsatehtävä, jossa virhe tuli: ___\nKomento python --version tulostaa: ___\nVirherivit terminaalista: ___",
+              "koodiOtsikko": "Viesti: kopioi tämä"
+            }
           ],
-          valmis: "Kansio .venv on olemassa, kirjastot on asennettu, ja ympäristön tarkistus näyttää OK.",
-          tallenna: "Virtuaaliympäristö jää omalle koneellesi, etkä vie kansiota .venv GitHubiin. Pohjan tiedostot menevät GitHubiin seuraavan työvaiheen commitilla.",
-          sanat: ["virtuaaliympäristö", "requirements.txt"]
-        },
-        "41-9": {
-          perii: ["41-1"],
-          miksi: "README kertoo, mitä kirjastoja projekti käyttää, missä versioissa ja millä lisensseillä. Saman commitin mukana pohjan tiedostot menevät GitHubiin.",
-          osat: [
-            { otsikko: "Katso kirjastojen lisenssit", missa: "Terminaali", tee: "Aja komento. Ohje: [[ohje:komento]]. Vieritä terminaalia hiiren rullalla ylöspäin.", naet: "Jokaisen kirjaston kohdalla on rivit Name, Version ja License. Jos License-rivi on tyhjä tai hyvin pitkä, kirjoita lisenssiksi: katso kirjaston sivu.", koodi: "pip show PySide6 pyvista pyvistaqt trimesh numpy svgelements pytest", koodiOtsikko: "Komento: kopioi tämä" },
-            { otsikko: "Avaa README", missa: "VS Code, Explorer, ylin taso", tee: "Avaa tiedosto README.md. Ohje: [[ohje:avaa-tiedosto]]. Paina Ctrl+End.", naet: "Kursori on tiedoston viimeisellä rivillä. Tiedostossa on viikolla 40 kirjoittamasi otsikko ## Työkalut." },
-            { otsikko: "Kirjoita kirjastot ja lisenssit", missa: "README.md, tiedoston loppu", tee: "Paina Enter. Kopioi kirjastopohja, liitä se ja täytä jokaisen rivin versio ja lisenssi terminaalista.", naet: "README:ssä on otsikko ## Kirjastot ja seitsemän riviä, esimerkiksi - PySide6 6.9.1 · LGPL-3.0.", koodi: "## Kirjastot\n- PySide6 ___ · ___\n- pyvista ___ · ___\n- pyvistaqt ___ · ___\n- trimesh ___ · ___\n- numpy ___ · ___\n- svgelements ___ · ___\n- pytest ___ · ___", koodiOtsikko: "Kirjastopohja: kopioi tämä" },
-            { otsikko: "Tee commit ja push", missa: "VS Code, Source Control", tee: "Tee commit ja push. Ohje: [[ohje:commit]]. Changes-listassa ovat pohjan uudet tiedostot (U) ja README.md (M), ja se on oikein.", naet: "GitHubin commit-listassa ylimpänä on commit-viestisi. Kun avaat sen, näet pohjan tiedostot ja tiedoston README.md muutokset. Jos Changes-listassa näkyy kansio .venv, älä tee committia. Lähetä silloin ohjaajalle kuva Changes-listasta ohjeen [[ohje:teams]] kohdan Jos lähetät kuvan mukaan ja jatka työvaiheesta Määrittele kuution testi, kunnes ohjaaja vastaa. Avaa se otsikon Viikon työvaiheet jälkeen olevalla painikkeella Avaa kaikki työvaiheet. Jos vastausta ei tule seuraavana työpäivänä, lähetä kuva uudelleen ja kirjoita sen viereen Muistutus.", koodi: "Lisää harjoitussovelluksen pohja ja kirjastojen lisenssit", koodiOtsikko: "Commit-viesti: kopioi tämä" }
-          ],
-          valmis: "README:ssä ovat kirjastot versioineen ja lisensseineen, ja pohjan tiedostot ovat GitHubissa.",
-          tallenna: "Kirjastot ja lisenssit tiedostossa README.md GitHubissa.",
-          esimerkki: "Toisen projektin kirjastolista:\n## Kirjastot\n- Flask 3.1.0 · BSD-3-Clause\n- pytest 8.3.4 · MIT",
-          eiRiita: "## Kirjastot\nPySide6, pyvista ja trimesh. Lisenssit puuttuvat.",
-          sanat: []
-        },
-        "41-2": {
-          versio: "2026-10-05",
-          miksi: "Oma odotettu tulos kertoo, mitä kuution koodin pitää tehdä. Kirjoitat sen ennen koodia.",
-          osat: [
-            { vanha: 0, otsikko: "Päätä, miten kulma lasketaan", missa: "Paperi tai omat muistiinpanot", tee: "Funktio kiertokulma(aika, nopeus) saa ajan sekunteina ja palauttaa kulman asteina. Päätä kaksi asiaa: onko nopeus kierroksia vai asteita sekunnissa, ja kasvaako kulma yli 360:n vai alkaako se alusta.", naet: "Sinulla on kaksi päätöstä paperilla. Kirjoitat ne kortin viestipohjaan työvaiheessa Rakenna pyörivä kuutio." },
-            { vanha: 1, otsikko: "Laske testin 1 odotetut tulokset", missa: "Paperi tai omat muistiinpanot", tee: "Laske päätöstesi mukaan, mitä kiertokulma(0, 0.5) ja kiertokulma(3, 0.5) palauttavat: kerro aika nopeudella. Jos nopeus on kierroksia sekunnissa, muuta tulos asteiksi kertomalla se luvulla 360, koska yksi kierros on 360 astetta.", naet: "Sinulla on paperilla kaksi lukua asteina. Esimerkiksi 2 kierrosta on 2 × 360 = 720 astetta." },
-            { otsikko: "Tarkista, alkaako kulma alusta", missa: "Paperi tai omat muistiinpanot", tee: "Jos päätit, että kulma alkaa alusta, katso molemmat luvut. Jos luku on 360 tai suurempi, vähennä siitä 360, kunnes se on alle 360.", naet: "Sinulla on kaksi lukua, jotka ovat testin 1 odotetut tulokset. Esimerkiksi 450 astetta alkaa alusta ja on 90 astetta. Jos päätit, että kulma kasvaa yli 360:n, luvut eivät muutu. Desimaaliluku kirjoitetaan testiin pisteellä, esimerkiksi 2.25, ei 2,25." }
-          ],
-          valmis: "Testin 1 molemmat odotetut tulokset on päätetty asteina ennen toteutusta.",
-          tallenna: "Odotetut tulokset kortin #1 issueen seuraavassa työvaiheessa.",
-          esimerkki: "Toinen funktio: matka(aika, nopeus), nopeus metreinä sekunnissa. matka(0, 2) palauttaa 0, ja matka(3, 2) palauttaa 6.",
-          eiRiita: "\"Kulma kasvaa ajan mukana.\" Luvut puuttuvat, joten testi ei voi tarkistaa mitään.",
-          sanat: ["testi"]
+          "valmis": "Kansio .venv on olemassa, kirjastot on asennettu, ja ympäristön tarkistus näyttää OK.",
+          "tallenna": "Virtuaaliympäristö jää omalle koneellesi. Kansio .venv ei kuulu GitHubiin.",
+          "sanat": [
+            "virtuaaliympäristö",
+            "requirements.txt"
+          ]
         },
         "41-3": {
-          versio: "2026-10-05",
-          tyosykli: true,
-          miksi: "Pieni kuutioharjoitus opettaa toteuttamisen ilman SVG-tuonnin vaikeutta.",
-          osat: [
-            { vanha: 0, otsikko: "Avaa työsykli", missa: "Tämän työvaiheen loppu, osatehtävien jälkeen", tee: "Valitse painike Käytä työsykliä tämän muutoksen tekemiseen. Jos työsykli näyttää valmiin kierroksen, valitse Aloita kierros.", naet: "Työsykli aukeaa. Askel 1 Suunnittele on auki. Samalla painikkeella palaat työsykliin myöhempien osatehtävien alussa." },
-            { vanha: 0, otsikko: "Suunnittele kortti #1 (askel 1)", missa: "Työsykli, askel 1 Suunnittele, ja Copilot selaimessa", tee: "Tee askeleen 1 ohjeet viestipohjalla Viikon 41 kortti #1. Täytä kaksi Testi 1 -riviä työvaiheen Määrittele kuution testi luvuilla ja Lisäksi-rivi päätöksilläsi: kierrosta tai astetta, kasvaa tai alkaa alusta.", naet: "Copilot on kirjoittanut kortin, jossa on kuusi otsikkoa sekä osiot Oma tarkistus ja Sykli. Kortin testissä ovat sinun lukusi. Älä vielä valitse Tein tämän · seuraava askel, koska vertaat korttia ensin mallikorttiin. Valitse Palaa työvaiheeseen ja jatka osatehtävästä 3." },
-            { vanha: 1, otsikko: "Vertaa korttia mallikorttiin", missa: "Työvaiheen lopussa kohta Mallikortti #1 ja toteutusapu, ja Copilot selaimessa", tee: "Avaa kohta Mallikortti #1 ja toteutusapu ja vertaa mallikortin jokaista otsikkoa Copilotin korttiin. Jos kortista puuttuu jotain tai siinä on eri tiedosto tai ylimääräinen kriteeri, kopioi muutospyyntö, kirjoita muutos sen loppuun ja lähetä se Copilotille.", naet: "Copilotin kortissa ovat samat tiedostot, Älä tee -rivit ja hyväksymiskriteerit kuin mallikortissa, vaikka sanat olisivat eri. Jos pyysit muutosta, Copilot antoi koko kortin uudelleen samassa keskustelussa. Et liitä mallikorttia issueen.", koodi: "Muuta korttia näin ja anna koko kortti uudelleen samassa muodossa: ", koodiOtsikko: "Muutospyyntö: kopioi tarvittaessa" },
-            { vanha: 0, otsikko: "Siirrä kortti #1 issueksi (askel 2)", missa: "Työsykli, askel 2 Siirrä, ja GitHub", tee: "Avaa työsykli työvaiheen painikkeesta ja valitse askeleessa 1 Tein tämän · seuraava askel. Tee askeleen 2 ohjeet ja kirjoita issuen numero paperille. Ohje: [[ohje:issue]].", naet: "Kortin #1 issuessa on Copilotin viimeisin kokonainen kortti, eli muutoksen jälkeinen kortti, jos pyysit muutosta. Issuen numero on otsikon perässä, esimerkiksi #3, eikä se ole sama kuin kortin numero #1. Issuessa on rastit kohdissa 1 ja 2 sekä kommentti Sovittu viikkopalaverissa. Valitse lopuksi Tein tämän · seuraava askel ja Palaa työvaiheeseen." },
-            { vanha: 0, otsikko: "Kirjoita testi 1 (askel 3a)", missa: "VS Code, Explorer, kansio tests", tee: "Kopioi testipohja ja luo kansioon tests tiedosto, jonka nimikenttään kirjoitat test_kierto.py. Ohje: [[ohje:uusi-tiedosto]]. Vaihda ___-kohtiin omat odotetut tuloksesi ja paina Ctrl+S.", naet: "Explorerissa on kansion tests alapuolella tiedosto test_kierto.py. Et kirjoita nimikenttään kansion nimeä, koska napsautit jo kansiota tests. Tiedostossa tests/test_kierto.py on kaksi assert-riviä, joissa ovat omat lukusi. Rastitat issuessa kohdan 3a.", koodi: "from vektoripaja.kierto import kiertokulma\n\n\ndef test_1_kiertokulma():\n    assert kiertokulma(0, 0.5) == ___\n    assert kiertokulma(3, 0.5) == ___", koodiOtsikko: "Testipohja: kopioi tämä" },
-            { vanha: 0, otsikko: "Toteuta kortti #1 (askel 3b)", missa: "Työsykli, askel 3 Rakenna, Copilot ja VS Code", tee: "Avaa työsykli työvaiheen painikkeesta ja tee askeleen 3 kortin #1 kohdat: ensin pyyntö 1 tiedostosta kierto.py, sitten pyyntö 2 tiedostosta ikkuna.py. Luo kumpikin tiedosto koodilohkosta kansioon vektoripaja. Ohje: [[ohje:uusi-tiedosto]].", naet: "Työsykli aukesi askeleeseen 3 Rakenna. Kansiossa vektoripaja ovat tiedostot kierto.py ja ikkuna.py. Komento python main.py avaa ikkunan, jossa kuutio pyörii. Rastitat issuessa kohdan 3b. Valitse lopuksi Tein tämän · seuraava askel ja Palaa työvaiheeseen." },
-            { vanha: 0, otsikko: "Tarkista kortti #1 (askel 4)", missa: "Työsykli, askel 4 Tarkista, VS Code ja GitHub", tee: "Avaa työsykli työvaiheen painikkeesta ja tee askeleen 4 ohjeet testitiedostolla tests/test_kierto.py. Tarkista sitten hyväksymiskriteerit kohdan Mallikortti #1 ja toteutusapu ohjeilla ja rastita issuessa ne, jotka toteutuvat.", naet: "Testi test_1_kiertokulma on PASSED, ja issuessa on testin 1 kirjaus kommenttina. Kirjauspohjan riville Mistä odotettu tulos löytyi kirjoitit molempien assert-rivien numerot editorin vasemmasta reunasta. Testipohjasta tehdyssä tiedostossa ne ovat rivit 5 ja 6, koska import-rivin jälkeen on kaksi tyhjää riviä. Tulos-rivillä lukee läpi. Issuessa on rastit kriteereissä ja kohdassa 4. Jos jokin kriteeri ei toteudu, toimi kohdan Mallikortti #1 ja toteutusapu ohjeen Jos jokin kriteeri ei toteudu mukaan. Valitse lopuksi Tein tämän · seuraava askel ja Palaa työvaiheeseen." },
-            { vanha: 0, otsikko: "Raportoi ja kirjaa kortti #1 (askeleet 5–6)", missa: "Työsykli, askeleet 5 Raportoi ja 6 Kirjaa", tee: "Avaa työsykli työvaiheen painikkeesta ja tee askeleiden 5 ja 6 ohjeet. Kirjoita [[tiedosto:ai-loki|AI-lokiin]] yksi merkintä kortista #1, ja kirjoita sen otsikkoriville Copilot, Tiedosto-kaista.", naet: "Kortin #1 issue on suljettu, ja tiedoston [[tiedosto:ai-loki|ai-loki.md]] lopussa on merkintä. Askeleen 5 viestin Kaista-rivillä lukee vain Tiedosto. Et käytä Copilotin ehdottamaa seuraavaa korttia, koska teet kortin #2 työvaiheessa Julkaise harjoitussovellus. Kun valitset askeleessa 6 Tein tämän · kierros valmis ✓, työsykli näyttää tekstin Kierros 1 valmis. Valitse silloin Palaa työvaiheeseen." }
+          "versio": "2026-10-05-kayttoonotto",
+          "miksi": "Ruudulla pyörivä kuutio varmistaa, että Python, Qt ja 3D-näkymä toimivat yhdessä.",
+          "osat": [
+            {
+              "otsikko": "Käynnistä valmis kuutio",
+              "missa": "VS Code, repositoryn terminaali",
+              "tee": "Aja komento. Ohje: [[ohje:komento]].",
+              "naet": "Ikkuna avautuu ja sininen kuutio pyörii mustalla taustalla kuten viikon alun esimerkissä. Et luo tai muuta Python-tiedostoja. Jos saat virheen, kopioi se ohjaajalle. Ohje: [[ohje:teams]].",
+              "koodi": "python main.py",
+              "koodiOtsikko": "Komento: kopioi tämä"
+            },
+            {
+              "otsikko": "Katso pyörimistä ja sulje ikkuna",
+              "missa": "Kuutiosovelluksen ikkuna",
+              "tee": "Katso kuutiota muutaman sekunnin ajan. Sulje sitten ikkuna sen sulkupainikkeesta.",
+              "naet": "Kuution asento muuttui itsestään. Ikkuna sulkeutui ja terminaalin komentorivi palasi."
+            },
+            {
+              "otsikko": "Tallenna pohja repositoryyn",
+              "missa": "VS Code, Source Control",
+              "tee": "Tee commit ja push. Ohje: [[ohje:commit]].",
+              "naet": "GitHubissa ovat valmiin pohjan tiedostot. Jos Changes-listassa näkyy .venv, älä tee committia: pyydä ohjaajalta apua. Ohje: [[ohje:teams]]."
+            }
           ],
-          valmis: "Sovellus näyttää pyörivän kuution, ja testi 1 menee läpi.",
-          tallenna: "Koodi ja testi GitHubiin. Testiajon tulos kortin #1 issueen kommenttina.",
-          esimerkki: "Testi toisesta funktiosta: assert matka(3, 2) == 6. Luku 6 on oma odotettu tulos, joka kirjoitettiin ennen koodia.",
-          eiRiita: "assert kiertokulma(3, 0.5) == kiertokulma(3, 0.5). Testi vertaa funktiota itseensä, joten se menee aina läpi.",
-          apu: {
-            otsikko: "Mallikortti #1 ja toteutusapu",
-            tree: "Vektoripaja/\n├─ .github/\n│  ├─ ISSUE_TEMPLATE/tehtavakortti.md   (pull request)\n│  ├─ ISSUE_TEMPLATE/havainto.md        (pull request)\n│  ├─ copilot-instructions.md           (pull request)\n│  └─ workflows/release.yml             (pohja)\n├─ .venv/                               (luot itse, ei GitHubiin)\n├─ esimerkit/esimerkki.svg              (pohja)\n├─ project-docs/                        (pull request)\n├─ tests/\n│  ├─ LUE_MINUT.md                      (pohja)\n│  └─ test_kierto.py                    (luot itse)\n├─ vektoripaja/\n│  ├─ __init__.py                       (pohja)\n│  ├─ ikkuna.py                         (luot itse)\n│  ├─ itsetesti.py                      (pohja)\n│  ├─ kierto.py                         (luot itse)\n│  ├─ teema.py                          (pohja)\n│  └─ teema.qss                         (pohja)\n├─ .gitignore                           (pohja)\n├─ LUE_MINUT.txt                        (pohja)\n├─ main.py                              (pohja)\n├─ PROJEKTIN-TILA.md                    (pull request)\n├─ pytest.ini                           (pohja)\n├─ rakenna_exe.bat                      (pohja)\n├─ README.md\n├─ requirements.txt                     (pohja)\n├─ tarkista_ymparisto.py                (pohja)\n└─ vektoripaja.spec                     (pohja)",
-            actions: [
-              "Pohjan `main.py` kutsuu funktiota `kaynnista()` tiedostosta `vektoripaja/ikkuna.py`. Älä muuta tiedostoa `main.py`.",
-              "Tarkista kriteeri \"Komento python main.py avaa ikkunan, jossa kuutio pyörii tasaisesti\" kohdan Tarkistustesti ohjeella: aja `python main.py` ja katso, että kuutio pyörii tasaisesti.",
-              "Tarkista kriteeri \"Ikkuna käyttää värejä tiedostosta vektoripaja/teema.py\": avaa `vektoripaja/ikkuna.py`, paina Ctrl+F ja kirjoita teema. Osumia pitää olla vähintään yksi. Katso lisäksi, että ikkunan taustaväri on sama kuin käyttöliittymävaatimuksesi taustaväri.",
-              "Tarkista kriteeri \"Funktio kiertokulma ei käytä Qt:ta\": avaa `vektoripaja/kierto.py`, paina Ctrl+F ja kirjoita PySide6. Osumia ei saa olla.",
-              "Jos jokin kriteeri ei toteudu, älä rastita sitä. Kirjoita samaan Copilot-keskusteluun: Kriteeri (kriteerin teksti) ei toteudu. Anna korjattu tiedosto (tiedoston polku) kokonaan yhtenä koodilohkona. Korvaa tiedoston sisältö koodilohkolla. Ohje: [[ohje:korvaa-tiedosto]]. Tarkista kriteeri sitten uudelleen. Jos sama kriteeri ei toteudu toisellakaan yrityksellä, luo havaintoissue. Ohje: [[ohje:havaintoissue]]."
-            ],
-            code: "MALLIKORTTI #1\n## Tavoite\nKuutio pyörii sovelluksen ikkunassa.\n## Kaista ja perustelu\nTiedosto. Kaksi tiedostoa, pyydetään yksi kerrallaan.\n## Tiedostot\nvektoripaja/kierto.py, vektoripaja/ikkuna.py\n## Älä tee\nÄlä lisää muita kirjastoja. Älä muuta tiedostoja main.py ja tests/test_kierto.py.\n## Hyväksymiskriteerit\n- [ ] Komento python main.py avaa ikkunan, jossa kuutio pyörii tasaisesti.\n- [ ] Ikkuna käyttää värejä tiedostosta vektoripaja/teema.py.\n- [ ] Funktio kiertokulma ei käytä Qt:ta.\n## Testi\nTesti 1 (kiertokulma): kiertokulma(0, 0.5) → (oma odotettu tuloksesi) ja kiertokulma(3, 0.5) → (oma odotettu tuloksesi)\n## Oma tarkistus\nMuutin kortista ___ / En muuttanut, koska ___\n## Sykli\n- [ ] 1 Suunniteltu\n- [ ] 2 Siirretty\n- [ ] 3a Testi kirjoitettu\n- [ ] 3b Toteutettu\n- [ ] 4 Tarkistettu\n- [ ] 5 Raportoitu\n- [ ] 6 Kirjattu",
-            test: "Aja komento python main.py. Ikkuna aukeaa, ja kuutio pyörii. Sulje ikkuna sen sulkupainikkeesta. Aja sitten pytest -v. Testi test_1_kiertokulma menee läpi."
-          },
-          sanat: ["tehtäväkortti", "kaista"]
+          "valmis": "Valmis kuutio pyörii oman tietokoneesi ruudulla.",
+          "tallenna": "Valmis pohja GitHubissa ja kuution käynnistyksen havainto viikon kirjauksessa.",
+          "sanat": []
         },
-        "41-4": {
-          versio: "2026-10-05",
-          tyosykli: true,
-          miksi: "Julkaisu varmistaa, että sovellusta voi käyttää kehitysympäristön ulkopuolella.",
-          osat: [
-            { vanha: 0, otsikko: "Aloita työsyklin kierros 2", missa: "Tämän työvaiheen loppu, osatehtävien jälkeen", tee: "Valitse painike Käytä työsykliä tämän muutoksen tekemiseen. Jos työsykli näyttää valmiin kierroksen, valitse Aloita kierros.", naet: "Työsykli aukeaa. Askel 1 Suunnittele on auki, ja otsikon Työsykli vieressä lukee Kierros 2." },
-            { vanha: 0, otsikko: "Suunnittele kortti #2 (askel 1)", missa: "Työsykli, askel 1 Suunnittele, Copilot selaimessa ja työvaiheen lopussa kohta Mallikortti #2 ja julkaisuapu", tee: "Tee askeleen 1 ohjeet viestipohjalla Viikon 41 kortti #2 ja täytä Testi 2 -rivi. Valitse sitten Palaa työvaiheeseen, älä vielä Tein tämän · seuraava askel, ja vertaa korttia kohdan Mallikortti #2 ja julkaisuapu mallikorttiin.", naet: "Copilot on kirjoittanut kortin #2 kortin #1 keskusteluun, tai uuteen keskusteluun, jos olit sulkenut sen välilehden. Testin 2 odotettu tulos on kortin kohdassa Testi. Liitit tilatiedoston uudelleen, koska päivitit sen kortin #1 askeleessa 5. Kortissa ovat samat hyväksymiskriteerit ja Älä tee -rivit kuin mallikortissa, vaikka sanat olisivat eri. Jos kortista puuttuu jotain tai siinä on eri tiedosto tai ylimääräinen kriteeri, kopioi muutospyyntö, kirjoita muutos sen loppuun ja lähetä se samaan keskusteluun. Et liitä mallikorttia issueen.", koodi: "Muuta korttia näin ja anna koko kortti uudelleen samassa muodossa: ", koodiOtsikko: "Muutospyyntö: kopioi tarvittaessa" },
-            { vanha: 0, otsikko: "Siirrä kortti #2 issueksi (askeleet 2 ja 3a)", missa: "Työsykli, askel 2 Siirrä, ja GitHub", tee: "Avaa työsykli työvaiheen painikkeesta, valitse askeleessa 1 Tein tämän · seuraava askel ja tee askeleen 2 ohjeet. Ohje: [[ohje:issue]]. Kirjoita issuen numero paperille, lisää issueen kommenttipohjalla testin 2 odotettu tulos ja rastita 3a.", naet: "Kortin #2 issue on GitHubissa. Teet testin 2 käsin, joten sen odotettu tulos on issuessa kommenttina: kopioit kommenttipohjan issuen sivun lopun kenttään Add a comment, täydensit sen kortin kohdan Testi tuloksella ja valitsit Comment. Issuessa ovat rastit kohdissa 1, 2 ja 3a. Kortin #2 issueen et kirjoita Sovittu-kommenttia. Valitse lopuksi Tein tämän · seuraava askel ja Palaa työvaiheeseen.", koodi: "Testi 2 (julkaisu), käsin tehtävä testi\nOdotettu tulos: ", koodiOtsikko: "Kommentti issueen: kopioi ja täydennä" },
-            { vanha: 0, otsikko: "Tee tagi v0.0.41 (askel 3b)", missa: "VS Code, Source Control ja terminaali", tee: "Tarkista, että Changes-lista on tyhjä. Aja sitten komento. Ohje: [[ohje:komento]].", naet: "Terminaali ei tulosta mitään. Tagi on omalla koneellasi. Jos Changes-listassa oli tiedostoja, teit ensin commitin ja pushin.", koodi: "git tag v0.0.41", koodiOtsikko: "Komento: kopioi tämä" },
-            { vanha: 0, otsikko: "Pushaa tagi (askel 3b)", missa: "VS Code, terminaali", tee: "Aja komento. Ohje: [[ohje:komento]].", naet: "Terminaalissa lukee [new tag] v0.0.41 -> v0.0.41. Tagin push käynnistää GitHub Actionsin julkaisun. Rastitat issuessa kohdan 3b. Avaa lopuksi työsykli työvaiheen painikkeesta, valitse askeleessa 3 Tein tämän · seuraava askel ja Palaa työvaiheeseen.", koodi: "git push origin v0.0.41", koodiOtsikko: "Komento: kopioi tämä" },
-            { vanha: 0, otsikko: "Tarkista Actions-ajo (askel 4)", missa: "Selain, GitHub", tee: "Tarkista ajo. Ohje: [[ohje:actions]]. Kortissa #2 et aja pytestiä omalla koneellasi, koska Actions ajaa testit.", naet: "Ajo Julkaisu v0.0.41 on vihreä. Askeleessa Aja itsetesti valmiille .exe:lle lukee ITSETESTI LÄPI. Jos ajo on punainen, lähetä ohjaajalle viesti ja kuva punaisesta askeleesta ohjeen [[ohje:actions]] viimeisen vaiheen mukaan, äläkä tee uutta tagia ennen vastausta. Kirjoita odottaessasi viikon kirjausta niiltä osin kuin voit. Jos vastausta ei ole tullut seuraavana työpäivänä, lähetä viesti uudelleen ja kirjoita sen alkuun Muistutus.", koodi: "Hei Matti,\nviikon 41 Actions-ajo Julkaisu v0.0.41 on punainen. Liitin kuvan punaisesta askeleesta.\nPunaisen askeleen nimi: ___", koodiOtsikko: "Viesti: kopioi tämä, jos ajo on punainen" },
-            { vanha: 1, otsikko: "Tee testi 2 puretusta zipistä (askel 4)", missa: "Selain ja Resurssienhallinta, Lataukset-kansio, sitten työsykli, askel 4 Tarkista", tee: "Lataa ja pura zip Vektoripaja-v0.0.41-windows.zip ja käynnistä Vektoripaja.exe. Ohje: [[ohje:release]]. Avaa sitten työsykli työvaiheen painikkeesta ja kirjoita tulos kortin #2 issueen kommentiksi askeleen 4 testin kirjauspohjalla.", naet: "Vektoripaja.exe käynnistyy ilman VS Codea, ja kuutio pyörii. Et pura Lataukset-kansion toista zipiä vektoripaja-pohja.zip. Kirjauspohjan rivillä Mistä odotettu tulos löytyi jätit vaihtoehdon issuen kommentti (käsin tehty testi). Rastitat issuessa hyväksymiskriteerit, jotka toteutuvat, ja kohdan 4. Jos Vektoripaja.exe ei käynnisty tai kuutio ei pyöri, jätä Tulos-riville ei läpi ja lähetä viesti ohjaajalle. Ohje: [[ohje:teams]]. Kortissa #2 et korjaa koodia etkä tee uutta tagia ennen vastausta. Odota vastausta kuten osatehtävässä 6, ennen kuin teet osatehtävän 8. Valitse lopuksi Tein tämän · seuraava askel ja Palaa työvaiheeseen.", koodi: "Hei Matti,\nviikon 41 testi 2 ei mennyt läpi.\nPuretusta zipistä käynnistetty Vektoripaja.exe: ___\nKortin #2 issue: #___", koodiOtsikko: "Viesti: kopioi tämä, jos testi 2 ei mene läpi" },
-            { vanha: 1, otsikko: "Raportoi ja kirjaa kortti #2 (askeleet 5–6)", missa: "Työsykli, askeleet 5 Raportoi ja 6 Kirjaa", tee: "Avaa työsykli työvaiheen painikkeesta ja tee askeleiden 5 ja 6 ohjeet. Kirjoita askeleen 5 Kaista-riville sanojen Tiedosto / Täydennys / Agentti tilalle ei koodia, julkaisu tagilla, ja [[tiedosto:ai-loki|AI-lokin]] otsikkoriville Copilot, ei koodia.", naet: "Kortin #2 issue on suljettu, ja siinä on testin 2 odotettu ja havaittu tulos. [[tiedosto:ai-loki|AI-lokin]] merkinnän kohdassa Mihin pyysin apua lukee kortin #2 suunnittelu. Askeleen 6 Changes-listassa ovat vain PROJEKTIN-TILA.md ja [[tiedosto:ai-loki|ai-loki.md]], koska et muuttanut koodia kortissa #2. [[kuvaohje:github-issue-sulkeutuu|Katso kuvaohje]]." }
+        "41-2": {
+          "versio": "2026-10-05-kayttoonotto",
+          "miksi": "Valmiit tarkistukset auttavat varmistamaan, että ympäristö toimii. Sinun ei tarvitse laskea odotettuja tuloksia tai kirjoittaa testikoodia.",
+          "osat": [
+            {
+              "otsikko": "Aja valmis testi",
+              "missa": "VS Code, repositoryn terminaali",
+              "tee": "Aja komento. Ohje: [[ohje:komento]].",
+              "naet": "Rivillä test_1_kiertokulma lukee PASSED. Testi ja sen odotetut tulokset tulivat pohjan mukana. Jos testi epäonnistuu, lähetä virhe ohjaajalle. Ohje: [[ohje:teams]]. Älä muuta testiä tuloksen saamiseksi läpi.",
+              "koodi": "python -m pytest -v",
+              "koodiOtsikko": "Komento: kopioi tämä"
+            },
+            {
+              "otsikko": "Aja valmis itsetesti",
+              "missa": "VS Code, repositoryn terminaali",
+              "tee": "Aja komento. Ohje: [[ohje:komento]].",
+              "naet": "Viimeisellä rivillä lukee ITSETESTI LÄPI. Itsetesti tarkistaa kirjastojen, teeman ja geometrian toiminnan; kuution pyörimisen tarkistit itse edellisessä työvaiheessa. Jos itsetesti epäonnistuu, lähetä virhe ohjaajalle. Ohje: [[ohje:teams]].",
+              "koodi": "python main.py --itsetesti",
+              "koodiOtsikko": "Komento: kopioi tämä"
+            }
           ],
-          valmis: "Ladatusta zipistä käynnistetty Vektoripaja.exe näyttää pyörivän kuution.",
-          tallenna: "Release v0.0.41 GitHubiin ja testin 2 tulos kortin #2 issueen.",
-          apu: {
-            otsikko: "Mallikortti #2 ja julkaisuapu",
-            actions: [
-              "Kortissa #2 et kirjoita koodia. Julkaisun tiedostot ovat pohjassa. Toteutat kortin tekemällä tagin ja pushaamalla sen. Ohje: [[ohje:tagi]].",
-              "Tagin push käynnistää GitHub Actionsin. Se ajaa testit, tekee Windows-version ja ajaa sille itsetestin. Windows-version tekemistä kutsutaan paketoinniksi.",
-              "Kun ajo on vihreä, Releases-sivulla on zip Vektoripaja-v0.0.41-windows.zip.",
-              "Jos ajo on punainen, älä tee uutta tagia ennen ohjaajan vastausta. Teet uuden yrityksen tagilla v0.0.41-2: `git tag v0.0.41-2` ja `git push origin v0.0.41-2`."
-            ],
-            code: "MALLIKORTTI #2\n## Tavoite\nSovellus julkaistaan releasena, ja ladatusta zipistä käynnistetty Vektoripaja.exe toimii.\n## Kaista ja perustelu\nEi koodia. Julkaisun tiedostot ovat pohjassa. Kortti toteutetaan tagilla v0.0.41.\n## Tiedostot\nEi muutettavia tiedostoja.\n## Älä tee\nÄlä muuta tiedostoja .github/workflows/release.yml ja vektoripaja.spec.\n## Hyväksymiskriteerit\n- [ ] Actions-ajo Julkaisu v0.0.41 on vihreä.\n- [ ] Releases-sivulla on Vektoripaja-v0.0.41-windows.zip.\n- [ ] Puretusta zipistä käynnistetty Vektoripaja.exe näyttää pyörivän kuution.\n## Testi\nTesti 2 (julkaisu): lataa zip releasesta, pura se ja käynnistä Vektoripaja.exe → kuutio pyörii.\n## Oma tarkistus\nMuutin kortista ___ / En muuttanut, koska ___\n## Sykli\n- [ ] 1 Suunniteltu\n- [ ] 2 Siirretty\n- [ ] 3a Testi kirjoitettu (käsin tehtävä testi: odotettu tulos kommenttina)\n- [ ] 3b Toteutettu\n- [ ] 4 Tarkistettu\n- [ ] 5 Raportoitu\n- [ ] 6 Kirjattu",
-            test: "Testi 2 (julkaisu): lataa zip releasesta. Pura se Lataukset-kansioon valitsemalla Pura kaikki. Käynnistä Vektoripaja.exe puretusta kansiosta. Kuution pitää pyöriä. Jos Windows sanoo \"Windows suojasi tietokonettasi\", valitse Lisätietoja ja sitten Suorita silti."
-          },
-          sanat: ["tagi", "release", "GitHub Actions"]
+          "valmis": "Valmis testi ja itsetesti menevät läpi.",
+          "tallenna": "Testien tulokset viikon kirjauksessa.",
+          "sanat": [
+            "testi",
+            "itsetesti"
+          ]
         }
       },
-      lisatehtavat: [["Tee lisätehtävä.", "Lisätesti on ylimääräinen testi ilman numeroa. Mitä odotat, kun aika on negatiivinen, esimerkiksi <code>kiertokulma(-1, 0.5)</code>? Kirjoita odotettu tulos kortin #1 issueen kommentiksi ennen ajoa. Suljettuunkin issueen voi kommentoida. Avaa sitten tiedosto <code>tests/test_kierto.py</code>, paina Ctrl+End ja kaksi kertaa Enter. def-rivin alussa ei ole välilyöntejä: jos VS Code sisensi rivin, paina Backspace, kunnes kursori on rivin alussa. Kirjoita rivi <code>def test_lisa_negatiivinen_aika():</code> ja paina Enter. VS Code sisentää seuraavan rivin neljällä välilyönnillä: kirjoita siihen <code>assert kiertokulma(-1, 0.5) == </code> ja oma tuloksesi. Aja testit. Ohje: [[ohje:pytest]]. Lisätesti ajettiin, kun tulosteessa on rivi, jossa on test_lisa_negatiivinen_aika ja PASSED tai FAILED. Kirjoita havaittu tulos samaan issueen. Jos lisätesti ei mene läpi, poista se tiedostosta ennen committia, koska Actions ajaa kaikki testit julkaisussa. Tee lopuksi commit ja push. Ohje: [[ohje:commit]]."]],
-      kuvaohjeet: ["vscode-create-environment", "vscode-tulkki", "tarkista-ymparisto", "github-actions-ajo", "github-release-lataus", "windows-smartscreen"],
-      sykli: {
-        oma: {
-          1: "täytät viestipohjan ___-kohdat ennen lähettämistä. Viikolla 41 ehdotus, kaista ja rajapinta ovat valmiina: kortissa #1 täytät kaksi Testi 1 -riviä ja Lisäksi-rivin, kortissa #2 Testi 2 -rivin. Rastitat askeleen 1 issuessa askeleessa 2."
-        },
-        pohjat: {
-          1: [
-            {
-              otsikko: "Viikon 41 kortti #1: täytä ja liitä Copilotiin",
-              teksti: "Teen projektia Vektoripaja. Liitin tilatiedoston PROJEKTIN-TILA.md.\n\nViikko 41: Harjoitussykli\nViikon tavoite: {feature}\n\nMinun ehdotukseni kortiksi: Tämä kortti tekee vain pyörivän kuution sovelluksen ikkunaan.\nKaista: Tiedosto. Kaksi tiedostoa, pyydetään yksi kerrallaan.\nRajapinta (vain funktion kortissa): funktio kiertokulma(aika, nopeus) saa ajan sekunteina ja nopeuden ja palauttaa kulman asteina.\nTesti 1: kun syöte on kiertokulma(0, 0.5), tuloksen pitää olla ___.\nTesti 1: kun syöte on kiertokulma(3, 0.5), tuloksen pitää olla ___.\nLisäksi: Nopeuden yksikkö on ___ sekunnissa. 360 asteen jälkeen kulma ___.\n\nOhita rivit, joissa on vielä ___. Kirjoita tästä yksi tehtäväkortti tässä muodossa:\n\n## Tavoite\n## Kaista (Tiedosto, Täydennys tai Agentti) ja perustelu\n## Tiedostot\n## Älä tee (testitiedostot aina tässä)\n## Hyväksymiskriteerit\n## Testi: numero ja nimi, syöte ja odotettu tulos\n## Oma tarkistus\nMuutin kortista ___ / En muuttanut, koska ___\n## Sykli\n- [ ] 1 Suunniteltu\n- [ ] 2 Siirretty\n- [ ] 3a Testi kirjoitettu\n- [ ] 3b Toteutettu\n- [ ] 4 Tarkistettu\n- [ ] 5 Raportoitu\n- [ ] 6 Kirjattu\n\nKirjoita rajapinta kohdan ## Tavoite loppuun. Kirjoita kaksi viimeistä osiota sellaisinaan. Käytä minun odotettuja tuloksiani sanatarkasti. Älä kirjoita koodia."
-            },
-            {
-              otsikko: "Viikon 41 kortti #2: täytä ja liitä Copilotiin",
-              teksti: "Teen projektia Vektoripaja. Liitin tilatiedoston PROJEKTIN-TILA.md.\n\nViikko 41: Harjoitussykli\nViikon tavoite: {feature}\n\nMinun ehdotukseni kortiksi: Tämä kortti julkaisee sovelluksen releasena tagilla v0.0.41. Koodia ei kirjoiteta, koska julkaisun tiedostot ovat pohjassa.\nKaista: ei koodia, julkaisu tagilla v0.0.41.\nTesti 2 (käsin): kun lataan zipin releasesta, puran sen ja käynnistän Vektoripaja.exe:n, tuloksen pitää olla ___.\n\nOhita rivit, joissa on vielä ___. Kirjoita tästä yksi tehtäväkortti tässä muodossa:\n\n## Tavoite\n## Kaista ja perustelu\n## Tiedostot\n## Älä tee\n## Hyväksymiskriteerit\n## Testi: numero ja nimi, syöte ja odotettu tulos\n## Oma tarkistus\nMuutin kortista ___ / En muuttanut, koska ___\n## Sykli\n- [ ] 1 Suunniteltu\n- [ ] 2 Siirretty\n- [ ] 3a Testi kirjoitettu (käsin tehtävä testi: odotettu tulos kommenttina)\n- [ ] 3b Toteutettu\n- [ ] 4 Tarkistettu\n- [ ] 5 Raportoitu\n- [ ] 6 Kirjattu\n\nKirjoita kaksi viimeistä osiota sellaisinaan. Käytä minun odotettua tulostani sanatarkasti."
-            }
-          ],
-          3: [
-            { otsikko: "Komento: kopioi tämä", teksti: "python main.py" },
-            {
-              otsikko: "Tiedosto-kaista, pyyntö 1: kierto.py – liitä tämä Copilotiin",
-              teksti: "Toteuta tämän keskustelun viimeisin tehtäväkortti yhteen tiedostoon.\nTiedosto: vektoripaja/kierto.py\n\nSäännöt:\n- Muuta vain tätä tiedostoa.\n- Älä muuta testejä.\n- Anna koko muutettu tiedosto yhtenä koodilohkona.\n- Älä lisää uusia kirjastoja.\n- Tiedostossa vektoripaja/ikkuna.py pitää olla funktio kaynnista(), jota main.py kutsuu. Värit tulevat tiedostosta vektoripaja/teema.py.\n- Jos kortti on epäselvä, kysy, ennen kuin kirjoitat koodia.\n\nTiedoston nykyinen sisältö:\nuusi tiedosto"
-            },
-            {
-              otsikko: "Tiedosto-kaista, pyyntö 2: ikkuna.py – liitä tämä Copilotiin ja liitä loppuun teema.py",
-              teksti: "Toteuta tämän keskustelun viimeisin tehtäväkortti yhteen tiedostoon.\nTiedosto: vektoripaja/ikkuna.py\n\nSäännöt:\n- Muuta vain tätä tiedostoa.\n- Älä muuta testejä.\n- Anna koko muutettu tiedosto yhtenä koodilohkona.\n- Älä lisää uusia kirjastoja.\n- Tiedostossa vektoripaja/ikkuna.py pitää olla funktio kaynnista(), jota main.py kutsuu. Värit tulevat tiedostosta vektoripaja/teema.py.\n- Jos kortti on epäselvä, kysy, ennen kuin kirjoitat koodia.\n\nTiedoston nykyinen sisältö:\nuusi tiedosto\n\nTiedoston vektoripaja/teema.py sisältö:\n"
-            }
-          ]
-        },
-        ohjeet: {
-          3: [
-            "Kortti #1, kohta 3a: kirjoita testi ensin. Testipohja on työvaiheen Rakenna pyörivä kuutio osatehtävässä Kirjoita testi 1. Rastita 3a issuessa.",
-            "Kortti #1, kohta 3b: toteuta kortti Tiedosto-kaistalla. Tiedosto-kaista tarkoittaa, että Copilot kirjoittaa koodin yksi tiedosto kerrallaan. Kopioi pohja Tiedosto-kaista, pyyntö 1: kierto.py ja liitä se samaan Microsoft 365 Copilot -keskusteluun. Lähetä viesti.",
-            "Kopioi Copilotin vastauksesta vain koodilohko koodilohkon kopiointipainikkeella: [[kuvaohje:copilot-kopioi-vastaus]]. Luo kansioon `vektoripaja` tiedosto, jonka nimikenttään kirjoitat `kierto.py`, ja liitä koodi siihen. Ohje: [[ohje:uusi-tiedosto]].",
-            "Kopioi pohja Tiedosto-kaista, pyyntö 2: ikkuna.py ja liitä se samaan keskusteluun, mutta älä lähetä vielä. Kopioi tiedoston `vektoripaja/teema.py` sisältö. Ohje: [[ohje:kopioi-tiedosto]]. Palaa Copilotiin, napsauta viestikenttää ja paina Ctrl+End: kursori on viestin lopussa rivin Tiedoston vektoripaja/teema.py sisältö: jälkeen. Paina Shift+Enter ja Ctrl+V ja lähetä viesti painamalla Enter.",
-            "Kopioi vastauksen koodilohko samalla tavalla. Luo kansioon `vektoripaja` tiedosto, jonka nimikenttään kirjoitat `ikkuna.py`, ja liitä koodi siihen. Ohje: [[ohje:uusi-tiedosto]].",
-            "Lue jokainen koodilohko, ennen kuin liität sen. Älä hyväksy muutoksia testitiedostoon tai tiedostoon `main.py`.",
-            "Tallenna tiedostot painamalla Ctrl+S. Käynnistä sovellus komennolla `python main.py`. Ohje: [[ohje:komento]]. Katso, että kuutio pyörii, ja sulje sovelluksen ikkuna sen sulkupainikkeesta. Rastita 3b issuessa.",
-            "Kortti #2: teet testin 2 käsin ja kirjoitat sen odotetun tuloksen kortin #2 issueen kommentiksi ennen kohdan 3a rastia. Kohdassa 3b teet tagin ja pushaat sen. Ohje: [[ohje:tagi]]. Kortissa #2 et kirjoita koodia."
-          ]
-        },
-        lisa: {
-          1: "Kortissa #2 jatka kortin #1 Copilot-keskustelussa, jos sen välilehti on yhä auki. Liitä tilatiedosto PROJEKTIN-TILA.md uudelleen, koska päivitit sen kortin #1 askeleessa 5. Jos suljit välilehden, aloita uusi keskustelu ja liitä tilatiedosto siihen.",
-          2: "Jos pyysit Copilotilta muutosta korttiin, kirjoita se tarkistusrivin kohtaan Muutin kortista, esimerkiksi Muutin kortista hyväksymiskriteerit: pyysin lisäämään kriteerin teema.py:n väreistä. Kortti #1 on viikon ensimmäinen kortti, joten kirjoita sen issueen Sovittu-kommentti. Kirjoita pp.kk. tilalle viikkopalaverin päivä ja ___ tilalle, mitä palaverissa sovittiin korteista #1 ja #2. Jos niistä ei sovittu mitään, kirjoita ___ tilalle: kortit #1 ja #2 tehdään viikon työvaiheiden mukaan. Jos palaveri ei ole vielä ollut, kirjoita kommentti kortin #1 issueen palaverin jälkeen. Kortin #2 issueen et kirjoita Sovittu-kommenttia.",
-          3: "Tällä viikolla kirjoitat testin testipohjaan etkä käytä Täydennys-kaistaa, vaikka askeleen Työkalu-rivillä lukee Täydennys-kaista. Otat Täydennys-kaistan käyttöön viikolla 43 ja Agentti-kaistan viikolla 44.",
-          4: "Kortissa #1 testissä 1 on kaksi assert-riviä samassa testissä, joten kirjaa ne yhteen kommenttiin. Kirjoita riville Mistä odotettu tulos löytyi molempien assert-rivien numerot, esimerkiksi testikoodin rivit 5 ja 6, ja poista vaihtoehto issuen kommentti (käsin tehty testi). Kortissa #2 teet testin 2 käsin: et avaa testitiedostoa etkä aja pytestiä, koska Actions ajaa testit. Valitse kirjauspohjan rivillä Mistä odotettu tulos löytyi vaihtoehto issuen kommentti (käsin tehty testi).",
-          5: "Kortissa #1 kaista on Tiedosto: maalaa Kaista-riviltä teksti / Täydennys / Agentti ja paina Delete, jolloin rivillä lukee Kaista: Tiedosto. Riittikö se? Kortissa #2 kirjoita sanojen Tiedosto / Täydennys / Agentti tilalle ei koodia, julkaisu tagilla. Kerro molemmissa omalla lauseella, riittikö kaista.",
-          6: "Kortissa #1 kirjoita merkinnän otsikkoriville Copilot, Tiedosto-kaista. Kortissa #2 kirjoita otsikkoriville Copilot, ei koodia, ja kohtaan Mihin pyysin apua kortin #2 suunnittelu. Kortin #2 Changes-listassa ovat vain PROJEKTIN-TILA.md ja [[tiedosto:ai-loki|ai-loki.md]]."
-        },
-        jumissa: {
-          3: [
-            { kysymys: "`python main.py` sanoo, ettei `vektoripaja.ikkuna`-moduulia löydy?", ohje: "Teet tiedoston `vektoripaja/ikkuna.py` kortissa #1. Jos olet jo tehnyt sen, tarkista, että se on kansiossa `vektoripaja` eikä repositoryn juuressa." }
-          ],
-          4: [
-            { kysymys: "Viikko 41: en löydä omaa odotettua tulostani tiedostosta tests/test_kierto.py?", ohje: "Kopioi testipohja uudelleen työvaiheen Rakenna pyörivä kuutio osatehtävästä Kirjoita testi 1. Korvaa tiedoston `tests/test_kierto.py` sisältö sillä. Ohje: [[ohje:korvaa-tiedosto]]. Vaihda ___-kohtiin omat lukusi ja aja testit uudelleen." },
-            { kysymys: "Kortti #2: testi 2 ei mennyt läpi?", ohje: "Kortissa #2 et korjaa koodia. Jätä Tulos-riville ei läpi ja lähetä ohjaajalle viesti työvaiheen Julkaise harjoitussovellus osatehtävän Tee testi 2 puretusta zipistä pohjalla. Älä tee uutta tagia ennen vastausta." },
-            { kysymys: "Actions-ajo on punainen?", ohje: "Lähetä ohjaajalle Teamsissa kuva punaisesta askeleesta. Ohje: [[ohje:teams]], kohta Jos lähetät kuvan. Älä tallenna kuvaa repositoryyn. Jos punaisen askeleen nimi on Aja testit (pytest), aja `pytest -v` omalla koneellasi. Älä tee uutta tagia ennen ohjaajan vastausta." },
-            { kysymys: "Releases-sivulla ei ole zipiä?", ohje: "Pelkkä commit ei tee releasea. Tarkista, että ajoit `git push origin v0.0.41`. Katso [[github:actions|Actions-sivulta]], onko ajo vielä kesken. Ajo kestää noin 10 minuuttia." },
-            { kysymys: "Windows sanoo \"Windows suojasi tietokonettasi\"?", ohje: "Tämä on Microsoft Defender SmartScreen. Se varoittaa, koska sovellusta ei ole allekirjoitettu. Valitse Lisätietoja ja sitten Suorita silti." }
-          ]
-        }
-      }
+      "kuvaohjeet": [
+        "vscode-create-environment",
+        "vscode-tulkki",
+        "tarkista-ymparisto"
+      ]
     },
     43: {
       type: "feature",
@@ -1570,6 +1623,8 @@ window.NAYTTOPROJEKTI = {
       skills: ["SVG-tiedoston tuonti", "Moduulien rajat", "Komponenttikirjaston rajoitteet", "Ulkoinen tiedosto turvallisesti"],
       termit: ["täydennys", "moduuli", "havaintoissue", "layer"],
       tehtavat: {
+        "43-10": {"perii":["41-1"],"miksi":"Asiakkaiden vastaukset ohjaavat harjoitussovellusta ja koko projektia. Kirjaat ne tiedostoon, jotta ne ovat tallessa repositoryssa.","osat":[{"otsikko":"Avaa kysymykset","missa":"VS Code, Explorer","tee":"Avaa tiedosto [[tiedosto:kysymykset|project-docs/kysymykset.md]]. Ohje: [[ohje:avaa-tiedosto]].","naet":"Tiedostossa on kolme otsikkoa, esimerkiksi ### 1. (kirjoita kysymys). Jokaisen otsikon jälkeen ovat rivit - Vastaus (viikko 41): ja - Vastaaja: asiakas 1 / asiakas 2. Jos kirjoitit kysymykset tähän tiedostoon jo viikolla 40, otsikoissa on kysymyksesi, ja osatehtävät 3 ja 4 ovat valmiit."},{"otsikko":"Lisää otsikot lisäkysymyksille","missa":"Tiedosto [[tiedosto:kysymykset|kysymykset.md]], tiedoston loppu","tee":"Jos lähetit asiakkaille enintään kolme kysymystä, rastita tämä osatehtävä. Muuten kopioi lisäkysymyksen pohja, paina tiedostossa Ctrl+End ja Enter ja paina Ctrl+V.","naet":"Tiedoston lopussa on otsikko ### 4. (kirjoita kysymys) ja sen jälkeen rivit Vastaus ja Vastaaja. Jos lähetit yli neljä kysymystä, tee tämä osatehtävä uudelleen jokaiselle lisäkysymykselle ja vaihda uuden otsikon numeroksi seuraava numero, esimerkiksi 5.","koodi":"### 4. (kirjoita kysymys)\n- Vastaus (viikko 41): \n- Vastaaja: asiakas 1 / asiakas 2","koodiOtsikko":"Lisäkysymyksen pohja: kopioi tarvittaessa"},{"otsikko":"Kirjoita kysymyksesi tiedostoon","missa":"Tiedosto [[tiedosto:kysymykset|kysymykset.md]] ja Teams-viesti, jonka lähetit asiakkaille viikolla 40","tee":"Maalaa Teams-viestistä hiirellä yhden kysymyksen teksti ilman sen numeroa ja paina Ctrl+C. Ohje: [[ohje:teams]], kohta Jos kopioit viestin Teamsista. Napsauta saman numeron otsikossa juuri ennen merkkiä ( ja paina Shift+End ja sitten Ctrl+V.","naet":"Otsikon numeron perässä on kysymyksesi, eikä tekstiä (kirjoita kysymys) ole. Tee sama jokaiselle kysymykselle. Jos lähetit alle kolme kysymystä, maalaa ylimääräiset otsikot riveineen ja paina Delete."},{"otsikko":"Kirjoita vastaukset","missa":"Tiedosto [[tiedosto:kysymykset|kysymykset.md]], jokaisen kysymyksen rivit Vastaus ja Vastaaja","tee":"Kirjoita rivin - Vastaus (viikko 41): perään asiakkaan vastaus. Napsauta rivillä - Vastaaja: juuri ennen sanaa asiakas, paina Shift+End ja kirjoita vastaajan rooli, asiakas 1 tai asiakas 2.","naet":"Jokaisen kysymyksen jälkeen on vastaus ja rooli, esimerkiksi - Vastaaja: asiakas 2. Jos molemmat asiakkaat vastasivat samaan kysymykseen, Vastaus-rivillä ovat molempien vastaukset ja Vastaaja-rivillä lukee asiakas 1 ja asiakas 2. Asiakas 1 on Antti Honkasalo ja asiakas 2 on Matti Seise. Et kirjoita nimiä, koska repository on julkinen. Jos asia jäi auki, Vastaus-rivillä lukee auki, sovitaan viikolla ja ohjaajan kertoman viikon numero, esimerkiksi auki, sovitaan viikolla 44. Vastaaja-rivi jää silloin ennalleen. Jos ohjaaja ei kertonut viikkoa, kysy jatkosta tämän viikon palaverissa."},{"otsikko":"Tee commit ja push","missa":"VS Code, Source Control","tee":"Tee commit ja push. Ohje: [[ohje:commit]]. Changes-listassa on vain [[tiedosto:kysymykset|kysymykset.md]].","naet":"GitHubin commit-listassa ylimpänä on commit-viestisi. Kun avaat sen, näet tiedoston [[tiedosto:kysymykset|kysymykset.md]] muutokset.","koodi":"Kirjaa asiakkaiden vastaukset","koodiOtsikko":"Commit-viesti: kopioi tämä"}],"valmis":"Asiakkaiden vastaukset ovat tiedostossa [[tiedosto:kysymykset|kysymykset.md]] GitHubissa.","tallenna":"Vastaukset tiedostossa [[tiedosto:kysymykset|kysymykset.md]] GitHubissa.","esimerkki":"Reseptikirjan kysymys ja vastaus:\n### 1. Pitääkö reseptin voida tulostaa?\n- Vastaus (viikko 41): Ei ensimmäisessä versiossa. Tulostus on jatkolistalla.\n- Vastaaja: asiakas 1","eiRiita":"### 1. Onko kaikki ok?\n- Vastaus: joo\nKysymys ei kysy mitään tarkkaa, ja vastaajan rooli puuttuu.","sanat":[]},
+        "43-11": {"perii":["41-1"],"miksi":"Kirjaa käyttöön otettujen kirjastojen versiot ja lisenssit ennen ensimmäisen mallinnustoiminnon julkaisua.","osat":[{"otsikko":"Katso kirjastojen lisenssit","missa":"Terminaali","tee":"Aja komento. Ohje: [[ohje:komento]]. Vieritä terminaalia hiiren rullalla ylöspäin.","naet":"Jokaisen kirjaston kohdalla on rivit Name, Version ja License. Jos License-rivi on tyhjä tai hyvin pitkä, kirjoita lisenssiksi: katso kirjaston sivu.","koodi":"pip show PySide6 pyvista pyvistaqt trimesh numpy svgelements pytest","koodiOtsikko":"Komento: kopioi tämä"},{"otsikko":"Avaa README","missa":"VS Code, Explorer, ylin taso","tee":"Avaa tiedosto README.md. Ohje: [[ohje:avaa-tiedosto]]. Paina Ctrl+End.","naet":"Kursori on tiedoston viimeisellä rivillä. Tiedostossa on viikolla 40 kirjoittamasi otsikko ## Työkalut."},{"otsikko":"Kirjoita kirjastot ja lisenssit","missa":"README.md, tiedoston loppu","tee":"Paina Enter. Kopioi kirjastopohja, liitä se ja täytä jokaisen rivin versio ja lisenssi terminaalista.","naet":"README:ssä on otsikko ## Kirjastot ja seitsemän riviä, esimerkiksi - PySide6 6.9.1 · LGPL-3.0.","koodi":"## Kirjastot\n- PySide6 ___ · ___\n- pyvista ___ · ___\n- pyvistaqt ___ · ___\n- trimesh ___ · ___\n- numpy ___ · ___\n- svgelements ___ · ___\n- pytest ___ · ___","koodiOtsikko":"Kirjastopohja: kopioi tämä"},{"otsikko":"Tee commit ja push","missa":"VS Code, Source Control","tee":"Tee commit ja push. Ohje: [[ohje:commit]]. Changes-listassa on README.md (M).","naet":"GitHubin commit-listassa ylimpänä on commit-viestisi. Kun avaat sen, näet tiedoston README.md muutokset. Jos Changes-listassa näkyy kansio .venv, älä tee committia. Lähetä silloin ohjaajalle kuva Changes-listasta ohjeen [[ohje:teams]] kohdan Jos lähetät kuvan mukaan ja jatka työvaiheesta Määrittele kuution testi, kunnes ohjaaja vastaa. Avaa se otsikon Viikon työvaiheet jälkeen olevalla painikkeella Avaa kaikki työvaiheet. Jos vastausta ei tule seuraavana työpäivänä, lähetä kuva uudelleen ja kirjoita sen viereen Muistutus.","koodi":"Lisää harjoitussovelluksen pohja ja kirjastojen lisenssit","koodiOtsikko":"Commit-viesti: kopioi tämä"}],"valmis":"README:ssä ovat kirjastot versioineen ja lisensseineen.","tallenna":"Kirjastot ja lisenssit tiedostossa README.md GitHubissa.","esimerkki":"Toisen projektin kirjastolista:\n## Kirjastot\n- Flask 3.1.0 · BSD-3-Clause\n- pytest 8.3.4 · MIT","eiRiita":"## Kirjastot\nPySide6, pyvista ja trimesh. Lisenssit puuttuvat.","sanat":[]},
         "43-1": {
           versio: "2026-10-05",
           miksi: "Oma piirros on tuonnin ja myöhempien toimintojen yhteinen testiaineisto.",
