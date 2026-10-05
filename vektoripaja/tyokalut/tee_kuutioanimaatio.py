@@ -24,4 +24,3 @@ plotter.close()
 frames[0].save(root / 'assets/kuutio-pyorii.gif', save_all=True,
                append_images=frames[1:], duration=40, optimize=True)
 print('49 frames, 480 x 360, one revolution, no continuous loop')
-
