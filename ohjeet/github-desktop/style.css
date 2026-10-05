@@ -63,3 +63,4 @@ footer h2 { font-size: 1.3rem; }
   figure { break-inside: avoid; }
   figure img { max-height: 14cm; width: auto; max-width: 100%; }
 }
+[hidden] { display: none !important; }

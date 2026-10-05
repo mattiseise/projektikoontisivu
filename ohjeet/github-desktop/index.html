@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GitHub Desktop — projektin tallennus kuvineen</title>
   <meta name="description" content="Opiskelijan kuvaohje: GitHub Desktopin asennus, oman repositoryn luonti sekä tiedostojen tallennus commitilla ja lähetys GitHubiin ilman Git-komentoja.">
-  <link rel="stylesheet" href="style.css?v=20260930-rivitys">
-  <script src="ohje.js" defer></script>
+  <link rel="stylesheet" href="style.css?v=20261005-unity">
+  <script src="ohje.js?v=20261005-unity" defer></script>
 </head>
 <body>
 <a class="skip" href="#sisalto">Siirry ohjeeseen</a>
@@ -14,7 +14,7 @@
   <p class="eyebrow">Projektin ensimmäinen työviikko · Windows</p>
   <h1>GitHub Desktop<br><span>Git käyttöön kuvien avulla</span></h1>
   <p class="lead">Tallenna projektin koodi ja dokumentit muutoshistoriaan ja vie ne GitHubiin. Näin ohjaaja löytää työnäytteesi ja voit palata aiempaan versioon.</p>
-  <p id="projektihuomio">Ohje sopii PeliHyllyyn, TuntiTutkaan, NoppaKauppaan ja Valokaareen.</p>
+  <p id="projektihuomio">Ohje sopii PeliHyllyyn, TuntiTutkaan, NoppaKauppaan, Valokaareen ja KahvilaKoodiin.</p>
   <a id="paluu" class="button" href="../../">Palaa projektikoontiin</a>
 </header>
 <main id="sisalto">
@@ -26,7 +26,7 @@
       <li><strong>GitHub</strong><span>Publish ensimmäisellä kerralla, sitten Push</span></li>
     </ol>
     <p><strong>Commit tallentaa paikallisesti. Push lähettää tallennuksen GitHubiin.</strong> Pelkkä tallennus editorissa tai commit ei vielä vie tiedostoja verkkoon. Myöskään projektisivun rastit eivät siirrä tiedostoja repositoryyn.</p>
-    <p>Tällä ohjeella hoidat Gitin perustoiminnot ilman komentoriviä. Sovelluksen asentamiseen ja käynnistämiseen tarvittavat Node-, PHP- tai Python-komennot teet edelleen oman projektisi ohjeesta.</p>
+    <p>Tällä ohjeella hoidat Gitin perustoiminnot ilman komentoriviä. Sovelluksen asentamiseen ja käynnistämiseen tarvittavat Node-, PHP- tai Python-komennot sekä Unityn työvaiheet teet edelleen oman projektisi ohjeesta.</p>
   </section>
   <nav class="contents" aria-label="Ohjeen sisällysluettelo">
     <h2>Aloita tilanteesi mukaan</h2>
@@ -137,15 +137,23 @@
       <li>Tallenna koodit editorista tähän kansioon. Kopioi aiemmin kirjoitetut dokumentit ja kuvakaappaukset sen <strong>project-docs</strong>-alikansioon: valitse tiedostot Resurssienhallinnassa, paina <strong>Ctrl+C</strong>, avaa project-docs ja paina <strong>Ctrl+V</strong>. Älä vedä tiedostoja Desktopin ikkunaan.</li>
       <li>Lisää juureen <code>.gitignore</code> <strong>ennen committia</strong>. Käytä oman projektin vaatimaa sisältöä. Tarkista tiedoston nimi: sen pitää olla <code>.gitignore</code>, ei <code>.gitignore.txt</code>.</li>
     </ol>
-    <pre class="tree"><code><span class="project-name">oma-projekti</span>/
+    <pre class="tree" data-vain="web"><code><span class="project-name">oma-projekti</span>/
 ├─ <span id="client-name">client</span>/       sovelluksen käyttöliittymä
 ├─ <span id="server-name">server</span>/       palvelimen koodi
 ├─ project-docs/
 │  └─ kysymykset.md
 ├─ README.md
 └─ .gitignore</code></pre>
+    <pre class="tree" data-vain="unity" hidden><code><span class="project-name">oma-projekti</span>/
+├─ Assets/           scenet, skriptit ja tuotedata
+├─ Packages/         Unityn pakettiluettelo
+├─ ProjectSettings/  projektin asetukset
+├─ project-docs/
+│  └─ projektipaivakirja.md
+├─ README.md
+└─ .gitignore        Unityn pohja: Library, Temp ja Builds jäävät pois</code></pre>
     <p>Git ei tallenna tyhjiä kansioita. Jos kansion pitää näkyä jo ensimmäisessä commitissa, lisää siihen tarkoituksenmukainen README tai tyhjä <code>.gitkeep</code>-tiedosto. Kun sovelluksen oikeat tiedostot ovat kansiossa, ne pitävät sen mukana.</p>
-    <details>
+    <details data-vain="web">
       <summary>.gitignore-esimerkki näille projekteille</summary>
       <p>Yhteinen lähtökohta. Täydennä oman projektin ohjeella. <code>.env.example</code> saa sisältää vain tyhjät tai keksityt esimerkkiarvot.</p>
       <pre><code>node_modules/
@@ -161,6 +169,20 @@ venv/
 client/dist/
 frontend/dist/
 vendor/</code></pre>
+    </details>
+    <details data-vain="unity" hidden>
+      <summary>.gitignore Unity-projektille</summary>
+      <p>Helpoin tapa: valitse GitHubissa repositorya luodessasi <strong>Add .gitignore → Unity</strong> ja kloonaa repo reitillä C. Silloin tiedosto on valmiina. Pohjan tärkeimmät rivit ovat nämä:</p>
+      <pre><code>/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+*.csproj
+*.sln</code></pre>
+      <p>Unity luo Library- ja Temp-kansiot uudelleen itse. Builds-kansion testiversiot eivät kuulu versionhallintaan.</p>
     </details>
     <p><strong>Tarkista valittavat tiedostot:</strong> mukaan tulevat oma koodi, README ja työnäytteet. Salasanat, avaimet, oikeiden käyttäjien tiedot ja asennetut riippuvuuskansiot jäävät pois. Jos salaisuus ehti jo committiin, <code>.gitignore</code> ei poista sitä historiasta: pyydä ohjaajalta apua ennen lähettämistä.</p>
   </section>
@@ -228,7 +250,7 @@ vendor/</code></pre>
       <dt>Lähetys pyytää ensin hakemaan muutoksia</dt>
       <dd>Valitse Fetch origin ja Pull origin. Tarkista muutokset. Ristiriidassa ota ohjaaja mukaan; älä yritä pakottaa lähetystä.</dd>
       <dt>GitHub torjuu suuren tiedoston</dt>
-      <dd>GitHub estää yli 100 MiB:n tiedostot tavallisessa Git-lähetyksessä. Älä lisää node_modules-kansiota, asennuspaketteja tai suuria videoita repoosi. Jos tiedosto ehti jo committiin, pyydä ohjaajalta apua ennen uutta lähetysyritystä.</dd>
+      <dd>GitHub estää yli 100 MiB:n tiedostot tavallisessa Git-lähetyksessä. Älä lisää node_modules-kansiota, Unityn Library-kansiota, asennuspaketteja tai suuria videoita repoosi. Jos tiedosto ehti jo committiin, pyydä ohjaajalta apua ennen uutta lähetysyritystä.</dd>
     </dl>
     <h3>Ensimmäisen viikon lopputarkistus</h3>
     <ul>
