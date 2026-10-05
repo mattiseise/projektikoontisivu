@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Vektoripaja – ohjattu näyttöprojekti. Moottori v2.4.1.
+  Vektoripaja – ohjattu näyttöprojekti. Moottori v2.8 (selkeys: dokumentit repositoryssa, linkkimerkinnät).
   Opiskelijan teema on päällä staattisesti (data-teema, data-teema-asettelu),
   jotta sivu ei välähdä oletusteemassa. Ei Instrument-fontteja.
   Rakenne: skillin references/layout-rakenne.md. Viikkokortit ja matriisi
@@ -17,9 +17,9 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="styles.css?v2.7.4-20261001">
-  <script src="sisalto.js?v2.7.4-20261001" defer></script>
-  <script src="app.js?v2.7.4-20261001" defer></script>
+  <link rel="stylesheet" href="styles.css?v2.8-20261005">
+  <script src="sisalto.js?v2.8-20261005" defer></script>
+  <script src="app.js?v2.8-20261005" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#sisalto">Siirry sisältöön</a>
@@ -59,10 +59,10 @@
         <nav class="week-nav" aria-label="Viikot" data-week-links></nav>
 
         <nav class="nav-group nav-group-docs" aria-label="Omat dokumentit">
-          <p class="nav-group-title">Omat dokumentit · kirjoitetaan työn aikana</p>
-          <a class="nav-row" href="#view-suunnitelma" data-view-nav="suunnitelma">Suunnitelma<span class="nav-meta" data-plan-status-meta>päivittyy</span></a>
-          <a class="nav-row" href="#view-paivakirja" data-view-nav="paivakirja">Projektipäiväkirja<span class="nav-meta" data-journal-summary>0 / 18</span></a>
-          <a class="nav-row" href="#view-ailoki" data-view-nav="ailoki">AI-loki<span class="nav-meta" data-log-count>0</span></a>
+          <p class="nav-group-title">Omat dokumentit · kirjoitetaan VS Codessa</p>
+          <a class="nav-row" href="#view-suunnitelma" data-view-nav="suunnitelma">Suunnitelma<span class="nav-meta" data-plan-status-meta></span></a>
+          <a class="nav-row" href="#view-paivakirja" data-view-nav="paivakirja">Projektipäiväkirja<span class="nav-meta" data-journal-summary></span></a>
+          <a class="nav-row" href="#view-ailoki" data-view-nav="ailoki">AI-loki<span class="nav-meta" data-log-count></span></a>
           <a class="nav-row" href="#view-naytto" data-view-nav="naytto">Näyttömatriisi<span class="nav-meta" data-evidence-count>0 / %%VAATIMUKSIA%%</span></a>
         </nav>
       </div>
@@ -80,30 +80,30 @@
 
         <section class="view-section project-roadmap" aria-labelledby="roadmap-title">
           <h2 id="roadmap-title">Projektin viisi vaihetta</h2>
-          <p>Ensin harjoittelet työskentelyä. Sitten rakennat perustoiminnot, annat asiakkaiden kokeilla niitä ja parannat sovellusta palautteen perusteella. Lopuksi julkaiset sovelluksen ja esittelet oman työsi.</p>
+          <p>Ensin harjoittelet työskentelyä. Sitten rakennat pakollisen ytimen eli MVP:n (Minimum Viable Product). Pakollinen ydin tarkoittaa [[toimeksianto#tekninen-ehdotus|toimintoja, joiden pitää valmistua ennen joulua]]. Asiakkaat kokeilevat niitä, ja parannat sovellusta palautteen perusteella. Lopuksi julkaiset sovelluksen ja esittelet oman työsi.</p>
           <figure class="project-figure">
             <img src="assets/projektin-vaiheet.svg" width="880" height="940" alt="Projektin viisi vaihetta: valmistelu, 3D-malli, kokeiltava versio, parannukset sekä julkaisu ja näyttö. Syys-, joulu- ja talvilomat ovat suunniteltuja taukoja." loading="lazy">
-            <figcaption>Vaiheet näyttävät, mitä sovellukseen syntyy ja miksi. Tarkat viikot ja tehtävät löytyvät alla.</figcaption>
+            <figcaption>Vaiheet näyttävät, mitä sovellukseen syntyy ja miksi. Jokaisella viikolla on oma viikon sivu, jossa ovat viikon työvaiheet. Viikon sivu avautuu sivupalkin viikkolistasta.</figcaption>
           </figure>
           <ol class="project-roadmap-list">
             <li><strong>Valmistelu · viikot 40–41.</strong> Otat työkalut käyttöön ja julkaiset kuutioharjoituksen. Näin opit tekemään, testaamaan ja julkaisemaan pienen muutoksen. <a href="#week-40" data-open-week="40">Avaa aloitusviikko →</a></li>
-            <li><strong>Piirroksesta 3D-malliksi · viikot 43–47.</strong> Tuot SVG-piirroksen, muodostat sen osista 3D-kappaleita ja lisäät osien muokkaamisen. Tässä syntyy sovelluksen käyttötarkoitus. <a href="#week-43" data-open-week="43">Avaa piirroksen tuonti →</a></li>
-            <li><strong>Ensimmäinen käyttökelpoinen versio · viikot 48–51.</strong> Viimeistelet muokkaamisen, tallennuksen ja viennin. Asiakkaat kokeilevat versiota ennen joulua ja kertovat, mitä parannetaan. <a href="#week-48" data-open-week="48">Avaa viimeistely →</a></li>
-            <li><strong>Parannukset · viikot 2–5.</strong> Korjaat puutteet ja teet sovitut jatkotoiminnot. Keskeneräiset perustoiminnot tehdään ensin. <a href="#week-2" data-open-week="2">Avaa paluuviikko →</a></li>
-            <li><strong>Julkaisu ja näyttö · viikot 6–9.</strong> Varmistat toiminnan toisella Windows-koneella, julkaiset version v1.0 viikolla 7 ja esittelet työn viikolla 9. <a href="#week-6" data-open-week="6">Avaa julkaisutesti →</a></li>
+            <li><strong>Piirroksesta 3D-malliksi · viikot 43–47.</strong> Tuot SVG-piirroksen, muodostat sen osista 3D-kappaleita ja lisäät osien muokkaamisen. Tässä vaiheessa syntyy sovelluksen päätoiminto: piirroksesta tulee 3D-malli. <a href="#week-43" data-open-week="43">Avaa piirroksen tuonti →</a></li>
+            <li><strong>Ensimmäinen toimiva versio · viikot 48–51.</strong> Viimeistelet muokkaamisen, tallennuksen ja viennin. Silloin pakollinen ydin on valmis. Asiakkaat kokeilevat versiota ennen joulua ja kertovat, mitä parannetaan. <a href="#week-48" data-open-week="48">Avaa viimeistely →</a></li>
+            <li><strong>Parannukset · viikot 2–5.</strong> Korjaat puutteet ja teet sovitut jatkotoiminnot. Keskeneräiset pakollisen ytimen toiminnot tehdään ensin. <a href="#week-2" data-open-week="2">Avaa paluuviikko →</a></li>
+            <li><strong>Julkaisu ja näyttö · viikot 6–9.</strong> Teet julkaisutestin eli toinen henkilö kokeilee sovellusta omalla Windows-koneellaan. Julkaiset version v1.0 viikolla 7 ja esittelet työn viikolla 9. <a href="#week-6" data-open-week="6">Avaa julkaisutesti →</a></li>
           </ol>
           <p class="note">Tauot: syysloma viikolla 42, joululoma viikoilla 52–1 ja talviloma viikolla 8. Viikolla 51 on neljä työpäivää. Lomille ei ole projektitehtäviä.</p>
         </section>
 
         <section class="card card-tint view-section">
-          <h2>Näin käytät viikko-ohjetta</h2>
+          <h2>Näin käytät viikon sivua</h2>
           <ol>
             <li>Lue viikon yhteys kokonaisprojektiin ja viikon tavoite.</li>
-            <li>Tee viikon työvaiheet järjestyksessä. Avoinna on ensimmäinen keskeneräinen vaihe.</li>
-            <li>Kun rakennat muutosta sovellukseen, tee siitä tehtäväkortti GitHub-issueen ja käytä työvaiheen yhteydessä avattavaa työsykliä.</li>
-            <li>Tee viikon lopputarkistus. Kirjoita viikon yhteenveto päiväkirjaan ja vie päivitetyt dokumentit repositoryyn.</li>
+            <li>Tee ensin viikkorutiinin maanantain kohdat. Tee sitten viikon työvaiheet järjestyksessä. Ensimmäinen keskeneräinen työvaihe on auki.</li>
+            <li>Kun rakennat muutosta sovellukseen, kirjoita siitä tehtäväkortti GitHub-issueen. Issue on GitHubin tehtävä. Käytä [[tyotapa|työsykliä]], jonka avaat työvaiheesta.</li>
+            <li>Tee viikon lopputarkistus. Kirjoita viikon kirjaus tiedostoon [[tiedosto:projektipaivakirja|projektipaivakirja.md]]. Tee commit ja push. Ohje: [[ohje:commit]].</li>
           </ol>
-          <p>Viikon työvaihe on tämän sivun työohje. <strong>Tehtäväkortti GitHub-issuessa</strong> kuvaa yhden rajatun muutoksen sovellukseen. Viikon työohje voi sisältää useita issueita sekä valmistelua ja kokeiluja.</p>
+          <p><strong>Tehtäväkortti</strong> kuvaa yhden rajatun muutoksen sovellukseen. Viikon sivulla voi olla useita issueita sekä valmistelua ja kokeiluja.</p>
           <a class="button button-primary" href="#week-40" data-open-week="40">Aloita viikosta 40 →</a>
         </section>
 
@@ -113,39 +113,42 @@
             <dt>Inkscape</dt><dd>Piirrät sovellukseen tuotavan SVG-kuvan.</dd>
             <dt>VS Code</dt><dd>Muokkaat ja ajat sovelluksen koodia sekä testejä.</dd>
             <dt>GitHub</dt><dd>Säilytät koodin, tehtävät, työnäytteet ja ladattavat julkaisut.</dd>
-            <dt>Microsoft 365 Copilot selaimessa</dt><dd>Suunnittelet ja pilkot työtä sekä päivität tilatiedoston. Tiedosto-kaistalla tämä Copilot kirjoittaa myös yhden kooditiedoston kerrallaan.</dd>
-            <dt>GitHub Copilot VS Codessa</dt><dd>Avustaa koodin täydentämisessä tai toteuttaa muutoksia agenttitilassa. Tarkistat jokaisen ehdotuksen.</dd>
-            <dt>Blender</dt><dd>Kokeilet, että Vektoripajasta viety malli toimii toisessa 3D-ohjelmassa.</dd>
+            <dt>Microsoft 365 Copilot selaimessa</dt><dd>Suunnittelet ja pilkot työtä sekä päivität tilatiedoston. [[tyotapa#kolme-kaistaa|Tiedosto-kaistalla]] tämä Copilot kirjoittaa myös yhden kooditiedoston kerrallaan.</dd>
+            <dt>GitHub Copilot VS Codessa</dt><dd>Avustaa koodin täydentämisessä tai toteuttaa muutoksia [[tyotapa#kolme-kaistaa|agenttitilassa]]. Agenttitilassa GitHub Copilot muokkaa useaa tiedostoa kerralla. Tarkistat jokaisen ehdotuksen.</dd>
+            <dt>Blender</dt><dd>Kokeilet, toimiiko Vektoripajasta viety malli toisessa 3D-ohjelmassa.</dd>
           </dl>
-          <p>Tällä sivulla lyhyt nimi <strong>Copilot</strong> tarkoittaa Microsoft 365 Copilotia. VS Coden työkalusta käytetään nimeä <strong>GitHub Copilot</strong>.</p>
+          <p>Sivustolla lyhyt nimi <strong>Copilot</strong> tarkoittaa Microsoft 365 Copilotia. VS Coden työkalusta käytetään nimeä <strong>GitHub Copilot</strong>.</p>
           <a href="#view-tyotapa" data-open-view="tyotapa">Avaa työsykli ja toteutustavat →</a>
         </details>
 
         <details class="view-section project-reference">
           <summary>Mihin kirjoitan mitäkin?</summary>
+          <p>Kirjoitat kaikki dokumentit VS Codessa repositoryn tiedostoihin. Repository on projektikansiosi GitHubissa, ja sen kopio on omalla koneellasi. Sivun GitHub-linkit vievät omaan repositoryysi. Sivu kysyy sen osoitteen, kun napsautat ensimmäistä GitHub-linkkiä, ja osoite tallentuu vain tähän selaimeen.</p>
+          <p data-oma-repo></p>
+          <p>Sivulla ei enää ole lomakkeita. Jos kirjoitit tekstiä sivun lomakkeisiin ennen 5.10.2026, siirrät sen tiedostoihin [[vk 41|viikon 41]] työvaiheessa 2.</p>
           <dl class="project-roles">
-            <dt>Toimeksianto</dt><dd>Asiakkaan tarve ja sovelluksen vaatimukset. Tästä tarkistat rajauksen.</dd>
-            <dt>Suunnitelma</dt><dd>Omat ja ohjaajan päätökset perusteluineen. Täytät tällä sivulla ja viet tiedostoksi <code>project-docs/suunnitelma.md</code>.</dd>
-            <dt>GitHub-issue</dt><dd>Yhden muutoksen tavoite, hyväksymiskriteerit ja testien tulokset.</dd>
-            <dt>PROJEKTIN-TILA.md</dt><dd>Nykytilanne ja seuraava tehtävä. Päivität repositoryn juuressa ja liität Microsoft 365 Copilotiin.</dd>
-            <dt>Projektipäiväkirja</dt><dd>Viikon yhteenveto, perustelut ja työnäytteiden linkit. Täytät kerran viikon lopussa; viet tiedostoksi <code>project-docs/projektipaivakirja.md</code>.</dd>
-            <dt>AI-loki</dt><dd>Tekoälyn tuotoksesta tekemäsi päätös ja peruste: hyväksyn, korjautan tai hylkään. Viet tiedostoksi <code>project-docs/AI-loki.md</code>.</dd>
+            <dt>[[toimeksianto]]</dt><dd>Asiakkaan tarve ja sovelluksen vaatimukset. Tästä tarkistat rajauksen eli sen, mitä tehdään ja mitä ei tehdä.</dd>
+            <dt>[[tiedosto:suunnitelma|Suunnitelma]]</dt><dd>Omat ja ohjaajan päätökset perusteluineen. Tiedosto [[tiedosto:suunnitelma|project-docs/suunnitelma.md]].</dd>
+            <dt>GitHub-issue</dt><dd>Yhden muutoksen tavoite, hyväksymiskriteerit ja testien tulokset. Hyväksymiskriteeri on ehto, jonka pitää toteutua, jotta muutos on valmis.</dd>
+            <dt>PROJEKTIN-TILA.md</dt><dd>Nykytilanne ja seuraava tehtävä. Tiedosto on repositoryn juuressa eli repositoryn ylimmässä kansiossa, jossa myös README.md on. Päivität tiedoston ja liität sen Microsoft 365 Copilotiin.</dd>
+            <dt>[[tiedosto:projektipaivakirja|Projektipäiväkirja]]</dt><dd>Viikon kirjaus: mitä teit, perustelut ja työnäytteiden linkit. Kirjoitat sen kerran viikossa, viikon viimeisenä työpäivänä. Tiedosto [[tiedosto:projektipaivakirja|project-docs/projektipaivakirja.md]].</dd>
+            <dt>[[tiedosto:ai-loki|AI-loki]]</dt><dd>Tekoälyn tuotoksesta tekemäsi päätös ja peruste: hyväksyn, korjautan tai hylkään. Korjautan tarkoittaa, että pyydät tekoälyä korjaamaan vastaustaan. Tiedosto [[tiedosto:ai-loki|project-docs/ai-loki.md]].</dd>
             <dt>Näyttömatriisi</dt><dd>Linkit työnäytteisiin, jotka osoittavat tutkinnon vaatimukset. Sama työnäyte voi osoittaa useita vaatimuksia.</dd>
           </dl>
-          <p>Tehtävän tulos kirjataan issueen heti. Päiväkirjaan kirjoitat viikon yhteenvedon ja linkität tuloksiin. Erilliset kokeilu- ja arviointimuistiot tehdään vain silloin, kun viikon kortti pyytää niitä.</p>
+          <p>Kirjaa tehtävän tulos issueen heti. Kirjoita viikon kirjaus tiedostoon [[tiedosto:projektipaivakirja|projektipaivakirja.md]], ja lisää siihen linkit tuloksiin. Kirjoita muut dokumentit silloin, kun viikon työvaihe pyytää niitä. Niitä ovat esimerkiksi kirjastojen rajoitteet ja katselmointi. Katselmoinnissa asiakkaat kokeilevat versiota ja kertovat, mitä muutetaan. [[tyotapa#dokumentit|Työtapa-näkymän osio Dokumentit]] kertoo jokaisesta tiedostosta, mitä siihen kirjoitetaan ja milloin.</p>
         </details>
 
         <details class="view-section project-reference">
           <summary>Mitä näytössä arvioidaan?</summary>
           <p>Näyttö kattaa kolme tutkinnon osaa: Ohjelmointi, Ohjelmistokehittäjänä toimiminen ja Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla. Näyttömatriisissa on %%VAATIMUKSIA%% vaatimusta. Viikon työ kerryttää työnäytteitä näihin vaatimuksiin.</p>
-          <p>Sinä ja ohjaaja toimitte projektin tiiminä. Asiakkaat ovat Matti Seise ja Antti Honkasalo. Matti on myös ohjaajasi; tehtävä kertoo, kummassa roolissa hän toimii.</p>
+          <p>Sinä ja ohjaaja toimitte projektin tiiminä. Asiakkaat ovat Matti Seise ja Antti Honkasalo. Matti on myös ohjaajasi. Tehtävä kertoo, kummassa roolissa hän toimii.</p>
           <a href="#view-naytto" data-open-view="naytto">Avaa arvioinnin vaatimukset →</a>
         </details>
 
         <div class="card view-section download-card">
           <div>
             <strong>Työpaketti tiedostona</strong>
-            <p>Aikataulu ja viikkojen tehtävät tilanteisiin, joissa sivu ei ole auki. Siihen ei kirjoiteta samoja vastauksia uudelleen.</p>
+            <p>Aikataulu ja viikkojen tehtävät tilanteisiin, joissa sivu ei ole auki. Työpakettiin ei kirjoiteta: dokumentit kirjoitetaan aina repositoryn tiedostoihin.</p>
           </div>
           <div class="download-actions">
             <a class="button button-primary" href="downloads/vektoripaja-tyopaketti.pdf" download>PDF näytölle</a>
@@ -154,10 +157,10 @@
           </div>
         </div>
 
-        <p class="footnote view-section"><strong>Muista:</strong> sivun rastit ja kentät ovat oma työmuistisi. Ne tallentuvat vain tähän selaimeen. Ne eivät siirry ohjaajalle. Rastita vasta, kun työ on testattu ja työnäyte on repositoryssa.</p>
+        <p class="footnote view-section"><strong>Muista:</strong> sivun rastit ovat oma työmuistisi. Ne tallentuvat vain tähän selaimeen eivätkä siirry ohjaajalle. Rastita osatehtävä, kun sen Näet nyt -kohta pitää paikkansa. Työvaihe on valmis, kun kaikki sen osat on rastitettu.</p>
 
         <div class="download-card view-section" style="margin-top:20px">
-          <div><strong>Oma tila selaimessa</strong><p>Rastit, työsykli, päiväkirja, suunnitelma ja AI-loki tallentuvat vain tähän selaimeen.</p></div>
+          <div><strong>Oma tila selaimessa</strong><p>Rastit ja työsyklin askel tallentuvat vain tähän selaimeen. Dokumentit ovat repositoryssa.</p></div>
           <button class="button button-ghost" type="button" data-reset>Nollaa oma eteneminen</button>
         </div>
 
@@ -175,20 +178,20 @@
         <p class="view-eyebrow">Alkuperäinen toimeksianto · annettu 28.9.2026</p>
         <h1 class="view-title">Piirroksesta 3D-malliksi</h1>
         <div class="brief-text">
-          <p>Opetamme vektorigrafiikkaa ja 3D-mallinnusta. Opiskelijamme piirtävät sujuvasti Inkscapessa, mutta jäävät usein jumiin perinteisissä 3D-ohjelmissa. Niissä malli rakennetaan pisteistä ja särmistä. Haluamme, että malli syntyy suoraan piirroksesta. Tarvitsemme Windowsilla toimivan työpöytäsovelluksen, joka avaa Inkscapessa piirretyn SVG-tiedoston ja tekee siitä low-poly-mallin.</p>
-          <p>Piirroksen layerit ja ryhmät muuttuvat mallin osiksi niin, että pää pysyy kiinni vartalossa, kun vartaloa siirretään. Puoliprofiilista pitää syntyä pyörähdyskappale, esimerkiksi maljakko, ja viivasta putki, esimerkiksi johto tai sarvi. Osia pitää voida valita, siirtää, kiertää ja skaalata. Mallia pitää voida katsoa suoraan edestä, sivulta ja ylhäältä.</p>
-          <p>Valmis malli viedään .obj-tiedostoksi niin, että jokainen osa on oma objektinsa. Keskeneräinen työ pitää voida tallentaa ja avata myöhemmin samassa tilassa. Kun piirrosta muokataan Inkscapessa, mallin pitää päivittyä ilman, että kaikki tehdään alusta. Työkalun pitää olla selkeä: iso tila piirtämiselle, isot painikkeet ja hyvä kontrasti.</p>
-          <p>Haluamme kokeilla jokaista välivaihetta, emme vain katsoa kuvakaappauksia. Ennen joulua kokeilemme itse ensimmäistä toimivaa versiota ja kerromme, mitä muutetaan. Valmis tarkoittaa meille tätä: työkalun voi ladata GitHubista ja käynnistää Windows-koneella ilman Pythonia, oma piirroksemme muuttuu malliksi, .obj aukeaa toisessa ohjelmassa, ja mukana on ohje, jolla joku muu saa työkalun käyttöön kysymättä meiltä.</p>
+          <p>Opetamme vektorigrafiikkaa ja 3D-mallinnusta. Opiskelijamme piirtävät sujuvasti Inkscapessa, mutta jäävät usein jumiin perinteisissä 3D-ohjelmissa. Niissä malli rakennetaan pisteistä ja särmistä. Haluamme, että malli syntyy suoraan piirroksesta. Tarvitsemme Windowsilla toimivan työpöytäsovelluksen, joka avaa Inkscapessa piirretyn SVG-tiedoston ja tekee siitä low-poly-mallin eli 3D-mallin, jossa on vähän monikulmioita.</p>
+          <p>Piirroksen ryhmät ja layerit eli Inkscapen tasot muuttuvat mallin osiksi niin, että pää pysyy kiinni vartalossa, kun vartaloa siirretään. Puoliprofiilista pitää syntyä pyörähdyskappale, esimerkiksi maljakko, ja viivasta putki, esimerkiksi johto tai sarvi. Osia pitää voida valita, siirtää, kiertää ja skaalata. Mallia pitää voida katsoa suoraan edestä, sivulta ja ylhäältä.</p>
+          <p>Valmis malli viedään .obj-tiedostoksi niin, että jokainen osa on oma objektinsa. Keskeneräinen työ pitää voida tallentaa ja avata myöhemmin samassa tilassa. Kun piirrosta muokataan Inkscapessa, mallin pitää päivittyä ilman, että kaikki tehdään alusta. Työkalun pitää olla selkeä: iso tila 3D-näkymälle, isot painikkeet ja hyvä kontrasti.</p>
+          <p>Haluamme kokeilla jokaista välivaihetta, emme vain katsoa kuvakaappauksia. Ennen joulua kokeilemme itse ensimmäistä toimivaa versiota ja kerromme, mitä muutetaan. Valmis tarkoittaa meille tätä: työkalun voi ladata GitHubista ja käynnistää Windows-koneella ilman Pythonia, oma piirroksemme muuttuu malliksi, .obj-tiedosto aukeaa toisessa ohjelmassa, ja mukana on ohje, jolla joku muu saa työkalun käyttöön kysymättä meiltä.</p>
           <p class="assignment-note">Toimeksiantajat ovat Matti Seise ja Antti Honkasalo. Matti Seise on myös ohjaajasi. Kun hän toimii asiakkaana, se kerrotaan tehtävässä.</p>
         </div>
 
         <div class="grid-2 view-section">
-          <div class="card">
+          <div class="card" id="tekninen-ehdotus" tabindex="-1">
             <p class="section-label section-label-accent">Ehdotettu toteutustapa</p>
             <p style="margin-top:8px"><strong>Tekninen ehdotus:</strong> Python, PySide6, PyVista, trimesh ja pytest. PySide6 tekee ikkunan ja painikkeet. PyVista piirtää 3D-näkymän. trimesh tekee 3D-kappaleet ja .obj-tiedoston. pytest ajaa testit. Päätät viikolla 41, hyväksytkö ehdotuksen.</p>
             <p style="margin-top:8px"><strong>Valmiit osat:</strong> svgelements lukee SVG:n. trimesh tekee pyörähdyskappaleen ja .obj-tiedoston. PyVista tekee putken ja näyttää mallin suoraan edestä, sivulta ja ylhäältä.</p>
-            <p style="margin-top:8px"><strong>Pakollinen ydin ennen joulua:</strong> SVG-tuonti, layerit ja ryhmät osiksi, pyörähdyskappale 3–32 segmentillä, putki 3–8 sivulla, valinta, siirto, kierto ja skaalaus, kiertopiste eli pivot, suorat näkymät, kameran lukitus eli view lock, .obj-vienti sekä tallennus. JSON on ehdotettu tallennusmuoto. Vertailet vaihtoehtoja viikolla 50 ja perustelet valintasi suunnitelmassa.</p>
-            <p style="margin-top:8px"><strong>Tärkeä jatko loman jälkeen:</strong> Päivitä SVG, kierto tasakulmiin, pieni esikatseluikkuna, kierto lapselle ja sen alaosille, oma teema ja isot kahvat, ortografinen näkymä ja view lockin pikanäppäin. Kahva on tartuntakohta, josta osaa siirretään tai kierretään. Ortografisessa näkymässä kaukana olevat osat eivät pienene kuten valokuvassa.</p>
+            <p id="pakollinen-ydin" style="margin-top:8px"><strong>Pakollinen ydin ennen joulua:</strong> SVG-tuonti, layerit ja ryhmät osiksi, pyörähdyskappale eli revolve 3–32 segmentillä, putki eli inflate 3–8 sivulla, valinta, siirto, kierto ja skaalaus, kiertopiste eli pivot, suorat näkymät, kameran lukitus eli view lock, .obj-vienti sekä tallennus. JSON on ehdotettu tallennusmuoto. Vertailet vaihtoehtoja viikolla 50 ja perustelet valintasi tiedostossa [[tiedosto:suunnitelma|suunnitelma.md]].</p>
+            <p style="margin-top:8px"><strong>Tärkeä jatko loman jälkeen:</strong> Päivitä SVG, kierto tasakulmiin, pieni esikatseluikkuna, kierto lapselle eli osalle, joka liikkuu toisen osan mukana, ja lapsen alaosille, oma teema ja isot kahvat, ortografinen näkymä ja view lockin pikanäppäin. Kahva on tartuntakohta, josta osaa siirretään tai kierretään. Ortografisessa näkymässä kaukana olevat osat eivät pienene kuten valokuvassa.</p>
             <p style="margin-top:8px"><strong>Julkaisu:</strong> zip-tiedosto GitHubin julkaisusivulla eli releasessa. GitHubin automaatio GitHub Actions tekee Windows-version ja tarkistaa sen. Valmis versio toimii ilman Pythonia.</p>
           </div>
           <div class="card">
@@ -196,7 +199,7 @@
             <p style="margin-top:8px"><strong>Jatkolista odottaa:</strong> Bézier-kynä ja polkujen muokkaus sovelluksessa, Boolean-toiminnot, platoniset kappaleet, medial axis, UV-sidonta ja törmäyssäännöt. Ne tehdään näytön jälkeen.</p>
             <p style="margin-top:8px"><strong>Piirrä Inkscapessa:</strong> sovellus ei ole piirto-ohjelma. Piirros tehdään Inkscapessa ja tuodaan sovellukseen.</p>
             <p style="margin-top:8px"><strong>Testit ovat sinun:</strong> älä anna GitHub Copilotin muuttaa testejä.</p>
-            <p style="margin-top:8px"><strong>Älä vaihda tekniikkaa kesken projektin.</strong> Jos pohja ei toimi, kerro siitä palaverissa.</p>
+            <p style="margin-top:8px"><strong>Älä vaihda tekniikkaa kesken projektin.</strong> Jos tekninen pohja ei toimi, kerro siitä viikkopalaverissa.</p>
           </div>
         </div>
 
@@ -204,33 +207,33 @@
           <p class="section-label">Aineisto ja tekoälyn raja</p>
           <ul>
             <li>Omat Inkscape-piirroksesi. Ne ovat testiaineisto ja demon aineisto.</li>
-            <li>PySide6:n, PyVistan, trimeshin ja svgelementsin dokumentaatio sekä viikkokorttien toteutusapu.</li>
+            <li>PySide6:n, PyVistan, trimeshin ja svgelementsin dokumentaatio sekä työvaiheiden toteutusapu.</li>
             <li>Kirjastot asennetaan pip:llä eli Pythonin paketinhallinnalla. Kirjaa jokaisen kirjaston lisenssi README:hen eli repositoryn etusivun ohjeeseen viikolla 41.</li>
-            <li>Kuvaohjeet: viikkokorteissa on kuvat, joissa tärkeät kohdat on numeroitu.</li>
+            <li>Kuvat: viikkojen työvaiheissa on kuvallisia ohjeita, joissa tärkeät kohdat on numeroitu.</li>
           </ul>
-          <p><strong>Tekoälyn raja:</strong> tekoäly kirjoittaa suurimman osan koodista. Sinä teet tehtäväkortit, arkkitehtuuripäätökset ja testien odotetut tulokset. Sinä tarkistat jokaisen tuotoksen ja päätät: hyväksyn, korjautan tai hylkään.</p>
+          <p><strong>Tekoälyn raja:</strong> tekoäly kirjoittaa suurimman osan koodista. Sinä teet tehtäväkortit, arkkitehtuuripäätökset ja testien odotetut tulokset. Arkkitehtuuripäätökset ovat päätöksiä sovelluksen rakenteesta: kansiot, moduulit ja rajapinnat. Moduuli on tiedosto tai kansio, jolla on yksi vastuu. Rajapinta on funktion nimi, syöte ja paluuarvo. Sinä tarkistat jokaisen tuotoksen ja päätät: hyväksyn, korjautan tai hylkään.</p>
         </div>
 
         <details class="card card-tint decision-box view-section"><summary>Ohjaajan kanssa sovittavat asiat</summary>
           <p class="section-label">Sovi ohjaajan kanssa – näitä ei päätetä itse eikä tekoälyllä</p>
           <ul>
             <li>Tekijänimi ja viikkopalaverin päivä (viikko 40).</li>
-            <li>Krediittien lisärahoitus, jos 200 krediittiä kuukaudessa ei riitä (lokakuun loppuun mennessä).</li>
+            <li>Krediittien lisärahoitus, jos 200 krediittiä kuukaudessa ei riitä (lokakuun loppuun mennessä). Krediitti on GitHub Copilotin käyttöraha.</li>
             <li>Ratkaisu, jos pakollinen ydin on myöhässä (viikon 47 palaveri).</li>
             <li>Katselmoinnin kirjaustapa (ennen viikkoa 51).</li>
-            <li>Julkaisutestaaja (viimeistään viikolla 5) ja lisenssi (ennen viikkoa 6).</li>
+            <li>Julkaisutestaaja eli henkilö, joka tekee julkaisutestin (viimeistään viikolla 5), ja lisenssi (ennen viikkoa 6).</li>
             <li>Näytön ajankohta ja arvioijat (viikko 9).</li>
           </ul>
-          <p class="note">Tyhjä kenttä suunnitelmassa on oikea tulos, niin kauan kuin asia on sopimatta. Merkitse se avoimeksi asiaksi.</p>
+          <p class="note">Tyhjä kohta tiedostossa [[tiedosto:suunnitelma|suunnitelma.md]] on oikea tulos, niin kauan kuin asia on sopimatta.</p>
         </details>
 
         <div class="view-section">
           <h2>Pidä punainen lanka näkyvissä</h2>
           <div class="lanka-row">
-            <div><p class="section-label">Toimeksiannosta</p><p>Valmis malli viedään .obj-tiedostoksi niin, että jokainen osa on oma objektinsa.</p></div>
+            <div><p class="section-label">Asiakkaan tarve</p><p>Valmis malli viedään .obj-tiedostoksi niin, että jokainen osa on oma objektinsa.</p></div>
             <div><p class="section-label">Issue</p><p>#N Vie malli .obj-tiedostoksi osat erillisinä.</p></div>
-            <div><p class="section-label">Valmis kun</p><p>Jokainen osa alkaa rivillä <code>o</code>, ja tiedosto aukeaa Blenderissä.</p></div>
-            <div><p class="section-label">Testi ja työnäyte</p><p>Testit issuessa, commit rivillä <code>Closes #N</code> ja kuva Blenderistä.</p></div>
+            <div><p class="section-label">Valmis kun</p><p>Jokainen osa alkaa rivillä, jonka alussa on <code>o</code>, ja tiedosto aukeaa Blenderissä.</p></div>
+            <div><p class="section-label">Testi ja työnäyte</p><p>Testit issuessa, commit, jonka viestissä on rivi <code>Closes #N</code>, ja kuva Blenderistä. Rivi Closes #N sulkee issuen, kun N on issuen numero.</p></div>
           </div>
         </div>
       </section>
@@ -239,24 +242,27 @@
       <section class="view" data-view="tyotapa" id="view-tyotapa">
         <p class="view-eyebrow">Jokainen tehtäväkortti</p>
         <h1 class="view-title">Kuusi askelta joka kortilla</h1>
-        <p class="view-lead">Työsykli on sama joka viikko. Yksi kierros on yksi GitHub-issue eli rajattu toteutustehtävä. Viikon työvaihe kertoo, milloin käytät tätä sykliä.</p>
+        <p class="view-lead">Työsykli on sama joka viikko. Yksi kierros on yksi tehtäväkortti GitHub-issuessa. Viikon työvaihe kertoo, milloin käytät työsykliä.</p>
         <ol class="workflow-loop">
-          <li><span>1</span><strong>Suunnittele</strong><small>Copilot pilkkoo kortin</small></li>
+          <li><span>1</span><strong>Suunnittele</strong><small>Copilot pilkkoo tavoitteen kortiksi</small></li>
           <li><span>2</span><strong>Siirrä</strong><small>kortti issueksi</small></li>
           <li><span>3</span><strong>Rakenna</strong><small>testi ensin, sitten koodi</small></li>
           <li><span>4</span><strong>Tarkista</strong><small>itse, testeillä</small></li>
-          <li><span>5</span><strong>Raportoi</strong><small>Copilot vertaa toteumaa</small></li>
-          <li><span>6</span><strong>Kirjaa</strong><small>commit ja AI-loki</small></li>
+          <li><span>5</span><strong>Raportoi</strong><small>kerrot tuloksen, Copilot päivittää tilatiedoston</small></li>
+          <li><span>6</span><strong>Kirjaa</strong><small>commit ja [[tiedosto:ai-loki|AI-loki]]</small></li>
         </ol>
         <p class="rule-note"><strong>Nyrkkisääntö:</strong> jos et pysty selittämään muutosta, työ ei ole vielä valmis.</p>
 
-        <details class="view-section project-reference">
+        <section data-perusohjeet id="nain-teet"></section>
+        <section data-tiedostokortit id="dokumentit"></section>
+
+        <details class="view-section project-reference" id="kolme-kaistaa">
           <summary>Kolme kaistaa</summary>
           <p class="view-lead" style="margin-top:8px">Kaista on toteutustapa. Valitset kaistan jokaiselle kortille. Kirjaat valinnan ja perusteen korttiin.</p>
           <div class="principle-grid">
-            <div class="card"><span class="num">1</span><h3>Tiedosto-kaista</h3><p>Yksi tiedosto kerrallaan. Microsoft 365 Copilot kirjoittaa koodin yksi tiedosto kerrallaan. Luet sen ja kopioit sen VS Codeen.</p><small>Viikolta 41 · ei kuluta GitHub Copilotin krediittejä.</small></div>
-            <div class="card"><span class="num">2</span><h3>Täydennys-kaista</h3><p>Kommentti ja täydennys. Kirjoitat kommentin VS Codeen. GitHub Copilot ehdottaa koodia. Hyväksyt ehdotuksen Tab-näppäimellä. Testit kirjoitetaan tällä kaistalla.</p><small>Viikolta 43 · täydennykset ovat ilmaisia.</small></div>
-            <div class="card"><span class="num">3</span><h3>Agentti-kaista</h3><p>Agenttitila. GitHub Copilot muokkaa useaa tiedostoa kerralla. Luet jokaisen muutoksen, ennen kuin hyväksyt sen.</p><small>Viikolta 44 · kuluttaa krediittejä.</small></div>
+            <div class="card"><span class="num">1</span><h3>Tiedosto-kaista</h3><p>Yksi tiedosto kerrallaan. Microsoft 365 Copilot kirjoittaa koodin yksi tiedosto kerrallaan. Luet sen ja kopioit sen VS Codeen.</p><small>Viikosta 41 · ei kuluta GitHub Copilotin krediittejä.</small></div>
+            <div class="card"><span class="num">2</span><h3>Täydennys-kaista</h3><p>Kommentti ja täydennys. Kirjoitat kommentin VS Codeen. GitHub Copilot ehdottaa koodia. Hyväksyt ehdotuksen Tab-näppäimellä. Testit kirjoitetaan tällä kaistalla.</p><small>Viikosta 43 · täydennykset ovat ilmaisia.</small></div>
+            <div class="card"><span class="num">3</span><h3>Agentti-kaista</h3><p>Agenttitila. GitHub Copilot muokkaa useaa tiedostoa kerralla. Luet jokaisen muutoksen, ennen kuin hyväksyt sen.</p><small>Viikosta 44 · kuluttaa krediittejä.</small></div>
           </div>
         </details>
 
@@ -264,8 +270,8 @@
           <summary>Krediitit</summary>
           <ul class="check-list">
             <li>GitHub Copilotilla on 200 krediittiä kuukaudessa. Yksi krediitti on 0,01 USD.</li>
-            <li>Budjetti nollautuu kuun 1. päivänä. Käyttämätön osuus ei siirry seuraavaan kuuhun.</li>
-            <li>Tarkista kulutus maanantaisin GitHubin käyttönäkymästä.</li>
+            <li>Krediitit nollautuvat kuun 1. päivänä. Käyttämättömät krediitit eivät siirry seuraavaan kuuhun.</li>
+            <li>Tarkista kulutus maanantaisin: [[ohje:krediitit]].</li>
             <li>Jos jäljellä on alle 25 %, käytä Tiedosto- ja Täydennys-kaistoja kuun loppuun.</li>
             <li>Kahden yrityksen sääntö: kun sama asia epäonnistuu kahdesti, lopeta ja palaa Copilotille.</li>
           </ul>
@@ -286,10 +292,10 @@
         <details class="view-section project-reference">
           <summary>Aineisto ja työkalut</summary>
           <ul class="tooling-list">
-            <li><strong>Työkalut:</strong> VS Code ja sen Python-laajennus, Git, Python 3.13, Inkscape ja Blender.</li>
+            <li><strong>Työkalut:</strong> VS Code ja sen Python-laajennus, Git, Python 3.13, Inkscape ja Blender. Git on versionhallintaohjelma omalla koneellasi. GitHub on verkkopalvelu, jossa repositorysi on.</li>
             <li><strong>Tekoäly:</strong> Copilot BC:n tunnuksella selaimessa ja GitHub Copilot VS Codessa.</li>
             <li><strong>Kirjastot:</strong> PySide6, PyVista, pyvistaqt, trimesh, numpy, svgelements ja pytest. Ne asennetaan viikolla 41. Kirjaa lisenssit README:hen.</li>
-            <li><strong>Julkisuuden raja:</strong> repository on julkinen. Itsearviointi sekä testaajien ja katselmoijien nimet ja sanatarkat lausumat lähetetään ohjaajalle Teamsissa. Ohjaajan kommentit pysyvät Teamsissa. Repositoryyn kirjataan vain rooli, esimerkiksi julkaisutestaaja.</li>
+            <li><strong>Julkisuuden raja:</strong> repository on julkinen. Lähetä itsearviointi sekä testaajien ja katselmoijien nimet ja sanatarkat lausumat ohjaajalle Teamsissa. Ohjaajan kommentit pysyvät Teamsissa. Kirjaa repositoryyn vain rooli, esimerkiksi julkaisutestaaja.</li>
             <li><strong>Tekoälyn raja:</strong> tekoäly kirjoittaa koodin. Sinä päätät, testaat ja selität.</li>
           </ul>
         </details>
@@ -327,98 +333,42 @@
 
       <!-- ============ SUUNNITELMA ============ -->
       <section class="view" data-view="suunnitelma" id="view-suunnitelma">
-        <p class="view-eyebrow">Omat dokumentit · päivitetään viikoilla 40–3</p>
+        <p class="view-eyebrow">Omat dokumentit · päivitetään viikoilla 40–5</p>
         <h1 class="view-title">Suunnitelma</h1>
-        <p class="view-lead">Suunnitelmassa on kolme osaa. A on perustiedot. B on sinun päätöksesi. C on ohjaajan päätökset. Toimeksianto sisältää sovitut vaatimukset. Tämä suunnitelma tallentaa päätöksesi. <strong>Ajoitus:</strong> kirjaa päätös sillä viikolla, joka rivillä lukee.</p>
+        <p class="view-lead">Dokumentissa on viisi osaa. A on perustiedot. Osat 1 Tavoite ja 2 Asiakkaat ja käyttäjät on täytetty valmiiksi, eikä niitä muuteta. B on sinun päätöksesi. C on ohjaajan päätökset. Kirjoitat dokumentin VS Codessa tiedostoon [[tiedosto:suunnitelma|project-docs/suunnitelma.md]]. Kirjoita päätös sillä viikolla, joka otsikossa lukee.</p>
 
         <div class="card card-tint view-section">
-          <p>Rakennat Windows-sovelluksen: Inkscapen piirros → muokattava 3D-malli → OBJ-vienti. <a href="#view-toimeksianto" data-open-view="toimeksianto">Vaatimukset, prioriteetit ja tekninen ehdotus ovat toimeksiannossa.</a></p>
-          <p>Tähän suunnitelmaan kirjaat oman rajauksesi, ratkaisut ja perustelut. MVP (Minimum Viable Product) tarkoittaa ensimmäistä käyttökelpoista versiota eli pakollista ydintä. Viikon numero kertoo, milloin päätös tehdään. <a href="#view-tyotapa" data-open-view="tyotapa">Työsyklin ohje on Työtapa-sivulla.</a></p>
+          <p>Rakennat Windows-sovelluksen: Inkscapen piirros → muokattava 3D-malli → .obj-vienti. <a href="#view-toimeksianto" data-open-view="toimeksianto">Vaatimukset, niiden tärkeysjärjestys ja tekninen ehdotus ovat toimeksiannossa.</a></p>
+          <p>Dokumenttiin kirjaat oman rajauksesi, ratkaisut ja perustelut. <a href="#view-tyotapa" data-open-view="tyotapa">Työsyklin ohje on Työtapa-näkymässä.</a></p>
         </div>
 
-        <form class="plan-form" data-plan-form>
-          <div class="plan-form-heading">
-            <div><p class="section-label section-label-accent">A ja B</p><h2>Perustiedot ja omat päätökset</h2><p>Kirjoita perustelu omin sanoin. Kytke päätös pakolliseen ytimeen tai omiin kriteereihisi.</p></div>
-            <span data-plan-status>Ei vielä aloitettu</span>
-          </div>
-
-          <div class="plan-row"><span class="plan-tag plan-tag-oma">A</span><label class="plan-row-field">Projektin nimi<input type="text" data-plan-field="nimi"></label><span class="plan-row-week">viikko 40</span></div>
-          <div class="plan-row"><span class="plan-tag plan-tag-oma">A</span><label class="plan-row-field">Tekijä: ohjaajan kanssa sovittu tekijänimi<input type="text" data-plan-field="tekija"></label><span class="plan-row-week">viikko 40</span></div>
-          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">MVP eli ensimmäinen toimiva versio omin sanoin: mikä kuuluu pakolliseen ytimeen ja miksi muut odottavat<textarea rows="3" data-plan-field="mvp"></textarea></label><span class="plan-row-week">viikko 40</span></div>
-          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Hyväksynkö teknisen ehdotuksen ja miksi<textarea rows="2" data-plan-field="tekninenPohja"></textarea></label><span class="plan-row-week">viikko 41</span></div>
-          <p class="plan-calibration"><strong>Ei riitä:</strong> "Hyväksyn, koska Copilot suositteli tätä." <strong>Riittää:</strong> "Hyväksyn ehdotuksen. svgelements lukee Inkscapen SVG:n, trimesh tekee revolven ja .obj-viennin, ja pytest testaa puhtaat funktiot."</p>
-          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Käyttöliittymävaatimus: taustaväri, tekstin väri, tekstin koko ja painikkeiden koko<textarea rows="2" data-plan-field="kayttoliittyma"></textarea></label><span class="plan-row-week">viikko 41</span></div>
-          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Kansiorakenne ja moduulirajat<textarea rows="2" data-plan-field="rakenne"></textarea></label><span class="plan-row-week">viikko 43</span></div>
-          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Dokumentointitapa, sovittu palaverissa<input type="text" data-plan-field="dokumentointi"></label><span class="plan-row-week">viikko 43</span></div>
-          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Valinnan toiminta: lapsi vai koko kappale, ja miksi<input type="text" data-plan-field="valinta"></label><span class="plan-row-week">viikko 44</span></div>
-          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Revolven valintatapa, sovittu palaverissa<input type="text" data-plan-field="revolveValinta"></label><span class="plan-row-week">viikko 45</span></div>
-          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Profiili akselin väärällä puolella: testin 11 hyväksymiskriteeri<input type="text" data-plan-field="akseli"></label><span class="plan-row-week">viikko 45</span></div>
-          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Tallennustavan vertailu, valinnan peruste ja oman tallennustiedoston koko<textarea rows="2" data-plan-field="tallennus"></textarea></label><span class="plan-row-week">viikko 50</span></div>
-          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Tärkeän jatkon järjestys ja tuntiarviot<textarea rows="2" data-plan-field="p1Jarjestys"></textarea></label><span class="plan-row-week">viikko 2</span></div>
-          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Osien tunnistus päivityksessä, sovittu palaverissa<input type="text" data-plan-field="tunnistus"></label><span class="plan-row-week">viikko 3</span></div>
-
-          <div class="plan-form-heading">
-            <div><p class="section-label">C</p><h2>Ohjaajan päätökset</h2><p>Jätä kenttä tyhjäksi, kunnes ohjaaja on päättänyt. Kirjoita sitten päätös ja päivä.</p></div>
-          </div>
-          <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Krediittien lisärahoitus<input type="text" data-plan-field="krediitit"></label><span class="plan-row-week">lokakuun loppu</span></div>
-          <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Pakollisen ytimen myöhästymisen ratkaisu<input type="text" data-plan-field="p0Myohastyminen"></label><span class="plan-row-week">viikko 47</span></div>
-          <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Katselmoinnin kirjaustapa<input type="text" data-plan-field="katselmointiKirjaus"></label><span class="plan-row-week">ennen viikkoa 51</span></div>
-          <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Julkaisutestaaja (vain rooli, nimi Teamsissa)<input type="text" data-plan-field="julkaisutestaaja"></label><span class="plan-row-week">viikko 5</span></div>
-          <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Lisenssi<input type="text" data-plan-field="lisenssi"></label><span class="plan-row-week">ennen viikkoa 6</span></div>
-          <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Näytön ajankohta ja arvioijat<input type="text" data-plan-field="arviointi"></label><span class="plan-row-week">viikko 9</span></div>
-
-          <div class="plan-actions">
-            <button class="button button-primary" type="button" data-plan-export>Lataa suunnitelma.md</button>
-            <small>Tallenna tiedosto polkuun <code>project-docs/suunnitelma.md</code> ja tee commit. Päivitä, kun päätät asioita tai ohjaaja vastaa.</small>
-          </div>
-          <p class="plan-ai-note"><strong>Muista:</strong> älä anna tekoälyn päättää puolestasi. Jos käytit tekoälyä ideointiin, kirjaa se AI-lokiin.</p>
-        </form>
+        <div data-tiedostokortti="suunnitelma"></div>
+        <p class="plan-ai-note"><strong>Muista:</strong> älä anna tekoälyn päättää puolestasi. Jos käytit tekoälyä ideointiin, kirjaa se tiedostoon [[tiedosto:ai-loki|ai-loki.md]].</p>
       </section>
 
       <!-- ============ PROJEKTIPÄIVÄKIRJA ============ -->
       <section class="view" data-view="paivakirja" id="view-paivakirja">
-        <p class="view-eyebrow">Yksi kirjoituspaikka · viedään Gitiin joka viikko</p>
+        <p class="view-eyebrow">Yksi kirjoituspaikka · tiedosto repositoryssa</p>
         <h1 class="view-title">Projektipäiväkirja</h1>
-        <p class="view-lead">Viikon merkintä kirjoitetaan viikkokortissa. Täällä näet, mitkä viikot on kirjattu, ja lataat koko päiväkirjan tiedostona.</p>
+        <p class="view-lead">Kirjoitat viikon kirjauksen viikon viimeisenä työpäivänä VS Codessa tiedostoon [[tiedosto:projektipaivakirja|project-docs/projektipaivakirja.md]]. Ohje ja viikon otsikko ovat viikon sivun kohdassa Viikon kirjaus.</p>
 
-        <div class="card card-tint journal-summary-card">
-          <div><span class="big" data-journal-count>0 / 18 viikkoa kirjattu</span><p>Tiedosto: <code>project-docs/projektipaivakirja.md</code></p></div>
-          <button class="button button-primary" type="button" data-export-journal>Lataa koko projektipäiväkirja (.md)</button>
-        </div>
-
-        <div class="journal-weeks-grid" data-journal-weeks></div>
+        <div data-tiedostokortti="projektipaivakirja"></div>
       </section>
 
       <!-- ============ AI-LOKI ============ -->
       <section class="view" data-view="ailoki" id="view-ailoki">
         <p class="view-eyebrow">Tekoäly on työkalu</p>
         <h1 class="view-title">Sinä teet päätökset. Tekoäly on työkalu.</h1>
-        <p class="view-lead">Tekoäly kirjoittaa tässä projektissa suurimman osan koodista. Siksi näytössä katsotaan, miten ohjaat ja tarkistat sitä. Kirjaa jokaisesta tuotoksesta päätös: hyväksyn, korjautan tai hylkään. Kirjaa myös yksi peruste. Näyttöön tarvitaan vähintään kolme perusteltua hylkäystä tai korjautusta.</p>
+        <p class="view-lead">Tekoäly kirjoittaa tässä projektissa suurimman osan koodista. Siksi näytössä katsotaan, miten ohjaat tekoälyä ja tarkistat sen tuotokset. Kirjaa jokaisesta tuotoksesta päätös tiedostoon [[tiedosto:ai-loki|project-docs/ai-loki.md]]: hyväksyn, korjautan tai hylkään. Kirjaa myös yksi peruste. Näyttöön tarvitaan vähintään kolme perusteltua hylkäystä tai korjautusta.</p>
 
         <div class="ai-rules">
           <div class="card"><span class="num">01</span><h3>Ymmärrä</h3><p>Selitä omin sanoin, mitä koodi tekee ja miksi se sopii korttiin.</p></div>
           <div class="card"><span class="num">02</span><h3>Tarkista</h3><p>Vertaa tuotosta kortin hyväksymiskriteereihin ja kirjaston dokumentaatioon. Tekoäly voi keksiä funktioita, joita ei ole.</p></div>
           <div class="card"><span class="num">03</span><h3>Testaa</h3><p>Aja testit itse. Älä koskaan keksi testituloksia tai palautetta.</p></div>
-          <div class="card"><span class="num">04</span><h3>Kirjaa</h3><p>Kirjaa päätös, peruste ja se, mitä opit.</p></div>
+          <div class="card"><span class="num">04</span><h3>Kirjaa</h3><p>Kirjaa päätös ja sille yksi peruste tiedostoon [[tiedosto:ai-loki|ai-loki.md]].</p></div>
         </div>
 
-        <form class="ai-log-form" data-ai-form>
-          <div class="grid-2">
-            <label>Päivä ja työkalu, esimerkiksi 5.10. / Copilot<input type="text" name="tool" required></label>
-            <label>Mihin pyysit apua?<input type="text" name="question" required></label>
-          </div>
-          <label>Päätös ja peruste: hyväksyn, korjautan tai hylkään<textarea name="used" rows="2" required></textarea></label>
-          <label>Aineistoviite, esimerkiksi issue #1 tai testi 1<input type="text" name="reference" required></label>
-          <div class="privacy-row">
-            <label class="privacy-confirm"><input type="checkbox" name="privacy" required> Vahvistan, etten syöttänyt henkilötietoja, salaisuuksia tai luottamuksellista aineistoa.</label>
-            <button class="button button-primary" type="submit">Lisää lokiin</button>
-          </div>
-        </form>
-        <div class="ai-log-meta">
-          <span><span data-log-count>0 merkintää</span> · loki tulee mukaan koko projektipäiväkirjan lataukseen.</span>
-          <button class="button button-secondary" type="button" data-export-log>Lataa vain AI-loki (.md)</button>
-        </div>
-        <div class="log-entries" data-ai-entries aria-live="polite"><p class="empty-state">Ei merkintöjä vielä.</p></div>
+        <div data-tiedostokortti="ai-loki"></div>
       </section>
 
       <!-- ============ NÄYTTÖMATRIISI ============ -->

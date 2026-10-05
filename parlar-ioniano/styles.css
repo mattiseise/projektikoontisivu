@@ -873,7 +873,7 @@ html[data-teema] .task-card-done, html[data-teema] .task-card-save { background:
 @media print { .project-phase-path, [data-figure-open] { display: none; } }
 
 /* ---------- v2.7: yhtenäiset viikko-ohjeet saavutettavassa teemassa (html[data-teema]) ----------
- * Vektoripajan näkövammaiselle oppijalle suunniteltu ulkoasu: teeman koko, välit, 2 px reunat ja
+ * Saavutettava ulkoasu (data-teema): teeman koko, välit, 2 px reunat ja
  * 3 px fokus periytyvät teemasta (linkit alleviivattuina). Yllä olevat yleiset tyylit eivät koske
  * teemasivua. Muutokset tähän lohkoon tarkistetaan aina teemasivulla lasketuilla tyyleillä ennen ja
  * jälkeen, kaikissa näkymissä, leveänä ja kapeana. */

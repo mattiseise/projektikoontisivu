@@ -12,11 +12,19 @@ avustaa VS Codessa. Opiskelija päättää ja tarkistaa.
   toimiminen (14) ja Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla (7): 31 vaatimusta.
 - Pedagoginen tarkistus: Linnea-portti hyväksyi viikkorungon kierroksella 3, **23.9.2026**
   (`material-pipeline-output/vektoripaja/01-runko-v3.md`, auditit `audit/linnea-r1…r3.md`).
-- Moottori v2.7.4 (sama kuin muissa näyttöprojekteissa) opt-in-ominaisuuksin: oma teema (`teema`),
+- **Selkeysuudistus 5.10.2026 (moottori v2.8, Matin ja opiskelijan hyväksymä brief):** kirjoitus tehdään vain
+  VS Codessa, ja dokumentit ovat valmiina tiedostoina opiskelijan repositoryn `project-docs`-kansiossa
+  (`dokumentitRepossa`). Jokainen viittaus on linkki (`[[ohje:…]]`, `[[tiedosto:…]]`, `[[github:…]]`),
+  toistuvat taidot ovat Työtapa-näkymän perusohjeissa ("Näin teet", 15 ohjetta) ja jokaisesta dokumentista on
+  tiedostokortti ("Dokumentit"). Jokainen osatehtävä on muodossa otsikko, missä, tee ja näet nyt.
+  `tarkista.js` tarkistaa tiukassa tilassa (`selkeys: "tiukka"`). Selaimeen kirjoitettu teksti ladataan
+  siirtymänapista yhtenä tiedostona (viikon 41 ensimmäinen työvaihe). Kloonipolku: `KLOONIPOLKU`
+  sisalto.js:n alussa (tyhjä = ohje käyttää File → Open Recent -listaa).
+- Moottori v2.8 (sama kuin muissa näyttöprojekteissa) opt-in-ominaisuuksin: oma teema (`teema`),
   yhtenäiset viikko-ohjeet (`yhtenaisetViikot`, staattisesti `rakenna_index.py`:llä), työsykli (`sykli`),
   viikkorutiini, "Jos et tiedä, mitä tehdä" (`josJumissa`), kuvaohjeet (`kuvakaappaukset.json`),
   vuodenvaihde (`vuosi: [2026, 2027]`) ja lyhyt viikko 51 (`lyhyetViikot`).
-- **Saavutettava ulkoasu (oppijalla näkövamma):** värit, fonttikoko, kirjain-, sana- ja rivivälit,
+- **Saavutettava ulkoasu:** värit, fonttikoko, kirjain-, sana- ja rivivälit,
   rivinpituus, 2 px reunat, 3 px fokus ja yksipalstaisuus tulevat `teema`-lohkosta ja jaetun
   `styles.css`:n `html[data-teema]`-säännöistä. Moottorin päivityksessä ulkoasu todennetaan
   vertaamalla lasketut tyylit ennen ja jälkeen kaikissa näkymissä leveänä ja kapeana (v2.7.4:
@@ -35,7 +43,8 @@ Sivusto on staattinen ja julkaistaan koontisivun repositoryn mukana GitHub Pages
 | `tyokalut/rakenna_index.py` | viikkojen tehtävät, Näytä-rivit, lomakortit ja matriisin työnäytteet |
 | `sisalto.js` | viikkojen ohjeet, työsykli, sanasto, suunnitelmapohja ja opettaja-aineisto |
 | `kuvakaappaukset.json` | kuvaohjeiden lähde: mitä kuvataan, alt-tekstit ja numeroidut kohdat |
-| `pohjat/` | opiskelijan repositoryn pohjatiedostot (ladataan viikoilla 40 ja 43) |
+| `pohjat/` | opiskelijan repositoryn pohjatiedostot: `PROJEKTIN-TILA.md`, `tehtavakortti.md`, `copilot-instructions.md` ja `havainto.md` (tulevat repositoryyn ohjaajan pull requestilla) |
+| `pohjat/python-pohja/project-docs/` | **generoitu** (`tyokalut/tee_pohjat.js` tiedostokorteista): dokumenttipohjat suunnitelma, projektipäiväkirja (työviikot päivämäärineen), AI-loki, kysymykset, kirjastot, tietoturva, katselmointi, julkaisutesti, saavutettavuus ja `kuvat/` |
 | `pohjat/python-pohja/` | viikon 41 Python-pohja: julkaisu (`release.yml`, `vektoripaja.spec`, `rakenna_exe.bat`), itsetesti, teema, `requirements.txt` ja `tarkista_ymparisto.py`; pakataan tiedostoksi `pohjat/vektoripaja-pohja.zip` |
 | `app.js` | geneerinen moottori — **ei muokata projektikohtaisesti** |
 | `styles.css` | ulkoasu; projektikohtaista vain `:root`-lohkon paletti |
@@ -46,7 +55,7 @@ Sivusto on staattinen ja julkaistaan koontisivun repositoryn mukana GitHub Pages
 
 ```
 python tyokalut/rakenna_index.py      # index.html pohjasta ja taulukoista
-node tyokalut/tee_pohjat.js           # pohjat/*.md viikon 40 kopioitavista pohjista
+node tyokalut/tee_pohjat.js           # pohjat/python-pohja/project-docs/ tiedostokorteista
 python tyokalut/tee_python_pohja.py   # pohjat/vektoripaja-pohja.zip kansiosta pohjat/python-pohja/
 npm install docx
 node tyokalut/tee_lataukset.js        # docx-tiedostot + tyopaketti-print.html ja -tuloste.html
@@ -65,9 +74,12 @@ chrome --headless --no-pdf-header-footer --print-to-pdf=downloads/vektoripaja-ty
 ## Kuvaohjeiden kuvat
 
 Aloitusnäkymä kertoo tavoitteen ja viisi vaihetta. Jokaisen työviikon alussa on vaihepolku,
-yksi yhteys kokonaisprojektiin ja lyhyt tavoite. Projektin 63 työvaihetta on jaettu 153
-osatehtävään. Vanhat tehtävätunnukset säilyvät, ja moottori siirtää aiemmat rastit osatehtäviin.
-Sivun työvaihe on työohje; GitHub-issue on rajattu toteutustehtävä, johon työsykliä käytetään.
+yksi yhteys kokonaisprojektiin ja lyhyt tavoite. Projektin 125 työvaihetta on jaettu 783
+osatehtävään (selkeysuudistus 5.10.2026: yksi osatehtävä on yksi toimenpide, ja jokaisessa on
+Missä, Tee ja Näet nyt). Vanhat tehtävätunnukset säilyvät, ja moottori siirtää aiemmat rastit
+osatehtäviin (`versio`, `vanha`, `perii`). Viikon työvaihe on viikon sivun osa; GitHub-issue on
+tehtäväkortti, johon työsykliä käytetään. Sisältö on lukutestattu ilman taustatietoa kahdesti
+(viikko 41 kolmesti) ja kielenhuollettu (Börje).
 
 Omat havainnekuvat `assets/piirroksesta-malliksi.svg` ja `assets/projektin-vaiheet.svg`
 syntyvät komennolla `python tyokalut/tee_projektikuvat.py`. Ne ovat muokattavia SVG-kuvia,
@@ -80,7 +92,8 @@ Kuvat ovat tätä projektia varten tehtyjä omia kuvituksia, eivät verkkolähte
 
 ## Tiedot ja yksityisyys
 
-Tehtävien tila, työsykli, projektipäiväkirja, suunnitelma ja AI-loki tallentuvat vain käyttäjän
-selaimen paikalliseen tallennustilaan. Sivusto ei lähetä tietoja palvelimelle. Opiskelijan
+Tehtävien rastit ja työsyklin askel tallentuvat vain käyttäjän selaimen paikalliseen tallennustilaan.
+Suunnitelma, projektipäiväkirja ja AI-loki kirjoitetaan VS Codessa opiskelijan repositoryyn (v2.8);
+ennen 5.10.2026 selaimeen kirjoitettu teksti ladataan siirtymänapista. Sivusto ei lähetä tietoja palvelimelle. Opiskelijan
 repository on julkinen: itsearviointi, ohjaajan kommentit sekä testaajien nimet ja sanatarkat
 lausumat toimitetaan ohjaajalle Teamsissa tai sähköpostilla, eivät repositoryyn.

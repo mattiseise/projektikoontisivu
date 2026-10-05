@@ -1,26 +1,18 @@
 ---
 name: Havainto
-about: Virhe, jonka huomasit. Tästä voi tulla virheenkorjausketju.
-title: ""
+about: Virhe tai puute, joka korjataan
+title: "Havainto: "
 labels: havainto
 ---
 
-## Mitä odotit
+## Mitä odotin
 
 ## Mitä tapahtui
 
 ## Toistamisohje
 1. 
-2. 
-3. 
-
-## Testi
-Testi __: (nimi) tai "ei vielä testiä"
 
 ## Syy omin sanoin
-(Täytä, kun olet selvittänyt syyn.)
+(kirjoita, kun syy löytyy)
 
-## Korjaus
-Korjauscommit: 
-Uusintatesti: 
-Regressiotesti: 
+Suljetaan korjauscommitilla: Closes #(tämän issuen numero)

@@ -13,7 +13,7 @@
       "kohdat": [
         {
           "n": 1,
-          "teksti": "Avaa ladattu tiedosto. Sen nimi alkaa python-3.13 ja loppuu amd64.exe."
+          "teksti": "Avaa ladattu tiedosto. Sen nimen alussa on python-3.13 ja lopussa amd64.exe."
         },
         {
           "n": 2,
@@ -37,7 +37,7 @@
         },
         {
           "n": 4,
-          "teksti": "Sulje VS Code ja avaa se uudelleen. Aja terminaalissa `python --version`. Tulosteen pitää alkaa Python 3.13."
+          "teksti": "Sulje VS Code ja avaa se uudelleen. Aja terminaalissa `python --version`. Tulosteen pitää alkaa sanoilla Python 3.13."
         }
       ],
       "pvm": "alkuperäinen päivä tuntematon; lisätty 2026-09-30",
@@ -46,12 +46,12 @@
     {
       "tunnus": "github-noreply",
       "otsikko": "Piilota sähköpostiosoite",
-      "kuvaa": "GitHubin sähköpostin yksityisyysasetus päällä ja julkinen noreply-osoite sen alla.",
+      "kuvaa": "GitHubin sähköpostin yksityisyysasetus päällä ja julkinen noreply-osoite sen alapuolella.",
       "missa": "GitHub → profiilikuva → Settings → Emails",
       "tiedosto": "assets/kuvakaappaukset/github-noreply.png",
       "leveys": 950,
       "korkeus": 130,
-      "alt": "GitHubin sähköpostin yksityisyysasetus päällä ja julkinen noreply-osoite sen alla.",
+      "alt": "GitHubin sähköpostin yksityisyysasetus päällä ja julkinen noreply-osoite sen alapuolella.",
       "kohdat": [
         {
           "n": 1,
@@ -69,7 +69,7 @@
         },
         {
           "n": 3,
-          "teksti": "Kopioi ruudun alla näkyvä osoite. Sen lopussa on users.noreply.github.com.",
+          "teksti": "Kopioi ruudun alapuolella näkyvä osoite. Sen lopussa on users.noreply.github.com.",
           "alue": [
             0,
             63,
@@ -79,7 +79,7 @@
         },
         {
           "n": 4,
-          "teksti": "Kirjoita VS Coden terminaaliin `git config --global user.email \"osoite\"`. Liitä kopioitu osoite lainausmerkkien sisään. Paina Enter."
+          "teksti": "Kopioi komento työvaiheesta ja liitä se VS Coden terminaaliin: [[ohje:komento]]. Älä paina vielä Enteriä. Maalaa sitten kohdan 3 osoite ja paina Ctrl+C. Napsauta terminaalia, paina nuolta vasemmalle kerran, paina Ctrl+V ja lopuksi Enter."
         }
       ],
       "pvm": "2026-09-30",
@@ -161,7 +161,7 @@
         },
         {
           "n": 2,
-          "teksti": "Kirjoita viestikenttään commit-viesti. Aloita verbillä. Lisää loppuun rivi `Closes #N`, jos commit sulkee issuen."
+          "teksti": "Liitä viestikenttään työvaiheen commit-viesti näppäimillä Ctrl+V. Jos viestiä ei ole valmiina, kirjoita se itse: verbi ensin. Rivi `Closes #N` tulee omalle rivilleen, jos commit sulkee issuen."
         },
         {
           "n": 3,
@@ -177,9 +177,9 @@
     },
     {
       "tunnus": "github-kayttonakyma",
-      "otsikko": "Katso krediittien kulutus",
+      "otsikko": "Katso krediittien kulutus GitHubissa",
       "kuvaa": "Katso krediittien kulutus. GitHubin ohjeen Premium request analytics -esimerkki. Luvut eivät ole käyttäjän oma kulutus.",
-      "missa": "GitHub → profiilikuva → Settings → Billing and licensing → Usage",
+      "missa": "Selain → [GitHubin laskutussivu](https://github.com/settings/billing) → Metered usage → Copilot",
       "tiedosto": "assets/kuvakaappaukset/github-kayttonakyma.png",
       "leveys": 1046,
       "korkeus": 193,
@@ -187,15 +187,15 @@
       "kohdat": [
         {
           "n": 1,
-          "teksti": "Avaa profiilikuvasta Settings. Valitse Billing and licensing ja sitten Usage."
+          "teksti": "Avaa [GitHubin laskutussivu](https://github.com/settings/billing). Kuvassa on vanhempi näkymä: Settings → Billing and licensing → Usage."
         },
         {
           "n": 2,
-          "teksti": "Rajaa näkymä tuotteeseen Copilot."
+          "teksti": "Rajaa näkymä tuotteeseen Copilot. Nykyisessä näkymässä se on kohdassa Metered usage."
         },
         {
           "n": 3,
-          "teksti": "Lue tämän kuun kulutus. Kirjaa luku päiväkirjaan."
+          "teksti": "Lue tämän kuun kulutus. Kirjaa luku viikon kirjaukseen tiedostoon [[tiedosto:projektipaivakirja|projektipaivakirja.md]]."
         },
         {
           "n": 4,
@@ -303,7 +303,7 @@
         },
         {
           "n": 4,
-          "teksti": "Jos rivi alkaa sanalla KORJAA, tee sen alla oleva ohje. Aja sitten tarkistus uudelleen."
+          "teksti": "Jos rivi alkaa sanalla KORJAA, toimi sen ohjeen mukaan, joka on rivin jälkeen. Aja sitten tarkistus uudelleen."
         }
       ],
       "pvm": "2026-09-30",
@@ -333,7 +333,7 @@
         },
         {
           "n": 4,
-          "teksti": "Vihreä merkki tarkoittaa, että testi meni läpi. Punainen merkki tarkoittaa, että testi ei mennyt läpi."
+          "teksti": "Vihreä merkki tarkoittaa samaa kuin PASSED: testi meni läpi. Punainen merkki tarkoittaa samaa kuin FAILED: testi ei mennyt läpi."
         }
       ],
       "pvm": "alkuperäinen päivä tuntematon; lisätty 2026-09-30",
@@ -439,7 +439,7 @@
     },
     {
       "tunnus": "windows-smartscreen",
-      "otsikko": "Käynnistä SmartScreen-varoituksen jälkeen",
+      "otsikko": "Käynnistä sovellus SmartScreen-varoituksen jälkeen",
       "kuvaa": "Kaksi englanninkielistä SmartScreen-näkymää: More info ja sen jälkeen Run anyway. Esimerkin tiedosto on install.bat.",
       "missa": "Vektoripaja.exe → kaksoisnapsautus",
       "tiedosto": "assets/kuvakaappaukset/windows-smartscreen.png",
@@ -449,7 +449,7 @@
       "kohdat": [
         {
           "n": 1,
-          "teksti": "Kaksoisnapsauta tiedostoa Vektoripaja.exe. Jos näet sinisen ikkunan, jatka tästä."
+          "teksti": "Kaksoisnapsauta tiedostoa Vektoripaja.exe. Jos näet sinisen SmartScreen-varoituksen, jatka tästä."
         },
         {
           "n": 2,
@@ -535,7 +535,7 @@
         },
         {
           "n": 2,
-          "teksti": "Valitse tiedoston lataus omalta koneeltasi (kuvassa Upload images and files). Valitse PROJEKTIN-TILA.md repositorysi kansiosta. Kuvan .docx on vain esimerkki.",
+          "teksti": "Valitse tiedoston lataus omalta koneeltasi (kuvassa Upload images and files). Kuvan .docx on vain esimerkki.",
           "alue": [
             3.8,
             39.5,
@@ -545,6 +545,10 @@
         },
         {
           "n": 3,
+          "teksti": "Avautuu tiedostoikkuna. Kopioi ensin VS Codessa tiedoston polku: napsauta Explorerissa tiedostoa PROJEKTIN-TILA.md hiiren oikealla painikkeella ja valitse Copy Path. Palaa tiedostoikkunaan. Napsauta kenttää File name, paina Ctrl+V ja valitse Open."
+        },
+        {
+          "n": 4,
           "teksti": "Tarkista, että tiedoston nimi näkyy viestikentän yläpuolella. Lähetä viesti vasta sitten.",
           "alue": [
             4.5,
@@ -565,7 +569,7 @@
       "tiedosto": "assets/kuvakaappaukset/github-uusi-issue-malli.png",
       "leveys": 1200,
       "korkeus": 760,
-      "alt": "Mallikuva GitHubin Create new issue -näkymästä tummassa teemassa. Ylhäällä otsikkokenttä, jossa lukee \"Lisää pyörivä kuutio etusivulle\". Sen alla kuvauskenttä, jossa on tehtäväkortin kuusi otsikkoa. Oikeassa alakulmassa vihreä Create-painike.",
+      "alt": "Mallikuva GitHubin Create new issue -näkymästä tummassa teemassa. Ylhäällä otsikkokenttä, jossa lukee \"Lisää pyörivä kuutio etusivulle\". Sen alapuolella kuvauskenttä, jossa on tehtäväkortin kuusi otsikkoa. Oikeassa alakulmassa vihreä Create-painike.",
       "kohdat": [
         {
           "n": 1,
@@ -579,7 +583,7 @@
         },
         {
           "n": 2,
-          "teksti": "Liitä Copilotin kortti kuvauskenttään pohjan otsikoiden alle.",
+          "teksti": "Napsauta kuvauskenttää. Paina Ctrl+A ja sitten Ctrl+V. Copilotin kortti korvaa pohjan tekstin.",
           "alue": [
             3.3,
             45.8,
@@ -605,7 +609,7 @@
       "tunnus": "vscode-taydennys",
       "otsikko": "Hyväksy tai hylkää täydennys",
       "kuvaa": "Hyväksy tai hylkää täydennys. VS Coden ohjeen TypeScript-esimerkki havainnollistaa harmaata ehdotusta. Projektin testit kirjoitetaan Pythonilla.",
-      "missa": "VS Code → testitiedosto → kommenttirivin alla",
+      "missa": "VS Code → testitiedosto → kommenttirivin alapuolella",
       "tiedosto": "assets/kuvakaappaukset/vscode-taydennys.png",
       "leveys": 1000,
       "korkeus": 506,
@@ -613,7 +617,7 @@
       "kohdat": [
         {
           "n": 1,
-          "teksti": "Kirjoita kommenttirivi: testin tunnus, syöte ja odotettu tulos. Paina Enter."
+          "teksti": "Kirjoita kommenttirivi: testin numero ja nimi, syöte ja odotettu tulos. Paina Enter."
         },
         {
           "n": 2,
@@ -647,7 +651,7 @@
         },
         {
           "n": 3,
-          "teksti": "Valitse Keep, jos muutos on kortin mukainen. Valitse Undo, jos se ei ole. Kirjaa päätös AI-lokiin."
+          "teksti": "Valitse Keep, jos muutos on kortin mukainen. Valitse Undo, jos se ei ole. Kirjaa päätös tiedostoon [[tiedosto:ai-loki|ai-loki.md]]. Poikkeus: viikon 40 mittauksessa valitse aina Undo, eikä päätöstä kirjata."
         }
       ],
       "pvm": "alkuperäinen päivä tuntematon; lisätty 2026-09-30",
@@ -669,7 +673,7 @@
         },
         {
           "n": 2,
-          "teksti": "Kirjoita `pytest`. Paina Enter.",
+          "teksti": "Kirjoita `pytest -v`. Paina Enter. Ohje: [[ohje:pytest]].",
           "alue": [
             1,
             33,
@@ -679,7 +683,7 @@
         },
         {
           "n": 3,
-          "teksti": "Lue tulos. Sana passed tarkoittaa, että testi meni läpi. Sana failed tarkoittaa, että testi ei mennyt läpi.",
+          "teksti": "Lue tuloste. Jokaisen testin rivillä lukee PASSED, kun testi meni läpi, tai FAILED, kun testi ei mennyt läpi.",
           "alue": [
             1,
             70,
@@ -707,7 +711,7 @@
         },
         {
           "n": 2,
-          "teksti": "Valitse vastauksen alta Copy eli kopiointipainike. Kuvassa se on vasemmanpuoleinen kuvake, jossa on kaksi päällekkäistä suorakulmiota.",
+          "teksti": "Valitse vastauksen alareunasta Copy eli kopiointipainike. Kuvassa se on vasemmanpuoleinen kuvake, jossa on kaksi päällekkäistä suorakulmiota.",
           "alue": [
             3.5,
             5.4,
@@ -717,7 +721,11 @@
         },
         {
           "n": 3,
-          "teksti": "Liitä vastaus issueen tai AI-lokiin. Lue se, ennen kuin tallennat."
+          "teksti": "Liitä teksti näppäimillä Ctrl+V siihen paikkaan, jonka ohje kertoo. Lue teksti, ennen kuin tallennat."
+        },
+        {
+          "n": 4,
+          "teksti": "Jos tarvitset vastauksesta vain koodin tai tiedoston, älä käytä vastauksen kopiointipainiketta. Vie hiiri koodilohkon päälle. Valitse koodilohkon oikeasta yläkulmasta kopiointipainike. Se kopioi vain koodilohkon."
         }
       ],
       "pvm": "huhtikuu 2026; lisätty 2026-09-30",
@@ -739,7 +747,7 @@
         },
         {
           "n": 2,
-          "teksti": "Avaa issue. Tarkista, että otsikon alla lukee Closed.",
+          "teksti": "Avaa issue. Tarkista, että otsikon alapuolella lukee Closed.",
           "alue": [
             0,
             69,
@@ -749,7 +757,7 @@
         },
         {
           "n": 3,
-          "teksti": "Tarkista historiasta sulkeva commit tai yhdistetty pull request. Kuvan esimerkissä issue sulkeutui pull requestin yhteydessä. Vektoripajassa käytä commit-viestissä riviä `Closes #N`."
+          "teksti": "Tarkista historiasta sulkeva commit tai liitetty pull request. Kuvan esimerkissä issue sulkeutui pull requestin yhteydessä. Vektoripajassa käytä commit-viestissä riviä `Closes #N`."
         }
       ],
       "pvm": "2026-09-30",
@@ -758,12 +766,12 @@
     {
       "tunnus": "inkscape-layerit",
       "otsikko": "Nimeä layerit ja ryhmät Inkscapessa",
-      "kuvaa": "Inkscape 1.2:n Layers and Objects -paneeli: tasot ja niiden alla sisennetyt ryhmät ja muodot.",
+      "kuvaa": "Inkscape 1.2:n Layers and Objects -paneeli: tasot ja niiden alapuolella sisennetyt ryhmät ja muodot.",
       "missa": "Inkscape → Layer → Layers and Objects",
       "tiedosto": "assets/kuvakaappaukset/inkscape-layerit.png",
       "leveys": 1280,
       "korkeus": 460,
-      "alt": "Inkscape 1.2:n Layers and Objects -paneeli: tasot ja niiden alla sisennetyt ryhmät ja muodot.",
+      "alt": "Inkscape 1.2:n Layers and Objects -paneeli: tasot ja niiden alapuolella sisennetyt ryhmät ja muodot.",
       "kohdat": [
         {
           "n": 1,
@@ -771,7 +779,7 @@
         },
         {
           "n": 2,
-          "teksti": "Kaksoisklikkaa layerin nimeä. Kirjoita nimi, esimerkiksi vartalo. Paina Enter."
+          "teksti": "Kaksoisnapsauta layerin nimeä. Kirjoita nimi, esimerkiksi Vartalo. Paina Enter. Kirjoita nimi samalla kirjainkoolla kuin työvaihe."
         },
         {
           "n": 3,
@@ -779,7 +787,7 @@
         },
         {
           "n": 4,
-          "teksti": "Tarkista, että ryhmät näkyvät sisennettyinä layerin alla.",
+          "teksti": "Tarkista, että ryhmät näkyvät sisennettyinä layerin alapuolella.",
           "alue": [
             69,
             60,
@@ -795,7 +803,7 @@
       "tunnus": "vscode-chat-tilat",
       "otsikko": "Valitse GitHub Copilotin tila",
       "kuvaa": "Valitse GitHub Copilotin tila. Virallisen ohjeen esimerkkikuva.",
-      "missa": "VS Code → Chat → tilavalikko viestikentän alla",
+      "missa": "VS Code → Chat → tilavalikko viestikentän alapuolella",
       "tiedosto": "assets/kuvakaappaukset/vscode-chat-tilat.png",
       "leveys": 500,
       "korkeus": 195,
@@ -803,11 +811,11 @@
       "kohdat": [
         {
           "n": 1,
-          "teksti": "Avaa Chat VS Coden yläreunan Copilot-kuvakkeesta."
+          "teksti": "Avaa Chat näppäimillä Ctrl+Alt+I."
         },
         {
           "n": 2,
-          "teksti": "Avaa tilavalikko viestikentän alta."
+          "teksti": "Avaa tilavalikko viestikentän alapuolelta."
         },
         {
           "n": 3,
@@ -911,19 +919,19 @@
       "kohdat": [
         {
           "n": 1,
-          "teksti": "Käynnistä Vektoripaja. Avaa Accessibility Insights for Windows. Valitse FastPass."
+          "teksti": "Käynnistä Vektoripaja. Avaa Accessibility Insights for Windows."
         },
         {
           "n": 2,
-          "teksti": "Valitse kohteeksi Vektoripajan ikkuna. Käynnistä tarkistus."
+          "teksti": "Valitse yläreunan kohdasta What to select vaihtoehto Entire app. Vie hiiri Vektoripajan ikkunan päälle ja paina Shift+F8. Tämä käynnistää FastPassin."
         },
         {
           "n": 3,
-          "teksti": "Lue automaattisten tarkistusten tulos. Kirjaa virheiden määrä ja kolme ensimmäistä havaintoa päiväkirjaan."
+          "teksti": "Lue automaattisten tarkistusten tulos. Kirjaa virheiden määrä ja kolme ensimmäistä havaintoa tiedostoon [[tiedosto:saavutettavuus|saavutettavuus.md]]."
         },
         {
           "n": 4,
-          "teksti": "Käy läpi myös Tab stops -vaihe. Se näyttää, missä järjestyksessä Tab-näppäin kulkee säätimestä toiseen."
+          "teksti": "Tab stops -vaihe näyttää, missä järjestyksessä Tab-näppäin kulkee säätimestä toiseen. Perusmittauksessa se ohitetaan, koska Tab-järjestys tarkistetaan testissä 25."
         }
       ],
       "pvm": "alkuperäinen päivä tuntematon; lisätty 2026-09-30",
