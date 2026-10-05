@@ -434,7 +434,7 @@
           <details class="view-section">
 <summary>Lisätehtävä, jos viikon tavoite on valmis</summary>
 <ol>
-<li><strong>Tee lisätehtävä.</strong> Lisätesti on ylimääräinen testi ilman numeroa. Mitä odotat, kun aika on negatiivinen, esimerkiksi <code>kiertokulma(-1, 0.5)</code>? Kirjoita odotettu tulos kortin #1 issueen kommentiksi ennen ajoa. Suljettuunkin issueen voi kommentoida. Avaa sitten tiedosto <code>tests/test_kierto.py</code>, paina Ctrl+End ja kaksi kertaa Enter ja kirjoita rivi <code>def test_lisa_negatiivinen_aika():</code> ja seuraavalle riville neljän välilyönnin sisennyksellä <code>assert kiertokulma(-1, 0.5) == </code> ja oma tuloksesi. Aja testit. Ohje: [[ohje:pytest]]. Kirjoita havaittu tulos samaan issueen. Jos lisätesti ei mene läpi, poista se tiedostosta ennen committia, koska Actions ajaa kaikki testit julkaisussa. Tee lopuksi commit ja push. Ohje: [[ohje:commit]].</li>
+<li><strong>Tee lisätehtävä.</strong> Lisätesti on ylimääräinen testi ilman numeroa. Mitä odotat, kun aika on negatiivinen, esimerkiksi <code>kiertokulma(-1, 0.5)</code>? Kirjoita odotettu tulos kortin #1 issueen kommentiksi ennen ajoa. Suljettuunkin issueen voi kommentoida. Avaa sitten tiedosto <code>tests/test_kierto.py</code>, paina Ctrl+End ja kaksi kertaa Enter. def-rivin alussa ei ole välilyöntejä: jos VS Code sisensi rivin, paina Backspace, kunnes kursori on rivin alussa. Kirjoita rivi <code>def test_lisa_negatiivinen_aika():</code> ja paina Enter. VS Code sisentää seuraavan rivin neljällä välilyönnillä: kirjoita siihen <code>assert kiertokulma(-1, 0.5) == </code> ja oma tuloksesi. Aja testit. Ohje: [[ohje:pytest]]. Lisätesti ajettiin, kun tulosteessa on rivi, jossa on test_lisa_negatiivinen_aika ja PASSED tai FAILED. Kirjoita havaittu tulos samaan issueen. Jos lisätesti ei mene läpi, poista se tiedostosta ennen committia, koska Actions ajaa kaikki testit julkaisussa. Tee lopuksi commit ja push. Ohje: [[ohje:commit]].</li>
 </ol>
 </details>
 
@@ -719,8 +719,9 @@
           </section>
 
           <section class="view-section">
-            <div class="section-heading-row"><h2>Viikon työvaiheet</h2><span class="week-status" data-week-status>0 / 7</span></div>
+            <div class="section-heading-row"><h2>Viikon työvaiheet</h2><span class="week-status" data-week-status>0 / 8</span></div>
             <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="47-8"><span class="task-box" aria-hidden="true"></span><span class="task-text">Tee kamera loppuun, jos se siirtyi</span></label>
             <label class="task-row"><input type="checkbox" data-task="47-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Sovi pakollisen ytimen tilanne</span></label>
             <label class="task-row"><input type="checkbox" data-task="47-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Määrittele osien muokkaamisen testi</span></label>
             <label class="task-row"><input type="checkbox" data-task="47-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Suunnittele osien muokkaaminen</span></label>
@@ -1176,7 +1177,7 @@
           <details class="view-section">
 <summary>Lisätehtävä, jos viikon tavoite on valmis</summary>
 <ol>
-<li><strong>Tee tärkeän jatkon toiminto, jos viikon kortti oli rästi.</strong> Tee tämä vasta, kun rästi on liitetty päähaaraan ja virheenkorjausketju 2 on kirjattu. Avaa työvaihe Toteuta sovittu parannus, valitse sen lopussa painike Käytä työsykliä tämän muutoksen tekemiseen ja valitse Aloita kierros. Tee kortti samoin kuin työvaiheessa Toteuta sovittu parannus. Testi on testi 24: testitapa, syöte, odotettu tulos ja rajapinta ovat paperillasi. Kirjoita testi uuteen tiedostoon <code>tests/test_jatko.py</code> ja testin tulos kortin issueen. Lisää askeleen 6 commit-viestiin rivi <code>Closes #M</code>, jossa M on toiminnon issuen numero viikolta 2. Jos kortin Tiedostot-kohdassa on vähintään kaksi tiedostoa, tee haara nimellä <code>viikko-4-jatko</code> ja liitä se päähaaraan pull requestilla samoin kuin työvaiheessa Liitä haara päähaaraan.</li>
+<li><strong>Tee tärkeän jatkon toiminto, jos viikon kortti oli rästi.</strong> Tee tämä vasta, kun rästi on liitetty päähaaraan ja virheenkorjausketju 2 on kirjattu. Avaa työvaihe Toteuta sovittu parannus, valitse sen lopussa painike Käytä työsykliä tämän muutoksen tekemiseen ja valitse Aloita kierros. Suunnittele kortti osatehtävän Suunnittele toiminnon kortti ohjeella. Testi on testi 24: testitapa, syöte, odotettu tulos ja rajapinta ovat paperillasi. Kirjoita testi osatehtävän Kirjoita kortin testi pohjalla uuteen tiedostoon <code>tests/test_jatko.py</code> ja testin tulos kortin issueen. Lisää askeleen 6 commit-viestiin rivi <code>Closes #M</code>, jossa M on toiminnon issuen numero viikolta 2. Jos kortin Tiedostot-kohdassa on vähintään kaksi tiedostoa, tee haara ennen kohtaa 3a. Aja terminaalissa ensin komento <code>git switch -c viikko-4-jatko</code> ja sitten <code>git push -u origin viikko-4-jatko</code>: maalaa komento hiirellä, paina Ctrl+C ja liitä se terminaaliin ([[ohje:komento]]). Liitä haara lopuksi päähaaraan samoin kuin työvaiheessa Liitä haara päähaaraan, mutta valitse compare-valikosta viikko-4-jatko.</li>
 </ol>
 </details>
 
@@ -1275,9 +1276,10 @@
           </section>
 
           <section class="view-section">
-            <div class="section-heading-row"><h2>Viikon työvaiheet</h2><span class="week-status" data-week-status>0 / 6</span></div>
+            <div class="section-heading-row"><h2>Viikon työvaiheet</h2><span class="week-status" data-week-status>0 / 7</span></div>
             <div class="task-list">
             <label class="task-row"><input type="checkbox" data-task="6-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Valmistele julkaisuehdokas</span></label>
+            <label class="task-row"><input type="checkbox" data-task="6-7"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjoita puuttuva lisenssi</span></label>
             <label class="task-row"><input type="checkbox" data-task="6-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjoita lataus- ja käynnistysohje</span></label>
             <label class="task-row"><input type="checkbox" data-task="6-6"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjoita piirtämisen ja mallintamisen ohje</span></label>
             <label class="task-row"><input type="checkbox" data-task="6-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kokeile julkaisua toisella koneella</span></label>
@@ -1328,11 +1330,12 @@
           </section>
 
           <section class="view-section">
-            <div class="section-heading-row"><h2>Viikon työvaiheet</h2><span class="week-status" data-week-status>0 / 5</span></div>
+            <div class="section-heading-row"><h2>Viikon työvaiheet</h2><span class="week-status" data-week-status>0 / 6</span></div>
             <div class="task-list">
             <label class="task-row"><input type="checkbox" data-task="7-5"><span class="task-box" aria-hidden="true"></span><span class="task-text">Valitse korjattavat virheet</span></label>
             <label class="task-row"><input type="checkbox" data-task="7-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Korjaa julkaisun esteet</span></label>
-            <label class="task-row"><input type="checkbox" data-task="7-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjaa virheenkorjausketju 3</span></label>
+            <label class="task-row"><input type="checkbox" data-task="7-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjoita regressiotesti korjatulle virheelle</span></label>
+            <label class="task-row"><input type="checkbox" data-task="7-6"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjaa virheenkorjausketju 3</span></label>
             <label class="task-row"><input type="checkbox" data-task="7-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Julkaise valmis sovellus</span></label>
             <label class="task-row"><input type="checkbox" data-task="7-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kokoa työnäytteiden linkit</span></label>
             </div>
@@ -1394,7 +1397,7 @@
           <section class="view-section">
             <div class="section-heading-row"><h2>Viikon työvaiheet</h2><span class="week-status" data-week-status>0 / 6</span></div>
             <div class="task-list">
-            <label class="task-row"><input type="checkbox" data-task="9-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Vahvista näytön aika ja arvioijat</span></label>
+            <label class="task-row"><input type="checkbox" data-task="9-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Vahvista näytön aika ja sovi harjoituksen kuuntelija</span></label>
             <label class="task-row"><input type="checkbox" data-task="9-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Tarkista viikkojen kirjausten työnäytteet</span></label>
             <label class="task-row"><input type="checkbox" data-task="9-5"><span class="task-box" aria-hidden="true"></span><span class="task-text">Tarkista tekoälykirjaukset ja näyttömatriisi</span></label>
             <label class="task-row"><input type="checkbox" data-task="9-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Valmistele projektin esittely</span></label>

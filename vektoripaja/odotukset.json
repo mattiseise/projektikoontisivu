@@ -6,8 +6,8 @@
   "paivaton": false,
   "generoitu": "2026-10-05",
   "lahde": {
-    "sisalto.js": "c077ba0f036fd7f2",
-    "index.html": "c21c5042129baeb2"
+    "sisalto.js": "f66e1125e2fac8dc",
+    "index.html": "ec1465fe178a8246"
   },
   "viikot": [
     40,
@@ -243,8 +243,8 @@
         {
           "id": "4-1",
           "teksti": "Sovi viikon tehtävä",
-          "valmis": "Olet sopinut, teetkö ensin rästin vai tärkeän jatkon seuraavan toiminnon. Myös virheenkorjausketjun havaintoissue tai vikatehtävä on sovittu. Sovittu tehtävä ja sen issue ovat tilatiedostossa.",
-          "tallenna": "Sovittu tehtävä ja sen issuen numero tiedostossa PROJEKTIN-TILA.md GitHubissa. Sopimus kortin issueen kommenttina työvaiheessa Toteuta sovittu parannus."
+          "valmis": "Olet sopinut, teetkö ensin rästin vai tärkeän jatkon seuraavan toiminnon. Myös virheenkorjausketjun havaintoissue tai vikatehtävä on sovittu. Rästin testin syöte ja odotettu tulos ovat paperilla. Sovittu tehtävä ja sen issue ovat tilatiedostossa.",
+          "tallenna": "Sovittu tehtävä ja sen issuen numero tiedostossa PROJEKTIN-TILA.md GitHubissa. Rästin testin syöte ja odotettu tulos paperilla kortin suunnittelua varten. Sopimus kortin issueen kommenttina työvaiheessa Toteuta sovittu parannus."
         },
         {
           "id": "4-2",
@@ -279,7 +279,7 @@
         {
           "id": "4-6",
           "teksti": "Dokumentoi virheen korjaus",
-          "valmis": "Havaintoissuessa on virheenkorjausketjun kuusi osaa, ja project-docs/ai-loki.md on regressiotestin täydennyksen merkintä.",
+          "valmis": "Havaintoissuessa on virheenkorjausketjun kuusi osaa, ja project-docs/ai-loki.md on regressiotestin täydennyksen merkintä, jos käytit täydennystä.",
           "tallenna": "Ketju havaintoissueen kommenttina, merkintä tiedostossa project-docs/ai-loki.md ja regressiotesti tiedostossa tests/test_regressio.py GitHubissa."
         }
       ],
@@ -322,7 +322,7 @@
         {
           "id": "5-5",
           "teksti": "Sovi julkaisutestaaja ja lisenssi",
-          "valmis": "Julkaisutestaajan rooli ja lisenssi ovat GitHubissa. Julkaisutestaajan nimi on ohjaajalla Teamsissa. Jos ohjaaja ei ole vastannut lisenssistä viikon loppuun mennessä, viikon kirjauksessa lukee, että lisenssi odottaa vastausta.",
+          "valmis": "Julkaisutestaajan rooli ja lisenssi ovat GitHubissa. Julkaisutestaajan nimi on ohjaajalla Teamsissa. Jos ohjaaja ei ole vastannut lisenssistä viikon loppuun mennessä, viikon kirjauksessa lukee, että lisenssi odottaa vastausta, ja kirjoitat lisenssin viikolla 6.",
           "tallenna": "Julkaisutestaajan rooli ja lisenssi tiedostossa project-docs/suunnitelma.md GitHubissa. Julkaisutestaajan nimi ohjaajalle Teamsissa."
         },
         {
@@ -405,6 +405,12 @@
           "tallenna": "Tagi v1.0-rc1 ja release GitHubiin. Testijärjestelyt tiedostossa project-docs/julkaisutesti.md GitHubissa."
         },
         {
+          "id": "6-7",
+          "teksti": "Kirjoita puuttuva lisenssi",
+          "valmis": "Lisenssi ja päivä ovat project-docs/suunnitelma.md GitHubissa, tai lisenssi oli kirjattu jo viikolla 5.",
+          "tallenna": "Lisenssi tiedostossa project-docs/suunnitelma.md GitHubissa."
+        },
+        {
           "id": "6-2",
           "teksti": "Kirjoita lataus- ja käynnistysohje",
           "valmis": "README:ssä on lataus- ja käynnistysohje, joka toimii versioille v1.0-rc1 ja v1.0.",
@@ -413,13 +419,13 @@
         {
           "id": "6-6",
           "teksti": "Kirjoita piirtämisen ja mallintamisen ohje",
-          "valmis": "Ohje kattaa piirroksen nimeämisen, mallintamisen ja viennin sovelluksen painikkeiden nimillä.",
+          "valmis": "Ohje kattaa piirroksen nimeämisen, mallintamisen ja viennin sovelluksen painikkeiden nimillä. Jos käyttöohje on omassa tiedostossaan, README:ssä on linkki siihen.",
           "tallenna": "README.md ja käyttöohje GitHubissa."
         },
         {
           "id": "6-3",
           "teksti": "Kokeile julkaisua toisella koneella",
-          "valmis": "Julkaisutesti on tehty, testaajan .obj-tiedosto aukeaa, ja testaajan nimi ja lausumat ovat ohjaajalla.",
+          "valmis": "Julkaisutesti on tehty, testaajan .obj-tiedosto aukeaa tai tiedät vaiheen, johon testaaja jäi, ja testaajan nimi ja lausumat ovat ohjaajalla.",
           "tallenna": "Testaajan nimi ja sanatarkat lausumat ohjaajalle Teamsissa. Kirjaat paperin epäröinnit seuraavassa työvaiheessa."
         },
         {
@@ -497,9 +503,15 @@
         },
         {
           "id": "7-4",
+          "teksti": "Kirjoita regressiotesti korjatulle virheelle",
+          "valmis": "Regressiotesti on tiedostossa tests/test_regressio.py, ja se menee läpi.",
+          "tallenna": "Regressiotesti tiedostossa tests/test_regressio.py omalla koneellasi. Se menee GitHubiin seuraavassa työvaiheessa."
+        },
+        {
+          "id": "7-6",
           "teksti": "Kirjaa virheenkorjausketju 3",
-          "valmis": "Havaintoissuessa on virheenkorjausketjun kuusi osaa, regressiotesti menee läpi, ja täydennys on kirjattu.",
-          "tallenna": "Ketju havaintoissueen kommenttina, regressiotesti tiedostossa tests/test_regressio.py ja lokimerkintä tiedostossa project-docs/ai-loki.md GitHubissa."
+          "valmis": "Havaintoissuessa on virheenkorjausketjun kuusi osaa, regressiotesti on GitHubissa, ja Copilotin käyttö on kirjattu.",
+          "tallenna": "Regressiotesti tiedostossa tests/test_regressio.py ja lokimerkintä tiedostossa project-docs/ai-loki.md GitHubissa. Ketju havaintoissueen kommenttina."
         },
         {
           "id": "7-2",
@@ -546,8 +558,8 @@
       "tehtavat": [
         {
           "id": "9-4",
-          "teksti": "Vahvista näytön aika ja arvioijat",
-          "valmis": "Näytön aika, paikka ja arvioijat on vahvistettu ja kirjattu GitHubiin.",
+          "teksti": "Vahvista näytön aika ja sovi harjoituksen kuuntelija",
+          "valmis": "Näytön aika, paikka ja arvioijat on vahvistettu ja kirjattu GitHubiin, ja harjoituksen kuuntelija on sovittu.",
           "tallenna": "Näytön ajankohta ja arvioijien roolit tiedostossa project-docs/suunnitelma.md GitHubissa."
         },
         {
@@ -559,14 +571,14 @@
         {
           "id": "9-5",
           "teksti": "Tarkista tekoälykirjaukset ja näyttömatriisi",
-          "valmis": "project-docs/ai-loki.md jokaisessa merkinnässä on päätös ja peruste. Hylkäyksiä ja korjautuksia on vähintään kolme, ja ketjuja on kolme. Näyttömatriisin rivit on rastitettu, paitsi rivi, jonka vaatimus on arvioi omaa toimintaa tiimin jäsenenä.",
+          "valmis": "project-docs/ai-loki.md jokaisessa merkinnässä on päätös ja peruste. Hylkäyksiä ja korjautuksia on vähintään kolme, ja ketjuja on vähintään kolme. Näyttömatriisin rivit on rastitettu, paitsi rivi, jonka vaatimus on arvioi omaa toimintaa tiimin jäsenenä.",
           "tallenna": "Tarkistettu project-docs/ai-loki.md GitHubissa. Aineiston linkit viikon kirjaukseen perjantaina."
         },
         {
           "id": "9-2",
           "teksti": "Valmistele projektin esittely",
           "valmis": "Demon viiden osan näytettävät asiat on valittu, ja sovellus ja sivut ovat valmiina.",
-          "tallenna": "Demon runko ja valitut työnäytteet viikon kirjaukseen perjantaina."
+          "tallenna": "Demon viisi osaa ja valitut työnäytteet (funktio, havaintoissue ja kortin issue) viikon kirjaukseen perjantaina."
         },
         {
           "id": "9-7",
@@ -644,7 +656,7 @@
         {
           "id": "40-3",
           "teksti": "Rajaa ensimmäinen versio",
-          "valmis": "Oma kuvaus pakollisesta ytimestä on GitHubissa.",
+          "valmis": "Oma kuvaus pakollisesta ytimestä on GitHubissa. Jos kirjoitit sen sivun lomakkeeseen ennen 5.10.2026, se on GitHubissa viikon 41 työvaiheen 2 jälkeen.",
           "tallenna": "Nimi, tekijä ja pakollinen ydin tiedostossa project-docs/suunnitelma.md GitHubissa."
         },
         {
@@ -656,13 +668,13 @@
         {
           "id": "40-4",
           "teksti": "Mittaa agentin krediittikulutus",
-          "valmis": "Tiedät agenttipyynnön hinnan prosentteina, tai tiedät, että luku päivittyy myöhemmin. README.md on ennallaan.",
+          "valmis": "Tiedät agenttipyynnön hinnan prosentteina tai dollareina, tai tiedät, että luku päivittyy myöhemmin. README.md on ennallaan.",
           "tallenna": "Alku- ja loppulukema sekä erotus viikon kirjauksen kohtaan Mitä tein ja miten? viikon viimeisenä työpäivänä."
         }
       ],
       "nayta": "repositoryn osoite, pakollinen ydin eli MVP tiedostossa project-docs/suunnitelma.md GitHubissa ja agenttipyynnön hinta viikon kirjauksessa.",
       "tuotos": "Versiotulosteet · GitHub Copilot käytössä · kloonattu ja jaettu repository · pohjat ja dokumentit pull requestista · pakollinen ydin suunnitelmassa · lähetetty kysymyslista · agenttipyynnön hinta.",
-      "valmis": "Ohjaaja on kutsuttu repositoryyn, pakollinen ydin on tiedostossa project-docs/suunnitelma.md GitHubissa, kysymyslista on lähetetty, ja tiedät agenttipyynnön hinnan.",
+      "valmis": "Ohjaaja on kutsuttu repositoryyn, pakollinen ydin on tiedostossa project-docs/suunnitelma.md GitHubissa (sivun lomakkeeseen kirjoitettu ydin viikon 41 siirron jälkeen), kysymyslista on lähetetty, ja tiedät agenttipyynnön hinnan.",
       "tarkistukset": [
         {
           "id": "tiedosto:project-docs/suunnitelma.md",
@@ -1211,6 +1223,12 @@
       "vaihe": "2",
       "otsikko": "Osien siirto, kierto ja skaalaus",
       "tehtavat": [
+        {
+          "id": "47-8",
+          "teksti": "Tee kamera loppuun, jos se siirtyi",
+          "valmis": "Kameran kortti on tehty loppuun, ja sen issue on suljettu. Jos kamera valmistui jo viikolla 46, tämän työvaiheen osatehtävät on rastitettu tekemättä.",
+          "tallenna": "Kameran koodi GitHubiin. Testin 14 tulos ja tarkistuslistan kommentti kameran kortin issueen."
+        },
         {
           "id": "47-1",
           "teksti": "Sovi pakollisen ytimen tilanne",

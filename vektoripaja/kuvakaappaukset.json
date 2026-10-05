@@ -545,7 +545,7 @@
         },
         {
           "n": 3,
-          "teksti": "Avautuu tiedostoikkuna. Kopioi ensin VS Codessa tiedoston polku: napsauta Explorerissa tiedostoa PROJEKTIN-TILA.md hiiren oikealla painikkeella ja valitse Copy Path. Palaa tiedostoikkunaan. Napsauta kenttää File name, paina Ctrl+V ja valitse Open."
+          "teksti": "Avautuu tiedostoikkuna. Kopioi ensin VS Codessa tiedoston polku: napsauta Explorerissa tiedostoa PROJEKTIN-TILA.md hiiren oikealla painikkeella ja valitse Copy Path. Palaa tiedostoikkunaan. Napsauta kenttää Tiedostonimi (File name), paina Ctrl+V ja valitse Avaa (Open)."
         },
         {
           "n": 4,
@@ -651,7 +651,7 @@
         },
         {
           "n": 3,
-          "teksti": "Valitse Keep, jos muutos on kortin mukainen. Valitse Undo, jos se ei ole. Kirjaa päätös tiedostoon [[tiedosto:ai-loki|ai-loki.md]]. Poikkeus: viikon 40 mittauksessa valitse aina Undo, eikä päätöstä kirjata."
+          "teksti": "Valitse Keep, jos muutos on kortin mukainen. Valitse Undo, jos se ei ole. Kirjaat kortin tärkeimmän päätöksen tiedostoon [[tiedosto:ai-loki|ai-loki.md]] työsyklin askeleessa 6. Poikkeus: viikon 40 mittauksessa valitse aina Undo, eikä päätöstä kirjata."
         }
       ],
       "pvm": "alkuperäinen päivä tuntematon; lisätty 2026-09-30",

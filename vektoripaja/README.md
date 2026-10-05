@@ -15,7 +15,7 @@ avustaa VS Codessa. Opiskelija päättää ja tarkistaa.
 - **Selkeysuudistus 5.10.2026 (moottori v2.8, Matin ja opiskelijan hyväksymä brief):** kirjoitus tehdään vain
   VS Codessa, ja dokumentit ovat valmiina tiedostoina opiskelijan repositoryn `project-docs`-kansiossa
   (`dokumentitRepossa`). Jokainen viittaus on linkki (`[[ohje:…]]`, `[[tiedosto:…]]`, `[[github:…]]`),
-  toistuvat taidot ovat Työtapa-näkymän perusohjeissa ("Näin teet", 15 ohjetta) ja jokaisesta dokumentista on
+  toistuvat taidot ovat Työtapa-näkymän perusohjeissa ("Näin teet", 23 ohjetta) ja jokaisesta dokumentista on
   tiedostokortti ("Dokumentit"). Jokainen osatehtävä on muodossa otsikko, missä, tee ja näet nyt.
   `tarkista.js` tarkistaa tiukassa tilassa (`selkeys: "tiukka"`). Selaimeen kirjoitettu teksti ladataan
   siirtymänapista yhtenä tiedostona (viikon 41 ensimmäinen työvaihe). Kloonipolku: `KLOONIPOLKU`
@@ -74,12 +74,12 @@ chrome --headless --no-pdf-header-footer --print-to-pdf=downloads/vektoripaja-ty
 ## Kuvaohjeiden kuvat
 
 Aloitusnäkymä kertoo tavoitteen ja viisi vaihetta. Jokaisen työviikon alussa on vaihepolku,
-yksi yhteys kokonaisprojektiin ja lyhyt tavoite. Projektin 125 työvaihetta on jaettu 783
+yksi yhteys kokonaisprojektiin ja lyhyt tavoite. Projektin 128 työvaihetta on jaettu 807
 osatehtävään (selkeysuudistus 5.10.2026: yksi osatehtävä on yksi toimenpide, ja jokaisessa on
 Missä, Tee ja Näet nyt). Vanhat tehtävätunnukset säilyvät, ja moottori siirtää aiemmat rastit
 osatehtäviin (`versio`, `vanha`, `perii`). Viikon työvaihe on viikon sivun osa; GitHub-issue on
-tehtäväkortti, johon työsykliä käytetään. Sisältö on lukutestattu ilman taustatietoa kahdesti
-(viikko 41 kolmesti) ja kielenhuollettu (Börje).
+tehtäväkortti, johon työsykliä käytetään. Sisältö on lukutestattu ilman taustatietoa kolmesti
+(viikko 41 neljästi), jokaisen kierroksen havainnot on korjattu, ja teksti on kielenhuollettu (Börje).
 
 Omat havainnekuvat `assets/piirroksesta-malliksi.svg` ja `assets/projektin-vaiheet.svg`
 syntyvät komennolla `python tyokalut/tee_projektikuvat.py`. Ne ovat muokattavia SVG-kuvia,
