@@ -1,0 +1,939 @@
+/* Generoitu tiedostosta kuvakaappaukset.json (tyokalut/rakenna_index.py). Älä muokkaa käsin. */
+window.NAYTTOPROJEKTI.kuvakaappaukset = [
+ {
+  "tunnus": "python-asennus",
+  "otsikko": "Asenna Python ja lisää se PATHiin",
+  "kuvaa": "Pythonin virallisen ohjeen 3.8-asennusikkuna: Install Now ja Add Python 3.8 to PATH. Tehtävässä käytetään versiota 3.13.",
+  "missa": "python.org → Downloads → Windows → Python 3.13 → Windows installer (64-bit)",
+  "tiedosto": "assets/kuvakaappaukset/python-asennus.png",
+  "leveys": 706,
+  "korkeus": 449,
+  "alt": "Pythonin virallisen ohjeen 3.8-asennusikkuna: Install Now ja Add Python 3.8 to PATH. Tehtävässä käytetään versiota 3.13.",
+  "kohdat": [
+   {
+    "n": 1,
+    "teksti": "Avaa ladattu tiedosto. Sen nimen alussa on python-3.13 ja lopussa amd64.exe."
+   },
+   {
+    "n": 2,
+    "teksti": "Rastita alareunasta Add python.exe to PATH. Ilman rastia komento `python` ei toimi terminaalissa.",
+    "alue": [
+     5,
+     90,
+     64,
+     7
+    ]
+   },
+   {
+    "n": 3,
+    "teksti": "Valitse Install Now. Kun asennus on valmis, valitse Close.",
+    "alue": [
+     20,
+     32,
+     58,
+     22
+    ]
+   },
+   {
+    "n": 4,
+    "teksti": "Sulje VS Code ja avaa se uudelleen. Aja terminaalissa `python --version`. Tulosteen pitää alkaa sanoilla Python 3.13."
+   }
+  ],
+  "pvm": "alkuperäinen päivä tuntematon; lisätty 2026-09-30",
+  "teema": "Pythonin virallisen ohjeen vanhempi 3.8-esimerkki. Asenna tehtävän mukainen Python 3.13; PATH-valinnan teksti voi poiketa."
+ },
+ {
+  "tunnus": "github-noreply",
+  "otsikko": "Piilota sähköpostiosoite",
+  "kuvaa": "GitHubin sähköpostin yksityisyysasetus päällä ja julkinen noreply-osoite sen alapuolella.",
+  "missa": "GitHub → profiilikuva → Settings → Emails",
+  "tiedosto": "assets/kuvakaappaukset/github-noreply.png",
+  "leveys": 950,
+  "korkeus": 130,
+  "alt": "GitHubin sähköpostin yksityisyysasetus päällä ja julkinen noreply-osoite sen alapuolella.",
+  "kohdat": [
+   {
+    "n": 1,
+    "teksti": "Avaa profiilikuvasta Settings. Valitse vasemmasta valikosta Emails."
+   },
+   {
+    "n": 2,
+    "teksti": "Valitse ruutu Keep my email addresses private.",
+    "alue": [
+     93,
+     5,
+     6,
+     29
+    ]
+   },
+   {
+    "n": 3,
+    "teksti": "Kopioi ruudun alapuolella näkyvä osoite. Sen lopussa on users.noreply.github.com.",
+    "alue": [
+     0,
+     63,
+     57,
+     20
+    ]
+   },
+   {
+    "n": 4,
+    "teksti": "Kopioi komento työvaiheesta ja liitä se VS Coden terminaaliin: [[ohje:komento]]. Älä paina vielä Enteriä. Maalaa sitten kohdan 3 osoite ja paina Ctrl+C. Napsauta terminaalia, paina nuolta vasemmalle kerran, paina Ctrl+V ja lopuksi Enter."
+   }
+  ],
+  "pvm": "2026-09-30",
+  "teema": "Oma kuvakaappaus."
+ },
+ {
+  "tunnus": "vscode-kloonaus",
+  "otsikko": "Kloonaa repository VS Codeen",
+  "kuvaa": "Kloonaa repository VS Codeen. VS Coden ohjeen esimerkki. Valitse oma repositorysi, älä kuvan microsoft/vscode-repositorya.",
+  "missa": "VS Code → vasen palkki → Source Control",
+  "tiedosto": "assets/kuvakaappaukset/vscode-kloonaus.png",
+  "leveys": 941,
+  "korkeus": 300,
+  "alt": "Kloonaa repository VS Codeen. VS Coden ohjeen esimerkki. Valitse oma repositorysi, älä kuvan microsoft/vscode-repositorya.",
+  "kohdat": [
+   {
+    "n": 1,
+    "teksti": "Valitse vasemmasta palkista Source Control."
+   },
+   {
+    "n": 2,
+    "teksti": "Valitse Clone Repository. Valitse sitten Clone from GitHub."
+   },
+   {
+    "n": 3,
+    "teksti": "Valitse listasta oma repositorysi vektoripaja."
+   },
+   {
+    "n": 4,
+    "teksti": "Valitse kansio omalta koneeltasi. Valitse lopuksi Open."
+   }
+  ],
+  "pvm": "alkuperäinen päivä tuntematon; lisätty 2026-09-30",
+  "teema": "VS Coden ohjeen esimerkki. Valitse oma repositorysi, älä kuvan microsoft/vscode-repositorya."
+ },
+ {
+  "tunnus": "github-collaborators",
+  "otsikko": "Jaa repository ohjaajalle",
+  "kuvaa": "Jaa repository ohjaajalle. Oma kuvakaappaus.",
+  "missa": "GitHub → oma repository → Settings → Collaborators",
+  "tiedosto": "assets/kuvakaappaukset/github-collaborators.png",
+  "leveys": 1250,
+  "korkeus": 605,
+  "alt": "Jaa repository ohjaajalle. Oma kuvakaappaus.",
+  "kohdat": [
+   {
+    "n": 1,
+    "teksti": "Avaa repositoryn Settings-välilehti."
+   },
+   {
+    "n": 2,
+    "teksti": "Valitse vasemmasta valikosta Collaborators."
+   },
+   {
+    "n": 3,
+    "teksti": "Valitse Add people. Kirjoita ohjaajan GitHub-tunnus."
+   },
+   {
+    "n": 4,
+    "teksti": "Valitse ohjaaja listasta. Vahvista kutsu."
+   }
+  ],
+  "pvm": "2026-09-30",
+  "teema": "Oma kuvakaappaus."
+ },
+ {
+  "tunnus": "vscode-commit-push",
+  "otsikko": "Tee commit ja push",
+  "kuvaa": "Tee commit ja push. VS Coden ohjeen Commit-näkymä. Sync Changes on seuraava vaihe eikä näy kuvassa.",
+  "missa": "VS Code → vasen palkki → Source Control",
+  "tiedosto": "assets/kuvakaappaukset/vscode-commit-push.png",
+  "leveys": 1500,
+  "korkeus": 447,
+  "alt": "Tee commit ja push. VS Coden ohjeen Commit-näkymä. Sync Changes on seuraava vaihe eikä näy kuvassa.",
+  "kohdat": [
+   {
+    "n": 1,
+    "teksti": "Tarkista listasta, että muuttuneet tiedostot ovat oikeat."
+   },
+   {
+    "n": 2,
+    "teksti": "Liitä viestikenttään työvaiheen commit-viesti näppäimillä Ctrl+V. Jos viestiä ei ole valmiina, kirjoita se itse: verbi ensin. Rivi `Closes #N` tulee omalle rivilleen, jos commit sulkee issuen."
+   },
+   {
+    "n": 3,
+    "teksti": "Valitse Commit. Jos VS Code kysyy, lisätäänkö kaikki muutokset, valitse Yes."
+   },
+   {
+    "n": 4,
+    "teksti": "Valitse Sync Changes. Nyt commit on GitHubissa."
+   }
+  ],
+  "pvm": "alkuperäinen päivä tuntematon; lisätty 2026-09-30",
+  "teema": "VS Coden ohjeen Commit-näkymä. Sync Changes on seuraava vaihe eikä näy kuvassa."
+ },
+ {
+  "tunnus": "github-kayttonakyma",
+  "otsikko": "Katso krediittien kulutus GitHubissa",
+  "kuvaa": "Katso krediittien kulutus. GitHubin ohjeen Premium request analytics -esimerkki. Luvut eivät ole käyttäjän oma kulutus.",
+  "missa": "Selain → [GitHubin laskutussivu](https://github.com/settings/billing) → Metered usage → Copilot",
+  "tiedosto": "assets/kuvakaappaukset/github-kayttonakyma.png",
+  "leveys": 1046,
+  "korkeus": 193,
+  "alt": "Katso krediittien kulutus. GitHubin ohjeen Premium request analytics -esimerkki. Luvut eivät ole käyttäjän oma kulutus.",
+  "kohdat": [
+   {
+    "n": 1,
+    "teksti": "Avaa [GitHubin laskutussivu](https://github.com/settings/billing). Kuvassa on vanhempi näkymä: Settings → Billing and licensing → Usage."
+   },
+   {
+    "n": 2,
+    "teksti": "Rajaa näkymä tuotteeseen Copilot. Nykyisessä näkymässä se on kohdassa Metered usage."
+   },
+   {
+    "n": 3,
+    "teksti": "Lue tämän kuun kulutus. Kirjaa luku viikon kirjaukseen tiedostoon [[tiedosto:projektipaivakirja|projektipaivakirja.md]]."
+   },
+   {
+    "n": 4,
+    "teksti": "Jos luku ei ole muuttunut, päivitä sivu myöhemmin. Luvun päivittyminen voi kestää tunteja."
+   }
+  ],
+  "pvm": "alkuperäinen päivä tuntematon; lisätty 2026-09-30",
+  "teema": "GitHubin ohjeen Premium request analytics -esimerkki. Luvut eivät ole käyttäjän oma kulutus."
+ },
+ {
+  "tunnus": "vscode-create-environment",
+  "otsikko": "Luo virtuaaliympäristö",
+  "kuvaa": "Luo virtuaaliympäristö. Yksi ruutu animaatiosta, rajattu komentopalettiin.",
+  "missa": "VS Code → Ctrl+Shift+P → Python: Create Environment",
+  "tiedosto": "assets/kuvakaappaukset/vscode-create-environment.png",
+  "leveys": 1110,
+  "korkeus": 240,
+  "alt": "Luo virtuaaliympäristö. Yksi ruutu animaatiosta, rajattu komentopalettiin.",
+  "kohdat": [
+   {
+    "n": 1,
+    "teksti": "Avaa repositoryn kansio VS Codessa. Paina Ctrl+Shift+P."
+   },
+   {
+    "n": 2,
+    "teksti": "Kirjoita Create Environment. Valitse Python: Create Environment."
+   },
+   {
+    "n": 3,
+    "teksti": "Valitse Venv. Valitse sitten Python 3.13.",
+    "alue": [
+     2,
+     36,
+     78,
+     14
+    ]
+   },
+   {
+    "n": 4,
+    "teksti": "Jos VS Code tarjoaa kirjastojen asennusta, älä valitse listasta mitään. Valitse OK. Odota, että oikeaan alakulmaan tulee ilmoitus valmiista ympäristöstä."
+   }
+  ],
+  "pvm": "alkuperäinen päivä tuntematon; lisätty 2026-09-30",
+  "teema": "Yksi ruutu animaatiosta, rajattu komentopalettiin."
+ },
+ {
+  "tunnus": "vscode-tulkki",
+  "otsikko": "Valitse projektin tulkki",
+  "kuvaa": "Valitse projektin tulkki. VS Coden ohjeen tulkkilista. Valitse .venv-rivi; kuvan järjestelmätulkki ei ole projektin ympäristö.",
+  "missa": "VS Code → Ctrl+Shift+P → Python: Select Interpreter",
+  "tiedosto": "assets/kuvakaappaukset/vscode-tulkki.png",
+  "leveys": 1095,
+  "korkeus": 406,
+  "alt": "Valitse projektin tulkki. VS Coden ohjeen tulkkilista. Valitse .venv-rivi; kuvan järjestelmätulkki ei ole projektin ympäristö.",
+  "kohdat": [
+   {
+    "n": 1,
+    "teksti": "Paina Ctrl+Shift+P. Valitse Python: Select Interpreter."
+   },
+   {
+    "n": 2,
+    "teksti": "Valitse rivi, jonka polussa on `.venv`. Rivillä lukee Python 3.13."
+   },
+   {
+    "n": 3,
+    "teksti": "Avaa uusi terminaali. Tarkista, että terminaalin rivin alussa lukee (.venv)."
+   }
+  ],
+  "pvm": "alkuperäinen päivä tuntematon; lisätty 2026-09-30",
+  "teema": "VS Coden ohjeen tulkkilista. Valitse .venv-rivi; kuvan järjestelmätulkki ei ole projektin ympäristö."
+ },
+ {
+  "tunnus": "tarkista-ymparisto",
+  "otsikko": "Tarkista ympäristö",
+  "kuvaa": "Kuvaksi ladottu paikallinen ympäristötarkistus: Python 3.13.5, virtuaaliympäristö ja kaikki kirjastot OK; Ympäristö on kunnossa.",
+  "missa": "VS Code → Terminal → New Terminal",
+  "tiedosto": "assets/kuvakaappaukset/tarkista-ymparisto.png",
+  "leveys": 1150,
+  "korkeus": 638,
+  "alt": "Kuvaksi ladottu paikallinen ympäristötarkistus: Python 3.13.5, virtuaaliympäristö ja kaikki kirjastot OK; Ympäristö on kunnossa.",
+  "kohdat": [
+   {
+    "n": 1,
+    "teksti": "Tarkista, että terminaalin rivin alussa lukee (.venv)."
+   },
+   {
+    "n": 2,
+    "teksti": "Kirjoita `python tarkista_ymparisto.py`. Paina Enter.",
+    "alue": [
+     1,
+     12,
+     63,
+     10
+    ]
+   },
+   {
+    "n": 3,
+    "teksti": "Lue rivit. Tarkistusrivien pitää alkaa sanalla OK. Viimeisellä rivillä pitää lukea Ympäristö on kunnossa.",
+    "alue": [
+     1,
+     22,
+     90,
+     76
+    ]
+   },
+   {
+    "n": 4,
+    "teksti": "Jos rivi alkaa sanalla KORJAA, toimi sen ohjeen mukaan, joka on rivin jälkeen. Aja sitten tarkistus uudelleen."
+   }
+  ],
+  "pvm": "2026-09-30",
+  "teema": "Tuloste ladottu kuvaksi; käyttäjän kansiopolku lyhennetty. Ei VS Coden kuvakaappaus."
+ },
+ {
+  "tunnus": "vscode-testing",
+  "otsikko": "Aja testit Testing-paneelista",
+  "kuvaa": "Aja testit Testing-paneelista. VS Coden ohjeen testitulosten esimerkki. Kuvan testit ja testikehys eroavat projektin pytest-testeistä.",
+  "missa": "VS Code → vasen palkki → Testing",
+  "tiedosto": "assets/kuvakaappaukset/vscode-testing.png",
+  "leveys": 1877,
+  "korkeus": 740,
+  "alt": "Aja testit Testing-paneelista. VS Coden ohjeen testitulosten esimerkki. Kuvan testit ja testikehys eroavat projektin pytest-testeistä.",
+  "kohdat": [
+   {
+    "n": 1,
+    "teksti": "Valitse vasemmasta palkista Testing. Kuvake on laboratoriopullo."
+   },
+   {
+    "n": 2,
+    "teksti": "Jos VS Code kysyy testikehystä eli testien ajotyökalua, valitse pytest. Valitse sitten kansio tests."
+   },
+   {
+    "n": 3,
+    "teksti": "Valitse listan yläpuolelta Run Tests."
+   },
+   {
+    "n": 4,
+    "teksti": "Vihreä merkki tarkoittaa samaa kuin PASSED: testi meni läpi. Punainen merkki tarkoittaa samaa kuin FAILED: testi ei mennyt läpi."
+   }
+  ],
+  "pvm": "alkuperäinen päivä tuntematon; lisätty 2026-09-30",
+  "teema": "VS Coden ohjeen testitulosten esimerkki. Kuvan testit ja testikehys eroavat projektin pytest-testeistä."
+ },
+ {
+  "tunnus": "github-actions-ajo",
+  "otsikko": "Katso julkaisun ajo",
+  "kuvaa": "Katso julkaisun ajo. GitHubin ohjeen esimerkkiajo. Vektoripajan työnkulun ja askelten nimet annetaan tekstiohjeessa.",
+  "missa": "GitHub → oma repository → Actions → Julkaisu",
+  "tiedosto": "assets/kuvakaappaukset/github-actions-ajo.png",
+  "leveys": 1480,
+  "korkeus": 1052,
+  "alt": "Katso julkaisun ajo. GitHubin ohjeen esimerkkiajo. Vektoripajan työnkulun ja askelten nimet annetaan tekstiohjeessa.",
+  "kohdat": [
+   {
+    "n": 1,
+    "teksti": "Avaa repositoryn Actions-välilehti. Valitse vasemmalta Julkaisu."
+   },
+   {
+    "n": 2,
+    "teksti": "Avaa ylin ajo. Ajon nimi on Julkaisu ja tagisi, esimerkiksi Julkaisu v0.0.41."
+   },
+   {
+    "n": 3,
+    "teksti": "Odota, että jokaisen askeleen vieressä on vihreä valintamerkki. Ajo kestää noin 10 minuuttia."
+   },
+   {
+    "n": 4,
+    "teksti": "Avaa askel, jonka nimi on Aja itsetesti valmiille .exe:lle. Viimeisellä rivillä pitää lukea ITSETESTI LÄPI."
+   }
+  ],
+  "pvm": "alkuperäinen päivä tuntematon; lisätty 2026-09-30",
+  "teema": "GitHubin ohjeen esimerkkiajo. Vektoripajan työnkulun ja askelten nimet annetaan tekstiohjeessa."
+ },
+ {
+  "tunnus": "github-release-lataus",
+  "otsikko": "Lataa zip releasesta",
+  "kuvaa": "GitHub CLI:n julkaisun Windows-lataukset, ZIP- ja MSI-tiedostoja. Nimet eroavat Vektoripajan windows.zip-paketista.",
+  "missa": "GitHub → oma repository → Releases",
+  "tiedosto": "assets/kuvakaappaukset/github-release-lataus.png",
+  "leveys": 1190,
+  "korkeus": 287,
+  "alt": "GitHub CLI:n julkaisun Windows-lataukset, ZIP- ja MSI-tiedostoja. Nimet eroavat Vektoripajan windows.zip-paketista.",
+  "kohdat": [
+   {
+    "n": 1,
+    "teksti": "Avaa repositoryn etusivu. Valitse oikealta Releases."
+   },
+   {
+    "n": 2,
+    "teksti": "Tarkista, että ylimmän julkaisun nimessä on oma tagisi."
+   },
+   {
+    "n": 3,
+    "teksti": "Valitse kohdasta Assets tiedosto, jonka nimen lopussa on windows.zip. Lataus alkaa."
+   }
+  ],
+  "pvm": "2026-09-30",
+  "teema": "Rajattu julkinen GitHub CLI -esimerkki; ei Vektoripajan repository."
+ },
+ {
+  "tunnus": "windows-pura-kaikki",
+  "otsikko": "Pura zip",
+  "kuvaa": "Kaksi suomenkielistä Windows 11 -kuvakaappausta: vasemmalla zipin pikavalikon Pura kaikki, oikealla Valitse kohde ja pura tiedostot -ikkuna, esimerkkikohde C:\\Vektoripaja-esimerkki sekä Pura-painike.",
+  "missa": "Resurssienhallinta → Lataukset → zip-tiedosto → hiiren oikea painike",
+  "tiedosto": "assets/kuvakaappaukset/windows-pura-kaikki.png",
+  "leveys": 1144,
+  "korkeus": 580,
+  "alt": "Kaksi suomenkielistä Windows 11 -kuvakaappausta: vasemmalla zipin pikavalikon Pura kaikki, oikealla Valitse kohde ja pura tiedostot -ikkuna, esimerkkikohde C:\\Vektoripaja-esimerkki sekä Pura-painike.",
+  "kohdat": [
+   {
+    "n": 1,
+    "teksti": "Avaa Lataukset-kansio. Napsauta zip-tiedostoa hiiren oikealla painikkeella."
+   },
+   {
+    "n": 2,
+    "teksti": "Valitse Pura kaikki.",
+    "alue": [
+     1.9,
+     21.5,
+     27.5,
+     6
+    ]
+   },
+   {
+    "n": 3,
+    "teksti": "Tarkista kohdekansio. Valitse Pura.",
+    "alue": [
+     83.6,
+     90.5,
+     6.9,
+     4.8
+    ]
+   },
+   {
+    "n": 4,
+    "teksti": "Avaa purettu kansio. Sen sisällä on kansio Vektoripaja. Siellä ovat Vektoripaja.exe, LUE_MINUT.txt ja kansio _internal."
+   }
+  ],
+  "pvm": "2026-09-30",
+  "teema": "Omat Windows 11 -kuvakaappaukset. Kuvaus käyttää lähdekoodin pohjapakettia ja esimerkkikohdetta; julkaistun sovelluksen zip puretaan samalla tavalla."
+ },
+ {
+  "tunnus": "windows-smartscreen",
+  "otsikko": "Käynnistä sovellus SmartScreen-varoituksen jälkeen",
+  "kuvaa": "Kaksi englanninkielistä SmartScreen-näkymää: More info ja sen jälkeen Run anyway. Esimerkin tiedosto on install.bat.",
+  "missa": "Vektoripaja.exe → kaksoisnapsautus",
+  "tiedosto": "assets/kuvakaappaukset/windows-smartscreen.png",
+  "leveys": 1354,
+  "korkeus": 624,
+  "alt": "Kaksi englanninkielistä SmartScreen-näkymää: More info ja sen jälkeen Run anyway. Esimerkin tiedosto on install.bat.",
+  "kohdat": [
+   {
+    "n": 1,
+    "teksti": "Kaksoisnapsauta tiedostoa Vektoripaja.exe. Jos näet sinisen SmartScreen-varoituksen, jatka tästä."
+   },
+   {
+    "n": 2,
+    "teksti": "Valitse Lisätietoja.",
+    "alue": [
+     1,
+     23,
+     8,
+     7
+    ]
+   },
+   {
+    "n": 3,
+    "teksti": "Valitse Suorita silti. Varoitus tulee, koska sovellusta ei ole allekirjoitettu.",
+    "alue": [
+     76,
+     87,
+     11,
+     8
+    ]
+   }
+  ],
+  "pvm": "alkuperäinen päivä tuntematon; lisätty 2026-09-30",
+  "teema": "Kaksi ASUSin ohjeen kuvaa vierekkäin. Englanninkielinen esimerkki install.bat-tiedostosta, ei Vektoripajan ajo."
+ },
+ {
+  "tunnus": "copilot-uusi-keskustelu",
+  "otsikko": "Aloita uusi keskustelu Copilotissa",
+  "kuvaa": "Aloita uusi keskustelu Copilotissa. Microsoft Learnin esimerkkikeskustelu, ei BC:n käyttäjätili.",
+  "missa": "Selain → Microsoft 365 Copilot BC:n tunnuksella → Chat",
+  "tiedosto": "assets/kuvakaappaukset/copilot-uusi-keskustelu.png",
+  "leveys": 800,
+  "korkeus": 397,
+  "alt": "Aloita uusi keskustelu Copilotissa. Microsoft Learnin esimerkkikeskustelu, ei BC:n käyttäjätili.",
+  "kohdat": [
+   {
+    "n": 1,
+    "teksti": "Kirjaudu BC:n tunnuksella. Avaa Chat."
+   },
+   {
+    "n": 2,
+    "teksti": "Valitse New chat viikon alussa tai silloin, kun keskustelu on jo pitkä. Liitä ajantasainen tilatiedosto uuteen keskusteluun.",
+    "alue": [
+     0,
+     10,
+     19,
+     10
+    ]
+   },
+   {
+    "n": 3,
+    "teksti": "Liitä viestipohja viestikenttään. Täydennä omat kohdat ennen lähettämistä.",
+    "alue": [
+     31,
+     8,
+     68,
+     29
+    ]
+   }
+  ],
+  "pvm": "alkuperäinen päivä tuntematon; lisätty 2026-09-30",
+  "teema": "Microsoft Learnin esimerkkikeskustelu, ei BC:n käyttäjätili."
+ },
+ {
+  "tunnus": "copilot-tilatiedosto",
+  "otsikko": "Liitä tilatiedosto Copilotiin",
+  "kuvaa": "Microsoft 365 Copilotin kolme esimerkkinäkymää: tyhjän viestikentän plus-painike, liitevalikon Upload images and files sekä viestikenttään liitetty HSDE Syllabus - Demo.docx. Projektin oma liite on PROJEKTIN-TILA.md.",
+  "missa": "Microsoft 365 Copilot → viestikenttä → liitä tiedosto",
+  "tiedosto": "assets/kuvakaappaukset/copilot-tilatiedosto.png",
+  "leveys": 1295,
+  "korkeus": 793,
+  "alt": "Microsoft 365 Copilotin kolme esimerkkinäkymää: tyhjän viestikentän plus-painike, liitevalikon Upload images and files sekä viestikenttään liitetty HSDE Syllabus - Demo.docx. Projektin oma liite on PROJEKTIN-TILA.md.",
+  "kohdat": [
+   {
+    "n": 1,
+    "teksti": "Valitse viestikentän liitepainike. Kuvan esimerkissä se on plus-merkki.",
+    "alue": [
+     4,
+     17.5,
+     4,
+     5.5
+    ]
+   },
+   {
+    "n": 2,
+    "teksti": "Valitse tiedoston lataus omalta koneeltasi (kuvassa Upload images and files). Kuvan .docx on vain esimerkki.",
+    "alue": [
+     3.8,
+     39.5,
+     24,
+     7.8
+    ]
+   },
+   {
+    "n": 3,
+    "teksti": "Avautuu tiedostoikkuna. Kopioi ensin VS Codessa tiedoston polku: napsauta Explorerissa tiedostoa PROJEKTIN-TILA.md hiiren oikealla painikkeella ja valitse Copy Path. Palaa tiedostoikkunaan. Napsauta kenttää Tiedostonimi (File name), paina Ctrl+V ja valitse Avaa (Open)."
+   },
+   {
+    "n": 4,
+    "teksti": "Tarkista, että tiedoston nimi näkyy viestikentän yläpuolella. Lähetä viesti vasta sitten.",
+    "alue": [
+     4.5,
+     65,
+     18,
+     8
+    ]
+   }
+  ],
+  "pvm": "huhtikuu 2026; lisätty 2026-09-30",
+  "teema": "Microsoftin PSU-koulutusmateriaalin esimerkkikuvat (Brent Ellis, huhtikuu 2026), yhdistetty. Kuvassa on HSDE Syllabus - Demo.docx; valitse projektissa PROJEKTIN-TILA.md. Ei BC:n käyttäjätili."
+ },
+ {
+  "tunnus": "github-uusi-issue",
+  "otsikko": "Luo issue tehtäväkorttipohjalla",
+  "kuvaa": "GitHubin Create new issue -näkymä, pohja Tehtäväkortti",
+  "missa": "GitHub → oma repository → Issues → New issue → Tehtäväkortti",
+  "tiedosto": "assets/kuvakaappaukset/github-uusi-issue-malli.png",
+  "leveys": 1200,
+  "korkeus": 760,
+  "alt": "Mallikuva GitHubin Create new issue -näkymästä tummassa teemassa. Ylhäällä otsikkokenttä, jossa lukee \"Lisää pyörivä kuutio etusivulle\". Sen alapuolella kuvauskenttä, jossa on tehtäväkortin kuusi otsikkoa. Oikeassa alakulmassa vihreä Create-painike.",
+  "kohdat": [
+   {
+    "n": 1,
+    "teksti": "Kirjoita otsikkokenttään kortin otsikko. Aloita verbillä.",
+    "alue": [
+     3.3,
+     33.5,
+     93.4,
+     6.8
+    ]
+   },
+   {
+    "n": 2,
+    "teksti": "Napsauta kuvauskenttää. Paina Ctrl+A ja sitten Ctrl+V. Copilotin kortti korvaa pohjan tekstin.",
+    "alue": [
+     3.3,
+     45.8,
+     93.4,
+     36.2
+    ]
+   },
+   {
+    "n": 3,
+    "teksti": "Valitse Create. Katso issuen numero sivun otsikosta.",
+    "alue": [
+     77.3,
+     85.4,
+     19.6,
+     7.2
+    ]
+   }
+  ],
+  "pvm": "2026-09-23",
+  "teema": "GitHub Dark high contrast · mallikuva, ei oikea kuvakaappaus"
+ },
+ {
+  "tunnus": "vscode-taydennys",
+  "otsikko": "Hyväksy tai hylkää täydennys",
+  "kuvaa": "Hyväksy tai hylkää täydennys. VS Coden ohjeen TypeScript-esimerkki havainnollistaa harmaata ehdotusta. Projektin testit kirjoitetaan Pythonilla.",
+  "missa": "VS Code → testitiedosto → kommenttirivin alapuolella",
+  "tiedosto": "assets/kuvakaappaukset/vscode-taydennys.png",
+  "leveys": 1000,
+  "korkeus": 506,
+  "alt": "Hyväksy tai hylkää täydennys. VS Coden ohjeen TypeScript-esimerkki havainnollistaa harmaata ehdotusta. Projektin testit kirjoitetaan Pythonilla.",
+  "kohdat": [
+   {
+    "n": 1,
+    "teksti": "Kirjoita kommenttirivi: testin numero ja nimi, syöte ja odotettu tulos. Paina Enter."
+   },
+   {
+    "n": 2,
+    "teksti": "Lue harmaa ehdotus. Onko odotettu tulos sama kuin kommentissa?"
+   },
+   {
+    "n": 3,
+    "teksti": "Paina Tab, jos ehdotus on oikein. Paina Esc, jos se on väärin, ja kirjoita rivi itse."
+   }
+  ],
+  "pvm": "alkuperäinen päivä tuntematon; lisätty 2026-09-30",
+  "teema": "VS Coden ohjeen TypeScript-esimerkki havainnollistaa harmaata ehdotusta. Projektin testit kirjoitetaan Pythonilla."
+ },
+ {
+  "tunnus": "vscode-hyvaksy-muutos",
+  "otsikko": "Hyväksy tai hylkää GitHub Copilotin muutos",
+  "kuvaa": "Hyväksy tai hylkää GitHub Copilotin muutos. Virallisen ohjeen esimerkkikuva.",
+  "missa": "VS Code → Chat → muuttunut tiedosto",
+  "tiedosto": "assets/kuvakaappaukset/vscode-hyvaksy-muutos.png",
+  "leveys": 1670,
+  "korkeus": 704,
+  "alt": "Hyväksy tai hylkää GitHub Copilotin muutos. Virallisen ohjeen esimerkkikuva.",
+  "kohdat": [
+   {
+    "n": 1,
+    "teksti": "Avaa muuttunut tiedosto chatin tiedostolistasta."
+   },
+   {
+    "n": 2,
+    "teksti": "Lue jokainen punainen ja vihreä rivi. Muuttuiko jokin tiedosto, jota kortissa ei ollut?"
+   },
+   {
+    "n": 3,
+    "teksti": "Valitse Keep, jos muutos on kortin mukainen. Valitse Undo, jos se ei ole. Kirjaat kortin tärkeimmän päätöksen tiedostoon [[tiedosto:ai-loki|ai-loki.md]] työsyklin askeleessa 6. Poikkeus: viikon 40 mittauksessa valitse aina Undo, eikä päätöstä kirjata."
+   }
+  ],
+  "pvm": "alkuperäinen päivä tuntematon; lisätty 2026-09-30",
+  "teema": "Virallisen ohjeen esimerkkikuva."
+ },
+ {
+  "tunnus": "vscode-terminaali",
+  "otsikko": "Aja testit terminaalissa",
+  "kuvaa": "Kuvaksi ladottu paikallinen pytest-ajo: yksi kiertokulman demotesti, tulos 1 passed. Ei VS Coden kuvakaappaus.",
+  "missa": "VS Code → Terminal → New Terminal",
+  "tiedosto": "assets/kuvakaappaukset/vscode-terminaali.png",
+  "leveys": 1150,
+  "korkeus": 264,
+  "alt": "Kuvaksi ladottu paikallinen pytest-ajo: yksi kiertokulman demotesti, tulos 1 passed. Ei VS Coden kuvakaappaus.",
+  "kohdat": [
+   {
+    "n": 1,
+    "teksti": "Valitse ylävalikosta Terminal ja sitten New Terminal. Tarkista, että terminaalin rivin alussa lukee (.venv)."
+   },
+   {
+    "n": 2,
+    "teksti": "Kirjoita `pytest -v`. Paina Enter. Ohje: [[ohje:pytest]].",
+    "alue": [
+     1,
+     33,
+     50,
+     18
+    ]
+   },
+   {
+    "n": 3,
+    "teksti": "Lue tuloste. Jokaisen testin rivillä lukee PASSED, kun testi meni läpi, tai FAILED, kun testi ei mennyt läpi.",
+    "alue": [
+     1,
+     70,
+     50,
+     22
+    ]
+   }
+  ],
+  "pvm": "2026-09-30",
+  "teema": "Tuloste ladottu kuvaksi; käyttäjän kansiopolku lyhennetty. Ei VS Coden kuvakaappaus."
+ },
+ {
+  "tunnus": "copilot-kopioi-vastaus",
+  "otsikko": "Kopioi Copilotin vastaus",
+  "kuvaa": "Microsoft 365 Copilotin vastauksen toimintorivi. Vasemmanpuoleinen kahden päällekkäisen suorakulmion kuvake on vastauksen kopiointi; sen jälkeen ovat palautepainikkeet ja muut toiminnot.",
+  "missa": "Microsoft 365 Copilot → vastauksen alareuna",
+  "tiedosto": "assets/kuvakaappaukset/copilot-kopioi-vastaus.png",
+  "leveys": 485,
+  "korkeus": 167,
+  "alt": "Microsoft 365 Copilotin vastauksen toimintorivi. Vasemmanpuoleinen kahden päällekkäisen suorakulmion kuvake on vastauksen kopiointi; sen jälkeen ovat palautepainikkeet ja muut toiminnot.",
+  "kohdat": [
+   {
+    "n": 1,
+    "teksti": "Vieritä vastauksen loppuun."
+   },
+   {
+    "n": 2,
+    "teksti": "Valitse vastauksen alareunasta Copy eli kopiointipainike. Kuvassa se on vasemmanpuoleinen kuvake, jossa on kaksi päällekkäistä suorakulmiota.",
+    "alue": [
+     3.5,
+     5.4,
+     5.8,
+     16.2
+    ]
+   },
+   {
+    "n": 3,
+    "teksti": "Liitä teksti näppäimillä Ctrl+V siihen paikkaan, jonka ohje kertoo. Lue teksti, ennen kuin tallennat."
+   },
+   {
+    "n": 4,
+    "teksti": "Jos tarvitset vastauksesta vain koodin tai tiedoston, älä käytä vastauksen kopiointipainiketta. Vie hiiri koodilohkon päälle. Valitse koodilohkon oikeasta yläkulmasta kopiointipainike. Se kopioi vain koodilohkon."
+   }
+  ],
+  "pvm": "huhtikuu 2026; lisätty 2026-09-30",
+  "teema": "Microsoftin PSU-koulutusmateriaalin vastauksen toimintorivi (Brent Ellis, huhtikuu 2026). Ensimmäinen kuvake kopioi vastauksen. Näkymä ja painikkeen nimi voivat vaihdella version mukaan."
+ },
+ {
+  "tunnus": "github-issue-sulkeutuu",
+  "otsikko": "Tarkista, että issue sulkeutui",
+  "kuvaa": "GitHub CLI:n suljettu issue 14521 ja linkki yhdistettyyn pull requestiin 14540.",
+  "missa": "GitHub → oma repository → Issues → Closed",
+  "tiedosto": "assets/kuvakaappaukset/github-issue-sulkeutuu.png",
+  "leveys": 935,
+  "korkeus": 165,
+  "alt": "GitHub CLI:n suljettu issue 14521 ja linkki yhdistettyyn pull requestiin 14540.",
+  "kohdat": [
+   {
+    "n": 1,
+    "teksti": "Avaa Issues-välilehti. Valitse Closed."
+   },
+   {
+    "n": 2,
+    "teksti": "Avaa issue. Tarkista, että otsikon alapuolella lukee Closed.",
+    "alue": [
+     0,
+     69,
+     28,
+     23
+    ]
+   },
+   {
+    "n": 3,
+    "teksti": "Tarkista historiasta sulkeva commit tai liitetty pull request. Kuvan esimerkissä issue sulkeutui pull requestin yhteydessä. Vektoripajassa käytä commit-viestissä riviä `Closes #N`."
+   }
+  ],
+  "pvm": "2026-09-30",
+  "teema": "Rajattu julkinen GitHub CLI -esimerkki; ei Vektoripajan repository."
+ },
+ {
+  "tunnus": "inkscape-layerit",
+  "otsikko": "Nimeä layerit ja ryhmät Inkscapessa",
+  "kuvaa": "Inkscape 1.2:n Layers and Objects -paneeli: tasot ja niiden alapuolella sisennetyt ryhmät ja muodot.",
+  "missa": "Inkscape → Layer → Layers and Objects",
+  "tiedosto": "assets/kuvakaappaukset/inkscape-layerit.png",
+  "leveys": 1280,
+  "korkeus": 460,
+  "alt": "Inkscape 1.2:n Layers and Objects -paneeli: tasot ja niiden alapuolella sisennetyt ryhmät ja muodot.",
+  "kohdat": [
+   {
+    "n": 1,
+    "teksti": "Avaa paneeli valitsemalla Layer ja sitten Layers and Objects."
+   },
+   {
+    "n": 2,
+    "teksti": "Kaksoisnapsauta layerin nimeä. Kirjoita nimi, esimerkiksi Vartalo. Paina Enter. Kirjoita nimi samalla kirjainkoolla kuin työvaihe."
+   },
+   {
+    "n": 3,
+    "teksti": "Valitse muodot. Ryhmittele ne näppäimillä Ctrl+G. Nimeä ryhmä samalla tavalla."
+   },
+   {
+    "n": 4,
+    "teksti": "Tarkista, että ryhmät näkyvät sisennettyinä layerin alapuolella.",
+    "alue": [
+     69,
+     60,
+     29,
+     38
+    ]
+   }
+  ],
+  "pvm": "alkuperäinen päivä tuntematon; lisätty 2026-09-30",
+  "teema": "Rajattu yläosa. Inkscape 1.2:n esimerkki; tiedoston nimet eroavat projektista."
+ },
+ {
+  "tunnus": "vscode-chat-tilat",
+  "otsikko": "Valitse GitHub Copilotin tila",
+  "kuvaa": "Valitse GitHub Copilotin tila. Virallisen ohjeen esimerkkikuva.",
+  "missa": "VS Code → Chat → tilavalikko viestikentän alapuolella",
+  "tiedosto": "assets/kuvakaappaukset/vscode-chat-tilat.png",
+  "leveys": 500,
+  "korkeus": 195,
+  "alt": "Valitse GitHub Copilotin tila. Virallisen ohjeen esimerkkikuva.",
+  "kohdat": [
+   {
+    "n": 1,
+    "teksti": "Avaa Chat näppäimillä Ctrl+Alt+I."
+   },
+   {
+    "n": 2,
+    "teksti": "Avaa tilavalikko viestikentän alapuolelta."
+   },
+   {
+    "n": 3,
+    "teksti": "Valitse Ask, kun kysyt. Valitse Agent vain Agentti-kaistalla. Agent kuluttaa krediittejä."
+   }
+  ],
+  "pvm": "alkuperäinen päivä tuntematon; lisätty 2026-09-30",
+  "teema": "Virallisen ohjeen esimerkkikuva."
+ },
+ {
+  "tunnus": "vscode-liita-tiedosto",
+  "otsikko": "Liitä tiedosto GitHub Copilotin keskusteluun",
+  "kuvaa": "Liitä tiedosto GitHub Copilotin keskusteluun. VS Coden ohjeen Add Context -valikko. Valikkotekstit voivat vaihdella version mukaan.",
+  "missa": "VS Code → Chat → Add Context",
+  "tiedosto": "assets/kuvakaappaukset/vscode-liita-tiedosto.png",
+  "leveys": 1663,
+  "korkeus": 916,
+  "alt": "Liitä tiedosto GitHub Copilotin keskusteluun. VS Coden ohjeen Add Context -valikko. Valikkotekstit voivat vaihdella version mukaan.",
+  "kohdat": [
+   {
+    "n": 1,
+    "teksti": "Valitse viestikentän yläpuolelta Add Context."
+   },
+   {
+    "n": 2,
+    "teksti": "Valitse Files & Folders. Valitse kortin tiedostot."
+   },
+   {
+    "n": 3,
+    "teksti": "Tarkista, että vain kortin tiedostot näkyvät liitteinä."
+   }
+  ],
+  "pvm": "alkuperäinen päivä tuntematon; lisätty 2026-09-30",
+  "teema": "VS Coden ohjeen Add Context -valikko. Valikkotekstit voivat vaihdella version mukaan."
+ },
+ {
+  "tunnus": "blender-obj",
+  "otsikko": "Avaa .obj-tiedosto Blenderissä",
+  "kuvaa": "Blenderin File, Import, Wavefront (.obj) -valikko. Ei mallia eikä Outliner-paneelia.",
+  "missa": "Blender → File → Import → Wavefront (.obj)",
+  "tiedosto": "assets/kuvakaappaukset/blender-obj.png",
+  "leveys": 259,
+  "korkeus": 310,
+  "alt": "Blenderin File, Import, Wavefront (.obj) -valikko. Ei mallia eikä Outliner-paneelia.",
+  "kohdat": [
+   {
+    "n": 1,
+    "teksti": "Valitse File, sitten Import ja sitten Wavefront (.obj)."
+   },
+   {
+    "n": 2,
+    "teksti": "Valitse viemäsi tiedosto. Valitse Import Wavefront OBJ."
+   },
+   {
+    "n": 3,
+    "teksti": "Katso oikeaa yläkulmaa. Outlinerissa jokaisen osan pitää olla oma rivinsä."
+   }
+  ],
+  "pvm": "alkuperäinen päivä tuntematon; lisätty 2026-09-30",
+  "teema": "Microsoft Learnin vanhemman Blender-version OBJ-tuontivalikko. Outliner ei näy tässä rajauksessa."
+ },
+ {
+  "tunnus": "github-pull-request",
+  "otsikko": "Tee pull request ja liitä haara",
+  "kuvaa": "Tee pull request ja liitä haara. GitHubin ohjeen yhdistämisvalikko. Haarojen valinta ja tarkistus tehdään ennen tätä vaihetta.",
+  "missa": "GitHub → oma repository → Pull requests → New pull request",
+  "tiedosto": "assets/kuvakaappaukset/github-pull-request.png",
+  "leveys": 934,
+  "korkeus": 576,
+  "alt": "Tee pull request ja liitä haara. GitHubin ohjeen yhdistämisvalikko. Haarojen valinta ja tarkistus tehdään ennen tätä vaihetta.",
+  "kohdat": [
+   {
+    "n": 1,
+    "teksti": "Avaa Pull requests. Valitse New pull request."
+   },
+   {
+    "n": 2,
+    "teksti": "Valitse base-kohtaan main ja compare-kohtaan oma haarasi."
+   },
+   {
+    "n": 3,
+    "teksti": "Valitse Create pull request. Lue Files changed -välilehden muutokset."
+   },
+   {
+    "n": 4,
+    "teksti": "Kun olet ajanut kaikki testit ja ne ovat menneet läpi, valitse Merge pull request ja vahvista."
+   }
+  ],
+  "pvm": "alkuperäinen päivä tuntematon; lisätty 2026-09-30",
+  "teema": "GitHubin ohjeen yhdistämisvalikko. Haarojen valinta ja tarkistus tehdään ennen tätä vaihetta."
+ },
+ {
+  "tunnus": "accessibility-insights-fastpass",
+  "otsikko": "Tarkista saavutettavuus FastPassilla",
+  "kuvaa": "Tarkista saavutettavuus FastPassilla. Accessibility Insightsin virallisen ohjeen Waffle Manager -demo. Tämä ei ole Vektoripajan saavutettavuustarkistus.",
+  "missa": "Käynnistä-valikko → Accessibility Insights for Windows → FastPass",
+  "tiedosto": "assets/kuvakaappaukset/accessibility-insights-fastpass.png",
+  "leveys": 1920,
+  "korkeus": 1080,
+  "alt": "Tarkista saavutettavuus FastPassilla. Accessibility Insightsin virallisen ohjeen Waffle Manager -demo. Tämä ei ole Vektoripajan saavutettavuustarkistus.",
+  "kohdat": [
+   {
+    "n": 1,
+    "teksti": "Käynnistä Vektoripaja. Avaa Accessibility Insights for Windows."
+   },
+   {
+    "n": 2,
+    "teksti": "Valitse yläreunan kohdasta What to select vaihtoehto Entire app. Vie hiiri Vektoripajan ikkunan päälle ja paina Shift+F8. Tämä käynnistää FastPassin."
+   },
+   {
+    "n": 3,
+    "teksti": "Lue automaattisten tarkistusten tulos. Kirjaa virheiden määrä ja kolme ensimmäistä havaintoa tiedostoon [[tiedosto:saavutettavuus|saavutettavuus.md]]."
+   },
+   {
+    "n": 4,
+    "teksti": "Tab stops -vaihe näyttää, missä järjestyksessä Tab-näppäin kulkee säätimestä toiseen. Perusmittauksessa se ohitetaan, koska Tab-järjestys tarkistetaan testissä 25."
+   }
+  ],
+  "pvm": "alkuperäinen päivä tuntematon; lisätty 2026-09-30",
+  "teema": "Accessibility Insightsin virallisen ohjeen Waffle Manager -demo. Tämä ei ole Vektoripajan saavutettavuustarkistus."
+ }
+];

@@ -42,7 +42,7 @@ Sivusto on staattinen ja julkaistaan koontisivun repositoryn mukana GitHub Pages
 | `tyokalut/index.runko.html` | index.html:n pohja: näkymien tekstit (toimeksianto, työtapa, suunnitelma …) |
 | `tyokalut/rakenna_index.py` | viikkojen tehtävät, Näytä-rivit, lomakortit ja matriisin työnäytteet |
 | `sisalto.js` | viikkojen ohjeet, työsykli, sanasto, suunnitelmapohja ja opettaja-aineisto |
-| `kuvakaappaukset.json` | kuvaohjeiden lähde: mitä kuvataan, alt-tekstit ja numeroidut kohdat |
+| `kuvakaappaukset.json` | kuvaohjeiden lähde: mitä kuvataan, alt-tekstit ja numeroidut kohdat. `rakenna_index.py` tekee siitä myös **generoidun** `kuvakaappaukset.js`:n, jotta kuvaohjeet toimivat ilman erillistä hakua (myös tiedostona avattuna) |
 | `pohjat/` | opiskelijan repositoryn pohjatiedostot: `PROJEKTIN-TILA.md`, `tehtavakortti.md`, `copilot-instructions.md` ja `havainto.md` (tulevat repositoryyn ohjaajan pull requestilla) |
 | `pohjat/python-pohja/project-docs/` | **generoitu** (`tyokalut/tee_pohjat.js` tiedostokorteista): dokumenttipohjat suunnitelma, projektipäiväkirja (työviikot päivämäärineen), AI-loki, kysymykset, kirjastot, tietoturva, katselmointi, julkaisutesti, saavutettavuus ja `kuvat/` |
 | `pohjat/python-pohja/` | viikon 41 valmis kuutiosovellus ja testi: julkaisu (`release.yml`, `vektoripaja.spec`, `rakenna_exe.bat`), itsetesti, teema, `requirements.txt` ja `tarkista_ymparisto.py`; pakataan tiedostoksi `pohjat/vektoripaja-pohja.zip` |

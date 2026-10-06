@@ -252,4 +252,12 @@ html = (tpl.replace("%%VIIKKOKORTIT%%", viikkokortit)
            .replace("%%VAATIMUKSIA%%", str(VAATIMUKSIA)))
 assert "%%" not in html
 open(os.path.join(HERE, "..", "index.html"), "w", encoding="utf-8", newline="\n").write(html)
+
+# Kuvaohjeet myös skriptinä: linkit ja kuvat toimivat, vaikka kuvakaappaukset.json ei latautuisi
+# (esimerkiksi kun index.html avataan tiedostona). Lähde on yhä kuvakaappaukset.json.
+kuvat = json.load(open(os.path.join(HERE, "..", "kuvakaappaukset.json"), encoding="utf-8"))
+kuvat = kuvat["kuvat"] if isinstance(kuvat, dict) else kuvat
+open(os.path.join(HERE, "..", "kuvakaappaukset.js"), "w", encoding="utf-8", newline="\n").write(
+    "/* Generoitu tiedostosta kuvakaappaukset.json (tyokalut/rakenna_index.py). Älä muokkaa käsin. */\n"
+    "window.NAYTTOPROJEKTI.kuvakaappaukset = " + json.dumps(kuvat, ensure_ascii=False, indent=1) + ";\n")
 print("tehtäviä", tehtavia, "· vaatimuksia", VAATIMUKSIA, "· viikkoja", len(VIIKOT))
