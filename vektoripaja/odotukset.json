@@ -65,6 +65,7 @@
     "polku": "project-docs/projektipaivakirja.md",
     "tiedostonimi": "projektipaivakirja.md",
     "viikkotiedosto": "projektipaivakirja-vko-{n}.md",
+    "lomake": true,
     "viikkoOtsikko": "## Vko {n}",
     "kentat": [
       "### Mitä tein ja miten?",
@@ -75,7 +76,8 @@
   },
   "aiLoki": {
     "otsikko": "## Merkinnät",
-    "tiedosto": "project-docs/ai-loki.md"
+    "tiedosto": "project-docs/ai-loki.md",
+    "viikkotiedosto": "ai-loki-vko-{n}.md"
   },
   "suunnitelma": {
     "tiedostonimi": "suunnitelma.md",
