@@ -15,12 +15,12 @@ actor = plotter.add_mesh(pv.Cube(), color=KOROSTUS, show_edges=True)
 plotter.camera_position = 'iso'
 plotter.show(auto_close=False)
 frames = []
-for frame in range(49):
-    actor.orientation = (0, kiertokulma(frame / 24, 0.5), 0)
+for frame in range(50):
+    actor.orientation = (0, kiertokulma(frame * 0.16, 0.125), 0)
     plotter.render()
     frames.append(Image.fromarray(plotter.screenshot(return_img=True)).convert('RGB'))
 plotter.close()
-# No loop extension: play once for two seconds, then remain still.
+# Repeat continuously: 50 frames at 160 ms make one eight-second revolution.
 frames[0].save(root / 'assets/kuutio-pyorii.gif', save_all=True,
-               append_images=frames[1:], duration=40, optimize=True)
-print('49 frames, 480 x 360, one revolution, no continuous loop')
+               append_images=frames[1:], duration=160, loop=0, optimize=True)
+print('50 frames, 480 x 360, eight-second revolution, continuous loop')
