@@ -1276,9 +1276,13 @@
   function kuvaStageHtml(k, full) {
     const w = Number(k.leveys) || 1600;
     const h = Number(k.korkeus) || 900;
-    const marks = (k.kohdat || []).filter((c) => Array.isArray(c.alue) && c.alue.length === 4).map((c) => {
+    let previousBadgeTop = "-24px";
+    const marks = (k.kohdat || []).filter((c) => Array.isArray(c.alue) && c.alue.length === 4)
+      .sort((a, b) => Number(a.alue[1]) - Number(b.alue[1])).map((c) => {
       const [x, y, cw, ch] = c.alue.map(Number);
-      return `<span class="kuvaohje-mark" style="left:${x}%;top:${y}%;width:${cw}%;height:${ch}%" aria-hidden="true"><span class="kuvaohje-mark-n">${escapeText(c.n)}</span></span>`;
+      const badgeTop = `max(${y}%, calc(${previousBadgeTop} + 24px))`;
+      previousBadgeTop = badgeTop;
+      return `<span class="kuvaohje-mark" style="left:${x}%;top:${y}%;width:${cw}%;height:${ch}%" aria-hidden="true"></span><span class="kuvaohje-mark-n" style="top:${badgeTop};" aria-hidden="true">${escapeText(c.n)}</span>`;
     }).join("");
     const picture = k.tiedosto
       ? `<img src="${escapeText(k.tiedosto)}" alt="${escapeText(k.alt || "")}" width="${w}" height="${h}"${full ? "" : " loading=\"lazy\""}>`
