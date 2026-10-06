@@ -385,16 +385,14 @@ window.NAYTTOPROJEKTI = {
         nimi: "Kirjaa",
         paikka: "VS Code ja GitHub",
         tyokalu: "VS Code ja GitHub",
-        oma: "kirjoitat yhden merkinnän tiedostoon [[tiedosto:ai-loki|ai-loki.md]] ja commit-viestin itse, verbi ensin. Rastita askel 6 issuessa ennen committia, koska commit sulkee issuen.",
+        oma: "kirjoitat yhden merkinnän [[tiedosto:ai-loki|AI-lokiin]] lomakkeella ja commit-viestin itse, verbi ensin. Rastita askel 6 issuessa ennen committia, koska commit sulkee issuen.",
         ohje: [
-          "Kopioi lokimerkinnän pohja Kopioi-painikkeella. Avaa sitten tiedosto [[tiedosto:ai-loki|ai-loki.md]]. Ohje: [[ohje:avaa-tiedosto]].",
-          "Paina tiedostossa Ctrl+End, Enter ja Ctrl+V. Täytä pohja: yksi merkintä tästä kortista. Otsikkoriville tulevat päivä, kaikki kortissa käyttämäsi tekoälytyökalut ja kaista.",
+          "Kirjaa [[tiedosto:ai-loki|AI-lokiin]] yksi merkintä tästä kortista: [[ohje:ailoki-lomake]]. Lomake on viikon sivun lopussa osiossa Viikon kirjaus. Otsikkoriville tulevat päivä, kaikki kortissa käyttämäsi tekoälytyökalut ja kaista.",
           "Rastita issuessa kohta 6 Kirjattu nyt, ennen committia.",
           "Tee commit ja push. Ohje: [[ohje:commit]]. Changes-listassa ovat kortin tiedostot, testitiedosto (jos kortissa on koodilla tehty testi), `PROJEKTIN-TILA.md` ja [[tiedosto:ai-loki|project-docs/ai-loki.md]]. Kopioi commit-viestin pohja ja täytä se: mitä teit ja issuen numero rivillä `Closes #N`. Korvaa sulkeet ja niiden teksti, esimerkiksi Closes #12.",
           "Tarkista [[github:issues?q=is%3Aissue+is%3Aclosed|suljetuista issueista]], että issue sulkeutui: [[kuvaohje:github-issue-sulkeutuu]]. Jos teit työn haarassa, issue sulkeutuu vasta, kun pull request liitetään päähaaraan. Ohita silloin tämä kohta."
         ],
         pohja: [
-          { otsikko: "Lokimerkinnän pohja: kopioi tämä", teksti: "### pp.kk.vvvv · työkalut, kaista\n- Mihin pyysin apua: \n- Päätös: hyväksyn / korjautan / hylkään\n- Peruste: \n- Aineistoviite: issue #__, testi __\n- Tietosuoja: En syöttänyt henkilötietoja, salasanoja tai luottamuksellista aineistoa." },
           { otsikko: "Commit-viestin pohja", teksti: "(mitä tein, verbi ensin)\n\nCloses #(numero)" }
         ],
         kuvaohjeet: ["vscode-commit-push", "github-issue-sulkeutuu"],
@@ -706,6 +704,16 @@ window.NAYTTOPROJEKTI = {
         { missa: "VS Code, Explorer", tee: "Napsauta kansiota kuvat hiiren oikealla painikkeella. Valitse Copy Path.", naet: "Kansion polku on leikepöydällä. Kuva on yhä kuvakaappaustyökalussa." },
         { missa: "Tallennusikkunan osoiterivi ylhäällä", tee: "Palaa tallennusikkunaan tehtäväpalkista. Napsauta osoiteriviä ja paina Ctrl+V ja Enter.", naet: "Ikkunan yläreunassa lukee kuvat." },
         { missa: "Tallennusikkunan kenttä Tiedostonimi", tee: "Kirjoita työvaiheessa annettu nimi, esimerkiksi obj-blenderissa.png. Valitse Tallenna.", naet: "Kuva näkyy VS Coden Explorerissa kansiossa kuvat." }
+      ]
+    },
+    {
+      tunnus: "ailoki-lomake",
+      otsikko: "Kirjaa AI-lokiin lomakkeella",
+      johdanto: "Merkintälomake on jokaisen työviikon sivun lopussa osiossa Viikon kirjaus. Lomake tekee merkinnän valmiiksi tiedoston [[tiedosto:ai-loki|ai-loki.md]] muotoon.",
+      vaiheet: [
+        { missa: "Viikon sivun loppu, osio Viikon kirjaus, merkintälomake", tee: "Täytä kentät. Työkalut ja kaista -kenttään tulevat kaikki käyttämäsi tekoälytyökalut ja kaista, esimerkiksi GitHub Copilot, Täydennys-kaista. Valitse Lisää merkintä.", naet: "Merkintä näkyy lomakkeen jälkeen kohdassa, jonka otsikko alkaa sanoilla Viikon ja merkinnät. Jos lomakkeen lopussa lukee Täytä kohta, täytä mainittu kohta ja valitse Lisää merkintä uudelleen." },
+        { missa: "VS Code, tiedosto [[tiedosto:ai-loki|project-docs/ai-loki.md]]", tee: "Avaa tiedosto. Ohje: [[ohje:avaa-tiedosto]]. Paina Ctrl+End ja Enter.", naet: "Kursori on tyhjällä rivillä tiedoston lopussa." },
+        { missa: "Viikon sivu, merkintäsi painike Kopioi merkintä, ja VS Code", tee: "Valitse Kopioi merkintä. Palaa VS Codeen ja paina Ctrl+V ja sitten Ctrl+S.", naet: "Tiedoston lopussa on merkintäsi: otsikkorivi, joka alkaa merkeillä ###, ja viisi riviä, jotka alkavat merkillä -." }
       ]
     }
   ],
@@ -4110,22 +4118,44 @@ window.NAYTTOPROJEKTI = {
     tiedostonimi: "projektipaivakirja.md",
     polku: "project-docs/projektipaivakirja.md",
     repo: {
-      johdanto: "Kirjoita viikon kirjaus viikon viimeisenä työpäivänä tiedostoon [[tiedosto:projektipaivakirja|projektipaivakirja.md]]. Viikon otsikko on kopioitavana. Liitä se VS Coden hakuun, niin löydät oikean kohdan.",
+      johdanto: "Kirjoita viikon kirjaus viikon viimeisenä työpäivänä. Kirjoitat vastaukset lomakkeeseen Viikon vastaukset ja kopioit ne tiedostoon [[tiedosto:projektipaivakirja|projektipaivakirja.md]].",
       otsikko: "Vko {viikko} – {nimi}",
       vaiheet: [
+        {
+          funktio: "Kirjoita vastaukset lomakkeen Viikon vastaukset kolmeen kenttään. Teksti tallentuu tähän selaimeen. Mitä tein ja miten?: mitä teit, maanantain krediittiluku ja viikon funktion selitys selityspohjalla. Kopioi selityspohja Kopioi-painikkeella, liitä se kenttään ja täytä ___-kohdat. Viikon funktio on {funktio}. Funktion koodi on kortin Tiedostot-kohdan tiedostossa: etsi funktion nimi Ctrl+F:llä. Valitse hakukentästä Match Whole Word (Alt+W) ja hae sanat if, for ja while. Rekursiossa funktio kutsuu itseään omalla nimellään. Miksi tein näin?: päätökset ja perustelut. Missä työnäyte on?: Tallenna nämä tiedot -listan työnäytteiden numerot ja linkit sekä näyttömatriisin vaatimukset. Numerot ja linkit löydät näin: [[ohje:kopioi-osoite]]. Malli: [[tiedosto:projektipaivakirja]].",
+          eiFunktiota: "Kirjoita vastaukset lomakkeen Viikon vastaukset kolmeen kenttään. Teksti tallentuu tähän selaimeen. Mitä tein ja miten?: mitä teit ja maanantain krediittiluku, jos katsoit sen. Tällä viikolla ei ole funktiota, joten selityspohjaa ei tarvita. Miksi tein näin?: päätökset ja perustelut. Missä työnäyte on?: Tallenna nämä tiedot -listan työnäytteiden numerot ja linkit sekä näyttömatriisin vaatimukset. Numerot ja linkit löydät näin: [[ohje:kopioi-osoite]]. Malli: [[tiedosto:projektipaivakirja]]."
+        },
         "Avaa tiedosto [[tiedosto:projektipaivakirja|project-docs/projektipaivakirja.md]]. Ohje: [[ohje:avaa-tiedosto]].",
         "Kopioi viikon otsikko Kopioi-painikkeella. Paina VS Codessa Ctrl+F, paina Ctrl+V ja sitten Enter. Paina Esc. Kursori on viikon otsikossa.",
-        "Paina alanuolinäppäintä, kunnes kursori on tyhjällä rivillä otsikon ### Mitä tein ja miten? jälkeen. Näiden otsikoiden jälkeen ei ole >-riviä. Jos otsikon jälkeen on jo tekstiä, vie kursori sen viimeisen rivin loppuun ja paina Enter.",
-        {
-          funktio: "Kirjoita vastaukset kolmen kysymyksen alle. Mitä tein ja miten?: mitä teit, maanantain krediittiluku ja viikon funktion selitys selityspohjalla. Viikon funktio on {funktio}. Funktion koodi on kortin Tiedostot-kohdan tiedostossa: etsi funktion nimi Ctrl+F:llä. Valitse hakukentästä Match Whole Word (Alt+W) ja hae sanat if, for ja while. Rekursiossa funktio kutsuu itseään omalla nimellään. Miksi tein näin?: päätökset ja perustelut. Missä työnäyte on?: Tallenna nämä tiedot -listan työnäytteiden numerot ja linkit sekä näyttömatriisin vaatimukset. Malli: [[tiedosto:projektipaivakirja]].",
-          eiFunktiota: "Kirjoita vastaukset kolmen kysymyksen alle. Mitä tein ja miten?: mitä teit ja maanantain krediittiluku, jos katsoit sen. Tällä viikolla ei ole funktiota, joten selityspohjaa ei tarvita. Miksi tein näin?: päätökset ja perustelut. Missä työnäyte on?: Tallenna nämä tiedot -listan työnäytteiden numerot ja linkit sekä näyttömatriisin vaatimukset. Malli: [[tiedosto:projektipaivakirja]]."
-        },
-        "Numerot ja linkit löydät näin. Ohje: [[ohje:kopioi-osoite]].",
+        "Jos tiedostossa on jo tämän viikon vastauksia, kopioi ne ensin lomakkeen kenttiin, ettei mitään katoa. Maalaa sitten viikon vastaukset: napsauta rivin ### Mitä tein ja miten? alkuun, pidä Shift pohjassa ja napsauta seuraavan ##-otsikkorivin alkuun. Jos seuraavaa ##-otsikkoa ei ole, paina Shift+Ctrl+End.",
+        "Valitse painike Kopioi kirjaus. Palaa VS Codeen ja paina Ctrl+V ja sitten Ctrl+S. Viikon kolmen otsikon jälkeen ovat nyt lomakkeen vastaukset.",
         "Tee commit ja push. Ohje: [[ohje:commit]]. Commit-viesti on kopioitavana."
       ],
       pohjat: [
         { otsikko: "Selityspohja funktiolle: kopioi ja täytä", vainFunktio: true, teksti: "Funktio ___ saa ___. Se palauttaa ___.\nValitsee (if-ehto): ___ (tai: ei valintaa)\nToistaa (silmukka tai rekursio): ___ (tai: ei toistoa)\nTesti ___ tarkistaa ___." },
-        { otsikko: "Commit-viesti: kopioi tämä", teksti: "Kirjaa viikon {viikko} projektipäiväkirja" }
+        { otsikko: "Commit-viesti: kopioi tämä", lopuksi: true, teksti: "Kirjaa viikon {viikko} projektipäiväkirja" }
+      ]
+    }
+  },
+
+  /* ---- v2.8.1: viikon lomakkeet (opiskelijan toive 6.10.2026). Viikon kirjausosiossa ovat lomakkeet
+     Viikon vastaukset ja AI-lokin merkintä. Teksti tallentuu selaimeen, ja Kopioi-painike antaa
+     valmiin tekstin tiedostoon liitettäväksi. ---- */
+  lomakkeet: {
+    paivakirja: {
+      kentat: [
+        { avain: "work", otsikko: "Mitä tein ja miten?", rivit: 6 },
+        { avain: "reason", otsikko: "Miksi tein näin?", rivit: 4 },
+        { avain: "evidence", otsikko: "Missä työnäyte on?", rivit: 4 }
+      ]
+    },
+    ailoki: {
+      johdanto: "Kirjaa tekoälyn käyttö samana päivänä: yksi merkintä tehtäväkorttia kohden. Ohje: [[ohje:ailoki-lomake]].",
+      vaiheet: [
+        "Täytä lomake ja valitse Lisää merkintä. Työkalut ja kaista -kenttään tulevat kaikki käyttämäsi tekoälytyökalut ja kaista, esimerkiksi GitHub Copilot, Täydennys-kaista. Jos kortti ei ollut käytössä, kaista on ilman korttia.",
+        "Avaa tiedosto [[tiedosto:ai-loki|project-docs/ai-loki.md]]. Ohje: [[ohje:avaa-tiedosto]]. Paina Ctrl+End ja Enter.",
+        "Valitse merkinnän painike Kopioi merkintä. Palaa VS Codeen ja paina Ctrl+V ja sitten Ctrl+S.",
+        "Tee commit ja push. Ohje: [[ohje:commit]]. Jos kirjaat merkinnän työsyklin askeleessa 6, tee commit askeleen ohjeen mukaan."
       ]
     }
   },

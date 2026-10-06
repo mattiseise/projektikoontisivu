@@ -321,7 +321,31 @@
     migrateUnder: (otsikko) => `### Otsikon "${otsikko}" alle`,
     migrateUnderField: (otsikko, kentta) => `### Otsikon "${otsikko}" alle, kohtaan "${kentta}"`,
     migrateLogEntry: (n) => `### Merkintä ${n}`,
-    journalRepoCopy: "Viikon otsikko tiedostossa: kopioi tämä hakuun"
+    journalRepoCopy: "Viikon otsikko tiedostossa: kopioi tämä hakuun",
+    formJournalTitle: "Viikon vastaukset",
+    formJournalLead: "Kirjoita vastaukset kenttiin. Teksti tallentuu tähän selaimeen.",
+    formJournalCopyTitle: "Kirjaus tiedostoon",
+    formJournalCopyButton: "Kopioi kirjaus",
+    formAiTitle: "AI-lokin merkintä",
+    formAiLead: "Merkintä tallentuu tähän selaimeen ja näkyy lomakkeen jälkeen.",
+    formAiDate: "Päivä (pp.kk.vvvv)",
+    formAiTools: "Työkalut ja kaista, esimerkiksi GitHub Copilot, Agentti-kaista",
+    formAiQuestion: "Mihin pyysin apua",
+    formAiDecision: "Päätös",
+    formAiDecisions: ["hyväksyn", "korjautan", "hylkään"],
+    formAiReason: "Peruste",
+    formAiRef: "Aineistoviite",
+    formAiRefHint: "esimerkiksi issue #12, testi 4",
+    formAiPrivacyLine: "Tietosuoja",
+    formAiPrivacy: "En syöttänyt henkilötietoja, salasanoja tai luottamuksellista aineistoa.",
+    formAiAdd: "Lisää merkintä",
+    formAiAdded: "Merkintä lisätty. Kopioi se tiedostoon.",
+    formAiEntries: (w) => `Viikon ${w} merkinnät tässä selaimessa`,
+    formAiEmpty: "Tällä viikolla ei ole vielä merkintöjä tässä selaimessa.",
+    formAiCopyButton: "Kopioi merkintä",
+    formAiDelete: "Poista merkintä",
+    formAiDeleteConfirm: "Poistetaanko merkintä tästä selaimesta? Tiedostoon liitetty merkintä ei poistu.",
+    formMissing: (label) => `Täytä kohta: ${label}`
   };
   /* v2.7: yhtenäisissä viikko-ohjeissa sivun tehtävä on työvaihe (GitHub-issue tai muu
      toteutustehtävä on eri asia). Projekti voi korvata nämäkin tekstit-objektilla. */
@@ -514,6 +538,14 @@
   const basicsById = new Map(basics.map((o) => [String(o.tunnus), o]));
   const docCards = P.tiedostokortit && typeof P.tiedostokortit === "object" ? P.tiedostokortit : {};
   const docsInRepo = Boolean(P.dokumentitRepossa);
+  /* v2.8.1: viikon lomakkeet (P.lomakkeet), ks. journalFormHtml. */
+  const FORMS = (docsInRepo && P.lomakkeet) || {};
+  const FORM_KEY = `${SLUG}-lomakkeet-v1`;
+  const formState = (() => {
+    const s = readStorage(FORM_KEY, {});
+    const o = s && typeof s === "object" ? s : {};
+    return { paivakirja: o.paivakirja && typeof o.paivakirja === "object" ? o.paivakirja : {}, ailoki: Array.isArray(o.ailoki) ? o.ailoki : [] };
+  })();
   const templateIndex = new Map(); // pohjan tunnus → { viikko, pohja }
   Object.entries(weekGuidance).forEach(([w, g]) => (g && Array.isArray(g.pohjat) ? g.pohjat : []).forEach((p) => {
     if (p && p.tunnus) templateIndex.set(String(p.tunnus), { viikko: Number(w), pohja: p });
@@ -1696,12 +1728,161 @@
       let box = journal.querySelector("[data-journal-repo]");
       if (!box) { box = document.createElement("div"); box.setAttribute("data-journal-repo", ""); journal.appendChild(box); }
       box.className = "journal-repo";
+      const headingCopy = cfg.otsikko ? copyBlockHtml({ otsikko: t("journalRepoCopy"), teksti: fill(cfg.otsikko) }, (x) => String(x ?? "")) : "";
+      const steps = vaiheet.length ? `<ol class="journal-repo-steps">${vaiheet.map((v) => `<li>${richText(fill(v))}</li>`).join("")}</ol>` : "";
+      const blocks = (list) => list.map((p) => copyBlockHtml({ otsikko: fill(p.otsikko), teksti: fill(p.teksti) }, (x) => String(x ?? ""))).join("");
+      /* Lomakkeen kanssa järjestys seuraa vaiheita: ohje, pohjat, lomake, otsikon haku, kirjaus,
+         ja lopuksi pohjat, joilla on lopuksi: true (esimerkiksi commit-viesti). */
       box.innerHTML = `${cfg.johdanto ? `<p>${richText(fill(cfg.johdanto))}</p>` : ""}
-        ${cfg.otsikko ? copyBlockHtml({ otsikko: t("journalRepoCopy"), teksti: fill(cfg.otsikko) }, (x) => String(x ?? "")) : ""}
-        ${vaiheet.length ? `<ol class="journal-repo-steps">${vaiheet.map((v) => `<li>${richText(fill(v))}</li>`).join("")}</ol>` : ""}
-        ${pohjat.map((p) => copyBlockHtml({ otsikko: fill(p.otsikko), teksti: fill(p.teksti) }, (x) => String(x ?? ""))).join("")}`;
+        ${FORMS.paivakirja
+          ? `${steps}${blocks(pohjat.filter((p) => !p.lopuksi))}${journalFormHtml(week)}${headingCopy}${journalCopyHtml(week)}${blocks(pohjat.filter((p) => p.lopuksi))}`
+          : `${headingCopy}${steps}${blocks(pohjat)}`}`;
+      if (FORMS.ailoki) box.insertAdjacentHTML("afterend", aiFormHtml(week));
     });
+    if (FORMS.ailoki) document.querySelectorAll("[data-week-ai]").forEach((el) => renderAiEntries(Number(el.dataset.weekAi)));
   }
+
+  /* ---------- v2.8.1: viikon lomakkeet (P.lomakkeet, opt-in, vain kun P.dokumentitRepossa) ----------
+   * P.lomakkeet = { paivakirja: { kentat: [{ avain, otsikko, rivit }] }, ailoki: { johdanto, vaiheet } }.
+   * Viikon kirjausosioon tulee lomake, joka tallentuu selaimeen (FORM_KEY). Kopioi-painike antaa
+   * valmiin Markdown-tekstin tiedostoon liitettäväksi: päiväkirjaan viikon ###-otsikot vastauksineen,
+   * AI-lokiin merkintä tiedoston merkinnän pohjan muodossa. Muissa projekteissa ei muutosta.
+   */
+  function journalFormFields() {
+    const kentat = (FORMS.paivakirja && FORMS.paivakirja.kentat) || [];
+    return kentat.length ? kentat : [{ avain: "work", otsikko: "Mitä tein ja miten?", rivit: 6 },
+      { avain: "reason", otsikko: "Miksi tein näin?", rivit: 4 }, { avain: "evidence", otsikko: "Missä työnäyte on?", rivit: 4 }];
+  }
+  function journalMarkdown(week) {
+    const saved = formState.paivakirja[week] || {};
+    return `${journalFormFields().map((f) => `### ${f.otsikko}\n${String(saved[f.avain] || "").trim()}\n`).join("\n")}\n`;
+  }
+  function journalFormHtml(week) {
+    const saved = formState.paivakirja[week] || {};
+    const id = `lomake-${week}`;
+    return `<form class="week-form" data-week-form="${week}" novalidate>
+        <h3 class="week-form-title">${escapeText(t("formJournalTitle"))}</h3>
+        <p class="week-form-lead">${escapeText(t("formJournalLead"))}</p>
+        ${journalFormFields().map((f) => `<label class="week-form-field" for="${id}-${escapeText(f.avain)}">${escapeText(f.otsikko)}</label>
+        <textarea id="${id}-${escapeText(f.avain)}" rows="${Number(f.rivit) || 4}" data-week-form-field="${escapeText(f.avain)}">${escapeText(saved[f.avain] || "")}</textarea>`).join("")}
+      </form>`;
+  }
+  function journalCopyHtml(week) {
+    const id = `lomake-${week}`;
+    return `<div class="copy-block week-form-copy">
+        <p class="copy-title" id="${id}-kirjaus-otsikko">${escapeText(t("formJournalCopyTitle"))}</p>
+        <pre class="copy-text" id="${id}-kirjaus" tabindex="0" aria-labelledby="${id}-kirjaus-otsikko" data-week-form-preview="${week}">${escapeText(journalMarkdown(week))}</pre>
+        <button type="button" class="button button-primary copy-button" data-form-copy="journal" data-week-copy="${week}">${escapeText(t("formJournalCopyButton"))}</button>
+      </div>`;
+  }
+  function todayFi() {
+    const d = new Date();
+    return `${d.getDate()}.${d.getMonth() + 1}.${d.getFullYear()}`;
+  }
+  function aiMarkdown(e) {
+    return [`### ${e.pvm} · ${e.tyokalut}`, `- ${t("formAiQuestion")}: ${e.apu}`, `- ${t("formAiDecision")}: ${e.paatos}`,
+      `- ${t("formAiReason")}: ${e.peruste}`, `- ${t("formAiRef")}: ${e.viite}`, `- ${t("formAiPrivacyLine")}: ${t("formAiPrivacy")}`].join("\n") + "\n";
+  }
+  function aiFormHtml(week) {
+    const a = FORMS.ailoki || {};
+    const id = `ailoki-${week}`;
+    const field = (name, label, type) => type === "area"
+      ? `<label class="week-form-field" for="${id}-${name}">${escapeText(label)}</label><textarea id="${id}-${name}" name="${name}" rows="3" required></textarea>`
+      : `<label class="week-form-field" for="${id}-${name}">${escapeText(label)}</label><input id="${id}-${name}" name="${name}" type="text" required${name === "pvm" ? ` value="${escapeText(todayFi())}"` : ""}>`;
+    const vaiheet = (a.vaiheet || []).map((v) => `<li>${richText(v)}</li>`).join("");
+    return `<section class="week-ai" data-week-ai="${week}" aria-labelledby="${id}-otsikko">
+        <h3 class="week-form-title" id="${id}-otsikko">${escapeText(t("formAiTitle"))}</h3>
+        ${a.johdanto ? `<p>${richText(a.johdanto)}</p>` : ""}
+        ${vaiheet ? `<ol class="journal-repo-steps">${vaiheet}</ol>` : ""}
+        <form class="week-form" data-week-ai-form="${week}" novalidate>
+          <p class="week-form-lead">${escapeText(t("formAiLead"))}</p>
+          ${field("pvm", t("formAiDate"))}
+          ${field("tyokalut", t("formAiTools"))}
+          ${field("apu", t("formAiQuestion"), "area")}
+          <fieldset class="week-form-choice"><legend>${escapeText(t("formAiDecision"))}</legend>
+            ${t("formAiDecisions").map((d, i) => `<label><input type="radio" name="paatos" value="${escapeText(d)}"${i === 0 ? " required" : ""}> ${escapeText(d)}</label>`).join("")}
+          </fieldset>
+          ${field("peruste", t("formAiReason"), "area")}
+          ${field("viite", `${t("formAiRef")}, ${t("formAiRefHint")}`)}
+          <label class="week-form-check"><input type="checkbox" name="tietosuoja" required> ${escapeText(t("formAiPrivacy"))}</label>
+          <p class="week-form-error" data-week-ai-error hidden></p>
+          <button class="button button-primary" type="submit">${escapeText(t("formAiAdd"))}</button>
+        </form>
+        <h4 class="week-form-title">${escapeText(t("formAiEntries", week))}</h4>
+        <div class="week-ai-entries" data-week-ai-entries="${week}" aria-live="polite"></div>
+      </section>`;
+  }
+  function renderAiEntries(week) {
+    const holder = document.querySelector(`[data-week-ai-entries="${week}"]`);
+    if (!holder) return;
+    const entries = formState.ailoki.filter((e) => Number(e.viikko) === week);
+    holder.innerHTML = entries.length ? entries.map((e) => `<div class="copy-block" data-ai-entry="${escapeText(e.id)}">
+        <p class="copy-title" id="ai-${escapeText(e.id)}-otsikko">${escapeText(`${e.pvm} · ${e.tyokalut}`)}</p>
+        <pre class="copy-text" tabindex="0" aria-labelledby="ai-${escapeText(e.id)}-otsikko">${escapeText(aiMarkdown(e))}</pre>
+        <button type="button" class="button button-primary copy-button" data-form-copy="ai" data-ai-id="${escapeText(e.id)}">${escapeText(t("formAiCopyButton"))}</button>
+        <button type="button" class="button button-secondary" data-ai-delete="${escapeText(e.id)}">${escapeText(t("formAiDelete"))}</button>
+      </div>`).join("") : `<p class="empty-state">${escapeText(t("formAiEmpty"))}</p>`;
+  }
+  function saveForms() { writeStorage(FORM_KEY, formState); }
+  document.addEventListener("input", (event) => {
+    const field = event.target.closest?.("[data-week-form-field]");
+    if (!field) return;
+    const week = Number(field.closest("[data-week-form]").dataset.weekForm);
+    formState.paivakirja[week] = { ...(formState.paivakirja[week] || {}), [field.dataset.weekFormField]: field.value };
+    saveForms();
+    const preview = document.querySelector(`[data-week-form-preview="${week}"]`);
+    if (preview) preview.textContent = journalMarkdown(week);
+  });
+  document.addEventListener("submit", (event) => {
+    const form = event.target.closest?.("[data-week-ai-form]");
+    if (!form) return;
+    event.preventDefault();
+    const week = Number(form.dataset.weekAiForm);
+    const error = form.querySelector("[data-week-ai-error]");
+    const missing = [...form.querySelectorAll("[required]")].find((x) => (x.type === "radio" ? !form.querySelector(`[name="${x.name}"]:checked`) : x.type === "checkbox" ? !x.checked : !x.value.trim()));
+    if (missing) {
+      const label = missing.type === "radio" ? t("formAiDecision") : missing.type === "checkbox" ? t("formAiPrivacyLine") : (form.querySelector(`label[for="${missing.id}"]`)?.textContent || "");
+      error.textContent = t("formMissing", label);
+      error.hidden = false;
+      missing.focus();
+      return;
+    }
+    error.hidden = true;
+    const v = (name) => String(new FormData(form).get(name) || "").trim().replace(/\s*\n\s*/g, " ");
+    const entry = { id: `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`, viikko: week,
+      pvm: v("pvm"), tyokalut: v("tyokalut"), apu: v("apu"), paatos: v("paatos"), peruste: v("peruste"), viite: v("viite") };
+    formState.ailoki.push(entry);
+    saveForms();
+    ["apu", "peruste", "viite"].forEach((name) => { form.elements[name].value = ""; });
+    form.querySelectorAll('[name="paatos"], [name="tietosuoja"]').forEach((x) => { x.checked = false; });
+    renderAiEntries(week);
+    announce(t("formAiAdded"));
+    document.querySelector(`[data-ai-entry="${entry.id}"] [data-form-copy]`)?.focus();
+  });
+  document.addEventListener("click", async (event) => {
+    const del = event.target.closest?.("[data-ai-delete]");
+    if (del) {
+      if (!window.confirm(t("formAiDeleteConfirm"))) return;
+      const entry = formState.ailoki.find((e) => e.id === del.dataset.aiDelete);
+      formState.ailoki = formState.ailoki.filter((e) => e.id !== del.dataset.aiDelete);
+      saveForms();
+      if (entry) renderAiEntries(Number(entry.viikko));
+      return;
+    }
+    const button = event.target.closest?.("[data-form-copy]");
+    if (!button) return;
+    let text = "";
+    if (button.dataset.formCopy === "journal") text = journalMarkdown(Number(button.dataset.weekCopy));
+    else { const e = formState.ailoki.find((x) => x.id === button.dataset.aiId); if (e) text = aiMarkdown(e); }
+    if (!text) return;
+    const ok = await copyText(text);
+    if (!button.dataset.copyLabel) button.dataset.copyLabel = button.textContent;
+    button.textContent = ok ? t("copyDone") : button.dataset.copyLabel;
+    button.classList.toggle("is-copied", ok);
+    announce(ok ? t("copyLive", button.closest(".copy-block")?.querySelector(".copy-title")?.textContent || "") : t("copyFailed"));
+    window.clearTimeout(Number(button.dataset.copyTimer || 0));
+    button.dataset.copyTimer = String(window.setTimeout(() => { button.textContent = button.dataset.copyLabel; button.classList.remove("is-copied"); }, 4000));
+  });
 
   /* ---------- v2.8: linkkien navigointi ja paluu ---------- */
   let linkOrigin = null;

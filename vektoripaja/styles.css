@@ -991,3 +991,23 @@ html[data-teema] .kuvaohje-mark {
   box-shadow: none;
   pointer-events: none;
 }
+
+/* v2.8.1: viikon lomakkeet (P.lomakkeet): päiväkirjan vastaukset ja AI-lokin merkintä viikon kirjauksessa. */
+.week-form { margin-top: 16px; display: flex; flex-direction: column; gap: 6px; }
+.week-form-title { margin-top: 24px; font-size: 17px; }
+.week-form-lead { margin: 0 0 4px; }
+.week-form-field { display: block; margin-top: 10px; font-weight: 600; }
+.week-form textarea, .week-form input[type="text"] {
+  width: 100%; padding: 10px 12px; border: 1px solid var(--line); border-radius: var(--radius-button);
+  background: var(--card-bg); font: inherit; color: var(--ink); resize: vertical;
+}
+.week-form-choice { margin: 10px 0 0; padding: 8px 12px; border: 1px solid var(--line); border-radius: var(--radius-button); display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.week-form-choice legend { font-weight: 600; padding: 0 4px; }
+.week-form-choice label, .week-form-check { display: flex; align-items: center; gap: 8px; }
+.week-form-check { margin-top: 10px; }
+.week-form-error { margin: 8px 0 0; font-weight: 700; }
+.week-form button[type="submit"] { align-self: flex-start; margin-top: 12px; }
+.week-ai { margin-top: 32px; }
+.week-ai-entries .copy-block .button + .button { margin-left: 8px; }
+:where(html[data-teema]) .week-form-field { margin-top: 1em; }
+:where(html[data-teema]) .week-form-choice { border: var(--bw) solid var(--ink); }
