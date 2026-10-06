@@ -389,14 +389,14 @@ window.NAYTTOPROJEKTI = {
         ohje: [
           "Kirjaa [[tiedosto:ai-loki|AI-lokiin]] yksi merkintä tästä kortista: [[ohje:ailoki-lomake]]. Lomake on viikon sivun lopussa osiossa Viikon kirjaus. Otsikkoriville tulevat päivä, kaikki kortissa käyttämäsi tekoälytyökalut ja kaista.",
           "Rastita issuessa kohta 6 Kirjattu nyt, ennen committia.",
-          "Tee commit ja push. Ohje: [[ohje:commit]]. Changes-listassa ovat kortin tiedostot, testitiedosto (jos kortissa on koodilla tehty testi), `PROJEKTIN-TILA.md` ja [[tiedosto:ai-loki|project-docs/ai-loki.md]]. Kopioi commit-viestin pohja ja täytä se: mitä teit ja issuen numero rivillä `Closes #N`. Korvaa sulkeet ja niiden teksti, esimerkiksi Closes #12.",
+          "Tee commit ja push. Ohje: [[ohje:commit]]. Changes-listassa ovat kortin tiedostot, testitiedosto (jos kortissa on koodilla tehty testi), `PROJEKTIN-TILA.md` ja viikon tiedosto [[tiedosto:ai-loki|ai-loki-vko-{viikko}.md]]. Kopioi commit-viestin pohja ja täytä se: mitä teit ja issuen numero rivillä `Closes #N`. Korvaa sulkeet ja niiden teksti, esimerkiksi Closes #12.",
           "Tarkista [[github:issues?q=is%3Aissue+is%3Aclosed|suljetuista issueista]], että issue sulkeutui: [[kuvaohje:github-issue-sulkeutuu]]. Jos teit työn haarassa, issue sulkeutuu vasta, kun pull request liitetään päähaaraan. Ohita silloin tämä kohta."
         ],
         pohja: [
           { otsikko: "Commit-viestin pohja", teksti: "(mitä tein, verbi ensin)\n\nCloses #(numero)" }
         ],
         kuvaohjeet: ["vscode-commit-push", "github-issue-sulkeutuu"],
-        valmis: "commit on GitHubissa, tiedostossa [[tiedosto:ai-loki|ai-loki.md]] on merkintä, ja issue on suljettu. Haarassa issue sulkeutuu vasta mergessä.",
+        valmis: "commit on GitHubissa, tiedostossa [[tiedosto:ai-loki|ai-loki-vko-{viikko}.md]] on merkintä, ja issue on suljettu. Haarassa issue sulkeutuu vasta mergessä.",
         jumissa: [
           { kysymys: "Push ei onnistu?", ohje: "Valitse VS Coden Source Controlissa Sync Changes uudelleen. Jos VS Code kysyy vahvistusta, valitse OK. Jos virhe jatkuu, lähetä virheilmoituksesta kuva ohjaajalle Teamsissa. Ohje: [[ohje:teams]], kohta Jos lähetät kuvan." },
           { kysymys: "Issue ei sulkeutunut?", ohje: "Tarkista, että commit-viestissä lukee `Closes #N` oikealla numerolla. Tarkista myös, että push meni päähaaraan `main`. Päähaara on repositoryn päälinja, josta julkaisu tehdään." }
@@ -709,11 +709,22 @@ window.NAYTTOPROJEKTI = {
     {
       tunnus: "ailoki-lomake",
       otsikko: "Kirjaa AI-lokiin lomakkeella",
-      johdanto: "Merkintälomake on jokaisen työviikon sivun lopussa osiossa Viikon kirjaus. Lomake tekee merkinnän valmiiksi tiedoston [[tiedosto:ai-loki|ai-loki.md]] muotoon.",
+      johdanto: "Merkintälomake on jokaisen työviikon sivun lopussa osiossa Viikon kirjaus. Viikon merkinnät tallennetaan viikon omaksi tiedostoksi, esimerkiksi [[tiedosto:ai-loki|ai-loki-vko-43.md]]. Merkinnät ovat samassa muodossa kuin tiedostossa [[tiedosto:ai-loki|ai-loki.md]].",
       vaiheet: [
         { missa: "Viikon sivun loppu, osio Viikon kirjaus, merkintälomake", tee: "Täytä kentät. Työkalut ja kaista -kenttään tulevat kaikki käyttämäsi tekoälytyökalut ja kaista, esimerkiksi GitHub Copilot, Täydennys-kaista. Valitse Lisää merkintä.", naet: "Merkintä näkyy lomakkeen jälkeen kohdassa, jonka otsikko alkaa sanoilla Viikon ja merkinnät. Jos lomakkeen lopussa lukee Täytä kohta, täytä mainittu kohta ja valitse Lisää merkintä uudelleen." },
-        { missa: "VS Code, tiedosto [[tiedosto:ai-loki|project-docs/ai-loki.md]]", tee: "Avaa tiedosto. Ohje: [[ohje:avaa-tiedosto]]. Paina Ctrl+End ja Enter.", naet: "Kursori on tyhjällä rivillä tiedoston lopussa." },
-        { missa: "Viikon sivu, merkintäsi painike Kopioi merkintä, ja VS Code", tee: "Valitse Kopioi merkintä. Palaa VS Codeen ja paina Ctrl+V ja sitten Ctrl+S.", naet: "Tiedoston lopussa on merkintäsi: otsikkorivi, joka alkaa merkeillä ###, ja viisi riviä, jotka alkavat merkillä -." }
+        { missa: "Viikon sivun loppu, latauspainike", tee: "Valitse Lataa viikon [[tiedosto:ai-loki|AI-loki]] ja tallenna tiedosto kansioon project-docs: [[ohje:lataa-kirjaukset]]. Jos tiedosto on jo kansiossa, korvaa se.", naet: "Kansiossa project-docs on viikon tiedosto, esimerkiksi [[tiedosto:ai-loki|ai-loki-vko-43.md]]. Siinä ovat viikon kaikki merkinnät: jokaisella otsikkorivi, joka alkaa merkeillä ###, ja viisi riviä, jotka alkavat merkillä -." }
+      ]
+    },
+    {
+      tunnus: "lataa-kirjaukset",
+      otsikko: "Tallenna viikon kirjaus tiedostoksi",
+      johdanto: "Viikon kirjauksen lomakkeet tallentavat tekstin selaimeen. Lataus tekee niistä viikon oman tiedoston kansioon project-docs: [[tiedosto:projektipaivakirja|projektipaivakirja-vko-N.md]] tai [[tiedosto:ai-loki|ai-loki-vko-N.md]], jossa N on viikon numero. Muut tiedostot eivät muutu. Lataa samalla koneella ja selaimella, jolla kirjoitit, koska lomakkeiden teksti on vain siinä selaimessa.",
+      vaiheet: [
+        { missa: "VS Code, Explorer", tee: "Napsauta kansiota project-docs hiiren oikealla painikkeella ja valitse Copy Path.", naet: "Kansion polku on leikepöydällä. Mitään ei näy ruudulla." },
+        { missa: "Viikon sivun loppu, osio Viikon kirjaus", tee: "Valitse Lataa viikon [[tiedosto:projektipaivakirja|päiväkirja]] tai Lataa viikon [[tiedosto:ai-loki|AI-loki]].", naet: "Tallennusikkuna aukeaa, ja tiedoston nimi on valmiina. Jos ikkunaa ei tule, selain tallensi tiedoston Lataukset-kansioon: tee vaihe 5. Jos painikkeen jälkeen lukee, että ladattavaa ei ole, lomake on tyhjä." },
+        { missa: "Tallennusikkuna, osoiterivi ylhäällä", tee: "Napsauta osoiteriviä ja paina Ctrl+V ja Enter.", naet: "Ikkunassa näkyvät kansion project-docs tiedostot." },
+        { missa: "Tallennusikkunan alareuna", tee: "Valitse Tallenna (Save). Jos ikkuna kysyy, korvataanko tiedosto, valitse Kyllä (Yes).", naet: "Painikkeen jälkeen lukee Tallennettu ja tiedoston nimi. VS Coden Explorerissa kansiossa project-docs on viikon tiedosto, esimerkiksi projektipaivakirja-vko-43.md." },
+        { missa: "Vain jos tallennusikkunaa ei tullut: Resurssienhallinta", tee: "Avaa Lataukset-kansio, napsauta tiedostoa hiiren oikealla painikkeella ja valitse Leikkaa. Siirry kansioon project-docs liittämällä polku osoiteriville (Ctrl+V ja Enter) ja paina Ctrl+V, ja jos Windows kysyy, korvataanko tiedosto, valitse Korvaa tiedosto kohteessa.", naet: "Tiedosto on kansiossa project-docs. Jos tiedoston nimen perässä on numero, esimerkiksi (1), Lataukset-kansiossa oli jo samanniminen tiedosto: nimeä tiedosto uudelleen ilman numeroa." }
       ]
     }
   ],
@@ -836,7 +847,7 @@ window.NAYTTOPROJEKTI = {
       polku: "project-docs/projektipaivakirja.md",
       milloin: "Joka viikon viimeisenä työpäivänä, yleensä perjantaina.",
       mitaKirjoitetaan: [
-        "Etsi tämän viikon otsikko. Viikon sivun kohdassa Viikon kirjaus ovat viikon otsikko ja commit-viesti kopioitavina.",
+        "Kirjoita vastaukset viikon sivun osion Viikon kirjaus lomakkeeseen Viikon vastaukset. Tallenna ne viikon omaksi tiedostoksi projektipaivakirja-vko-N.md kansioon project-docs: [[ohje:lataa-kirjaukset]]. Tiedosto projektipaivakirja.md ja sen aiemmat viikot pysyvät ennallaan.",
         "Vastaa otsikon kolmeen kysymykseen: Mitä tein ja miten? Miksi tein näin? Missä työnäyte on?",
         "Kirjoita työnäytteen kohdalle issuen tai testin numero, commitin tunnus tai tiedoston linkki. Kirjoita myös näyttömatriisin vaatimus, esimerkiksi versionhallinta.",
         "Jos viikolla tehtiin funktio, selitä se selityspohjalla. Selityspohja on viikon sivun kohdassa Viikon kirjaus. Kerro, mitä funktio saa, mitä se palauttaa, mitä se valitsee eli tekee if-ehdolla, mitä se toistaa eli tekee silmukalla tai rekursiolla ja mikä testi sen tarkistaa."
@@ -849,7 +860,7 @@ window.NAYTTOPROJEKTI = {
       polku: "project-docs/ai-loki.md",
       milloin: "Työsyklin askeleessa 6: yksi merkintä korttia kohden. Jos käytät tekoälyä työsyklin ulkopuolella, kirjoita merkintä samana päivänä.",
       mitaKirjoitetaan: [
-        "Avaa tiedosto ja paina Ctrl+End ja Enter. Liitä merkinnän pohja ja täytä sen kohdat. Pohja on kopioitavana työsyklin askeleessa 6 ja tiedoston kohdassa ## Merkinnän pohja. Jos et käyttänyt työsykliä, kirjoita kaistan tilalle ilman korttia.",
+        "Kirjoita merkintä viikon sivun osion Viikon kirjaus merkintälomakkeeseen ja tallenna viikon merkinnät tiedostoksi [[tiedosto:ai-loki|ai-loki-vko-N.md]] kansioon project-docs: [[ohje:ailoki-lomake]]. Kun työvaihe antaa valmiin merkinnän pohjan, liitä se tiedoston [[tiedosto:ai-loki|ai-loki.md]] loppuun: Ctrl+End, Enter ja Ctrl+V. Jos et käyttänyt työsykliä, kirjoita kaistan tilalle ilman korttia.",
         "Otsikkorivillä ovat päivä, kaikki kortissa käytetyt tekoälytyökalut ja kaista, esimerkiksi ### 7.10.2026 · Copilot ja GitHub Copilot, Tiedosto-kaista. Copilot tarkoittaa Microsoft 365 Copilotia.",
         "Päätös on aina yksi kolmesta: hyväksyn, korjautan tai hylkään. Korjautan tarkoittaa, että pyysit tekoälyä korjaamaan vastaustaan. Kirjoita kortin tärkein päätös ja sille yksi peruste.",
         "Aineistoviite on issuen tai testin numero tai commitin tunnus. Älä kirjoita henkilötietoja, salasanoja tai luottamuksellista aineistoa."
@@ -4118,18 +4129,15 @@ window.NAYTTOPROJEKTI = {
     tiedostonimi: "projektipaivakirja.md",
     polku: "project-docs/projektipaivakirja.md",
     repo: {
-      johdanto: "Kirjoita viikon kirjaus viikon viimeisenä työpäivänä. Kirjoitat vastaukset lomakkeeseen Viikon vastaukset ja kopioit ne tiedostoon [[tiedosto:projektipaivakirja|projektipaivakirja.md]].",
+      johdanto: "Kirjoita viikon kirjaus viikon viimeisenä työpäivänä. Kirjoitat vastaukset lomakkeeseen Viikon vastaukset ja tallennat ne viikon omaksi tiedostoksi projektipaivakirja-vko-{viikko}.md kansioon project-docs. [[tiedosto:projektipaivakirja|Projektipäiväkirjan]] aiemmat tekstit pysyvät ennallaan.",
       otsikko: "Vko {viikko} – {nimi}",
       vaiheet: [
         {
           funktio: "Kirjoita vastaukset lomakkeen Viikon vastaukset kolmeen kenttään. Teksti tallentuu tähän selaimeen. Mitä tein ja miten?: mitä teit, maanantain krediittiluku ja viikon funktion selitys selityspohjalla. Kopioi selityspohja Kopioi-painikkeella, liitä se kenttään ja täytä ___-kohdat. Viikon funktio on {funktio}. Funktion koodi on kortin Tiedostot-kohdan tiedostossa: etsi funktion nimi Ctrl+F:llä. Valitse hakukentästä Match Whole Word (Alt+W) ja hae sanat if, for ja while. Rekursiossa funktio kutsuu itseään omalla nimellään. Miksi tein näin?: päätökset ja perustelut. Missä työnäyte on?: Tallenna nämä tiedot -listan työnäytteiden numerot ja linkit sekä näyttömatriisin vaatimukset. Numerot ja linkit löydät näin: [[ohje:kopioi-osoite]]. Malli: [[tiedosto:projektipaivakirja]].",
           eiFunktiota: "Kirjoita vastaukset lomakkeen Viikon vastaukset kolmeen kenttään. Teksti tallentuu tähän selaimeen. Mitä tein ja miten?: mitä teit ja maanantain krediittiluku, jos katsoit sen. Tällä viikolla ei ole funktiota, joten selityspohjaa ei tarvita. Miksi tein näin?: päätökset ja perustelut. Missä työnäyte on?: Tallenna nämä tiedot -listan työnäytteiden numerot ja linkit sekä näyttömatriisin vaatimukset. Numerot ja linkit löydät näin: [[ohje:kopioi-osoite]]. Malli: [[tiedosto:projektipaivakirja]]."
         },
-        "Avaa tiedosto [[tiedosto:projektipaivakirja|project-docs/projektipaivakirja.md]]. Ohje: [[ohje:avaa-tiedosto]].",
-        "Kopioi viikon otsikko Kopioi-painikkeella. Paina VS Codessa Ctrl+F, paina Ctrl+V ja sitten Enter. Paina Esc. Kursori on viikon otsikossa.",
-        "Jos tiedostossa on jo tämän viikon vastauksia, kopioi ne ensin lomakkeen kenttiin, ettei mitään katoa. Maalaa sitten viikon vastaukset: napsauta rivin ### Mitä tein ja miten? alkuun, pidä Shift pohjassa ja napsauta seuraavan ##-otsikkorivin alkuun. Jos seuraavaa ##-otsikkoa ei ole, paina Shift+Ctrl+End.",
-        "Valitse painike Kopioi kirjaus. Palaa VS Codeen ja paina Ctrl+V ja sitten Ctrl+S. Viikon kolmen otsikon jälkeen ovat nyt lomakkeen vastaukset.",
-        "Tee commit ja push. Ohje: [[ohje:commit]]. Commit-viesti on kopioitavana."
+        "Valitse Lataa viikon [[tiedosto:projektipaivakirja|päiväkirja]] ja tallenna tiedosto kansioon project-docs: [[ohje:lataa-kirjaukset]]. Tiedoston nimi on projektipaivakirja-vko-{viikko}.md. Jos tiedosto on jo kansiossa, korvaa se: uusi tiedosto sisältää lomakkeen kaikki vastaukset.",
+        "Tee commit ja push. Ohje: [[ohje:commit]]. Changes-listassa on tiedosto projektipaivakirja-vko-{viikko}.md. Commit-viesti on kopioitavana."
       ],
       pohjat: [
         { otsikko: "Selityspohja funktiolle: kopioi ja täytä", vainFunktio: true, teksti: "Funktio ___ saa ___. Se palauttaa ___.\nValitsee (if-ehto): ___ (tai: ei valintaa)\nToistaa (silmukka tai rekursio): ___ (tai: ei toistoa)\nTesti ___ tarkistaa ___." },
@@ -4150,12 +4158,11 @@ window.NAYTTOPROJEKTI = {
       ]
     },
     ailoki: {
-      johdanto: "Kirjaa tekoälyn käyttö samana päivänä: yksi merkintä tehtäväkorttia kohden. Ohje: [[ohje:ailoki-lomake]].",
+      johdanto: "Kirjaa tekoälyn käyttö samana päivänä: yksi merkintä tehtäväkorttia kohden. Merkinnät tallennetaan viikon omaksi tiedostoksi [[tiedosto:ai-loki|ai-loki-vko-{viikko}.md]], joten tiedoston [[tiedosto:ai-loki|ai-loki.md]] aiemmat merkinnät pysyvät ennallaan. Ohje: [[ohje:ailoki-lomake]].",
       vaiheet: [
         "Täytä lomake ja valitse Lisää merkintä. Työkalut ja kaista -kenttään tulevat kaikki käyttämäsi tekoälytyökalut ja kaista, esimerkiksi GitHub Copilot, Täydennys-kaista. Jos kortti ei ollut käytössä, kaista on ilman korttia.",
-        "Avaa tiedosto [[tiedosto:ai-loki|project-docs/ai-loki.md]]. Ohje: [[ohje:avaa-tiedosto]]. Paina Ctrl+End ja Enter.",
-        "Valitse merkinnän painike Kopioi merkintä. Palaa VS Codeen ja paina Ctrl+V ja sitten Ctrl+S.",
-        "Tee commit ja push. Ohje: [[ohje:commit]]. Jos kirjaat merkinnän työsyklin askeleessa 6, tee commit askeleen ohjeen mukaan."
+        "Valitse Lataa viikon [[tiedosto:ai-loki|AI-loki]] ja tallenna tiedosto kansioon project-docs: [[ohje:lataa-kirjaukset]]. Tiedoston nimi on [[tiedosto:ai-loki|ai-loki-vko-{viikko}.md]]. Jos tiedosto on jo kansiossa, korvaa se: uusi tiedosto sisältää viikon kaikki merkinnät.",
+        "Tee commit ja push. Ohje: [[ohje:commit]]. Changes-listassa on tiedosto [[tiedosto:ai-loki|ai-loki-vko-{viikko}.md]]. Jos kirjaat merkinnän työsyklin askeleessa 6, tee commit askeleen ohjeen mukaan."
       ]
     }
   },
