@@ -74,7 +74,7 @@ chrome --headless --no-pdf-header-footer --print-to-pdf=downloads/vektoripaja-ty
 ## Kuvaohjeiden kuvat
 
 Aloitusnäkymä kertoo tavoitteen ja viisi vaihetta. Jokaisen työviikon alussa on vaihepolku,
-yksi yhteys kokonaisprojektiin ja lyhyt tavoite. Projektin 126 työvaihetta on jaettu
+yksi yhteys kokonaisprojektiin ja lyhyt tavoite. Projektin 127 työvaihetta on jaettu
 osatehtäviin (selkeysuudistus 5.10.2026: yksi osatehtävä on yksi toimenpide, ja jokaisessa on
 Missä, Tee ja Näet nyt). Vanhat tehtävätunnukset säilyvät, ja moottori siirtää aiemmat rastit
 osatehtäviin (`versio`, `vanha`, `perii`). Viikon työvaihe on viikon sivun osa; GitHub-issue on

@@ -4,10 +4,10 @@
   "nimi": "Vektoripaja",
   "kieli": "fi",
   "paivaton": false,
-  "generoitu": "2026-10-05",
+  "generoitu": "2026-10-06",
   "lahde": {
-    "sisalto.js": "f66e1125e2fac8dc",
-    "index.html": "ec1465fe178a8246"
+    "sisalto.js": "ec1c05d5d8e33f52",
+    "index.html": "d4d6ac3ad5b0e6d7"
   },
   "viikot": [
     40,
@@ -724,72 +724,48 @@
       "jarjestys": 2,
       "tyyppi": "feature",
       "vaihe": "1",
-      "otsikko": "Harjoitus: pyörivä kuutio julki",
+      "otsikko": "Työkalut käyttöön: valmis kuutio",
       "tehtavat": [
         {
           "id": "41-0",
-          "teksti": "Siirrä dokumentit repositoryyn",
+          "teksti": "Viimeistele viikon 40 dokumentit tarvittaessa",
           "valmis": "Dokumentit ovat repositoryssa ja omalla koneellasi. Jos sinulla oli tiedosto MVP.md, sen teksti on project-docs/suunnitelma.md GitHubissa.",
           "tallenna": "Tiedoston MVP.md teksti tiedostossa project-docs/suunnitelma.md GitHubissa."
         },
         {
           "id": "41-7",
-          "teksti": "Siirrä selaimen tekstit dokumentteihin",
+          "teksti": "Siirrä aiemmat selaimen tekstit talteen tarvittaessa",
           "valmis": "Sivulle kirjoittamasi teksti on dokumenteissa GitHubissa.",
           "tallenna": "Siirretyt tekstit tiedostoissa project-docs/suunnitelma.md, project-docs/projektipaivakirja.md ja project-docs/ai-loki.md GitHubissa."
         },
         {
-          "id": "41-5",
-          "teksti": "Kirjaa asiakkaiden vastaukset",
-          "valmis": "Asiakkaiden vastaukset ovat tiedostossa project-docs/kysymykset.md GitHubissa.",
-          "tallenna": "Vastaukset tiedostossa project-docs/kysymykset.md GitHubissa."
-        },
-        {
-          "id": "41-8",
-          "teksti": "Kirjaa tekninen päätös ja käyttöliittymävaatimus",
-          "valmis": "Tekninen päätös ja käyttöliittymävaatimus ovat project-docs/suunnitelma.md GitHubissa.",
-          "tallenna": "Päätökset tiedostossa project-docs/suunnitelma.md GitHubissa."
-        },
-        {
           "id": "41-1",
-          "teksti": "Pura harjoitussovelluksen pohja",
-          "valmis": "Pohjan tiedostot ovat repositoryn kansiossa, dokumentit ovat ennallaan, ja teeman värit ovat samat kuin käyttöliittymävaatimuksessasi.",
-          "tallenna": "Pohjan tiedostot menevät GitHubiin commitilla työvaiheessa Kirjaa kirjastojen lisenssit README:hen."
+          "teksti": "Pura valmis kuutiosovellus",
+          "valmis": "Valmis kuutiosovellus ja sen testi ovat repositoryn kansiossa. Omat dokumenttisi säilyivät.",
+          "tallenna": "Pohjan tiedostot tallennetaan GitHubiin työvaiheessa Käynnistä valmis kuutio."
         },
         {
           "id": "41-6",
           "teksti": "Asenna harjoitussovelluksen kirjastot",
           "valmis": "Kansio .venv on olemassa, kirjastot on asennettu, ja ympäristön tarkistus näyttää OK.",
-          "tallenna": "Virtuaaliympäristö jää omalle koneellesi, etkä vie kansiota .venv GitHubiin. Pohjan tiedostot menevät GitHubiin seuraavan työvaiheen commitilla."
-        },
-        {
-          "id": "41-9",
-          "teksti": "Kirjaa kirjastojen lisenssit README:hen",
-          "valmis": "README:ssä ovat kirjastot versioineen ja lisensseineen, ja pohjan tiedostot ovat GitHubissa.",
-          "tallenna": "Kirjastot ja lisenssit tiedostossa README.md GitHubissa."
-        },
-        {
-          "id": "41-2",
-          "teksti": "Määrittele kuution testi",
-          "valmis": "Testin 1 molemmat odotetut tulokset on päätetty asteina ennen toteutusta.",
-          "tallenna": "Odotetut tulokset kortin #1 issueen seuraavassa työvaiheessa."
+          "tallenna": "Virtuaaliympäristö jää omalle koneellesi. Kansio .venv ei kuulu GitHubiin."
         },
         {
           "id": "41-3",
-          "teksti": "Rakenna pyörivä kuutio",
-          "valmis": "Sovellus näyttää pyörivän kuution, ja testi 1 menee läpi.",
-          "tallenna": "Koodi ja testi GitHubiin. Testiajon tulos kortin #1 issueen kommenttina."
+          "teksti": "Käynnistä valmis kuutio",
+          "valmis": "Valmis kuutio pyörii oman tietokoneesi ruudulla.",
+          "tallenna": "Valmis pohja GitHubissa ja kuution käynnistyksen havainto viikon kirjauksessa."
         },
         {
-          "id": "41-4",
-          "teksti": "Julkaise harjoitussovellus",
-          "valmis": "Ladatusta zipistä käynnistetty Vektoripaja.exe näyttää pyörivän kuution.",
-          "tallenna": "Release v0.0.41 GitHubiin ja testin 2 tulos kortin #2 issueen."
+          "id": "41-2",
+          "teksti": "Aja valmiit tarkistukset",
+          "valmis": "Valmis testi ja itsetesti menevät läpi.",
+          "tallenna": "Testien tulokset viikon kirjauksessa."
         }
       ],
-      "nayta": "releasen v0.0.41 osoite, korttien #1 ja #2 issuet suljettuina sekä testien 1 ja 2 tulokset issueissa.",
-      "tuotos": "Dokumentit repositoryssa · päätökset suunnitelmassa · ikkuna, jossa kuutio pyörii · testit 1 ja 2 · release-zip GitHubissa · kaksi issueta suljettuna commit-viestillä.",
-      "valmis": "Releasen zipistä purettu sovellus käynnistyy, ja kuutio pyörii. Actionsin ajo on vihreä, eli itsetesti meni läpi. `pytest` näyttää, että testi 1 menee läpi. Korttien #1 ja #2 issuet on suljettu commitilla.",
+      "nayta": "ympäristötarkistuksen tulos, ruudulla pyörivä kuutio sekä valmiin testin ja itsetestin tulokset viikon kirjauksessa.",
+      "tuotos": "Toimiva Python-ympäristö ja ruudulla pyörivä valmis kuutio.",
+      "valmis": "Ympäristötarkistus näyttää Ympäristö on kunnossa. GitHub Copilotin avulla käynnistetty valmis main.py avaa ikkunan, jossa kuutio pyörii. Valmis testi test_1_kiertokulma menee läpi ja itsetesti näyttää ITSETESTI LÄPI. Tämän viikon valmistuminen ei vaadi tehtäväkortteja, julkaisua tai koodin kirjoittamista.",
       "tarkistukset": [
         {
           "id": "tiedosto:project-docs/ai-loki.md",
@@ -798,15 +774,15 @@
           "lahde": "auto"
         },
         {
-          "id": "tiedosto:MVP.md",
+          "id": "tiedosto:main.py",
           "tyyppi": "tiedosto",
-          "polku": "MVP.md",
+          "polku": "main.py",
           "lahde": "auto"
         },
         {
-          "id": "tagi:v0.0.41",
-          "tyyppi": "tagi",
-          "nimi": "v0.0.41",
+          "id": "tiedosto:MVP.md",
+          "tyyppi": "tiedosto",
+          "polku": "MVP.md",
           "lahde": "auto"
         },
         {
@@ -835,6 +811,18 @@
       "vaihe": "2",
       "otsikko": "Piirroksen tuonti (SVG)",
       "tehtavat": [
+        {
+          "id": "43-10",
+          "teksti": "Kirjaa asiakkaiden vastaukset",
+          "valmis": "Asiakkaiden vastaukset ovat tiedostossa project-docs/kysymykset.md GitHubissa.",
+          "tallenna": "Vastaukset tiedostossa project-docs/kysymykset.md GitHubissa."
+        },
+        {
+          "id": "43-12",
+          "teksti": "Kirjaa käyttöliittymävaatimus",
+          "valmis": "Käyttöliittymävaatimus on project-docs/suunnitelma.md GitHubissa.",
+          "tallenna": "Vaatimus tiedostossa project-docs/suunnitelma.md GitHubissa."
+        },
         {
           "id": "43-1",
           "teksti": "Piirrä tuonnin testiaineisto",
@@ -882,6 +870,12 @@
           "teksti": "Kirjaa SVG-kirjaston rajoitteet",
           "valmis": "Kaksi itse kokeiltua rajoitetta on kirjattu, ja ne ovat GitHubissa.",
           "tallenna": "Rajoitteet tiedostossa project-docs/kirjastot.md ja kokeilutiedosto testiaineisto/rajoitteet.svg GitHubissa."
+        },
+        {
+          "id": "43-11",
+          "teksti": "Kirjaa kirjastojen lisenssit README:hen",
+          "valmis": "README:ssä ovat kirjastot versioineen ja lisensseineen.",
+          "tallenna": "Kirjastot ja lisenssit tiedostossa README.md GitHubissa."
         },
         {
           "id": "43-6",

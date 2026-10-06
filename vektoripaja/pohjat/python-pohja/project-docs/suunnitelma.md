@@ -32,10 +32,7 @@ Vaatimukset ja niiden tärkeysjärjestys: https://mattiseise.github.io/projektik
 ### MVP omin sanoin (viikko 40)
 > Mikä kuuluu pakolliseen ytimeen ja miksi? Mitkä asiat odottavat ja miksi?
 
-### Tekninen pohja: hyväksynkö ehdotuksen ja miksi (viikko 41)
-> Hyväksytkö toimeksiannon teknisen ehdotuksen? Perustele vähintään kahdella pakollisen ytimen toiminnolla.
-
-### Käyttöliittymävaatimus (viikko 41)
+### Käyttöliittymävaatimus (viikko 43)
 > Kirjoita taustaväri, tekstin väri, tekstin koko ja painikkeiden koko.
 
 ### Kansiorakenne ja moduulien rajat (viikko 43)
@@ -72,7 +69,7 @@ Vaatimukset ja niiden tärkeysjärjestys: https://mattiseise.github.io/projektik
 > Kirjoita, minkä tärkeän jatkon toiminnon teet ja miksi juuri sen.
 
 ### Käyttöliittymävaatimuksen tarkistus (viikko 5)
-> Mitä viikon 41 käyttöliittymävaatimuksesta vielä puuttuu?
+> Mitä viikon 43 käyttöliittymävaatimuksesta vielä puuttuu?
 
 ## C · Ohjaajan päätökset
 > Kirjoita päätös vasta, kun ohjaaja on päättänyt. Kirjoita myös päivä. Tyhjä kohta on oikein, kunnes asia on sovittu.
