@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="fi">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harjoitellaan yhdessä – Vektoripaja</title>
+<style>
+html{font-size:125%;line-height:1.65;background:#fff;color:#161616}body{max-width:42rem;margin:auto;padding:1rem}h1,h2,h3{line-height:1.3}section{margin-block:3rem}a{color:#003b80;text-decoration:underline}a:focus-visible{outline:4px solid #161616;outline-offset:4px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f0f0f0;padding:1rem}code{font-size:1em}li{margin-block:.8rem}.ohje{border-left:5px solid #333;padding-left:1rem}textarea{display:block;width:100%;box-sizing:border-box;font:inherit}
+</style>
+<main>
+<h1>Harjoitellaan yhdessä</h1>
+<p>Tee yksi harjoitus kerrallaan ohjaajan kanssa. Ohjaaja lukee ohjeen tarvittaessa ääneen. Vastauksen voi kertoa puhumalla. Näitä asioita ei tarvitse osata ennen harjoittelua.</p>
+<p><a href="index.html">Takaisin Vektoripajaan</a>. Palaa sitten siihen viikon työvaiheeseen, jossa olit.</p>
+<nav aria-label="Harjoitukset"><ul>
+<li><a href="#tekoaly">Näin ohjaan tekoälyä</a></li>
+<li><a href="#paikka">Osan paikka ja muunnosmatriisi</a></li>
+<li><a href="#toisto">Valinta, silmukka ja rekursio</a></li>
+<li><a href="#kierto">Kiertopiste viikolla 50</a></li>
+<li><a href="#ohjaaja">Ohjaajan valmistelu</a></li>
+</ul></nav>
+<section id="tekoaly">
+<h2>Näin ohjaan tekoälyä</h2>
+<p>Vibekoodauksessa kuvaat haluamasi muutoksen tekoälylle. Tekoäly ehdottaa koodia. Sinä kokeilet, tapahtuuko sovittu asia.</p>
+<h3>1. Pyydä yksi muutos</h3>
+<p>Kopioi pohja. Täytä aukot yhdessä ohjaajan kanssa. Lähetä vasta täytetty pyyntö.</p>
+<pre>Haluan yhden muutoksen: __.
+Kun teen näin: __.
+Sovelluksen pitää tehdä näin: __.
+Muuta vain kortissa sovittuja tiedostoja: __.
+Älä muuta testien odotettuja tuloksia.
+Kerro lopuksi lyhyesti, mitä muutit.</pre>
+<h3>2. Kokeile</h3>
+<p>Tee kortin yksi sovittu kokeilu. Esimerkiksi paina Avaa ja valitse oma-piirros.svg.</p>
+<h3>3. Vertaa</h3>
+<p>Lue ensin odotettu tulos. Kerro sitten, mitä tapahtui. Esimerkiksi: ”Odotin kolmea ryhmää. Paneelissa on kaksi ryhmää.” Testin läpäisy kertoo vain siitä asiasta, jonka testi tarkistaa.</p>
+<h3>4. Pyydä korjaus</h3>
+<pre>Tein näin: __.
+Odotin tätä: __.
+Tapahtui tämä: __.
+Virheilmoitus, jos sellainen tuli: __.
+Korjaa tämä ero. Älä muuta sovittua tavoitetta tai testin odotettua tulosta.</pre>
+<p>Kokeile uudelleen. Jos sama asia epäonnistuu toisen kerran, pyydä ohjaajaa avuksi. Jätä tehtävä avoimeksi. Virheen löytäminen ja tarkka korjauspyyntö ovat myös osa oppimista.</p>
+<p>Viikon työsyklin kuusi vaihetta ovat edelleen käytössä. Nämä neljä kohtaa auttavat niiden sisällä: pyyntö tehdään rakentamisessa, kokeilu ja vertailu tarkistamisessa. Raportointi ja tallentaminen tehdään viikon ohjeen mukaan.</p>
+</section>
+<section id="paikka">
+<h2>Osan paikka</h2>
+<h3>1. Kokeile ensin ilman koodia</h3>
+<p>Vartalo on kohdassa 10. Pää on 2 yksikköä vartalon oikealla puolella. Missä pää on?</p>
+<p>Laske: 10 + 2 = 12. Pää on kohdassa 12. Ohjaaja voi näyttää saman kahdella esineellä tai tunnusteltavalla mallilla.</p>
+<p>Harjoittele uudelleen: vartalo on kohdassa 5 ja pää 2 yksikköä siitä oikealle. Pää on kohdassa 7.</p>
+<h3>2. Katso, mihin koodi tallentaa luvun</h3>
+<p>Muunnosmatriisi on tässä ohjelmassa lukutaulukko. Siinä on neljä riviä ja neljä saraketta. Ohjelma tallentaa siihen siirron, kierron ja koon muutoksen. Nyt tutkimme vain siirtoa.</p>
+<p>Python aloittaa numeroinnin nollasta. Rivi 0 on ensimmäinen rivi. Sarake 3 on neljäs sarake. Tässä projektissa x-suunnan siirto luetaan niiden risteyksestä. Ohjaaja näyttää paikan tarvittaessa suurennettuna ja lukee sen ääneen.</p>
+<pre>vanhemman_maailma[0, 3] = 10</pre>
+<p>Rivi tallentaa luvun 10 taulukon ensimmäisen rivin neljänteen sarakkeeseen.</p>
+<pre>vanhemman_maailma = numpy.eye(4)</pre>
+<p>Tämä tekee uuden neljä kertaa neljä -taulukon. Sen nimi on yksikkömatriisi. Se tarkoittaa lähtötilannetta: ei siirtoa, ei kiertoa eikä koon muutosta. Nimen eye voi lukea ääneen ”ai”. Sitä ei tarvitse päätellä itse.</p>
+<h3>3. Yhdistä vanhemman ja lapsen paikat</h3>
+<pre>vanhemman_maailma @ lapsi.muunnos</pre>
+<p>@ yhdistää tässä kaksi muunnosta matriisikertolaskulla. Järjestyksellä on merkitystä. Vasemmalla on vanhemman paikka koko mallissa. Oikealla on lapsen oma muunnos suhteessa vanhempaan.</p>
+<p>Kun mukana on vain saman suunnan siirto, esimerkkimme tulos on 10 + 2 = 12. Kiertoja ja koon muutoksia ei voi yleisesti laskea tällä yhteenlaskulla.</p>
+<pre>tulos = maailmamuunnos(lapsi, vanhemman_maailma)
+assert numpy.isclose(tulos[0, 3], 12)</pre>
+<p>Funktiolle annetaan lapsi ja vanhemman maailmamuunnos. Testi lukee tuloksen x-paikan ja vertaa sitä lukuun 12. isclose sallii hyvin pienen laskennan pyöristysvirheen. allclose tekee vastaavan vertailun taulukon kaikille luvuille.</p>
+<p class="ohje">Harjoitus on valmis, kun pystyt ohjaajan kanssa kertomaan, mistä luvut 10, 2 ja 12 tulevat. Sinun ei tarvitse laskea matriisikertolaskua käsin. Jos näyttö edellyttää koodin tarkempaa selitystä, ohjaaja opettaa sen ennen arviointia.</p>
+</section>
+<section id="toisto">
+<h2>Valinta, silmukka ja rekursio</h2>
+<p>Katso ensin yhtä esimerkkiä. Etsi vasta sen jälkeen sama asia omasta funktiostasi ohjaajan kanssa.</p>
+<h3>Valinta: if</h3>
+<pre>if nimi == "Pää":
+    print("Löytyi pää")</pre>
+<p>Jos nimi on Pää, ohjelma tulostaa viestin. Muussa tapauksessa tämä tulostusrivi jää tekemättä.</p>
+<h3>Silmukka: for</h3>
+<pre>for nimi in ["Vartalo", "Pää", "Korvat"]:
+    print(nimi)</pre>
+<p>Ohjelma tekee saman tulostusrivin kolme kertaa: kerran jokaiselle nimelle. Tätä kutsutaan silmukaksi. Myös while aloittaa silmukan: se toistaa niin kauan kuin sen ehto täyttyy.</p>
+<h3>Rekursio: funktio kutsuu itseään</h3>
+<p>Tämä on harjoitusmalli, ei sovellukseen kopioitava toteutus.</p>
+<pre>def kerro_osat(osa):
+    print(osa.nimi)
+    for lapsi in osa.lapset:
+        kerro_osat(lapsi)</pre>
+<p>Ensimmäinen rivi määrittelee funktion kerro_osat. Viimeinen rivi kutsuu samaa funktiota lapselle. Tätä kutsutaan rekursioksi.</p>
+<p>Vartalon kohdalla funktio kutsutaan Päälle. Pään kohdalla se kutsutaan Korville. Korvilla ei ole lapsia, joten uusia kutsuja ei tule. Tässä esimerkissä on sekä for-silmukka että rekursio.</p>
+<h3>Etsi omasta koodista</h3>
+<ol><li>Avaa viikon funktio ohjaajan kanssa.</li><li>Etsi if, for tai while. Ohjaaja auttaa erottamaan koodirivin kommentista.</li><li>Etsi funktion oma nimi funktion sisältä. Tarkista, onko kyseessä kutsu eikä def-määrittely.</li><li>Kerro yksi konkreettinen asia: esimerkiksi ”Funktio käsittelee jokaisen lapsiryhmän.”</li></ol>
+<p>Tekoälyn selitys on apu. Vertaa sitä omaan koodiin ohjaajan kanssa. Jos et vielä tunnista kohtaa, kirjoita ”Tarvitsen tästä harjoittelua”. Se on avunpyyntö, ei valmis osaamisen näyttö.</p>
+</section>
+<section id="kierto">
+<h2>Kiertopiste viikolla 50</h2>
+<p>Kiertopiste tarkoittaa kohtaa, jonka ympäri osa kääntyy. Ohjaaja näyttää sen esineellä: pidä yhtä kohtaa paikallaan ja käännä muuta osaa.</p>
+<p>Kaava siirto(pivot) @ kierto @ siirto(-pivot) kuvaa kolmea peräkkäistä toimintoa. Tämän projektin sarakevektorikäytännössä oikeanpuoleinen muunnos vaikuttaa ensin.</p>
+<ol><li>Siirrä kiertopiste hetkeksi kohtaan nolla.</li><li>Kierrä osa nollan ympäri.</li><li>Siirrä se takaisin.</li></ol>
+<p>Jos kiertopiste on x = 3, ensimmäinen siirto on −3 ja viimeinen +3. Kiertopisteen pitää pysyä samassa paikassa. Tarkista tämä viikon kokeilussa ohjaajan kanssa. Kaavaa ei tarvitse keksiä itse.</p>
+</section>
+<section id="ohjaaja">
+<h2>Ohjaajan valmistelu</h2>
+<ul><li>Harjoitelkaa suurennus ja tekstin kuuntelu opiskelijan omilla välineillä. Tarkistakaa myös koodin merkkien luettavuus. Kuvan rinnalle tarvitaan sanallinen havainto.</li><li>Näytä yksi työvaihe kerrallaan. Sovi, mikä kohta tehdään nyt ja mihin palataan. Älä edellytä sijaintien muistamista usean välilehden välillä.</li><li>Ennen viikkoa 45 harjoitelkaa paikka ja toisto. Ennen viikkoa 50 harjoitelkaa kiertopiste.</li><li>Ennen vientitestiä varmista opiskelijan projektista, miten rakennetaan geometriaa sisältävä kolmen osan malli ja miten muodostetaan aidosti tyhjä vientisyöte. Hierarkian nimien testaus ei vielä varmista geometriaa.</li><li>Viikoilla 6–7 valitkaa aluksi yksi kortti. Lisätehtävä aloitetaan vasta yhteisen päätöksen jälkeen. Kirjatkaa korttiin tehtävän nimi, haara, testi ja seuraava työsyklin vaihe. Opiskelijan ei tarvitse ratkaista reittiä kesken tehtävän.</li><li>Opiskelija voi kertoa havainnon suullisesti, ja ohjaaja auttaa kirjaamisessa. Merkitkää saatu tuki. Tämä ei muuta tutkinnon arviointikriteerejä.</li></ul>
+<p>Tämä ohje tukee harjoittelua. Sivuston ja sovelluksen käytettävyys on vielä kokeiltava opiskelijan omilla apuvälineillä.</p>
+</section>
+</main>
+</html>
