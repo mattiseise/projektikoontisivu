@@ -6,7 +6,7 @@
   "paivaton": false,
   "generoitu": "2026-10-30",
   "lahde": {
-    "sisalto.js": "1443f68e106f0d73",
+    "sisalto.js": "769513881d701bdf",
     "index.html": "85ab53c36808b4bb"
   },
   "viikot": [
@@ -1473,7 +1473,7 @@
       ],
       "nayta": "rajapinta project-docs/Rajapinnat/Profiilin_muunnos.md, testit 9–11 tiedostossa `tests/test_revolve.py`, profiili `Testiaineisto/maljakko.svg`, pyörähdyskappale releasessa v0.0.47 sekä sovittu valintatapa ja hyväksymiskriteeri project-docs/suunnitelma.md.",
       "tuotos": "Sovittu valintatapa ja akselin väärän puolen hyväksymiskriteeri project-docs/suunnitelma.md · profiili maljakko.svg · rajapinta ja testit 9–11 · pyörähdyskappale ja segmenttisäädin agentin tekemänä · viikon release.",
-      "valmis": "Oma maljakkosi pyörähtää kappaleeksi oikein päin, säädin Segmentit muuttaa kappaletta välillä 3–32, näkymää voi kiertää hiirellä, ja testit 9–11 menevät läpi.",
+      "valmis": "Oma maljakkosi pyörähtää kappaleeksi oikein päin, säädin Segmentit muuttaa kappaletta välillä 3–32, näkymää voi kiertää hiirellä, testit 9–11 menevät läpi, ja tiedostosta vaara-puoli.svg tulee hyväksymiskriteerisi viesti.",
       "tarkistukset": [
         {
           "id": "tiedosto:project-docs/Rajapinnat/Profiilin_muunnos.md",
