@@ -6,8 +6,8 @@
   "paivaton": false,
   "generoitu": "2026-10-30",
   "lahde": {
-    "sisalto.js": "3bfa5ac816855548",
-    "index.html": "9df296c4cc4eeb30"
+    "sisalto.js": "1443f68e106f0d73",
+    "index.html": "85ab53c36808b4bb"
   },
   "viikot": [
     40,
@@ -1412,14 +1412,14 @@
       "tehtavat": [
         {
           "id": "47-1",
-          "teksti": "Sovi valintatapa ja akselin väärä puoli",
-          "valmis": "Sovittu valintatapa ja oma hyväksymiskriteerisi akselin väärälle puolelle ovat project-docs/suunnitelma.md GitHubissa.",
-          "tallenna": "Päätökset tiedostossa project-docs/suunnitelma.md GitHubissa. Ne tulevat myös pyörähdyskappaleen korttiin työvaiheessa 4."
+          "teksti": "Valmistele viikkopalaveri",
+          "valmis": "Paperilla ovat valintasi A tai B perusteluineen ja viikon 45 suosituksesi.",
+          "tallenna": "Paperi viikkopalaveria varten. Kirjaat sopimukset tiedostoihin työvaiheessa 4."
         },
         {
           "id": "47-6",
           "teksti": "Piirrä maljakon puoliprofiili",
-          "valmis": "Profiili Testiaineisto/maljakko.svg on piirretty ja nimetty sovitulla tavalla, ja se on GitHubissa yhdessä tiedoston vaara-puoli.svg kanssa.",
+          "valmis": "Profiili Testiaineisto/maljakko.svg on piirretty ja nimetty, ja se on GitHubissa yhdessä tiedoston vaara-puoli.svg kanssa.",
           "tallenna": "Profiili Testiaineisto/maljakko.svg ja testiaineisto Testiaineisto/vaara-puoli.svg GitHubissa."
         },
         {
@@ -1427,6 +1427,12 @@
           "teksti": "Määrittele profiilin muunnoksen rajapinta ja testit",
           "valmis": "Rajapinnat ja testien 9–11 odotetut tulokset ovat tiedostossa project-docs/Rajapinnat/ GitHubissa.",
           "tallenna": "Rajapinnat ja odotetut tulokset tiedostossa project-docs/Rajapinnat/Profiilin_muunnos.md GitHubissa."
+        },
+        {
+          "id": "47-13",
+          "teksti": "Kirjaa palaverin sopimukset",
+          "valmis": "Sovittu valintatapa ja hyväksymiskriteeri ovat project-docs/suunnitelma.md, testin 11 tulos vastaa sovittua vaihtoehtoa, ja maljakon layerissa on merkintä, jos se sovittiin. Kaikki on GitHubissa.",
+          "tallenna": "Päätökset tiedostossa project-docs/suunnitelma.md GitHubissa. Ne tulevat myös pyörähdyskappaleen korttiin työvaiheessa 5."
         },
         {
           "id": "47-3",
