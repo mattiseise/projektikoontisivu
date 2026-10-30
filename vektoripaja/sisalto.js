@@ -47,6 +47,8 @@ window.NAYTTOPROJEKTI = {
   /* v2.8.4: linkit avautuvat uuteen välilehteen, jotta paikka sivulla säilyy, ja työvaiheiden
      viittaukset työsykliin ovat linkkejä suoraan oikeaan askeleeseen (Matti 22.10.2026). */
   linkitUuteenValilehteen: true,
+  /* v2.8.5: numerot kuvan vasemmassa reunassa ja kehykset kulmamerkkeinä (ennen moottorin oletus Vektoripajassa). */
+  kuvaNumerotReunassa: true,
   sykliLinkit: true,
   /* Oma repository: opiskelija tallentaa osoitteen selaimeen ensimmäisestä GitHub-linkistä. Sivulla ei ole kenenkään osoitetta. */
   repo: "oma",
