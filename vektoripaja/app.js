@@ -14,6 +14,8 @@
  *   välilehteen. Välilehdet synkronoivat tallennetun tilan (storage-tapahtuma). P.sykliLinkit tekee
  *   työvaiheiden työsykliviittauksista linkkejä askeleeseen (#sykli-viikko-askel). Suora osoite
  *   näkymän ankkuriin (#tekninen-ehdotus) avaa näkymän ja kohdistaa ankkurin.
+ *   P.kuvaNumerotReunassa (opt-in) siirtää kuvaohjeiden ja tavoitekuvan numerot kuvan vasempaan reunaan
+ *   ja porrastaa päällekkäiset; kehykset näkyvät kulmamerkkeinä (<html data-kuvanumerot="reuna">).
  * v2.8.3: "Jatka siitä mihin jäit" vierittää nykyisen tehtävän viimeksi rastittuun osaan ja siirtää
  *   fokuksen sen ruutuun (ennen tehtävän alkuun). styles.css: työsyklin nykyinen askelkortti
  *   käännetyin värein saavutettavassa teemassa.
@@ -557,6 +559,9 @@
      opiskelijan paikka säilyy alkuperäisessä välilehdessä. P.sykliLinkit tekee työvaiheiden
      viittauksista työsykliin ("Työsykli, askel 3", "askeleen 4") linkkejä kyseiseen askeleeseen. */
   const NEW_TAB = linksOn && Boolean(P.linkitUuteenValilehteen);
+  /* v2.8.4 (opt-in): P.kuvaNumerotReunassa → numerot kuvan vasemmassa reunassa, ks. kuvaMarks. */
+  const BADGES_EDGE = Boolean(P.kuvaNumerotReunassa);
+  if (BADGES_EDGE) document.documentElement.dataset.kuvanumerot = "reuna";
   const CYCLE_LINKS = linksOn && Boolean(P.sykliLinkit);
   /* v2.8.1: viikon lomakkeet (P.lomakkeet), ks. journalFormHtml. */
   const FORMS = (docsInRepo && P.lomakkeet) || {};
@@ -1381,9 +1386,10 @@
     const w = Number(k.leveys) || 1600;
     const h = Number(k.korkeus) || 900;
     let previousBadgeTop = "-24px";
-    const marks = (k.kohdat || []).filter((c) => Array.isArray(c.alue) && c.alue.length === 4)
-      .sort((a, b) => Number(a.alue[1]) - Number(b.alue[1])).map((c) => {
+    const kohdat = (k.kohdat || []).filter((c) => Array.isArray(c.alue) && c.alue.length === 4);
+    const marks = (BADGES_EDGE ? [...kohdat].sort((a, b) => Number(a.alue[1]) - Number(b.alue[1])) : kohdat).map((c) => {
       const [x, y, cw, ch] = c.alue.map(Number);
+      if (!BADGES_EDGE) return `<span class="kuvaohje-mark" style="left:${x}%;top:${y}%;width:${cw}%;height:${ch}%" aria-hidden="true"><span class="kuvaohje-mark-n">${escapeText(c.n)}</span></span>`;
       const badgeTop = `max(${y}%, calc(${previousBadgeTop} + 24px))`;
       previousBadgeTop = badgeTop;
       return `<span class="kuvaohje-mark" style="left:${x}%;top:${y}%;width:${cw}%;height:${ch}%" aria-hidden="true"></span><span class="kuvaohje-mark-n" style="top:${badgeTop};" aria-hidden="true">${escapeText(c.n)}</span>`;
