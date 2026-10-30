@@ -17,10 +17,10 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="styles.css?v2.8.4-20261030b">
-  <script src="sisalto.js?v2.8.4-20261030b" defer></script>
-  <script src="kuvakaappaukset.js?v2.8.4-20261030b" defer></script>
-  <script src="app.js?v2.8.4-20261030b" defer></script>
+  <link rel="stylesheet" href="styles.css?v2.8.4-20261030c">
+  <script src="sisalto.js?v2.8.4-20261030c" defer></script>
+  <script src="kuvakaappaukset.js?v2.8.4-20261030c" defer></script>
+  <script src="app.js?v2.8.4-20261030c" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#sisalto">Siirry sisältöön</a>
@@ -85,7 +85,7 @@
 <ol><li><strong>Pyydä.</strong> Kopioi tehtävän valmis viesti tekoälylle. Täytä vain tehtävässä nimetyt kohdat.</li><li><strong>Kokeile.</strong> Käynnistä sovellus. Tee tehtävässä kerrottu kokeilu.</li><li><strong>Vertaa.</strong> Katso Näet nyt -kohtaa. Tapahtuiko sama asia omalla ruudullasi?</li><li><strong>Korjauta.</strong> Jos tulos on eri, kerro mitä teit, mitä odotit ja mitä tapahtui. Pyydä korjaamaan vain tämä asia.</li></ol>
 <p>Esimerkki korjauspyynnöstä: Käynnistin sovelluksen. Odotin Avaa-painiketta. Painiketta ei näy. Lisää puuttuva painike. Älä muuta muita toimintoja.</p>
 <p>Kun sama asia epäonnistuu kahdesti, pyydä ohjaajalta apua. Keskeneräinen tehtävä jää auki. Tallennus ei tarkoita, että toiminto olisi valmis.</p>
-<h2>Mihin kirjoitat?</h2><p>Kirjoita viikon päiväkirja ja AI-loki viikon sivun lopun lomakkeisiin. Lataa tiedostot ohjeen mukaan kansioihin project-docs/Päiväkirja ja project-docs/AI-loki. Muut suunnitelmat kirjoitat VS Codessa. Aiemmat ai-loki.md- ja projektipaivakirja.md-tiedostot säilyvät. Viikkotiedostot ovat uudet kirjaukset.</p>
+<h2>Mihin kirjoitat?</h2><p>Kirjoita viikon [[tiedosto:projektipaivakirja|päiväkirja]] ja [[tiedosto:ai-loki|AI-loki]] viikon sivun lopun lomakkeisiin. Lataa ne ohjeen mukaan omiin kansioihinsa. Muut dokumentit, kuten [[tiedosto:suunnitelma|suunnitelman]], kirjoitat VS Codessa. Aiemmat tiedostot säilyvät. Viikkotiedostot ovat uudet kirjaukset.</p>
 <h2>Ymmärrä ensin näkyvä toiminta</h2><p>Ennen hierarkian tekemistä kokeile ohjaajan kanssa valmista mallia. Siirrä vartaloa: myös pää liikkuu. Siirrä vain päätä: vartalo pysyy paikallaan. Kerro havainto omin sanoin.</p>
 <p>Maailmamuunnos laskee osan paikan koko mallissa. Esimerkki: vartalon paikka on 10. Pään oma siirto on 2. Pään paikka on silloin 12. Koodin matriisi on taulukko, joka säilyttää siirron, kierron ja koon. Ohjaaja näyttää koodista juuri tämän laskennan. Matriisikaavoja ei tarvitse päätellä itse.</p>
 <p>Silmukka toistaa saman toiminnan usealle asialle. Rekursiossa funktio kutsuu itseään: ryhmän sisällä oleva ryhmä käsitellään samalla tavalla. Harjoittele nämä ohjaajan kanssa oman funktion lyhyestä esimerkistä ennen suullista selitystä.</p>
@@ -137,9 +137,9 @@
 
         <details class="view-section project-reference">
           <summary>Mihin kirjoitan mitäkin?</summary>
-          <p>Kirjoitat päiväkirjan ja AI-lokin viikon lomakkeisiin ja lataat ne repositoryyn. Muut dokumentit kirjoitat VS Codessa. Repository on projektikansiosi GitHubissa, ja sen kopio on omalla koneellasi. Sivun GitHub-linkit vievät omaan repositoryysi. Sivu kysyy sen osoitteen, kun napsautat ensimmäistä GitHub-linkkiä, ja osoite tallentuu vain tähän selaimeen.</p>
+          <p>Kirjoitat [[tiedosto:projektipaivakirja|päiväkirjan]] ja [[tiedosto:ai-loki|AI-lokin]] viikon lomakkeisiin ja lataat ne repositoryyn. Muut dokumentit kirjoitat VS Codessa. Repository on projektikansiosi GitHubissa, ja sen kopio on omalla koneellasi. Sivun GitHub-linkit vievät omaan repositoryysi. Sivu kysyy sen osoitteen, kun napsautat ensimmäistä GitHub-linkkiä, ja osoite tallentuu vain tähän selaimeen.</p>
           <p data-oma-repo></p>
-          <p>Viikon sivun lopussa ovat päiväkirjan ja AI-lokin lomakkeet. Jos kirjoitit tekstiä sivun lomakkeisiin ennen 5.10.2026, siirrät sen tiedostoihin [[vk 41|viikon 41]] työvaiheessa 2.</p>
+          <p>Viikon sivun lopussa ovat [[tiedosto:projektipaivakirja|päiväkirjan]] ja [[tiedosto:ai-loki|AI-lokin]] lomakkeet. Jos kirjoitit tekstiä sivun lomakkeisiin ennen 5.10.2026, siirrät sen tiedostoihin [[vk 41|viikon 41]] työvaiheessa 2.</p>
           <dl class="project-roles">
             <dt>[[toimeksianto]]</dt><dd>Asiakkaan tarve ja sovelluksen vaatimukset. Tästä tarkistat rajauksen eli sen, mitä tehdään ja mitä ei tehdä.</dd>
             <dt>[[tiedosto:suunnitelma|Suunnitelma]]</dt><dd>Omat ja ohjaajan päätökset perusteluineen. Tiedosto [[tiedosto:suunnitelma|project-docs/suunnitelma.md]].</dd>
@@ -597,23 +597,24 @@
 <nav class="project-phase-path" aria-label="Projektin vaiheet"><a href="#week-40" data-open-week="40">1. Valmistelu</a><a href="#week-43" data-open-week="43" aria-current="step">2. 3D-malli</a><a href="#week-50" data-open-week="50">3. Kokeiltava versio</a><a href="#week-5" data-open-week="5">4. Parannukset</a><a href="#week-10" data-open-week="10">5. Julkaisu ja näyttö</a></nav>
           <section class="card project-connection" aria-labelledby="week-47-project-connection">
             <h2 class="section-label" id="week-47-project-connection">Miten tämän viikon asiat liittyvät kokonaisprojektiin</h2>
-            <p>Nyt alat tehdä piirroksesta varsinaisia 3D-kappaleita. Revolve pyöräyttää profiilin akselin ympäri, jolloin siitä voi syntyä esimerkiksi maljakko tai pyörä. Segmenttisäädin ja kameran kierto auttavat käyttäjää muotoilemaan ja tarkastelemaan kappaletta, joka syntyy tästä ensimmäisestä mallinnustoiminnosta.</p>
+            <p>Nyt alat tehdä piirroksesta varsinaisia 3D-kappaleita. Revolve eli pyörähdyskappale pyöräyttää piirretyn puoliprofiilin akselin ympäri, jolloin siitä syntyy esimerkiksi maljakko. Säädin Segmentit muuttaa, kuinka pyöreä kappale on, ja näkymää voi kiertää hiirellä. Viikkopalaveri on 16.–17.11., ja siinä sovitaan, miten käyttäjä valitsee pyöräytettävän profiilin. Viikon kirjaus kirjoitetaan perjantaina 20.11.</p>
             <h2 class="section-label project-week-goal">Viikon tavoite</h2>
             <p>Käyttäjä voi tehdä piirretystä puoliprofiilista pyörähdyskappaleen.</p>
           </section>
 
           <section class="view-section">
-            <div class="section-heading-row"><h2>Viikon työvaiheet</h2><span class="week-status" data-week-status>0 / 9</span></div>
+            <div class="section-heading-row"><h2>Viikon työvaiheet</h2><span class="week-status" data-week-status>0 / 10</span></div>
             <div class="task-list">
-            <label class="task-row"><input type="checkbox" data-task="47-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Sovi pyörähdyskappaleen toiminta</span></label>
+            <label class="task-row"><input type="checkbox" data-task="47-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Valmistele viikkopalaveri</span></label>
             <label class="task-row"><input type="checkbox" data-task="47-6"><span class="task-box" aria-hidden="true"></span><span class="task-text">Piirrä maljakon puoliprofiili</span></label>
-            <label class="task-row"><input type="checkbox" data-task="47-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Määrittele pyörähdyskappaleen testit</span></label>
-            <label class="task-row"><input type="checkbox" data-task="47-7"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjaa Copilot-kysymyksesi</span></label>
+            <label class="task-row"><input type="checkbox" data-task="47-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Määrittele profiilin muunnoksen rajapinta ja testit</span></label>
+            <label class="task-row"><input type="checkbox" data-task="47-13"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjaa palaverin sopimukset</span></label>
             <label class="task-row"><input type="checkbox" data-task="47-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Suunnittele pyörähdyskappaleen kortti</span></label>
-            <label class="task-row"><input type="checkbox" data-task="47-8"><span class="task-box" aria-hidden="true"></span><span class="task-text">Rakenna pyörähdyskappale</span></label>
-            <label class="task-row"><input type="checkbox" data-task="47-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Suunnittele segmenttisäätimen kortti</span></label>
-            <label class="task-row"><input type="checkbox" data-task="47-9"><span class="task-box" aria-hidden="true"></span><span class="task-text">Rakenna segmenttisäädin</span></label>
-            <label class="task-row"><input type="checkbox" data-task="47-5"><span class="task-box" aria-hidden="true"></span><span class="task-text">Julkaise pyörähdyskappale</span></label>
+            <label class="task-row"><input type="checkbox" data-task="47-10"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjoita testit ennen koodia</span></label>
+            <label class="task-row"><input type="checkbox" data-task="47-8"><span class="task-box" aria-hidden="true"></span><span class="task-text">Pyydä agenttia tekemään pyörähdyskappale</span></label>
+            <label class="task-row"><input type="checkbox" data-task="47-11"><span class="task-box" aria-hidden="true"></span><span class="task-text">Tarkista pyörähdyskappale</span></label>
+            <label class="task-row"><input type="checkbox" data-task="47-12"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjaa tulos ja tallenna työ GitHubiin</span></label>
+            <label class="task-row"><input type="checkbox" data-task="47-5"><span class="task-box" aria-hidden="true"></span><span class="task-text">Julkaise viikon versio</span></label>
             </div>
           </section>
 
@@ -622,16 +623,11 @@
             <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat"></nav>
             <ol data-lesson-list></ol>
           </section>
-          <details class="view-section week-workflow">
-            <summary>Työsykli GitHub-issuen tekemiseen</summary>
-            <p>Käytä tätä, kun tehtäväkortti pyytää toteuttamaan muutoksen työsyklillä. Yksi kierros on yksi GitHub-issue.</p>
-            <section data-week-cycle hidden></section>
-          </details>
 
           <section class="card view-section week-finish">
             <h2>Viikon lopputarkistus</h2>
             <h3>Toiminta on tarkistettu, kun</h3><p class="checkpoint"></p>
-            <h3>Työnäyte talteen</h3><p class="evidence">testit 9–11 revolven ja segmenttisäätimen korttien issueissa, profiili Testiaineisto/maljakko.svg GitHubissa, pyörähdyskappale releasessa v0.0.47 ja sovittu valintatapa issue-kommenttina.</p>
+            <h3>Työnäyte talteen</h3><p class="evidence">rajapinta [[tiedosto:rajapinnat|`project-docs/Rajapinnat/Profiilin_muunnos.md`]], testit 9–11 tiedostossa `tests/test_revolve.py`, profiili `Testiaineisto/maljakko.svg`, pyörähdyskappale releasessa v0.0.47 sekä sovittu valintatapa ja hyväksymiskriteeri [[tiedosto:suunnitelma|suunnitelmassa]].</p>
           </section>
           <details class="view-section">
             <summary>Mitä osaamista viikon työ osoittaa?</summary>
