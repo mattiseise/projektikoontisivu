@@ -90,12 +90,30 @@ def project_connection(w):
         '          </section>'])
 
 
+
+TAVOITTEET = {"2":["Oma mallisi avautuu Blenderissä.","Malli Vektoripajassa","Erilliset osat Blenderissä","Vie malli ja avaa se Blenderissä. Valitse Vartalo, Pää ja Korvat erillisinä objekteina."],"3":["Jatkat tallennettua työtä sulkemisen jälkeen.","Tallennettu työ","Sama työ avattuna","Tallenna työ, sulje sovellus ja avaa työ uudelleen. Tarkista osat ja niiden muokkaukset."],"4":["Asiakkaan kokeilusta syntyy sovittuja muutoksia.","Asiakas kokeilee","Muutokset issueissa","Näytä katselmointiloki ja ensimmäinen seuraavaksi tehtävä muutos."],"5":["Korjaat yhden sovitun ongelman.","Toistuva ongelma","Korjattu toiminto","Toista sama kokeilu korjauksen jälkeen. Näytä korjaus ja seuraavien parannusten järjestys."],"6":["Päivität piirroksen ja säilytät osien muokkaukset.","Muokattu SVG","Päivitetty malli","Siirrä osaa, muokkaa piirrosta Inkscapessa ja paina Päivitä SVG. Tarkista sovittujen muokkausten säilyminen."],"7":["Saat yhden yhdessä nimetyn toiminnon valmiiksi.","Sovittu tehtävä","Toimiva muutos","Täytä viikon alussa ohjaajan kanssa: Kun teen ___, sovellus ___. Näytä viikon lopussa tämä sama kokeilu."],"9":["Käytät sovitut säätimet näppäimistöllä ja Lukijalla.","Käytön este","Käytettävä säädin","Tee testit 25 ja 26. Näytä, miten näppäimistö ja Lukija toimivat korjatuissa säätimissä."],"10":["Toinen käyttäjä tekee mallin ohjeellasi.","Ohje ja lataus","Käyttäjän oma malli","Anna testaajan kulkea ohjeella latauksesta malliin ja vientiin. Kirjaa avuntarve ja korjaa ohjetta."],"11":["Valmis Vektoripaja v1.0 on ladattavissa.","Julkaisuehdokas","Julkaistu v1.0","Näytä julkaisu ja asiakkaiden vahvistus toimivuudesta."],"12":["Esittelet oman sovelluksesi ja luovutat työn.","Oma sovellus","Esittely ja luovutus","Pidä sovittu 8–10 minuutin esittely ja näytä sen viisi osaa. Luovuta näyttöaineisto."],"40":["Oma projekti löytyy GitHubista.","Projektikansio","Oma repository","Avaa repository ja näytä suunnitelmasta ensimmäisen version toiminnot."],"41":["Saat kuution pyörimään omalla ruudullasi.","Valmis pohja","Pyörivä kuutio","Käynnistä sovellus. Kokeile kuutiota ja aja viikon valmiit tarkistukset."],"43":["Avaat oman piirroksesi Vektoripajassa.","SVG-piirros","Viivat sovelluksessa","Paina Avaa ja valitse oma-piirros.svg. Tarkista, että oman piirroksesi polut näkyvät."],"45":["Piirroksen ryhmät näkyvät nimettyinä osina.","Piirroksen ryhmät","Vartalo → Pää → Korvat","Avaa oma piirros. Näytä hierarkiapaneelista Vartalo, sen sisältä Pää ja Pään sisältä Korvat."],"47":["Teet puoliprofiilista 3D-maljakon.","Puoliprofiili","3D-maljakko","Tee omasta profiilista kappale. Muuta segmenttimäärää ja tarkastele muuttunutta kappaletta."],"48":["Teet viivasta putken.","Viiva","Putki","Tee omasta viivasta putki ja muuta sivumäärää. Kokeile myös sovitut suorat näkymät ja näkymän lukitus."],"49":["Siirrät, kierrät ja muutat osan kokoa.","Osa paikallaan","Osa uudessa paikassa","Valitse osa ja muuta sen paikkaa, kiertoa ja kokoa. Siirrä vanhempaa: lapsiosan pitää seurata mukana."],"50":["Osa kääntyy valitsemasi kiinnityskohdan ympäri.","Kierto keskeltä","Kierto kiinnityskohdasta","Vaihda kiertopistettä ja kierrä osaa. Tarkista, että uusi kiertopiste pysyy paikallaan."],"51":["Viennin työohje on valmis loman jälkeen jatkamiseen.","Viennin tavoite","Valmis tehtäväkortti","Avaa viennin issue. Näytä odotetut testitulokset ja tilatiedostosta seuraava tehtävä."]}
+
+def tavoitekortti(w, loppu=False):
+    tavoite, alku, tulos, koe = TAVOITTEET[str(w)]
+    if loppu:
+        return '<section class="card view-section"><h2>Kokeile nyt omassa sovelluksessasi</h2><p>' + escape(koe) + '</p><p>Vertaa tulosta viikon alun esimerkkiin. Jos tulos poikkeaa, kirjaa ero ja pyydä apua. Tarkista lisäksi viikon lopputarkistus.</p></section>'
+    vaihe = ''
+    if w == 43:
+        vaihe = '<p><strong>Viikko 43:</strong> testipiirros ja tuonnin suunnitelma ovat valmiit. <strong>Viikko 44:</strong> piirros avautuu sovelluksessa.</p>'
+    if w == 45:
+        vaihe = '<p><strong>Viikko 45:</strong> osat näkyvät hierarkiapaneelissa ja testit onnistuvat. <strong>Viikko 46:</strong> julkaiset version ja kirjaat valinnan toiminnan sekä revolven vertailun.</p>'
+    if w == 48:
+        vaihe = '<p>Jos kamera sovitaan siirrettäväksi viikolle 49, kirjaa se erikseen keskeneräiseksi. Putken tavoite pysyy tällä viikolla.</p>'
+    kuva = '<figure><svg viewBox="0 0 600 240" role="img" aria-label="' + escape(alku + '. Tavoitteena: ' + tulos, quote=True) + '" style="width:100%;max-width:650px;background:#fff;color:#111"><rect x="15" y="15" width="570" height="80" rx="12" fill="#edf3ff" stroke="#234"/><text x="300" y="64" text-anchor="middle" font-size="24" fill="#111">' + escape(alku) + '</text><path d="M300 102v30m-10-10 10 10 10-10" fill="none" stroke="#123" stroke-width="4"/><rect x="15" y="145" width="570" height="80" rx="12" fill="#e4f6eb" stroke="#234"/><text x="300" y="194" text-anchor="middle" font-size="24" fill="#111">' + escape(tulos) + '</text></svg><figcaption>Havainnekaavio: ' + escape(alku) + ' → ' + escape(tulos) + '. Oman sovelluksesi ulkoasu voi olla erilainen.</figcaption></figure>'
+    return '<section class="card view-section"><h2>Tällä viikolla teet tämän</h2><p><strong>' + escape(tavoite) + '</strong></p>' + vaihe + kuva + '<h3>Viikon lopussa kokeilet</h3><p>' + escape(koe) + '</p></section>'
+
 def week_card(w):
     otsikko, tehtavat, nayta = VIIKOT[w]
     i = info[str(w)]
     out = [f'        <article class="week-card" id="week-{w}" data-week="{w}">',
            f'          {eyebrow(w)}',
            f'          <h1 class="view-title">{otsikko}</h1>',
+           tavoitekortti(w),
            project_connection(w),
            '']
     out += ['          <section class="view-section">',
@@ -138,6 +156,7 @@ def week_card(w):
                 '            <div class="day-grid" data-day-grid></div>',
                 '          </div>']
     out += ['',
+            tavoitekortti(w, loppu=True),
             '          <section class="card view-section week-finish">',
             '            <h2>Viikon lopputarkistus</h2>',
             '            <h3>Toiminta on tarkistettu, kun</h3><p class="checkpoint"></p>',
