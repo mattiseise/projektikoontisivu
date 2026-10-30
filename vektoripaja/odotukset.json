@@ -6,8 +6,8 @@
   "paivaton": false,
   "generoitu": "2026-10-30",
   "lahde": {
-    "sisalto.js": "769513881d701bdf",
-    "index.html": "85ab53c36808b4bb"
+    "sisalto.js": "a33ba8222985bcec",
+    "index.html": "c9c4de499c6ecaee"
   },
   "viikot": [
     40,
@@ -1333,7 +1333,7 @@
         {
           "id": "45-9",
           "teksti": "Kirjaa tulos ja tallenna työ GitHubiin",
-          "valmis": "Tilatiedosto on päivitetty, project-docs/AI-loki/ai-loki.md merkintä on tallessa, työ on GitHubissa, ja hierarkian kortin issue on suljettu.",
+          "valmis": "Tilatiedosto on päivitetty, project-docs/AI-loki/ai-loki.md merkintä on tallessa, ja työ on GitHubissa. Valmiin kortin issue on suljettu, ja keskeneräinen kortti on auki.",
           "tallenna": "Hierarkian koodi, testit, PROJEKTIN-TILA.md ja project-docs/AI-loki/ai-loki.md GitHubissa."
         },
         {
