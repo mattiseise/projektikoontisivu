@@ -4,10 +4,10 @@
   "nimi": "Vektoripaja",
   "kieli": "fi",
   "paivaton": false,
-  "generoitu": "2026-10-27",
+  "generoitu": "2026-10-30",
   "lahde": {
-    "sisalto.js": "8852112a931f3a29",
-    "index.html": "a519af13264d85a4"
+    "sisalto.js": "2df088b30f5504c5",
+    "index.html": "5a8d6505b8f2af23"
   },
   "viikot": [
     40,
@@ -1412,67 +1412,91 @@
       "tehtavat": [
         {
           "id": "47-1",
-          "teksti": "Sovi pyörähdyskappaleen toiminta",
-          "valmis": "Valintatapa on sovittu palaverissa, ja oma hyväksymiskriteerisi akselin väärälle puolelle on kirjoitettu. Molemmat ovat GitHubissa.",
-          "tallenna": "Päätökset tiedostossa project-docs/suunnitelma.md GitHubissa. Sovittu tapa ja hyväksymiskriteeri tulevat pyörähdyskappaleen kortin issueen työvaiheessa 5."
+          "teksti": "Sovi valintatapa ja akselin väärä puoli",
+          "valmis": "Sovittu valintatapa ja oma hyväksymiskriteerisi akselin väärälle puolelle ovat project-docs/suunnitelma.md GitHubissa.",
+          "tallenna": "Päätökset tiedostossa project-docs/suunnitelma.md GitHubissa. Ne tulevat myös pyörähdyskappaleen korttiin työvaiheessa 4."
         },
         {
           "id": "47-6",
           "teksti": "Piirrä maljakon puoliprofiili",
-          "valmis": "Profiili maljakko.svg on piirretty, merkitty sovitulla tavalla ja GitHubissa.",
-          "tallenna": "Profiili Testiaineisto/maljakko.svg GitHubissa."
+          "valmis": "Profiili Testiaineisto/maljakko.svg on piirretty ja nimetty sovitulla tavalla, ja se on GitHubissa yhdessä tiedoston vaara-puoli.svg kanssa.",
+          "tallenna": "Profiili Testiaineisto/maljakko.svg ja testiaineisto Testiaineisto/vaara-puoli.svg GitHubissa."
         },
         {
           "id": "47-2",
-          "teksti": "Määrittele pyörähdyskappaleen testit",
-          "valmis": "Testien 9–11 omat odotetut tulokset sekä viikon funktion ja rajausfunktion rajapinnat on kirjoitettu ennen toteutusta.",
-          "tallenna": "Odotetut tulokset ja rajapinnat kortteihin työvaiheissa 5 ja 7 ja testeihin työvaiheissa 6 ja 8."
-        },
-        {
-          "id": "47-7",
-          "teksti": "Kirjaa Copilot-kysymyksesi",
-          "valmis": "Kysymyksen merkintä on tiedostossa project-docs/AI-loki/ai-loki.md GitHubissa.",
-          "tallenna": "Merkintä tiedostossa project-docs/AI-loki/ai-loki.md GitHubissa."
+          "teksti": "Määrittele profiilin muunnoksen rajapinta ja testit",
+          "valmis": "Rajapinnat ja testien 9–11 odotetut tulokset ovat tiedostossa project-docs/Rajapinnat/ GitHubissa.",
+          "tallenna": "Rajapinnat ja odotetut tulokset tiedostossa project-docs/Rajapinnat/Profiilin_muunnos.md GitHubissa."
         },
         {
           "id": "47-3",
           "teksti": "Suunnittele pyörähdyskappaleen kortti",
-          "valmis": "Pyörähdyskappaleen kortin issue on GitHubissa, ja siinä ovat testit 9 ja 11 sekä sovitun valintatavan kommentti.",
-          "tallenna": "Kortti ja sovittu valintatapa pyörähdyskappaleen kortin issueen."
+          "valmis": "Pyörähdyskappaleen kortti on GitHubissa issuena, siinä ovat testit 9–11 sinun tuloksillasi, ja issuessa on sovitun valintatavan kommentti.",
+          "tallenna": "Pyörähdyskappaleen kortti ja sopimuskommentti issuena GitHubissa. Löydät sen myöhemmin avoimissa tehtäväkorteissa."
+        },
+        {
+          "id": "47-10",
+          "teksti": "Kirjoita testit ennen koodia",
+          "valmis": "Testitiedostossa test_revolve.py ovat valintasi mukaiset testit 9–11, ja issuessa on rasti kohdassa Testi kirjoitettu.",
+          "tallenna": "Testitiedosto tests/test_revolve.py omalla koneellasi. Se menee GitHubiin työvaiheessa Kirjaa tulos ja tallenna työ GitHubiin."
         },
         {
           "id": "47-8",
-          "teksti": "Rakenna pyörähdyskappale",
-          "valmis": "Oma profiili muuttuu kappaleeksi, ja testit 9 ja 11 menevät läpi.",
-          "tallenna": "Koodi ja testit GitHubiin. Testien 9 ja 11 tulokset pyörähdyskappaleen kortin issueen."
+          "teksti": "Pyydä agenttia tekemään pyörähdyskappale",
+          "valmis": "Maljakko pyörähtää kappaleeksi oikein päin, testitiedosto on ennallaan, ja issuessa on rasti kohdassa Toteutettu.",
+          "tallenna": "Tiedostot vektoripaja/revolve.py ja vektoripaja/ikkuna.py omalla koneellasi. Ne menevät GitHubiin työvaiheessa Kirjaa tulos ja tallenna työ GitHubiin. Krediittiluvut paperilla viikon kirjausta varten."
         },
         {
-          "id": "47-4",
-          "teksti": "Suunnittele segmenttisäätimen kortti",
-          "valmis": "Segmenttisäätimen kortin issue on GitHubissa, ja siinä on testi 10 sinun luvuillasi.",
-          "tallenna": "Kortti segmenttisäätimen kortin issueen GitHubissa."
+          "id": "47-11",
+          "teksti": "Tarkista pyörähdyskappale",
+          "valmis": "Testit 9–11 menevät läpi, segmenttimäärä muuttaa kappaletta, näkymää voi kiertää, väärän puolen pisteestä tulee hyväksymiskriteerin viesti, ja tarkistuksen tulos on pyörähdyskappaleen kortin issuessa.",
+          "tallenna": "Tarkistuksen kommentti pyörähdyskappaleen kortin issueen."
         },
         {
-          "id": "47-9",
-          "teksti": "Rakenna segmenttisäädin",
-          "valmis": "Segmenttimäärä muuttuu välillä 3–32, orbit toimii, ja testit 9–11 menevät läpi.",
-          "tallenna": "Koodi ja testi GitHubiin. Testin 10 tulos ja segmenttimäärien kokeilu segmenttisäätimen kortin issueen."
+          "id": "47-12",
+          "teksti": "Kirjaa tulos ja tallenna työ GitHubiin",
+          "valmis": "Tilatiedosto on päivitetty, project-docs/AI-loki/ai-loki.md merkinnät ovat tallessa, ja työ on GitHubissa. Valmiin kortin issue on suljettu, ja keskeneräinen kortti on auki.",
+          "tallenna": "Pyörähdyskappaleen koodi, testit, PROJEKTIN-TILA.md ja project-docs/AI-loki/ai-loki.md GitHubissa."
         },
         {
           "id": "47-5",
-          "teksti": "Julkaise pyörähdyskappale",
-          "valmis": "Release v0.0.47 on GitHubissa, ja Actions-ajo on vihreä.",
-          "tallenna": "Release v0.0.47 GitHubiin."
+          "teksti": "Julkaise viikon versio",
+          "valmis": "Versio v0.0.47 on GitHubin Releases-sivulla, ja julkaisuajo on vihreä.",
+          "tallenna": "Release v0.0.47 GitHubissa."
         }
       ],
-      "nayta": "testit 9–11 revolven ja segmenttisäätimen korttien issueissa, profiili Testiaineisto/maljakko.svg GitHubissa, pyörähdyskappale releasessa v0.0.47 ja sovittu valintatapa issue-kommenttina.",
-      "tuotos": "Sovittu valintatapa suunnitelmassa · oma hyväksymiskriteeri profiilille · testit 9–11 · revolve, segmenttisäädin ja orbit · viikon release.",
-      "valmis": "Oma profiilisi pyörähtää kappaleeksi, segmenttisäädin muuttaa segmenttien määrää välillä 3–32, ja testit 9–11 menevät läpi.",
+      "nayta": "rajapinta project-docs/Rajapinnat/Profiilin_muunnos.md, testit 9–11 tiedostossa `tests/test_revolve.py`, profiili `Testiaineisto/maljakko.svg`, pyörähdyskappale releasessa v0.0.47 sekä sovittu valintatapa ja hyväksymiskriteeri project-docs/suunnitelma.md.",
+      "tuotos": "Sovittu valintatapa ja akselin väärän puolen hyväksymiskriteeri project-docs/suunnitelma.md · profiili maljakko.svg · rajapinta ja testit 9–11 · pyörähdyskappale ja segmenttisäädin agentin tekemänä · viikon release.",
+      "valmis": "Oma maljakkosi pyörähtää kappaleeksi oikein päin, säädin Segmentit muuttaa kappaletta välillä 3–32, näkymää voi kiertää hiirellä, ja testit 9–11 menevät läpi.",
       "tarkistukset": [
+        {
+          "id": "tiedosto:project-docs/Rajapinnat/Profiilin_muunnos.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/Rajapinnat/Profiilin_muunnos.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "tiedosto:tests/test_revolve.py",
+          "tyyppi": "tiedosto",
+          "polku": "tests/test_revolve.py",
+          "lahde": "auto"
+        },
         {
           "id": "tiedosto:Testiaineisto/maljakko.svg",
           "tyyppi": "tiedosto",
           "polku": "Testiaineisto/maljakko.svg",
+          "lahde": "auto"
+        },
+        {
+          "id": "tiedosto:Testiaineisto/vaara-puoli.svg",
+          "tyyppi": "tiedosto",
+          "polku": "Testiaineisto/vaara-puoli.svg",
+          "lahde": "auto"
+        },
+        {
+          "id": "tiedosto:vektoripaja/revolve.py",
+          "tyyppi": "tiedosto",
+          "polku": "vektoripaja/revolve.py",
           "lahde": "auto"
         },
         {
