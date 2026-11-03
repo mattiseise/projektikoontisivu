@@ -1,0 +1,965 @@
+#!/usr/bin/env node
+/*
+ * Näyttöprojektin savutesti. Ajo projektin juuressa:
+ *     node tyokalut/tarkista.js
+ * (skilli kopioi tämän tiedoston projektin tyokalut-kansioon)
+ *
+ * Tarkistaa, että index.html ja sisalto.js ovat keskenään yhtenäiset ja että
+ * mikään täyttämättä jäänyt kohta ei päädy opiskelijan silmien eteen.
+ * Poistumiskoodi 1, jos virheitä löytyi.
+ *
+ * v2 (kaksipalstainen layout): viikkokortit ovat <article class="week-card">
+ * (ei enää <details>), koska JS näyttää yhden viikon kerrallaan sivupalkin
+ * kautta. Rakenteen tarkka kuvaus: references/layout-rakenne.md (skilli).
+ *
+ * v2.4: vuodenvaihde (viikot [40, …, 53, 1, …, 9] kun vuosi on [2026, 2027]),
+ * lyhyetViikot (esim. {51: 4} → data-week-label ma–to), dokumentoidut
+ * mitoituspoikkeamat (poikkeamat.vaiheita ja poikkeamat.kesto = "perustelu" → INFO, ei HUOM/VIRHE),
+ * sekä opt-in-ominaisuuksien tarkistukset: teema (14), sykli (15), kuvaohjeet (16).
+ *
+ * v2.5: pilkottu tehtävänanto. Tehtäväkorttien rakenne ja mekaaniset selkeyssäännöt (4b)
+ * sekä tehtävän itsenäinen ymmärrettävyys: tunnukset sanallistetaan tehtävän omassa
+ * tekstissä, ei vain sanastossa (13c).
+ *
+ * v2.8: linkkimerkintöjen kohteet (19a, aina kun linkit ovat käytössä), perusohjeet ja
+ * tiedostokortit (19b) sekä tiukka selkeystila P.selkeys = "tiukka" (19c): osatehtävät
+ * objektimuodossa, ei viittaavia sanoja, näkymät ja dokumentit linkkeinä, tallenna-kentän
+ * tiedostot osatehtävissä, project-docs-tiedostoilla tiedostokortti ja kirjoitustehtävillä
+ * esimerkki. Varoitus, jos osatehtävän tee-kentässä on yli kaksi käskylausetta.
+ */
+const fs = require("fs");
+const path = require("path");
+
+const ROOT = process.cwd();
+const errors = [];
+const warnings = [];
+const infos = [];
+const err = (m) => errors.push(m);
+const warn = (m) => warnings.push(m);
+const info = (m) => infos.push(m);
+
+function read(name) {
+  const p = path.join(ROOT, name);
+  if (!fs.existsSync(p)) { err(`${name} puuttuu`); return ""; }
+  return fs.readFileSync(p, "utf8");
+}
+
+const html = read("index.html");
+const appjs = read("app.js");
+if (!html) { console.error("index.html puuttuu — ei voi jatkaa."); process.exit(1); }
+
+global.window = {};
+let P;
+try {
+  require(path.join(ROOT, "sisalto.js"));
+  P = global.window.NAYTTOPROJEKTI;
+} catch (e) {
+  console.error("sisalto.js ei latautunut:", e.message);
+  process.exit(1);
+}
+if (!P) { console.error("sisalto.js ei asettanut window.NAYTTOPROJEKTI"); process.exit(1); }
+
+/* ---------- 1. sisalto.js:n pakolliset kentät ---------- */
+["slug", "nimi", "vuosi", "viikot", "vaiheet", "viikkoNimet", "kehykset", "viikkoOhjeet"]
+  .forEach((k) => { if (!P[k]) err(`sisalto.js: pakollinen kenttä '${k}' puuttuu`); });
+
+const weeks = (P.viikot || []).map(Number);
+const holidays = (P.lomaViikot || []).map(Number);
+const workWeeks = weeks.filter((w) => !holidays.includes(w));
+
+/* Nouseva järjestys. Vuodenvaihde sallitaan kerran, kun vuosi on taulukko:
+   [40, …, 53, 1, …, 9]. weekYear kertoo kunkin viikon vuoden. */
+const yearList = Array.isArray(P.vuosi) ? P.vuosi.map(Number) : [Number(P.vuosi)];
+const weekYear = {};
+{
+  let yi = 0;
+  weeks.forEach((w, i) => {
+    if (i > 0 && w <= weeks[i - 1]) {
+      const wrap = !P.paivaton && yearList.length > 1 && yi === 0 && weeks[i - 1] >= 52 && w <= 2;
+      if (wrap) yi = 1;
+      else err(`sisalto.js: viikot eivät ole nousevassa järjestyksessä (${weeks[i - 1]} → ${w})${yearList.length > 1 ? "" : " — vuodenvaihde vaatii vuosi: [alku, loppu]"}`);
+    }
+    weekYear[w] = yearList[Math.min(yi, yearList.length - 1)];
+  });
+}
+if (new Set(weeks).size !== weeks.length) err("sisalto.js: sama viikkonumero toistuu viikot-listassa");
+if (workWeeks.length < 3 || workWeeks.length > 18) {
+  /* Tietoinen poikkeama (poikkeamat.kesto = "perustelu") → INFO. */
+  const syy = P.poikkeamat && P.poikkeamat.kesto;
+  (syy ? info : err)(`${workWeeks.length} työviikkoa — runko on mitoitettu 3–18 viikolle${syy ? ` (tietoinen poikkeama: ${syy})` : ""}`);
+}
+
+/* Keston mukainen mitoitus, ks. references/pedagoginen-runko.md § Kesto.
+   Tietoinen poikkeama kirjataan sisalto.js:n poikkeamat-lohkoon perusteluineen. */
+const MITOITUS = workWeeks.length <= 5 ? { vaiheita: 2, testeja: 6, ketjuja: 1 }
+  : workWeeks.length <= 9 ? { vaiheita: 3, testeja: 8, ketjuja: 2 }
+  : { vaiheita: 4, testeja: 12, ketjuja: 3 };
+if ((P.vaiheet || []).length !== MITOITUS.vaiheita) {
+  const syy = P.poikkeamat && P.poikkeamat.vaiheita;
+  (syy ? info : warn)(`${workWeeks.length} työviikkoa → suositus ${MITOITUS.vaiheita} vaihetta, nyt ${(P.vaiheet || []).length}${syy ? ` (tietoinen poikkeama: ${syy})` : ""}`);
+}
+
+/* ---------- 2. viikkoOhjeet ---------- */
+const GUIDE_FIELDS = ["type", "feature", "connection", "deliverable", "why", "done", "record", "skills", "steps", "example", "notEnough"];
+/* v2.5: tehtäväkorttiviikolla osatehtävät korvaavat steps-listan ja kalibrointi on tehtävätasolla. */
+const TASK_CARD_OPTIONAL = ["steps", "example", "notEnough"];
+workWeeks.forEach((w) => {
+  const g = P.viikkoOhjeet[w];
+  if (!g) { err(`sisalto.js: viikolta ${w} puuttuu viikkoOhjeet`); return; }
+  GUIDE_FIELDS.forEach((f) => {
+    if (g.tehtavat && TASK_CARD_OPTIONAL.includes(f)) return;
+    if (g[f] === undefined || g[f] === "") err(`viikko ${w}: viikkoOhjeet.${f} puuttuu`);
+  });
+  if (g.type && !P.kehykset[g.type]) err(`viikko ${w}: viikkotyyppi '${g.type}' puuttuu kehykset-objektista`);
+  if (Array.isArray(g.steps) && g.steps.length < 3) warn(`viikko ${w}: vain ${g.steps.length} askelta (3–6 on tavoite)`);
+  if (Array.isArray(g.skills) && g.skills.length < 2) warn(`viikko ${w}: alle 2 tekniikkatagia`);
+  ((g.help && g.help.images) || []).forEach(([src]) => {
+    if (!/^https?:/.test(src) && !fs.existsSync(path.join(ROOT, src))) err(`viikko ${w}: toteutusavun kuva puuttuu: ${src}`);
+  });
+  if (g.help) {
+    ["title", "tree", "actions", "code", "test"].forEach((f) => {
+      if (!g.help[f]) err(`viikko ${w}: help.${f} puuttuu`);
+    });
+  }
+  if (g.paivat && (!Array.isArray(g.paivat) || g.paivat.some((p) => !Array.isArray(p) || p.length < 2))) {
+    err(`viikko ${w}: viikkoOhjeet.paivat pitää olla [[nimi, teksti], …] -taulukko`);
+  }
+  if (!P.viikkoNimet[w]) err(`viikko ${w}: viikkoNimet-nimi puuttuu`);
+});
+Object.keys(P.viikkoOhjeet || {}).forEach((w) => {
+  if (!workWeeks.includes(Number(w))) err(`viikkoOhjeet sisältää viikon ${w}, jota ei ole viikot-listassa`);
+});
+holidays.forEach((w) => { if (!P.viikkoNimet[w]) warn(`lomaviikolta ${w} puuttuu viikkoNimet-nimi`); });
+
+/* ---------- 3. vaiheet ---------- */
+const covered = [];
+(P.vaiheet || []).forEach((ph) => {
+  if (!ph.tunnus || !ph.otsikko || !Array.isArray(ph.viikot)) err(`vaihe ${ph.tunnus || "?"}: tunnus, otsikko tai viikot puuttuu`);
+  /* v2.7: numeroidut vaiheet 1–6 käyvät, jos styles.css määrittelee niille värin. */
+  if (ph.tunnus && !/^[A-F1-6]$/i.test(String(ph.tunnus))) {
+    err(`vaihe ${ph.tunnus}: tunnuksen pitää olla A–F tai 1–6`);
+  } else if (ph.tunnus && !read("styles.css").includes(`--phase-${String(ph.tunnus).toLowerCase()}:`)) {
+    err(`vaihe ${ph.tunnus}: vastaava vaiheväri --phase-${String(ph.tunnus).toLowerCase()} puuttuu styles.css:stä`);
+  }
+  (ph.viikot || []).forEach((w) => {
+    if (covered.includes(w)) err(`viikko ${w} on useammassa vaiheessa`);
+    covered.push(w);
+    if (!weeks.includes(w)) err(`vaihe ${ph.tunnus}: viikko ${w} ei ole viikot-listassa`);
+  });
+  /* Vaiheotsikko esiintyy sivupalkin viikkonavigaatiossa vasta kun app.js on
+     rakentanut sen, joten HTML:stä ei enää voi tarkistaa suoraan — riittää,
+     että vaihe kattaa viikkonsa (tarkistettu yllä) ja tunnus on kelvollinen. */
+});
+weeks.filter((w) => !covered.includes(w)).forEach((w) => err(`viikko ${w} ei kuulu mihinkään vaiheeseen`));
+
+/* ---------- 4. index.html: viikkokortit ---------- */
+const cardWeeks = [...html.matchAll(/<article class="week-card" id="week-(\d+)" data-week="\d+">/g)].map((m) => Number(m[1]));
+const holidayCards = [...html.matchAll(/<article class="holiday-card" id="week-(\d+)"/g)].map((m) => Number(m[1]));
+
+workWeeks.filter((w) => !cardWeeks.includes(w)).forEach((w) => err(`index.html: viikkokortti week-${w} puuttuu (odotettu <article class="week-card" id="week-${w}">)`));
+cardWeeks.filter((w) => !workWeeks.includes(w)).forEach((w) => err(`index.html: ylimääräinen viikkokortti week-${w}`));
+holidays.filter((w) => !holidayCards.includes(w)).forEach((w) => err(`index.html: holiday-card week-${w} puuttuu`));
+if (new Set(cardWeeks).size !== cardWeeks.length) err("index.html: sama viikkokortti kahdesti");
+
+/* Kortin sisäinen rakenne */
+const cardBlocks = [...html.matchAll(/<article class="week-card" id="week-(\d+)"[\s\S]*?<\/article>/g)];
+const allTaskIds = [];
+const taskIdsByWeek = {};
+const taskTitle = {};
+cardBlocks.forEach(([block, num]) => {
+  const ids = [...block.matchAll(/data-task="([\d-]+)"/g)].map((m) => m[1]);
+  taskIdsByWeek[num] = ids;
+  [...block.matchAll(/data-task="([\d-]+)"[^>]*>[\s\S]*?<span class="task-text">([\s\S]*?)<\/span><\/label>/g)]
+    .forEach((m) => { taskTitle[m[1]] = m[2].replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/\s+/g, " ").trim(); });
+  if (ids.length < 2) err(`viikko ${num}: alle 2 tehtävää`);
+  if (ids.length > 5) warn(`viikko ${num}: ${ids.length} tehtävää — 2–4 pitää viikon hallittavana`);
+  ids.forEach((id) => {
+    if (!id.startsWith(num + "-")) err(`viikko ${num}: tehtävätunnus '${id}' ei ala viikkonumerolla`);
+    if (allTaskIds.includes(id)) err(`tehtävätunnus '${id}' esiintyy kahdesti`);
+    allTaskIds.push(id);
+  });
+  const evidenceMatch = block.match(/<p class="evidence">([\s\S]*?)<\/p>/);
+  if (!evidenceMatch || !evidenceMatch[1].trim()) err(`viikko ${num}: .evidence-rivi puuttuu tai on tyhjä`);
+  if (!/class="[^"]*\blesson-instructions\b[^"]*"/.test(block)) err(`viikko ${num}: .lesson-instructions puuttuu`);
+  if (!/<span class="lesson-label"/.test(block)) err(`viikko ${num}: .lesson-label puuttuu (app.js kirjoittaa siihen)`);
+  if (!/<p class="checkpoint">/.test(block)) err(`viikko ${num}: .checkpoint puuttuu (Valmis kun -kortti)`);
+  if (!/<h1 class="view-title">[^<]+<\/h1>/.test(block)) err(`viikko ${num}: <h1 class="view-title"> puuttuu tai on tyhjä`);
+  if (!/data-week-journal="\d+"/.test(block)) err(`viikko ${num}: .week-journal (data-week-journal) puuttuu`);
+  const status = block.match(/<span class="week-status"[^>]*>(\d+) \/ (\d+)<\/span>/);
+  if (!status) err(`viikko ${num}: week-status puuttuu`);
+  else if (Number(status[2]) !== ids.length) err(`viikko ${num}: week-status sanoo ${status[2]}, tehtäviä on ${ids.length}`);
+});
+
+/* ---------- 4b. tehtäväkortit (v2.5, viikkoOhjeet[w].tehtavat) ----------
+ * Tehtävän otsikko on index.html:n tehtävärivi, kuvaus sisalto.js:ssä samalla tunnuksella.
+ * Mekaaniset selkeyssäännöt: 2–8 osatehtävää (3–7 tavoite), osatehtävä on yksi toiminto
+ * (≤ 35 sanaa), valmis kun on pakollinen, otsikko ei luettele useaa asiaa.
+ */
+let taskCardCount = 0;
+let substepCount = 0;
+workWeeks.forEach((w) => {
+  const defs = P.viikkoOhjeet?.[w]?.tehtavat;
+  if (!defs) return;
+  if (typeof defs !== "object" || Array.isArray(defs)) { err(`viikko ${w}: tehtavat pitää olla objekti { "${w}-1": {…} }`); return; }
+  const ids = taskIdsByWeek[w] || [];
+  ids.filter((id) => !defs[id]).forEach((id) => warn(`tehtävä ${id}: tehtavat-kuvaus puuttuu — tehtävä näkyy vanhana rastirivinä ilman osatehtäviä`));
+  Object.entries(defs).forEach(([id, d]) => {
+    if (!ids.includes(id)) { err(`viikko ${w}: tehtavat['${id}'] ei vastaa mitään index.html:n tehtäväriviä`); return; }
+    taskCardCount += 1;
+    const osat = Array.isArray(d.osat) ? d.osat : [];
+    substepCount += osat.length;
+    if (osat.length < 2) err(`tehtävä ${id}: vähintään 2 osatehtävää (nyt ${osat.length})`);
+    else if (osat.length > 8) warn(`tehtävä ${id}: ${osat.length} osatehtävää — pilko kahdeksi tehtäväksi (3–7 on tavoite)`);
+    if (!d.valmis) err(`tehtävä ${id}: valmis (valmis kun -ehto) puuttuu`);
+    if (!d.miksi) warn(`tehtävä ${id}: miksi puuttuu`);
+    if (!d.tallenna) warn(`tehtävä ${id}: tallenna puuttuu — mihin työnäyte menee?`);
+    osat.forEach((o, j) => {
+      if (Array.isArray(o) && (o.length !== 2 || !o[1])) err(`tehtävä ${id}, osa ${j + 1}: muoto on "teksti" tai ["Otsikko", "teksti"]`);
+      /* v2.8: objektimuoto { otsikko, missa, tee, naet }; pituus lasketaan tee-kentästä. */
+      const isObj = o && typeof o === "object" && !Array.isArray(o);
+      if (isObj && !o.otsikko) err(`tehtävä ${id}, osa ${j + 1}: objektimuodosta puuttuu otsikko`);
+      const words = (isObj ? String(o.tee || "") : Array.isArray(o) ? o.join(" ") : String(o)).split(/\s+/).filter(Boolean).length;
+      if (words > 35) warn(`tehtävä ${id}, osa ${j + 1}: ${words} sanaa — yksi osatehtävä = yksi toiminto (≤ 35 sanaa)`);
+    });
+    (d.perii || []).forEach((k) => { if (!/^\d+-\d+$/.test(String(k))) err(`tehtävä ${id}: perii-tunnus '${k}' ei ole muotoa viikko-numero`); });
+    osat.forEach((o, j) => { if (o && typeof o === "object" && o.vanha != null && !(Number(o.vanha) >= 0)) err(`tehtävä ${id}, osa ${j + 1}: vanha pitää olla vanhan osan järjestysnumero 0…`); });
+    if (osat.some((o) => o && o.vanha != null) && !d.versio) warn(`tehtävä ${id}: osilla on vanha-kenttä, mutta tehtävältä puuttuu versio — rastit eivät siirry`);
+    const title = taskTitle[id] || "";
+    const items = title.replace(/\([^)]*\)/g, "").split(/,|\sja\s|\sand\s/).filter((x) => x.trim()).length;
+    if (items > 3) warn(`tehtävä ${id}: otsikko luettelee ${items} asiaa — yksi tehtävä = yksi tavoite ("${title}")`);
+    if (title.length > 110) warn(`tehtävä ${id}: otsikko on ${title.length} merkkiä — lyhennä ja siirrä yksityiskohdat osatehtäviin`);
+    if (d.apu && typeof d.apu !== "object") err(`tehtävä ${id}: apu pitää olla objekti {tree, actions, code, test, images, links}`);
+    ((d.apu && d.apu.images) || []).forEach(([src, alt]) => {
+      if (!/^https?:/.test(src) && !fs.existsSync(path.join(ROOT, src))) err(`tehtävä ${id}: apukuva puuttuu: ${src}`);
+      if (!alt || String(alt).length < 20) warn(`tehtävä ${id}: apukuvan ${src} alt-teksti puuttuu tai on lyhyt`);
+    });
+  });
+});
+
+/* ---------- 5. viikkojen "small-rivi" / data-week-label ---------- */
+function isoMonday(year, week) {
+  const simple = new Date(Date.UTC(year, 0, 4));
+  const day = simple.getUTCDay() || 7;
+  simple.setUTCDate(simple.getUTCDate() - day + 1 + (week - 1) * 7);
+  return simple;
+}
+const years = Array.isArray(P.vuosi) ? P.vuosi.map(Number) : [Number(P.vuosi)];
+const EN_MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+/* Paivaton tila (P.paivaton): viikot ovat jarjestysnumeroita 1...N ilman
+   kalenteripaivia, joten ISO-viikkotarkistus ohitetaan. data-week-label-
+   attribuutin pitaa silti mainita viikon numero, jotta paperipaketti ja
+   sivu pysyvat synkassa. Dated-tilassa attribuutin pitaa olla ISO-viikon
+   paivamaara. */
+[...html.matchAll(/<article class="week-card" id="week-(\d+)"[^>]*>\s*<p class="view-eyebrow" data-week-label="([^"]+)"/g)].forEach(([, num, dates]) => {
+  if (P.paivaton) {
+    if (!new RegExp(`(^|[^0-9])${num}([^0-9]|$)`).test(dates)) {
+      err(`viikko ${num}: paivattoman tilan data-week-label "${dates}" ei mainitse viikon numeroa`);
+    }
+    return;
+  }
+  const w = Number(num);
+  /* Vuodenvaihteen yli menevässä jaksossa viikon vuosi tiedetään sen paikasta
+     viikot-listassa. lyhyetViikot = {51: 4}: viikon viimeinen työpäivä on to.
+     pitkatViikot = {43: 2}: jakso kestää kaksi kalenteriviikkoa (ma 43 – pe 44). */
+  const paivia = Number((P.lyhyetViikot || {})[w]) || 5;
+  const viikkoja = Number((P.pitkatViikot || {})[w]) || 1;
+  const candidateYears = weekYear[w] ? [weekYear[w]] : years;
+  const candidates = candidateYears.flatMap((y) => {
+    const ma = isoMonday(y, w);
+    const pe = new Date(ma.getTime() + ((viikkoja - 1) * 7 + paivia - 1) * 86400000);
+    const sameMonth = ma.getUTCMonth() === pe.getUTCMonth();
+    const fi = sameMonth
+      ? `${ma.getUTCDate()}.–${pe.getUTCDate()}.${pe.getUTCMonth() + 1}.`
+      : `${ma.getUTCDate()}.${ma.getUTCMonth() + 1}.–${pe.getUTCDate()}.${pe.getUTCMonth() + 1}.`;
+    const en = sameMonth
+      ? `${ma.getUTCDate()}–${pe.getUTCDate()} ${EN_MONTHS[pe.getUTCMonth()]}`
+      : `${ma.getUTCDate()} ${EN_MONTHS[ma.getUTCMonth()]} – ${pe.getUTCDate()} ${EN_MONTHS[pe.getUTCMonth()]}`;
+    return [fi, en];
+  });
+  const seen = dates.trim().replace(/\s/g, "");
+  if (!candidates.some((c) => c.replace(/\s/g, "") === seen)) {
+    err(`viikko ${w}: data-week-label "${dates}" ei vastaa ISO-viikkoa (odotettu ${candidates.join(" tai ")})`);
+  }
+});
+
+/* ---------- 6. näyttömatriisi ---------- */
+/* Näyttömatriisi on valinnainen: pelkkä projektisivusto (ei osaamisen näyttöä) ei
+   sisällä matriisia lainkaan. Jos matriisi on, se tarkistetaan kokonaan; jos ei ole,
+   koko lohko ohitetaan — mutta puolikas matriisi on virhe. */
+const evidenceIds = [...html.matchAll(/data-evidence="([a-z0-9]+)"/g)].map((m) => m[1]);
+const matrixCount = [...html.matchAll(/<details class="matrix"/g)].length;
+const evidenceCounter = html.match(/data-evidence-count>0 \/ (\d+)</);
+const matrixUsed = Boolean(evidenceIds.length || matrixCount || evidenceCounter);
+if (matrixUsed) {
+  if (!evidenceIds.length) err("index.html: näyttömatriisista puuttuvat data-evidence-rastit");
+  if (!matrixCount) err("index.html: yhtään tutkinnon osan matriisia ei löytynyt (odotettu <details class=\"matrix\">)");
+  const dupes = evidenceIds.filter((id, i) => evidenceIds.indexOf(id) !== i);
+  if (dupes.length) err(`data-evidence-tunnus toistuu: ${[...new Set(dupes)].join(", ")}`);
+  if (evidenceCounter && Number(evidenceCounter[1]) !== evidenceIds.length) {
+    err(`näyttömatriisin laskuri sanoo ${evidenceCounter[1]}, rasteja on ${evidenceIds.length}`);
+  }
+  [...html.matchAll(/<summary><span class="matrix-title">([^<]+)<\/span><span class="matrix-count">(\d+) vaatimusta<\/span><\/summary>([\s\S]*?)<\/details>/g)]
+    .forEach(([, title, n, body]) => {
+      const count = [...body.matchAll(/data-evidence=/g)].length;
+      if (Number(n) !== count) err(`matriisi "${title}": otsikko sanoo ${n}, rasteja on ${count}`);
+    });
+} else {
+  warn("index.html: yhtään <summary><span class=\"matrix-title\">…</span><span class=\"matrix-count\">…</span></summary> -muotoista matriisiotsikkoa ei löytynyt (ohitettu, koska matriisia ei käytetä)");
+}
+
+/* ---------- 7. suunnitelmalomake ---------- */
+/* v2.8: dokumentit repositoryssä → lomaketta ei ole; suunnitelma-asetukset kertovat vain siirtymän otsikot. */
+if (P.suunnitelma && !P.dokumentitRepossa) {
+  const fields = [...html.matchAll(/data-plan-field="([A-Za-z0-9_]+)"/g)].map((m) => m[1]);
+  (P.suunnitelma.pakolliset || []).forEach((f) => {
+    if (!fields.includes(f)) err(`suunnitelma: pakollinen kenttä '${f}' ei löydy index.html:n lomakkeesta`);
+  });
+  if (!html.includes("data-plan-export")) err("index.html: suunnitelman latausnappi (data-plan-export) puuttuu");
+  if (!html.includes("data-plan-status")) err("index.html: data-plan-status puuttuu");
+  if (typeof P.suunnitelma.markdown !== "function") err("sisalto.js: suunnitelma.markdown ei ole funktio");
+  else {
+    try {
+      const md = P.suunnitelma.markdown({ arvo: () => "x", onTäytetty: () => false, raaka: {}, pvm: "1.1.2026" });
+      if (!md || md.length < 200) warn("suunnitelma.markdown tuottaa hyvin lyhyen tiedoston");
+    } catch (e) { err(`suunnitelma.markdown kaatuu: ${e.message}`); }
+  }
+}
+
+/* ---------- 8. täyttämättä jääneet kohdat ---------- */
+const leftTokens = [...new Set([...html.matchAll(/\{\{([A-Z0-9_]+)\}\}/g)].map((m) => m[1]))];
+if (leftTokens.length) err(`index.html: täyttämättömiä tokeneita: ${leftTokens.join(", ")}`);
+const leftMarkers = (html.match(/TÄYTÄ:/g) || []).length;
+if (leftMarkers) err(`index.html: ${leftMarkers} täyttämätöntä TÄYTÄ-ohjelohkoa`);
+if (/Lorem ipsum|TODO|FIXME|XXX/i.test(html)) warn("index.html sisältää TODO/placeholder-tekstiä");
+
+/* ---------- 8b. testauksen minimit suhteessa kestoon ---------- */
+const testiOsuma = html.match(/[Vv]ähintään\s+(\d+)\s+suunniteltua\s+testitapausta/)
+  || html.match(/[Aa]t least\s+(\d+)\s+planned test cases/);
+if (!testiOsuma) warn("testauksen vähimmäistavoitetta ei löytynyt");
+else if (Number(testiOsuma[1]) < MITOITUS.testeja) {
+  warn(`testejä luvattu ${testiOsuma[1]}, ${workWeeks.length} viikon projektissa vähintään ${MITOITUS.testeja}`);
+}
+const ketjuOsuma = html.match(/(\d+)\s+(?:täydellistä\s+)?virheenkorjausketju/)
+  || html.match(/(\d+)\s+complete debugging chains/);
+if (ketjuOsuma && Number(ketjuOsuma[1]) < MITOITUS.ketjuja) {
+  warn(`virheenkorjausketjuja ${ketjuOsuma[1]}, suositus ${MITOITUS.ketjuja}`);
+}
+
+/* ---------- 9. app.js koskemattomuus ---------- */
+if (appjs) {
+  if (appjs.includes(P.slug)) err("app.js sisältää projektin slugin — moottoriin on kirjoitettu projektikohtaista sisältöä");
+  if (!appjs.includes("window.NAYTTOPROJEKTI")) err("app.js ei lue sisalto.js:ää — väärä app.js-versio?");
+}
+
+/* ---------- 10. viitatut tiedostot ---------- */
+const htmlNoComments = html.replace(/<!--[\s\S]*?-->/g, "");
+[...htmlNoComments.matchAll(/(?:src|href)="((?:assets|downloads)\/[^"]+)"/g)].forEach(([, rel]) => {
+  if (!fs.existsSync(path.join(ROOT, rel))) warn(`viitattu tiedosto puuttuu: ${rel}`);
+});
+
+/* ---------- 11. opettaja-aineisto ---------- */
+const opettajaSuunnitelma = P.opettaja?.nayttosuunnitelma || P.opettaja?.projektisuunnitelma;
+if (opettajaSuunnitelma?.tyonaytteet) {
+  const map = opettajaSuunnitelma.tyonaytteet;
+  evidenceIds.filter((id) => !map[id]).forEach((id) => warn(`näyttösuunnitelmasta puuttuu työnäytemäppäys: ${id}`));
+  Object.keys(map).filter((id) => !evidenceIds.includes(id)).forEach((id) => warn(`näyttösuunnitelmassa tuntematon tunnus: ${id}`));
+}
+
+/* ---------- 12. kaksipalstaisen layoutin runko ---------- */
+const REQUIRED_VIEWS = ["kaytto", "toimeksianto", "tyotapa", "galleria", "viikko", "suunnitelma", "paivakirja", "ailoki"];
+REQUIRED_VIEWS.forEach((v) => {
+  if (!new RegExp(`<section class="view" data-view="${v}"`).test(html)) err(`index.html: näkymä data-view="${v}" puuttuu`);
+});
+/* naytto (näyttömatriisi) on valinnainen: pelkkä projektisivusto ei sisällä sitä
+   (ks. kohta 6). Jos matriisia käytetään, näkymän pitää silti olla olemassa. */
+const hasNayttoView = /<section class="view" data-view="naytto"/.test(html);
+if (matrixUsed && !hasNayttoView) err('index.html: näyttömatriisia käytetään mutta näkymä data-view="naytto" puuttuu');
+if (!matrixUsed && hasNayttoView) warn('index.html: data-view="naytto" on olemassa mutta ilman matriisisisältöä — harkitse sen poistamista');
+if (!html.includes('data-week-links')) err('index.html: sivupalkin viikkonavigaation kiinnityskohta (data-week-links) puuttuu');
+if (!/id="sivupalkki"/.test(html)) err('index.html: sivupalkin id="sivupalkki" puuttuu (mobiilivalikko tarvitsee sen)');
+if (!html.includes('data-sidebar-toggle')) warn('index.html: mobiilin valikkonappi (data-sidebar-toggle) puuttuu');
+
+/* ---------- 12b. v2.4-datan lataus (sykli ja kuvaohjeet) ---------- */
+const syklissa = (w) => Boolean(P.viikkoOhjeet?.[w]?.sykli);
+const sykliViikot = workWeeks.filter(syklissa);
+const kuvaViittaukset = new Map(); // tunnus → [viikko | "index.html"]
+const lisaaViittaus = (id, missa) => { if (!kuvaViittaukset.has(id)) kuvaViittaukset.set(id, []); kuvaViittaukset.get(id).push(missa); };
+workWeeks.forEach((w) => {
+  const g = P.viikkoOhjeet?.[w] || {};
+  (g.kuvaohjeet || []).forEach((id) => lisaaViittaus(id, w));
+  if (g.sykli) {
+    (P.sykli?.askeleet || []).forEach((s) => (s.kuvaohjeet || []).forEach((id) => lisaaViittaus(id, w)));
+    Object.values((g.sykli === true ? {} : g.sykli).kuvaohjeet || {}).flat().forEach((id) => lisaaViittaus(id, w));
+  }
+});
+[...htmlNoComments.matchAll(/data-kuvaohje="([^"]+)"/g)].forEach(([, id]) => lisaaViittaus(id, "index.html"));
+let kuvaLista = null;
+if (Array.isArray(P.kuvakaappaukset)) kuvaLista = P.kuvakaappaukset;
+else if (kuvaViittaukset.size || fs.existsSync(path.join(ROOT, P.kuvakaappauksetPolku || "kuvakaappaukset.json"))) {
+  const kp = path.join(ROOT, P.kuvakaappauksetPolku || "kuvakaappaukset.json");
+  if (!fs.existsSync(kp)) err(`kuvaohjeita käytetään, mutta ${P.kuvakaappauksetPolku || "kuvakaappaukset.json"} puuttuu`);
+  else {
+    try {
+      const data = JSON.parse(fs.readFileSync(kp, "utf8"));
+      kuvaLista = Array.isArray(data) ? data : (data.kuvat || []);
+    } catch (e) { err(`kuvakaappaukset.json ei ole kelvollista JSONia: ${e.message}`); }
+  }
+}
+const kuvaMap = new Map((kuvaLista || []).map((k) => [k.tunnus, k]));
+const kuvaTeksti = (k) => (k ? stringsOfTop([k.otsikko, k.kuvaa, k.missa, k.alt, (k.kohdat || []).map((c) => c.teksti)]).join(" ") : "");
+function stringsOfTop(v, out = []) {
+  if (typeof v === "string") out.push(v);
+  else if (Array.isArray(v)) v.forEach((x) => stringsOfTop(x, out));
+  else if (v && typeof v === "object") Object.values(v).forEach((x) => stringsOfTop(x, out));
+  return out;
+}
+
+/* ---------- 13. pedagoginen termistö ----------
+ * Sivun pitää opettaa käyttämänsä ammattikieli, ei olettaa sitä tunnetuksi.
+ * Tarkistus on kevyt ja mekaaninen — se ei ymmärrä kieltä, vaan etsii tunnetut
+ * riskitermit (lyhenteet, kirjain+numero-tunnukset) opiskelijalle näkyvästä
+ * tekstistä ja vaatii, että
+ *   a) termi on projektin sanastossa (P.termisto), ja
+ *   b) termin ENSIMMÄINEN opiskelijalle näkyvä käyttö joko selittää sen samassa
+ *      lohkossa tai viikon `termit`-lista nostaa sen "Uudet termit" -laatikkoon.
+ * Lukujärjestys: Näin käytät sivua → Toimeksianto → Työtapa → Suunnitelma →
+ * viikot nousevassa järjestyksessä. Muut näkymät (galleria, päiväkirja,
+ * AI-loki, näyttömatriisi, sanasto) tarkistetaan vain sanaston kattavuuden osalta.
+ * Varoitus on parempi kuin automaattinen tekstinmuutos: tunnusperheet
+ * (P0/P1/P2, T01…, RC) ovat virheitä, muut lyhenteet huomautuksia.
+ */
+const termisto = Array.isArray(P.termisto) ? P.termisto : [];
+const termiAvaimet = new Set(termisto.map((g) => String(g.termi || "").toLowerCase()));
+termisto.forEach((g, i) => {
+  if (!g || !g.termi || !g.selite) err(`termisto[${i}]: termi ja selite ovat pakollisia`);
+  if (g && g.viikko != null && !workWeeks.includes(Number(g.viikko))) err(`termisto: termin '${g.termi}' viikko ${g.viikko} ei ole työviikko`);
+});
+const termiDupes = termisto.map((g) => String(g.termi || "").toLowerCase()).filter((k, i, a) => a.indexOf(k) !== i);
+if (termiDupes.length) err(`termisto: termi toistuu: ${[...new Set(termiDupes)].join(", ")}`);
+const hasTermitView = /<section class="view" data-view="termit"/.test(html);
+const hasTermistoHolder = html.includes("data-termisto");
+if (termisto.length && (!hasTermitView || !hasTermistoHolder)) err('index.html: sisalto.js:ssä on termisto, mutta näkymä data-view="termit" tai [data-termisto] puuttuu');
+if (!termisto.length && (hasTermitView || hasTermistoHolder)) warn("index.html: sanastonäkymä on olemassa, mutta sisalto.js:n termisto on tyhjä");
+workWeeks.forEach((w) => {
+  (P.viikkoOhjeet[w]?.termit || []).forEach((k) => {
+    if (!termiAvaimet.has(String(k).toLowerCase())) err(`viikko ${w}: termit-listan '${k}' puuttuu termistosta`);
+  });
+});
+
+/* Opiskelijalle näkyvä teksti lohkoina lukujärjestyksessä. */
+const stripHtml = (s) => s.replace(/<!--[\s\S]*?-->/g, "").replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/&nbsp;/g, " ").replace(/\s+/g, " ");
+const viewBlock = (name) => {
+  const m = html.match(new RegExp(`<section class="view" data-view="${name}"[\\s\\S]*?<\\/section>\\s*(?=<!--|<section class="view"|<footer|<\\/main>)`));
+  return m ? stripHtml(m[0]) : "";
+};
+const stringsOf = (v, out = []) => {
+  if (typeof v === "string") out.push(v);
+  else if (Array.isArray(v)) v.forEach((x) => stringsOf(x, out));
+  else if (v && typeof v === "object") Object.values(v).forEach((x) => stringsOf(x, out));
+  return out;
+};
+let planText = "";
+try { planText = P.suunnitelma?.markdown ? P.suunnitelma.markdown({ arvo: () => "", onTäytetty: () => false, raaka: {}, pvm: "" }) : ""; } catch (_) { /* raportoitu kohdassa 7 */ }
+/* v2.6: tavoitekuvan tekstit ovat Näin käytät sivua -näkymän alussa, eli ensimmäinen luettava lohko. */
+const lopputulosTeksti = P.lopputulos ? stringsOf([P.lopputulos.otsikko, P.lopputulos.kuvaus, P.lopputulos.alt, (P.lopputulos.kohdat || []).map((c) => c && c.teksti)]).join(" ") : "";
+const lohkot = [
+  { nimi: "Näin käytät sivua", teksti: `${lopputulosTeksti} ${viewBlock("kaytto")} ${P.yhtenaisetViikot ? stringsOf([P.vaiheetJohdanto, (P.vaiheet || []).map((v) => [v.otsikko, v.kuvaus]), P.vaiheetHuomio]).join(" ") : ""}` },
+  { nimi: "Toimeksianto", teksti: viewBlock("toimeksianto") },
+  { nimi: "Työtapa", teksti: `${viewBlock("tyotapa")} ${stringsOf([P.perusohjeet || [], P.tiedostokortit || {}]).join(" ")}` },
+  { nimi: "Suunnitelma", teksti: `${viewBlock("suunnitelma")} ${planText}` },
+  ...workWeeks.map((w) => {
+    const card = html.match(new RegExp(`<article class="week-card" id="week-${w}"[\\s\\S]*?<\\/article>`));
+    const g = P.viikkoOhjeet[w] || {};
+    const tehtavatTeksti = Object.fromEntries(Object.entries(g.tehtavat || {}).map(([k, d]) => [k, { ...d, sanat: undefined, perii: undefined }]));
+    const guideText = stringsOf({ ...g, termit: undefined, kuvaohjeet: undefined, tehtavat: tehtavatTeksti }).join(" ");
+    const tehtavaSanat = Object.values(g.tehtavat || {}).flatMap((d) => (d && d.sanat) || []);
+    /* v2.4: syklin yhteiset tekstit ja viikon kuvaohjeet kuuluvat viikon lukujärjestykseen. */
+    const sykliTeksti = (g.sykli ? stringsOf(P.sykli || {}).join(" ") : "")
+      + (P.josJumissa && g.josJumissa !== false ? " " + stringsOf(P.josJumissa).join(" ") : "")
+      + (P.viikkorutiini && g.rutiini !== false ? " " + stringsOf(P.viikkorutiini).join(" ") : "");
+    const kuvaTekstit = [...kuvaViittaukset.entries()].filter(([, missa]) => missa.includes(w)).map(([id]) => kuvaTeksti(kuvaMap.get(id))).join(" ");
+    return { nimi: `viikko ${w}`, viikko: w, teksti: `${card ? stripHtml(card[0]) : ""} ${guideText} ${sykliTeksti} ${kuvaTekstit}`, termit: [...(g.termit || []), ...tehtavaSanat].map((k) => String(k).toLowerCase()) };
+  })
+];
+const muuTeksti = ["galleria", "paivakirja", "ailoki", "naytto"].map(viewBlock).join(" ")
+  + " " + stringsOf({ tekstit: P.tekstit, lataukset: P.lataukset, paivakirja: P.paivakirja, kehykset: P.kehykset, viikkoNimet: P.viikkoNimet, vaiheet: P.vaiheet }).join(" ");
+const kaikkiTeksti = lohkot.map((l) => l.teksti).join(" ") + " " + muuTeksti;
+
+/* Riskitermiperheet. `re` löytää käytön, `termi` tarkistaa sanaston,
+   `maarittely` hyväksyy ensimmäisen käytön samassa lohkossa. */
+const A = (acr, maarittely) => ({
+  nimi: acr, re: new RegExp(`(?<![\\w-])${acr}(?![\\w])`, "g"), termi: (k) => k === acr.toLowerCase(),
+  maarittely: maarittely || new RegExp(`\\(${acr}\\)|${acr}\\)|${acr}\\s*[=:]|${acr}\\s+(?:eli|tarkoittaa|on|means|is|stands for)\\b`, "i"),
+  vakava: false
+});
+const PERHEET = [
+  { nimi: "testitapaustunnus (T01…)", re: /(?<![\w-])T\d{2}(?![\w])/g, termi: (k) => /^t\d{2}/.test(k), maarittely: /testitapau|test case|numbered test|numeroi/i, vakava: true },
+  { nimi: "P0", re: /(?<![\w-])P0(?![\w])/g, termi: (k) => k === "p0", maarittely: /P0\)|\(P0|P0\s*(?:=|eli|tarkoittaa|on|means|is)|pakollinen ydin|must-have|must have|required core|minimum content|pakollinen perus/i, vakava: true },
+  { nimi: "P1", re: /(?<![\w-])P1(?![\w])/g, termi: (k) => k === "p1", maarittely: /P1\)|\(P1|P1\s*(?:=|eli|tarkoittaa|on|means|is)/i, vakava: true },
+  { nimi: "P2", re: /(?<![\w-])P2(?![\w])/g, termi: (k) => k === "p2", maarittely: /P2\)|\(P2|P2\s*(?:=|eli|tarkoittaa|on|means|is)/i, vakava: true },
+  { nimi: "RC (release candidate)", re: /(?<![\w-])RC\d?(?![\w])/g, termi: (k) => /^rc/.test(k), maarittely: /release candidate|julkaisuehdok/i, vakava: true },
+  { nimi: "PR (pull request)", re: /(?<![\w-])PR(?![\w])/g, termi: (k) => k === "pr" || k === "pull request", maarittely: /pull request/i, vakava: false,
+    huomio: "jos pull requestit eivät kuulu projektin työtapaan, poista PR esimerkeistä" },
+  A("MVP", /minimum viable product/i), A("GDD", /game design document|suunnitteludokument/i), A("DFS", /depth-first/i),
+  A("API"), A("CDN"), A("CSV"), A("JSON"), A("JWT"), A("CRUD"), A("REST"), A("SQL"), A("SPA"), A("DOM"), A("ORM"), A("WebGL"), A("UI"), A("UX"), A("CI")
+];
+PERHEET.forEach((f) => {
+  const kaytto = kaikkiTeksti.match(f.re);
+  if (!kaytto) return;
+  const sanastossa = [...termiAvaimet].some(f.termi);
+  const raportoi = f.vakava ? err : warn;
+  if (!sanastossa) {
+    raportoi(`termistö: '${f.nimi}' esiintyy ${kaytto.length}× opiskelijalle näkyvässä tekstissä, mutta ei ole sanastossa (P.termisto)${f.huomio ? ` — ${f.huomio}` : ""}`);
+  }
+  const eka = lohkot.find((l) => f.re.test(l.teksti) && (f.re.lastIndex = 0, true));
+  f.re.lastIndex = 0;
+  if (!eka) return; // vain viitenäkymissä (matriisi, päiväkirja tms.)
+  const selitetty = f.maarittely.test(eka.teksti) || (eka.termit || []).some(f.termi);
+  if (!selitetty) {
+    raportoi(`termistö: '${f.nimi}' tulee ensimmäisen kerran vastaan lohkossa "${eka.nimi}" ilman selitystä — selitä samassa kohdassa${eka.viikko ? ` tai lisää se viikon ${eka.viikko} termit-listaan` : ""}`);
+  }
+});
+
+/* ---------- 13c. tehtäväkortti on itsenäisesti ymmärrettävä (v2.5) ----------
+ * Opiskelija ei saa joutua avaamaan sanastoa ymmärtääkseen tehtävän. Tunnusperheet
+ * (P0/P1/P2, T01…, RC) sanallistetaan tehtävän omassa tekstissä joka kerta, esim.
+ * "pakollinen (P0)" tai "testitapaus T05". Muut lyhenteet (JSON, UI, WebGL…) joko
+ * tekstissä tai tehtävän sanat-listassa, joka näkyy tehtäväkortissa.
+ */
+workWeeks.forEach((w) => {
+  Object.entries(P.viikkoOhjeet?.[w]?.tehtavat || {}).forEach(([id, d]) => {
+    if (!d || typeof d !== "object") return;
+    const sanat = (d.sanat || []).map((k) => String(k).toLowerCase());
+    sanat.forEach((k) => { if (!termiAvaimet.has(k)) err(`tehtävä ${id}: sanat-listan '${k}' puuttuu termistosta`); });
+    const teksti = `${taskTitle[id] || ""} ${stringsOf({ ...d, sanat: undefined, perii: undefined }).join(" ")}`;
+    PERHEET.forEach((f) => {
+      f.re.lastIndex = 0;
+      const kaytetty = f.re.test(teksti);
+      f.re.lastIndex = 0;
+      if (!kaytetty) return;
+      const auki = f.maarittely.test(teksti);
+      if (f.vakava && !auki) err(`tehtävä ${id}: '${f.nimi}' pitää sanallistaa tehtävän omassa tekstissä (esim. "pakollinen (P0)", "testitapaus T05") — sanasto ei riitä`);
+      else if (!auki && !sanat.some(f.termi)) warn(`tehtävä ${id}: '${f.nimi}' ei avaudu tehtävässä — selitä tekstissä tai lisää tehtävän sanat-listaan`);
+    });
+  });
+});
+
+/* ---------- 13b. lyhyetViikot ja pitkatViikot ---------- */
+Object.entries(P.pitkatViikot || {}).forEach(([w, n]) => {
+  if (!workWeeks.includes(Number(w))) err(`pitkatViikot: viikko ${w} ei ole työviikko`);
+  if (!(Number(n) >= 2 && Number(n) <= 4)) err(`pitkatViikot: viikon ${w} kalenteriviikkojen määrä ${n} ei ole 2–4`);
+  for (let k = 1; k < Number(n); k++) if ((P.viikot || []).map(Number).includes(Number(w) + k)) err(`pitkatViikot: viikko ${Number(w) + k} kuuluu jaksoon ${w}, joten se ei saa olla viikot-listassa`);
+});
+Object.entries(P.lyhyetViikot || {}).forEach(([w, n]) => {
+  if (!workWeeks.includes(Number(w))) err(`lyhyetViikot: viikko ${w} ei ole työviikko`);
+  if (!(Number(n) >= 1 && Number(n) <= 4)) err(`lyhyetViikot: viikon ${w} päivien määrä ${n} ei ole 1–4`);
+});
+
+/* ---------- 14. teema (v2.4, opt-in) ---------- */
+const htmlTag = (html.match(/<html\b[^>]*>/) || [""])[0];
+if (P.teema) {
+  if (typeof P.teema !== "object") err("sisalto.js: teema pitää olla objekti");
+  if (!/\sdata-teema=/.test(htmlTag)) warn("teema on käytössä, mutta <html> ei sisällä data-teema-attribuuttia — sivu välähtää oletusteemassa ennen app.js:ää");
+  if (P.teema.yksiPalsta !== false && !/\sdata-teema-asettelu="yksi"/.test(htmlTag)) warn('teema.yksiPalsta: lisää <html data-teema-asettelu="yksi">, jotta asettelu ei hyppää latauksessa');
+  if (/fonts\.googleapis\.com[^"]*Instrument/.test(htmlNoComments)) warn("teema on käytössä, mutta index.html lataa yhä Instrument-fontit — poista Google Fonts -linkki");
+  const hex = (v) => /^#[0-9a-f]{6}$/i.test(String(v || ""));
+  ["tausta", "teksti"].forEach((k) => { if (P.teema[k] && !hex(P.teema[k]) && !/^[a-z]+$/i.test(P.teema[k])) warn(`teema.${k}: '${P.teema[k]}' ei ole #rrggbb-väri`); });
+  /* Kontrasti WCAG 2.x: suhteellinen luminanssi. Tarkistetaan vain #rrggbb-arvot. */
+  const NIMET = { black: "#000000", white: "#ffffff" };
+  const lum = (c) => {
+    const h = (NIMET[String(c).toLowerCase()] || c).replace("#", "");
+    const [r, g, b] = [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16) / 255).map((v) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  };
+  const suhde = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((p, q) => q - p); return (x + 0.05) / (y + 0.05); };
+  const ok = (c) => hex(c) || NIMET[String(c).toLowerCase()];
+  const tausta = P.teema.tausta || "#000000";
+  [["teksti", P.teema.teksti || "#ffffff"], ["otsikot", P.teema.otsikot], ["korostus", P.teema.korostus]].forEach(([k, c]) => {
+    if (!c || !ok(c) || !ok(tausta)) return;
+    const r = suhde(c, tausta);
+    if (r < 7) warn(`teema.${k} ${c} taustaa ${tausta} vasten: kontrasti ${r.toFixed(1)}:1 (AAA vaatii 7:1)`);
+    else info(`teema.${k} ${c} / ${tausta}: kontrasti ${r.toFixed(1)}:1`);
+  });
+}
+
+/* ---------- 15. työsykli (v2.4, opt-in) ---------- */
+if (sykliViikot.length || P.sykli) {
+  const askeleet = P.sykli?.askeleet;
+  if (!Array.isArray(askeleet) || !askeleet.length) err("viikoilla on sykli, mutta sisalto.js:n sykli.askeleet puuttuu");
+  else {
+    askeleet.forEach((s, i) => {
+      if (!s.nimi) err(`sykli.askeleet[${i}]: nimi puuttuu`);
+      if (!(s.ohje || []).length) warn(`sykli: askeleelta ${i + 1} (${s.nimi || "?"}) puuttuu ohje`);
+      (s.ohje || []).forEach((line) => { if (/^[a-zåäö]/.test(String(line).trim())) warn(`sykli: askeleen ${i + 1} ohje alkaa pienellä kirjaimella — aloita verbillä isolla: "${String(line).slice(0, 40)}…"`); });
+      if (!(s.jumissa || []).length) warn(`sykli: askeleelta ${i + 1} (${s.nimi || "?"}) puuttuu "Olen jumissa" -päätöspuu`);
+      const tarkistaPuu = (items, polku) => (items || []).forEach((it, j) => {
+        if (!it.kysymys) err(`sykli: ${polku}[${j}] kysymys puuttuu`);
+        if (!it.ohje && !it.pohja && !(it.jatko || []).length) err(`sykli: ${polku}[${j}] ("${it.kysymys || "?"}") ei kerro mitä tehdä (ohje, pohja tai jatko)`);
+        tarkistaPuu(it.jatko, `${polku}[${j}].jatko`);
+      });
+      tarkistaPuu(s.jumissa, `askel ${i + 1} jumissa`);
+    });
+    sykliViikot.forEach((w) => {
+      const o = P.viikkoOhjeet[w].sykli;
+      if (o === true) return;
+      ["pohjat", "ohjeet", "jumissa", "kuvaohjeet", "lisa", "oma"].forEach((field) => Object.keys(o[field] || {}).forEach((n) => {
+        if (!(Number(n) >= 1 && Number(n) <= askeleet.length)) err(`viikko ${w}: sykli.${field} viittaa askeleeseen ${n}, askeleita on ${askeleet.length}`);
+      }));
+    });
+  }
+}
+
+/* ---------- 15b. vakiolohkot josJumissa ja viikkorutiini (v2.4, opt-in) ---------- */
+if (P.josJumissa) {
+  const kohdat = P.josJumissa.kohdat;
+  if (!Array.isArray(kohdat) || !kohdat.length) err("josJumissa.kohdat puuttuu tai on tyhjä");
+  else {
+    const puu = (items, polku) => (items || []).forEach((it, j) => {
+      if (!it.kysymys) err(`josJumissa: ${polku}[${j}] kysymys puuttuu`);
+      if (!it.ohje && !it.pohja && !(it.jatko || []).length) err(`josJumissa: ${polku}[${j}] ei kerro mitä tehdä`);
+      puu(it.jatko, `${polku}[${j}].jatko`);
+    });
+    puu(kohdat, "kohdat");
+    const viimeinen = kohdat[kohdat.length - 1];
+    if (!/ohjaaj|opettaj|teams|sähköpost|viesti/i.test(`${viimeinen.ohje || ""} ${JSON.stringify(viimeinen.pohja || "")}`)) {
+      warn("josJumissa: viimeinen kohta ei ohjaa ihmiseen (ohjaaja, kanava, viestipohja) — puun pitää päättyä ihmiseen");
+    }
+  }
+}
+if (P.viikkorutiini) {
+  if (!Array.isArray(P.viikkorutiini.kohdat) || !P.viikkorutiini.kohdat.length) err("viikkorutiini.kohdat puuttuu tai on tyhjä");
+  else P.viikkorutiini.kohdat.forEach((k, i) => { if (!k.teksti) err(`viikkorutiini.kohdat[${i}]: teksti puuttuu`); });
+}
+
+/* ---------- 16. kuvaohjeet (v2.4, opt-in) ---------- */
+if (kuvaLista) {
+  const tunnukset = new Set();
+  kuvaLista.forEach((k, i) => {
+    const nimi = k.tunnus || `#${i}`;
+    if (!k.tunnus) err(`kuvakaappaukset[${i}]: tunnus puuttuu`);
+    if (tunnukset.has(k.tunnus)) err(`kuvakaappaukset: tunnus ${k.tunnus} toistuu`);
+    tunnukset.add(k.tunnus);
+    ["kuvaa", "missa", "alt"].forEach((f) => { if (!k[f]) err(`kuvaohje ${nimi}: kenttä '${f}' puuttuu`); });
+    if (!(k.kohdat || []).length) err(`kuvaohje ${nimi}: numeroidut kohdat puuttuvat — kuva ei saa olla ainoa tiedon kantaja`);
+    (k.kohdat || []).forEach((c, j) => {
+      if (Number(c.n) !== j + 1) err(`kuvaohje ${nimi}: kohtien numerointi ei ole 1…N (kohta ${j + 1} = ${c.n})`);
+      if (!c.teksti) err(`kuvaohje ${nimi}: kohdalta ${c.n} puuttuu teksti`);
+      if (c.alue && (!Array.isArray(c.alue) || c.alue.length !== 4 || c.alue.some((v) => !(Number(v) >= 0 && Number(v) <= 100)))) err(`kuvaohje ${nimi}: kohdan ${c.n} alue pitää olla [x, y, leveys, korkeus] prosentteina 0–100`);
+    });
+    if (k.alt && k.alt.length < 40) warn(`kuvaohje ${nimi}: alt-teksti on lyhyt (${k.alt.length} merkkiä) — kerro mitä kuvassa näkyy ja missä`);
+    if (!k.tiedosto) warn(`kuvaohje ${nimi}: kuva puuttuu (tiedosto tyhjä) — sivulla näkyy paikanpitäjä`);
+    else if (!/^https?:/.test(k.tiedosto) && !fs.existsSync(path.join(ROOT, k.tiedosto))) warn(`kuvaohje ${nimi}: kuvatiedosto puuttuu: ${k.tiedosto} — sivulla näkyy paikanpitäjä`);
+    if (k.tiedosto && !k.pvm) warn(`kuvaohje ${nimi}: kuvauspäivä (pvm) puuttuu`);
+    if (!kuvaViittaukset.has(k.tunnus)) info(`kuvaohje ${nimi} ei ole vielä käytössä millään viikolla`);
+  });
+  kuvaViittaukset.forEach((missa, id) => { if (!kuvaMap.has(id)) err(`kuvaohje '${id}' (${[...new Set(missa)].join(", ")}) puuttuu kuvakaappaukset.json:sta`); });
+}
+
+/* ---------- 17. tavoitekuva (v2.6, opt-in) ---------- */
+if (P.lopputulos) {
+  const L = P.lopputulos;
+  if (typeof L !== "object") err("sisalto.js: lopputulos pitää olla objekti");
+  else {
+    if (!L.kuvaus) err("lopputulos: kuvaus puuttuu — 1–2 virkettä siitä, mitä valmis työ tekee");
+    else if (L.kuvaus.length > 320) warn(`lopputulos: kuvaus on pitkä (${L.kuvaus.length} merkkiä) — tavoite pitää hahmottaa yhdellä silmäyksellä`);
+    if (!L.alt) err("lopputulos: alt-teksti puuttuu");
+    else if (L.alt.length < 40) warn(`lopputulos: alt-teksti on lyhyt (${L.alt.length} merkkiä) — kerro mitä kuvassa näkyy`);
+    if (!(Number(L.leveys) > 0 && Number(L.korkeus) > 0)) err("lopputulos: leveys ja korkeus puuttuvat (kuvan CSS-koko, 2x-kuvassa puolet pikseleistä)");
+    if (!L.kuva) warn("lopputulos: kuva puuttuu — sivulla näkyy paikanpitäjä");
+    else if (!/^https?:/.test(L.kuva) && !fs.existsSync(path.join(ROOT, L.kuva))) err(`lopputulos: kuvatiedosto puuttuu: ${L.kuva}`);
+    const kohdat = L.kohdat || [];
+    if (kohdat.length < 3 || kohdat.length > 5) warn(`lopputulos: ${kohdat.length} kohtaa — 3–5 kohtaa riittää hahmottamaan tavoitteen`);
+    kohdat.forEach((c, j) => {
+      if (Number(c.n) !== j + 1) err(`lopputulos: kohtien numerointi ei ole 1…N (kohta ${j + 1} = ${c.n})`);
+      if (!c.teksti) err(`lopputulos: kohdalta ${c.n} puuttuu teksti`);
+      if (c.alue && (!Array.isArray(c.alue) || c.alue.length !== 4 || c.alue.some((v) => !(Number(v) >= 0 && Number(v) <= 100)))) err(`lopputulos: kohdan ${c.n} alue pitää olla [x, y, leveys, korkeus] prosentteina 0–100`);
+    });
+  }
+}
+
+/* ---------- 18. yhtenäiset viikko-ohjeet (v2.7, opt-in P.yhtenaisetViikot) ----------
+ * Jokaisella työviikolla on oma yhteys kokonaisprojektiin ja konkreettinen tavoite, työvaiheet
+ * ovat yhdessä ensisijaisessa ohjeessa (tehtavat, ei rinnakkaista steps-listaa) ja jokaisesta
+ * työvaiheesta käy ilmi miksi, valmis kun ja mihin työnäyte tallennetaan.
+ */
+if (P.yhtenaisetViikot) {
+  const sentences = (s) => String(s || "").split(/(?<=[.!?])\s+(?=[A-ZÅÄÖ0-9”"`])/).filter((x) => x.trim()).length;
+  const seen = new Map();
+  workWeeks.forEach((w) => {
+    const g = P.viikkoOhjeet[w];
+    if (!g) return;
+    const n = sentences(g.connection);
+    if (n < 2) warn(`viikko ${w}: connection on ${n} virke — kerro 2–3 virkkeellä, mitä aiempaa tulosta viikko käyttää, mitä nyt lisätään ja mitä se mahdollistaa`);
+    else if (n > 4) warn(`viikko ${w}: connection on ${n} virkettä — 2–3 riittää, siirrä yksityiskohdat työvaiheisiin`);
+    const key = String(g.connection || "").trim();
+    if (key && seen.has(key)) err(`viikko ${w}: connection on sama kuin viikolla ${seen.get(key)} — kirjoita viikon oma yhteys`);
+    seen.set(key, w);
+    if (!g.feature) err(`viikko ${w}: feature (viikon tavoite) puuttuu`);
+    const ids = taskIdsByWeek[w] || [];
+    if (!g.tehtavat) { err(`viikko ${w}: tehtavat puuttuu — yhtenäisissä viikoissa työvaiheet ovat tehtavat-kuvauksia`); return; }
+    ids.filter((id) => !g.tehtavat[id]).forEach((id) => err(`työvaihe ${id}: tehtavat-kuvaus puuttuu`));
+    ids.filter((id) => g.tehtavat[id]).forEach((id) => {
+      const d = g.tehtavat[id];
+      if (!d.miksi) err(`työvaihe ${id}: miksi puuttuu`);
+      if (!d.tallenna) err(`työvaihe ${id}: tallenna (työnäytteen paikka) puuttuu`);
+    });
+    if (Array.isArray(g.steps) && g.steps.length) warn(`viikko ${w}: steps-lista näkyy tehtävien rinnalla — siirrä askeleet työvaiheiden osatehtäviin`);
+  });
+  (P.vaiheet || []).forEach((ph) => { if (!ph.kuvaus) err(`vaihe ${ph.tunnus}: kuvaus puuttuu (vaihekuvaus: mitä vaiheessa valmistuu ja miksi)`); });
+  /* Vaihekuvaus joko datasta ([data-roadmap]) tai staattisena osiona (section.project-roadmap). */
+  if (!/<[a-z]+ [^>]*data-roadmap[\s>]/.test(htmlNoComments) && !/class="[^"]*\bproject-roadmap\b/.test(htmlNoComments)) warn("Näin käytät sivua: [data-roadmap] puuttuu — vaihekuvaus ei näy aloituksessa");
+  if (P.vaihekuva) {
+    const V = P.vaihekuva;
+    if (!V.kuva) err("vaihekuva: kuva puuttuu");
+    else if (!/^https?:/.test(V.kuva) && !fs.existsSync(path.join(ROOT, V.kuva))) err(`vaihekuva: kuvatiedosto puuttuu: ${V.kuva}`);
+    if (!V.alt || V.alt.length < 40) err("vaihekuva: alt-teksti puuttuu tai on lyhyt — kerro vaiheet myös tekstinä");
+  }
+  [...htmlNoComments.matchAll(/<figure class="project-figure">[\s\S]*?<\/figure>/g)].forEach(([fig]) => {
+    const alt = fig.match(/<img[^>]*\salt="([^"]*)"/);
+    if (!alt || alt[1].trim().length < 40) err(`havainnekuva ilman riittävää alt-tekstiä: ${fig.slice(0, 90)}…`);
+    if (!/<figcaption>/.test(fig)) warn(`havainnekuvalta puuttuu kuvateksti: ${fig.slice(0, 90)}…`);
+  });
+}
+
+/* ---------- 19. selkeys (v2.8, opt-in) ----------
+ * 19a linkkimerkintöjen kohteet: aina, kun linkit ovat käytössä (P.selkeys, P.perusohjeet tai
+ *     P.tiedostokortit). Tuntematon kohde on virhe.
+ * 19b perusohjeiden ja tiedostokorttien rakenne.
+ * 19c tiukka tila (P.selkeys === "tiukka"): opiskelijalle näkyvä teksti lukujärjestyksessä.
+ *     Näyttömatriisi ja opettaja-aineisto eivät kuulu tarkistukseen (ne pysyvät ennallaan).
+ */
+const linksOn = Boolean(P.selkeys || P.perusohjeet || P.tiedostokortit);
+let selkeysRaportti = "";
+if (linksOn) {
+  const LINK_RE = /\[\[([^\]|\n]+?)(?:\|([^\]\n]+))?\]\]|\[([^\]\n]+)\]\((https?:\/\/[^)\s]+|(?:\.\.?\/)?[\w-]+\/[\w./-]+\.\w+)\)/g;
+  const VIEWS = ["kaytto", "toimeksianto", "tyotapa", "termit", "galleria", "suunnitelma", "paivakirja", "ailoki", "naytto"];
+  const basicsList = Array.isArray(P.perusohjeet) ? P.perusohjeet : [];
+  const basicIds = new Set(basicsList.map((o) => String(o && o.tunnus)));
+  const cards = P.tiedostokortit && typeof P.tiedostokortit === "object" ? P.tiedostokortit : {};
+  const templateIds = new Set();
+  workWeeks.forEach((w) => (P.viikkoOhjeet[w]?.pohjat || []).forEach((p) => { if (p && p.tunnus) templateIds.add(String(p.tunnus)); }));
+  const htmlIds = new Set([...htmlNoComments.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
+  const kuvaIds = new Set((kuvaLista || []).map((k) => k.tunnus));
+
+  /* Opiskelijalle näkyvät tekstit: { missa, teksti, laji } — laji "teksti" (kaikki säännöt),
+     "malli" (kopioitava pohja tai malliesimerkki: vain viittaavat sanat), "html" (staattinen
+     sivuteksti, jossa <a> on linkki), "otsikko" (osatehtävän otsikko: linkki ei toimi). */
+  const items = [];
+  const add = (missa, v, laji = "teksti") => {
+    if (v == null) return;
+    if (typeof v === "string") { if (v.trim()) items.push({ missa, teksti: v, laji }); return; }
+    if (Array.isArray(v)) { v.forEach((x, i) => add(`${missa}[${i}]`, x, laji)); return; }
+    if (typeof v === "object") Object.entries(v).forEach(([k, x]) => add(`${missa}.${k}`, x, laji));
+  };
+  const addHelp = (missa, h) => {
+    if (!h) return;
+    add(`${missa}.title`, h.title || h.otsikko); add(`${missa}.actions`, h.actions); add(`${missa}.vinkit`, h.vinkit); add(`${missa}.test`, h.test);
+    (h.links || []).forEach(([label], i) => add(`${missa}.links[${i}]`, label));
+    (h.images || []).forEach(([, alt, cap], i) => { add(`${missa}.images[${i}].alt`, alt); add(`${missa}.images[${i}].kuvateksti`, cap); });
+    add(`${missa}.code`, h.code, "malli"); add(`${missa}.tree`, h.tree, "malli");
+  };
+  const addPohjat = (missa, pohjat) => (Array.isArray(pohjat) ? pohjat : pohjat ? [pohjat] : []).forEach((p, i) => {
+    if (typeof p === "string") { add(`${missa}[${i}]`, p, "malli"); return; }
+    add(`${missa}[${i}].otsikko`, p.otsikko); add(`${missa}[${i}].teksti`, p.teksti, "malli");
+  });
+  const addTree = (missa, list) => (list || []).forEach((it, i) => {
+    add(`${missa}[${i}].kysymys`, it.kysymys); add(`${missa}[${i}].ohje`, it.ohje); addPohjat(`${missa}[${i}].pohja`, it.pohja); addTree(`${missa}[${i}].jatko`, it.jatko);
+  });
+  const addStep = (missa, v) => { add(`${missa}.missa`, v.missa); add(`${missa}.tee`, v.tee); add(`${missa}.naet`, v.naet); add(`${missa}.koodi`, v.koodi, "malli"); add(`${missa}.koodiOtsikko`, v.koodiOtsikko); };
+
+  /* sisalto.js */
+  workWeeks.forEach((w) => {
+    const g = P.viikkoOhjeet[w] || {};
+    const card = (html.match(new RegExp(`<article class="week-card" id="week-${w}"[\\s\\S]*?<\\/article>`)) || [""])[0];
+    const vk = `viikko ${w}`;
+    ["feature", "connection", "done", "record", "example", "notEnough"].forEach((k) => add(`${vk}.${k}`, g[k]));
+    if (/data-week-why/.test(card)) { add(`${vk}.deliverable`, g.deliverable); add(`${vk}.why`, g.why); }
+    if (/data-week-quote/.test(card)) add(`${vk}.excerpt`, g.excerpt);
+    add(`${vk}.skills`, g.skills); add(`${vk}.lisatehtavat`, g.lisatehtavat); add(`${vk}.paivat`, g.paivat); add(`${vk}.steps`, g.steps);
+    addHelp(`${vk}.help`, g.help);
+    addPohjat(`${vk}.pohjat`, g.pohjat);
+    (g.resources || []).forEach(([label], i) => add(`${vk}.resources[${i}]`, label));
+    Object.entries(g.tehtavat || {}).forEach(([id, d]) => {
+      const tk = `tehtävä ${id}`;
+      add(`${tk}.miksi`, d.miksi); add(`${tk}.valmis`, d.valmis); add(`${tk}.tallenna`, d.tallenna);
+      add(`${tk}.esimerkki`, d.esimerkki, "malli"); add(`${tk}.eiRiita`, d.eiRiita, "malli");
+      addHelp(`${tk}.apu`, d.apu);
+      (d.osat || []).forEach((o, j) => {
+        const ok = `${tk}, osa ${j + 1}`;
+        if (o && typeof o === "object" && !Array.isArray(o)) { add(`${ok}.otsikko`, o.otsikko, "otsikko"); addStep(ok, o); }
+        else add(ok, Array.isArray(o) ? o.join(". ") : o);
+      });
+    });
+    if (g.sykli && typeof g.sykli === "object") {
+      const o = g.sykli;
+      Object.entries(o.ohjeet || {}).forEach(([n, x]) => add(`${vk}.sykli.ohjeet[${n}]`, x));
+      Object.entries(o.lisa || {}).forEach(([n, x]) => add(`${vk}.sykli.lisa[${n}]`, x));
+      Object.entries(o.oma || {}).forEach(([n, x]) => add(`${vk}.sykli.oma[${n}]`, x));
+      Object.entries(o.pohjat || {}).forEach(([n, x]) => addPohjat(`${vk}.sykli.pohjat[${n}]`, x));
+      Object.entries(o.jumissa || {}).forEach(([n, x]) => addTree(`${vk}.sykli.jumissa[${n}]`, x));
+    }
+  });
+  (P.sykli?.askeleet || []).forEach((s, i) => {
+    const sk = `sykli askel ${i + 1}`;
+    add(`${sk}.nimi`, s.nimi); add(`${sk}.paikka`, s.paikka); add(`${sk}.tyokalu`, s.tyokalu); add(`${sk}.oma`, s.oma); add(`${sk}.ohje`, s.ohje); add(`${sk}.valmis`, s.valmis);
+    addPohjat(`${sk}.pohja`, s.pohja); addTree(`${sk}.jumissa`, s.jumissa);
+  });
+  if (P.sykli) { add("sykli.otsikko", P.sykli.otsikko); add("sykli.johdanto", P.sykli.johdanto); }
+  if (P.josJumissa) { add("josJumissa.otsikko", P.josJumissa.otsikko); add("josJumissa.johdanto", P.josJumissa.johdanto); addTree("josJumissa", P.josJumissa.kohdat); }
+  if (P.viikkorutiini) { add("viikkorutiini.otsikko", P.viikkorutiini.otsikko); add("viikkorutiini.johdanto", P.viikkorutiini.johdanto); (P.viikkorutiini.kohdat || []).forEach((k, i) => add(`viikkorutiini[${i}]`, k.teksti)); }
+  basicsList.forEach((o) => { add(`perusohje ${o.tunnus}.otsikko`, o.otsikko, "otsikko"); add(`perusohje ${o.tunnus}.johdanto`, o.johdanto); (o.vaiheet || []).forEach((v, i) => addStep(`perusohje ${o.tunnus}, vaihe ${i + 1}`, v)); });
+  Object.entries(cards).forEach(([id, c]) => { add(`tiedostokortti ${id}.milloin`, c.milloin); add(`tiedostokortti ${id}.mitaKirjoitetaan`, c.mitaKirjoitetaan); add(`tiedostokortti ${id}.esimerkki`, c.esimerkki, "malli"); add(`tiedostokortti ${id}.eiRiita`, c.eiRiita, "malli"); add(`tiedostokortti ${id}.commitViesti`, c.commitViesti, "malli"); });
+  if (P.paivakirja?.repo) { add("paivakirja.repo.johdanto", P.paivakirja.repo.johdanto); add("paivakirja.repo.vaiheet", P.paivakirja.repo.vaiheet); add("paivakirja.repo.otsikko", P.paivakirja.repo.otsikko, "malli"); }
+  if (P.lopputulos) { add("lopputulos.otsikko", P.lopputulos.otsikko); add("lopputulos.kuvaus", P.lopputulos.kuvaus); add("lopputulos.alt", P.lopputulos.alt); (P.lopputulos.kohdat || []).forEach((c, i) => add(`lopputulos.kohdat[${i}]`, c.teksti)); }
+  (P.vaiheet || []).forEach((v) => add(`vaihe ${v.tunnus}.kuvaus`, v.kuvaus));
+  termisto.forEach((g) => add(`termi ${g.termi}`, g.selite));
+  (kuvaLista || []).forEach((k) => { add(`kuvaohje ${k.tunnus}.otsikko`, k.otsikko, "otsikko"); add(`kuvaohje ${k.tunnus}.missa`, k.missa); add(`kuvaohje ${k.tunnus}.alt`, k.alt, "malli"); (k.kohdat || []).forEach((c) => add(`kuvaohje ${k.tunnus}, kohta ${c.n}`, c.teksti)); });
+  add("tekstit", P.tekstit, "malli");
+
+  /* index.html: näkymät (ei näyttömatriisia eikä ohjaajan aineistoa), viikko- ja lomakortit. */
+  const htmlText = (s) => s.replace(/<!--[\s\S]*?-->/g, "").replace(/<details class="source-role"[\s\S]*?<\/details>/g, " ")
+    .replace(/<h[1-3][^>]*>[\s\S]*?<\/h[1-3]>/g, " ").replace(/<p class="view-eyebrow"[^>]*>[\s\S]*?<\/p>/g, " ")
+    .replace(/<a\b[^>]*>[\s\S]*?<\/a>/g, " ⟦linkki⟧ ").replace(/<[^>]+>/g, " ")
+    .replace(/&amp;/g, "&").replace(/&nbsp;/g, " ").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/\s+/g, " ");
+  ["kaytto", "toimeksianto", "tyotapa", "termit", "galleria", "suunnitelma", "paivakirja", "ailoki"].forEach((v) => {
+    const m = html.match(new RegExp(`<section class="view" data-view="${v}"[\\s\\S]*?<\\/section>\\s*(?=<!--|<section class="view"|<footer|<\\/main>)`));
+    if (m) add(`näkymä ${v}`, htmlText(m[0]), "html");
+  });
+  [...html.matchAll(/<article class="(?:week|holiday)-card" id="week-(\d+)"[\s\S]*?<\/article>/g)].forEach(([block, w]) => add(`index.html viikko ${w}`, htmlText(block), "html"));
+
+  /* 19a linkkien kohteet */
+  const checkTarget = (target, missa) => {
+    const week = target.match(/^vk\s*(\d+)$/i);
+    if (week) { if (!weeks.includes(Number(week[1]))) err(`${missa}: [[${target}]] — viikkoa ${week[1]} ei ole`); return; }
+    const c = target.indexOf(":");
+    if (c > 0) {
+      const kind = target.slice(0, c).trim(), id = target.slice(c + 1).trim();
+      const ok = kind === "ohje" ? basicIds.has(id) : kind === "tiedosto" ? Boolean(cards[id]) : kind === "pohja" ? templateIds.has(id)
+        : kind === "kuvaohje" ? kuvaIds.has(id) : kind === "github" ? Boolean(P.repo && id) : null;
+      if (ok === null) err(`${missa}: [[${target}]] — tuntematon linkin laji '${kind}'`);
+      else if (!ok) err(`${missa}: [[${target}]] — kohdetta ei löydy${kind === "github" ? " (P.repo puuttuu)" : ""}`);
+      return;
+    }
+    const [view, anchor] = target.split("#");
+    if (!VIEWS.includes(view)) err(`${missa}: [[${target}]] — tuntematon näkymä '${view}'`);
+    else if (anchor && !htmlIds.has(anchor)) err(`${missa}: [[${target}]] — ankkuria #${anchor} ei löydy index.html:stä`);
+  };
+  let linkCount = 0;
+  items.forEach((it) => {
+    LINK_RE.lastIndex = 0;
+    let m;
+    while ((m = LINK_RE.exec(it.teksti))) {
+      linkCount += 1;
+      if (m[4]) { if (!/^https?:/.test(m[4]) && !fs.existsSync(path.join(ROOT, m[4]))) err(`${it.missa}: linkin tiedostoa ${m[4]} ei löydy`); continue; }
+      checkTarget(m[1].trim(), it.missa);
+      if (it.laji === "otsikko") warn(`${it.missa}: otsikossa on linkki — rastin selitteessä linkki ei toimi, siirrä se tee-kenttään`);
+    }
+  });
+
+  /* 19b perusohjeet ja tiedostokortit */
+  const kuvaIdSet = kuvaIds;
+  basicsList.forEach((o, i) => {
+    if (!o || !o.tunnus || !o.otsikko) { err(`perusohjeet[${i}]: tunnus ja otsikko ovat pakollisia`); return; }
+    if (!/^[a-z0-9-]+$/.test(o.tunnus)) err(`perusohje ${o.tunnus}: tunnus saa sisältää vain a–z, 0–9 ja -`);
+    if (!(o.vaiheet || []).length) err(`perusohje ${o.tunnus}: vaiheet puuttuvat`);
+    (o.vaiheet || []).forEach((v, j) => ["missa", "tee", "naet"].forEach((k) => { if (!v[k]) err(`perusohje ${o.tunnus}, vaihe ${j + 1}: ${k} puuttuu`); }));
+    (o.kuvaohjeet || []).forEach((k) => { if (!kuvaIdSet.has(k)) err(`perusohje ${o.tunnus}: kuvaohjetta '${k}' ei löydy`); });
+  });
+  if (basicsList.length && new Set(basicsList.map((o) => o.tunnus)).size !== basicsList.length) err("perusohjeet: sama tunnus toistuu");
+  Object.entries(cards).forEach(([id, c]) => {
+    if (!/^[a-z0-9-]+$/.test(id)) err(`tiedostokortti ${id}: tunnus saa sisältää vain a–z, 0–9 ja -`);
+    ["polku", "milloin", "mitaKirjoitetaan"].forEach((k) => { if (!c[k]) err(`tiedostokortti ${id}: ${k} puuttuu`); });
+    if (!/\/$/.test(String(c.polku || ""))) ["esimerkki", "eiRiita", "commitViesti"].forEach((k) => { if (!c[k]) err(`tiedostokortti ${id}: ${k} puuttuu`); });
+  });
+  if (P.dokumentitRepossa) {
+    const nakymat = P.dokumenttiNakymat || { suunnitelma: "suunnitelma", paivakirja: "projektipaivakirja", ailoki: "ai-loki" };
+    Object.entries(nakymat).forEach(([v, id]) => { if (!cards[id]) err(`dokumentitRepossa: näkymän ${v} tiedostokortti '${id}' puuttuu (P.tiedostokortit)`); });
+  }
+
+  /* 19c tiukka tila */
+  if (P.selkeys === "tiukka") {
+    const VIITTAAVAT = /(?<![\p{L}-])(alla|alta|yllä|ylempänä|edellä|tällä sivulla|tässä näkymässä)(?![\p{L}])/giu;
+    const MAININNAT = [["toimeksianto", /toimeksian(?!taj)/i], ["suunnitelma", /suunnitelm/i], ["päiväkirja", /päiväkirj/i], ["AI-loki", /ai-loki/i], ["kuvaohje", /kuvaohje/i], ["project-docs/", /project-docs\//i]];
+    const ilmanLinkkeja = (s) => s.replace(LINK_RE, " ⟦linkki⟧ ");
+    let tiukat = 0;
+    items.forEach((it) => {
+      if (it.missa === "tekstit" || it.missa.startsWith("tekstit.")) {
+        VIITTAAVAT.lastIndex = 0;
+        const m = it.teksti.match(VIITTAAVAT);
+        if (m) { err(`${it.missa}: viittaava sana "${m[0]}" — kerro kohde tai linkitä se`); tiukat++; }
+        return;
+      }
+      VIITTAAVAT.lastIndex = 0;
+      const vm = it.teksti.match(VIITTAAVAT);
+      if (vm) { err(`${it.missa}: viittaava sana "${vm[0]}" — kerro kohde tai linkitä se`); tiukat++; }
+      if (/project-docs-kansio/i.test(it.teksti)) { err(`${it.missa}: "project-docs-kansio" ilman tiedostonimeä — nimeä tiedosto`); tiukat++; }
+      if (it.laji === "malli" || it.laji === "otsikko") return;
+      const vapaa = ilmanLinkkeja(it.teksti);
+      MAININNAT.forEach(([nimi, re]) => {
+        if (re.test(vapaa)) { err(`${it.missa}: ${nimi} mainitaan ilman linkkiä — "${(vapaa.match(new RegExp(`.{0,30}${re.source}.{0,20}`, "i")) || [""])[0].trim()}"`); tiukat++; }
+      });
+    });
+
+    /* Osatehtävät objektimuodossa; tallenna-kentän tiedostot osatehtävissä; kirjoitustehtävän esimerkki. */
+    const FILE_RE = /[\w./-]*[\w-]\.(?:md|py|txt|png|jpg|svg|obj|json|zip|bat|spec|yml|qss|ini|exe)\b|README|PROJEKTIN-TILA/g;
+    const baseOf = (f) => String(f).replace(/\/+$/, "").split("/").pop().toLowerCase().replace(/^readme$/, "readme.md").replace(/^projektin-tila$/, "projektin-tila.md");
+    const filesIn = (s) => {
+      const out = new Set();
+      String(s || "").replace(LINK_RE, (m, target) => { const tt = String(target || "").trim(); if (tt.startsWith("tiedosto:") && cards[tt.slice(9)]) out.add(baseOf(cards[tt.slice(9)].polku)); return " "; })
+        .replace(FILE_RE, (f) => { out.add(baseOf(f)); return f; });
+      return out;
+    };
+    const IMPERATIIVIT = new Set("avaa kirjoita paina valitse tallenna kopioi liitä aja tee lisää lähetä etsi sulje käynnistä tarkista vaihda kirjaa lue pura lataa vie siirry napsauta klikkaa rastita odota asenna luo sovi kysy piirrä vertaa mittaa julkaise testaa korjaa pidä anna näytä harjoittele varaa seuraa kokeile laske hae poista jätä pushaa kierrä siirrä merkitse täytä palaa aloita jatka kerro päätä esitä pyydä valmistele jäädytä luovuta listaa käy ota muokkaa suurenna linkitä kokoa tuo selitä kuvaa varmista ehdota arvioi mieti hyväksy hylkää vedä pudota kirjoittaudu kirjaudu rajaa tuplaklikkaa vieritä".split(" "));
+    const kaskyja = (s) => String(s || "").replace(LINK_RE, (m, target, label, el) => label || el || "linkki").split(/(?<=[.!?])\s+/).filter((x) => {
+      const words = x.replace(/[`"„”(]/g, "").trim().split(/\s+/);
+      const first = (words[0] || "").toLowerCase().replace(/[^\p{L}]/gu, "");
+      if (IMPERATIIVIT.has(first)) return true;
+      if (first === "jos" || first === "kun") { const after = x.split(",").slice(1).join(",").trim().split(/\s+/)[0] || ""; return IMPERATIIVIT.has(after.toLowerCase().replace(/[^\p{L}]/gu, "")); }
+      return false;
+    }).length;
+    workWeeks.forEach((w) => Object.entries(P.viikkoOhjeet[w]?.tehtavat || {}).forEach(([id, d]) => {
+      const osat = d.osat || [];
+      const objektit = osat.filter((o) => o && typeof o === "object" && !Array.isArray(o));
+      osat.forEach((o, j) => {
+        if (!(o && typeof o === "object" && !Array.isArray(o))) { err(`tehtävä ${id}, osa ${j + 1}: tiukassa tilassa osatehtävä on objekti { otsikko, missa, tee, naet }`); tiukat++; return; }
+        ["otsikko", "missa", "tee", "naet"].forEach((k) => { if (!o[k]) { err(`tehtävä ${id}, osa ${j + 1}: ${k} puuttuu`); tiukat++; } });
+        const n = kaskyja(o.tee);
+        if (n > 2) warn(`tehtävä ${id}, osa ${j + 1}: tee-kentässä ${n} käskylausetta — luultavasti kaksi toimenpidettä`);
+      });
+      const osissa = new Set();
+      objektit.forEach((o) => ["otsikko", "missa", "tee", "naet", "koodi"].forEach((k) => filesIn(o[k]).forEach((f) => osissa.add(f))));
+      filesIn(d.tallenna).forEach((f) => { if (!osissa.has(f)) { err(`tehtävä ${id}: tallenna mainitsee tiedoston ${f}, jota yksikään osatehtävä ei käsittele`); tiukat++; } });
+      const kirjoitus = d.kirjoitus !== undefined ? Boolean(d.kirjoitus)
+        : objektit.some((o) => /^kirjoita\b/i.test(String(o.otsikko || "").trim()) || /^kirjoita\b/i.test(String(o.tee || "").trim()));
+      if (kirjoitus && !d.esimerkki) { err(`tehtävä ${id}: kirjoitustehtävältä puuttuu esimerkki`); tiukat++; }
+      if (kirjoitus && !d.eiRiita) warn(`tehtävä ${id}: kirjoitustehtävältä puuttuu eiRiita`);
+    }));
+    (P.perusohjeet || []).forEach((o) => (o.vaiheet || []).forEach((v, i) => { const n = kaskyja(v.tee); if (n > 2) warn(`perusohje ${o.tunnus}, vaihe ${i + 1}: tee-kentässä ${n} käskylausetta`); }));
+
+    /* project-docs-tiedostoilla tiedostokortti */
+    const polut = Object.values(cards).map((c) => String(c.polku || ""));
+    const kansio = (x) => x.replace(/\/[^/]*$/, "/");
+    /* Kortin tiedoston kanssa samassa kansiossa oleva tiedosto (esim. AI-loki/ai-loki-vko-6.md) kuuluu samaan korttiin. */
+    const katettu = (p) => polut.some((q) => q === p || q.startsWith(`${p.replace(/\/$/, "")}/`) || (q.endsWith("/") && (p.startsWith(q) || `${p}/` === q)) || (!q.endsWith("/") && q.split("/").length > 2 && kansio(q) === kansio(p)));
+    const mainitut = new Set();
+    [...items.map((it) => it.teksti), htmlNoComments].forEach((s) => (String(s).match(/project-docs\/(?:[\wÅÄÖåäö-]+\/)*[\wÅÄÖåäö-]+(?:\.\w+)?\/?/g) || []).forEach((m) => mainitut.add(m)));
+    [...mainitut].filter((m) => !/^project-docs\/?$/.test(m)).forEach((m) => { if (!katettu(m)) { err(`${m}: project-docs-tiedostolta puuttuu tiedostokortti`); tiukat++; } });
+    selkeysRaportti = ` · selkeys tiukka: ${items.length} tekstiä, ${linkCount} linkkiä, ${tiukat} virhettä`;
+  } else {
+    selkeysRaportti = ` · ${linkCount} linkkiä`;
+  }
+}
+
+/* ---------- tulos ---------- */
+const total = allTaskIds.length;
+const matriisiOsa = matrixUsed
+  ? ` · ${evidenceIds.length} osaamisvaatimusta · ${matrixCount} tutkinnon osaa`
+  : " · ei näyttömatriisia (projektisivusto)";
+const korttiOsa = taskCardCount ? ` (${taskCardCount} tehtäväkorttia, ${substepCount} osatehtävää)` : "";
+console.log(`${P.nimi} · ${workWeeks.length} työviikkoa · ${total} tehtävää${korttiOsa}${matriisiOsa}${selkeysRaportti}`);
+infos.forEach((m) => console.log("  INFO  " + m));
+warnings.forEach((w) => console.log("  HUOM  " + w));
+errors.forEach((e) => console.log("  VIRHE " + e));
+if (!errors.length && !warnings.length) console.log("  Kaikki tarkistukset läpi.");
+else console.log(`\n${errors.length} virhettä, ${warnings.length} huomautusta`);
+process.exit(errors.length ? 1 : 0);

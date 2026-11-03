@@ -1,5 +1,5 @@
 "use strict";
-// Vain nämä seitsemän projektia käyttävät tätä kuvaohjetta. Tuntematon parametri
+// Vain nämä kahdeksan projektia käyttävät tätä kuvaohjetta. Tuntematon parametri
 // jättää yleisen ohjeen näkyviin; parametrista ei muodosteta HTML:ää tai URL:ää.
 // tyyppi valitsee projektityypin kansiopuun ja .gitignore-ohjeen: data-vain="web"
 // (oletus), "unity" tai "minecraft". Muiden tyyppien lohkot piilotetaan.
@@ -14,6 +14,7 @@ const projektit = {
     paluu: "https://mattiseise.github.io/pelinayttoprojektit/#week-43", paluuTeksti: "Palaa: KahvilaKoodi · viikko 43" },
   bittibiomi: { nimi: "BittiBiomi", tyyppi: "minecraft",
     paluu: "https://mattiseise.github.io/bittibiomi/#week-34", paluuTeksti: "Palaa: BittiBiomi · viikko 34" },
+  protopaja: { nimi: "ProtoPaja", tyyppi: "unity" },
   pingpongtanks: { nimi: "Ping Pong Tanks", tyyppi: "unity",
     paluu: "https://mattiseise.github.io/projekti_pingpongtanks/#week-36", paluuTeksti: "Back to Ping Pong Tanks · week 36" }
 };

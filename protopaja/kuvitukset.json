@@ -1,0 +1,20 @@
+{
+  "aksentti": "#be185d",
+  "aksenttiTumma": "#9d174d",
+  "vaihevarit": ["#8d5a2b", "#2f6f8f", "#6b7f3f", "#7a4f9a", "#0f766e"],
+  "tyokierto": ["Hae parin muutokset", "Oma osa omaan skriptiin", "Kokeile Play-tilassa", "Commit ja push", "Pari testaa"],
+  "tyokiertoOtsikko": "YHDEN KORTIN KULKU PARITYÖSSÄ",
+  "tyokiertoAlt": "Yhden tehtävätaulun kortin kulku parityössä: hae parin muutokset, tee oma osa omaan skriptiin, kokeile Play-tilassa, tee commit ja push, pari testaa.",
+  "vaiheet": [["1", "Aloitus"], ["2", "Ensimmäinen peli"], ["3", "Toinen ja kolmas peli"], ["4", "Luovutusvalmius"], ["5", "Luovutus"]],
+  "vaiheetAlt": "ProtoPajan viisi vaihetta: aloitus, ensimmäinen peli, toinen ja kolmas peli, luovutusvalmius ja luovutus.",
+  "suunnitelma": ["Kenelle ja miksi", "Kolme peliä ja rajaus", "Työnjako ja vastuut"],
+  "suunnitelmaOtsikko": "SUUNNITELMA SYNTYY ENNEN TOTEUTUSTA",
+  "suunnitelmaAlt": "Suunnitelman kolme osaa: kenelle pelit tehdään ja miksi, kolme peliä ja rajaus sekä työnjako ja vastuut.",
+  "testaus": ["Odotettu tulos ensin", "Pari testaa", "Löydä virhe", "Korjaa omasi", "Uusintatesti"],
+  "testausAlt": "Testauksen viisi askelta: kirjaa odotettu tulos ensin, pari testaa, löydä virhe, korjaa oma osasi, uusintatesti. Testi on valmis vasta onnistuneen uusintatestin jälkeen.",
+  "tekoaly": ["Kysy", "Tarkista", "Testaa", "Kirjaa"],
+  "tekoalyTekstit": ["Selitä ratkaisu omin sanoin.", "Vertaa Unityn dokumentaatioon.", "Kokeile Play-tilassa itse.", "Merkitse käyttö AI-lokiin."],
+  "tekoalyMuistutus": "Pelisäännöt sovitaan ohjaajien kanssa. Oma koodi tehdään ja selitetään itse.",
+  "tekoalyAlt": "Tekoälyn käytön neljä askelta: kysy, tarkista, testaa, kirjaa. Pelisäännöt sovitaan ohjaajien kanssa, ja oma koodi tehdään ja selitetään itse.",
+  "tunnus": "neliot"
+}

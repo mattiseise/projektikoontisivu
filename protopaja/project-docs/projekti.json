@@ -1,0 +1,128 @@
+{
+  "slug": "protopaja",
+  "nimi": "ProtoPaja",
+  "kuvaus": "Ohjattu näyttöprojekti parille: kolme pientä Unity-peliprototyyppiä pelimusiikin kurssin harjoitusmateriaaliksi 18 työviikossa.",
+  "vuosi": 2026,
+  "paivaton": true,
+  "viikot": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+  ],
+  "julkaisuviikko": 17,
+  "tunnusmerkki": "🕹️",
+  "aloitusNappi": "Aloita ProtoPajan teko",
+  "paletti": {
+    "aksentti": "#be185d",
+    "aksenttiTumma": "#9d174d",
+    "taulukkoSavy": "#fce7f3",
+    "riviSavy": "#fdf2f8"
+  },
+  "vaiheet": [
+    {
+      "tunnus": "1",
+      "lyhyt": "Aloitus",
+      "otsikko": "Aloitus ja suunnitelma",
+      "viikot": [
+        1,
+        2,
+        3
+      ],
+      "vari": "#8d5a2b"
+    },
+    {
+      "tunnus": "2",
+      "lyhyt": "Ensimmäinen peli",
+      "otsikko": "Ensimmäinen kokonainen prototyyppi",
+      "viikot": [
+        4,
+        5,
+        6
+      ],
+      "vari": "#2f6f8f"
+    },
+    {
+      "tunnus": "3",
+      "lyhyt": "Toinen ja kolmas peli",
+      "otsikko": "Toinen ja kolmas prototyyppi",
+      "viikot": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "vari": "#6b7f3f"
+    },
+    {
+      "tunnus": "4",
+      "lyhyt": "Luovutusvalmius",
+      "otsikko": "Testaus ja luovutusvalmius",
+      "viikot": [
+        13,
+        14,
+        15,
+        16
+      ],
+      "vari": "#7a4f9a"
+    },
+    {
+      "tunnus": "5",
+      "lyhyt": "Luovutus",
+      "otsikko": "Luovutus ja näyttö",
+      "viikot": [
+        17,
+        18
+      ],
+      "vari": "#0f766e"
+    }
+  ],
+  "koonti": {
+    "tyyppi": "peli",
+    "tila": "kaynnissa",
+    "kuvaus": "Kolme pientä Unity-peliä parityönä pelimusiikin kurssille: tasohyppely, pulmapeli ja toimintapeli, joissa on alkuvalikko, selkeä kierroksen loppu ja uudelleenaloitus. Pelit luovutetaan kurssille ohjeineen, ja kurssin opiskelijat tekevät niihin musiikit ja äänet.",
+    "kesto": "18 työviikkoa",
+    "ryhma": "",
+    "tekniikat": [
+      "Unity",
+      "C#",
+      "Git",
+      "GitHub Desktop"
+    ],
+    "sivusto": "https://mattiseise.github.io/projektikoontisivu/protopaja/",
+    "repo": "https://github.com/mattiseise/projektikoontisivu",
+    "tutkinto": "Tieto- ja viestintätekniikan perustutkinto",
+    "diaarinumero": "OPH-6216-2025",
+    "vaatimuksia": 32,
+    "tutkinnonOsat": [
+      {
+        "nimi": "Ohjelmointi",
+        "vaatimuksia": 11
+      },
+      {
+        "nimi": "Ohjelmistokehittäjänä toimiminen",
+        "vaatimuksia": 14
+      },
+      {
+        "nimi": "Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla",
+        "vaatimuksia": 7
+      }
+    ]
+  }
+}

@@ -396,5 +396,45 @@ window.PROJEKTIT = [
         "vaatimuksia": 7
       }
     ]
+  },
+  {
+    "slug": "protopaja",
+    "nimi": "ProtoPaja",
+    "tyyppi": "peli",
+    "tila": "vapaa",
+    "kieli": "",
+    "kuvaus": "Kolme pientä Unity-peliä parityönä pelimusiikin kurssille: tasohyppely, pulmapeli ja toimintapeli, joissa on alkuvalikko, selkeä kierroksen loppu ja uudelleenaloitus. Pelit luovutetaan kurssille ohjeineen, ja kurssin opiskelijat tekevät niihin musiikit ja äänet.",
+    "lukuvuosi": "",
+    "viikot": "oma aikataulu",
+    "kesto": "18 työviikkoa",
+    "ryhma": "",
+    "tekniikat": [
+      "Unity",
+      "C#",
+      "Git",
+      "GitHub Desktop"
+    ],
+    "sivusto": "https://mattiseise.github.io/projektikoontisivu/protopaja/",
+    "repo": "https://github.com/mattiseise/projektikoontisivu",
+    "kuva": "kuvat/protopaja.jpg",
+    "kuvaAlt": "Luonnos valmiista kokonaisuudesta: tasohyppely, pulmapeli ja toimintapeli rinnakkain, niiden alla Uudelleen- ja Alkuvalikkoon-painikkeet sekä lista pelitapahtumista, joihin musiikkikurssi voi liittää äänen.",
+    "tutkinto": "Tieto- ja viestintätekniikan perustutkinto",
+    "diaarinumero": "OPH-6216-2025",
+    "vaatimuksia": 32,
+    "luovutus": "18. työviikon perjantai",
+    "tutkinnonOsat": [
+      {
+        "nimi": "Ohjelmointi",
+        "vaatimuksia": 11
+      },
+      {
+        "nimi": "Ohjelmistokehittäjänä toimiminen",
+        "vaatimuksia": 14
+      },
+      {
+        "nimi": "Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla",
+        "vaatimuksia": 7
+      }
+    ]
   }
 ];

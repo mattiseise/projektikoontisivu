@@ -1,0 +1,2084 @@
+<!doctype html>
+<!--
+  ProtoPaja – ohjattu näyttöprojekti parille (moottori v2.8.5, kaksipalstainen layout).
+  Rakennetta ei muuteta: app.js ja tyokalut/tee_lataukset.js luottavat luokkanimiin,
+  data-attribuutteihin ja näkymien ja viikkokorttien muotoon (skillin references/layout-rakenne.md).
+  Viikkokorttien osio "Tältä valmis tulos näyttää" on projektin oma staattinen lohko: sen
+  kokeiluteksti on sama kuin sisalto.js:n viikon done-teksti. Muuta molemmat yhdessä.
+-->
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#9d174d">
+  <meta name="description" content="Ohjattu näyttöprojekti parille: kolme pientä Unity-peliprototyyppiä pelimusiikin kurssin harjoitusmateriaaliksi 18 työviikossa.">
+  <title>ProtoPaja – ohjattu näyttöprojekti</title>
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="styles.css?v2.8.5-20261103">
+  <script src="sisalto.js?v2.8.5-20261103" defer></script>
+  <script src="app.js?v2.8.5-20261103" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#sisalto">Siirry sisältöön</a>
+
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Näyttöprojektin navigaatio" id="sivupalkki">
+      <div class="sidebar-header">
+        <span class="brand-mark" aria-hidden="true">🕹️</span>
+        <div>
+          <p class="sidebar-kicker">Näyttöprojekti · 18 työviikkoa · parityö</p>
+          <p class="sidebar-title">ProtoPaja</p>
+        </div>
+        <button class="mobile-menu-toggle" type="button" data-sidebar-toggle aria-expanded="false" aria-controls="sivupalkki">☰ Valikko</button>
+      </div>
+
+      <div class="sidebar-progress">
+        <div class="progress-row">
+          <span class="progress-pct" data-progress-number>0%</span>
+          <span class="progress-copy" data-progress-copy>0 / 0 tehtävää</span>
+        </div>
+        <div class="progress-bar" aria-hidden="true"><span data-progress-bar></span></div>
+        <button class="resume-button" type="button" data-continue><span>Aloita ProtoPajan teko</span><span aria-hidden="true">→</span></button>
+        <p class="resume-note" data-continue-note>Viikko 1</p>
+      </div>
+
+      <div class="sidebar-scroll">
+        <nav class="nav-group" aria-label="Ohjeet ja tausta">
+          <p class="nav-group-title">Ohjeet ja tausta · lue ennen aloitusta</p>
+          <a class="nav-row" href="#view-kaytto" data-view-nav="kaytto">Projektin kokonaiskuva<span class="nav-meta">aloita tästä</span></a>
+          <a class="nav-row" href="#view-toimeksianto" data-view-nav="toimeksianto">Toimeksianto<span class="nav-meta"></span></a>
+          <a class="nav-row" href="#view-tyotapa" data-view-nav="tyotapa">Työtapa<span class="nav-meta"></span></a>
+          <a class="nav-row" href="#view-termit" data-view-nav="termit">Termit<span class="nav-meta" data-glossary-count></span></a>
+          <a class="nav-row" href="#view-galleria" data-view-nav="galleria">Galleria<span class="nav-meta">vko 17</span></a>
+        </nav>
+
+        <nav class="week-nav" aria-label="Viikot" data-week-links></nav>
+
+        <nav class="nav-group nav-group-docs" aria-label="Omat dokumentit">
+          <p class="nav-group-title">Omat dokumentit · kirjoitetaan työn aikana</p>
+          <a class="nav-row" href="#view-suunnitelma" data-view-nav="suunnitelma">Suunnitelma<span class="nav-meta" data-plan-status-meta>päivittyy</span></a>
+          <a class="nav-row" href="#view-paivakirja" data-view-nav="paivakirja">Projektipäiväkirja<span class="nav-meta" data-journal-summary>0 / 18</span></a>
+          <a class="nav-row" href="#view-ailoki" data-view-nav="ailoki">AI-loki<span class="nav-meta" data-log-count>0</span></a>
+          <a class="nav-row" href="#view-naytto" data-view-nav="naytto">Näyttömatriisi<span class="nav-meta" data-evidence-count>0 / 32</span></a>
+        </nav>
+      </div>
+    </aside>
+
+    <main class="view-main" id="sisalto">
+
+      <!-- ============ PROJEKTIN KOKONAISKUVA ============ -->
+      <section class="view" data-view="kaytto" id="view-kaytto">
+        <p class="view-eyebrow">Aloita tästä · kokonaiskuva ennen työviikkoa 1</p>
+        <h1 class="view-title">ProtoPaja: mitä teette ja miten etenette</h1>
+        <p class="view-lead">Teette parina Unityllä kolme pientä peliä oppilaitoksen pelimusiikin kurssille. Kurssin opiskelijat tekevät peleihin musiikit ja ääniefektit ja liittävät ne peleihin. Teidän työnne on tehdä peleistä pelattavia ja ymmärrettäviä myös ilman ääniä ja kertoa, mihin pelitapahtumiin ääniä ja musiikkia voi liittää.</p>
+        <p>Molemmat ohjelmoivat. Jokaisella toteutusviikolla kumpikin tekee oman rajatun osansa, ja kumpikin testaa toisen osan. Suunnitelma, työnjako ja testit tehdään yhdessä, mutta oma osaaminen näytetään omalla työllä: omilla commiteilla, omilla testeillä ja omalla esittelyllä viimeisellä viikolla.</p>
+        <section data-goal></section>
+
+        <section data-roadmap></section>
+
+        <section class="card card-tint view-section">
+          <h2>Näin käytät viikko-ohjetta</h2>
+          <ol>
+            <li>Lue viikon alusta, miten viikko vie kokonaisuutta eteenpäin, mitä tällä viikolla teette ja miltä valmis tulos näyttää. Samassa kohdassa on kokeilu, jonka teette viikon lopussa.</li>
+            <li>Tee viikon työvaiheet järjestyksessä. Monikko (Sopikaa, Testatkaa) tarkoittaa yhteistä työtä ja yksikkö (Tee oma…, Kirjaa oma…) sinun omaa osuuttasi. Rastita osatehtävä heti, kun olet tehnyt sen.</li>
+            <li>Kirjaa jokainen työtehtävä tehtävätaulun kortiksi, jossa on vastuuhenkilö ja valmis kun -ehto. Yksi työvaihe voi sisältää useita kortteja.</li>
+            <li>Tee viikon lopussa sama kokeilu kuin viikon alussa kuvattiin. Kirjoita sen jälkeen oma projektipäiväkirjasi.</li>
+          </ol>
+          <p><strong>Kaikki työvaiheet ovat pakollisia.</strong> Lisätavoitteet, eli neljäs ja viides peli, ovat erillisissä Lisätavoite-laatikoissa. Ne eivät ole työvaiheita, eivätkä ne näy etenemisessä.</p>
+          <p><strong>Sivu on sinun oma työmuistisi.</strong> Rastit, päiväkirja, suunnitelma ja AI-loki tallentuvat vain tähän selaimeen. Parisi ei näe niitä, eivätkä ne siirry ohjaajille. Yhteinen tilanne näkyy tehtävätaulussa, työaikataulukossa ja repositoryssa.</p>
+          <a class="button button-primary" href="#week-1" data-open-week="1">Aloita työviikosta 1 →</a>
+        </section>
+
+        <details class="view-section project-reference">
+          <summary>Pelit, osat ja työkalut</summary>
+          <dl class="project-roles">
+            <dt>Unity ja C#</dt><dd>Pelimoottori ja ohjelmointikieli. Unity on ohjelmistokomponenttikirjasto: peli kootaan valmiista komponenteista, kuten fysiikasta ja painikkeista, ja omista C#-skripteistä. Molemmilla on täsmälleen sama Unity-versio, jonka ohjaaja päättää työviikolla 1.</dd>
+            <dt>Kolme peliä</dt><dd>Lähtökohtana ovat tasohyppely, pulmapeli ja toimintapeli. Asiakkaat vahvistavat aiheet työviikolla 2, ja vastaavan laajuiset muut aiheet ovat mahdollisia. Viikko-ohjeiden esimerkit noudattavat tätä järjestystä. Jos teette muuta peliä, sovitte viikon kokeilun omalle pelillenne.</dd>
+            <dt>Yhteinen repository</dt><dd>Parin yhteinen koodivarasto GitHubissa. Siellä ovat Unity-projektit, kansio <code>docs/</code> asiakkaille ja kansio <code>project-docs/</code> ohjausta ja näyttöä varten. Erilliset Unity-projektit vai yksi yhteinen projekti päätetään työviikolla 2.</dd>
+            <dt>GitHub Desktop</dt><dd>Ohjelma, jolla haet parisi muutokset ja lähetät omasi ilman Git-komentoja. Koontisivun kuvaohje näyttää painikkeet kuvin.</dd>
+            <dt>Tehtävätaulu ja työaikataulukko</dt><dd>Tehtävätaulu, esimerkiksi Trello, kertoo kuka tekee mitä. Työaikataulukko on yhteinen Excel-taulukko, johon kumpikin kirjaa omat työkertansa. Molemmat perustetaan työviikolla 1.</dd>
+            <dt>Tekoäly</dt><dd>Käytön pelisäännöt sovitaan ohjaajien kanssa työviikoilla 1–2. Oma koodi kirjoitetaan, selitetään ja muutetaan itse. Merkittävä käyttö kirjataan omaan AI-lokiin.</dd>
+          </dl>
+        </details>
+
+        <details class="view-section project-reference">
+          <summary>Mihin kirjoitan mitäkin?</summary>
+          <dl class="project-roles">
+            <dt>Toimeksianto</dt><dd>Asiakkaiden tarve, vaatimukset ja rajaus. Tästä tarkistatte, mitä pitää tehdä.</dd>
+            <dt>Suunnitelma (<code>project-docs/suunnitelma.md</code>)</dt><dd>Yhteinen. Täytätte sen tällä sivulla työviikolla 2 yhdellä koneella ja viette sen tiedostona repositoryyn.</dd>
+            <dt>Päätösloki (<code>project-docs/paatokset.md</code>)</dt><dd>Yhteinen. Jokainen päätös ja sen muutos päivämäärineen. Vanhoja merkintöjä ei poisteta, joten päätöshistoria säilyy.</dd>
+            <dt>Vastuutaulukko (<code>project-docs/vastuutaulukko.md</code>)</dt><dd>Yhteinen. Kuka tekee minkäkin osa-alueen kussakin pelissä. Vastuut vaihtuvat pelien välillä.</dd>
+            <dt>Testimatriisi (<code>project-docs/testimatriisi.md</code>)</dt><dd>Yhteinen. Jokainen testitapaus T01, T02 ja niin edelleen: testin tekijä, odotettu tulos ennen ajoa ja havaittu tulos ajon jälkeen. Samaan tiedostoon kirjataan virheenkorjausketjut.</dd>
+            <dt>Asiakaspalaute ja vastaanottotesti</dt><dd>Yhteiset tiedostot <code>project-docs/asiakaspalaute.md</code> ja <code>project-docs/vastaanottotesti.md</code>. Henkilöistä kirjataan vain rooli.</dd>
+            <dt>Asiakkaille luovutettavat ohjeet (<code>docs/</code>)</dt><dd>Avaaminen ja jatkotyöstö, äänitapahtumat, assetit ja lisenssit, testitulokset ja puutteet sekä tekijät. Kohdeyleisö on pelimusiikin kurssi.</dd>
+            <dt>Oma kansio (<code>project-docs/omat/OMA-KANSIO/</code>)</dt><dd>Henkilökohtainen. Projektipäiväkirja ja AI-loki, Unity-havainnot, vertaisarvio, aukkolista, tietoturva-arvio, oma näyttömatriisi ja itsearviointi. Ei kuulu asiakkaiden pakettiin.</dd>
+          </dl>
+          <p>Kirjaa tulos heti sen ensisijaiseen paikkaan ja viittaa siihen päiväkirjassa. Työaikaa ei kopioida päiväkirjaan: se on työaikataulukossa.</p>
+        </details>
+
+        <details class="view-section project-reference">
+          <summary>Vaatimus, ehdotus vai oma päätös?</summary>
+          <p><strong>Vaatimus</strong> tulee toimeksiannosta, ja se toteutetaan. Jokaisessa kolmessa pelissä on kahdeksan vaatimusta: päämekaniikka ja ydinsilmukka, pieni kenttä ja 1–3 minuutin kierros, yhtenäiset grafiikat, alkuvalikko ohjausohjeineen, selkeä kierroksen päättyminen, uudelleenaloitus ja paluu alkuvalikkoon, visuaalinen palaute sekä testattu peliversio ja muokattava Unity-projekti.</p>
+          <p><strong>Ehdotus</strong> on lähtökohta, jonka varaan viikko-ohjeet on kirjoitettu: 18 työviikon aikataulu, pelien aiheet ja järjestys, 2D-toteutus näppäimistöllä sekä ohjausvastuut. Ehdotukset vahvistetaan aloituksessa, ja niitä saa muuttaa sopimalla.</p>
+          <p><strong>Oma päätös</strong> perustellaan suunnitelmassa tai päätöslokissa: pienimmät toimivat versiot, projektijako, nimeäminen, työnjako ja vastuutaulukko, scene-käytäntö ja kenttädatan tallennustapa.</p>
+          <p><strong>Asiakkaiden ja ohjaajien päätökset</strong> ovat toimeksiannon lopussa. Tyhjä kenttä suunnitelmassa on oikea tulos, kunnes asia on sovittu.</p>
+          <a href="#view-toimeksianto" data-open-view="toimeksianto">Avaa toimeksianto →</a>
+        </details>
+
+        <details class="view-section project-reference">
+          <summary>Mitä näytössä arvioidaan?</summary>
+          <p>Projektiin voi liittää kolme tutkinnon osaa: Ohjelmointi (45 osp), Ohjelmistokehittäjänä toimiminen (45 osp) ja Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla (30 osp). Näyttömatriisissa on niiden kaikki 32 osaamisvaatimusta. Tunnukset p1–p11, s1–s14 ja k1–k7 viittaavat näihin osiin: p = Ohjelmointi, s = Ohjelmistokehittäjänä toimiminen ja k = komponenttikirjasto-osa.</p>
+          <p><strong>Ohjaajat vahvistavat kummallekin erikseen</strong>, minkä tutkinnon perusteiden mukaan ja mitkä tutkinnon osat näytetään. Vaatimuksia ei jaeta parin kesken: kumpikin näyttää kaikki omien osiensa vaatimukset omalla työllään. Siksi vastuut vaihtuvat pelien välillä, ja kumpikin kokoaa oman näyttömatriisinsa.</p>
+          <p>Ohjelmoinnin osaaminen näkyy omissa skripteissäsi, testeissäsi ja korjauksissasi. Ohjelmistokehittäjänä toimiminen näkyy suunnitelmassa, sopimisessa, katselmoinneissa, versionhallinnassa ja luovutuksessa. Komponenttikirjaston osuus on Unity: komponentit, prefabit, scenet, buildit ja ulkoiset paketit.</p>
+          <p>Työpanosta ei mitata commitien tai koodirivien määrällä. Se näkyy Git-historiasta, tehtävätaulusta, työaikataulukosta ja omasta esittelystä, jossa selität omat ratkaisusi ja teet niihin muutoksen.</p>
+          <a href="#view-naytto" data-open-view="naytto">Avaa näyttömatriisi →</a>
+        </details>
+
+        <div class="card view-section download-card">
+          <div>
+            <strong>Paperinen työpaketti</strong>
+            <p>Aikataulu ja tarkistuslista tilanteisiin, joissa sivu ei ole auki. Siihen ei tarvitse kirjoittaa samoja vastauksia uudelleen.</p>
+          </div>
+          <div class="download-actions">
+            <a class="button button-primary" href="downloads/protopaja-tyopaketti.pdf" download>Lataa PDF</a>
+            <a class="button button-secondary" href="downloads/protopaja-tyopaketti.docx" download>Lataa Word</a>
+          </div>
+        </div>
+
+        <p class="footnote view-section"><strong>Muista:</strong> sivuston rastit ja kirjoituskentät ovat oma työmuistisi. Ne tallentuvat vain tähän selaimeen, eivätkä ne siirry parillesi tai ohjaajille. Rasti ei ole palautus eikä osa näyttöaineistoa. Rastita vasta, kun työ on testattu ja työnäyte on Git-repositoryssa.</p>
+
+        <div class="download-card view-section" style="margin-top:20px">
+          <div><strong>Oma tila selaimessa</strong><p>Rastit, päiväkirja, suunnitelma ja AI-loki tallentuvat vain tähän selaimeen.</p></div>
+          <button class="button button-ghost" type="button" data-reset>Nollaa oma eteneminen</button>
+        </div>
+
+        <details class="source-role">
+          <summary>Opettajan lähdeaineisto · ei erillistä täyttämistä ilman ohjetta</summary>
+          <div>
+            <a href="downloads/nayttosuunnitelma.docx" download>Näyttösuunnitelma (.docx)</a>
+            <a href="downloads/nayton-dokumentointipohjat.docx" download>Näytön dokumentointipohjat (.docx)</a>
+          </div>
+        </details>
+      </section>
+
+      <!-- ============ TOIMEKSIANTO ============ -->
+      <section class="view" data-view="toimeksianto" id="view-toimeksianto">
+        <p class="view-eyebrow">Toimeksianto · luonnos, jonka asiakkaat vahvistavat aloituksessa</p>
+        <h1 class="view-title">Toimeksianto: peliprototyypit pelimusiikin kurssille</h1>
+        <div class="brief-text">
+          <p>Tarvitsemme oppilaitoksen pelimusiikin kurssille harjoitusmateriaaliksi pieniä pelejä, joissa on oikeita pelitapahtumia: hyppyjä, osumia, onnistumisia ja kierroksen loppuja. Kurssin opiskelijat tekevät peleihin musiikit ja ääniefektit ja liittävät ne peleihin itse, joten teidän ei tarvitse tehdä ääniä eikä äänentoistoa. Pelin pitää silti olla ymmärrettävä myös ilman ääniä.</p>
+          <p>Toivomme kolmea pientä peliä Unityllä. Jokaisessa on yksi selkeä päämekaniikka ja yksi pieni kenttä tai pelialue. Yksi kierros kestää noin 1–3 minuuttia, ja sen pitää päättyä selvästi. Pelaajan pitää ymmärtää, milloin kierros päättyy ja miten siinä kävi. Pelaajan pitää päästä peliin ja takaisin valikkoon ilman, että kukaan neuvoo vieressä. Alkuvalikossa on käynnistys ja lyhyt ohjausohje, ja kierroksen jälkeen voi aloittaa uudelleen tai palata alkuvalikkoon. Grafiikoiden ei tarvitse olla omia. Valmiit grafiikat käyvät, kunhan käyttöehdot sallivat sen ja ilme on yhtenäinen.</p>
+          <p>Kurssin opiskelija liittää äänen tapahtumaan, jota hän ei ole itse ohjelmoinut. Toisen tekijän pitää voida muuttaa peliä ilman, että koko koodi pitää lukea. Kertokaa siis, mihin pelitapahtumiin ääntä ja musiikkia voisi liittää ja mistä kohdasta koodia ne löytyvät. Haluamme kokeilla ensimmäistä peliä jo varhain, ennen kuin kaksi muuta tehdään samalla tavalla. Kun kaikki kolme peliä ovat kokeiltavissa, haluamme pelata niitä ja sopia tärkeimmistä korjauksista ennen luovutusta.</p>
+          <p>Valmis tarkoittaa meille kolmea pelattavaa peliä, muokattavia Unity-projekteja ja ohjeita, joiden avulla jatkamme niitä. Pelimusiikin kurssin opiskelijoiden pitää saada projektit auki ja jatkaa niitä ilman teitä. Mieluummin kolme valmista ja testattua peliä kuin viisi keskeneräistä. Jos aikaa jää, neljäs ja viides peli olisivat hyvä lisä.</p>
+          <p class="assignment-note"><strong>Huomaa:</strong> toimeksianto on kirjoitettu asiakkaiden näkökulmasta projektikuvauksen pohjalta. Asiakkaat Caito ja Toni vahvistavat sen aloituksessa. Ohjaajina toimivat Matti ja Antti.</p>
+        </div>
+
+        <div class="card view-section">
+          <p class="section-label section-label-accent">Prototyyppien aiheet · suunnittelun lähtökohta, ei hyväksytty valinta</p>
+          <dl class="project-roles">
+            <dt>Tasohyppely</dt><dd>Yksi lyhyt kenttä: liikkuminen, hyppääminen, kerättävät esineet, esteet ja maali. Mahdollisia äänitapahtumia: hyppy, kerääminen, vahingoittuminen ja maali.</dd>
+            <dt>Pulmapeli</dt><dd>Yksi pieni huone, esimerkiksi laatikoiden siirtäminen tavoiteruutuihin. Pulman voi ratkaista ja palauttaa alkutilanteeseen. Mahdollisia äänitapahtumia: siirto, estynyt siirto, tavoiteruutu ja ratkaisu.</dd>
+            <dt>Toimintapeli</dt><dd>Yksi ylhäältä kuvattu areena, yksi vihollistyyppi ja yksi hyökkäystapa. Tavoitteena esimerkiksi 60 sekunnin selviytyminen. Mahdollisia äänitapahtumia: hyökkäys, osuma, vahingoittuminen ja kierroksen loppu.</dd>
+          </dl>
+          <p>Täsmennätte toteutukset asiakkaiden ja ohjaajien kanssa työviikolla 2. Vastaavan laajuiset muut aiheet ovat mahdollisia.</p>
+        </div>
+
+        <div class="grid-2 view-section">
+          <div class="card">
+            <p class="section-label section-label-accent">Sovittu toteutustapa ja ehdotukset</p>
+            <p style="margin-top:8px"><em>Sovittu</em> = ei vaihdeta. <em>Ehdotus</em> = lähtökohta, joka vahvistetaan aloituksessa. <em>Oma päätös</em> = valitsette ja perustelette itse.</p>
+            <p style="margin-top:8px"><strong>Pelimoottori (sovittu):</strong> Unity ja C#. Unity-version päättää ohjaaja työviikolla 1, ja molemmilla on täsmälleen sama versio.</p>
+            <p style="margin-top:8px"><strong>Toteutus (ehdotus):</strong> 2D-peli näppäimistöllä ja tarvittaessa hiirellä. Ohjaintuki on sallittu. Myös 3D käy, jos työn laajuus pysyy vastaavana.</p>
+            <p style="margin-top:8px"><strong>Kohdealusta (vahvistetaan):</strong> asiakkaat kertovat, millä koneilla kurssi pelaa, ja ohjaajat vahvistavat alustan.</p>
+            <p style="margin-top:8px"><strong>Projektijako (oma päätös):</strong> erilliset Unity-projektit tai yksi projekti, jossa pelit ovat omissa kansioissaan. Päätös tehdään työviikolla 2 omien mittausten perusteella.</p>
+            <p style="margin-top:8px"><strong>Versionhallinta (sovittu):</strong> yhteinen GitHub-repository ja GitHub Desktop. Repository on yksityinen, kunnes ohjaaja päättää julkisuudesta.</p>
+            <p style="margin-top:8px"><strong>Seuranta (sovittu):</strong> tehtävät, vastuuhenkilöt ja eteneminen tehtävätaulussa, esimerkiksi Trellossa. Työaika kirjataan yhteiseen Excel-taulukkoon opiskelijakohtaisesti. Samaa tehtävää ei ylläpidetä kahdessa paikassa.</p>
+          </div>
+          <div class="card">
+            <p class="section-label">Pidä rajaus · vaatimus</p>
+            <p><strong>Ei kuulu projektiin:</strong> laaja tarina, moninpeli, verkkopalvelut, tallennusjärjestelmä ja laajat kenttäsarjat.</p>
+            <p style="margin-top:8px"><strong>Ääni:</strong> äänentoistokoodia tai erillistä äänijärjestelmää ei tehdä. Pelit toimivat ilman ääniä, ja äänitapahtumat kuvataan dokumenttiin.</p>
+            <p style="margin-top:8px"><strong>Grafiikka:</strong> valmiita assetteja saa käyttää käyttöehtojen mukaan. Grafiikan tekeminen ei saa viedä huomiota ohjelmoinnista.</p>
+            <p style="margin-top:8px"><strong>Lisätavoitteet</strong> tehdään vasta, kun kolme peliä on testattu ja luovutuskunnossa ja ohjaaja on hyväksynyt lisätyön. Ne eivät saa syrjäyttää testausta, dokumentointia tai luovutusta.</p>
+            <p style="margin-top:8px"><strong>Älkää myöskään</strong> vaihtako tekniikkaa tai Unity-versiota kesken projektin. Yksi valmis peli opettaa enemmän kuin kolme puolivalmista.</p>
+          </div>
+        </div>
+
+        <div class="card card-tint view-section">
+          <p class="section-label section-label-accent">Lisätavoitteet · eivät kuulu perustavoitteeseen</p>
+          <dl class="project-roles">
+            <dt>Ajopeli</dt><dd>Yksi lyhyt rata, tarkistuspisteet ja kierrosajan mittaus. Mahdollisia äänitapahtumia: lähtö, törmäys, tarkistuspiste ja maali.</dd>
+            <dt>Tutkimispeli</dt><dd>Yksi pieni tila, löydettävä avain ja lukittu uloskäynti. Mahdollisia äänitapahtumia: askeleet, avaimen kerääminen ja oven avaaminen.</dd>
+          </dl>
+          <p>Lisätavoitteesta pyydetään ohjaajan päätös aikaisintaan työviikolla 14, kun kolmen pelin testaus on tehty. Aikataulussa ei ole varattu aikaa molemmille lisäpeleille.</p>
+        </div>
+
+        <div class="card view-section">
+          <p class="section-label">Projektin resurssit ja pohjat</p>
+          <ul>
+            <li><strong>Grafiikat:</strong> esimerkiksi <a href="https://kenney.nl/assets" target="_blank" rel="noopener">Kenney</a> (CC0) tai <a href="https://opengameart.org/" target="_blank" rel="noopener">OpenGameArt</a>. Lähde ja lisenssi kirjataan tiedostoon <code>docs/assetit-ja-lisenssit.md</code>.</li>
+            <li><strong>Git ilman komentoja:</strong> <a href="../ohjeet/github-desktop/?projekti=protopaja">GitHub Desktop -kuvaohje</a>.</li>
+            <li><strong>Työaikataulukon pohja:</strong> <a href="downloads/protopaja-tyoaika.csv" download>protopaja-tyoaika.csv</a> avautuu Excelissä.</li>
+            <li><strong>Pohjat:</strong> paperinen työpaketti ja dokumentointipohjat löytyvät Projektin kokonaiskuva -sivun latauksista. Viikkojen koodipohjat ovat työvaiheiden avuissa. Ne ovat runkoja, joiden puuttuvat kohdat täydennätte itse, eivätkä ne ole valmiita ratkaisuja.</li>
+          </ul>
+          <p style="margin-top:8px"><strong>Tekoälyn raja:</strong> pelisäännöt sovitaan ohjaajien kanssa projektin alussa. Kumpikin kirjoittaa, selittää ja muuttaa omat skriptinsä itse ja vastaa käyttämästään koodista. Jos tekoälyn käyttö sallitaan, merkittävästä käytöstä kirjataan omaan AI-lokiin kysymys, käytetty apu, oma muutos ja tarkistustapa.</p>
+        </div>
+
+        <div class="card card-tint decision-box view-section">
+          <p class="section-label">Sovi asiakkaiden ja ohjaajien kanssa — näitä ei päätetä itse eikä tekoälyllä</p>
+          <ul>
+            <li>Mitkä kolme peliä tehdään? Asiakkaat vahvistavat aiheet.</li>
+            <li>Mikä Unity-versio ja mikä kohdealusta? Ohjaaja päättää version työviikolla 1, ja asiakkaat kertovat kurssin koneet.</li>
+            <li>Mitkä ovat tekoälyn käytön pelisäännöt?</li>
+            <li>Onko repository julkinen vai yksityinen, ja millä nimillä olette tekijöinä? Alaikäisellä huoltajan suostumus hoidetaan ohjaajan kautta.</li>
+            <li>Minkä tutkinnon perusteiden mukaan ja mitkä tutkinnon osat kumpikin näyttää?</li>
+            <li>Milloin katselmoinnit pidetään ja kuka on työviikon 16 vastaanottotestaaja?</li>
+            <li>Mikä on lisenssi ja luovutustapa?</li>
+          </ul>
+          <p class="note">Tyhjä kenttä suunnitelmassa on oikea tulos niin kauan kuin asia on sopimatta: merkitse se avoimeksi asiaksi ja jatka työtä.</p>
+        </div>
+
+        <div class="card view-section">
+          <p class="section-label">Ohjaus ja asiakasyhteistyö · ehdotus, vahvistetaan aloituksessa</p>
+          <ul>
+            <li>Matti ja Antti seuraavat viikoittain työn etenemistä, kummankin ohjelmointitehtäviä ja tuen tarvetta.</li>
+            <li>Caito ja Toni arvioivat prototyyppien soveltuvuutta musiikkikurssille sovituissa katselmoinneissa, alustavasti työviikoilla 6 ja 12.</li>
+            <li>Te esittelette tulokset, kirjaatte palautteen ja ehdotatte jatkotoimet.</li>
+          </ul>
+          <p style="margin-top:8px">Viikkotarkistuksessa käydään läpi, mitä valmistui, mitä kumpikin teki, mitä toinen testasi, mikä estää etenemistä ja mikä on seuraava tehtävä.</p>
+        </div>
+
+        <div class="view-section">
+          <h2>Pidä punainen lanka näkyvissä</h2>
+          <div class="lanka-row">
+            <div><p class="section-label">Vaatimus</p><p>s7 · kehittää ohjelmiston toimintalogiikkaa</p></div>
+            <div><p class="section-label">Tehtävätaulun kortti</p><p>Maali päättää kierroksen · vastuu: kierroksen logiikan tekijä</p></div>
+            <div><p class="section-label">Valmis kun</p><p>loppuviesti näkyy kerran ja peli pysähtyy</p></div>
+            <div><p class="section-label">Testi ja työnäyte</p><p>testitapaus T01, testaajana pari · oma commit</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ TYÖTAPA ============ -->
+      <section class="view" data-view="tyotapa" id="view-tyotapa">
+        <p class="view-eyebrow">Työtapa · yksi tehtävätaulun kortti kerrallaan</p>
+        <h1 class="view-title">Kuusi askelta joka kerralla</h1>
+        <p class="view-lead">Työtapa on kierros, jolla teet yhden tehtävätaulun kortin. Viikon työvaihe kertoo, mitä teette tällä viikolla. Kun työvaihe muuttaa peliä, teet muutoksen näillä askelilla ja palaat sen jälkeen työvaiheeseen.</p>
+        <ol class="workflow-loop">
+          <li><span>1</span><strong>Hae</strong><small>parisi muutokset ennen Unityä</small></li>
+          <li><span>2</span><strong>Suunnittele</strong><small>odotettu tulos korttiin</small></li>
+          <li><span>3</span><strong>Toteuta</strong><small>oma osa omaan skriptiin</small></li>
+          <li><span>4</span><strong>Kokeile</strong><small>Play-tilassa, sitten buildissa</small></li>
+          <li><span>5</span><strong>Tallenna</strong><small>commit ja push</small></li>
+          <li><span>6</span><strong>Pyydä testaus</strong><small>kortti Testattavana-sarakkeeseen</small></li>
+        </ol>
+        <p class="rule-note"><strong>Nyrkkisääntö:</strong> jos et pysty selittämään omaa muutostasi, työ ei ole vielä valmis.</p>
+
+        <figure class="view-figure view-section">
+          <div class="image-stage"><img src="assets/tyokierto.svg" width="1672" height="941" alt="Yhden tehtävätaulun kortin kulku parityössä: hae parin muutokset, tee oma osa omaan skriptiin, kokeile Play-tilassa, tee commit ja push, pari testaa."></div>
+          <figcaption><strong>Yhden kortin kulku parityössä</strong> Kuva tarkentaa askeleita 1–6. Se ei ole erillinen tehtävälista.</figcaption>
+        </figure>
+
+        <div class="view-section">
+          <h2>Parityön pelisäännöt</h2>
+          <ul class="check-list">
+            <li><strong>Hae ensin, avaa sitten.</strong> Paina GitHub Desktopissa Fetch origin ja Pull origin aina ennen kuin avaat Unityn.</li>
+            <li><strong>Yksi scene, yksi muokkaaja.</strong> Scene tallentuu yhdeksi tiedostoksi, eikä Git osaa yhdistää kahden ihmisen muutoksia siihen. Merkitkää scenen vuoro tehtävätaulun korttiin.</li>
+            <li><strong>Oma osa omaan tiedostoon.</strong> Kumpikin kirjoittaa omat skriptinsä ja prefabinsa. Silloin voitte työskennellä yhtä aikaa ilman ristiriitoja.</li>
+            <li><strong>Commit vain omista muutoksista.</strong> Tarkista GitHub Desktopin Changes-lista ennen committia. Jos siellä on toisen tiedostoja tai tuhansia tiedostoja, pysähdy ja kysy.</li>
+            <li><strong>Ristiriita ratkaistaan yhdessä.</strong> Jos GitHub Desktop ilmoittaa ristiriidasta, älkää valitko sokkona. Avatkaa tiedosto yhdessä tai pyytäkää ohjaajalta apua.</li>
+            <li><strong>Toinen testaa.</strong> Valmis osa siirtyy Testattavana-sarakkeeseen, ja pari testaa sen ennen Valmis-saraketta.</li>
+          </ul>
+        </div>
+
+        <div class="view-section">
+          <h2>Testaa kuin kehittäjä</h2>
+          <p class="view-lead" style="margin-top:8px">Testaus ei ole pelkkää pelaamista ja toteamista, että peli toimii. Kirjaa odotettu tulos ennen ajoa, havaittu tulos, virheen syy, korjaus ja uusintatesti.</p>
+          <ul class="check-list">
+            <li><strong>Vähintään 21 suunniteltua testitapausta:</strong> seitsemän jokaisesta pelistä, eli käynnistys, ohjausohje, päämekaniikka, visuaalinen palaute, kierroksen päättyminen, uudelleenaloitus ja paluu alkuvalikkoon. Testitapaukset numeroidaan T01, T02 ja niin edelleen tiedostoon <code>project-docs/testimatriisi.md</code> työviikosta 4 alkaen.</li>
+            <li><strong>Testin tekijä on toinen kuin toteuttaja.</strong> Testimatriisissa on sarake testin tekijälle, ja se näyttää kummankin testausosaamisen.</li>
+            <li><strong>Vähintään neljä täydellistä virheenkorjausketjua:</strong> havainto, toistamisohje, syy, korjauscommit, uusintatesti ja regressiotesti. Kumpikin tekee vähintään kaksi oman koodinsa virheestä, työviikoilla 9 ja 13. Regressiotesti tarkoittaa, että pelaat korjauksen jälkeen pelin peruskierroksen ja varmistat, ettei korjaus rikkonut muuta.</li>
+            <li><strong>Koottu peliversio testataan erikseen</strong> työviikolla 14 editorin ulkopuolella, koska build voi toimia eri tavalla kuin editori.</li>
+            <li><strong>Toistuvat kierrokset ja rajatapaukset:</strong> useita kierroksia peräkkäin, tuplapainallukset ja samaan hetkeen osuvat tapahtumat.</li>
+            <li><strong>Vastaanottotesti</strong> työviikolla 16: projektin ulkopuolinen henkilö avaa projektit puhtaasta kopiosta pelkän kirjallisen ohjeen avulla.</li>
+            <li><strong>Ei keksittyjä tuloksia.</strong> Jos aitoa virhettä ei löydy, ohjaaja antaa vikatehtävän.</li>
+          </ul>
+        </div>
+
+        <figure class="view-figure view-section">
+          <div class="image-stage"><img src="assets/testauskierros.svg" width="1500" height="1000" alt="Testauksen viisi askelta: kirjaa odotettu tulos ensin, pari testaa, löydä virhe, korjaa oma osasi, uusintatesti. Testi on valmis vasta onnistuneen uusintatestin jälkeen."></div>
+          <figcaption>Testi on valmis vasta onnistuneen uusintatestin jälkeen.</figcaption>
+        </figure>
+
+        <div class="view-section">
+          <h2>Aineisto ja työkalut</h2>
+          <ul class="tooling-list">
+            <li><strong>Työkalut:</strong> Unity Hub ja sovittu Unity-versio, koodieditori, GitHub ja GitHub Desktop, tehtävätaulu ja yhteinen Excel-taulukko.</li>
+            <li><strong>Grafiikat</strong> valmiista paketeista, joiden käyttöehdot sallivat jakamisen muokattavassa projektissa. Lähde ja lisenssi assettiluetteloon.</li>
+            <li><strong>Ääni:</strong> ei äänentoistoa. Äänitapahtumat kirjataan tiedostoon <code>docs/aanitapahtumat.md</code> sitä mukaa kuin ne syntyvät.</li>
+            <li><strong>Tekoäly</strong> sovittujen pelisääntöjen mukaan. Oma koodi tehdään ja selitetään itse, ja merkittävä käyttö kirjataan omaan AI-lokiin.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ TERMIT / SANASTO ============ -->
+      <section class="view" data-view="termit" id="view-termit">
+        <p class="view-eyebrow">Sanasto · kertausta varten</p>
+        <h1 class="view-title">Tämän projektin termit</h1>
+        <p class="view-lead">Jokainen termi selitetään myös siinä kohdassa, jossa se tulee ensimmäisen kerran vastaan. Tänne voit palata, kun tunnus tai lyhenne unohtuu. Sanastossa ovat vain ne termit, joita tässä projektissa oikeasti käytetään.</p>
+        <dl class="glossary view-section" data-termisto></dl>
+      </section>
+
+      <!-- ============ GALLERIA ============ -->
+      <section class="view" data-view="galleria" id="view-galleria">
+        <p class="view-eyebrow">Luovutetut työt</p>
+        <h1 class="view-title">Galleria</h1>
+        <p class="view-lead">Luovutetut prototyypit nostetaan tänne työviikon 17 jälkeen, jos repositoryn julkisuudesta ja lisenssistä on sovittu: nimi, kuvakaappaus ja linkki.</p>
+        <div class="gallery-grid" data-gallery>
+          <!-- Opettaja lisää kortin per luovutettu työ:
+          <a class="gallery-card" href="https://github.com/kayttaja/repo/releases/tag/v1.0">
+            <img src="assets/galleria/NIMI.png" width="640" height="360" alt="Kuvakaappaus" loading="lazy">
+            <strong>Nimi</strong><span>v1.0</span>
+          </a>
+          -->
+        </div>
+        <p class="gallery-empty" data-gallery-empty>Ensimmäiset työt luovutetaan työviikolla 17.</p>
+      </section>
+
+      <!-- ============ VIIKKONÄKYMÄ ============ -->
+      <section class="view" data-view="viikko" id="view-viikko">
+        <article class="week-card" id="week-1" data-week="1">
+          <p class="view-eyebrow" data-week-label="Työviikko 1 / 18">Vaihe 1 · Aloitus · Työviikko 1 / 18</p>
+          <h1 class="view-title">Aloitus: ensimmäinen yhteinen muutos</h1>
+
+          <section class="card view-section week-target" aria-labelledby="week-1-target">
+            <h2 id="week-1-target">Tältä valmis tulos näyttää</h2>
+            <figure class="project-figure">
+              <img src="assets/viikot/viikko-01.svg" width="880" height="420" alt="Luonnos: vasemmalla Unity-editorin peliruutu, jossa on punainen neliö sinisellä taustalla. Oikealla GitHubin commit-historia, jossa on kaksi committia: Lisää punainen neliö, tekijä opiskelija A, ja Vaihda taustaväri siniseksi, tekijä opiskelija B. Nuoli näyttää, että molemmat muutokset näkyvät kummankin koneella." loading="lazy">
+              <figcaption>Luonnos tavoitellusta toiminnasta. Se ei ole kuvakaappaus valmiista pelistä, ja teidän pelinne näyttää omaltanne.</figcaption>
+            </figure>
+            <p>Unity-editorissa on kokeiluprojekti, jossa näkyvät kummankin tekemät muutokset, esimerkiksi punainen neliö ja sininen tausta. GitHubin commit-historiassa on kaksi committia kahdelta eri tekijältä.</p>
+            <h3>Viikon lopussa kokeilette</h3>
+            <p>Kumpikin hakee toisen muutoksen omalle koneelleen ja näkee Play-tilassa molemmat muutokset. Repositoryn historiassa on kummankin oma commit omalla nimellä.</p>
+          </section>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta – tätä asiakkaiden toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon osaaminen</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 5</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="1-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjoittakaa kysymykset asiakkaille ja ohjaajille</span></label>
+            <label class="task-row"><input type="checkbox" data-task="1-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Asenna ohjaajan päättämä Unity-versio omalle koneellesi</span></label>
+            <label class="task-row"><input type="checkbox" data-task="1-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Perustakaa yhteinen repository ja Unity-kokeiluprojekti</span></label>
+            <label class="task-row"><input type="checkbox" data-task="1-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Tee oma näkyvä muutos ja vie se versionhallintaan</span></label>
+            <label class="task-row"><input type="checkbox" data-task="1-5"><span class="task-box" aria-hidden="true"></span><span class="task-text">Perustakaa tehtävätaulu ja työajan seuranta</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain jos jäät jumiin – kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> Repositoryn commit-historia, jossa on kummankin oma commit, <code>project-docs/kysymykset.md</code> ja <code>project-docs/tyonaytteet/viikko-1/tehtavataulu.png</code>.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="1">
+            <div class="journal-heading">
+              <h2>Oma viikkoyhteenveto</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Henkilökohtainen: vastaa omasta työstäsi, älä parisi. Kentät tallentuvat vain tähän selaimeen. Lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä. Työaikaa ei kirjata tähän: se on työaikataulukossa.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä minä toteutin, ja miten kokeilin sitä?</span><textarea rows="3" data-journal-field="work" placeholder="Oma skripti, scene tai dokumentin osa ja mitä havaitsit kokeillessasi"></textarea></label>
+              <label><span>Mikä ratkaisu oli minun, ja miksi valitsin sen?</span><textarea rows="2" data-journal-field="reason" placeholder="Yksi oma ratkaisu, vaihtoehto jota harkitsit ja perustelu"></textarea></label>
+              <label><span>Mistä oma työnäytteeni löytyy, ja mitä teen seuraavaksi?</span><textarea rows="2" data-journal-field="evidence" placeholder="Commit-linkki, testitapaus tai tiedoston polku. Ensimmäinen asia, josta jatkat."></textarea></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+        <article class="week-card" id="week-2" data-week="2">
+          <p class="view-eyebrow" data-week-label="Työviikko 2 / 18">Vaihe 1 · Aloitus · Työviikko 2 / 18</p>
+          <h1 class="view-title">Suunnitelma: kolme peliä ja vastuut</h1>
+
+          <section class="card view-section week-target" aria-labelledby="week-2-target">
+            <h2 id="week-2-target">Tältä valmis tulos näyttää</h2>
+            <figure class="project-figure">
+              <img src="assets/viikot/viikko-02.svg" width="880" height="420" alt="Luonnos: kolme pelikorttia rinnakkain, joissa lukee päämekaniikka, tavoite ja pienin toimiva versio. Alla vastuutaulukko, jossa osa-alueet päämekaniikka, kierroksen logiikka, käyttöliittymä, grafiikka ja data, ja kirjaimet A ja B vaihtavat paikkaa pelien välillä." loading="lazy">
+              <figcaption>Luonnos tavoitellusta toiminnasta. Se ei ole kuvakaappaus valmiista pelistä, ja teidän pelinne näyttää omaltanne.</figcaption>
+            </figure>
+            <p>Suunnitelmassa jokaisella pelillä on oma kuvaus: päämekaniikka, tavoite, kierroksen alku ja loppu sekä pienin toimiva versio. Vastuutaulukossa osa-alueet vaihtavat tekijää pelien välillä.</p>
+            <h3>Viikon lopussa kokeilette</h3>
+            <p>Kumpikin kertoo vuorollaan ilman muistiinpanoja jokaisen pelin pienimmän toimivan version ja omat vastuunsa ensimmäisessä pelissä. Ohjaaja vertaa kerrottua suunnitelmaan ja vastuutaulukkoon, eikä eroja ole.</p>
+          </section>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta – tätä asiakkaiden toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon osaaminen</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 5</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="2-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kuvatkaa kolmen pelin pienin toimiva versio</span></label>
+            <label class="task-row"><input type="checkbox" data-task="2-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Vertailkaa projektijakoa omilla mittauksilla</span></label>
+            <label class="task-row"><input type="checkbox" data-task="2-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Pilkkokaa ensimmäinen peli tehtävätaulun korteiksi</span></label>
+            <label class="task-row"><input type="checkbox" data-task="2-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Tehkää vastuutaulukko, jossa vastuut vaihtuvat pelien välillä</span></label>
+            <label class="task-row"><input type="checkbox" data-task="2-5"><span class="task-box" aria-hidden="true"></span><span class="task-text">Pyytäkää vahvistus avoimiin päätöksiin</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain jos jäät jumiin – kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> <code>project-docs/suunnitelma.md</code>, <code>project-docs/paatokset.md</code>, <code>project-docs/vastuutaulukko.md</code> ja <code>project-docs/tyonaytteet/viikko-2/kortit.png</code>.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="2">
+            <div class="journal-heading">
+              <h2>Oma viikkoyhteenveto</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Henkilökohtainen: vastaa omasta työstäsi, älä parisi. Kentät tallentuvat vain tähän selaimeen. Lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä. Työaikaa ei kirjata tähän: se on työaikataulukossa.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä minä toteutin, ja miten kokeilin sitä?</span><textarea rows="3" data-journal-field="work" placeholder="Oma skripti, scene tai dokumentin osa ja mitä havaitsit kokeillessasi"></textarea></label>
+              <label><span>Mikä ratkaisu oli minun, ja miksi valitsin sen?</span><textarea rows="2" data-journal-field="reason" placeholder="Yksi oma ratkaisu, vaihtoehto jota harkitsit ja perustelu"></textarea></label>
+              <label><span>Mistä oma työnäytteeni löytyy, ja mitä teen seuraavaksi?</span><textarea rows="2" data-journal-field="evidence" placeholder="Commit-linkki, testitapaus tai tiedoston polku. Ensimmäinen asia, josta jatkat."></textarea></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+        <article class="week-card" id="week-3" data-week="3">
+          <p class="view-eyebrow" data-week-label="Työviikko 3 / 18">Vaihe 1 · Aloitus · Työviikko 3 / 18</p>
+          <h1 class="view-title">Tekninen pohja ja kokeilukenttä</h1>
+
+          <section class="card view-section week-target" aria-labelledby="week-3-target">
+            <h2 id="week-3-target">Tältä valmis tulos näyttää</h2>
+            <figure class="project-figure">
+              <img src="assets/viikot/viikko-03.svg" width="880" height="420" alt="Luonnos: erillinen peli-ikkuna, jonka otsikkona on Tasohyppely, kokeiluversio. Ikkunassa on harmaa lattia, kaksi estettä ja neliön muotoinen pelaaja, joka hyppää kaarella esteen yli. Alla merkintä: build käynnissä ilman editoria." loading="lazy">
+              <figcaption>Luonnos tavoitellusta toiminnasta. Se ei ole kuvakaappaus valmiista pelistä, ja teidän pelinne näyttää omaltanne.</figcaption>
+            </figure>
+            <p>Koottu kokeiluversio pyörii omassa ikkunassaan ilman Unity-editoria. Kokeilukentässä on lattia, muutama este ja pelaaja, joka liikkuu ja esimerkiksi hyppää.</p>
+            <h3>Viikon lopussa kokeilette</h3>
+            <p>Käynnistäkää koottu kokeiluversio ilman Unity-editoria ja liikkukaa kokeilukentässä. Kumpikin näyttää omalla koneellaan toisen viimeisimmän muutoksen, ja historiassa on kummankin commit.</p>
+          </section>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta – tätä asiakkaiden toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon osaaminen</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 5</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="3-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Perustakaa sovittu projektirakenne</span></label>
+            <label class="task-row"><input type="checkbox" data-task="3-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Harjoittele ristiriidan ratkaisua tekstitiedostolla</span></label>
+            <label class="task-row"><input type="checkbox" data-task="3-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Rakentakaa ensimmäisen pelin kokeilukenttä</span></label>
+            <label class="task-row"><input type="checkbox" data-task="3-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta oma osasi päämekaniikasta</span></label>
+            <label class="task-row"><input type="checkbox" data-task="3-5"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kootkaa kokeiluversio sovitulle alustalle</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain jos jäät jumiin – kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> Rakennecommit, oma yhdistämiscommitisi, oma päämekaniikkacommitisi ja <code>project-docs/tyonaytteet/viikko-3/build.png</code>.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="3">
+            <div class="journal-heading">
+              <h2>Oma viikkoyhteenveto</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Henkilökohtainen: vastaa omasta työstäsi, älä parisi. Kentät tallentuvat vain tähän selaimeen. Lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä. Työaikaa ei kirjata tähän: se on työaikataulukossa.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä minä toteutin, ja miten kokeilin sitä?</span><textarea rows="3" data-journal-field="work" placeholder="Oma skripti, scene tai dokumentin osa ja mitä havaitsit kokeillessasi"></textarea></label>
+              <label><span>Mikä ratkaisu oli minun, ja miksi valitsin sen?</span><textarea rows="2" data-journal-field="reason" placeholder="Yksi oma ratkaisu, vaihtoehto jota harkitsit ja perustelu"></textarea></label>
+              <label><span>Mistä oma työnäytteeni löytyy, ja mitä teen seuraavaksi?</span><textarea rows="2" data-journal-field="evidence" placeholder="Commit-linkki, testitapaus tai tiedoston polku. Ensimmäinen asia, josta jatkat."></textarea></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+        <article class="week-card" id="week-4" data-week="4">
+          <p class="view-eyebrow" data-week-label="Työviikko 4 / 18">Vaihe 2 · Ensimmäinen peli · Työviikko 4 / 18</p>
+          <h1 class="view-title">Ensimmäinen pelattava kierros</h1>
+
+          <section class="card view-section week-target" aria-labelledby="week-4-target">
+            <h2 id="week-4-target">Tältä valmis tulos näyttää</h2>
+            <figure class="project-figure">
+              <img src="assets/viikot/viikko-04.svg" width="880" height="420" alt="Luonnos: tasohyppelyn kenttä, jossa pelaaja on saapunut maalilipun kohdalle. Ruudun keskellä on loppuviesti Maali! Kierros päättyi. Katkoviiva näyttää pelaajan reitin lähtöpaikasta maaliin." loading="lazy">
+              <figcaption>Luonnos tavoitellusta toiminnasta. Se ei ole kuvakaappaus valmiista pelistä, ja teidän pelinne näyttää omaltanne.</figcaption>
+            </figure>
+            <p>Esimerkiksi tasohyppelyssä pelaaja liikkuu lähtöpaikasta maaliin. Maaliin saapuessa ruudulle ilmestyy selkeä loppuviesti, ja pelaaja pysähtyy. Jos teette muuta peliä, sopikaa vastaava havaittava lopputulos ennen työskentelyä.</p>
+            <h3>Viikon lopussa kokeilette</h3>
+            <p>Käynnistäkää peli ja pelatkaa kierros sovittuun päättymiseen asti. Loppuviesti vastaa tapahtunutta, eikä peli jatku normaalisti sen jälkeen. Uuden testikierroksen saa tällä viikolla aloittaa editorin Play-tilasta. Historiassa on kummankin commit, ja kumpikin on testannut toisen osan.</p>
+          </section>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta – tätä asiakkaiden toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon osaaminen</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 4</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="4-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Sopikaa kierroksen päättymisen kaksi omaa osaa</span></label>
+            <label class="task-row"><input type="checkbox" data-task="4-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta oma osasi kierroksen lopusta</span></label>
+            <label class="task-row"><input type="checkbox" data-task="4-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Aloittakaa äänitapahtumien kuvaus</span></label>
+            <label class="task-row"><input type="checkbox" data-task="4-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Testatkaa toistenne osat</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain jos jäät jumiin – kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> Oma commitisi, <code>docs/aanitapahtumat.md</code> ja <code>project-docs/testimatriisi.md</code>, jossa ovat testitapaukset T01 ja T02 testaajineen.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="4">
+            <div class="journal-heading">
+              <h2>Oma viikkoyhteenveto</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Henkilökohtainen: vastaa omasta työstäsi, älä parisi. Kentät tallentuvat vain tähän selaimeen. Lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä. Työaikaa ei kirjata tähän: se on työaikataulukossa.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä minä toteutin, ja miten kokeilin sitä?</span><textarea rows="3" data-journal-field="work" placeholder="Oma skripti, scene tai dokumentin osa ja mitä havaitsit kokeillessasi"></textarea></label>
+              <label><span>Mikä ratkaisu oli minun, ja miksi valitsin sen?</span><textarea rows="2" data-journal-field="reason" placeholder="Yksi oma ratkaisu, vaihtoehto jota harkitsit ja perustelu"></textarea></label>
+              <label><span>Mistä oma työnäytteeni löytyy, ja mitä teen seuraavaksi?</span><textarea rows="2" data-journal-field="evidence" placeholder="Commit-linkki, testitapaus tai tiedoston polku. Ensimmäinen asia, josta jatkat."></textarea></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+        <article class="week-card" id="week-5" data-week="5">
+          <p class="view-eyebrow" data-week-label="Työviikko 5 / 18">Vaihe 2 · Ensimmäinen peli · Työviikko 5 / 18</p>
+          <h1 class="view-title">Valikot, uudelleenaloitus ja palaute</h1>
+
+          <section class="card view-section week-target" aria-labelledby="week-5-target">
+            <h2 id="week-5-target">Tältä valmis tulos näyttää</h2>
+            <figure class="project-figure">
+              <img src="assets/viikot/viikko-05.svg" width="880" height="420" alt="Luonnos: kolme ruutua nuolin yhdistettyinä. Alkuvalikko, jossa ovat pelin nimi, Aloita-painike ja ohjausohje. Peliruutu, jossa laskuri Kerätty 3 / 5 ja välähdys osuman kohdalla. Loppuruutu, jossa ovat painikkeet Uudelleen ja Alkuvalikkoon. Nuolet kulkevat ympyrässä takaisin alkuvalikkoon." loading="lazy">
+              <figcaption>Luonnos tavoitellusta toiminnasta. Se ei ole kuvakaappaus valmiista pelistä, ja teidän pelinne näyttää omaltanne.</figcaption>
+            </figure>
+            <p>Peli alkaa alkuvalikosta, jossa ovat Aloita-painike ja lyhyt ohjausohje. Kierroksen lopussa loppuruudussa ovat painikkeet Uudelleen ja Alkuvalikkoon. Kerätyt esineet näkyvät laskurina, ja osuma näkyy välähdyksenä.</p>
+            <h3>Viikon lopussa kokeilette</h3>
+            <p>Kulkekaa alkuvalikosta ohjeen kautta kierroksen loppuun, painakaa Uudelleen, pelatkaa kierros loppuun ja palatkaa Alkuvalikkoon. Toistakaa kolme kertaa peräkkäin ilman virhettä. Jokaisesta olennaisesta tapahtumasta näkyy palaute ilman ääntä. Historiassa on kummankin commit, ja kumpikin on testannut toisen osan.</p>
+          </section>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta – tätä asiakkaiden toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon osaaminen</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 4</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="5-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Sopikaa valikoiden ja palautteen kaksi omaa osaa</span></label>
+            <label class="task-row"><input type="checkbox" data-task="5-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta oma osasi valikoista ja palautteesta</span></label>
+            <label class="task-row"><input type="checkbox" data-task="5-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Tuokaa grafiikkapaketti ja tarkistakaa sen käyttöehdot</span></label>
+            <label class="task-row"><input type="checkbox" data-task="5-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Testatkaa toistuvat kierrokset toistenne koneella</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain jos jäät jumiin – kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> Oma commitisi, alkuvalikon ja loppuruudun prefabit, <code>docs/assetit-ja-lisenssit.md</code> ja testimatriisin uudet testitapaukset.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="5">
+            <div class="journal-heading">
+              <h2>Oma viikkoyhteenveto</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Henkilökohtainen: vastaa omasta työstäsi, älä parisi. Kentät tallentuvat vain tähän selaimeen. Lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä. Työaikaa ei kirjata tähän: se on työaikataulukossa.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä minä toteutin, ja miten kokeilin sitä?</span><textarea rows="3" data-journal-field="work" placeholder="Oma skripti, scene tai dokumentin osa ja mitä havaitsit kokeillessasi"></textarea></label>
+              <label><span>Mikä ratkaisu oli minun, ja miksi valitsin sen?</span><textarea rows="2" data-journal-field="reason" placeholder="Yksi oma ratkaisu, vaihtoehto jota harkitsit ja perustelu"></textarea></label>
+              <label><span>Mistä oma työnäytteeni löytyy, ja mitä teen seuraavaksi?</span><textarea rows="2" data-journal-field="evidence" placeholder="Commit-linkki, testitapaus tai tiedoston polku. Ensimmäinen asia, josta jatkat."></textarea></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+        <article class="week-card" id="week-6" data-week="6">
+          <p class="view-eyebrow" data-week-label="Työviikko 6 / 18">Vaihe 2 · Ensimmäinen peli · Työviikko 6 / 18</p>
+          <h1 class="view-title">Ensimmäinen asiakaskokeilu</h1>
+
+          <section class="card view-section week-target" aria-labelledby="week-6-target">
+            <h2 id="week-6-target">Tältä valmis tulos näyttää</h2>
+            <figure class="project-figure">
+              <img src="assets/viikot/viikko-06.svg" width="880" height="420" alt="Luonnos: vasemmalla asiakas pelaa kokeiluversiota. Keskellä kirjaajan muistiinpano, jossa on asiakkaan lainaus lainausmerkeissä ja sen alla erillinen kohta Oma tulkinta. Oikealla tehtävätaulun sarake, johon on lisätty kaksi uutta korttia palautteesta." loading="lazy">
+              <figcaption>Luonnos tavoitellusta toiminnasta. Se ei ole kuvakaappaus valmiista pelistä, ja teidän pelinne näyttää omaltanne.</figcaption>
+            </figure>
+            <p>Asiakas pelaa kokeiluversiota ilman neuvoja. Toinen teistä esittelee, ja toinen kirjaa asiakkaan sanat lainauksina. Palautteesta syntyy kortteja tehtävätauluun.</p>
+            <h3>Viikon lopussa kokeilette</h3>
+            <p>Lukekaa palautekirjaus ääneen asiakkaalle tai ohjaajalle ja pyytäkää vahvistus, että kirjaus vastaa sanottua. Jokaisesta korjaustarpeesta on kortti tehtävätaulussa.</p>
+          </section>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta – tätä asiakkaiden toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon osaaminen</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 5</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="6-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Valmistelkaa kokeiluversio ja esittely asiakkaille</span></label>
+            <label class="task-row"><input type="checkbox" data-task="6-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Pitäkää asiakaskokeilu ja kirjatkaa palaute asiakkaan sanoin</span></label>
+            <label class="task-row"><input type="checkbox" data-task="6-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Muuttakaa palaute korteiksi ja sopikaa järjestys</span></label>
+            <label class="task-row"><input type="checkbox" data-task="6-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Vertaa omia työaika-arvioitasi toteumaan</span></label>
+            <label class="task-row"><input type="checkbox" data-task="6-5"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjaa kolme Unityn rajoitetta, jotka tulivat sinulle vastaan</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain jos jäät jumiin – kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> Kokeiluversion versiomerkintä (tag v0.1), <code>project-docs/asiakaspalaute.md</code>, palautekortit, oma arvio–toteumavertailusi ja <code>project-docs/omat/OMA-KANSIO/unity-havainnot.md</code>.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="6">
+            <div class="journal-heading">
+              <h2>Oma viikkoyhteenveto</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Henkilökohtainen: vastaa omasta työstäsi, älä parisi. Kentät tallentuvat vain tähän selaimeen. Lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä. Työaikaa ei kirjata tähän: se on työaikataulukossa.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä minä toteutin, ja miten kokeilin sitä?</span><textarea rows="3" data-journal-field="work" placeholder="Oma skripti, scene tai dokumentin osa ja mitä havaitsit kokeillessasi"></textarea></label>
+              <label><span>Mikä ratkaisu oli minun, ja miksi valitsin sen?</span><textarea rows="2" data-journal-field="reason" placeholder="Yksi oma ratkaisu, vaihtoehto jota harkitsit ja perustelu"></textarea></label>
+              <label><span>Mistä oma työnäytteeni löytyy, ja mitä teen seuraavaksi?</span><textarea rows="2" data-journal-field="evidence" placeholder="Commit-linkki, testitapaus tai tiedoston polku. Ensimmäinen asia, josta jatkat."></textarea></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+        <article class="week-card" id="week-7" data-week="7">
+          <p class="view-eyebrow" data-week-label="Työviikko 7 / 18">Vaihe 3 · Toinen ja kolmas peli · Työviikko 7 / 18</p>
+          <h1 class="view-title">Toinen peli: päämekaniikka ja kenttädata</h1>
+
+          <section class="card view-section week-target" aria-labelledby="week-7-target">
+            <h2 id="week-7-target">Tältä valmis tulos näyttää</h2>
+            <figure class="project-figure">
+              <img src="assets/viikot/viikko-07.svg" width="880" height="420" alt="Luonnos: vasemmalla kenttädata tekstinä viitenä rivinä, joissa merkit #, P, B, T ja piste. Nuoli osoittaa oikealle, jossa sama kenttä näkyy pelinä: seinät, pelaaja, kaksi laatikkoa ja kaksi tavoiteruutua. Yksi laatikko on siirretty tavoiteruutuun, ja seinää päin työnnetyn laatikon kohdalla on merkintä estynyt siirto." loading="lazy">
+              <figcaption>Luonnos tavoitellusta toiminnasta. Se ei ole kuvakaappaus valmiista pelistä, ja teidän pelinne näyttää omaltanne.</figcaption>
+            </figure>
+            <p>Esimerkiksi pulmapelissä kenttä luetaan tekstitiedostosta, jossa merkki # on seinä ja B laatikko. Pelaaja työntää laatikkoa ruudun kerrallaan, eikä laatikko liiku seinän läpi. Kun tiedostossa muutetaan yksi merkki, kenttä muuttuu seuraavalla käynnistyksellä.</p>
+            <h3>Viikon lopussa kokeilette</h3>
+            <p>Esimerkiksi pulmapelissä: siirtäkää laatikko tavoiteruutuun ja yrittäkää siirtää laatikkoa seinää päin. Muuttakaa kenttädatassa yksi ruutu ja käynnistäkää peli: muutos näkyy. Jos teette muuta peliä, sopikaa vastaava kokeilu työvaiheessa 1. Historiassa on kummankin commit, ja kumpikin on testannut toisen osan.</p>
+          </section>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta – tätä asiakkaiden toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon osaaminen</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 5</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="7-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Sopikaa toisen pelin pienin toimiva versio ja kaksi omaa osaa</span></label>
+            <label class="task-row"><input type="checkbox" data-task="7-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kokeilkaa kenttädataa kahdella tallennustavalla</span></label>
+            <label class="task-row"><input type="checkbox" data-task="7-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta oma osasi toisen pelin mekaniikasta</span></label>
+            <label class="task-row"><input type="checkbox" data-task="7-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Tuokaa toisen pelin grafiikat</span></label>
+            <label class="task-row"><input type="checkbox" data-task="7-5"><span class="task-box" aria-hidden="true"></span><span class="task-text">Testatkaa toistenne osat</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain jos jäät jumiin – kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> Oma commitisi, päätöslokin tallennustapavertailu, kenttädatan tiedosto ja testimatriisin uudet testitapaukset.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="7">
+            <div class="journal-heading">
+              <h2>Oma viikkoyhteenveto</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Henkilökohtainen: vastaa omasta työstäsi, älä parisi. Kentät tallentuvat vain tähän selaimeen. Lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä. Työaikaa ei kirjata tähän: se on työaikataulukossa.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä minä toteutin, ja miten kokeilin sitä?</span><textarea rows="3" data-journal-field="work" placeholder="Oma skripti, scene tai dokumentin osa ja mitä havaitsit kokeillessasi"></textarea></label>
+              <label><span>Mikä ratkaisu oli minun, ja miksi valitsin sen?</span><textarea rows="2" data-journal-field="reason" placeholder="Yksi oma ratkaisu, vaihtoehto jota harkitsit ja perustelu"></textarea></label>
+              <label><span>Mistä oma työnäytteeni löytyy, ja mitä teen seuraavaksi?</span><textarea rows="2" data-journal-field="evidence" placeholder="Commit-linkki, testitapaus tai tiedoston polku. Ensimmäinen asia, josta jatkat."></textarea></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+        <article class="week-card" id="week-8" data-week="8">
+          <p class="view-eyebrow" data-week-label="Työviikko 8 / 18">Vaihe 3 · Toinen ja kolmas peli · Työviikko 8 / 18</p>
+          <h1 class="view-title">Toinen peli: kokonainen kierros</h1>
+
+          <section class="card view-section week-target" aria-labelledby="week-8-target">
+            <h2 id="week-8-target">Tältä valmis tulos näyttää</h2>
+            <figure class="project-figure">
+              <img src="assets/viikot/viikko-08.svg" width="880" height="420" alt="Luonnos: kaksi pelitilannetta vierekkäin. Vasemmalla kesken oleva pulma, jossa näkyy ohje Palauta alkutilanne: R ja nuoli takaisin alkutilanteeseen. Oikealla ratkaistu pulma, jossa kaikki laatikot ovat tavoiteruuduissa ja keskellä viesti Ratkaistu! sekä painikkeet Uudelleen ja Alkuvalikkoon." loading="lazy">
+              <figcaption>Luonnos tavoitellusta toiminnasta. Se ei ole kuvakaappaus valmiista pelistä, ja teidän pelinne näyttää omaltanne.</figcaption>
+            </figure>
+            <p>Esimerkiksi pulmapelissä kun jokaisessa tavoiteruudussa on laatikko, ruutuun tulee viesti Ratkaistu! Kesken kierroksen palautusnäppäin palauttaa laatikot datan mukaisiin paikkoihin. Alkuvalikko on sama kuin ensimmäisessä pelissä, mutta nimi ja ohje ovat toisen pelin.</p>
+            <h3>Viikon lopussa kokeilette</h3>
+            <p>Esimerkiksi pulmapelissä: ratkaiskaa pulma, palauttakaa alkutilanne kesken kierroksen, aloittakaa uudelleen ja palatkaa alkuvalikkoon. Jos teette muuta peliä, kokeilkaa vastaavasti kierroksen loppu, uudelleenaloitus ja paluu. Historiassa on kummankin commit, ja kumpikin on testannut toisen osan.</p>
+          </section>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta – tätä asiakkaiden toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon osaaminen</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 4</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="8-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Sopikaa toisen pelin kierroksen kaksi omaa osaa</span></label>
+            <label class="task-row"><input type="checkbox" data-task="8-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta oma osasi toisen pelin kierroksesta</span></label>
+            <label class="task-row"><input type="checkbox" data-task="8-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Liittäkää ensimmäisen pelin valikko toiseen peliin</span></label>
+            <label class="task-row"><input type="checkbox" data-task="8-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Testatkaa toistenne osat ja koko kierros</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain jos jäät jumiin – kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> Oma commitisi, valikkocommit, päivitetty <code>README.md</code> ja testimatriisin kierrostestit.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="8">
+            <div class="journal-heading">
+              <h2>Oma viikkoyhteenveto</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Henkilökohtainen: vastaa omasta työstäsi, älä parisi. Kentät tallentuvat vain tähän selaimeen. Lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä. Työaikaa ei kirjata tähän: se on työaikataulukossa.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä minä toteutin, ja miten kokeilin sitä?</span><textarea rows="3" data-journal-field="work" placeholder="Oma skripti, scene tai dokumentin osa ja mitä havaitsit kokeillessasi"></textarea></label>
+              <label><span>Mikä ratkaisu oli minun, ja miksi valitsin sen?</span><textarea rows="2" data-journal-field="reason" placeholder="Yksi oma ratkaisu, vaihtoehto jota harkitsit ja perustelu"></textarea></label>
+              <label><span>Mistä oma työnäytteeni löytyy, ja mitä teen seuraavaksi?</span><textarea rows="2" data-journal-field="evidence" placeholder="Commit-linkki, testitapaus tai tiedoston polku. Ensimmäinen asia, josta jatkat."></textarea></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+        <article class="week-card" id="week-9" data-week="9">
+          <p class="view-eyebrow" data-week-label="Työviikko 9 / 18">Vaihe 3 · Toinen ja kolmas peli · Työviikko 9 / 18</p>
+          <h1 class="view-title">Vertaisarvio ja kolmannen pelin rajaus</h1>
+
+          <section class="card view-section week-target" aria-labelledby="week-9-target">
+            <h2 id="week-9-target">Tältä valmis tulos näyttää</h2>
+            <figure class="project-figure">
+              <img src="assets/viikot/viikko-09.svg" width="880" height="420" alt="Luonnos: virheenkorjausketju kuutena laatikkona peräkkäin: havainto, toistamisohje, syy, korjauscommit, uusintatesti ja regressiotesti. Uusintatestin kohdalla on merkintä läpi. Sivussa vertaisarvion lista, jossa yksi rivi on merkitty estäväksi." loading="lazy">
+              <figcaption>Luonnos tavoitellusta toiminnasta. Se ei ole kuvakaappaus valmiista pelistä, ja teidän pelinne näyttää omaltanne.</figcaption>
+            </figure>
+            <p>Vertaisarviossa on luokiteltuja havaintoja: estävä virhe, muu virhe tai parannusehdotus. Estävä virhe korjataan ketjuna, ja sama testitapaus menee korjauksen jälkeen läpi.</p>
+            <h3>Viikon lopussa kokeilette</h3>
+            <p>Ajakaa vertaisarvion testitapaukset uudelleen korjausten jälkeen. Kaikki estäviksi merkityt virheet on korjattu, ja kummallakin on yksi valmis virheenkorjausketju.</p>
+          </section>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta – tätä asiakkaiden toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon osaaminen</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 4</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="9-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Vertaisarvioi parisi osat toisesta pelistä</span></label>
+            <label class="task-row"><input type="checkbox" data-task="9-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Korjaa oman koodisi virhe virheenkorjausketjuna</span></label>
+            <label class="task-row"><input type="checkbox" data-task="9-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Varmistakaa asiakkaiden palaute toisesta pelistä</span></label>
+            <label class="task-row"><input type="checkbox" data-task="9-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Rajatkaa kolmas peli ja pyytäkää rajaukselle vahvistus</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain jos jäät jumiin – kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> <code>project-docs/omat/OMA-KANSIO/vertaisarvio-peli2.md</code>, oma virheenkorjausketjusi testimatriisissa, päivitetty <code>project-docs/asiakaspalaute.md</code> ja kolmannen pelin rajaus.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="9">
+            <div class="journal-heading">
+              <h2>Oma viikkoyhteenveto</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Henkilökohtainen: vastaa omasta työstäsi, älä parisi. Kentät tallentuvat vain tähän selaimeen. Lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä. Työaikaa ei kirjata tähän: se on työaikataulukossa.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä minä toteutin, ja miten kokeilin sitä?</span><textarea rows="3" data-journal-field="work" placeholder="Oma skripti, scene tai dokumentin osa ja mitä havaitsit kokeillessasi"></textarea></label>
+              <label><span>Mikä ratkaisu oli minun, ja miksi valitsin sen?</span><textarea rows="2" data-journal-field="reason" placeholder="Yksi oma ratkaisu, vaihtoehto jota harkitsit ja perustelu"></textarea></label>
+              <label><span>Mistä oma työnäytteeni löytyy, ja mitä teen seuraavaksi?</span><textarea rows="2" data-journal-field="evidence" placeholder="Commit-linkki, testitapaus tai tiedoston polku. Ensimmäinen asia, josta jatkat."></textarea></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+        <article class="week-card" id="week-10" data-week="10">
+          <p class="view-eyebrow" data-week-label="Työviikko 10 / 18">Vaihe 3 · Toinen ja kolmas peli · Työviikko 10 / 18</p>
+          <h1 class="view-title">Kolmas peli: päämekaniikka</h1>
+
+          <section class="card view-section week-target" aria-labelledby="week-10-target">
+            <h2 id="week-10-target">Tältä valmis tulos näyttää</h2>
+            <figure class="project-figure">
+              <img src="assets/viikot/viikko-10.svg" width="880" height="420" alt="Luonnos: ylhäältä kuvattu areena, jonka keskellä on pelaaja ja hyökkäyksen kaari. Kolme vihollista lähestyy nuolin merkittyinä, ja yksi välähtää osuman merkiksi. Sivussa asetustiedosto, jossa lukee nopeus 2 ja ilmestymisväli 3 sekuntia." loading="lazy">
+              <figcaption>Luonnos tavoitellusta toiminnasta. Se ei ole kuvakaappaus valmiista pelistä, ja teidän pelinne näyttää omaltanne.</figcaption>
+            </figure>
+            <p>Esimerkiksi toimintapelissä pelaaja liikkuu ylhäältä kuvatulla areenalla ja hyökkää. Vihollinen liikkuu pelaajaa kohti, ja osuma näkyy välähdyksenä. Kun vihollisen nopeutta muutetaan asetustiedostossa, vihollinen liikkuu seuraavalla käynnistyksellä uudella nopeudella.</p>
+            <h3>Viikon lopussa kokeilette</h3>
+            <p>Esimerkiksi toimintapelissä: liikkukaa areenalla, hyökätkää viholliseen ja katsokaa, että osuma näkyy, ja antakaa vihollisen osua pelaajaan. Muuttakaa datassa yhtä asetusta, esimerkiksi vihollisen nopeutta, ja katsokaa, että muutos näkyy. Jos teette muuta peliä, sopikaa vastaava kokeilu työvaiheessa 1. Historiassa on kummankin commit, ja kumpikin on testannut toisen osan.</p>
+          </section>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta – tätä asiakkaiden toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon osaaminen</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 4</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="10-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Sopikaa kolmannen pelin kaksi omaa osaa</span></label>
+            <label class="task-row"><input type="checkbox" data-task="10-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta oma osasi kolmannen pelin mekaniikasta</span></label>
+            <label class="task-row"><input type="checkbox" data-task="10-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Tuokaa kolmannen pelin grafiikat</span></label>
+            <label class="task-row"><input type="checkbox" data-task="10-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Testatkaa toistenne osat</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain jos jäät jumiin – kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> Oma commitisi, päivitetty <code>project-docs/vastuutaulukko.md</code>, asetustiedosto ja testimatriisin uudet testitapaukset.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="10">
+            <div class="journal-heading">
+              <h2>Oma viikkoyhteenveto</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Henkilökohtainen: vastaa omasta työstäsi, älä parisi. Kentät tallentuvat vain tähän selaimeen. Lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä. Työaikaa ei kirjata tähän: se on työaikataulukossa.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä minä toteutin, ja miten kokeilin sitä?</span><textarea rows="3" data-journal-field="work" placeholder="Oma skripti, scene tai dokumentin osa ja mitä havaitsit kokeillessasi"></textarea></label>
+              <label><span>Mikä ratkaisu oli minun, ja miksi valitsin sen?</span><textarea rows="2" data-journal-field="reason" placeholder="Yksi oma ratkaisu, vaihtoehto jota harkitsit ja perustelu"></textarea></label>
+              <label><span>Mistä oma työnäytteeni löytyy, ja mitä teen seuraavaksi?</span><textarea rows="2" data-journal-field="evidence" placeholder="Commit-linkki, testitapaus tai tiedoston polku. Ensimmäinen asia, josta jatkat."></textarea></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+        <article class="week-card" id="week-11" data-week="11">
+          <p class="view-eyebrow" data-week-label="Työviikko 11 / 18">Vaihe 3 · Toinen ja kolmas peli · Työviikko 11 / 18</p>
+          <h1 class="view-title">Kolmas peli: kokonainen kierros</h1>
+
+          <section class="card view-section week-target" aria-labelledby="week-11-target">
+            <h2 id="week-11-target">Tältä valmis tulos näyttää</h2>
+            <figure class="project-figure">
+              <img src="assets/viikot/viikko-11.svg" width="880" height="420" alt="Luonnos: kaksi loppuruutua vierekkäin. Vasemmalla ajastin 0:00 ja viesti Selvisit! Oikealla kestävyyspalkki tyhjänä ja viesti Hävisit. Molempien alla ovat painikkeet Uudelleen ja Alkuvalikkoon." loading="lazy">
+              <figcaption>Luonnos tavoitellusta toiminnasta. Se ei ole kuvakaappaus valmiista pelistä, ja teidän pelinne näyttää omaltanne.</figcaption>
+            </figure>
+            <p>Esimerkiksi toimintapelissä ruudun yläreunassa näkyy jäljellä oleva aika ja pelaajan kestävyys. Kun aika loppuu, ruutuun tulee viesti Selvisit! Jos kestävyys loppuu ensin, viesti on Hävisit. Kummastakin pääsee uudelleen tai alkuvalikkoon.</p>
+            <h3>Viikon lopussa kokeilette</h3>
+            <p>Esimerkiksi toimintapelissä: pelatkaa yksi kierros loppuun, esimerkiksi 60 sekunnin selviytyminen, ja yksi häviöön. Aloittakaa uudelleen ja palatkaa alkuvalikkoon. Jos teette muuta peliä, kokeilkaa vastaavasti molemmat loput. Historiassa on kummankin commit, ja kumpikin on testannut toisen osan.</p>
+          </section>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta – tätä asiakkaiden toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon osaaminen</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 3</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="11-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Sopikaa kolmannen pelin kierroksen kaksi omaa osaa</span></label>
+            <label class="task-row"><input type="checkbox" data-task="11-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta oma osasi kolmannen pelin kierroksesta</span></label>
+            <label class="task-row"><input type="checkbox" data-task="11-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Testatkaa toistenne osat ja koko kierros</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain jos jäät jumiin – kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> Oma commitisi, valikon liitos ja testimatriisin voitto-, häviö- ja uudelleenaloitustestit.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="11">
+            <div class="journal-heading">
+              <h2>Oma viikkoyhteenveto</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Henkilökohtainen: vastaa omasta työstäsi, älä parisi. Kentät tallentuvat vain tähän selaimeen. Lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä. Työaikaa ei kirjata tähän: se on työaikataulukossa.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä minä toteutin, ja miten kokeilin sitä?</span><textarea rows="3" data-journal-field="work" placeholder="Oma skripti, scene tai dokumentin osa ja mitä havaitsit kokeillessasi"></textarea></label>
+              <label><span>Mikä ratkaisu oli minun, ja miksi valitsin sen?</span><textarea rows="2" data-journal-field="reason" placeholder="Yksi oma ratkaisu, vaihtoehto jota harkitsit ja perustelu"></textarea></label>
+              <label><span>Mistä oma työnäytteeni löytyy, ja mitä teen seuraavaksi?</span><textarea rows="2" data-journal-field="evidence" placeholder="Commit-linkki, testitapaus tai tiedoston polku. Ensimmäinen asia, josta jatkat."></textarea></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+        <article class="week-card" id="week-12" data-week="12">
+          <p class="view-eyebrow" data-week-label="Työviikko 12 / 18">Vaihe 3 · Toinen ja kolmas peli · Työviikko 12 / 18</p>
+          <h1 class="view-title">Asiakaskatselmointi: kolme peliä</h1>
+
+          <section class="card view-section week-target" aria-labelledby="week-12-target">
+            <h2 id="week-12-target">Tältä valmis tulos näyttää</h2>
+            <figure class="project-figure">
+              <img src="assets/viikot/viikko-12.svg" width="880" height="420" alt="Luonnos: kolme pientä pelinäkymää rivissä, ja jokaisen alla asiakkaan lainaus. Alla tehtävätaulun sarake Korjataan työviikolla 13, jossa kortit ovat numerojärjestyksessä vastuuhenkilöineen, ja erillinen sarake Tiedossa olevat puutteet." loading="lazy">
+              <figcaption>Luonnos tavoitellusta toiminnasta. Se ei ole kuvakaappaus valmiista pelistä, ja teidän pelinne näyttää omaltanne.</figcaption>
+            </figure>
+            <p>Asiakkaat pelaavat kaikkia kolmea peliä. Palaute kirjataan pelikohtaisesti asiakkaiden sanoin, ja sovitut korjaukset ovat tehtävätaulussa järjestyksessä vastuuhenkilöineen.</p>
+            <h3>Viikon lopussa kokeilette</h3>
+            <p>Lukekaa katselmoinnin päätökset ääneen asiakkaille tai ohjaajalle ja pyytäkää vahvistus. Jokaisella sovitulla korjauksella on kortti ja vastuuhenkilö, ja kumpikin on listannut omat aukkonsa näyttömatriisista.</p>
+          </section>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta – tätä asiakkaiden toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon osaaminen</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 4</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="12-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Valmistelkaa kolmen pelin katselmointiversio</span></label>
+            <label class="task-row"><input type="checkbox" data-task="12-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Pitäkää katselmointi ja kirjatkaa palaute</span></label>
+            <label class="task-row"><input type="checkbox" data-task="12-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Sopikaa korjausten järjestys asiakkaiden kanssa</span></label>
+            <label class="task-row"><input type="checkbox" data-task="12-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Tarkista omat työnäytteesi näyttömatriisista</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain jos jäät jumiin – kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> Katselmointiversion versiomerkintä (tag v0.2), päivitetty <code>project-docs/asiakaspalaute.md</code>, päätöslokin merkintä ja <code>project-docs/omat/OMA-KANSIO/aukot.md</code>.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="12">
+            <div class="journal-heading">
+              <h2>Oma viikkoyhteenveto</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Henkilökohtainen: vastaa omasta työstäsi, älä parisi. Kentät tallentuvat vain tähän selaimeen. Lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä. Työaikaa ei kirjata tähän: se on työaikataulukossa.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä minä toteutin, ja miten kokeilin sitä?</span><textarea rows="3" data-journal-field="work" placeholder="Oma skripti, scene tai dokumentin osa ja mitä havaitsit kokeillessasi"></textarea></label>
+              <label><span>Mikä ratkaisu oli minun, ja miksi valitsin sen?</span><textarea rows="2" data-journal-field="reason" placeholder="Yksi oma ratkaisu, vaihtoehto jota harkitsit ja perustelu"></textarea></label>
+              <label><span>Mistä oma työnäytteeni löytyy, ja mitä teen seuraavaksi?</span><textarea rows="2" data-journal-field="evidence" placeholder="Commit-linkki, testitapaus tai tiedoston polku. Ensimmäinen asia, josta jatkat."></textarea></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+        <article class="week-card" id="week-13" data-week="13">
+          <p class="view-eyebrow" data-week-label="Työviikko 13 / 18">Vaihe 4 · Luovutusvalmius · Työviikko 13 / 18</p>
+          <h1 class="view-title">Palautteen korjaukset</h1>
+
+          <section class="card view-section week-target" aria-labelledby="week-13-target">
+            <h2 id="week-13-target">Tältä valmis tulos näyttää</h2>
+            <figure class="project-figure">
+              <img src="assets/viikot/viikko-13.svg" width="880" height="420" alt="Luonnos: testimatriisin rivejä, joissa sarakkeet testitapaus, testin tekijä, odotettu tulos, havaittu tulos ja uusintatesti. Ensimmäisellä rivillä havaittu tulos on virhe, ja uusintatestin sarakkeessa on korjauksen jälkeen merkintä läpi." loading="lazy">
+              <figcaption>Luonnos tavoitellusta toiminnasta. Se ei ole kuvakaappaus valmiista pelistä, ja teidän pelinne näyttää omaltanne.</figcaption>
+            </figure>
+            <p>Jokaisella korjauksella on ennen korjausta kirjattu odotettu tulos ja testitapaus. Korjauksen jälkeen parisi ajaa testitapauksen ja jokaisen pelin peruskierroksen, ja tulokset ovat testimatriisissa.</p>
+            <h3>Viikon lopussa kokeilette</h3>
+            <p>Ajakaa jokaisen korjauksen testitapaus ja jokaisen pelin peruskierros uudelleen. Kaikki menevät läpi, ja kummallakin on toinen valmis virheenkorjausketju.</p>
+          </section>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta – tätä asiakkaiden toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon osaaminen</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 3</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="13-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjatkaa valitut korjaukset odotettuine tuloksineen</span></label>
+            <label class="task-row"><input type="checkbox" data-task="13-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Korjaa omat korjauskorttisi</span></label>
+            <label class="task-row"><input type="checkbox" data-task="13-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Testatkaa korjaukset ja peruskierrokset uudelleen</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain jos jäät jumiin – kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> Omat korjauscommitisi, toinen virheenkorjausketjusi ja testimatriisin uusintatestit.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="13">
+            <div class="journal-heading">
+              <h2>Oma viikkoyhteenveto</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Henkilökohtainen: vastaa omasta työstäsi, älä parisi. Kentät tallentuvat vain tähän selaimeen. Lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä. Työaikaa ei kirjata tähän: se on työaikataulukossa.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä minä toteutin, ja miten kokeilin sitä?</span><textarea rows="3" data-journal-field="work" placeholder="Oma skripti, scene tai dokumentin osa ja mitä havaitsit kokeillessasi"></textarea></label>
+              <label><span>Mikä ratkaisu oli minun, ja miksi valitsin sen?</span><textarea rows="2" data-journal-field="reason" placeholder="Yksi oma ratkaisu, vaihtoehto jota harkitsit ja perustelu"></textarea></label>
+              <label><span>Mistä oma työnäytteeni löytyy, ja mitä teen seuraavaksi?</span><textarea rows="2" data-journal-field="evidence" placeholder="Commit-linkki, testitapaus tai tiedoston polku. Ensimmäinen asia, josta jatkat."></textarea></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+        <article class="week-card" id="week-14" data-week="14">
+          <p class="view-eyebrow" data-week-label="Työviikko 14 / 18">Vaihe 4 · Luovutusvalmius · Työviikko 14 / 18</p>
+          <h1 class="view-title">Testausviikko: koottu peliversio</h1>
+
+          <section class="card view-section week-target" aria-labelledby="week-14-target">
+            <h2 id="week-14-target">Tältä valmis tulos näyttää</h2>
+            <figure class="project-figure">
+              <img src="assets/viikot/viikko-14.svg" width="880" height="420" alt="Luonnos: kolme koottua peli-ikkunaa ja niiden vieressä tarkistuslista, jossa seitsemän riviä: käynnistys, ohjausohje, päämekaniikka, palaute, päättyminen, uudelleenaloitus ja paluu alkuvalikkoon. Jokaisen pelin kohdalla on laskuri kierros 10 / 10." loading="lazy">
+              <figcaption>Luonnos tavoitellusta toiminnasta. Se ei ole kuvakaappaus valmiista pelistä, ja teidän pelinne näyttää omaltanne.</figcaption>
+            </figure>
+            <p>Jokaisesta pelistä on koottu versio, joka käynnistyy ilman Unity-editoria. Testimatriisissa on jokaisesta pelistä seitsemän perustestiä, ja kymmenen peräkkäistä kierrosta toimii ilman, että mikään jää näkyviin tai hidastuu.</p>
+            <h3>Viikon lopussa kokeilette</h3>
+            <p>Käynnistäkää jokaisen pelin koottu versio ilman editoria. Pelatkaa kolme kierrosta peräkkäin ja palatkaa alkuvalikkoon joka kerta. Testimatriisissa on jokaisesta pelistä vähintään seitsemän testitapausta tuloksineen.</p>
+          </section>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta – tätä asiakkaiden toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon osaaminen</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 4</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="14-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Täydentäkää testimatriisi kaikista kolmesta pelistä</span></label>
+            <label class="task-row"><input type="checkbox" data-task="14-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kootkaa peliversiot ja testatkaa ne ilman editoria</span></label>
+            <label class="task-row"><input type="checkbox" data-task="14-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Testatkaa rajatapaukset ja toistuvat uudelleenaloitukset</span></label>
+            <label class="task-row"><input type="checkbox" data-task="14-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Arvioi oman alueesi tietoturva luovutusta varten</span></label>
+            </div>
+          </section>
+
+          <section class="card card-tint view-section week-extra" aria-labelledby="week-14-extra">
+            <p class="section-label section-label-accent" id="week-14-extra">Lisätavoite · ei työvaihe, ei lasketa etenemiseen</p>
+            <p>Kun tämän viikon kokeilu on mennyt läpi kaikissa kolmessa pelissä, voitte pyytää ohjaajalta päätöstä neljännestä pelistä: ajopeli (lyhyt rata, tarkistuspisteet ja kierrosaika) tai tutkimispeli (pieni tila, löydettävä avain ja lukittu uloskäynti).</p>
+            <p><strong>Edellytykset:</strong> kolme peliä on testattu ja luovutuskunnossa, työviikkojen 15–17 työvaiheet eivät siirry, ja ohjaaja on hyväksynyt lisätyön. Lisäpeli tehdään samalla rytmillä kuin muut: pienin toimiva versio, kaksi omaa osaa ja toistenne testaus. Jos lisäpeli jää kesken, se ei kuulu luovutukseen.</p>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain jos jäät jumiin – kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> Päivitetty <code>project-docs/testimatriisi.md</code>, buildien kuvakaappaukset kansiossa <code>project-docs/tyonaytteet/viikko-14/</code> ja <code>project-docs/omat/OMA-KANSIO/tietoturva-arvio.md</code>.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="14">
+            <div class="journal-heading">
+              <h2>Oma viikkoyhteenveto</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Henkilökohtainen: vastaa omasta työstäsi, älä parisi. Kentät tallentuvat vain tähän selaimeen. Lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä. Työaikaa ei kirjata tähän: se on työaikataulukossa.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä minä toteutin, ja miten kokeilin sitä?</span><textarea rows="3" data-journal-field="work" placeholder="Oma skripti, scene tai dokumentin osa ja mitä havaitsit kokeillessasi"></textarea></label>
+              <label><span>Mikä ratkaisu oli minun, ja miksi valitsin sen?</span><textarea rows="2" data-journal-field="reason" placeholder="Yksi oma ratkaisu, vaihtoehto jota harkitsit ja perustelu"></textarea></label>
+              <label><span>Mistä oma työnäytteeni löytyy, ja mitä teen seuraavaksi?</span><textarea rows="2" data-journal-field="evidence" placeholder="Commit-linkki, testitapaus tai tiedoston polku. Ensimmäinen asia, josta jatkat."></textarea></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+        <article class="week-card" id="week-15" data-week="15">
+          <p class="view-eyebrow" data-week-label="Työviikko 15 / 18">Vaihe 4 · Luovutusvalmius · Työviikko 15 / 18</p>
+          <h1 class="view-title">Jatkotyöstöohjeet ja äänitapahtumat</h1>
+
+          <section class="card view-section week-target" aria-labelledby="week-15-target">
+            <h2 id="week-15-target">Tältä valmis tulos näyttää</h2>
+            <figure class="project-figure">
+              <img src="assets/viikot/viikko-15.svg" width="880" height="420" alt="Luonnos: vasemmalla äänitapahtumataulukko, jonka rivillä Hyppy lukee PlayerJump.cs ja Jump(). Nuoli osoittaa oikealle koodieditoriin, jossa sama metodi on korostettu ja sen yläpuolella on kuvaava kommentti." loading="lazy">
+              <figcaption>Luonnos tavoitellusta toiminnasta. Se ei ole kuvakaappaus valmiista pelistä, ja teidän pelinne näyttää omaltanne.</figcaption>
+            </figure>
+            <p>Äänitapahtumataulukon rivillä lukee esimerkiksi: Hyppy, kun pelaaja painaa hyppynäppäintä maassa, tiedosto PlayerJump.cs ja metodi Jump. Taulukon avulla tapahtuman kohta löytyy koodista alle minuutissa.</p>
+            <h3>Viikon lopussa kokeilette</h3>
+            <p>Toinen teistä valitsee äänitapahtumataulukosta kolme tapahtumaa, ja toinen löytää kunkin toteutuskohdan koodista pelkän taulukon avulla. Vaihtakaa sitten vuoroa. Jokainen kohta löytyy alle minuutissa.</p>
+          </section>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta – tätä asiakkaiden toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon osaaminen</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 4</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="15-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjoita oma osuutesi avaamis- ja jatkotyöstöohjeesta</span></label>
+            <label class="task-row"><input type="checkbox" data-task="15-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Viimeistelkää äänitapahtumien kuvaus</span></label>
+            <label class="task-row"><input type="checkbox" data-task="15-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Viimeistelkää assettiluettelo ja poistakaa tarpeeton aineisto</span></label>
+            <label class="task-row"><input type="checkbox" data-task="15-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Siisti oma koodisi jatkotyöstöä varten</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain jos jäät jumiin – kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> <code>docs/avaaminen-ja-jatkotyosto.md</code>, <code>docs/aanitapahtumat.md</code>, <code>docs/assetit-ja-lisenssit.md</code> ja oma siistimiscommitisi.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="15">
+            <div class="journal-heading">
+              <h2>Oma viikkoyhteenveto</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Henkilökohtainen: vastaa omasta työstäsi, älä parisi. Kentät tallentuvat vain tähän selaimeen. Lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä. Työaikaa ei kirjata tähän: se on työaikataulukossa.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä minä toteutin, ja miten kokeilin sitä?</span><textarea rows="3" data-journal-field="work" placeholder="Oma skripti, scene tai dokumentin osa ja mitä havaitsit kokeillessasi"></textarea></label>
+              <label><span>Mikä ratkaisu oli minun, ja miksi valitsin sen?</span><textarea rows="2" data-journal-field="reason" placeholder="Yksi oma ratkaisu, vaihtoehto jota harkitsit ja perustelu"></textarea></label>
+              <label><span>Mistä oma työnäytteeni löytyy, ja mitä teen seuraavaksi?</span><textarea rows="2" data-journal-field="evidence" placeholder="Commit-linkki, testitapaus tai tiedoston polku. Ensimmäinen asia, josta jatkat."></textarea></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+        <article class="week-card" id="week-16" data-week="16">
+          <p class="view-eyebrow" data-week-label="Työviikko 16 / 18">Vaihe 4 · Luovutusvalmius · Työviikko 16 / 18</p>
+          <h1 class="view-title">Vastaanottotesti</h1>
+
+          <section class="card view-section week-target" aria-labelledby="week-16-target">
+            <h2 id="week-16-target">Tältä valmis tulos näyttää</h2>
+            <figure class="project-figure">
+              <img src="assets/viikot/viikko-16.svg" width="880" height="420" alt="Luonnos: testaaja tietokoneen ääressä kirjallinen ohje vieressään. Ohjeen kolmannen kohdan vieressä on kysymysmerkki ja testaajan lainaus. Sivussa korjattu ohjeen kohta, jossa on nyt tarkka scenen polku." loading="lazy">
+              <figcaption>Luonnos tavoitellusta toiminnasta. Se ei ole kuvakaappaus valmiista pelistä, ja teidän pelinne näyttää omaltanne.</figcaption>
+            </figure>
+            <p>Projektin ulkopuolinen testaaja avaa projektin puhtaasta kopiosta ja seuraa kirjallista ohjetta ilman suullista apua. Jokainen kohta, jossa hän epäröi, on kirjattu hänen sanoinaan ja korjattu ohjeeseen.</p>
+            <h3>Viikon lopussa kokeilette</h3>
+            <p>Testaaja avaa projektit ja käynnistää pelit pelkän kirjallisen ohjeen avulla ilman suullista apua. Jokainen kohta, jossa hän epäröi, on korjattu ohjeeseen tai kirjattu tiedossa olevaksi puutteeksi.</p>
+          </section>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta – tätä asiakkaiden toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon osaaminen</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 3</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="16-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Merkitkää luovutusehdokas ja valmistelkaa vastaanottotesti</span></label>
+            <label class="task-row"><input type="checkbox" data-task="16-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Pitäkää vastaanottotesti ja kirjatkaa havainnot</span></label>
+            <label class="task-row"><input type="checkbox" data-task="16-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Korjaa omalle alueellesi osuneet havainnot</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain jos jäät jumiin – kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> Luovutusehdokkaan versiomerkintä (tag v0.9), <code>project-docs/vastaanottotesti.md</code>, korjattu ohje ja <code>docs/testitulokset-ja-puutteet.md</code>.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="16">
+            <div class="journal-heading">
+              <h2>Oma viikkoyhteenveto</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Henkilökohtainen: vastaa omasta työstäsi, älä parisi. Kentät tallentuvat vain tähän selaimeen. Lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä. Työaikaa ei kirjata tähän: se on työaikataulukossa.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä minä toteutin, ja miten kokeilin sitä?</span><textarea rows="3" data-journal-field="work" placeholder="Oma skripti, scene tai dokumentin osa ja mitä havaitsit kokeillessasi"></textarea></label>
+              <label><span>Mikä ratkaisu oli minun, ja miksi valitsin sen?</span><textarea rows="2" data-journal-field="reason" placeholder="Yksi oma ratkaisu, vaihtoehto jota harkitsit ja perustelu"></textarea></label>
+              <label><span>Mistä oma työnäytteeni löytyy, ja mitä teen seuraavaksi?</span><textarea rows="2" data-journal-field="evidence" placeholder="Commit-linkki, testitapaus tai tiedoston polku. Ensimmäinen asia, josta jatkat."></textarea></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+        <article class="week-card" id="week-17" data-week="17">
+          <p class="view-eyebrow" data-week-label="Työviikko 17 / 18">Vaihe 5 · Luovutus · Työviikko 17 / 18</p>
+          <h1 class="view-title">Luovutusversio</h1>
+
+          <section class="card view-section week-target" aria-labelledby="week-17-target">
+            <h2 id="week-17-target">Tältä valmis tulos näyttää</h2>
+            <figure class="project-figure">
+              <img src="assets/viikot/viikko-17.svg" width="880" height="420" alt="Luonnos: luovutuspaketin kansiopuu. Ylimpänä kolme zip-tiedostoa, joiden nimissä ovat pelin nimi, alusta ja v1.0, sitten Unity-projektien kansiot ja kansio docs viidellä ohjetiedostolla. Vieressä luovutuslista, jonka kaikki kohdat on rastitettu." loading="lazy">
+              <figcaption>Luonnos tavoitellusta toiminnasta. Se ei ole kuvakaappaus valmiista pelistä, ja teidän pelinne näyttää omaltanne.</figcaption>
+            </figure>
+            <p>Luovutuspaketissa ovat kolme pelattavaa versiota, muokattavat Unity-projektit ja kansio docs ohjeineen. Jokainen luovutuslistan kohta löytyy paketista, ja asiakkaat ovat kuitanneet vastaanoton.</p>
+            <h3>Viikon lopussa kokeilette</h3>
+            <p>Avatkaa luovutuspaketti puhtaassa kloonissa tai toisella koneella, käynnistäkää jokainen peli ja käykää luovutuslistan kohdat läpi. Jokainen kohta löytyy paketista.</p>
+          </section>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta – tätä asiakkaiden toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon osaaminen</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 4</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="17-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Ajakaa regressiotesti puhtaasta kloonista</span></label>
+            <label class="task-row"><input type="checkbox" data-task="17-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kokoa ja tarkista oman pelisi luovutusbuild</span></label>
+            <label class="task-row"><input type="checkbox" data-task="17-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Luovuttakaa paketti asiakkaille</span></label>
+            <label class="task-row"><input type="checkbox" data-task="17-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjoita oman työsi kuvaus täsmälinkein</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain jos jäät jumiin – kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> Luovutusversion versiomerkintä (tag v1.0), luovutuslista, asiakkaiden kuittaus päätöslokissa, oma luovutusbuildisi ja <code>docs/tekijat.md</code>.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="17">
+            <div class="journal-heading">
+              <h2>Oma viikkoyhteenveto</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Henkilökohtainen: vastaa omasta työstäsi, älä parisi. Kentät tallentuvat vain tähän selaimeen. Lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä. Työaikaa ei kirjata tähän: se on työaikataulukossa.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä minä toteutin, ja miten kokeilin sitä?</span><textarea rows="3" data-journal-field="work" placeholder="Oma skripti, scene tai dokumentin osa ja mitä havaitsit kokeillessasi"></textarea></label>
+              <label><span>Mikä ratkaisu oli minun, ja miksi valitsin sen?</span><textarea rows="2" data-journal-field="reason" placeholder="Yksi oma ratkaisu, vaihtoehto jota harkitsit ja perustelu"></textarea></label>
+              <label><span>Mistä oma työnäytteeni löytyy, ja mitä teen seuraavaksi?</span><textarea rows="2" data-journal-field="evidence" placeholder="Commit-linkki, testitapaus tai tiedoston polku. Ensimmäinen asia, josta jatkat."></textarea></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+
+        <article class="week-card" id="week-18" data-week="18">
+          <p class="view-eyebrow" data-week-label="Työviikko 18 / 18">Vaihe 5 · Luovutus · Työviikko 18 / 18</p>
+          <h1 class="view-title">Oman osaamisen esittely</h1>
+
+          <section class="card view-section week-target" aria-labelledby="week-18-target">
+            <h2 id="week-18-target">Tältä valmis tulos näyttää</h2>
+            <figure class="project-figure">
+              <img src="assets/viikot/viikko-18.svg" width="880" height="420" alt="Luonnos: kaksi esittelyvuoroa vierekkäin, opiskelija A ja opiskelija B. Kummankin kohdalla on oma koodinpätkä, oma testitapaus ja oma näyttömatriisin rivi täsmälinkkeineen. Alla merkintä: ohjaajan pyytämä muutos toimii Play-tilassa." loading="lazy">
+              <figcaption>Luonnos tavoitellusta toiminnasta. Se ei ole kuvakaappaus valmiista pelistä, ja teidän pelinne näyttää omaltanne.</figcaption>
+            </figure>
+            <p>Kumpikin esittelee omat ratkaisunsa: peli toiminnassa, oma koodi, oma korjattu virhe ja omat testit. Ohjaaja valitsee yhden ratkaisun, ja opiskelija tekee siihen pienen muutoksen, joka toimii Play-tilassa.</p>
+            <h3>Viikon lopussa kokeilette</h3>
+            <p>Ohjaaja valitsee yhden oman ratkaisusi. Selität sen ja teet siihen pienen muutoksen, ja muutos toimii Play-tilassa. Oman näyttömatriisisi jokaisella rivillä on täsmälinkki tai merkintä täydennettävästä.</p>
+          </section>
+
+          <div class="week-kicker" data-week-kicker hidden>
+            <span class="section-label" data-week-kicker-label>Viikon jälkeen</span>
+            <p data-week-kicker-text></p>
+          </div>
+          <blockquote class="week-quote" data-week-quote hidden>
+            <p class="quote-text" data-quote-text></p>
+            <p class="quote-source">Toimeksiannosta – tätä asiakkaiden toivetta tämä viikko toteuttaa</p>
+          </blockquote>
+          <p class="week-connection" data-week-connection hidden></p>
+          <div class="week-why-grid grid-2" data-week-why hidden>
+            <div class="card"><p class="section-label" data-why-deliverable-label>Tällä viikolla valmistuu</p><p data-why-deliverable-text></p></div>
+            <div class="card"><p class="section-label">Miksi tämä tehdään</p><p data-why-why-text></p></div>
+          </div>
+          <div class="week-skills" data-week-skills hidden>
+            <p class="skill-tags-label" data-skills-label>Viikon osaaminen</p>
+            <ul class="skill-tags" data-skills-list></ul>
+          </div>
+
+          <section class="view-section">
+            <div class="section-heading-row"><h2>Viikon tehtävät</h2><span class="week-status" data-week-status>0 / 4</span></div>
+            <div class="task-list">
+            <label class="task-row"><input type="checkbox" data-task="18-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kokoa oma näyttömatriisisi täsmälinkein</span></label>
+            <label class="task-row"><input type="checkbox" data-task="18-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Valmistele oma esittelysi</span></label>
+            <label class="task-row"><input type="checkbox" data-task="18-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Esittele ratkaisusi ja tee muutos ohjaajan pyynnöstä</span></label>
+            <label class="task-row"><input type="checkbox" data-task="18-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjoita itsearviointi omin esimerkein</span></label>
+            </div>
+          </section>
+
+          <section class="view-section lesson-instructions">
+            <div class="section-heading-row"><h2>Näin etenet</h2><span class="lesson-label" data-lesson-label>ohjattu työ · tee järjestyksessä</span></div>
+            <nav class="resource-actions" data-week-resources hidden aria-label="Tämän viikon pohjat ja työkalut"></nav>
+            <ol data-lesson-list><li><span class="step-n">1</span><span><strong>Askel.</strong> Ohje.</span></li></ol>
+          </section>
+
+          <details class="impl-help" data-week-help hidden>
+            <summary><span data-help-title>Tarvitsen toteutusapua</span><small>avaa vain jos jäät jumiin – kokeile ensin itse</small></summary>
+            <div class="impl-help-content" data-help-content></div>
+          </details>
+
+          <div class="day-rhythm" data-week-days hidden>
+            <p class="section-label">Viikon päivärytmi</p>
+            <div class="day-grid" data-day-grid></div>
+          </div>
+
+          <div class="outcome-grid">
+            <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> <code>project-docs/omat/OMA-KANSIO/nayttomatriisi.md</code>, <code>project-docs/omat/OMA-KANSIO/esittely.md</code>, esittelyssä tehdyn muutoksen commit ja <code>project-docs/omat/OMA-KANSIO/itsearviointi.md</code>.</p></div>
+          </div>
+
+          <section class="week-journal" data-week-journal="18">
+            <div class="journal-heading">
+              <h2>Oma viikkoyhteenveto</h2>
+              <div class="journal-actions-top">
+                <button class="button button-secondary button-pill" type="button" data-open-view="ailoki">+ Kirjaa AI-apu</button>
+                <button class="button button-secondary button-pill" type="button" data-open-view="paivakirja">Koko päiväkirja →</button>
+              </div>
+            </div>
+            <p class="journal-lead">Henkilökohtainen: vastaa omasta työstäsi, älä parisi. Kentät tallentuvat vain tähän selaimeen. Lataus ja kirjattujen viikkojen tilanne ovat Projektipäiväkirja-näkymässä. Työaikaa ei kirjata tähän: se on työaikataulukossa.</p>
+            <p class="journal-record" data-journal-record></p>
+            <div class="journal-fields">
+              <label><span>Mitä minä toteutin, ja miten kokeilin sitä?</span><textarea rows="3" data-journal-field="work" placeholder="Oma skripti, scene tai dokumentin osa ja mitä havaitsit kokeillessasi"></textarea></label>
+              <label><span>Mikä ratkaisu oli minun, ja miksi valitsin sen?</span><textarea rows="2" data-journal-field="reason" placeholder="Yksi oma ratkaisu, vaihtoehto jota harkitsit ja perustelu"></textarea></label>
+              <label><span>Mistä oma työnäytteeni löytyy, ja mitä teen seuraavaksi?</span><textarea rows="2" data-journal-field="evidence" placeholder="Commit-linkki, testitapaus tai tiedoston polku. Ensimmäinen asia, josta jatkat."></textarea></label>
+            </div>
+            <span data-journal-status>Ei vielä kirjattu</span>
+          </section>
+
+          <nav class="week-pager" data-week-pager aria-label="Viikkojen välillä siirtyminen"></nav>
+        </article>
+      </section>
+
+      <!-- ============ SUUNNITELMA ============ -->
+      <section class="view" data-view="suunnitelma" id="view-suunnitelma">
+        <p class="view-eyebrow">Ennen peliä · täytetään yhdessä työviikolla 2</p>
+        <h1 class="view-title">Projektisuunnitelma: kolme prototyyppiä ja työnjako</h1>
+        <p class="view-lead">Suunnitelma on yhteinen. Täyttäkää lomake yhdessä yhdellä koneella, ladatkaa tiedosto ja viekää se repositoryyn. Toisen selaimessa lomake saa jäädä tyhjäksi. Kun rajaus tai työnjako muuttuu, kirjatkaa muutos ensin päätöslokiin <code>project-docs/paatokset.md</code> ja päivittäkää sitten suunnitelma. Vanhoja merkintöjä ei poisteta. <strong>Ajoitus:</strong> työviikko 2, päivitetään tarvittaessa.</p>
+
+        <figure class="view-figure">
+          <div class="image-stage"><img src="assets/suunnitelma-luonnos.svg" width="1128" height="540" alt="Suunnitelman kolme osaa: kenelle pelit tehdään ja miksi, kolme peliä ja rajaus sekä työnjako ja vastuut."></div>
+          <figcaption><strong>Suunnitelma ennen peliä</strong> Suunnitelmassa on kolme osaa: kenelle pelit tehdään ja miksi, kolme peliä rajauksineen sekä työnjako ja vastuut.</figcaption>
+        </figure>
+
+        <div class="plan-prefilled" aria-label="Suunnitelman esitäytetty pohja">
+          <p class="section-label">Esitäytetty pohja · toimeksiannosta · tulee mukaan tiedostoon</p>
+          <article><h3>1 · Kenelle prototyypit tehdään ja miten niitä käytetään</h3><p>Asiakkaat Caito ja Toni käyttävät prototyyppejä oppilaitoksen pelimusiikin kurssin harjoitusmateriaalina. Kurssin opiskelijat tekevät peleihin musiikit ja ääniefektit ja liittävät ne peleihin. Prototyyppien pitää toimia ja olla ymmärrettäviä ilman ääniä, ja toisen tekijän pitää löytää koodista olennaiset pelitapahtumat.</p></article>
+          <article><h3>2 · Jokaisen prototyypin vaatimukset</h3><p>Yksi selkeä päämekaniikka ja ydinsilmukka. Yksi pieni kenttä tai pelialue, kierros noin 1–3 minuuttia. Käyttökelpoiset ja yhtenäiset grafiikat; valmiita assetteja käyttöehtojen mukaan. Alkuvalikko, jossa ovat käynnistys ja lyhyt ohjausohje. Selkeä kierroksen päättyminen. Uudelleenaloitus ja paluu alkuvalikkoon. Riittävä visuaalinen palaute. Testattu peliversio ja muokattava Unity-projekti.</p></article>
+          <article><h3>Lisätavoitteet ja rajaus</h3><p>Neljäs ja viides prototyyppi vasta, kun kolme on testattu ja luovutuskunnossa ja lisätyöstä on sovittu. Projektiin eivät kuulu laaja tarina, moninpeli, verkkopalvelut, tallennusjärjestelmä, laajat kenttäsarjat, äänentoistokoodi eikä erillinen äänijärjestelmä.</p></article>
+          <article><h3>6 · Asiakkaiden ja ohjaajien vahvistettavat asiat</h3><p>Kolme aihetta · Unity-versio · kohdealusta · tekoälyn käytön pelisäännöt · repositoryn julkisuus ja tekijänimet · lisenssi ja luovutustapa · tutkinnon perusteet ja osat kummallekin · katselmointien ajat ja osallistujat.</p><small class="plan-open-note">Tyhjä kenttä on oikea tulos, kunnes asia on sovittu. Näitä ei päätetä itse eikä tekoälyllä.</small></article>
+          <article><h3>7 · Ohjausvastuut (ehdotus, vahvistetaan aloituksessa)</h3><p>Matti ja Antti seuraavat viikoittain etenemistä, työnjakoa ja tuen tarvetta. Caito ja Toni arvioivat sovituissa välikatselmoinneissa tuotosten soveltuvuutta musiikkikurssille. Opiskelijat esittelevät tulokset, kirjaavat palautteen ja ehdottavat jatkotoimet.</p></article>
+        </div>
+
+        <form class="plan-form" data-plan-form>
+          <div class="plan-form-heading">
+            <div><p class="section-label section-label-accent">Yhteiset päätökset</p><h3>Teidän päätöksenne – te omistatte nämä</h3><p>Kolmen pelin pienimmät toimivat versiot, rajaus, projektijako, nimeäminen, työnjako, scene-käytäntö, seuranta ja testaus ovat teidän päätöksiänne perusteluineen. Asiakkaiden ja ohjaajien päätökset kirjataan avoimiksi asioiksi, kunnes ne on sovittu.</p></div>
+            <span data-plan-status>Ei vielä aloitettu</span>
+          </div>
+
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Projektin nimi<input type="text" data-plan-field="nimi" placeholder="ProtoPaja tai oma nimenne kokonaisuudelle"></label><span class="plan-row-week">viikko 2</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Tekijät<input type="text" data-plan-field="tekijat" placeholder="Ohjaajan kanssa sovitut nimet tai tunnukset"></label><span class="plan-row-week">viikko 1</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Ensimmäinen peli<input type="text" data-plan-field="peli1" placeholder="Päämekaniikka, tavoite, kierroksen alku ja loppu, uudelleenaloitus ja pienin toimiva versio"></label><span class="plan-row-week">viikko 2</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Toinen peli<input type="text" data-plan-field="peli2" placeholder="Päämekaniikka, tavoite, kierroksen alku ja loppu, uudelleenaloitus ja pienin toimiva versio"></label><span class="plan-row-week">viikot 2 ja 7</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Kolmas peli<input type="text" data-plan-field="peli3" placeholder="Päämekaniikka, tavoite, kierroksen alku ja loppu, uudelleenaloitus ja pienin toimiva versio"></label><span class="plan-row-week">viikot 2 ja 9</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Mitä jätämme pois<input type="text" data-plan-field="rajaus" placeholder="Vähintään kolme houkuttelevaa lisäystä, joita ette tee"></label><span class="plan-row-week">viikko 2</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Erilliset Unity-projektit vai yksi projekti<input type="text" data-plan-field="projektijako" placeholder="Valinta ja kaksi perustelua omista mittauksista; vertailu päätöslokissa"></label><span class="plan-row-week">viikko 2</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Scenejen, skriptien ja resurssien nimeäminen<input type="text" data-plan-field="nimeaminen" placeholder="Kansiot ja nimeämissääntö, esimerkiksi skriptin nimi kertoo, mitä se tekee"></label><span class="plan-row-week">viikko 2</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Työnjako ja henkilökohtaiset vastuut<input type="text" data-plan-field="tyonjako" placeholder="Vastuutaulukon periaate: jokainen osa-alue kummallekin vähintään kerran"></label><span class="plan-row-week">viikko 2</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Saman scenen yhtäaikaisen muokkauksen ehkäisy<input type="text" data-plan-field="scenekaytanto" placeholder="Miten sovitte ja merkitsette scenen vuoron"></label><span class="plan-row-week">viikot 2 ja 3</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Tehtävien ja työajan seuranta<input type="text" data-plan-field="seuranta" placeholder="Mikä tehtävätaulu, missä työaikataulukko ja kuka päivittää"></label><span class="plan-row-week">viikko 1</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-oma">OMA</span><label class="plan-row-field">Testaus ja luovutus<input type="text" data-plan-field="testaus" placeholder="Miten testaatte toistenne osat ja miten kokoatte luovutuksen"></label><span class="plan-row-week">viikko 2</span></div>
+          <p class="plan-calibration"><strong>Ei riitä:</strong> ”Teemme kolme peliä ja jaamme työt tasan.” <strong>Riittää:</strong> ”Tasohyppelyn pienin toimiva versio: pelaaja kerää viisi tähteä ja pääsee maaliin, piikki palauttaa lähtöön, kierros noin kaksi minuuttia. Ensimmäisessä pelissä toinen tekee päämekaniikan ja grafiikan ja toinen kierroksen logiikan ja valikon. Toisessa pelissä vastuut vaihtuvat.”</p>
+
+          <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">ASIAKAS</span><label class="plan-row-field">Kolme aihetta<input type="text" data-plan-field="aiheet" placeholder="Jätä tyhjäksi, kunnes asiakkaat ovat vahvistaneet"></label><span class="plan-row-week">avoin asia</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Unity-versio<input type="text" data-plan-field="unityversio" placeholder="Jätä tyhjäksi, kunnes ohjaaja on päättänyt"></label><span class="plan-row-week">avoin asia</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">ASIAKAS</span><label class="plan-row-field">Kohdealusta<input type="text" data-plan-field="alusta" placeholder="Jätä tyhjäksi, kunnes asiakkaat ja ohjaajat ovat vahvistaneet"></label><span class="plan-row-week">avoin asia</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Tekoälyn käytön pelisäännöt<input type="text" data-plan-field="tekoaly" placeholder="Jätä tyhjäksi, kunnes ohjaajat ovat päättäneet"></label><span class="plan-row-week">avoin asia</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Repositoryn julkisuus ja tekijänimet<input type="text" data-plan-field="repojulkisuus" placeholder="Jätä tyhjäksi, kunnes ohjaaja on päättänyt; siihen asti yksityinen"></label><span class="plan-row-week">avoin asia</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Lisenssi ja luovutustapa<input type="text" data-plan-field="lisenssi" placeholder="Jätä tyhjäksi, kunnes ohjaaja on päättänyt"></label><span class="plan-row-week">avoin asia</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Tutkinnon perusteet ja osat kummallekin<input type="text" data-plan-field="perusteversio" placeholder="Jätä tyhjäksi, kunnes ohjaajat ovat vahvistaneet"></label><span class="plan-row-week">avoin asia</span></div>
+          <div class="plan-row"><span class="plan-tag plan-tag-ohjaaja">OHJAAJA</span><label class="plan-row-field">Katselmointien ajat ja osallistujat<input type="text" data-plan-field="katselmoinnit" placeholder="Kirjaa vain roolit, ei nimiä"></label><span class="plan-row-week">avoin asia</span></div>
+
+          <div class="plan-actions">
+            <button class="button button-primary" type="button" data-plan-export>Lataa suunnitelma.md</button>
+            <small>Tallenna tiedosto polkuun <code>project-docs/suunnitelma.md</code> ja tee commit. Päivitä, kun asiakkaat ja ohjaajat vastaavat avoimiin asioihin.</small>
+          </div>
+          <p class="plan-ai-note"><strong>Muista:</strong> älkää antako tekoälyn päättää puolestanne. Asiakkaiden ja ohjaajien asioita ei päätetä itse eikä tekoälyllä. Jos käytit tekoälyä ideointiin, kirjaa se omaan AI-lokiisi.</p>
+        </form>
+      </section>
+
+      <!-- ============ PROJEKTIPÄIVÄKIRJA (arkisto) ============ -->
+      <section class="view" data-view="paivakirja" id="view-paivakirja">
+        <p class="view-eyebrow">Henkilökohtainen · viedään omaan kansioon joka viikko</p>
+        <h1 class="view-title">Projektipäiväkirja</h1>
+        <p class="view-lead">Päiväkirja on henkilökohtainen: kumpikin kirjoittaa omansa. Viikon merkintä kirjoitetaan viikkonäkymässä työvaiheiden alla. Tämä näkymä on arkisto: näet, mitkä viikot on kirjattu, ja lataat koko päiväkirjan tiedostona omaan kansioosi.</p>
+
+        <div class="card card-tint journal-summary-card">
+          <div><span class="big" data-journal-count>0 / 18 viikkoa kirjattu</span><p>Tiedosto: <code>project-docs/omat/OMA-KANSIO/projektipaivakirja.md</code></p></div>
+          <button class="button button-primary" type="button" data-export-journal>Lataa koko projektipäiväkirja (.md)</button>
+        </div>
+
+        <div class="journal-weeks-grid" data-journal-weeks></div>
+      </section>
+
+      <!-- ============ AI-LOKI ============ -->
+      <section class="view" data-view="ailoki" id="view-ailoki">
+        <p class="view-eyebrow">Henkilökohtainen · pelisäännöt sovitaan ohjaajien kanssa</p>
+        <h1 class="view-title">Sinä teet päätökset. Tekoäly on apuväline.</h1>
+        <p class="view-lead">Tekoälyn käytön pelisäännöt sovitaan ohjaajien kanssa työviikoilla 1–2. Ydin tehdään itse: kirjoitat, selität ja muutat omat skriptisi ja vastaat käyttämästäsi koodista. Jos käyttö sallitaan, kirjaa jokainen merkittävä käyttö tähän: kysymys tai tarve, käytetty apu, oma muutos ja tapa, jolla tarkistit tuloksen.</p>
+
+        <figure class="view-figure">
+          <div class="image-stage"><img src="assets/tekoalyapu.svg" width="1500" height="1000" alt="Tekoälyn käytön neljä askelta: kysy, tarkista, testaa, kirjaa. Pelisäännöt sovitaan ohjaajien kanssa, ja oma koodi tehdään ja selitetään itse."></div>
+          <figcaption>Kysy → tarkista → testaa → kirjaa ja opi.</figcaption>
+        </figure>
+
+        <div class="ai-rules">
+          <div class="card"><span class="num">01</span><h3>Ymmärrä</h3><p>Selitä omin sanoin, mitä ratkaisu tekee ja miksi se sopii juuri teidän peliinne.</p></div>
+          <div class="card"><span class="num">02</span><h3>Tarkista</h3><p>Vertaa Unityn dokumentaatioon. Tekoäly voi keksiä metodeja, joita sovitussa Unity-versiossa ei ole.</p></div>
+          <div class="card"><span class="num">03</span><h3>Testaa</h3><p>Kokeile itse Play-tilassa ja buildissa. Älä koskaan keksi testituloksia tai palautetta.</p></div>
+          <div class="card"><span class="num">04</span><h3>Kirjaa</h3><p>Merkitse merkittävä käyttö, oma muutoksesi ja se, mitä opit.</p></div>
+        </div>
+
+        <form class="ai-log-form" data-ai-form>
+          <div class="grid-2">
+            <label>Päivä ja työkalu<input type="text" name="tool" required placeholder="Työviikko 4 / työkalun nimi"></label>
+            <label>Mihin pyysit apua?<input type="text" name="question" required placeholder="Miksi OnTriggerEnter2D ei käynnisty, kun pelaaja koskettaa maalia?"></label>
+          </div>
+          <label>Mitä käytit, muutit tai hylkäsit, ja miten tarkistit?<textarea name="used" rows="2" required placeholder="Selitys: toisella objektilla pitää olla Rigidbody 2D. Lisäsin sen pelaajaan itse. Tarkistin Unityn ohjeesta ja kokeilin Play-tilassa."></textarea></label>
+          <label>Aineistoviite<input type="text" name="reference" required placeholder="Commit-linkki / tehtävätaulun kortti / testitapaus T05"></label>
+          <div class="privacy-row">
+            <label class="privacy-confirm"><input type="checkbox" name="privacy" required> Vahvistan, etten syöttänyt henkilötietoja, salaisuuksia tai luottamuksellista aineistoa.</label>
+            <button class="button button-primary" type="submit">Lisää lokiin</button>
+          </div>
+        </form>
+        <div class="ai-log-meta">
+          <span><span data-log-count>0 merkintää</span> · loki tulee mukaan koko projektipäiväkirjan lataukseen.</span>
+          <button class="button button-secondary" type="button" data-export-log>Lataa vain AI-loki (.md)</button>
+        </div>
+        <div class="log-entries" data-ai-entries aria-live="polite"><p class="empty-state">Ei merkintöjä vielä.</p></div>
+      </section>
+
+      <!-- ============ NÄYTTÖMATRIISI ============ -->
+      <section class="view" data-view="naytto" id="view-naytto">
+        <p class="view-eyebrow">Henkilökohtainen · näyttöaineisto syntyy työn aikana</p>
+        <h1 class="view-title">Näyttömatriisi</h1>
+        <p class="view-lead">Työnäyte on yksi tuotos, joka osoittaa osaamisesi: commit, testitapaus, tiedosto tai versiomerkintä. Kumpikin kokoaa oman matriisinsa omilla työnäytteillään, koska arviointi on henkilökohtainen. Sama työnäyte voi kelvata useaan kohtaan. Kokoa työviikolla 18 jokaisesta kohdasta täsmälinkki tiedostoon <code>project-docs/omat/OMA-KANSIO/nayttomatriisi.md</code>. Tämän sivun rastit ovat oma muistilistasi.</p>
+
+        <div class="card card-tint view-section">
+          <p class="section-label section-label-accent">Vahvistetaan kummallekin erikseen</p>
+          <p style="margin-top:8px">Vaatimukset on haettu ePerusteista: Tieto- ja viestintätekniikan perustutkinto, diaarinumero OPH-6216-2025. Samat 32 vaatimusta ovat sanatarkasti myös aiemmassa perusteessa OPH-4948-2021. Ohjaajat vahvistavat kummankin perusteversion ja suoritettavat tutkinnon osat ennen näyttöä. Täytä oma matriisisi vain niiltä osin, jotka sinulle vahvistetaan.</p>
+        </div>
+
+        <div class="card card-tint evidence-summary"><strong data-evidence-count>0 / 32</strong><span>osaamisvaatimuksen työnäyte merkitty</span></div>
+
+        <details class="matrix" open>
+          <summary><span class="matrix-title">Ohjelmointi</span><span class="matrix-count">11 vaatimusta</span></summary>
+          <div class="matrix-list">
+            <p class="matrix-group">Opiskelija käyttää ohjelmistokehitysympäristöä</p>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p1"><span><strong>käyttää ohjelmointieditoria tai kehitysympäristöä</strong> Oma työnäyte: Oma Unity-asennus ja versiotiedot, oma muutos kokeiluprojektiin ja oma skripti kokeilukenttään (työviikot 1, 3).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p2"><span><strong>etsii ja korjaa virheitä ohjelmakoodista</strong> Oma työnäyte: Kummankin vähintään kaksi virheenkorjausketjua oman koodin virheestä: havainto, toistamisohje, syy, korjauscommit, uusintatesti ja regressiotesti (työviikot 9, 13, 16).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p3"><span><strong>testaa ohjelman toimintoja</strong> Oma työnäyte: Testimatriisin testitapaukset, joissa opiskelija on testin tekijä: odotettu tulos ennen ajoa, parin osien testaus ja koottujen versioiden testit (työviikot 4, 8, 14).</span></label>
+            <p class="matrix-group">Opiskelija ohjelmoi</p>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p4"><span><strong>käyttää rakenteista ohjelmointia toteutuksissa</strong> Oma työnäyte: Omat skriptit päämekaniikkaan ja kierroksen logiikkaan: metodit, ehdot, silmukat ja kentät, esimerkiksi kentän luku datasta silmukoilla (työviikot 4, 7, 10).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p5"><span><strong>kirjoittaa ylläpidettävää ohjelmakoodia</strong> Oma työnäyte: Valikon uudelleenkäyttö prefabina, toiston poisto omaan metodiin ja oman koodin siistiminen nimineen ja alkukommentteineen (työviikot 8, 15).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p6"><span><strong>tulkitsee suunnitelmia ja toteuttaa käyttöliittymän tai sen osia</strong> Oma työnäyte: Oma käyttöliittymäosa vastuutaulukon mukaan: alkuvalikko ja ohje tai loppuruutu, uudelleenaloitus ja palaute suunnitelman mukaan (työviikot 5, 8, 11).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p7"><span><strong>tulkitsee suunnitelmia ja toteuttaa ohjelmiston toimintoja</strong> Oma työnäyte: Oma osa päämekaniikasta ja kierroksesta suunnitelman ja kortin odotetun tuloksen mukaan (työviikot 4, 7, 10).</span></label>
+            <p class="matrix-group">Opiskelija toimii ohjelmistokehitystiimin jäsenenä</p>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p8"><span><strong>sopii tehtävistä tiimin muiden jäsenten kanssa</strong> Oma työnäyte: Vastuutaulukko, tehtävätaulun kortit vastuuhenkilöineen ja jokaisen toteutusviikon kahden osan sopiminen (työviikot 2, 4, 7).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p9"><span><strong>etsii ratkaisuvaihtoehtoja ja ratkoo ongelmia yhdessä tiimin kanssa</strong> Oma työnäyte: Projektijaon vertailu omin mittauksin ja ristiriitaharjoitus, jossa kumpikin ratkaisee ristiriidan (työviikot 2, 3).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p10"><span><strong>arvioi ratkaisujen toimivuuden yhdessä tiimin kanssa</strong> Oma työnäyte: Vertaisarvio parin osista ja toistensa pelien testaus koottuina versioina (työviikot 9, 14).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p11"><span><strong>arvioi omaa toimintaa tiimin jäsenenä</strong> Oma työnäyte: Aukkolista ja kolmen virkkeen arvio omasta toiminnasta työviikolla 12 sekä itsearviointi täsmälinkein työviikolla 18 (työviikot 12, 18).</span></label>
+          </div>
+        </details>
+        <details class="matrix">
+          <summary><span class="matrix-title">Ohjelmistokehittäjänä toimiminen</span><span class="matrix-count">14 vaatimusta</span></summary>
+          <div class="matrix-list">
+            <p class="matrix-group">Opiskelija kommunikoi asiakkaan kanssa</p>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s1"><span><strong>selvittää kehitystiimin kanssa asiakkaan tarpeet</strong> Oma työnäyte: Kysymyslista asiakkaille ja ohjaajille vastauksineen ja aiheiden vahvistuspyyntö asiakkaille (työviikot 1, 2).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s2"><span><strong>viestii tekniset asiat asiakaslähtöisesti</strong> Oma työnäyte: Esittely asiakkaille ilman teknistä sanastoa (roolit vaihtuvat työviikkojen 6 ja 12 välillä) ja oma osuus jatkotyöstöohjeesta (työviikot 6, 12, 15).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s3"><span><strong>osallistuu version katselmointiin</strong> Oma työnäyte: Asiakaskokeilu ja asiakaskatselmointi: toinen esittelee ja toinen kirjaa palautteen asiakkaan sanoin, roolit vaihtuvat (työviikot 6, 12).</span></label>
+            <p class="matrix-group">Opiskelija suunnittelee ohjelmiston toteutuksen</p>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s4"><span><strong>asettaa kehitystiimin kanssa toteutettavat toiminnot tärkeysjärjestykseen</strong> Oma työnäyte: Pienimmän toimivan version rajaus, palautekorttien järjestys ja korjausten järjestys asiakkaiden kanssa (työviikot 2, 6, 12).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s5"><span><strong>jakaa kehitystiimin kanssa toteutettavat toiminnot tehtäviksi</strong> Oma työnäyte: Ensimmäisen pelin toiminnot tehtävätaulun korteiksi valmis kun -ehtoineen (työviikko 2).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s6"><span><strong>suunnittelee ja arvioi kehitystiimin kanssa tehtävien toteuttamista</strong> Oma työnäyte: Tuntiarviot korteissa ja oma arvio–toteumavertailu työaikataulukosta (työviikot 2, 6).</span></label>
+            <p class="matrix-group">Opiskelija kehittää ohjelmiston toimintalogiikkaa ja tietovarastoyhteyksiä</p>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s7"><span><strong>kehittää ohjelmiston toimintalogiikkaa</strong> Oma työnäyte: Kierroksen päättymisen logiikka, ratkaisun tunnistus tai ajastin voitto- ja häviöehtoineen, loppu vain kerran (työviikot 4, 11).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s8"><span><strong>valitsee ohjelmistoon sopivan tietovaraston</strong> Oma työnäyte: Sama kenttä kahdella tallennustavalla (ScriptableObject ja tekstitiedosto tai JSON), muutoskokeilu ja perusteltu valinta päätöslokissa (työviikko 7).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s9"><span><strong>toteuttaa yhteyden tietovarastoon</strong> Oma työnäyte: Kentän luku datasta, alkutilanteeseen palautus samasta datasta tai kolmannen pelin asetukset datasta; kumpikin tekee vähintään yhden (työviikot 7, 8, 10).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s10"><span><strong>hyödyntää rajapintoja ja käsittelee tietoa</strong> Oma työnäyte: Unityn API:n käyttö (esimerkiksi Physics2D, SceneManager, JsonUtility) ja datan käsittely virheellisen syötteen kestävästi (työviikot 7, 10).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s11"><span><strong>arvioi ohjelmiston tietoturvaa</strong> Oma työnäyte: Oma tietoturva-arvio: luovutettavien tiedostojen tarkistus, ulkoisten pakettien alkuperä ja testitapaus virheellisellä datalla (työviikko 14).</span></label>
+            <p class="matrix-group">Opiskelija versioi ja julkaisee ohjelman</p>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s12"><span><strong>käyttää versionhallintaa</strong> Oma työnäyte: Kummankin commitit koko projektin ajan, versiomerkinnät v0.1, v0.2, v0.9 ja v1.0 (työviikot 1, 17).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s13"><span><strong>liittää ohjelman osan olemassa olevaan versioon</strong> Oma työnäyte: Oma yhdistämiscommit ristiriitaharjoituksesta ja oman prefabin tai scene-osan liittäminen parin muutosten päälle yhteiseen versioon (työviikot 3, 5).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="s14"><span><strong>julkaisee ohjelman tuotantoympäristöön</strong> Oma työnäyte: Oman pelin luovutusbuild puhtaasta kloonista, nimetty paketti ja luovutus asiakkaille sovitulla tavalla (työviikko 17).</span></label>
+          </div>
+        </details>
+        <details class="matrix">
+          <summary><span class="matrix-title">Ohjelmiston toteuttaminen ohjelmistokomponenttikirjastolla</span><span class="matrix-count">7 vaatimusta</span></summary>
+          <div class="matrix-list">
+            <p class="matrix-group">Opiskelija käyttää kehitysympäristöä</p>
+            <label class="matrix-row"><input type="checkbox" data-evidence="k1"><span><strong>ottaa käyttöön ja konfiguroi ohjelmistokomponenttikirjaston käyttöön soveltuvan kehittämisympäristön</strong> Oma työnäyte: Unity Hub, sovittu versio ja moduulit, projektin luonti ja versionhallinta-asetukset (Force Text, Visible Meta Files) (työviikot 1, 3).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="k2"><span><strong>selvittää ohjelmistokomponenttikirjaston tarjoamat mahdollisuudet ja rajoitteet</strong> Oma työnäyte: Kolme omaa havaintoa Unityn mahdollisuuksista ja rajoitteista commit-linkkeineen tai kuvakaappauksineen (työviikko 6).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="k3"><span><strong>käyttää ohjelmistokomponenttikirjaston tärkeimpiä toimintoja ja työkaluja</strong> Oma työnäyte: Komponentit, colliderit ja triggerit, Rigidbody 2D, Canvas ja painikkeet, prefabit ja Build Profiles omissa osissa (työviikot 4, 7, 10).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="k4"><span><strong>tuo kehittämisympäristöön ulkoisia komponentteja</strong> Oma työnäyte: Grafiikkapaketin tuonti ja käyttöehtojen tarkistus vastuutaulukon mukaan (grafiikkavastaava vaihtuu), Input System -paketti (työviikot 5, 7, 10).</span></label>
+            <p class="matrix-group">Opiskelija toteuttaa ohjelmiston ohjelmistokomponenttikirjastolla</p>
+            <label class="matrix-row"><input type="checkbox" data-evidence="k5"><span><strong>suunnittelee, toteuttaa ja testaa ohjelmiston ohjelmistokomponenttikirjastoa käyttäen</strong> Oma työnäyte: Pelien suunnittelu, toteutus omina osina ja testaus koottuina versioina komponenttikirjastoa käyttäen (työviikot 2, 8, 11, 14).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="k6"><span><strong>julkaisee ohjelmiston asiakkaan ympäristöön</strong> Oma työnäyte: Oman pelin build asiakkaan alustalle puhtaasta kloonista ja sen testaus ilman editoria (työviikko 17).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="k7"><span><strong>dokumentoi ohjelmiston sovitulla tavalla</strong> Oma työnäyte: Oma osuus avaamis- ja jatkotyöstöohjeesta, kokeiltu parilla ja työviikolla 16 ulkopuolisella (työviikko 15).</span></label>
+          </div>
+        </details>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="view" style="max-width:var(--main-max);margin:0 auto;padding:0 40px 40px">
+    <div class="site-footnote">
+      <span><strong>ProtoPaja</strong> · Ohjattu näyttöprojekti parille · Unity · C# · Git · 2026 · Aikataulu ja ohjausvastuut ovat ehdotuksia, jotka vahvistetaan aloituksessa.</span>
+      <img class="ai-modified-badge" src="assets/ai-modified-badge.svg" width="84" height="28" alt="Sisältöä on muokattu tekoälyllä">
+    </div>
+  </footer>
+</body>
+</html>
