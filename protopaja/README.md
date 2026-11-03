@@ -7,7 +7,7 @@ Asiakkaat ovat Caito ja Toni, ohjaajat Matti ja Antti.
 ## Mikä tämä sivusto on
 
 Tämä kansio sisältää **ohjaussivuston**, ei pelejä. Sivusto ohjaa parin 18 työviikon läpi:
-toimeksianto, kokonaiskuva, suunnitelmalomake, 18 viikkokorttia (74 työvaihetta, 384
+toimeksianto, kokonaiskuva, suunnitelmalomake, 18 viikkokorttia (77 työvaihetta, 410
 osatehtävää), työtapa, termit, projektipäiväkirja, AI-loki, näyttömatriisi (32 vaatimusta)
 sekä paperinen työpaketti ja opettajan näyttösuunnitelma.
 

@@ -90,12 +90,14 @@ def svg(W, H, body, heading):
 W, H = 880, 420
 K = {}
 
-K[1] = (window(30, 70, 380, 290, "Unity · Kokeilu · Game", "#93c5fd") + r(170, 170, 90, 90, RED, "#7f1d1d", 4)
-        + t(220, 345, "Play-tila: molemmat muutokset näkyvät", 16, INK, "middle")
+K[1] = (window(30, 70, 380, 290, "Unity · oma scene · Game", "#93c5fd")
+        + '<g transform="rotate(25 215 215)">' + r(170, 170, 90, 90, RED, "#7f1d1d", 4) + '</g>'
+        + '<path d="M300 150 A 105 105 0 0 1 320 260" fill="none" stroke="#1f1d1a" stroke-width="3" marker-end="url(#nuoli)"/>'
+        + r(52, 300, 336, 34, PAPER, INK, 17) + t(220, 323, "välilyönti kääntää suunnan", 16, INK, "middle", "bold")
         + r(470, 70, 380, 290, PAPER, INK, 10) + t(490, 103, "GitHub · Commits", 18, INK, weight="bold")
-        + r(490, 125, 340, 82, SOFT) + t(506, 158, "Vaihda taustaväri siniseksi", 18) + t(506, 186, "tekijä: opiskelija B", 16, MUTED)
-        + r(490, 222, 340, 82, SOFT) + t(506, 255, "Lisää punainen neliö", 18) + t(506, 283, "tekijä: opiskelija A", 16, MUTED)
-        + arrow(470, 215, 418, 215) + t(445, 395, "Pull origin hakee parin commitin omalle koneelle", 16, MUTED, "middle"))
+        + r(490, 125, 340, 82, SOFT) + t(506, 158, "Lähtötasokokeilu: oma scene", 18) + t(506, 186, "tekijä: opiskelija B", 16, MUTED)
+        + r(490, 222, 340, 82, SOFT) + t(506, 255, "Lähtötasokokeilu: oma scene", 18) + t(506, 283, "tekijä: opiskelija A", 16, MUTED)
+        + t(445, 395, "Kumpikin hakee parin muutokset ja avaa parin scenen omalla koneellaan", 16, MUTED, "middle"))
 
 def peli_kortti(x, nimi):
     return (r(x, 62, 250, 150, PAPER, INK, 10) + t(x + 16, 92, nimi, 18, ACC, weight="bold")

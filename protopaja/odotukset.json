@@ -6,8 +6,8 @@
   "paivaton": true,
   "generoitu": "2026-11-03",
   "lahde": {
-    "sisalto.js": "a46b432dc9a377d5",
-    "index.html": "77726e042c788b81"
+    "sisalto.js": "aa2f05eecdfbc35e",
+    "index.html": "90d37cabb3511baf"
   },
   "viikot": [
     1,
@@ -97,9 +97,9 @@
         },
         {
           "id": "1-4",
-          "teksti": "Tee oma näkyvä muutos ja vie se versionhallintaan",
-          "valmis": "GitHubin commit-historiassa on oma commitisi omalla nimelläsi, ja muutos näkyy Play-tilassa.",
-          "tallenna": "Commitin linkki omaan päiväkirjaasi."
+          "teksti": "Tee lähtötasokokeilu ja vie se versionhallintaan",
+          "valmis": "Neliö pyörii omassa scenessäsi, ja välilyönti kääntää suunnan. Oma commitisi on historiassa omalla nimelläsi, ja ohjaaja on käynyt kokeilun kanssasi läpi.",
+          "tallenna": "Commitin linkki ja `project-docs/omat/OMA-KANSIO/lahtotaso.md` omaan päiväkirjaasi."
         },
         {
           "id": "1-5",
@@ -108,14 +108,20 @@
           "tallenna": "Kuvakaappaus taulusta polkuun `project-docs/tyonaytteet/viikko-1/tehtavataulu.png` ja päivitetty `README.md`."
         }
       ],
-      "nayta": "Repositoryn commit-historia, jossa on kummankin oma commit, `project-docs/kysymykset.md` ja `project-docs/tyonaytteet/viikko-1/tehtavataulu.png`.",
-      "tuotos": "`project-docs/kysymykset.md`, yhteinen repository, Unity-kokeiluprojekti, kummankin oma commit sekä tehtävätaulu ja työaikataulukko.",
-      "valmis": "Kumpikin hakee toisen muutoksen omalle koneelleen ja näkee Play-tilassa molemmat muutokset. Repositoryn historiassa on kummankin oma commit omalla nimellä.",
+      "nayta": "Repositoryn commit-historia, jossa on kummankin oma commit, `project-docs/kysymykset.md`, oma `project-docs/omat/OMA-KANSIO/lahtotaso.md` ja `project-docs/tyonaytteet/viikko-1/tehtavataulu.png`.",
+      "tuotos": "`project-docs/kysymykset.md`, yhteinen repository, Unity-kokeiluprojekti, kummankin lähtötasokokeilu ja oma commit sekä tehtävätaulu ja työaikataulukko.",
+      "valmis": "Kumpikin hakee toisen muutokset omalle koneelleen ja avaa parin scenen Play-tilassa: neliö pyörii, ja välilyönti kääntää suunnan. Repositoryn historiassa on kummankin oma commit omalla nimellä.",
       "tarkistukset": [
         {
           "id": "tiedosto:project-docs/kysymykset.md",
           "tyyppi": "tiedosto",
           "polku": "project-docs/kysymykset.md",
+          "lahde": "auto"
+        },
+        {
+          "id": "tiedosto:project-docs/omat/OMA-KANSIO/lahtotaso.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/omat/OMA-KANSIO/lahtotaso.md",
           "lahde": "auto"
         },
         {
@@ -227,33 +233,39 @@
         },
         {
           "id": "3-2",
-          "teksti": "Harjoittele ristiriidan ratkaisua tekstitiedostolla",
-          "valmis": "Historiassa on yhdistämiscommit, jonka olet tehnyt itse, eikä `README.md` sisällä Gitin merkkirivejä.",
-          "tallenna": "Oman yhdistämiscommitisi linkki omaan päiväkirjaasi."
-        },
-        {
-          "id": "3-3",
           "teksti": "Rakentakaa ensimmäisen pelin kokeilukenttä",
           "valmis": "Kokeilukenttä on repositoryssa, pelaaja putoaa lattialle Play-tilassa, ja tehtävätaulussa on kaksi päämekaniikan korttia eri vastuuhenkilöillä ja odotetuilla tuloksilla.",
           "tallenna": "Kenttäcommit repositoryyn ja kuvakaappaus korteista polkuun `project-docs/tyonaytteet/viikko-3/kortit.png`."
         },
         {
-          "id": "3-4",
+          "id": "3-3",
           "teksti": "Toteuta oma osasi päämekaniikasta",
           "valmis": "Oma osasi toimii Play-tilassa kortin odotetun tuloksen mukaan, ja commit on historiassa omalla nimelläsi.",
           "tallenna": "Oman commitisi linkki tehtävätaulun korttiin ja omaan päiväkirjaasi."
         },
         {
-          "id": "3-5",
+          "id": "3-4",
           "teksti": "Kootkaa kokeiluversio sovitulle alustalle",
           "valmis": "Koottu kokeiluversio käynnistyy ilman Unity-editoria, ja molemmat päämekaniikan osat toimivat siinä.",
           "tallenna": "Kuvakaappaus käynnissä olevasta buildista polkuun `project-docs/tyonaytteet/viikko-3/build.png` ja alustan tiedot päätöslokiin."
+        },
+        {
+          "id": "3-5",
+          "teksti": "Selitä ja muuta oma osasi ohjaajalle",
+          "valmis": "Olet selittänyt oman skriptisi ohjaajalle, pyydetty muutos toimii Play-tilassa, ja selitä ja muuta -tiedostossa on tämän viikon merkintä.",
+          "tallenna": "`project-docs/omat/OMA-KANSIO/selita-ja-muuta.md` ja muutoksen commit-linkki omaan päiväkirjaasi."
         }
       ],
-      "nayta": "Rakennecommit, oma yhdistämiscommitisi, oma päämekaniikkacommitisi ja `project-docs/tyonaytteet/viikko-3/build.png`.",
-      "tuotos": "Sovittu projektirakenne, ensimmäisen pelin kokeilukenttä, kummankin osa päämekaniikasta, ratkaistu harjoitusristiriita ja koottu kokeiluversio.",
+      "nayta": "Rakennecommit, oma päämekaniikkacommitisi pseudokoodeineen, `project-docs/tyonaytteet/viikko-3/build.png` ja `project-docs/omat/OMA-KANSIO/selita-ja-muuta.md`.",
+      "tuotos": "Sovittu projektirakenne, ensimmäisen pelin kokeilukenttä, kummankin osa päämekaniikasta pseudokoodeineen, koottu kokeiluversio ja kummankin selitä ja muuta -merkintä.",
       "valmis": "Käynnistäkää koottu kokeiluversio ilman Unity-editoria ja liikkukaa kokeilukentässä. Kumpikin näyttää omalla koneellaan toisen viimeisimmän muutoksen, ja historiassa on kummankin commit.",
       "tarkistukset": [
+        {
+          "id": "tiedosto:project-docs/omat/OMA-KANSIO/selita-ja-muuta.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/omat/OMA-KANSIO/selita-ja-muuta.md",
+          "lahde": "auto"
+        },
         {
           "id": "paivakirja:3",
           "tyyppi": "paivakirja",
@@ -277,31 +289,37 @@
       "tehtavat": [
         {
           "id": "4-1",
+          "teksti": "Harjoittele ristiriidan ratkaisua tekstitiedostolla",
+          "valmis": "Historiassa on yhdistämiscommit, jonka olet tehnyt itse, eikä `README.md` sisällä Gitin merkkirivejä.",
+          "tallenna": "Oman yhdistämiscommitisi linkki omaan päiväkirjaasi."
+        },
+        {
+          "id": "4-2",
           "teksti": "Sopikaa kierroksen päättymisen kaksi omaa osaa",
           "valmis": "Päättymisehto ja kaksi korttia eri vastuuhenkilöille on kirjattu tehtävätauluun, ja liitoskohdan metodin nimi on sovittu.",
           "tallenna": "Kuvakaappaus korteista polkuun `project-docs/tyonaytteet/viikko-4/kortit.png`."
         },
         {
-          "id": "4-2",
+          "id": "4-3",
           "teksti": "Toteuta oma osasi kierroksen lopusta",
           "valmis": "Oma osasi toimii Play-tilassa odotetun tuloksen mukaan, kierros ei jatku päättymisen jälkeen, ja oma commitisi on historiassa.",
           "tallenna": "Oman commitisi linkki korttiin ja omaan päiväkirjaasi."
         },
         {
-          "id": "4-3",
+          "id": "4-4",
           "teksti": "Aloittakaa äänitapahtumien kuvaus",
           "valmis": "Äänitapahtumataulukossa ovat ensimmäisen pelin tapahtumat tiedostoineen ja metodeineen, ja jokainen tapahtuma löytyi koodista taulukon avulla.",
           "tallenna": "`docs/aanitapahtumat.md` repositoryyn."
         },
         {
-          "id": "4-4",
+          "id": "4-5",
           "teksti": "Testatkaa toistenne osat",
           "valmis": "Testitapaukset T01 ja T02 ovat testimatriisissa testaajineen ja tuloksineen. Jos virhe jäi korjaamatta, kortti on taulussa keskeneräisenä ja apua on pyydetty.",
           "tallenna": "`project-docs/testimatriisi.md`, korjauscommit ja uusintatestin tulos repositoryyn."
         }
       ],
-      "nayta": "Oma commitisi, `docs/aanitapahtumat.md` ja `project-docs/testimatriisi.md`, jossa ovat testitapaukset T01 ja T02 testaajineen.",
-      "tuotos": "Kierroksen päättymisen tunnistus, loppuviesti, `docs/aanitapahtumat.md` ja testimatriisin ensimmäiset testitapaukset.",
+      "nayta": "Oma yhdistämiscommitisi, oma commitisi kierroksen lopusta, `docs/aanitapahtumat.md` ja `project-docs/testimatriisi.md`, jossa ovat testitapaukset T01 ja T02 testaajineen.",
+      "tuotos": "Ratkaistu harjoitusristiriita, kierroksen päättymisen tunnistus, loppuviesti, `docs/aanitapahtumat.md` ja testimatriisin ensimmäiset testitapaukset.",
       "valmis": "Käynnistäkää peli ja pelatkaa kierros sovittuun päättymiseen asti. Loppuviesti vastaa tapahtunutta, eikä peli jatku normaalisti sen jälkeen. Uuden testikierroksen saa tällä viikolla aloittaa editorin Play-tilasta. Historiassa on kummankin commit, ja kumpikin on testannut toisen osan.",
       "tarkistukset": [
         {
@@ -419,25 +437,19 @@
         },
         {
           "id": "6-5",
-          "teksti": "Kirjaa kolme Unityn rajoitetta, jotka tulivat sinulle vastaan",
-          "valmis": "Omassa kansiossasi on kolme havaintoa, joissa jokaisessa on oma tilanne, ratkaisu ja commit-linkki tai kuvakaappaus.",
-          "tallenna": "Tiedosto `project-docs/omat/OMA-KANSIO/unity-havainnot.md` repositoryyn."
+          "teksti": "Selitä ja muuta oma osasi ohjaajalle",
+          "valmis": "Olet selittänyt oman skriptisi ohjaajalle, pyydetty muutos toimii Play-tilassa, ja selitä ja muuta -tiedostossa on tämän viikon merkintä.",
+          "tallenna": "`project-docs/omat/OMA-KANSIO/selita-ja-muuta.md` ja muutoksen commit-linkki omaan päiväkirjaasi."
         }
       ],
-      "nayta": "Kokeiluversion versiomerkintä (tag v0.1), `project-docs/asiakaspalaute.md`, palautekortit, oma arvio–toteumavertailusi ja `project-docs/omat/OMA-KANSIO/unity-havainnot.md`.",
-      "tuotos": "Kokeiluversio versiomerkinnällä (tag v0.1), `project-docs/asiakaspalaute.md`, palautteen kortit, kummankin arvio-toteumavertailu ja Unity-havainnot.",
-      "valmis": "Lukekaa palautekirjaus ääneen asiakkaalle tai ohjaajalle ja pyytäkää vahvistus, että kirjaus vastaa sanottua. Jokaisesta korjaustarpeesta on kortti tehtävätaulussa.",
+      "nayta": "Kokeiluversion versiomerkintä (tag v0.1), `project-docs/asiakaspalaute.md` jatkotyöstökokeiluineen, palautekortit, oma arvio–toteumavertailusi ja `project-docs/omat/OMA-KANSIO/selita-ja-muuta.md`.",
+      "tuotos": "Kokeiluversio versiomerkinnällä (tag v0.1), `project-docs/asiakaspalaute.md` jatkotyöstökokeiluineen, palautteen kortit, kummankin arvio–toteumavertailu ja selitä ja muuta -merkintä.",
+      "valmis": "Lukekaa palautekirjaus ääneen asiakkaalle tai ohjaajalle ja pyytäkää vahvistus, että kirjaus vastaa sanottua. Jokaisesta korjaustarpeesta on kortti tehtävätaulussa, ja kirjauksessa näkyy, löysikö asiakas äänitapahtuman ja näkyikö lokiviesti oikealla hetkellä.",
       "tarkistukset": [
         {
           "id": "tiedosto:project-docs/asiakaspalaute.md",
           "tyyppi": "tiedosto",
           "polku": "project-docs/asiakaspalaute.md",
-          "lahde": "auto"
-        },
-        {
-          "id": "tiedosto:project-docs/omat/OMA-KANSIO/unity-havainnot.md",
-          "tyyppi": "tiedosto",
-          "polku": "project-docs/omat/OMA-KANSIO/unity-havainnot.md",
           "lahde": "auto"
         },
         {
@@ -476,30 +488,24 @@
         {
           "id": "7-2",
           "teksti": "Kokeilkaa kenttädataa kahdella tallennustavalla",
-          "valmis": "Päätöslokissa on sama kenttä kahdella tavalla, kokemus kummankin muuttamisesta ja perusteltu valinta.",
+          "valmis": "Päätöslokissa on kokemus kummankin tallennustavan muuttamisesta ja perusteltu valinta, ja koko kenttä on valitussa muodossa.",
           "tallenna": "Molemmat kokeiluversiot ja päätöslokin merkintä repositoryyn."
         },
         {
           "id": "7-3",
           "teksti": "Toteuta oma osasi toisen pelin mekaniikasta",
-          "valmis": "Oma osasi toimii Play-tilassa kortin odotetun tuloksen mukaan, virheellinen syöte ei kaada peliä, ja oma commitisi on historiassa.",
+          "valmis": "Kaikki kolme välitulosta toimivat Play-tilassa, virheellinen syöte ei kaada peliä, ja historiassa on oma commitisi jokaisesta välituloksesta.",
           "tallenna": "Oman commitisi linkki korttiin ja omaan päiväkirjaasi."
         },
         {
           "id": "7-4",
-          "teksti": "Tuokaa toisen pelin grafiikat",
-          "valmis": "Toisen pelin grafiikat ovat yhtenäiset, ruututyypit erottuvat muodon perusteella, ja assettiluettelossa on rivi jokaisesta uudesta assetista.",
-          "tallenna": "Grafiikkacommit ja päivitetty `docs/assetit-ja-lisenssit.md` repositoryyn."
-        },
-        {
-          "id": "7-5",
           "teksti": "Testatkaa toistenne osat",
           "valmis": "Testimatriisissa ovat toisen pelin testitapaukset testaajineen ja tuloksineen, ja datan muutos näkyi pelissä.",
           "tallenna": "Päivitetty `project-docs/testimatriisi.md` ja korjauscommitit repositoryyn."
         }
       ],
-      "nayta": "Oma commitisi, päätöslokin tallennustapavertailu, kenttädatan tiedosto ja testimatriisin uudet testitapaukset.",
-      "tuotos": "Toisen pelin projekti tai kansio, kenttädatan tallennustavan vertailu, kentän luku datasta, päämekaniikka, grafiikat ja testitapaukset.",
+      "nayta": "Omat commitisi jokaisesta välituloksesta, päätöslokin tallennustapavertailu, kenttädatan tiedosto ja testimatriisin uudet testitapaukset.",
+      "tuotos": "Toisen pelin projekti tai kansio, kenttädatan tallennustavan valinta, kentän luku datasta ja päämekaniikka välituloksina sekä testitapaukset.",
       "valmis": "Esimerkiksi pulmapelissä: siirtäkää laatikko tavoiteruutuun ja yrittäkää siirtää laatikkoa seinää päin. Muuttakaa kenttädatassa yksi ruutu ja käynnistäkää peli: muutos näkyy. Jos teette muuta peliä, sopikaa vastaava kokeilu työvaiheessa 1. Historiassa on kummankin commit, ja kumpikin on testannut toisen osan.",
       "tarkistukset": [
         {
@@ -543,13 +549,19 @@
         },
         {
           "id": "8-4",
+          "teksti": "Tuokaa toisen pelin grafiikat",
+          "valmis": "Toisen pelin grafiikat ovat yhtenäiset, ruututyypit erottuvat muodon perusteella, ja assettiluettelossa on rivi jokaisesta uudesta assetista.",
+          "tallenna": "Grafiikkacommit ja päivitetty `docs/assetit-ja-lisenssit.md` repositoryyn."
+        },
+        {
+          "id": "8-5",
           "teksti": "Testatkaa toistenne osat ja koko kierros",
           "valmis": "Testimatriisissa ovat toisen pelin kierroksen testitapaukset testaajineen, ja kolme peräkkäistä kierrosta menee läpi.",
           "tallenna": "Päivitetty `project-docs/testimatriisi.md` ja korjauscommitit repositoryyn."
         }
       ],
-      "nayta": "Oma commitisi, valikkocommit, päivitetty `README.md` ja testimatriisin kierrostestit.",
-      "tuotos": "Ratkaisun tunnistus, loppuruutu, alkutilanteeseen palautus datasta, valikkoprefab toisessa pelissä ja testitapaukset.",
+      "nayta": "Oma commitisi, valikkocommit, grafiikkacommit, päivitetty `README.md` ja testimatriisin kierrostestit.",
+      "tuotos": "Ratkaisun tunnistus, loppuruutu, alkutilanteeseen palautus datasta, valikkoprefab ja grafiikat toisessa pelissä sekä testitapaukset.",
       "valmis": "Esimerkiksi pulmapelissä: ratkaiskaa pulma, palauttakaa alkutilanne kesken kierroksen, aloittakaa uudelleen ja palatkaa alkuvalikkoon. Jos teette muuta peliä, kokeilkaa vastaavasti kierroksen loppu, uudelleenaloitus ja paluu. Historiassa on kummankin commit, ja kumpikin on testannut toisen osan.",
       "tarkistukset": [
         {
@@ -596,9 +608,15 @@
           "teksti": "Rajatkaa kolmas peli ja pyytäkää rajaukselle vahvistus",
           "valmis": "Kolmannen pelin pienin toimiva versio, päättymisehto ja pois jätettävät asiat on kirjattu, kortit on arvioitu, ja rajaus on vahvistettu tai merkitty avoimeksi.",
           "tallenna": "Päivitetty `project-docs/suunnitelma.md` ja päätöslokin merkintä repositoryyn."
+        },
+        {
+          "id": "9-5",
+          "teksti": "Selitä ja muuta oma osasi ohjaajalle",
+          "valmis": "Olet selittänyt oman skriptisi ohjaajalle, pyydetty muutos toimii Play-tilassa, ja selitä ja muuta -tiedostossa on tämän viikon merkintä.",
+          "tallenna": "`project-docs/omat/OMA-KANSIO/selita-ja-muuta.md` ja muutoksen commit-linkki omaan päiväkirjaasi."
         }
       ],
-      "nayta": "`project-docs/omat/OMA-KANSIO/vertaisarvio-peli2.md`, oma virheenkorjausketjusi testimatriisissa, päivitetty `project-docs/asiakaspalaute.md` ja kolmannen pelin rajaus.",
+      "nayta": "`project-docs/omat/OMA-KANSIO/vertaisarvio-peli2.md`, oma virheenkorjausketjusi testimatriisissa, päivitetty `project-docs/asiakaspalaute.md`, kolmannen pelin rajaus ja `project-docs/omat/OMA-KANSIO/selita-ja-muuta.md`.",
       "tuotos": "Kummankin vertaisarvio, kummankin virheenkorjausketju, asiakkaiden kommentti toisesta pelistä ja kolmannen pelin vahvistettu rajaus.",
       "valmis": "Ajakaa vertaisarvion testitapaukset uudelleen korjausten jälkeen. Kaikki estäviksi merkityt virheet on korjattu, ja kummallakin on yksi valmis virheenkorjausketju.",
       "tarkistukset": [
@@ -696,12 +714,24 @@
           "teksti": "Testatkaa toistenne osat ja koko kierros",
           "valmis": "Testimatriisissa ovat kolmannen pelin kierroksen testitapaukset testaajineen, ja kolme peräkkäistä kierrosta menee läpi.",
           "tallenna": "Päivitetty `project-docs/testimatriisi.md` ja korjauscommitit repositoryyn."
+        },
+        {
+          "id": "11-4",
+          "teksti": "Kirjaa kolme Unityn rajoitetta, jotka tulivat sinulle vastaan",
+          "valmis": "Omassa kansiossasi on kolme havaintoa, joissa jokaisessa on oma tilanne, ratkaisu ja commit-linkki tai kuvakaappaus.",
+          "tallenna": "Tiedosto `project-docs/omat/OMA-KANSIO/unity-havainnot.md` repositoryyn."
         }
       ],
-      "nayta": "Oma commitisi, valikon liitos ja testimatriisin voitto-, häviö- ja uudelleenaloitustestit.",
+      "nayta": "Oma commitisi, valikon liitos, testimatriisin voitto-, häviö- ja uudelleenaloitustestit ja `project-docs/omat/OMA-KANSIO/unity-havainnot.md`.",
       "tuotos": "Kierroksen ajastin, voitto ja häviö, loppuruutu, valikko, visuaalinen palaute ja testitapaukset.",
       "valmis": "Esimerkiksi toimintapelissä: pelatkaa yksi kierros loppuun, esimerkiksi 60 sekunnin selviytyminen, ja yksi häviöön. Aloittakaa uudelleen ja palatkaa alkuvalikkoon. Jos teette muuta peliä, kokeilkaa vastaavasti molemmat loput. Historiassa on kummankin commit, ja kumpikin on testannut toisen osan.",
       "tarkistukset": [
+        {
+          "id": "tiedosto:project-docs/omat/OMA-KANSIO/unity-havainnot.md",
+          "tyyppi": "tiedosto",
+          "polku": "project-docs/omat/OMA-KANSIO/unity-havainnot.md",
+          "lahde": "auto"
+        },
         {
           "id": "paivakirja:11",
           "tyyppi": "paivakirja",
