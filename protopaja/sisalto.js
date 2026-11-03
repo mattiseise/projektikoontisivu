@@ -136,6 +136,19 @@ window.NAYTTOPROJEKTI = {
     ]
   },
 
+  /* ---- oppimispolun katkoskohdat (moottori v2.8.6, tarkista.js kohta 20) ----
+   * Ks. skillin references/katkoskohdat.md. Tunnukset ovat tehtäväkorttien tunnuksia. */
+  oppimispolku: {
+    lahtotaso: "1-4",
+    suunnitteluEnnenKoodia: "pseudokoodi",
+    suunnittelunPoikkeukset: { "7-2": "tallennustapojen vertailu: opiskelija kirjoittaa dataa, ei toimintalogiikkaa" },
+    selitaJaMuuta: ["3-5", "6-5", "9-5"],
+    siirtokokeilu: ["6-2", "16-1"],
+    kuorma: {
+      poikkeamat: { 1: "aloitusviikko: Gitin, Unityn ja tehtävätaulun peruskäsitteet otetaan käyttöön ohjatusti yksi kerrallaan, ja lähtötasokokeilu kertoo ohjaajalle, kuka tarvitsee tukea ennen ohjelmointia" }
+    }
+  },
+
   /* ---- sanasto ----
      Vain tämän projektin käyttämät termit. Jokainen termi selitetään myös siinä
      kohdassa, jossa se tulee ensimmäisen kerran vastaan; tämä lista on kertausta
@@ -159,7 +172,7 @@ window.NAYTTOPROJEKTI = {
     { termi: "ristiriita", nimi: "Merge conflict", selite: "Kaksi ihmistä on muuttanut saman tiedoston samaa kohtaa, eikä Git osaa valita, kumpi muutos jää. Unityn scene-tiedoston ristiriita on työläs ratkaista, ja siksi samaa sceneä muokkaa kerrallaan yksi.", viikko: 4 },
     { termi: "GameObject", nimi: "Scenen esine", selite: "Mikä tahansa sceneen lisätty asia: pelaaja, seinä, kamera tai painike. GameObjectin toiminta tulee siihen liitetyistä komponenteista.", viikko: 3 },
     { termi: "komponentti", nimi: "GameObjectin ominaisuus", selite: "GameObjectiin liitetty osa. Esimerkiksi Rigidbody 2D lisää painovoiman, ja oma C#-skriptisi lisää pelin säännön. Komponentteja muokataan Inspector-ikkunassa. Unity on ohjelmistokomponenttikirjasto, koska peli kootaan sen valmiista ja omista komponenteista.", viikko: 3 },
-    { termi: "C#-skripti", nimi: "Oma koodi Unityssä", selite: "Tiedosto, johon kirjoitatte pelin toiminnan C#-kielellä. Skripti liitetään GameObjectiin komponenttina.", viikko: 3 },
+    { termi: "C#-skripti", nimi: "Oma koodi Unityssä", selite: "Tiedosto, johon kirjoitatte pelin toiminnan C#-kielellä. Skripti liitetään GameObjectiin komponenttina.", viikko: 1 },
     { termi: "build", nimi: "Koottu peliversio", selite: "Versio, jonka Unity kokoaa projektista ajettavaksi ilman editoria, esimerkiksi Windows-ohjelmaksi tai selaimessa toimivaksi peliksi. Build testataan aina erikseen, koska se voi toimia eri tavalla kuin editori.", viikko: 3 },
     { termi: "collider", nimi: "Törmäysmuoto", selite: "Komponentti, joka antaa GameObjectille muodon törmäyksiä varten. Trigger-collider ei pysäytä liikettä, vaan ilmoittaa skriptille, kun jokin osuu siihen, esimerkiksi maaliin.", viikko: 4 },
     { termi: "T01", nimi: "Testitapauksen tunnus", selite: "T tarkoittaa testitapausta, ja numero yksilöi sen: T01 on ensimmäinen testitapaus, T02 toinen. Odotettu tulos kirjataan aina ennen ajoa, ja sama tunnus seuraa testiä testimatriisiin.", viikko: 4 },
@@ -422,7 +435,7 @@ window.NAYTTOPROJEKTI = {
           ],
           valmis: "Neliö pyörii omassa scenessäsi, ja välilyönti kääntää suunnan. Oma commitisi on historiassa omalla nimelläsi, ja ohjaaja on käynyt kokeilun kanssasi läpi.",
           tallenna: "Commitin linkki ja `project-docs/omat/OMA-KANSIO/lahtotaso.md` omaan päiväkirjaasi.",
-          sanat: ["scene", "Play-tila"],
+          sanat: ["scene", "Play-tila", "C#-skripti"],
           esimerkki: "”Ennustin, että neliö pyörii kaksi kertaa nopeammin, ja niin kävi. Ehto tarkistaa jokaisella ruudunpäivityksellä, onko välilyönti pohjassa, ja muuttaa suunnan miinusmerkkiseksi. Vaikeinta oli löytää, mihin kohtaan if kirjoitetaan.”",
           eiRiita: "”Kokeilu toimi.” Selityksestä ei näe, ymmärsitkö arvon tai ehdon.",
           apu: {

@@ -26,6 +26,13 @@
  * objektimuodossa, ei viittaavia sanoja, näkymät ja dokumentit linkkeinä, tallenna-kentän
  * tiedostot osatehtävissä, project-docs-tiedostoilla tiedostokortti ja kirjoitustehtävillä
  * esimerkki. Varoitus, jos osatehtävän tee-kentässä on yli kaksi käskylausetta.
+ *
+ * v2.8.6: oppimispolun katkoskohdat (20, opt-in P.oppimispolku): lähtötaso ennen ensimmäistä
+ * ohjelmointiviikkoa, suunnittelu ennen koodia, viikkojen kuorma, säännölliset selitä ja muuta
+ * -tarkistukset, avun hakemisen ketju ja vastaanottajan siirtokokeilu. Raporttitila:
+ *     node tyokalut/tarkista.js --katkokset
+ * tulostaa tarkistuslistan ja viikkojen kuormataulukon tarkastuksen pohjaksi
+ * (skillin references/katkoskohdat.md).
  */
 const fs = require("fs");
 const path = require("path");
@@ -950,6 +957,119 @@ if (linksOn) {
   }
 }
 
+/* ---------- 20. oppimispolun katkoskohdat (v2.8.6, opt-in P.oppimispolku) ----------
+ * Ks. skillin references/katkoskohdat.md. Mekaaninen osa tarkistaa, että kuusi tunnettua
+ * katkoskohtaa on hoidettu rakenteessa. Se ei arvioi, onko hyppy opiskelijalle liian suuri:
+ * se on tarkastajan työ, ja --katkokset tulostaa siihen tarkistuslistan ja kuormataulukon.
+ * Ohjelmointitehtävä = tehtävä, jonka apu.code on täydennettävä koodipohja (TODO ja koodia).
+ */
+const KATKOS_RAPORTTI = process.argv.includes("--katkokset");
+const katkosRivit = [];
+const kuormaRivit = [];
+{
+  const O = P.oppimispolku || null;
+  const tasks = {};
+  workWeeks.forEach((w) => Object.entries(((P.viikkoOhjeet || {})[w] || {}).tehtavat || {}).forEach(([id, d]) => { tasks[id] = { w, d }; }));
+  const weekOf = (id) => (tasks[id] ? tasks[id].w : null);
+  const idx = (w) => workWeeks.indexOf(Number(w));
+  const lista = (v) => [].concat(v || []).map(String);
+  const osaTeksti = (o) => (Array.isArray(o) ? o.join(" ") : o && typeof o === "object" ? [o.otsikko, o.missa, o.tee, o.naet].join(" ") : String(o || ""));
+  const KOODI = /\b(class|void|function|def|public|private|return)\b|=>|[;{]\s*$/m;
+  const onKoodipohja = (d) => Boolean(d.apu && d.apu.code && /TODO/.test(d.apu.code) && KOODI.test(d.apu.code));
+  const lahtotaso = O ? lista(O.lahtotaso) : [];
+  const koodiTehtavat = Object.keys(tasks).filter((id) => onKoodipohja(tasks[id].d) && !lahtotaso.includes(id));
+  const koodiViikot = [...new Set(koodiTehtavat.map(weekOf))].sort((a, b) => idx(a) - idx(b));
+  const rivi = (n, nimi, ok, teksti) => {
+    katkosRivit.push([n, nimi, ok, teksti]);
+    if (!ok) warn(`katkoskohta ${n} (${nimi}): ${teksti}`);
+  };
+  const tunnettu = (kentta, id) => { if (!tasks[id]) { err(`oppimispolku.${kentta}: tehtävää ${id} ei ole`); return false; } return true; };
+
+  /* Kuorma viikoittain: uudet termit (termisto.viikko) ja uudet koodipohjat ovat uusia käsitteitä. */
+  const raja = Object.assign({ uusiaKasitteita: 5, osatehtavia: 32 }, (O && O.kuorma) || {});
+  const kuormaPoikkeamat = (O && O.kuorma && O.kuorma.poikkeamat) || {};
+  workWeeks.forEach((w) => {
+    const tt = Object.values(((P.viikkoOhjeet || {})[w] || {}).tehtavat || {});
+    const osia = tt.reduce((n, d) => n + (d.osat || []).length, 0);
+    const termeja = (P.termisto || []).filter((t) => Number(t.viikko) === w).length;
+    const pohjia = tt.filter(onKoodipohja).length;
+    kuormaRivit.push([w, tt.length, osia, termeja, pohjia]);
+    if (!O) return;
+    const yli = [];
+    if (termeja + pohjia > raja.uusiaKasitteita) yli.push(`${termeja + pohjia} uutta käsitettä (${termeja} termiä, ${pohjia} koodipohjaa; raja ${raja.uusiaKasitteita})`);
+    if (osia > raja.osatehtavia) yli.push(`${osia} osatehtävää (raja ${raja.osatehtavia})`);
+    if (!yli.length) return;
+    const syy = kuormaPoikkeamat[w];
+    if (syy) info(`katkoskohta 3: viikko ${w}: ${yli.join(", ")} (tietoinen poikkeama: ${syy})`);
+    else warn(`katkoskohta 3 (kuorma): viikko ${w}: ${yli.join(", ")} — pilko välituloksiin tai siirrä osa toiselle viikolle`);
+  });
+
+  if (!O) {
+    info("oppimispolku puuttuu: oppimispolun katkoskohtia ei tarkistettu (ks. skillin references/katkoskohdat.md)");
+  } else {
+    /* 1. Lähtötaso tarkistetaan ennen ensimmäistä ohjelmointiviikkoa. */
+    if (!lahtotaso.length) rivi(1, "lähtötaso", false, "lähtötasokokeilu puuttuu (oppimispolku.lahtotaso)");
+    else lahtotaso.filter((id) => tunnettu("lahtotaso", id)).forEach((id) => {
+      const ok = !koodiViikot.length || idx(weekOf(id)) < idx(koodiViikot[0]);
+      rivi(1, "lähtötaso", ok, ok ? `lähtötasokokeilu ${id} viikolla ${weekOf(id)}, ensimmäinen ohjelmointiviikko ${koodiViikot[0] ?? "–"}`
+        : `lähtötasokokeilu ${id} on vasta viikolla ${weekOf(id)}, vaikka ohjelmointi alkaa viikolla ${koodiViikot[0]}`);
+    });
+
+    /* 2. Suunnitelmasta koodiin: jokaisessa ohjelmointitehtävässä on suunnitteluosa. */
+    const poikkeukset = O.suunnittelunPoikkeukset || {};
+    Object.entries(poikkeukset).forEach(([id, syy]) => { if (tunnettu("suunnittelunPoikkeukset", id)) info(`katkoskohta 2: ${id} ilman suunnitteluosaa (tietoinen poikkeama: ${syy})`); });
+    if (!O.suunnitteluEnnenKoodia) rivi(2, "suunnitelmasta koodiin", false, "oppimispolku.suunnitteluEnnenKoodia puuttuu: suunnitteluosaa ei voi tarkistaa");
+    else {
+      const malli = new RegExp(O.suunnitteluEnnenKoodia, "i");
+      const tarkistettavat = koodiTehtavat.filter((id) => !(id in poikkeukset));
+      const puuttuu = tarkistettavat.filter((id) => !(tasks[id].d.osat || []).some((o) => malli.test(osaTeksti(o))));
+      rivi(2, "suunnitelmasta koodiin", !puuttuu.length, puuttuu.length
+        ? `ohjelmointitehtävistä puuttuu suunnittelu ennen koodia: ${puuttuu.join(", ")}`
+        : `${tarkistettavat.length} ohjelmointitehtävää, kaikissa suunnitteluosa`);
+    }
+
+    /* 3. Kuorma: varoitukset yllä; tässä yhteenveto raporttiin. */
+    const raskaat = kuormaRivit.filter(([w, , o, t, k]) => (t + k > raja.uusiaKasitteita || o > raja.osatehtavia) && !kuormaPoikkeamat[w]).map(([w]) => w);
+    katkosRivit.push([3, "kuorma", !raskaat.length, raskaat.length ? `raskaat viikot: ${raskaat.join(", ")}` : `ei viikkoa yli rajojen (${raja.uusiaKasitteita} uutta käsitettä, ${raja.osatehtavia} osatehtävää)`]);
+
+    /* 4. Henkilökohtainen ymmärrys: selitä ja muuta -tarkistukset ohjelmointijakson aikana. */
+    const vali = Number(O.selitaVali || 3);
+    const sel = [...new Set(lista(O.selitaJaMuuta).filter((id) => tunnettu("selitaJaMuuta", id)).map(weekOf))].sort((a, b) => idx(a) - idx(b));
+    if (!koodiViikot.length) rivi(4, "oma ymmärrys", true, "ei ohjelmointitehtäviä");
+    else if (!sel.length) rivi(4, "oma ymmärrys", false, "selitä ja muuta -tarkistukset puuttuvat: kummankin ymmärrys omasta koodista tarkistetaan vasta näytössä");
+    else {
+      const aukot = [];
+      const eka = koodiViikot[0], vika = koodiViikot[koodiViikot.length - 1];
+      if (idx(sel[0]) - idx(eka) > vali - 1) aukot.push(`ensimmäinen vasta viikolla ${sel[0]} (ohjelmointi alkaa viikolla ${eka})`);
+      for (let i = 1; i < sel.length; i++) if (idx(sel[i]) - idx(sel[i - 1]) > vali) aukot.push(`viikkojen ${sel[i - 1]} ja ${sel[i]} välillä yli ${vali} työviikkoa`);
+      const edellinen = sel.filter((w) => idx(w) <= idx(vika)).pop();
+      if (edellinen == null || idx(vika) - idx(edellinen) > vali - 1) aukot.push(`viimeinen ohjelmointiviikko ${vika} jää ilman tarkistusta`);
+      rivi(4, "oma ymmärrys", !aukot.length, aukot.length ? aukot.join("; ") : `tarkistukset viikoilla ${sel.join(", ")}, ohjelmointi viikoilla ${eka}–${vika}`);
+    }
+
+    /* 5. Avun hakeminen: jumiohje, jossa on aikaraja ja avunpyynnön pohja. */
+    const jj = P.josJumissa;
+    const jjTeksti = jj ? JSON.stringify(jj) : "";
+    const ongelmat = [];
+    if (!jj) ongelmat.push("josJumissa puuttuu");
+    else {
+      if (!/\d+\s*(min|minuut|tunn|h\b)/i.test(jjTeksti)) ongelmat.push("jumirajaa (esim. 30 minuuttia) ei ole");
+      if (!/"pohja"\s*:/.test(jjTeksti)) ongelmat.push("avunpyynnön pohja puuttuu");
+    }
+    rivi(5, "avun hakeminen", !ongelmat.length, ongelmat.length ? ongelmat.join(", ") : "jumiohjeessa on aikaraja ja avunpyynnön pohja");
+
+    /* 6. Siirtyminen käyttöön: vastaanottaja kokeilee jatkotyöstöä viimeistään puolivälissä. */
+    const siirto = lista(O.siirtokokeilu).filter((id) => tunnettu("siirtokokeilu", id)).sort((a, b) => idx(weekOf(a)) - idx(weekOf(b)));
+    const puolivali = workWeeks[Math.ceil(workWeeks.length / 2) - 1];
+    if (!siirto.length) rivi(6, "siirtyminen käyttöön", false, "siirtokokeilu puuttuu: tuotoksen vastaanottaja kokeilee jatkotyöstöä vasta luovutuksessa");
+    else {
+      const ok = idx(weekOf(siirto[0])) <= idx(puolivali);
+      rivi(6, "siirtyminen käyttöön", ok, ok ? `siirtokokeilu viikoilla ${siirto.map(weekOf).join(", ")}`
+        : `ensimmäinen siirtokokeilu vasta viikolla ${weekOf(siirto[0])} (puoliväli viikko ${puolivali})`);
+    }
+  }
+}
+
 /* ---------- tulos ---------- */
 const total = allTaskIds.length;
 const matriisiOsa = matrixUsed
@@ -962,4 +1082,13 @@ warnings.forEach((w) => console.log("  HUOM  " + w));
 errors.forEach((e) => console.log("  VIRHE " + e));
 if (!errors.length && !warnings.length) console.log("  Kaikki tarkistukset läpi.");
 else console.log(`\n${errors.length} virhettä, ${warnings.length} huomautusta`);
+if (KATKOS_RAPORTTI) {
+  console.log("\nOppimispolun katkoskohdat (skillin references/katkoskohdat.md)");
+  if (!katkosRivit.length) console.log("  oppimispolku-kenttä puuttuu: vain kuormataulukko");
+  katkosRivit.forEach(([n, nimi, ok, teksti]) => console.log(`  ${n} ${nimi.padEnd(22)} ${ok ? "ok  " : "HUOM"} ${teksti}`));
+  console.log("\nKuorma viikoittain (uusi käsite = sanaston termi tai koodipohja, joka tulee viikolla vastaan)");
+  console.log("  vk  työvaiheita  osatehtäviä  uusia termejä  koodipohjia");
+  kuormaRivit.forEach(([w, t, o, k, p]) => console.log(`  ${String(w).padStart(2)}  ${String(t).padStart(11)}  ${String(o).padStart(11)}  ${String(k).padStart(13)}  ${String(p).padStart(11)}`));
+  console.log("\nArvioi lopuksi tarkastajan kanssa, onko jokin hyppy liian suuri juuri tälle ryhmälle: katkoskohdat.md § Tarkastus.");
+}
 process.exit(errors.length ? 1 : 0);

@@ -53,6 +53,13 @@ vaatimusta ja projektikuvaus). Kierros 1: KORJATTAVA (henkilökohtainen ohjelmoi
 toteutusviikolla, roolinvaihto, viikon 1 järjestys, tekstitehtävien omat artefaktit).
 Kierros 2: **HYVÄKSYTTY 3.11.2026**; kuusi pientä huomiota korjattiin sisällön kirjoitusvaiheessa.
 
+## Oppimispolun katkoskohdat
+
+`sisalto.js`:n `oppimispolku`-kenttä kertoo tarkistusskriptille (kohta 20, moottori v2.8.6), missä
+kuusi tunnettua katkoskohtaa on hoidettu: lähtötasokokeilu 1-4, pseudokoodi jokaisen
+ohjelmointitehtävän alussa, selitä ja muuta -tarkistukset 3-5, 6-5 ja 9-5, jumiohje ja
+jatkotyöstökokeilut 6-2 ja 16-1. Ohje ja tarkastuksen pohja: skillin `references/katkoskohdat.md`.
+
 ## Rakenne
 
 | Tiedosto | Mitä sisältää |
@@ -79,6 +86,7 @@ python3 tyokalut/tee_kuvitukset.py         # yleiset SVG-kuvitukset + faviconit 
 node tyokalut/tee_vaihekuva.js             # vaihekuva sisalto.js:n vaiheista
 npm install docx && node tyokalut/tee_lataukset.js   # docx-tiedostot + tyopaketti-print.html
 node tyokalut/tarkista.js                  # savutesti: index.html ja sisalto.js synkassa
+node tyokalut/tarkista.js --katkokset      # oppimispolun katkoskohdat ja viikkojen kuormataulukko
 ```
 
 Tavoitekuva: `bash <skilli>/scripts/lopputulos_kuva.sh project-docs/lopputulos/proto.html assets/lopputulos.jpg`.
