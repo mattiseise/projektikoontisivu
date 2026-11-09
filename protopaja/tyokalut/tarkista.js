@@ -33,6 +33,11 @@
  *     node tyokalut/tarkista.js --katkokset
  * tulostaa tarkistuslistan ja viikkojen kuormataulukon tarkastuksen pohjaksi
  * (skillin references/katkoskohdat.md).
+ *
+ * v2.8.7: tehtäväkielen ymmärrettävyys (21, aina päällä, vain HUOM-rivejä): tunnetut
+ * vaikeaselkoisen tehtävätekstin merkit, kuten keksityt yhdyssanat, kielikuvat, abstrakti
+ * tekijä, tiivis nominaalityyli ja liian pitkät virkkeet. Lähde: borje-kielenhuolto-skillin
+ * references/tehtavakieli.md (ProtoPajan palaute 11/2026).
  */
 const fs = require("fs");
 const path = require("path");
@@ -1068,6 +1073,58 @@ const kuormaRivit = [];
         : `ensimmäinen siirtokokeilu vasta viikolla ${weekOf(siirto[0])} (puoliväli viikko ${puolivali})`);
     }
   }
+}
+
+/* ---------- 21. tehtäväkielen ymmärrettävyys (v2.8.7, heuristinen) ----------
+ * Ks. borje-kielenhuolto-skillin references/tehtavakieli.md. Etsii opiskelijalle näkyvistä
+ * viikko- ja tehtäväteksteistä tunnettuja vaikeaselkoisen tekstin merkkejä. Kaikki osumat ovat
+ * HUOM-rivejä: heuristiikka ei ymmärrä kieltä. Lue jokainen osuma ja korjaa virke tai totea se
+ * selkeäksi. Tämä ei korvaa Börjen tehtäväkielen tarkistusta eikä opiskelijan ensilukua
+ * (SKILL.md vaihe 5): suurin osa vaikeaselkoisesta tekstistä ei näy yhdestäkään sanasta.
+ * Numero suluissa = tehtavakieli.md:n tunnusmerkki.
+ */
+{
+  const KIELI_SANAT = [
+    [/\b\w*(?:avattavuu|ristiriitariski|projektija[kj]o|kokoamiskulku)\w*/gi, 2, "keksitty yhdyssana tai johdos"],
+    [/\b\w+valmiu(?:s|den|teen|tta|ksi)\b/gi, 2, "-valmius-johdos: kirjoita auki, mitä pitää olla valmiina"],
+    [/\b(?:paljasta\w*|valuu|valuvat|nojaa|nojaavat|nojautuu|on halvinta)\b/gi, 7, "kielikuva tai epämääräinen verbi"],
+    [/\b(?:sama|tämä|se) kulku\b|\bkulku toimii\b/gi, 8, "viittaus ilman kohdetta"],
+    [/\b(?:palaute|palautteensa|suunnitelma|viikko|päätös|kortit|ratkaisu|rajaus)\s+(?:ohjaa|ohjaavat|kantaa|muuttaa|muuttavat|nojaa|nojaavat)\b/gi, 3, "abstrakti asia tekijänä: kirjoita, kuka tekee"],
+    [/\bPäätös tehdään\b/g, 9, "passiivi, vaikka tekijä on opiskelija"]
+  ];
+  const KIELI_OTSIKOT = [[/^Ota aika\.?$/i, 6, "liian lyhyt käsky: esim. ”Ota aikaa, kuinka kauan … kestää”"]];
+  const ABSTRAKTI = /(?:minen|misen|mista|uus|yys|uuden|yyden|uutta|yyttä)$/i;
+  const kieliOsumat = [];
+  const tutki = (paikka, teksti) => {
+    if (typeof teksti !== "string" || !teksti.trim()) return;
+    KIELI_SANAT.forEach(([re, n, selite]) => {
+      const osumat = teksti.match(re);
+      if (osumat) [...new Set(osumat)].forEach((o) => kieliOsumat.push(`${paikka}: (${n}) ${selite}: ”${o}”`));
+    });
+    teksti.split(/(?<=[.!?])\s+/).forEach((virke) => {
+      const sanat = virke.split(/\s+/).filter(Boolean);
+      const abstraktit = sanat.map((s) => s.replace(/[^\p{L}-]/gu, "")).filter((s) => s.length >= 7 && ABSTRAKTI.test(s));
+      if (abstraktit.length >= 3) kieliOsumat.push(`${paikka}: (1) tiivis nominaalityyli: ${abstraktit.join(", ")}`);
+      if (sanat.length > 30) kieliOsumat.push(`${paikka}: virkkeessä ${sanat.length} sanaa (yli 30): pilko kahdeksi`);
+    });
+  };
+  workWeeks.forEach((w) => {
+    const v = (P.viikkoOhjeet || {})[w] || {};
+    ["feature", "connection", "deliverable", "why", "done"].forEach((k) => tutki(`viikko ${w} ${k}`, v[k]));
+    Object.entries(v.tehtavat || {}).forEach(([id, t]) => {
+      tutki(`${id} miksi`, t.miksi);
+      const miksiSanoja = String(t.miksi || "").split(/\s+/).filter(Boolean).length;
+      if (miksiSanoja > 55) kieliOsumat.push(`${id} miksi: ${miksiSanoja} sanaa (yli 55): kerro mitä tehdään ja mitä hyötyä siitä on, 2–3 virkettä`);
+      tutki(`${id} valmis`, t.valmis);
+      (t.osat || []).forEach((o, i) => {
+        const otsikko = Array.isArray(o) ? o[0] : (o && o.otsikko);
+        const teksti = Array.isArray(o) ? o[1] : (o && [o.tee, o.naet].filter(Boolean).join(" "));
+        KIELI_OTSIKOT.forEach(([re, n, selite]) => { if (re.test(String(otsikko || "").trim())) kieliOsumat.push(`${id} osa ${i + 1}: (${n}) ${selite}`); });
+        tutki(`${id} osa ${i + 1}`, teksti);
+      });
+    });
+  });
+  kieliOsumat.forEach((m) => warn(`tehtäväkieli (21) ${m}`));
 }
 
 /* ---------- tulos ---------- */

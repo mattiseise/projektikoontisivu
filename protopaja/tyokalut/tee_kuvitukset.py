@@ -133,8 +133,10 @@ def draw_tyokierto():
             bh = 60 + k * 34
             b.append(rect(x + cw / 2 - (bars * bw) / 2 + k * bw + 4, top + 400 - bh, bw - 8, bh,
                           PANEL2 if k < bars - 1 else ACCENT, r=4))
-        for j, line in enumerate(wrap(step, 16)):
-            b.append(text(x + cw / 2, top + 470 + j * 40, line, size=34))
+        # yli viisi askelta: kapeampi sarake, joten pienempi fontti ja lyhyempi rivi
+        fs, ww = (34, 16) if n <= 5 else (30, max(8, int(cw / 17)))
+        for j, line in enumerate(wrap(step, ww)):
+            b.append(text(x + cw / 2, top + 470 + j * 40, line, size=fs))
         if i < n - 1:
             b.append(arrow(x + cw + (gap - 30) / 2, top + ch / 2 - 15, 30))
     b.append(text(W / 2, H - 70, " → ".join(steps), size=26, fill=TXT2, weight=600))
@@ -211,10 +213,10 @@ def draw_testaus():
     b.append(rect(1235, 380, 10, 220, GOLD))
     b.append(arrow(1215, 590, 34))
     b.append(rect(560, 700, 500, 10, GOLD))
-    b.append(text(W / 2, 780, "Testi on valmis vasta onnistuneen uusintatestin jälkeen.",
+    b.append(text(W / 2, 885, "Testi on valmis vasta onnistuneen uusintatestin jälkeen.",
                   size=30, fill=TXT2, weight=600))
     b.append(rect(240, 380, 10, 220, GOLD))
-    b.append(text(W / 2, 900, "Kirjaa odotettu tulos ennen ajoa. Havainto, syy, korjaus ja uusintatesti kirjataan aina.",
+    b.append(text(W / 2, 940, "Kirjaa odotettu tulos ennen ajoa. Havainto, syy, korjaus ja uusintatesti kirjataan aina.",
                   size=25, fill=TXT2, weight=500))
     save("testauskierros.svg", svg(W, H, "".join(b), CFG.get("testausAlt", "Testauskierros")))
 

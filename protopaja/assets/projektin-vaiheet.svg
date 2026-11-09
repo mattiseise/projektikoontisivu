@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="880" height="844" viewBox="0 0 880 844" role="img" aria-labelledby="title desc">
 <title id="title">ProtoPaja: projektin vaiheet</title>
-<desc id="desc">1. Aloitus ja suunnitelma (työviikot 1–3): Saatte saman Unity-projektin toimimaan kummankin koneella, sovitte kolmesta pelistä ja työnjaosta ja kokoatte ensimmäisen kokeiluversion sovitulle alustalle. Tekninen pohja tehdään ensin, koska kahden tekijän ristiriidat ja alustan ongelmat on halvinta ratkaista, kun peliä ei vielä ole. 2. Ensimmäinen kokonainen prototyyppi (työviikot 4–6): Rakennatte ensimmäisestä pelistä kokonaisen kierroksen, alkuvalikon, uudelleenaloituksen ja visuaalisen palautteen. Asiakkaat kokeilevat peliä työviikolla 6, ja heidän palautteensa ohjaa kahta seuraavaa peliä. 3. Toinen ja kolmas prototyyppi (työviikot 7–12): Teette kaksi seuraavaa peliä samalla rytmillä: ensin päämekaniikka, sitten kokonainen kierros ja lopuksi testaus. Toinen peli vertaisarvioidaan ennen kolmannen aloitusta, ja työviikolla 12 asiakkaat kokeilevat kaikkia kolmea. 4. Testaus ja luovutusvalmius (työviikot 13–16): Korjaatte palautteen perusteella valitut asiat, testaatte kaikki kolme peliä koottuina versioina ja kirjoitatte ohjeet jatkotyöstöä varten. Lopuksi joku muu avaa projektit pelkän kirjallisen ohjeen avulla. 5. Luovutus ja näyttö (työviikot 17–18): Luovutatte asiakkaille sovitun paketin: pelattavat versiot, muokattavat Unity-projektit ja ohjeet. Viimeisellä viikolla kumpikin esittelee omat ratkaisunsa ja tekee niihin muutoksen.</desc>
+<desc id="desc">1. Aloitus ja suunnitelma (työviikot 1–3): Asennat Unityn, teet oman repositoryn ja kokeilet, että osaat tallentaa muutoksesi versionhallintaan. Suunnittelet kolme peliä ja käyt suunnitelman läpi ohjaajan ja asiakkaiden kanssa. Lopuksi teet ensimmäisen kokeiluversion, jota voi pelata ilman Unityä. Teet teknisen pohjan ensin, koska alustan ongelmat on helpompi korjata nyt, kun pelissä on vielä vähän koodia. 2. Ensimmäinen kokonainen prototyyppi (työviikot 4–6): Rakennat ensimmäiseen peliin kokonaisen kierroksen, alkuvalikon, uudelleenaloituksen ja visuaalisen palautteen. Asiakkaat kokeilevat peliä työviikolla 6. Käytät heidän palautettaan, kun teet kaksi seuraavaa peliä. 3. Toinen ja kolmas prototyyppi (työviikot 7–12): Teet kaksi seuraavaa peliä samassa järjestyksessä: ensin päämekaniikka, sitten kokonainen kierros ja lopuksi testaus. Toinen opiskelija testaa toisen pelisi vertaisarviossa ennen kuin aloitat kolmannen. Työviikolla 12 asiakkaat kokeilevat kaikkia kolmea peliä. 4. Testaus, korjaukset ja ohjeet (työviikot 13–16): Korjaat asiakkaiden palautteesta valitut asiat, testaat kaikki kolme peliä buildeina eli versioina, joita pelataan ilman Unityä, ja kirjoitat ohjeen jatkotyöstöä varten. Lopuksi joku projektin ulkopuolinen avaa projektit pelkän kirjallisen ohjeesi avulla. 5. Luovutus ja näyttö (työviikot 17–18): Luovutat asiakkaille sovitun paketin: pelattavat versiot, muokattavat Unity-projektit ja ohjeet. Viimeisellä viikolla esittelet ratkaisusi ja teet niihin muutoksen ohjaajan pyynnöstä.</desc>
 <rect width="880" height="844" fill="#ffffff"/>
 <defs><marker id="nuoli" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="none" stroke="#5c5347" stroke-width="1.4"/></marker></defs>
 <text x="40" y="49" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700">Mitä syntyy missäkin vaiheessa?</text>
@@ -9,8 +9,8 @@
 <text x="45" y="117" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="middle">1</text>
 <text x="112" y="114" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Aloitus ja suunnitelma</text>
 <text x="822" y="114" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="20" text-anchor="end">Työviikot 1–3</text>
-<text x="112" y="150" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="21">Yhteinen repository → suunnitelma → kokeiluversio</text>
-<text x="112" y="180" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="21">Kumpikin on tehnyt oman muutoksen ennen ensimmäistä peliä.</text>
+<text x="112" y="150" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="21">Oma repository → suunnitelma → kokeiluversio</text>
+<text x="112" y="180" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="21">Unity ja versionhallinta toimivat ennen ensimmäistä peliä.</text>
 <path d="M45 136V224" stroke="#d4cbbb" stroke-width="2" marker-end="url(#nuoli)"/>
 <rect x="90" y="230" width="752" height="132" rx="12" fill="#ffffff" stroke="#2f6f8f" stroke-width="2"/>
 <circle cx="45" cy="259" r="24" fill="#2f6f8f"/>
@@ -25,22 +25,22 @@
 <text x="45" y="421" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="middle">3</text>
 <text x="112" y="418" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Toinen ja kolmas prototyyppi</text>
 <text x="822" y="418" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="20" text-anchor="end">Työviikot 7–12</text>
-<text x="112" y="454" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="21">Mekaniikka → kierros → vertaisarvio, kahdesti</text>
+<text x="112" y="454" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="21">Mekaniikka → kierros → testaus, kahdesti</text>
 <text x="112" y="484" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="21">Asiakkaat kokeilevat kaikkia kolmea työviikolla 12.</text>
 <path d="M45 440V528" stroke="#d4cbbb" stroke-width="2" marker-end="url(#nuoli)"/>
 <rect x="90" y="534" width="752" height="132" rx="12" fill="#ffffff" stroke="#7a4f9a" stroke-width="2"/>
 <circle cx="45" cy="563" r="24" fill="#7a4f9a"/>
 <text x="45" y="573" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="middle">4</text>
-<text x="112" y="570" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Testaus ja luovutusvalmius</text>
+<text x="112" y="570" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Testaus, korjaukset ja ohjeet</text>
 <text x="822" y="570" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="20" text-anchor="end">Työviikot 13–16</text>
 <text x="112" y="606" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="21">Korjaukset → testitulokset → ohjeet → vastaanottotesti</text>
-<text x="112" y="636" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="21">Joku muu saa pelit auki ilman teitä.</text>
+<text x="112" y="636" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="21">Joku muu saa pelit auki ilman sinua.</text>
 <path d="M45 592V680" stroke="#d4cbbb" stroke-width="2" marker-end="url(#nuoli)"/>
 <rect x="90" y="686" width="752" height="132" rx="12" fill="#ffffff" stroke="#0f766e" stroke-width="2"/>
 <circle cx="45" cy="715" r="24" fill="#0f766e"/>
 <text x="45" y="725" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="middle">5</text>
 <text x="112" y="722" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Luovutus ja näyttö</text>
 <text x="822" y="722" fill="#5c5347" font-family="Arial, Helvetica, sans-serif" font-size="20" text-anchor="end">Työviikot 17–18</text>
-<text x="112" y="758" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="21">Luovutusversio → paketti asiakkaille → oma esittely</text>
-<text x="112" y="788" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="21">Kumpikin näyttää oman osaamisensa.</text>
+<text x="112" y="758" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="21">Luovutusversio → paketti asiakkaille → esittely</text>
+<text x="112" y="788" fill="#241f1a" font-family="Arial, Helvetica, sans-serif" font-size="21">Näytät osaamisesi omalla työlläsi.</text>
 </svg>

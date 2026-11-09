@@ -95,25 +95,25 @@ K[1] = (window(30, 70, 380, 290, "Unity · oma scene · Game", "#93c5fd")
         + '<path d="M300 150 A 105 105 0 0 1 320 260" fill="none" stroke="#1f1d1a" stroke-width="3" marker-end="url(#nuoli)"/>'
         + r(52, 300, 336, 34, PAPER, INK, 17) + t(220, 323, "välilyönti kääntää suunnan", 16, INK, "middle", "bold")
         + r(470, 70, 380, 290, PAPER, INK, 10) + t(490, 103, "GitHub · Commits", 18, INK, weight="bold")
-        + r(490, 125, 340, 82, SOFT) + t(506, 158, "Lähtötasokokeilu: oma scene", 18) + t(506, 186, "tekijä: opiskelija B", 16, MUTED)
-        + r(490, 222, 340, 82, SOFT) + t(506, 255, "Lähtötasokokeilu: oma scene", 18) + t(506, 283, "tekijä: opiskelija A", 16, MUTED)
-        + t(445, 395, "Kumpikin hakee parin muutokset ja avaa parin scenen omalla koneellaan", 16, MUTED, "middle"))
+        + r(490, 125, 340, 82, SOFT) + t(506, 158, "Lähtötasokokeilu: oma scene", 18) + t(506, 186, "uusin commit", 16, MUTED)
+        + r(490, 222, 340, 82, SOFT) + t(506, 255, "Kokeiluprojekti ja .gitignore", 18) + t(506, 283, "ensimmäinen commit", 16, MUTED)
+        + t(445, 395, "Kloonattu kopio aukeaa, ja oma scene toimii Play-tilassa", 16, MUTED, "middle"))
 
 def peli_kortti(x, nimi):
     return (r(x, 62, 250, 150, PAPER, INK, 10) + t(x + 16, 92, nimi, 18, ACC, weight="bold")
             + t(x + 16, 124, "Päämekaniikka: …", 16) + t(x + 16, 152, "Tavoite: …", 16) + t(x + 16, 180, "Pienin toimiva versio: …", 16))
-rows = [("Päämekaniikka", "A", "B", "A"), ("Kierroksen logiikka", "B", "A", "B"), ("Käyttöliittymä", "B", "A", "A"), ("Grafiikka", "A", "B", "B"), ("Data", "–", "A", "B")]
-tab = r(30, 232, 820, 172, SOFT, LINE, 8) + t(48, 258, "Vastuutaulukko", 17, INK, weight="bold") + "".join(t(330 + i * 170, 258, h, 16, MUTED, weight="bold") for i, h in enumerate(["Peli 1", "Peli 2", "Peli 3"]))
-for j, (a, *cols) in enumerate(rows):
-    y = 285 + j * 25
-    tab += t(48, y, a, 16) + "".join(t(345 + i * 170, y, c, 17, ACC if c in "AB" else MUTED, weight="bold") for i, c in enumerate(cols))
+kortit = [("1. Liike", "2 h"), ("2. Hyppy", "2 h"), ("3. Maali", "1 h"), ("4. Alkuvalikko", "2 h"), ("5. Loppuruutu", "1 h")]
+tab = r(30, 232, 820, 172, SOFT, LINE, 8) + t(48, 262, "Tehtävätaulu · Tulossa: ensimmäisen pelin kortit tärkeysjärjestyksessä", 17, INK, weight="bold")
+for j, (nimi, arvio) in enumerate(kortit):
+    x = 48 + j * 160
+    tab += r(x, 282, 148, 100, PAPER, ACC, 6) + t(x + 12, 312, nimi, 16, INK, weight="bold") + t(x + 12, 340, "valmis kun: …", 14, MUTED) + t(x + 12, 366, "arvio " + arvio, 15, ACC, weight="bold")
 K[2] = peli_kortti(30, "Peli 1") + peli_kortti(315, "Peli 2") + peli_kortti(600, "Peli 3") + tab
 
 K[3] = (window(110, 60, 660, 320, "Tasohyppely · kokeiluversio (build)") + r(118, 330, 644, 42, GRASS, "none", 0, 0)
         + r(330, 280, 70, 50, STONE, INK, 4) + r(560, 250, 70, 80, STONE, INK, 4)
         + player(240, 296) + f'<path d="M257 296 Q 300 170 360 250" fill="none" stroke="{ACC}" stroke-width="3" stroke-dasharray="7 6"/>'
         + r(620, 110, 130, 34, PAPER, INK, 17) + t(685, 133, "ei editoria", 16, INK, "middle", "bold")
-        + t(440, 405, "Kumpikin näyttää omalla koneellaan toisen viimeisimmän muutoksen.", 16, MUTED, "middle"))
+        + t(440, 405, "Koottu versio käynnistyy ilman Unity-editoria.", 16, MUTED, "middle"))
 
 K[4] = (r(30, 60, 820, 330, SKY, LINE, 10) + r(30, 340, 820, 50, GRASS, "none", 0, 0) + r(330, 260, 140, 18, STONE, INK, 4)
         + spikes(250, 340) + star(400, 238) + star(560, 300) + flag(760, 270) + player(90, 306)
@@ -134,7 +134,7 @@ K[5] = (ruutu(30, "Alkuvalikko") + t(150, 140, "Tähtijahti", 22, ACC, "middle",
 K[6] = (window(30, 70, 250, 200, "Kokeiluversio v0.1") + player(130, 190) + flag(220, 160)
         + t(155, 300, "Asiakas pelaa ilman neuvoja", 16, MUTED, "middle")
         + r(310, 70, 290, 310, "#fffbeb", "#d6c79e", 6) + t(330, 102, "Palautekirjaus", 18, INK, weight="bold")
-        + t(330, 136, "Asiakkaan sanat:", 16, MUTED) + t(330, 164, "”Maaliin tulo on niin", 17) + t(330, 188, "nopea, ettei musiikille", 17) + t(330, 212, "jää tilaa.”", 17)
+        + t(330, 136, "Asiakkaan sanat:", 16, MUTED) + t(330, 164, "”Maaliin tulo on niin", 17) + t(330, 188, "nopea, etten ehtinyt", 17) + t(330, 212, "nähdä, mitä tapahtui.”", 17)
         + f'<line x1="330" y1="234" x2="580" y2="234" stroke="{LINE}" stroke-width="2"/>'
         + t(330, 262, "Oma tulkinta:", 16, MUTED) + t(330, 290, "Loppuruutu näkyy", 17) + t(330, 314, "vähintään 3 s.", 17)
         + r(630, 70, 220, 310, SOFT, LINE, 8) + t(646, 102, "Tulossa", 18, INK, weight="bold")
@@ -164,8 +164,8 @@ K[7] = (r(30, 70, 250, 270, "#111827", "none", 8, 0) + "".join(t(70, 125 + i * 4
 
 K[8] = (kentta(40, 70, 48) + r(40, 330, 240, 40, SOFT, LINE, 8) + t(160, 356, "R = palauta alkutilanne", 16, INK, "middle", "bold")
         + f'<path d="M300 200 Q 360 130 420 200" fill="none" stroke="{INK}" stroke-width="3" marker-end="url(#nuoli)"/>' + t(360, 120, "palautus datasta", 16, MUTED, "middle")
-        + kentta(460, 70, 48, solved=True) + r(500, 150, 200, 120, PAPER, INK, 12) + t(600, 190, "Ratkaistu!", 26, ACC, "middle", "bold")
-        + button(515, 210, 80, "Uudelleen") + button(605, 210, 85, "Valikko") + t(600, 395, "Valikko on sama prefab kuin ensimmäisessä pelissä.", 16, MUTED, "middle"))
+        + kentta(460, 70, 48, solved=True) + r(470, 150, 262, 120, PAPER, INK, 12) + t(601, 190, "Ratkaistu!", 26, ACC, "middle", "bold")
+        + button(480, 210, 105, "Uudelleen") + button(592, 210, 132, "Alkuvalikkoon") + t(600, 395, "Valikko on sama prefab kuin ensimmäisessä pelissä.", 16, MUTED, "middle"))
 
 steps = ["Havainto", "Toistamisohje", "Syy", "Korjauscommit", "Uusintatesti", "Regressiotesti"]
 chain = ""
@@ -180,8 +180,8 @@ chain += t(315, 302, "✓ läpi", 18, GREEN, "middle", "bold")
 K[9] = (chain + r(650, 70, 200, 300, SOFT, LINE, 8) + t(666, 100, "Vertaisarvio", 18, INK, weight="bold")
         + r(666, 120, 168, 56, PAPER, RED, 6) + t(678, 146, "Estävä: pelaaja", 15, RED, weight="bold") + t(678, 166, "laatikon päällä", 15)
         + r(666, 190, 168, 56, PAPER, LINE, 6) + t(678, 216, "Muu virhe", 15, INK, weight="bold") + t(678, 236, "ohje puuttuu", 15)
-        + r(666, 260, 168, 56, PAPER, LINE, 6) + t(678, 286, "Parannus: nimeä", 15, INK, weight="bold") + t(678, 306, "CheckSolved()", 15, font=MONO)
-        + t(340, 400, "Kumpikin tekee ketjun oman koodinsa virheestä.", 16, MUTED, "middle"))
+        + r(666, 260, 168, 56, PAPER, LINE, 6) + t(678, 286, "Parannus: laatikot", 15, INK, weight="bold") + t(678, 306, "erottuvat huonosti", 15)
+        + t(340, 400, "Korjaat virheen ketjuna.", 16, MUTED, "middle"))
 
 K[10] = (f'<circle cx="300" cy="225" r="160" fill="#e7e5e4" stroke="{INK}" stroke-width="3"/>' + player(283, 208)
          + f'<path d="M320 190 A 50 50 0 0 1 340 245" fill="none" stroke="{GOLD}" stroke-width="7"/>'
@@ -203,21 +203,21 @@ K[11] = loppu(30, "Selvisit!", True) + loppu(460, "Hävisit", False) + t(440, 40
 def mini(x, nimi, sitaatti):
     return (r(x, 62, 250, 150, SKY, INK, 8) + t(x + 14, 88, nimi, 17, INK, weight="bold")
             + r(x, 220, 250, 58, "#fffbeb", "#d6c79e", 6) + t(x + 12, 254, sitaatti, 15))
-K[12] = (mini(30, "Tasohyppely", "”Musiikki ehtii loppuun.”") + player(110, 150) + flag(220, 120)
+K[12] = (mini(30, "Tasohyppely", "”Maali tulee liian nopeasti.”") + player(110, 150) + flag(220, 120)
          + mini(315, "Pulmapeli", "”Palautus on tärkein.”") + kentta(390, 100, 20)
          + mini(600, "Toimintapeli", "”Ajastin isommaksi.”") + enemy(700, 150) + player(650, 150, 26)
          + r(30, 296, 520, 112, SOFT, LINE, 8) + t(46, 322, "Korjataan työviikolla 13", 17, INK, weight="bold")
-         + "".join(r(46 + i * 165, 336, 150, 56, PAPER, ACC, 6) + t(58 + i * 165, 362, f"{i + 1}. korjaus", 15, INK, weight="bold") + t(58 + i * 165, 382, f"vastuu: {'AB'[i % 2]}", 14, MUTED) for i in range(3))
+         + "".join(r(46 + i * 165, 336, 150, 56, PAPER, ACC, 6) + t(58 + i * 165, 362, f"{i + 1}. korjaus", 15, INK, weight="bold") + t(58 + i * 165, 382, f"arvio {(1, 2, 1)[i]} h", 14, MUTED) for i in range(3))
          + r(570, 296, 280, 112, SOFT, LINE, 8) + t(586, 322, "Tiedossa olevat puutteet", 17, INK, weight="bold") + t(586, 352, "• toinen vihollistyyppi", 15) + t(586, 376, "• lisää kenttiä", 15))
 
-hdr = ["Testitapaus", "Tekijä", "Odotettu tulos", "Havaittu", "Uusintatesti"]
+hdr = ["Testitapaus", "Peli", "Odotettu tulos", "Havaittu", "Uusintatesti"]
 xs = [40, 190, 300, 600, 720]
 K[13] = (r(30, 70, 820, 300, PAPER, INK, 8) + r(30, 70, 820, 44, SOFT, INK, 8)
          + "".join(t(x, 99, h, 16, INK, weight="bold") for x, h in zip(xs, hdr))
-         + t(40, 150, "T21", 17, font=MONO) + t(190, 150, "B", 17) + t(300, 150, "Loppuruutu näkyy 3 s", 16) + t(600, 150, "✕ 1 s", 17, RED, weight="bold") + t(720, 150, "✓ läpi", 17, GREEN, weight="bold")
-         + t(40, 200, "T22", 17, font=MONO) + t(190, 200, "A", 17) + t(300, 200, "R palauttaa laatikot", 16) + t(600, 200, "✓", 17, GREEN, weight="bold") + t(720, 200, "–", 17, MUTED)
-         + t(40, 250, "T23", 17, font=MONO) + t(190, 250, "B", 17) + t(300, 250, "Peruskierros alusta loppuun", 16) + t(600, 250, "✓", 17, GREEN, weight="bold") + t(720, 250, "regressio", 15, MUTED)
-         + t(440, 400, "Odotettu tulos kirjataan ennen korjausta, ja pari ajaa uusintatestin.", 16, MUTED, "middle"))
+         + t(40, 150, "T21", 17, font=MONO) + t(190, 150, "taso", 17) + t(300, 150, "Loppuruutu näkyy 3 s", 16) + t(600, 150, "✕ 1 s", 17, RED, weight="bold") + t(720, 150, "✓ läpi", 17, GREEN, weight="bold")
+         + t(40, 200, "T22", 17, font=MONO) + t(190, 200, "pulma", 17) + t(300, 200, "R palauttaa laatikot", 16) + t(600, 200, "✓", 17, GREEN, weight="bold") + t(720, 200, "–", 17, MUTED)
+         + t(40, 250, "T23", 17, font=MONO) + t(190, 250, "taso", 17) + t(300, 250, "Peruskierros alusta loppuun", 16) + t(600, 250, "✓", 17, GREEN, weight="bold") + t(720, 250, "regressio", 15, MUTED)
+         + t(440, 400, "Odotettu tulos kirjataan ennen korjausta. Uusintatesti ajetaan korjauksen jälkeen.", 16, MUTED, "middle"))
 
 ck = ["käynnistys", "ohjausohje", "päämekaniikka", "palaute", "päättyminen", "uudelleenaloitus", "paluu valikkoon"]
 K[14] = ("".join(window(30, 65 + i * 112, 300, 100, n + " (build)", "#e7e5e4") + t(180, 145 + i * 112, "kierros 10 / 10", 16, INK, "middle", "bold")
@@ -225,27 +225,27 @@ K[14] = ("".join(window(30, 65 + i * 112, 300, 100, n + " (build)", "#e7e5e4") +
          + r(380, 65, 470, 325, SOFT, LINE, 8) + t(400, 97, "Jokaisesta pelistä seitsemän perustestiä", 17, INK, weight="bold")
          + "".join(t(410, 132 + i * 36, "✓", 19, GREEN, weight="bold") + t(440, 132 + i * 36, c, 17) for i, c in enumerate(ck)))
 
-K[15] = (r(30, 70, 400, 240, PAPER, INK, 8) + r(30, 70, 400, 40, SOFT, INK, 8) + t(44, 97, "Tapahtuma", 15, INK, weight="bold") + t(160, 97, "Tiedosto ja metodi", 15, INK, weight="bold")
-         + t(44, 140, "Maali", 16) + t(160, 140, "GoalTrigger.cs", 15, font=MONO)
-         + r(36, 156, 388, 42, ACC_SOFT, ACC, 4) + t(44, 184, "Hyppy", 16, INK, weight="bold") + t(160, 184, "PlayerJump.cs, Jump()", 15, font=MONO)
-         + t(44, 230, "Osuma", 16) + t(160, 230, "Enemy.cs, TakeHit()", 15, font=MONO) + t(44, 274, "Ratkaisu", 16) + t(160, 274, "CheckSolved()", 15, font=MONO)
-         + arrow(436, 178, 486, 178) + r(495, 70, 355, 240, "#111827", "none", 8, 0)
-         + t(512, 108, "// Hyppy: pelaaja on maassa", 15, "#9ca3af", font=MONO) + t(512, 134, "// ja painaa välilyöntiä.", 15, "#9ca3af", font=MONO)
-         + r(505, 150, 335, 32, "#831843", "none", 4, 0) + t(512, 172, "public void Jump()", 16, "#fbcfe8", font=MONO)
-         + t(512, 206, "{", 16, "#e5e7eb", font=MONO) + t(530, 232, "body.linearVelocity = …", 15, "#e5e7eb", font=MONO) + t(512, 258, "}", 16, "#e5e7eb", font=MONO)
-         + t(440, 360, "Taulukon avulla kohta löytyy koodista alle minuutissa.", 17, MUTED, "middle"))
+ohje = ["## Kierroksen kesto", "1. Avaa scene Areena.", "2. Valitse Hierarchy-", "   ikkunasta RoundTimer.", "3. Muuta Inspector-ikkunassa", "   kentän Round Length arvoa.", "4. Paina Play."]
+K[15] = (r(30, 70, 420, 280, "#111827", "none", 8, 0) + "".join(t(48, 106 + i * 36, line, 15, "#f9a8d4" if i == 0 else "#e5e7eb", font=MONO) for i, line in enumerate(ohje))
+         + arrow(462, 210, 512, 210) + r(520, 70, 330, 280, PAPER, INK, 8) + r(520, 70, 330, 40, SOFT, INK, 8) + t(536, 97, "Inspector · RoundTimer", 16, INK, weight="bold")
+         + t(536, 150, "Round Length", 16) + r(700, 128, 130, 34, ACC_SOFT, ACC, 4) + t(716, 151, "60", 16, ACC, weight="bold")
+         + t(536, 200, "Round Manager", 16) + r(700, 178, 130, 34, PAPER, LINE, 4) + t(716, 201, "RoundManager", 14)
+         + t(685, 310, "Arvo on sekunteina.", 15, MUTED, "middle")
+         + t(440, 390, "Ohjeen avulla asetus löytyy ja muuttuu alle minuutissa.", 17, MUTED, "middle"))
 
 K[16] = (r(30, 80, 250, 170, "#e7e5e4", INK, 10) + r(110, 250, 90, 14, STONE, "none", 2, 0)
          + f'<circle cx="155" cy="320" r="26" fill="#a8a29e"/><path d="M110 395 q45 -60 90 0" fill="#a8a29e"/>'
-         + t(155, 175, "puhdas klooni", 17, INK, "middle", "bold") + t(155, 200, "v0.9", 17, MUTED, "middle")
+         + r(42, 92, 226, 30, SOFT, LINE, 4) + t(54, 113, "Inspector · RoundTimer", 14, INK, weight="bold")
+         + t(54, 160, "Round Length", 15) + r(54, 172, 200, 34, ACC_SOFT, ACC, 4) + t(66, 195, "60 → 30", 16, ACC, weight="bold")
+         + t(155, 235, "puhdas klooni · v0.9", 14, MUTED, "middle")
          + r(320, 70, 260, 320, "#fffbeb", "#d6c79e", 6) + t(340, 102, "Kirjallinen ohje", 18, INK, weight="bold")
          + t(340, 140, "1. Avaa Unity Hub.", 16) + t(340, 172, "2. Valitse Add ja kansio.", 16) + r(332, 186, 236, 36, "#fee2e2", RED, 4) + t(340, 210, "3. Avaa valikko.", 16, RED, weight="bold")
          + t(340, 248, "4. Paina Play.", 16) + f'<circle cx="590" cy="204" r="18" fill="{RED}"/>' + t(590, 211, "?", 20, "#fff", "middle", "bold")
          + r(620, 130, 230, 120, PAPER, INK, 10) + t(636, 160, "Testaaja:", 15, MUTED) + t(636, 186, "”En tiennyt, mikä", 16) + t(636, 210, "näistä on valikko.”", 16)
          + r(620, 270, 230, 110, ACC_SOFT, ACC, 8) + t(636, 298, "Korjattu ohje:", 15, ACC, weight="bold") + t(636, 324, "3. Avaa scene", 16) + t(636, 348, "Scenes/Valikko.", 16, font=MONO))
 
-tree = ["luovutus-v1.0/", "├─ Tasohyppely-Windows-v1.0.zip", "├─ Pulmapeli-Windows-v1.0.zip", "├─ Toimintapeli-Windows-v1.0.zip", "├─ Unity-projektit/", "└─ docs/  (5 ohjetta)"]
-lista = ["pelattavat versiot", "Unity-projektit", "Unity-versio", "jatkotyöstöohje", "äänitapahtumat", "assetit ja lisenssit", "testit ja puutteet", "tekijät"]
+tree = ["luovutus-v1.0/", "├─ Tasohyppely-Windows-v1.0.zip", "├─ Pulmapeli-Windows-v1.0.zip", "├─ Toimintapeli-Windows-v1.0.zip", "├─ Unity-projektit/", "└─ docs/  (3 ohjetta)"]
+lista = ["pelattavat versiot", "Unity-projektit", "Unity-versio", "jatkotyöstöohje", "assetit ja lisenssit", "testit ja puutteet"]
 K[17] = (r(30, 70, 440, 300, "#111827", "none", 8, 0) + "".join(t(52, 112 + i * 40, line, 16, "#e5e7eb", font=MONO) for i, line in enumerate(tree))
          + r(500, 70, 350, 300, SOFT, LINE, 8) + t(516, 98, "Luovutuslista", 18, INK, weight="bold")
          + "".join(t(522, 130 + i * 30, "✓", 18, GREEN, weight="bold") + t(548, 130 + i * 30, c, 16) for i, c in enumerate(lista))
@@ -256,12 +256,15 @@ def esittely(x, kuka, metodi, testi):
             + r(x + 20, 112, 360, 70, "#111827", "none", 6, 0) + t(x + 34, 142, "// oma ratkaisu", 15, "#9ca3af", font=MONO) + t(x + 34, 168, metodi, 16, "#fbcfe8", font=MONO)
             + r(x + 20, 196, 360, 40, SOFT, LINE, 6) + t(x + 34, 222, testi, 16)
             + r(x + 20, 248, 360, 64, SOFT, LINE, 6) + t(x + 34, 274, "Näyttömatriisin rivi:", 15, MUTED) + t(x + 34, 298, "täsmälinkki omaan committiin", 16))
-K[18] = (esittely(30, "Opiskelija A", "void ResetLevel()", "testitapaus T15: palautus") + esittely(450, "Opiskelija B", "void EndRound(bool won)", "testitapaus T21: loppuruutu")
+matriisi = [("p3 testaus", "testitapaus T21"), ("s13 osan liittäminen", "merge-commit"), ("k6 julkaisu", "tag v1.0"), ("p11 oma toiminta", "itsearviointi")]
+K[18] = (esittely(30, "Oma ratkaisu", "void EndRound(bool won)", "testitapaus T21: loppuruutu")
+         + r(450, 62, 400, 270, SOFT, LINE, 10) + t(470, 94, "Oma näyttömatriisi", 20, ACC, weight="bold")
+         + "".join(t(470, 140 + i * 46, a, 16, INK, weight="bold") + t(680, 140 + i * 46, "→ " + b, 15, MUTED) for i, (a, b) in enumerate(matriisi))
          + r(170, 350, 540, 46, ACC_SOFT, ACC, 10) + t(440, 380, "✓ Ohjaajan pyytämä muutos toimii Play-tilassa", 17, ACC, "middle", "bold"))
 
-OTSIKOT = {1: "Ensimmäinen yhteinen muutos", 2: "Suunnitelma ja vastuutaulukko", 3: "Kokeiluversio ilman editoria", 4: "Pelattava kierros", 5: "Valikot, uudelleenaloitus ja palaute",
+OTSIKOT = {1: "Ensimmäinen oma muutos", 2: "Suunnitelma ja ensimmäisen pelin kortit", 3: "Kokeiluversio ilman editoria", 4: "Pelattava kierros", 5: "Valikot, uudelleenaloitus ja palaute",
            6: "Asiakaskokeilu", 7: "Kenttä datasta ja päämekaniikka", 8: "Ratkaisu ja palautus", 9: "Vertaisarvio ja virheenkorjausketju", 10: "Pelaaja, vihollinen ja asetukset datasta",
-           11: "Selviytyminen tai häviö", 12: "Asiakaskatselmointi", 13: "Korjaukset ja uusintatestit", 14: "Kootut peliversiot testattuina", 15: "Äänitapahtuma löytyy koodista",
+           11: "Selviytyminen tai häviö", 12: "Asiakaskatselmointi", 13: "Korjaukset ja uusintatestit", 14: "Kootut peliversiot testattuina", 15: "Asetus löytyy ohjeen avulla",
            16: "Vastaanottotesti", 17: "Luovutuspaketti", 18: "Oman osaamisen esittely"}
 
 out = ROOT / "assets" / "viikot"
@@ -290,7 +293,7 @@ def chips(items, x, y):
     return out
 
 
-ev = ["hyppy", "kerääminen", "maali", "siirto", "estynyt siirto", "ratkaisu", "hyökkäys", "osuma", "kierroksen loppu"]
+ev = ["Unity Hub → Add", "Assets/Scenes", "Assets/Scripts", "asetukset Inspectorissa", "Unity-versio README:ssä"]
 proto_svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {PW} {PH}" width="{PW}" height="{PH}">'
              f'<defs><marker id="nuoli" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="{INK}"/></marker></defs>'
              f'<rect width="{PW}" height="{PH}" fill="#faf8f5"/>'
@@ -302,7 +305,7 @@ proto_svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {PW} {PH}" w
              + paneeli(px[2], "Toimintapeli", toim, "Selviä 60 sekuntia")
              + r(24.6, 509, 1070.8, 50, PAPER, INK, 10)
              + "".join(button(60 + i * 360, 516, 130, "Uudelleen", True) + button(200 + i * 360, 516, 150, "Alkuvalikkoon") for i in range(3))
-             + r(24.6, 575, 1070.8, 105, "#fffbeb", "#d6c79e", 10) + t(44, 605, "Äänitapahtumat musiikkikurssille: tapahtuma, milloin se syntyy ja missä koodissa", 18, INK, weight="bold")
+             + r(24.6, 575, 1070.8, 105, "#fffbeb", "#d6c79e", 10) + t(44, 605, "Jatkotyöstöohje musiikkikurssille: miten projekti avataan ja mistä scenet, skriptit ja asetukset löytyvät", 18, INK, weight="bold")
              + chips(ev, 44, 622)
              + '</svg>')
 proto = f"""<!doctype html>

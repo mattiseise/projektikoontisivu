@@ -1,38 +1,38 @@
-# ProtoPaja – ohjattu näyttöprojekti parille
+# ProtoPaja – ohjattu näyttöprojekti
 
-Ohjattu näyttöprojekti: kaksi opiskelijaa toteuttaa parityönä Unityllä kolme pientä
-peliprototyyppiä oppilaitoksen pelimusiikin kurssin harjoitusmateriaaliksi 18 työviikossa.
-Asiakkaat ovat Caito ja Toni, ohjaajat Matti ja Antti.
+Ohjattu näyttöprojekti: opiskelija toteuttaa yksin Unityllä kolme pientä peliprototyyppiä
+oppilaitoksen pelimusiikin kurssin harjoitusmateriaaliksi 18 työviikossa. Asiakkaat ovat
+Caito ja Toni, ohjaajat Matti ja Antti. Musiikkikurssin opiskelijat lisäävät peleihin itse
+musiikit ja ääniefektit. Se on heidän harjoituksensa, joten ProtoPajan peleissä ei ole ääniä
+eikä äänivalmistelua.
 
 ## Mikä tämä sivusto on
 
-Tämä kansio sisältää **ohjaussivuston**, ei pelejä. Sivusto ohjaa parin 18 työviikon läpi:
-toimeksianto, kokonaiskuva, suunnitelmalomake, 18 viikkokorttia (77 työvaihetta, 410
-osatehtävää), työtapa, termit, projektipäiväkirja, AI-loki, näyttömatriisi (32 vaatimusta)
+Tämä kansio sisältää **ohjaussivuston**, ei pelejä. Sivusto ohjaa opiskelijan 18 työviikon läpi:
+toimeksianto, kokonaiskuva, suunnitelmalomake, 18 viikkokorttia (72 työvaihetta, 402 osatehtävää), työtapa, termit, projektipäiväkirja, AI-loki, näyttömatriisi (32 vaatimusta)
 sekä paperinen työpaketti ja opettajan näyttösuunnitelma.
 
-Opiskelijoiden varsinainen työ (Unity-projektit, `docs/` asiakkaille ja `project-docs/`
-ohjausta ja näyttöä varten) tehdään parin **omaan yhteiseen repositoryyn**. Sivuston rasti ei
+Opiskelijan varsinainen työ (Unity-projektit, `docs/` asiakkaille ja `project-docs/`
+ohjausta ja näyttöä varten) tehdään hänen **omaan repositoryynsa**. Sivuston rasti ei
 ole palautus.
 
-### Parityö sivustolla
+### Yksilöprojekti ja tiimi
 
-- Kumpikin käyttää sivustoa omassa selaimessaan. Rastit, päiväkirja, suunnitelma ja AI-loki
-  tallentuvat vain siihen selaimeen. Ne eivät ole yhteinen tehtävätaulu, eivätkä ohjaajat näe
-  niitä. Yhteinen seuranta on tehtävätaulussa (esimerkiksi Trello), yhteisessä
-  työaikataulukossa ja repositoryssa.
-- Monikko (Sopikaa, Testatkaa) tarkoittaa yhteistä työtä ja yksikkö (Tee oma…) henkilökohtaista
-  osuutta. Jokaisella toteutusviikolla on rytmi: sopikaa kaksi omaa osaa → toteuta oma osasi →
-  testatkaa toistenne osat.
-- Vastuutaulukko vaihtaa osa-alueet pelien välillä, jotta kumpikin saa oman työnäytteen
-  jokaiseen omien tutkinnon osiensa vaatimukseen. Vaatimuksia ei jaeta parin kesken.
-- Lisätavoitteet (neljäs ja viides peli) ovat Lisätavoite-laatikoissa, eivät työvaiheina.
+- Rastit, päiväkirja, suunnitelma ja AI-loki tallentuvat vain opiskelijan selaimeen. Ohjaajat
+  eivät näe niitä. Seuranta on tehtävätaulussa, työaikataulukossa ja repositoryssa.
+- Tutkinnon osissa on tiimissä tehtäviä kokonaisuuksia. Tiimin muodostavat opiskelija, ohjaaja
+  ja asiakkaat: tehtävistä ja järjestyksestä sovitaan ohjaajan kanssa viikkotarkistuksessa,
+  asiakkaat kokeilevat pelejä työviikoilla 6 ja 12, toinen opiskelija tekee vertaisarvion
+  työviikolla 9 ja projektin ulkopuolinen henkilö vastaanottotestin työviikolla 16.
+- Toteutusviikkojen rytmi: suunnittele (pseudokoodi ja kortit) → toteuta → testaa
+  testimatriisilla.
+- Lisätavoitteet (neljäs ja viides peli) ovat Lisätavoite-laatikossa, eivät työvaiheina.
 
 ## Tutkinnon osat
 
 Näyttömatriisi on koottu ePerusteista: Tieto- ja viestintätekniikan perustutkinto,
 diaarinumero OPH-6216-2025 (perusteId 9816282). Samat 32 vaatimusta ovat sanatarkasti myös
-aiemmassa perusteessa OPH-4948-2021 (perusteId 7861752). **Kummankin opiskelijan perusteversio
+aiemmassa perusteessa OPH-4948-2021 (perusteId 7861752). **Opiskelijan perusteversio
 ja suoritettavat tutkinnon osat vahvistetaan opiskelijakohtaisesti** ennen näyttöä.
 
 | Tutkinnon osa | Vaatimuksia | Tunnukset |
@@ -43,7 +43,7 @@ ja suoritettavat tutkinnon osat vahvistetaan opiskelijakohtaisesti** ennen näyt
 
 ## Päivätön tila
 
-Viikot 1–18 ovat työviikkoja parin omasta aloituksesta, eivät kalenteriviikkoja. Aikataulu ja
+Viikot 1–18 ovat työviikkoja opiskelijan omasta aloituksesta, eivät kalenteriviikkoja. Aikataulu ja
 ohjausvastuut ovat ehdotuksia, jotka vahvistetaan aloituksessa.
 
 ## Pedagoginen hyväksyntä
@@ -52,6 +52,11 @@ Viikkorunko on läpäissyt Linnea-portin (kriteeristönä skillin pedagoginen ru
 vaatimusta ja projektikuvaus). Kierros 1: KORJATTAVA (henkilökohtainen ohjelmointi joka
 toteutusviikolla, roolinvaihto, viikon 1 järjestys, tekstitehtävien omat artefaktit).
 Kierros 2: **HYVÄKSYTTY 3.11.2026**; kuusi pientä huomiota korjattiin sisällön kirjoitusvaiheessa.
+
+**Muutos 9.11.2026.** Kollegan palautteen perusteella ProtoPaja muutettiin pariprojektista
+yksilöprojektiksi, äänivalmistelu poistettiin (äänitapahtumataulukko, `docs/aanitapahtumat.md`)
+ja kaikki tehtävätekstit kirjoitettiin uudelleen selkeämmiksi. Kielen tarkistusohje:
+`claude-kehikko`-repon `skills/borje-kielenhuolto/references/tehtavakieli.md`.
 
 ## Oppimispolun katkoskohdat
 
