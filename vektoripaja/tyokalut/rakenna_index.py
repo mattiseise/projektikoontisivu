@@ -8,7 +8,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 # sykli / help / excerpt / paivat luetaan sisalto.js:stä, ettei kortti ja data eroa
 info = json.loads(subprocess.check_output(["node", "-e", r'''
 global.window={};eval(require("fs").readFileSync(process.argv[1],"utf8"));const N=window.NAYTTOPROJEKTI;
-const o={};for(const [w,g] of Object.entries(N.viikkoOhjeet)) o[w]={sykli:!!g.sykli,help:!!g.help,paivat:!!g.paivat,connection:g.connection,feature:g.feature,skills:g.skills,extra:g.lisatehtavat||[],phases:N.vaiheet};
+const o={};for(const [w,g] of Object.entries(N.viikkoOhjeet)) o[w]={sykli:!!g.sykli,help:!!g.help,paivat:!!g.paivat,connection:g.connection,paivamaarat:g.paivamaarat||[],feature:g.feature,skills:g.skills,extra:g.lisatehtavat||[],phases:N.vaiheet};
 console.log(JSON.stringify(o));''', os.path.join(HERE, "..", "sisalto.js")]).decode("utf8"))
 
 VAIHE = {v: (str(n), phase["lyhyt"])
@@ -72,6 +72,16 @@ def phase_path(w):
     return '<nav class="project-phase-path" aria-label="Projektin vaiheet">' + ''.join(links) + '</nav>'
 
 
+def paivamaarat(i):
+    """v2.8.8: päivämäärät listana omana kappaleenaan (sama merkintä kuin moottorin unifyWeekCard)."""
+    rivit = [f'<li><strong>{escape(d[0])}:</strong> {escape(d[1])}</li>' if isinstance(d, list) else f'<li>{escape(d)}</li>'
+             for d in i.get("paivamaarat") or []]
+    if not rivit:
+        return []
+    return ['            <h2 class="section-label project-dates-heading">Päivämäärät</h2>',
+            '            <ul class="project-dates">' + ''.join(rivit) + '</ul>']
+
+
 def project_connection(w):
     if w in LOMAT:
         return phase_path(w)
@@ -81,6 +91,7 @@ def project_connection(w):
         f'          <section class="card project-connection" aria-labelledby="week-{w}-project-connection">',
         f'            <h2 class="section-label" id="week-{w}-project-connection">Miten tämän viikon asiat liittyvät kokonaisprojektiin</h2>',
         f'            <p>{escape(i["connection"])}</p>',
+        *paivamaarat(i),
         '            <h2 class="section-label project-week-goal">Viikon tavoite</h2>',
         f'            <p>{escape(i["feature"])}</p>',
         *(['            <figure class="cube-preview">',

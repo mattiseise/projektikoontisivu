@@ -4,10 +4,10 @@
   "nimi": "Vektoripaja",
   "kieli": "fi",
   "paivaton": false,
-  "generoitu": "2026-10-30",
+  "generoitu": "2026-11-10",
   "lahde": {
-    "sisalto.js": "28f42d2c46694050",
-    "index.html": "5b798736cd5ddd0c"
+    "sisalto.js": "0749c2d80b6d1566",
+    "index.html": "9e5c2eaef3191637"
   },
   "viikot": [
     40,
@@ -1431,7 +1431,7 @@
         {
           "id": "47-13",
           "teksti": "Kirjaa palaverin sopimukset",
-          "valmis": "Sovittu valintatapa ja hyväksymiskriteeri ovat project-docs/suunnitelma.md, testin 11 tulos vastaa sovittua vaihtoehtoa, ja maljakon layerissa on merkintä, jos se sovittiin. Kaikki on GitHubissa.",
+          "valmis": "Sovittu valintatapa ja hyväksymiskriteeri ovat project-docs/suunnitelma.md, testin 11 tulos vastaa sovittua vaihtoehtoa, ja maljakon layerin tunnuksessa on merkintä, jos se sovittiin. Kaikki on GitHubissa.",
           "tallenna": "Päätökset tiedostossa project-docs/suunnitelma.md GitHubissa. Ne tulevat myös pyörähdyskappaleen korttiin työvaiheessa 5."
         },
         {
