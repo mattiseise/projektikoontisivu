@@ -764,7 +764,7 @@ window.NAYTTOPROJEKTI.kuvakaappaukset = [
  },
  {
   "tunnus": "inkscape-layerit",
-  "otsikko": "Nimeä layerit ja ryhmät Inkscapessa",
+  "otsikko": "Anna layereille ja ryhmille nimet Inkscapessa",
   "kuvaa": "Inkscape 1.2:n Layers and Objects -paneeli: tasot ja niiden alapuolella sisennetyt ryhmät ja muodot.",
   "missa": "Inkscape, Layer, Layers and Objects",
   "tiedosto": "assets/kuvakaappaukset/inkscape-layerit.png",
@@ -778,15 +778,23 @@ window.NAYTTOPROJEKTI.kuvakaappaukset = [
    },
    {
     "n": 2,
-    "teksti": "Kaksoisnapsauta layerin nimeä. Kirjoita nimi, esimerkiksi Vartalo. Paina Enter. Kirjoita nimi samalla kirjainkoolla kuin työvaihe."
+    "teksti": "Kaksoisnapsauta layerin nimeä, kirjoita nimi, esimerkiksi Vartalo, ja paina Enter. Kirjoita nimi samoin isoin ja pienin kirjaimin kuin työvaiheessa."
    },
    {
     "n": 3,
-    "teksti": "Valitse muodot. Ryhmittele ne näppäimillä Ctrl+G. Nimeä ryhmä samalla tavalla."
+    "teksti": "Avaa XML Editor näppäimillä Ctrl+Shift+X. Napsauta puussa layerin riviä, jossa lukee layer1. Napsauta attribuuttien listassa id-rivin arvoa, kirjoita sama nimi ja paina Enter."
    },
    {
     "n": 4,
-    "teksti": "Tarkista, että ryhmät näkyvät sisennettyinä layerin alapuolella.",
+    "teksti": "Napsauta Layers and Objects -paneelissa ensimmäisen muodon riviä. Pidä Ctrl pohjassa ja napsauta muiden muotojen rivejä. Paina Ctrl+G."
+   },
+   {
+    "n": 5,
+    "teksti": "Paina Ctrl+Shift+X. Uusi ryhmä on XML Editorissa valmiiksi valittuna. Napsauta id-rivin arvoa, kirjoita ryhmän nimi ja paina Enter. Plain SVG -tiedostoon tallentuu vain tunnus."
+   },
+   {
+    "n": 6,
+    "teksti": "Paina Ctrl+Shift+L ja tarkista, että ryhmät näkyvät sisennettyinä layerin alapuolella.",
     "alue": [
      69,
      60,
@@ -796,7 +804,7 @@ window.NAYTTOPROJEKTI.kuvakaappaukset = [
    }
   ],
   "pvm": "alkuperäinen päivä tuntematon; lisätty 2026-09-30",
-  "teema": "Rajattu yläosa. Inkscape 1.2:n esimerkki; tiedoston nimet eroavat projektista."
+  "teema": "Rajattu yläosa. Inkscape 1.2:n esimerkki; tiedoston nimet eroavat projektista. Kuvassa ei näy XML Editoria."
  },
  {
   "tunnus": "vscode-chat-tilat",
