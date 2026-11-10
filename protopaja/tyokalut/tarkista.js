@@ -38,6 +38,11 @@
  * vaikeaselkoisen tehtävätekstin merkit, kuten keksityt yhdyssanat, kielikuvat, abstrakti
  * tekijä, tiivis nominaalityyli ja liian pitkät virkkeet. Lähde: borje-kielenhuolto-skillin
  * references/tehtavakieli.md (ProtoPajan palaute 11/2026).
+ *
+ * v2.8.8: viikon esittelykortin päivämäärät (22): `paivamaarat`-lista on muodoltaan oikea, ja
+ * esittelytekstiin (connection) jäänyt päivämäärä on HUOM: päivämäärät kuuluvat listaan, kuvaus omaan
+ * kappaleeseensa. Sanaselitteet (23, kun P.sanaselitteet): termillä on `selko` (enintään 25 sanaa),
+ * ja `muodot`, `eiViikoilla`, `vainViikoilla` ja `eiEdella` ovat listoja.
  */
 const fs = require("fs");
 const path = require("path");
@@ -1125,6 +1130,42 @@ const kuormaRivit = [];
     });
   });
   kieliOsumat.forEach((m) => warn(`tehtäväkieli (21) ${m}`));
+}
+
+/* ---------- 22. viikon esittelykortin päivämäärät (v2.8.8) ----------
+ * Esittelykortissa kuvaus on omana kappaleenaan ja päivämäärät listana (viikkoOhjeet[w].paivamaarat).
+ */
+{
+  /* Päivä 1–31 ja kuukausi 1–12, joten versionumero (1.0.) ei osu. */
+  const PVM = /\b(?:[1-9]|[12]\d|3[01])\.(?:\s*–\s*(?:[1-9]|[12]\d|3[01])\.)?\s*(?:[1-9]|1[0-2])\.(?:\d{4})?(?!\d)/;
+  workWeeks.forEach((w) => {
+    const v = (P.viikkoOhjeet || {})[w] || {};
+    if (v.paivamaarat !== undefined) {
+      if (!Array.isArray(v.paivamaarat)) err(`viikko ${w}: paivamaarat ei ole lista`);
+      else v.paivamaarat.forEach((d, i) => {
+        const ok = typeof d === "string" ? d.trim() : (Array.isArray(d) && d.length === 2 && String(d[0]).trim() && String(d[1]).trim());
+        if (!ok) err(`viikko ${w}: paivamaarat[${i}] pitää olla merkkijono tai pari ["nimi", "aika"]`);
+      });
+    }
+    const osuma = String(v.connection || "").match(PVM);
+    if (osuma) warn(`esittelykortti (22) viikko ${w}: päivämäärä ”${osuma[0].trim()}” on kuvaustekstissä – siirrä se paivamaarat-listaan`);
+  });
+}
+
+/* ---------- 23. sanaselitteet (v2.8.8, kun P.sanaselitteet) ---------- */
+if (P.sanaselitteet) {
+  (Array.isArray(P.termisto) ? P.termisto : []).forEach((g) => {
+    if (!g || g.selitetaan === false) return;
+    if (!String(g.selko || "").trim()) { warn(`sanaselite (23) ${g.termi}: selko puuttuu, joten sanaa ei selitetä tekstissä`); return; }
+    const sanoja = String(g.selko).split(/\s+/).filter(Boolean).length;
+    if (sanoja > 25) warn(`sanaselite (23) ${g.termi}: selko on ${sanoja} sanaa (yli 25)`);
+    if (/\[\[|\]\(|`/.test(g.selko)) err(`sanaselite (23) ${g.termi}: selko on pelkkää tekstiä (ei linkkejä eikä koodimerkintöjä)`);
+    if (g.muodot !== undefined && (!Array.isArray(g.muodot) || g.muodot.some((m) => !String(m).trim()))) err(`sanaselite (23) ${g.termi}: muodot pitää olla lista sanan alkuosia`);
+    if (g.eiEdella !== undefined && (!Array.isArray(g.eiEdella) || g.eiEdella.some((w) => !String(w).trim()))) err(`sanaselite (23) ${g.termi}: eiEdella pitää olla lista sanoja`);
+    ["eiViikoilla", "vainViikoilla"].forEach((k) => {
+      if (g[k] !== undefined && (!Array.isArray(g[k]) || g[k].some((w) => !Number.isInteger(w)))) err(`sanaselite (23) ${g.termi}: ${k} pitää olla lista viikkonumeroita`);
+    });
+  });
 }
 
 /* ---------- tulos ---------- */
