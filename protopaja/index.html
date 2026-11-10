@@ -86,7 +86,7 @@
           <h2>Näin käytät viikko-ohjetta</h2>
           <ol>
             <li>Lue viikon alusta, miten viikko vie kokonaisuutta eteenpäin, mitä teet tällä viikolla ja miltä valmis tulos näyttää. Samassa kohdassa on kokeilu, jonka teet viikon lopussa.</li>
-            <li>Tee viikon työvaiheet järjestyksessä. Rastita osatehtävä heti, kun olet tehnyt sen.</li>
+            <li>Tee viikon työvaiheet järjestyksessä. Rastita osatehtävä, kun olet tehnyt sen. Työvaihe on valmis, kun sen valmis kun -ehto täyttyy ja työnäyte on repositoryssa.</li>
             <li>Kirjaa jokainen työtehtävä tehtävätaulun kortiksi. Kirjoita korttiin valmis kun -ehto eli se, mistä näet, että tehtävä on valmis. Yksi työvaihe voi sisältää useita kortteja.</li>
             <li>Tee viikon lopussa kokeilu, joka on kuvattu viikon alussa. Kirjoita sen jälkeen viikon merkintä projektipäiväkirjaan.</li>
           </ol>
@@ -119,6 +119,7 @@
             <dt>Muut omat dokumentit (<code>project-docs/</code>)</dt><dd>Projektipäiväkirja ja AI-loki, lähtötasokokeilu, selitä ja muuta -merkinnät, Unity-havainnot, vertaisarvio, aukkolista, tietoturva-arvio, näyttömatriisi ja itsearviointi. Ne ovat ohjausta ja näyttöä varten, eivätkä ne kuulu asiakkaiden pakettiin.</dd>
           </dl>
           <p>Kirjaa tulos heti oikeaan tiedostoon ja lisää päiväkirjaan linkki siihen. Älä kopioi työaikaa päiväkirjaan, koska se on jo työaikataulukossa.</p>
+          <p>Kirjaa henkilöistä kaikkiin tiedostoihin vain rooli, ei nimeä. Sääntö koskee myös testimatriisia ja vertaisarviota. Kirjoita esimerkiksi asiakas, vertaistestaaja tai vastaanottotestaaja.</p>
         </details>
 
         <details class="view-section project-reference">
@@ -151,7 +152,7 @@
           </div>
         </div>
 
-        <p class="footnote view-section"><strong>Muista:</strong> sivuston rastit ja kirjoituskentät ovat oma työmuistisi. Ne tallentuvat vain tähän selaimeen, eivätkä ne siirry ohjaajalle. Rasti ei ole palautus eikä osa näyttöaineistoa. Rastita vasta, kun työ on testattu ja työnäyte on Git-repositoryssa.</p>
+        <p class="footnote view-section"><strong>Muista:</strong> sivuston rastit ja kirjoituskentät ovat oma työmuistisi. Ne tallentuvat vain tähän selaimeen, eivätkä ne siirry ohjaajalle. Rasti ei ole palautus eikä osa näyttöaineistoa. Rastita osatehtävä, kun olet tehnyt sen. Työvaihe on valmis, kun sen valmis kun -ehto täyttyy ja työnäyte on repositoryssa.</p>
 
         <div class="download-card view-section" style="margin-top:20px">
           <div><strong>Oma tila selaimessa</strong><p>Rastit, päiväkirja, suunnitelma ja AI-loki tallentuvat vain tähän selaimeen.</p></div>
@@ -326,7 +327,7 @@
           <ul class="check-list">
             <li><strong>Vähintään 21 suunniteltua testitapausta:</strong> seitsemän jokaisesta pelistä, eli käynnistys, ohjausohje, päämekaniikka, visuaalinen palaute, kierroksen päättyminen, uudelleenaloitus ja paluu alkuvalikkoon. Kirjaa testitapaukset työviikosta 4 alkaen tiedostoon <code>project-docs/testimatriisi.md</code> ja numeroi ne T01, T02 ja niin edelleen.</li>
             <li><strong>Toinen opiskelija testaa toisen pelisi.</strong> Työviikolla 9 hän testaa peliä vaatimuslistaa vasten vertaisarviossa, ja käytte havainnot yhdessä läpi. Muut testit teet itse.</li>
-            <li><strong>Vähintään kolme täydellistä virheenkorjausketjua:</strong> havainto, toistamisohje, syy, korjauscommit, uusintatesti ja regressiotesti. Teet ne oman koodisi virheistä työviikoilla 9, 13 ja 16. Regressiotesti tarkoittaa, että pelaat korjauksen jälkeen pelin peruskierroksen ja varmistat, ettei korjaus rikkonut muuta.</li>
+            <li><strong>Kolme täydellistä virheenkorjausketjua:</strong> havainto, toistamisohje, syy, korjauscommit, uusintatesti ja regressiotesti. Teet ne työviikoilla 9, 13 ja 16 aidoista virheistä, kolmannen vastaanottotestin estävästä virheestä. Jos aitoa virhettä ei löydy, ohjaaja antaa vikatehtävän. Uusintatesti tarkoittaa, että ajat saman testin uudelleen korjauksen jälkeen. Regressiotesti tarkoittaa, että pelaat korjauksen jälkeen pelin peruskierroksen ja varmistat, ettei korjaus rikkonut muuta.</li>
             <li><strong>Testaa build erikseen</strong> työviikolla 14 ilman Unity-editoria, koska peli voi toimia buildissa eri tavalla kuin editorissa.</li>
             <li><strong>Toistuvat kierrokset ja rajatapaukset:</strong> useita kierroksia peräkkäin, tuplapainallukset ja samaan hetkeen osuvat tapahtumat.</li>
             <li><strong>Vastaanottotesti</strong> työviikolla 16: projektin ulkopuolinen henkilö avaa projektit repositorysta ladatusta kopiosta pelkän kirjallisen ohjeesi avulla.</li>
@@ -900,7 +901,7 @@
             </figure>
             <p>Esimerkiksi pulmapelissä peli lukee kentän tekstitiedostosta, jossa merkki # on seinä ja B on laatikko. Pelaaja työntää laatikkoa ruutu kerrallaan, eikä laatikko mene seinän läpi. Kun muutat tiedostossa yhden merkin ja käynnistät pelin uudelleen, kenttä on muuttunut.</p>
             <h3>Viikon lopussa kokeilet</h3>
-            <p>Esimerkiksi pulmapelissä: siirrä laatikko tavoiteruutuun ja yritä työntää laatikkoa seinää päin. Muuta kenttädatassa yhden ruudun merkki ja käynnistä peli uudelleen: muutos näkyy kentässä. Jos toinen pelisi on jokin muu kuin pulmapeli, kirjoita vastaava kokeilu työvaiheessa 1. Historiassa on commit jokaisesta välituloksesta, ja testitulokset ovat testimatriisissa.</p>
+            <p>Esimerkiksi pulmapelissä: siirrä laatikko tavoiteruutuun ja yritä työntää laatikkoa seinää päin. Muuta kenttädatassa yhden ruudun merkki ja käynnistä peli uudelleen: muutos näkyy kentässä. Jos toinen pelisi on jokin muu kuin pulmapeli, kirjoita vastaava kokeilu työvaiheessa 7-1. Historiassa on commit jokaisesta välituloksesta, ja testitulokset ovat testimatriisissa.</p>
           </section>
 
           <div class="week-kicker" data-week-kicker hidden>
@@ -1157,7 +1158,7 @@
             </figure>
             <p>Esimerkiksi toimintapelissä pelaaja liikkuu ylhäältä kuvatulla areenalla ja hyökkää. Vihollinen liikkuu pelaajaa kohti, ja osuma näkyy välähdyksenä. Kun muutat vihollisen nopeutta asetustiedostossa ja käynnistät pelin uudelleen, vihollinen liikkuu uudella nopeudella.</p>
             <h3>Viikon lopussa kokeilet</h3>
-            <p>Esimerkiksi toimintapelissä: liiku areenalla, hyökkää viholliseen ja katso, että osuma näkyy. Anna sitten vihollisen osua pelaajaan ja katso, että siitäkin näkyy palaute. Muuta datassa yhtä asetusta, esimerkiksi vihollisen nopeutta, käynnistä peli uudelleen ja katso, että muutos näkyy. Jos teet muuta peliä, kirjoita vastaava kokeilu työvaiheessa 1. Kolmannen pelin testitapaukset ovat testimatriisissa tuloksineen.</p>
+            <p>Esimerkiksi toimintapelissä: liiku areenalla, hyökkää viholliseen ja katso, että osuma näkyy. Anna sitten vihollisen osua pelaajaan ja katso, että siitäkin näkyy palaute. Muuta datassa yhtä asetusta, esimerkiksi vihollisen nopeutta, käynnistä peli uudelleen ja katso, että muutos näkyy. Jos teet muuta peliä, kirjoita vastaava kokeilu työvaiheessa 10-1. Kolmannen pelin testitapaukset ovat testimatriisissa tuloksineen.</p>
           </section>
 
           <div class="week-kicker" data-week-kicker hidden>
@@ -1269,7 +1270,7 @@
             <label class="task-row"><input type="checkbox" data-task="11-1"><span class="task-box" aria-hidden="true"></span><span class="task-text">Suunnittele kolmannen pelin kierros</span></label>
             <label class="task-row"><input type="checkbox" data-task="11-2"><span class="task-box" aria-hidden="true"></span><span class="task-text">Toteuta kolmannen pelin kierros ja alkuvalikko</span></label>
             <label class="task-row"><input type="checkbox" data-task="11-3"><span class="task-box" aria-hidden="true"></span><span class="task-text">Testaa kolmannen pelin koko kierros</span></label>
-            <label class="task-row"><input type="checkbox" data-task="11-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjaa kolme Unityn rajoitetta, jotka tulivat sinulle vastaan</span></label>
+            <label class="task-row"><input type="checkbox" data-task="11-4"><span class="task-box" aria-hidden="true"></span><span class="task-text">Kirjaa kolme havaintoa Unityn mahdollisuuksista ja rajoitteista, jotka tulivat sinulle vastaan</span></label>
             </div>
           </section>
 
@@ -1460,7 +1461,7 @@
 
           <div class="outcome-grid">
             <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
-            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> Korjauscommitisi, toinen virheenkorjausketjusi ja testimatriisin uusintatestit.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> Korjauscommitisi, toinen virheenkorjausketjusi sekä testimatriisin uusintatestit ja regressiotestit.</p></div>
           </div>
 
           <section class="week-journal" data-week-journal="13">
@@ -1719,7 +1720,7 @@
 
           <div class="outcome-grid">
             <div class="card"><p class="section-label">Valmis kun</p><p class="checkpoint">Ennen kuin jatkat: tarkista viikon valmis kun -ehto.</p></div>
-            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> Luovutusehdokkaan versiomerkintä (tag v0.9), <code>project-docs/vastaanottotesti.md</code>, korjattu <code>docs/avaaminen-ja-jatkotyosto.md</code> ja <code>docs/testitulokset-ja-puutteet.md</code>.</p></div>
+            <div class="card"><p class="section-label section-label-accent">Näytä</p><p class="evidence"><strong>Näytä:</strong> Luovutusehdokkaan versiomerkintä (tag v0.9), <code>project-docs/vastaanottotesti.md</code>, kolmas virheenkorjausketjusi testimatriisissa, korjattu <code>docs/avaaminen-ja-jatkotyosto.md</code> ja <code>docs/testitulokset-ja-puutteet.md</code>.</p></div>
           </div>
 
           <section class="week-journal" data-week-journal="16">
@@ -2023,7 +2024,7 @@
       <section class="view" data-view="naytto" id="view-naytto">
         <p class="view-eyebrow">Henkilökohtainen · näyttöaineisto syntyy työn aikana</p>
         <h1 class="view-title">Näyttömatriisi</h1>
-        <p class="view-lead">Työnäyte on yksi tuotos, joka osoittaa osaamisesi: commit, testitapaus, tiedosto tai versiomerkintä. Kokoat matriisiin työnäytteesi, ja sama työnäyte voi kelvata useaan kohtaan. Työviikolla 18 kirjoitat tiedostoon <code>project-docs/nayttomatriisi.md</code> jokaisesta kohdasta täsmälinkin eli linkin suoraan oikeaan commitiin tai tiedostoon. Tämän sivun rastit ovat oma muistilistasi.</p>
+        <p class="view-lead">Työnäyte on yksi tuotos, joka osoittaa osaamisesi: commit, testitapaus, tiedosto tai versiomerkintä. Kokoat matriisiin työnäytteesi, ja sama työnäyte voi kelvata useaan kohtaan. Työviikolla 18 kirjoitat tiedostoon <code>project-docs/nayttomatriisi.md</code> jokaisesta kohdasta täsmälinkin eli linkin suoraan oikeaan commitiin tai tiedostoon. Sama linkki käy usealle riville. Ohje linkin hakemiseen on työvaiheessa 1-3. Tämän sivun rastit ovat oma muistilistasi.</p>
 
         <div class="card card-tint view-section">
           <p class="section-label section-label-accent">Ohjaajat vahvistavat sinun osasi</p>
@@ -2037,7 +2038,7 @@
           <div class="matrix-list">
             <p class="matrix-group">Opiskelija käyttää ohjelmistokehitysympäristöä</p>
             <label class="matrix-row"><input type="checkbox" data-evidence="p1"><span><strong>käyttää ohjelmointieditoria tai kehitysympäristöä</strong> Oma työnäyte: Unity-asennus ja versiotiedot, muutos kokeiluprojektiin ja ensimmäinen oma skripti kokeilukenttään (työviikot 1, 3).</span></label>
-            <label class="matrix-row"><input type="checkbox" data-evidence="p2"><span><strong>etsii ja korjaa virheitä ohjelmakoodista</strong> Oma työnäyte: Vähintään kolme virheenkorjausketjua oman koodin virheistä: havainto, toistamisohje, syy, korjauscommit, uusintatesti ja regressiotesti (työviikot 9, 13, 16).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p2"><span><strong>etsii ja korjaa virheitä ohjelmakoodista</strong> Oma työnäyte: Kolme virheenkorjausketjua: havainto, toistamisohje, syy, korjauscommit, uusintatesti ja regressiotesti. Ketju tehdään aidosta virheestä, kolmas vastaanottotestin estävästä virheestä. Jos aitoa virhettä ei löydy, ohjaaja antaa vikatehtävän (työviikot 9, 13, 16).</span></label>
             <label class="matrix-row"><input type="checkbox" data-evidence="p3"><span><strong>testaa ohjelman toimintoja</strong> Oma työnäyte: Testimatriisin testitapaukset, joihin odotettu tulos on kirjoitettu ennen ajoa: ensimmäisen pelin kierros ja toistuvat kierrokset, toisen pelin koko kierros ja kaikkien pelien testit buildeina (työviikot 4, 5, 8, 14).</span></label>
             <p class="matrix-group">Opiskelija ohjelmoi</p>
             <label class="matrix-row"><input type="checkbox" data-evidence="p4"><span><strong>käyttää rakenteista ohjelmointia toteutuksissa</strong> Oma työnäyte: Lähtötasokokeilun ehto ja skriptit päämekaniikkaan ja kierroksen logiikkaan: metodit, ehdot, silmukat ja muuttujat, esimerkiksi pelikentän luku datasta silmukalla (työviikot 1, 3, 4, 7, 10).</span></label>
@@ -2048,7 +2049,7 @@
             <label class="matrix-row"><input type="checkbox" data-evidence="p8"><span><strong>sopii tehtävistä tiimin muiden jäsenten kanssa</strong> Oma työnäyte: Tehtävätaulun kortit ja niiden järjestys sovittuna ohjaajan kanssa, viikkotarkistukset sekä palautekorttien ja korjausten järjestys (työviikot 2, 6, 12).</span></label>
             <label class="matrix-row"><input type="checkbox" data-evidence="p9"><span><strong>etsii ratkaisuvaihtoehtoja ja ratkoo ongelmia yhdessä tiimin kanssa</strong> Oma työnäyte: Projektirakenteen vertailu (yksi vai kolme Unity-projektia) ja kenttädatan tallennustapojen vertailu, käyty läpi ohjaajan kanssa ja kirjattu päätöslokiin (työviikot 2, 7).</span></label>
             <label class="matrix-row"><input type="checkbox" data-evidence="p10"><span><strong>arvioi ratkaisujen toimivuuden yhdessä tiimin kanssa</strong> Oma työnäyte: Vertaisarvio, jossa toinen opiskelija testaa toisen pelin vaatimuslistaa vasten ja havainnot käydään yhdessä läpi, sekä asiakaskatselmointi ja siinä sovitut korjaukset (työviikot 9, 12).</span></label>
-            <label class="matrix-row"><input type="checkbox" data-evidence="p11"><span><strong>arvioi omaa toimintaa tiimin jäsenenä</strong> Oma työnäyte: Selitä ja muuta -merkinnät näyttöaineiston tarkistuksineen työviikoilla 3, 6 ja 9, aukkolista ja arvio omasta toiminnasta työviikolla 12 sekä itsearviointi täsmälinkein työviikolla 18 (työviikot 3, 6, 9, 12, 18).</span></label>
+            <label class="matrix-row"><input type="checkbox" data-evidence="p11"><span><strong>arvioi omaa toimintaa tiimin jäsenenä</strong> Oma työnäyte: Selitä ja muuta -merkinnät ja näyttömatriisin tarkistus työviikoilla 3, 6 ja 9, aukkolista ja arvio omasta toiminnasta työviikolla 12 sekä itsearviointi täsmälinkein työviikolla 18 (työviikot 3, 6, 9, 12, 18).</span></label>
           </div>
         </details>
         <details class="matrix">

@@ -145,7 +145,7 @@ window.NAYTTOPROJEKTI = {
     selitaJaMuuta: ["3-5", "6-5", "9-5"],
     siirtokokeilu: ["6-2", "16-1"],
     kuorma: {
-      poikkeamat: { 1: "aloitusviikko: Gitin, Unityn ja tehtävätaulun peruskäsitteet otetaan käyttöön ohjatusti yksi kerrallaan, ja lähtötasokokeilusta ohjaaja näkee, tarvitseeko opiskelija tukea ennen ohjelmointia" }
+      poikkeamat: { 1: "aloitusviikko: Gitin, Unityn ja tehtävätaulun peruskäsitteet otetaan käyttöön ohjatusti yksi kerrallaan. Näytön käsitteet (työnäyte, näyttömatriisi ja täsmälinkki) ovat käytössä heti, koska viikolla 1 rastitetaan matriisista viisi riviä ja kirjataan kaksi täsmälinkkiä; linkin hakeminen ohjeistetaan työvaiheessa 1-3. Lähtötasokokeilusta ohjaaja näkee, tarvitseeko opiskelija tukea ennen ohjelmointia" }
     }
   },
 
@@ -165,6 +165,8 @@ window.NAYTTOPROJEKTI = {
     { termi: "scene", nimi: "Unityn näkymä tai taso", selite: "Esimerkiksi alkuvalikko tai pelikenttä. Jokainen scene on oma tiedostonsa, ja avaat sen Unityn Project-ikkunasta.", viikko: 1 },
     { termi: "Play-tila", nimi: "Pelin ajo editorissa", selite: "Unity-editorin tila, jossa peli käynnistyy editorin sisällä. Jos muutat Inspectorissa jotain Play-tilan aikana, muutos häviää, kun lopetat Play-tilan.", viikko: 1 },
     { termi: "tehtävätaulu", nimi: "Oma työlista", selite: "Taulu, esimerkiksi Trello, jossa jokainen työtehtävä on kortti. Kortissa on tavoite, valmis kun -ehto ja linkki työnäytteeseen. Taulusta näet, mitä on tehty, mitä on työn alla ja mitä on vielä tekemättä. Käyt taulun läpi ohjaajan kanssa viikkotarkistuksessa.", viikko: 1 },
+    { termi: "työnäyte", nimi: "Todiste tekemästäsi työstä", selite: "Repositoryssa oleva tiedosto, commit, testitapaus tai versiomerkintä, josta näkyy tekemäsi työ. Liität työnäytteet näyttömatriisiin, ja arvioija katsoo niistä, mitä osaat.", viikko: 1 },
+    { termi: "näyttömatriisi", nimi: "Vaatimukset ja työnäytteet", selite: "Lista tutkinnon osien osaamisvaatimuksista. Jokaisen vaatimuksen kohdalle liität työnäytteen. Sivuston Näyttömatriisi-näkymässä rastitat rivit, joihin sinulla on työnäyte. Työviikolla 18 kirjoitat täsmälinkit tiedostoon `project-docs/nayttomatriisi.md`.", viikko: 1 },
     { termi: ".gitignore", nimi: "Pois jätettävät tiedostot", selite: "Tiedosto, joka kertoo Gitille, mitä ei tallenneta. Unity-projektista jätetään pois esimerkiksi kansiot Library, Temp ja Builds, koska Unity luo ne itse.", viikko: 1 },
     { termi: "pienin toimiva versio", nimi: "Pelin ensimmäinen valmis muoto", selite: "Versio, jossa päämekaniikka, tavoite ja kierroksen loppu toimivat. Teet sen ensin. Kaikki muu on lisää.", viikko: 2 },
     { termi: "pseudokoodi", nimi: "Koodin suunnitelma tavallisella kielellä", selite: "Lyhyt kuvaus siitä, mitä koodi tekee, kirjoitettuna suomeksi ennen varsinaista koodia, esimerkiksi ”Kun pelaaja koskettaa maalia, kierros päättyy.” Kun kirjoitat pseudokoodin ensin, mietit valmiiksi, mitä tietoa koodi tarvitsee ja millä ehdoilla asiat tapahtuvat.", viikko: 3 },
@@ -180,17 +182,18 @@ window.NAYTTOPROJEKTI = {
     { termi: "haara", nimi: "Branch, erillinen työversio", selite: "Repositoryn erillinen työversio. Kun teet uuden osan, esimerkiksi valikot, omassa haarassa, päähaaran (main) peli pysyy sillä aikaa toimivana. GitHub Desktopissa teet uuden haaran kohdasta Current Branch → New Branch.", viikko: 5 },
     { termi: "yhdistäminen", nimi: "Merge, haaran yhdistäminen päähaaraan", selite: "Kun haarassa tekemäsi osa toimii, yhdistät sen muutokset päähaaraan. GitHub Desktopissa valitset ensin päähaaran (main) ja sitten Branch → Merge into current branch. Sen jälkeen muutokset ovat päähaarassa.", viikko: 5 },
     { termi: "tag", nimi: "Versiomerkintä", selite: "Nimi, jonka liität yhteen commitiin, jotta löydät juuri sen version myöhemmin. Asiakaskokeilun versio on tag v0.1 ja luovutusversio tag v1.0.", viikko: 6 },
+    { termi: "katselmointi", nimi: "Asiakkaat kokeilevat version", selite: "Tilaisuus, jossa asiakkaat kokeilevat pelin keskeneräistä versiota ja kertovat, mitä pitää muuttaa. ProtoPajassa katselmointeja on kaksi: asiakaskokeilu työviikolla 6 ja asiakaskatselmointi työviikolla 12.", viikko: 6 },
     { termi: "JSON", nimi: "Tiedon tekstimuoto", selite: "Tekstimuoto, jolla tietoa tallennetaan tiedostoon nimettyinä kenttinä. Pelin kenttä- tai asetusdata voi olla JSON-tiedostossa, jonka peli lukee käynnistyessään.", viikko: 7 },
     { termi: "ScriptableObject", nimi: "Unityn datatiedosto", selite: "Unityn tapa tallentaa dataa omaksi tiedostokseen projektin sisälle, esimerkiksi kentän asetukset. Voit muokata dataa Inspector-ikkunassa kirjoittamatta koodia.", viikko: 7 },
     { termi: "API", nimi: "Ohjelmointirajapinta", selite: "Valmiiden toimintojen joukko, jota oma koodisi kutsuu. Unityn API:sta käytät esimerkiksi fysiikkaa (Physics2D), scenen vaihtoa (SceneManager) ja aikaa (Time).", viikko: 7 },
-    { termi: "vertaisarvio", nimi: "Toisen opiskelijan antama arvio", selite: "Toinen opiskelija testaa pelisi vaatimuslistaa vasten, ja kirjaatte havainnot yhdessä. Vertaisarvio koskee peliä, ei ihmistä.", viikko: 9 },
-    { termi: "virheenkorjausketju", nimi: "Virheen koko kulku", selite: "Havainto → toistamisohje → syy → korjauscommit → uusintatesti → regressiotesti. Toistamisohje kertoo, miten virheen saa näkyviin uudelleen. Teet projektissa vähintään kolme ketjua oman koodisi virheistä.", viikko: 9 },
+    { termi: "vertaisarvio", nimi: "Toisen opiskelijan antama arvio", selite: "Toinen opiskelija testaa pelisi vaatimuslistaa vasten, ja kirjaatte havainnot yhdessä. Vertaisarvio koskee peliä, ei ihmistä. Kirjaat testaajasta vain roolin vertaistestaaja, et nimeä.", viikko: 9 },
+    { termi: "virheenkorjausketju", nimi: "Virheen koko kulku", selite: "Havainto → toistamisohje → syy → korjauscommit → uusintatesti → regressiotesti. Toistamisohje kertoo, miten virheen saa näkyviin uudelleen. Uusintatestissä ajat saman testin uudelleen korjauksen jälkeen. Teet projektissa kolme ketjua työviikoilla 9, 13 ja 16. Ketju tehdään aidosta virheestä, kolmas vastaanottotestissä löytyneestä estävästä virheestä. Jos aitoa virhettä ei löydy, ohjaaja antaa vikatehtävän eli koodin, jossa on valmiiksi virhe.", viikko: 9 },
     { termi: "regressiotesti", nimi: "Ettei korjaus rikkonut muuta", selite: "Korjauksen jälkeen ajettava testi, jolla varmistat, että muu peli toimii yhä. Yleensä se on pelin peruskierros alusta loppuun.", viikko: 9 },
     { termi: "rajatapaus", nimi: "Harvinainen mutta mahdollinen tilanne", selite: "Tilanne, jota pelaaja ei yleensä tee mutta voi tehdä, esimerkiksi Uudelleen-painikkeen painaminen kaksi kertaa nopeasti. Rajatapauksista löytyy usein virheitä, joita et huomaa tavallisessa pelaamisessa.", viikko: 14 },
     { termi: "vastaanottotesti", nimi: "Ulkopuolinen testaa ohjeesi", selite: "Projektin ulkopuolinen henkilö avaa Unity-projektit ja käynnistää pelit pelkän kirjallisen ohjeesi avulla. Korjaat ohjeeseen jokaisen kohdan, jossa hän epäröi.", viikko: 16 },
     { termi: "luovutusehdokas", nimi: "Versio, jonka aiot luovuttaa", selite: "Versio, jonka luovutat asiakkaille, jos vastaanottotestissä ei löydy estäviä virheitä. Merkitset sen versiomerkinnällä tag v0.9.", viikko: 16 },
     { termi: "puhdas klooni", nimi: "Uusi kopio repositorysta", selite: "Kopio, jonka haet repositorysta GitHubista uuteen kansioon. Siinä on vain se, mitä olet tallentanut GitHubiin. Puhtaasta kloonista näet, aukeaako projekti myös koneella, jolla et ole tehnyt työtä. GitHub Desktopissa kloonaat repositoryn kohdasta File → Clone repository.", viikko: 16 },
-    { termi: "täsmälinkki", nimi: "Linkki suoraan työnäytteeseen", selite: "Linkki, joka vie GitHubissa suoraan oikeaan commitiin tai tiedostoon eikä pelkästään repositoryn etusivulle. Täsmälinkistä arvioija näkee heti, mitä työnäytettä tarkoitat.", viikko: 18 }
+    { termi: "täsmälinkki", nimi: "Linkki suoraan työnäytteeseen", selite: "Linkki, joka vie GitHubissa suoraan oikeaan commitiin tai tiedostoon eikä pelkästään repositoryn etusivulle. Täsmälinkistä arvioija näkee heti, mitä työnäytettä tarkoitat.", viikko: 1 }
   ],
 
   /* ---- viikkotyyppien kehystekstit ---- */
@@ -345,10 +348,10 @@ window.NAYTTOPROJEKTI = {
       deliverable: "`project-docs/kysymykset.md`, oma repository, Unity-kokeiluprojekti, lähtötasokokeilu ja sen commit sekä tehtävätaulu ja työaikataulukko.",
       why: "Kun työkalut toimivat jo ennen ensimmäistä peliä, voit keskittyä pelin tekemiseen etkä joudu korjaamaan asennuksia kesken työn. Kun tallennat muutoksen commitiksi ja lähetät sen GitHubiin, se säilyy siellä. Silloin et menetä töitäsi, vaikka kone hajoaisi tai tekisit virheen. Kun osaamistasi arvioidaan näytössä, ohjaaja näkee commit-historiasta, mitä olet tehnyt ja milloin.",
       done: "Kloonaa repositorysi uuteen kansioon ja avaa sieltä Kokeilu-projekti Unity Hubissa. Avaa Lahtotaso-scene ja paina Play: neliö pyörii, ja välilyönti kääntää suunnan. Commitisi näkyvät GitHubin historiassa sinun tekijänimelläsi.",
-      record: "Kirjoita työviikon 1 merkintään Unity-versio ja lähtötasokokeilusi commit-linkki. Kerro, mitä opit lähtötasokokeilusta ja ohjaajan palautteesta ja mitä huomasit, kun kloonasit repositoryn uuteen kansioon. Lisää yksi kysymyslistan kysymys, jonka vastaus muuttaa suunnitelmaasi. Näyttömatriisin rivit, joihin sait työnäytteen: kehitysympäristön käyttö (p1), ympäristön käyttöönotto (k1), ohjelmoinnin perusasiat (p4), versionhallinta (s12) ja asiakkaan tarpeiden selvittäminen (s1).",
+      record: "Kirjoita työviikon 1 merkintään vastaukset näihin kysymyksiin:\n1) Mikä on Unity-versiosi?\n2) Mitä opit lähtötasokokeilusta ja ohjaajan palautteesta?\n3) Mitä huomasit, kun kloonasit repositoryn uuteen kansioon?\n4) Minkä kysymyslistasi kysymyksen vastaus muuttaa suunnitelmaasi?\nRastita näyttömatriisista nämä rivit: kehitysympäristön käyttö (p1), ympäristön käyttöönotto (k1), rakenteinen ohjelmointi (p4), versionhallinta (s12) ja asiakkaan tarpeiden selvittäminen (s1). Kirjaa merkintään kaksi täsmälinkkiä eli linkkiä, jotka vievät suoraan työnäytteeseen: lähtötasokokeilusi commit ja kysymyslista. Sama linkki käy usealle riville.",
       skills: [
   "kehitysympäristön käyttöönotto (p1, k1)",
-  "ohjelmoinnin perusasiat: arvo ja ehto (p4)",
+  "rakenteinen ohjelmointi: arvo ja ehto (p4)",
   "versionhallinta (s12)",
   "asiakkaan tarpeiden selvittäminen (s1)"
 ],
@@ -365,6 +368,7 @@ window.NAYTTOPROJEKTI = {
           ],
           valmis: "Kysymyslistassa on vähintään kahdeksan kysymystä, ja jokaisen perässä lukee, kenelle se on. Olet käynyt listan läpi ohjaajan kanssa.",
           tallenna: "Tiedosto polkuun `project-docs/kysymykset.md`, kun olet perustanut repositoryn myöhemmin tällä viikolla. Yksi tärkeä kysymys päiväkirjaasi.",
+          sanat: ["työnäyte"],
           esimerkki: "Hyvä kysymys: ”Pelataanko pelejä musiikkikurssilla Windows-koneilla vai selaimessa?” Vastauksesta tiedät, teetkö peleistä Windows-ohjelmat vai selaimessa toimivat pelit.",
           eiRiita: "”Mitä peleihin pitää tehdä?” Vastaus on jo toimeksiannossa, eikä se auta sinua päättämään mitään."
         },
@@ -413,6 +417,7 @@ window.NAYTTOPROJEKTI = {
               "Jos Changes-listassa on tuhansia tiedostoja, .gitignore on väärässä kansiossa. Älä tee committia: siirrä tiedosto Assets-kansion viereen, niin lista lyhenee.",
               "Unityn .gitignore-pohjan rivit alkavat vinoviivalla, esimerkiksi /[Ll]ibrary/. Vinoviiva tarkoittaa: juuri siinä kansiossa, jossa .gitignore on.",
               "Jos teet töitä kahdella koneella, esimerkiksi koulussa ja kotona, paina toisella koneella ensin Fetch origin ja sitten Pull origin. Pull hakee GitHubista muutokset, jotka lähetit toiselta koneelta.",
+              "Täsmälinkin commitiin saat GitHub Desktopista: valitse History, napsauta committia hiiren oikealla painikkeella ja valitse View on GitHub. Kopioi linkki selaimen osoiteriviltä. Tiedoston linkin saat, kun avaat tiedoston GitHubissa ja kopioit osoiterivin.",
               "Jos teit commitin ennen kuin piilotit sähköpostiosoitteesi, osoite näkyy commitin tiedoissa. Kerro siitä ohjaajalle ennen kuin repository muutetaan julkiseksi."
             ],
             test: "Kokeilu-projekti aukeaa toisesta kansiosta tai toiselta koneelta, eikä GitHubin tiedostolistassa ole Library-kansiota.",
@@ -442,6 +447,7 @@ window.NAYTTOPROJEKTI = {
               "Update suoritetaan kerran jokaisella ruudunpäivityksellä. Time.deltaTime on kahden päivityksen välinen aika sekunteina, joten nopeus pysyy samana nopealla ja hitaalla koneella.",
               "Ehto kirjoitetaan muotoon if (ehto) { … }. Aaltosulkeiden sisällä oleva koodi suoritetaan vain, kun ehto on tosi.",
               "Inspector-ikkunassa näet valitun objektin asetukset, esimerkiksi speed-arvon. Play-tilassa tekemäsi muutokset häviävät, kun lopetat Play-tilan.",
+              "Pohja käyttää Input System -pakettia, joka on uusien Unity 6 -projektien oletus. Jos Console-ikkunassa on virhe, jossa mainitaan InputSystem, asenna paketti Window-valikon Package Managerista. Tarkista myös asetus Project Settings, Player, Active Input Handling, tai kysy ohjaajalta.",
               "Jos jokin vaihe tuntuu täysin vieraalta, kirjoita se selitykseen. Se on tärkeää tietoa ohjaajalle, ei virhe."
             ],
             test: "Paina Play: neliö pyörii, ja välilyönnin painaminen kääntää suunnan.",
@@ -477,7 +483,7 @@ window.NAYTTOPROJEKTI = {
       deliverable: "`project-docs/suunnitelma.md`, `project-docs/paatokset.md` ja ensimmäisen pelin kortit tuntiarvioineen ohjaajan kanssa sovitussa järjestyksessä.",
       why: "Jos et rajaa pelejä, käytät helposti koko projektin yhden pelin hiomiseen, eikä kahdelle muulle jää aikaa. Kun olet sopinut suunnitelmasta ja työn järjestyksestä ohjaajan kanssa, tiedät joka viikko, mitä teet seuraavaksi.",
       done: "Kerro ohjaajalle ilman muistiinpanoja jokaisen pelin pienin toimiva versio, teetkö pelit yhteen vai kolmeen Unity-projektiin ja mitkä ensimmäisen pelin kortit teet ensin. Ohjaaja vertaa kertomaasi suunnitelmaan ja tehtävätauluun, ja ne vastaavat toisiaan.",
-      record: "Kirjoita työviikon 2 merkintään, mitä jätit pienimmän toimivan version ulkopuolelle ja miksi, minkä vaihtoehdon valitsit Unity-projektien vertailussa ja millä kahdella syyllä, mitkä kortit teet ensin ja mitkä asiat jäivät avoimiksi. Näyttömatriisin rivit: asiakkaan tarpeiden selvittäminen (s1), tehtävistä sopiminen (p8), ratkaisuvaihtoehtojen vertailu (p9), tärkeysjärjestys (s4), toimintojen jakaminen tehtäviksi (s5), tehtävien suunnittelu ja arviointi (s6) ja pelin suunnittelu ennen toteutusta (k5).",
+      record: "Kirjoita työviikon 2 merkintään vastaukset näihin kysymyksiin:\n1) Mitä jätit pienimmän toimivan version ulkopuolelle, ja miksi?\n2) Minkä vaihtoehdon valitsit Unity-projektien vertailussa, ja millä kahdella syyllä?\n3) Mitkä kortit teet ensin?\n4) Mitkä asiat jäivät avoimiksi?\nRastita näyttömatriisista nämä rivit: asiakkaan tarpeiden selvittäminen (s1), tehtävistä sopiminen (p8), ratkaisuvaihtoehtojen vertailu (p9), tärkeysjärjestys (s4), toimintojen jakaminen tehtäviksi (s5), tehtävien suunnittelu ja arviointi (s6) ja pelin suunnittelu ennen toteutusta (k5). Kirjaa merkintään jokaiselle riville täsmälinkki tämän viikon työnäytteeseen.",
       skills: ["tärkeysjärjestys ja rajaus (s4)", "toimintojen jakaminen tehtäviksi ja tuntiarviot (s5, s6)", "tehtävistä sopiminen ohjaajan kanssa (p8)", "ratkaisuvaihtoehtojen vertailu (p9)", "asiakkaan tarpeiden tarkentaminen (s1)"],
       resources: [["Avaa suunnitelmalomake", "#view-suunnitelma", false]],
       tehtavat: {
@@ -505,9 +511,9 @@ window.NAYTTOPROJEKTI = {
             ["Vastaa vertailun kysymyksiin", "Vastaa taulukossa jokaiseen kysymykseen sekä yhden että kolmen projektin kohdalla: Kuinka helposti musiikkikurssin opiskelija saa yhden pelin auki? Miten saat saman alkuvalikon kaikkiin peleihin? Montako buildia eli pelattavaa versiota teet luovutukseen?"],
             ["Päätä ja perustele kahdella syyllä", "Valitse vaihtoehto. Kirjoita päätöslokiin päivämäärä, valintasi ja kaksi syytä, jotka perustuvat vastauksiisi. Kirjoita valinta myös suunnitelmalomakkeelle."],
             ["Päätä, miten nimeät tiedostot", "Kirjoita suunnitelmalomakkeen kenttään ”Scenejen, skriptien ja resurssien nimeäminen”, miten nimeät tiedostot ja kansiot. Esimerkiksi skriptin nimi kertoo, mitä se tekee: PlayerJump tai GoalTrigger."],
-            ["Näytä päätös ohjaajalle", "Käy päätös ja syyt läpi ohjaajan kanssa. Jos ohjaaja ei vielä vahvista päätöstä, merkitse se päätöslokiin avoimeksi asiaksi ja jatka valitsemallasi tavalla."]
+            ["Käy vaihtoehdot läpi ohjaajan kanssa", "Käy vertailutaulukko, päätös ja syyt läpi ohjaajan kanssa. Kirjaa päätöslokiin, mitä ohjaaja kommentoi. Jos hän ei vielä vahvista päätöstä, merkitse se avoimeksi asiaksi ja jatka valitsemallasi tavalla."]
           ],
-          valmis: "Päätöslokissa on mittaamasi aika, vertailutaulukko vastauksineen, päätös päivämäärineen ja kaksi syytä, ja olet näyttänyt päätöksen ohjaajalle.",
+          valmis: "Päätöslokissa on mittaamasi aika, vertailutaulukko vastauksineen, päätös päivämäärineen ja kaksi syytä. Olet käynyt vaihtoehdot ja päätöksen läpi ohjaajan kanssa ja kirjannut hänen kommenttinsa päätöslokiin.",
           tallenna: "`project-docs/paatokset.md` repositoryyn.",
           esimerkki: "”Valitsin kolme erillistä projektia. Syy 1: musiikkikurssin opiskelija avaa vain sen pelin, johon hän tekee musiikin. Kokeiluprojektin avaaminen kesti minulla jo 2 min 10 s, ja kolmen pelin projekti olisi isompi. Syy 2: teen joka tapauksessa jokaisesta pelistä oman buildin, joten erilliset projektit eivät lisää buildien määrää.”",
           eiRiita: "”Erilliset projektit ovat selkeämpiä.” Perustelusta ei näe, mikä on selkeämpää ja kenelle. Siinä ei ole mittaamaasi aikaa eikä vastauksia vertailun kysymyksiin.",
@@ -518,13 +524,13 @@ window.NAYTTOPROJEKTI = {
               "Yhdessä projektissa jokainen peli on omassa kansiossaan Assets-kansion alla. Build Profiles -ikkunassa valitset, mitkä scenet tulevat kuhunkin buildiin.",
               "Erillisissä projekteissa avaat ja kokoat jokaisen pelin erikseen. Saman alkuvalikon saat muihin peleihin, kun viet sen prefabina eli valmiina osana toiseen projektiin."
             ],
-            code: "## Päätös: yksi vai kolme Unity-projektia (PÄIVÄMÄÄRÄ)\n\nKokeiluprojektin avaaminen uudesta kansiosta kesti: AIKA\n\n| Kysymys | Yksi projekti, jossa on kolme peliä | Kolme erillistä projektia |\n| --- | --- | --- |\n| Kuinka helposti musiikkikurssin opiskelija saa yhden pelin auki? Käytä mittaamaasi aikaa. | | |\n| Miten saat saman alkuvalikon kaikkiin peleihin? | | |\n| Montako buildia teet luovutukseen? | | |\n\nPäätös: VAIHTOEHTO\nSyy 1: SYY\nSyy 2: SYY\nOhjaajan vahvistus: vahvistettu / avoin asia"
+            code: "## Päätös: yksi vai kolme Unity-projektia (PÄIVÄMÄÄRÄ)\n\nKokeiluprojektin avaaminen uudesta kansiosta kesti: AIKA\n\n| Kysymys | Yksi projekti, jossa on kolme peliä | Kolme erillistä projektia |\n| --- | --- | --- |\n| Kuinka helposti musiikkikurssin opiskelija saa yhden pelin auki? Käytä mittaamaasi aikaa. | | |\n| Miten saat saman alkuvalikon kaikkiin peleihin? | | |\n| Montako buildia teet luovutukseen? | | |\n\nPäätös: VAIHTOEHTO\nSyy 1: SYY\nSyy 2: SYY\nOhjaajan kommentti: MITÄ OHJAAJA KYSYI TAI EHDOTTI\nOhjaajan vahvistus: vahvistettu / avoin asia"
           }
         },
         "2-3": {
           miksi: "Kun teet suunnitelmasta kortit, näet, mitä sinun pitää tehdä ja missä järjestyksessä. Työviikolla 6 vertaat tuntiarvioitasi siihen, kauanko työ oikeasti kesti, ja näet, kuinka hyvin osaat arvioida työmäärää.",
           osat: [
-            ["Valitse ensimmäinen peli", "Valitse, minkä kolmesta pelistä teet ensin. Valitse se, jonka päämekaniikka on sinulle selvin, niin pääset alkuun nopeasti."],
+            ["Valitse ensimmäinen peli", "Valitse ensimmäiseksi peliksi se, jonka päämekaniikka on sinulle selvin. Työviikkojen 3–6 esimerkit ja valmis kun -ehdot on kirjoitettu tasohyppelylle. Jos valitset muun pelin, sovi vastaavat ehdot ohjaajan kanssa ja kirjaa ne päätöslokiin."],
             ["Jaa peli toiminnoiksi", "Jaa ensimmäisen pelin pienin toimiva versio erillisiksi toiminnoiksi, esimerkiksi liike, hyppy, kerättävä esine, este, maali, alkuvalikko ja loppuruutu."],
             ["Järjestä toiminnot tärkeysjärjestykseen", "Laita listan alkuun päämekaniikka, sitten kierroksen loppu ja vasta sen jälkeen valikot ja grafiikat. Silloin saat pelattavan version mahdollisimman aikaisin."],
             ["Tee kortit", "Tee jokaisesta toiminnosta kortti tehtävätauluun. Kirjoita korttiin tavoite ja valmis kun -ehto eli se, mitä pelissä näkyy, kun toiminto toimii."],
@@ -566,7 +572,7 @@ window.NAYTTOPROJEKTI = {
       deliverable: "Projektirakenne, ensimmäisen pelin kokeilukenttä, päämekaniikka pseudokoodeineen, koottu kokeiluversio ja selitä ja muuta -merkintä.",
       why: "Jos teet buildin ensimmäisen kerran vasta projektin lopussa, et ehdi korjata ongelmia, jotka tulevat vastaan vain buildissa. Alustan ongelmat on helpompi korjata nyt, kun pelissä on vielä vähän koodia.",
       done: "Käynnistä koottu kokeiluversio ilman Unity-editoria ja kokeile kokeilukentässä kaikkia päämekaniikan osia. GitHubin historiassa on commit jokaisesta osasta.",
-      record: "Kirjoita työviikon 3 merkintään päämekaniikan osat, yhden osan pseudokoodi ja miten kokeilit sitä. Kerro myös, huomasitko eroja editorin ja buildin välillä, mitä ohjaaja pyysi muuttamaan ja mitä et vielä osannut selittää. Näyttömatriisin rivit: kehitysympäristön käyttö (p1), ympäristön käyttöönotto ja asetukset (k1), rakenteinen ohjelmointi (p4), toimintojen toteuttaminen suunnitelmasta (p7) ja oman toiminnan arviointi (p11).",
+      record: "Kirjoita työviikon 3 merkintään vastaukset näihin kysymyksiin:\n1) Mitkä ovat päämekaniikan osat?\n2) Millainen on yhden osan pseudokoodi, ja miten kokeilit sitä?\n3) Huomasitko eroja editorin ja buildin välillä?\n4) Mitä ohjaaja pyysi muuttamaan?\n5) Mitä et vielä osannut selittää?\nRastita näyttömatriisista nämä rivit: kehitysympäristön käyttö (p1), ympäristön käyttöönotto ja asetukset (k1), rakenteinen ohjelmointi (p4), toimintojen toteuttaminen suunnitelmasta (p7) ja oman toiminnan arviointi (p11). Kirjaa merkintään jokaiselle riville täsmälinkki tämän viikon työnäytteeseen.",
       skills: [
   "kehitysympäristön käyttöönotto ja asetukset (p1, k1)",
   "suunnitelmasta koodiksi: pseudokoodi (p7)",
@@ -669,10 +675,10 @@ window.NAYTTOPROJEKTI = {
             ["Selitä ohjaajalle", "Selitä ilman muistiinpanoja, mitä skripti tekee: mitä tietoa se käyttää, mikä käynnistää toiminnon ja millä ehdolla."],
             ["Tee pyydetty muutos", "Ohjaaja pyytää pienen muutoksen, esimerkiksi uuden arvon tai ehdon. Tee muutos ja kokeile sitä Play-tilassa ohjaajan nähden."],
             ["Kirjaa tilanne", "Kirjoita tiedostoon `project-docs/selita-ja-muuta.md` päivämäärä, skriptin nimi, pyydetty muutos ja yksi asia, jota et vielä osannut selittää."],
-            ["Katso, mistä sinulla on jo työnäyte", "Avaa sivuston Näyttömatriisi-näkymä ja rastita rivit, joihin sinulla on nyt työnäyte. Kirjoita samaan tiedostoon yksi vaatimus, josta työnäyte vielä puuttuu."],
+            ["Tarkista näyttömatriisi", "Avaa sivuston Näyttömatriisi-näkymä ja katso, mihin riveihin sinulla on jo työnäyte. Rastita ne. Kirjoita tiedostoon `project-docs/selita-ja-muuta.md` yksi vaatimus, josta työnäyte vielä puuttuu."],
             ["Tee commit ja push", "Tee muutoksesta ja merkinnästä commit ja paina Push origin."]
           ],
-          valmis: "Olet selittänyt skriptisi ohjaajalle, pyydetty muutos toimii Play-tilassa, ja selitä ja muuta -tiedostossa on tämän viikon merkintä.",
+          valmis: "Olet selittänyt skriptisi ohjaajalle, pyydetty muutos toimii Play-tilassa, ja selitä ja muuta -tiedostossa on tämän viikon merkintä. Merkinnässä on myös yksi vaatimus, josta työnäyte vielä puuttuu.",
           tallenna: "`project-docs/selita-ja-muuta.md` ja muutoksen commit-linkki päiväkirjaasi.",
           esimerkki: "”Työviikko 3: PlayerMovement.cs. Selitin, että direction saa arvon −1 tai 1 nuolinäppäimen mukaan ja vaakanopeus lasketaan siitä. Ohjaajan pyytämä muutos: pelaaja ei liiku, kun nopeus on nolla. En osannut selittää, miksi pystynopeus säilytetään. Työnäyte puuttuu vielä: testaa ohjelman toimintoja.”",
           eiRiita: "”Koodi liikuttaa pelaajaa.” Selityksestä ei näe, mitä tietoa koodi käyttää ja millä ehdolla pelaaja liikkuu."
@@ -690,7 +696,7 @@ window.NAYTTOPROJEKTI = {
       deliverable: "Kierroksen lopun suunnitelma korttina ja pseudokoodina, kaksi skriptiä, jotka tunnistavat kierroksen lopun ja näyttävät loppuviestin, sekä testimatriisi, jossa ovat ensimmäiset testitapaukset T01 ja T02.",
       why: "Pelaaja ei voi pelata peliä loppuun, ennen kuin peli tunnistaa kierroksen lopun ja näyttää, miten kierroksessa kävi. Teet lopun ennen valikkoja ja grafiikoita, koska niitä ei kannata viimeistellä peliin, jonka kierros ei vielä toimi.",
       done: "Käynnistä peli Play-tilassa ja pelaa kierros loppuun asti. Loppuviesti kertoo oikein, miten kierroksessa kävi, eikä peli jatku normaalisti viestin jälkeen. Teet Uudelleen-painikkeen vasta työviikolla 5, joten tällä viikolla aloitat uuden kierroksen lopettamalla Play-tilan ja käynnistämällä sen uudelleen. Testimatriisissa ovat testitapausten T01 ja T02 tulokset, ja historiassa on commit kierroksen lopusta.",
-      record: "Kirjoita työviikon 4 merkintään, miten peli tunnistaa kierroksen lopun, millaisen pseudokoodin kirjoitit ja mitä löysit, kun teit testitapaukset T01 ja T02. Näyttömatriisin rivit: toimintalogiikka (s7), rakenteinen ohjelmointi (p4), toiminnot suunnitelman mukaan (p7), Unityn tärkeimmät toiminnot (k3) ja testaus (p3).",
+      record: "Kirjoita työviikon 4 merkintään vastaukset näihin kysymyksiin:\n1) Miten peli tunnistaa kierroksen lopun?\n2) Millaisen pseudokoodin kirjoitit?\n3) Mitä löysit, kun teit testitapaukset T01 ja T02?\nRastita näyttömatriisista nämä rivit: toimintalogiikka (s7), rakenteinen ohjelmointi (p4), toiminnot suunnitelman mukaan (p7), Unityn tärkeimmät toiminnot (k3) ja testaus (p3). Kirjaa merkintään jokaiselle riville täsmälinkki tämän viikon työnäytteeseen.",
       skills: ["toimintalogiikka (s7)", "rakenteinen ohjelmointi suunnitelman mukaan (p4, p7)", "colliderit ja triggerit Unityssä (k3)", "testaus odotettua tulosta vasten (p3)"],
       tehtavat: {
         "4-1": {
@@ -753,10 +759,10 @@ window.NAYTTOPROJEKTI = {
           eiRiita: "Odotettu tulos ”Toimii”. Kirjoita odotettu tulos ennen testiä niin tarkasti, että joku muukin voi katsoa pelistä, toteutuiko se.",
           apu: {
             title: "Testimatriisin pohja",
-            code: "# Testimatriisi\n\n| Tunnus | Peli | Testin tekijä | Versio (commit) | Alkutilanne | Toiminta | Odotettu tulos | Havaittu tulos | Korjaus ja uusintatesti |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| T01 | PELIN NIMI | NIMI | COMMIT | Kierros alkaa lähtöpaikasta | Pelaaja kävelee maaliin | Teksti Maali! näkyy kerran ja pelaaja pysähtyy | KIRJOITA TESTIN JÄLKEEN | |",
+            code: "# Testimatriisi\n\n| Tunnus | Peli | Testin tekijä | Versio (commit) | Alkutilanne | Toiminta | Odotettu tulos | Havaittu tulos | Korjaus ja uusintatesti |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| T01 | PELIN NIMI | ROOLI | COMMIT | Kierros alkaa lähtöpaikasta | Pelaaja kävelee maaliin | Teksti Maali! näkyy kerran ja pelaaja pysähtyy | KIRJOITA TESTIN JÄLKEEN | |",
             vinkit: [
               "Kirjoita Versio-sarakkeeseen sen commitin lyhyt tunniste, jota testasit. Tunniste on seitsemän merkin koodi, joka näkyy GitHub Desktopin History-välilehdellä, kun valitset commitin.",
-              "Testin tekijä -sarakkeeseen kirjoitat itsesi. Työviikolla 9 toinen opiskelija testaa toisen pelisi, ja silloin sarakkeeseen tulee hänen nimensä."
+              "Kirjoita Testin tekijä -sarakkeeseen rooli, ei nimeä. Kun testaat itse, rooli on kehittäjä. Työviikolla 9 toinen opiskelija testaa toisen pelisi, ja silloin sarakkeeseen tulee vertaistestaaja."
             ]
           }
         }
@@ -771,7 +777,7 @@ window.NAYTTOPROJEKTI = {
       deliverable: "Alkuvalikko ohjausohjeineen, uudelleenaloitus, paluu alkuvalikkoon ja palaute ruudulla, jotka olet tehnyt omassa haarassa ja yhdistänyt päähaaraan, sekä grafiikkapaketti ja `docs/assetit-ja-lisenssit.md`.",
       why: "Asiakkaat kokeilevat peliä työviikolla 6 ilman, että neuvot heitä. Siksi pelin pitää alkaa valikosta, jossa on ohje, ja pelaajan pitää päästä aloittamaan uudelleen ilman Unity-editoria.",
       done: "Aloita alkuvalikosta, lue ohje ja pelaa kierros loppuun. Paina Uudelleen, pelaa kierros taas loppuun ja palaa Alkuvalikkoon. Toista tämä kolme kertaa peräkkäin ilman virhettä. Jokaisesta tärkeästä tapahtumasta, esimerkiksi esineen keräämisestä tai osumasta, näkyy palaute ruudulla, koska pelissä ei ole ääniä. Päähaaran historiassa on commit, jossa yhdistit valikot-haaran päähaaraan.",
-      record: "Kirjoita työviikon 5 merkintään, miten teit valikot ja palautteen, miksi valitsit juuri sen palautteen, miten haaran yhdistäminen päähaaraan onnistui ja mitä löysit, kun testasit useita kierroksia peräkkäin. Näyttömatriisin rivit: käyttöliittymä (p6), ulkoiset komponentit (k4), osan liittäminen olemassa olevaan versioon eli haara ja yhdistäminen (s13) ja testaus (p3).",
+      record: "Kirjoita työviikon 5 merkintään vastaukset näihin kysymyksiin:\n1) Miten teit valikot ja palautteen?\n2) Miksi valitsit juuri sen palautteen?\n3) Miten haaran yhdistäminen päähaaraan onnistui?\n4) Mitä löysit, kun testasit useita kierroksia peräkkäin?\nRastita näyttömatriisista nämä rivit: käyttöliittymä (p6), ulkoiset komponentit (k4), osan liittäminen olemassa olevaan versioon eli haara ja yhdistäminen (s13) ja testaus (p3). Kirjaa merkintään jokaiselle riville täsmälinkki tämän viikon työnäytteeseen.",
       skills: ["käyttöliittymä suunnitelman mukaan (p6)", "ulkoiset komponentit ja assetit (k4)", "haara ja yhdistäminen päähaaraan (s13)", "toistuvien kierrosten testaus (p3)"],
       tehtavat: {
         "5-1": {
@@ -791,10 +797,10 @@ window.NAYTTOPROJEKTI = {
           osat: [
             ["Tee uusi haara", "Tarkista GitHub Desktopissa, että Current Branch -kohdassa lukee main. Valitse Current Branch ja New Branch, anna nimeksi valikot ja paina Create Branch. Paina sitten Publish branch, jolloin haara näkyy myös GitHubissa."],
             ["Tee alkuvalikko", "Luo Scenes-kansioon alkuvalikolle oma scene ja lisää siihen pelin nimi, Aloita-painike ja ohjausohjeesi. Lisää scene Build Profiles -ikkunan Scene List -luetteloon ensimmäiseksi, jotta build alkaa alkuvalikosta."],
-            ["Lisää uudelleenaloitus ja palaute", "Lisää työviikon 4 loppuruutuun painikkeet Uudelleen ja Alkuvalikkoon. Lisää pelikenttään suunnittelemasi palaute, esimerkiksi laskuri kerätyistä esineistä tai välähdys osuman kohdalla."],
-            ["Kytke painikkeet", "Luo skripti MenuActions. Kopioi siihen koodipohja kohdasta ”Tarvitsen apua tähän työvaiheeseen” ja täytä TODO-kohdat pseudokoodisi mukaan. Liitä jokaisen painikkeen On Click -kohtaan oikea metodi: StartGame, Restart tai BackToMenu."],
-            ["Tee valikoista prefabit", "Raahaa alkuvalikon Canvas ja loppuruudun paneeli Hierarchy-ikkunasta Project-ikkunan Prefabs-kansioon. Silloin niistä tulee prefabeja eli tallennettuja osia, jotka voit lisätä myöhemmin muihin peleihin."],
-            ["Kokeile ja tee commit haaraan", "Kokeile Play-tilassa alkuvalikosta alkaen, että jokainen painike vie oikeaan paikkaan. Tee commit ja paina Push origin. Commit tallentuu valikot-haaraan, ei päähaaraan."],
+            ["Kytke alkuvalikon ja loppuruudun painikkeet", "Lisää työviikon 4 loppuruutuun Alkuvalikkoon-painike. Luo skripti MenuActions koodipohjasta kohdasta ”Tarvitsen apua tähän työvaiheeseen” ja täytä StartGame ja BackToMenu pseudokoodisi mukaan. Liitä metodit Aloita- ja Alkuvalikkoon-painikkeiden On Click -kohtiin."],
+            ["Kokeile valikkoa ja tee commit", "Kokeile Play-tilassa: Aloita-painike vie pelikenttään, ja loppuruudun Alkuvalikkoon-painike vie takaisin alkuvalikkoon. Tee commit ja paina Push origin. Commit tallentuu valikot-haaraan, ei päähaaraan."],
+            ["Lisää uudelleenaloitus ja palaute", "Lisää loppuruutuun Uudelleen-painike, täytä koodipohjan Restart-metodi ja kytke se painikkeeseen. Lisää pelikenttään suunnittelemasi palaute. Kokeile Play-tilassa, että uusi kierros alkaa ja palaute näkyy, ja tee commit haaraan."],
+            ["Tee valikoista prefabit", "Raahaa alkuvalikon Canvas ja loppuruudun paneeli Hierarchy-ikkunasta Project-ikkunan Prefabs-kansioon. Silloin niistä tulee prefabeja eli tallennettuja osia, jotka voit lisätä myöhemmin muihin peleihin. Tee commit haaraan."],
             ["Yhdistä haara päähaaraan", "Tallenna scene ja sulje Unity. Valitse GitHub Desktopissa Current Branch ja sitten main. Valitse Branch-valikosta Merge into current branch, valitse valikot ja paina Create a merge commit. Paina lopuksi Push origin."]
           ],
           valmis: "Valikot, uudelleenaloitus ja palaute toimivat Play-tilassa alkuvalikosta alkaen. Alkuvalikko ja loppuruutu ovat prefabeina Prefabs-kansiossa, ja päähaaran historiassa on commit, jossa yhdistit valikot-haaran päähaaraan.",
@@ -864,7 +870,7 @@ window.NAYTTOPROJEKTI = {
       deliverable: "Kokeiluversio, jolla on tag v0.1, tiedosto `project-docs/asiakaspalaute.md`, johon olet kirjannut palautteen ja asetuksen muuttamisen tuloksen, kortit palautteesta, vertailu tuntiarvioista ja toteutuneista tunneista sekä selitä ja muuta -merkintä.",
       why: "Jos et kysy asiakkailta nyt, teet kaksi seuraavaa peliä samalla tavalla kuin ensimmäisen. Jos olet ymmärtänyt jonkin asiakkaiden toiveen väärin, sama virhe on silloin kaikissa kolmessa pelissä.",
       done: "Avaa palautekirjaus ja tarkista: asiakkaan sanat ovat lainauksina, ja asiakas vahvisti ne oikeiksi, kun luit kirjauksen hänelle ääneen. Jokaisesta palautteen kohdasta, joka vaatii muutosta, on kortti tehtävätaulussa. Kirjauksesta näkyy, löysikö asiakas ohjeesi avulla oikean asetuksen Inspector-ikkunasta ja toimiko muutos Play-tilassa.",
-      record: "Kirjoita työviikon 6 merkintään asiakkaiden tärkein palaute omin sanoin, onnistuiko asiakas muuttamaan asetuksen ohjeesi avulla ja mitä ohjeeseen pitää lisätä, suurin ero tuntiarvioidesi ja toteutuneiden tuntien välillä sekä mitä ohjaaja pyysi muuttamaan koodissasi. Näyttömatriisin rivit: asiakaslähtöinen viestintä (s2), katselmointi (s3), tärkeysjärjestys (s4), tuntiarviot ja toteuma (s6), versionhallinta ja tag v0.1 (s12), tehtävistä sopiminen ohjaajan kanssa (p8) ja oma toiminta: selitä ja muuta (p11).",
+      record: "Kirjoita työviikon 6 merkintään vastaukset näihin kysymyksiin:\n1) Mikä oli asiakkaiden tärkein palaute? Kirjoita se omin sanoin.\n2) Onnistuiko asiakas muuttamaan asetuksen ohjeesi avulla?\n3) Mitä ohjeeseen pitää lisätä?\n4) Mikä oli suurin ero tuntiarvioidesi ja toteutuneiden tuntien välillä, ja mitä sovit ohjaajan kanssa seuraavista tuntiarvioista?\n5) Mitä ohjaaja pyysi muuttamaan koodissasi?\nRastita näyttömatriisista nämä rivit: asiakaslähtöinen viestintä (s2), katselmointi (s3), tärkeysjärjestys (s4), tuntiarviot ja toteuma (s6), versionhallinta ja tag v0.1 (s12), tehtävistä sopiminen ohjaajan kanssa (p8) ja oma toiminta: selitä ja muuta (p11). Kirjaa merkintään jokaiselle riville täsmälinkki tämän viikon työnäytteeseen.",
       skills: ["asiakaslähtöinen viestintä (s2)", "version katselmointi asiakkaiden kanssa (s3)", "tärkeysjärjestys ohjaajan kanssa (s4, p8)", "tuntiarviot ja toteutuneet tunnit (s6)", "versiomerkintä tag v0.1 (s12)", "oman koodin selittäminen (p11)"],
       tehtavat: {
         "6-1": {
@@ -931,10 +937,11 @@ window.NAYTTOPROJEKTI = {
             ["Laske toteutuneet tunnit", "Laske työaikataulukosta, kuinka monta tuntia kuhunkin korttiin oikeasti kului."],
             ["Tee vertailutaulukko", "Kirjoita projektipäiväkirjaan taulukko, jossa ovat kortti, arvio, toteutuneet tunnit ja niiden ero."],
             ["Selitä suurin ero", "Valitse kortti, jossa ero oli suurin, ja kirjoita yhdellä virkkeellä, miksi ero syntyi."],
-            ["Päätä, mitä teet toisin", "Kirjoita, miten arvioit toisen pelin kortit toisin, esimerkiksi varaat enemmän aikaa testaukselle."]
+            ["Päätä, mitä teet toisin", "Kirjoita, miten arvioit toisen pelin kortit toisin, esimerkiksi varaat enemmän aikaa testaukselle."],
+            ["Käy vertailu läpi ohjaajan kanssa", "Näytä vertailu ohjaajalle viikkotarkistuksessa. Kirjaa projektipäiväkirjaan, mitä sovitte seuraavista tuntiarvioista, esimerkiksi jaatko jatkossa työt pienempiin kortteihin."]
           ],
-          valmis: "Projektipäiväkirjassa on vertailutaulukko ja selitys suurimmalle erolle.",
-          tallenna: "Vertailu projektipäiväkirjaan.",
+          valmis: "Projektipäiväkirjassa on vertailutaulukko ja selitys suurimmalle erolle. Olet käynyt vertailun läpi ohjaajan kanssa ja kirjannut päiväkirjaan, mitä sovitte seuraavista tuntiarvioista.",
+          tallenna: "Vertailu ja ohjaajan kanssa sovitut asiat projektipäiväkirjaan.",
           esimerkki: "”Alkuvalikko: arvio 3 h, toteutui 6 h. Ero syntyi, koska scenen vaihto ei toiminut ennen kuin scene oli build-luettelossa. Toisessa pelissä varaan valikon liittämiseen tunnin.”",
           eiRiita: "”Arviot menivät vähän pieleen.” Siitä ei näe, mikä kortti eikä miksi."
         },
@@ -945,10 +952,10 @@ window.NAYTTOPROJEKTI = {
             ["Selitä skripti ohjaajalle", "Selitä ilman muistiinpanoja, mitä skripti tekee: mitä tietoa se käyttää, mikä käynnistää toiminnon ja millä ehdolla."],
             ["Tee muutos, jota ohjaaja pyytää", "Ohjaaja pyytää sinua tekemään pienen muutoksen, esimerkiksi uuden arvon tai ehdon. Tee muutos ja kokeile sitä Play-tilassa ohjaajan nähden."],
             ["Kirjaa tilanne", "Kirjaa tiedostoon `project-docs/selita-ja-muuta.md` päivä, skripti, pyydetty muutos ja yksi asia, jota et vielä osannut selittää."],
-            ["Tarkista näyttömatriisi", "Avaa sivuston Näyttömatriisi-näkymä ja rastita rivit, joihin sinulla on nyt työnäyte. Kirjaa samaan tiedostoon yksi vaatimus, josta työnäyte vielä puuttuu."],
+            ["Tarkista näyttömatriisi", "Avaa sivuston Näyttömatriisi-näkymä ja katso, mihin riveihin sinulla on jo työnäyte. Rastita ne. Kirjoita tiedostoon `project-docs/selita-ja-muuta.md` yksi vaatimus, josta työnäyte vielä puuttuu."],
             ["Tee commit ja push", "Tee muutoksesta ja merkinnästä commit ja paina Push origin."]
           ],
-          valmis: "Olet selittänyt skriptisi ohjaajalle, pyydetty muutos toimii Play-tilassa, ja tiedostossa `project-docs/selita-ja-muuta.md` on tämän viikon merkintä.",
+          valmis: "Olet selittänyt skriptisi ohjaajalle, pyydetty muutos toimii Play-tilassa, ja tiedostossa `project-docs/selita-ja-muuta.md` on tämän viikon merkintä. Merkinnässä on myös yksi vaatimus, josta työnäyte vielä puuttuu.",
           tallenna: "`project-docs/selita-ja-muuta.md` ja muutoksen commit-linkki projektipäiväkirjaan.",
           esimerkki: "”Työviikko 6: RoundManager.cs. Selitin, että roundOver estää lopun käynnistymisen kahdesti. Ohjaajan pyytämä muutos: loppuviesti näkyy kolme sekuntia ennen painikkeita. En osannut selittää, miksi Time.timeScale pitää palauttaa. Työnäyte puuttuu vielä: tietovaraston valinta.”",
           eiRiita: "”Skripti lopettaa kierroksen.” Selitys ei kerro, mitä tietoa skripti käyttää eikä millä ehdolla se toimii."
@@ -964,8 +971,8 @@ window.NAYTTOPROJEKTI = {
       connection: "Teet toisen pelin samassa järjestyksessä kuin ensimmäisen: ensin suunnittelet, sitten toteutat ja lopuksi testaat. Uutta on se, että peli lukee kentän erillisestä tiedostosta, joten kenttää voi muuttaa koskematta koodiin. Grafiikat lisäät vasta työviikolla 8.",
       deliverable: "Toisen pelin Unity-projekti tai kansio, päätös kentän tallennustavasta, skripti, joka luo kentän datasta, päämekaniikka ja testitapaukset testimatriisissa.",
       why: "Jos kirjoitat kentän suoraan koodiin, jokainen kentän muutos vaatii ohjelmointia. Kun kenttä on erillisessä tiedostossa, sitä voi muuttaa kuka tahansa, myös musiikkikurssin opiskelija. Samasta tiedostosta saat työviikolla 8 kentän alkutilanteen, kun pelaaja haluaa aloittaa pulman alusta.",
-      done: "Esimerkiksi pulmapelissä: siirrä laatikko tavoiteruutuun ja yritä työntää laatikkoa seinää päin. Muuta kenttädatassa yhden ruudun merkki ja käynnistä peli uudelleen: muutos näkyy kentässä. Jos toinen pelisi on jokin muu kuin pulmapeli, kirjoita vastaava kokeilu työvaiheessa 1. Historiassa on commit jokaisesta välituloksesta, ja testitulokset ovat testimatriisissa.",
-      record: "Kirjoita työviikon 7 merkintään, mitä toteutit toisesta pelistä, mikä välitulos oli vaikein ja miten ratkaisit sen, mitä opit tallennustapojen vertailusta ja mitä koodisi tekee, kun kenttädatassa on tuntematon merkki. Näyttömatriisin rivit: tietovaraston valinta (s8), yhteys tietovarastoon (s9), rajapinnat ja tiedon käsittely (s10), toiminnot suunnitelman mukaan (p7), rakenteinen ohjelmointi (p4), Unityn tärkeimmät toiminnot (k3) ja ratkaisuvaihtoehtojen vertailu ohjaajan kanssa (p9).",
+      done: "Esimerkiksi pulmapelissä: siirrä laatikko tavoiteruutuun ja yritä työntää laatikkoa seinää päin. Muuta kenttädatassa yhden ruudun merkki ja käynnistä peli uudelleen: muutos näkyy kentässä. Jos toinen pelisi on jokin muu kuin pulmapeli, kirjoita vastaava kokeilu työvaiheessa 7-1. Historiassa on commit jokaisesta välituloksesta, ja testitulokset ovat testimatriisissa.",
+      record: "Kirjoita työviikon 7 merkintään vastaukset näihin kysymyksiin:\n1) Mitä toteutit toisesta pelistä?\n2) Mikä välitulos oli vaikein, ja miten ratkaisit sen?\n3) Mitä opit tallennustapojen vertailusta?\n4) Mitä koodisi tekee, kun kenttädatassa on tuntematon merkki?\nRastita näyttömatriisista nämä rivit: tietovaraston valinta (s8), yhteys tietovarastoon (s9), rajapinnat ja tiedon käsittely (s10), toiminnot suunnitelman mukaan (p7), rakenteinen ohjelmointi (p4), Unityn tärkeimmät toiminnot (k3) ja ratkaisuvaihtoehtojen vertailu ohjaajan kanssa (p9). Kirjaa merkintään jokaiselle riville täsmälinkki tämän viikon työnäytteeseen.",
       skills: ["tietovaraston valinta (s8)", "yhteys tietovarastoon (s9)", "tiedon käsittely Unityn rajapinnoilla (s10)", "päämekaniikan ohjelmointi (p4, p7)", "vaihtoehtojen vertailu ohjaajan kanssa (p9)"],
       tehtavat: {
         "7-1": {
@@ -1007,7 +1014,7 @@ window.NAYTTOPROJEKTI = {
           }
         },
         "7-3": {
-          miksi: "Tällä viikolla teet toisen pelin tärkeimmät toiminnot: peli luo kentän kenttädatasta eli tiedostosta, johon tallensit kentän työvaiheessa 2, ja pelaaja siirtää laatikoita. Teet työn neljänä pienenä välituloksena ja kokeilet jokaisen ennen seuraavaa. Kun jokin menee rikki, tiedät silloin, missä välituloksessa virhe syntyi.",
+          miksi: "Tällä viikolla teet toisen pelin tärkeimmät toiminnot: peli luo kentän kenttädatasta eli tiedostosta, johon tallensit kentän työvaiheessa 7-2, ja pelaaja siirtää laatikoita. Teet työn neljänä pienenä välituloksena ja kokeilet jokaisen ennen seuraavaa. Kun jokin menee rikki, tiedät silloin, missä välituloksessa virhe syntyi.",
           osat: [
             ["Suunnittele ennen koodia", "Vastaa kortissa neljään kysymykseen: mitä tietoa tarvitaan, mikä käynnistää toiminnon, millä ehdolla se tapahtuu ja mitä muuttuu. Kirjoita vastauksista lyhyt pseudokoodi kentän luomiselle ja laatikon työntämiselle."],
             ["Tee ruuduista prefabit", "Tee jokaisesta kenttädatan merkistä neliö, jolla on oma väri: seinä, lattia, laatikko, tavoite ja pelaaja. Raahaa neliöt Hierarchy-ikkunasta Prefabs-kansioon, jolloin niistä tulee prefabeja, ja poista ne sitten scenestä."],
@@ -1027,9 +1034,9 @@ window.NAYTTOPROJEKTI = {
               "Instantiate, Debug.LogWarning ja Quaternion kuuluvat Unityn API:in eli valmiisiin toimintoihin, joita oma koodisi kutsuu.",
               "Pelaajan liike: siirrä pelaajaa ruutu kerrallaan. Tarkista ennen siirtoa, mitä kohderuudussa on. Physics2D.OverlapPoint kertoo, onko pisteessä collider. Lisää siksi seinän ja laatikon prefabeihin Box Collider 2D.",
               "Windowsissa tekstitiedoston rivinvaihdossa on näkymätön merkki. Pohjan TrimEnd poistaa sen.",
-              "Jos valitsit työvaiheessa 2 ScriptableObjectin, vaihda TextAsset-kenttä LevelData-kentäksi ja käy silmukassa läpi sen rows-taulukon rivit."
+              "Jos valitsit työvaiheessa 7-2 ScriptableObjectin, vaihda TextAsset-kenttä LevelData-kentäksi ja käy silmukassa läpi sen rows-taulukon rivit."
             ],
-            test: "Muuta kentta.txt-tiedostossa yksi seinämerkki pisteeksi ja käynnistä peli: seinään tulee aukko."
+            test: "Tekstitiedosto: muuta kentta.txt-tiedostossa yksi seinämerkki pisteeksi ja käynnistä peli, niin seinään tulee aukko. ScriptableObject: muuta LevelData-tiedoston yhdellä rivillä seinämerkki pisteeksi Inspectorissa ja käynnistä peli, niin seinään tulee aukko."
           }
         },
         "7-4": {
@@ -1055,7 +1062,7 @@ window.NAYTTOPROJEKTI = {
       deliverable: "Toisen pelin kokonainen kierros: ratkaisun tunnistus, loppuruutu ja alkutilanteen palautus kenttädatasta. Lisäksi ensimmäisen pelin valikko toisessa pelissä, toisen pelin grafiikat ja kierroksen testitapaukset.",
       why: "Jos pelaaja ei voi palauttaa alkutilannetta, hän jää jumiin heti, kun laatikko menee nurkkaan. Kun käytät ensimmäisen pelin valikkoa uudelleen, kaikissa peleissä on sama valikko, eikä sinun tarvitse rakentaa sitä joka peliin alusta.",
       done: "Esimerkiksi pulmapelissä: aloita alkuvalikosta, palauta alkutilanne kesken kierroksen, ratkaise pulma, aloita uudelleen ja palaa alkuvalikkoon. Jos toinen pelisi on jokin muu kuin pulmapeli, kokeile samalla tavalla kierroksen loppua, uudelleenaloitusta ja paluuta alkuvalikkoon. Kolme kierrosta peräkkäin menee läpi ilman virhettä, ja tulokset ovat testimatriisissa.",
-      record: "Kirjoita työviikon 8 merkintään, mitä toteutit toisen pelin kierroksesta, miten varmistit, että alkutilanteen palautus käyttää kenttädataa, ja mitä muutit ensimmäisen pelin valikossa, kun liitit sen toiseen peliin. Näyttömatriisin rivit: yhteys tietovarastoon (s9), ylläpidettävä koodi (p5), käyttöliittymä (p6), testaus (p3), suunnittelu, toteutus ja testaus (k5), ulkoiset komponentit (k4) ja osan liittäminen olemassa olevaan versioon (s13).",
+      record: "Kirjoita työviikon 8 merkintään vastaukset näihin kysymyksiin:\n1) Mitä toteutit toisen pelin kierroksesta?\n2) Miten varmistit, että alkutilanteen palautus käyttää kenttädataa?\n3) Mitä muutit ensimmäisen pelin valikossa, kun liitit sen toiseen peliin?\nRastita näyttömatriisista nämä rivit: yhteys tietovarastoon (s9), ylläpidettävä koodi (p5), käyttöliittymä (p6), testaus (p3), suunnittelu, toteutus ja testaus (k5), ulkoiset komponentit (k4) ja osan liittäminen olemassa olevaan versioon (s13). Kirjaa merkintään jokaiselle riville täsmälinkki tämän viikon työnäytteeseen.",
       skills: ["yhteys tietovarastoon (s9)", "ylläpidettävä koodi ja uudelleenkäyttö (p5)", "osan liittäminen olemassa olevaan versioon (s13)", "käyttöliittymä (p6)", "testaus (p3, k5)"],
       tehtavat: {
         "8-1": {
@@ -1077,7 +1084,7 @@ window.NAYTTOPROJEKTI = {
           osat: [
             ["Tuo kierroksen lopetus ensimmäisestä pelistä", "Jos pelit ovat erillisissä Unity-projekteissa, vie ensimmäisestä pelistä RoundManager-skripti ja loppuruudun prefab Assets-valikon kohdasta Export Package. Tuo ne toiseen peliin Assets-valikon kohdasta Import Package ja sen alta Custom Package."],
             ["Lisää loppuruutu ja RoundManager pelikenttään", "Raahaa loppuruudun prefab pelikentän sceneen. Liitä RoundManager-skripti tyhjään GameObjectiin ja raahaa loppuruudun paneeli ja teksti sen kenttiin End Panel ja End Text samalla tavalla kuin työviikolla 4."],
-            ["Pidä pseudokoodi esillä", "Avaa työvaiheessa 1 kirjoittamasi pseudokoodi ja kirjoita koodi sen mukaan. Jos huomaat, että pseudokoodista puuttuu jotain, korjaa myös se."],
+            ["Pidä pseudokoodi esillä", "Avaa työvaiheessa 8-1 kirjoittamasi pseudokoodi ja kirjoita koodi sen mukaan. Jos huomaat, että pseudokoodista puuttuu jotain, korjaa myös se."],
             ["Tunnista ratkaisu", "Kirjoita koodi, joka tarkistaa jokaisen siirron jälkeen, onko jokaisessa tavoiteruudussa laatikko. Kun jokaisessa on laatikko, kutsu RoundManagerin EndRound-metodia, joka näyttää loppuruudun. Käytä koodipohjaa kohdasta ”Tarvitsen apua tähän työvaiheeseen”."],
             ["Estä loppuruudun näkyminen kahdesti", "Varmista, ettei loppuruutu avaudu kahdesti eikä laatikoita voi enää siirtää ratkaisun jälkeen."],
             ["Palauta alkutilanne kenttädatasta", "Kirjoita koodi, joka palauttaa pelaajan ja laatikot alkupaikoilleen, kun pelaaja painaa palautusnäppäintä. Hae paikat koodissa samasta kenttädatasta kuin työviikolla 7. Älä kirjoita paikkoja koodiin, koska silloin kentän muutos ei näy palautuksessa."],
@@ -1099,7 +1106,7 @@ window.NAYTTOPROJEKTI = {
         "8-3": {
           miksi: "Teit työviikolla 5 ensimmäisen pelin valikosta ja loppuruudusta prefabit eli tallennetut valmiit GameObjectit, joita voi käyttää uudelleen. Kun liität ne toiseen peliin, pelaaja oppii valikon käytön vain kerran, ja sinulta säästyy aikaa. Samalla harjoittelet, miten valmis osa liitetään olemassa olevaan projektiin.",
           osat: [
-            ["Siirrä valikon prefab toiseen peliin", "Toit RoundManager-skriptin ja loppuruudun prefabin toiseen peliin jo työvaiheessa 2. Jos pelit ovat erillisissä Unity-projekteissa, tuo nyt samalla tavalla alkuvalikon prefab: Export Package ensimmäisessä pelissä ja Import Package toisessa."],
+            ["Siirrä valikon prefab toiseen peliin", "Toit RoundManager-skriptin ja loppuruudun prefabin toiseen peliin jo työvaiheessa 8-2. Jos pelit ovat erillisissä Unity-projekteissa, tuo nyt samalla tavalla alkuvalikon prefab: Export Package ensimmäisessä pelissä ja Import Package toisessa."],
             ["Lisää valikko alkuvalikon sceneen", "Luo toiselle pelille alkuvalikon scene ja raahaa siihen valikon prefab. Jos pelit ovat samassa projektissa, löydät prefabin yhteisestä kansiosta."],
             ["Vaihda pelin nimi ja ohje", "Vaihda valikon teksteihin toisen pelin nimi ja ohjausohje, jossa on myös palautusnäppäin. Valikon skriptiä ei tarvitse muuttaa."],
             ["Kytke painikkeet ja scenet", "Kirjoita valikon skriptin kenttiin Inspectorissa toisen pelin scenejen nimet. Tarkista, että Aloita, Uudelleen ja Alkuvalikkoon kutsuvat oikeita metodeja ja että scenet ovat Build Profiles -ikkunan Scene List -luettelossa."],
@@ -1153,7 +1160,7 @@ window.NAYTTOPROJEKTI = {
       deliverable: "Vertaisarvio tiedostossa `project-docs/vertaisarvio.md`, virheenkorjausketju testimatriisissa, asiakkaiden kommentti toisesta pelistä, kolmannen pelin vahvistettu rajaus ja selitä ja muuta -merkintä.",
       why: "Kun olet tehnyt pelin itse, et enää huomaa kaikkia sen ongelmia. Toinen opiskelija pelaa peliä ensimmäistä kertaa ja huomaa asioita, joita et itse tullut kokeilleeksi. Korjaa pelaamisen estävät virheet ennen kolmatta peliä, koska muuten samat virheet toistuvat siinäkin.",
       done: "Kokeile korjausten jälkeen uudelleen jokaista vertaisarviossa löytynyttä virhettä, joka esti pelaamisen: virhe ei enää toistu. Testimatriisissa on yksi valmis virheenkorjausketju, ja vertaisarviossa on kirjattu, mitkä havainnot korjaat.",
-      record: "Kirjoita työviikon 9 merkintään vertaisarvion tärkein havainto, virheenkorjausketjusi syy ja korjaus, mitä ohjaaja pyysi muuttamaan koodissasi ja yksi asia, jonka teet kolmannessa pelissä toisin. Näyttömatriisin rivit: virheiden etsiminen ja korjaus (p2), ratkaisujen toimivuuden arviointi yhdessä (p10) ja oma toiminta tiimin jäsenenä (p11).",
+      record: "Kirjoita työviikon 9 merkintään vastaukset näihin kysymyksiin:\n1) Mikä oli vertaisarvion tärkein havainto?\n2) Mikä aiheutti virheenkorjausketjusi virheen, ja miten korjasit sen?\n3) Mitä ohjaaja pyysi muuttamaan koodissasi?\n4) Minkä asian teet kolmannessa pelissä toisin?\nRastita näyttömatriisista nämä rivit: virheiden etsiminen ja korjaus (p2), ratkaisujen toimivuuden arviointi yhdessä (p10) ja oma toiminta tiimin jäsenenä (p11). Kirjaa merkintään jokaiselle riville täsmälinkki tämän viikon työnäytteeseen.",
       skills: ["virheiden etsiminen ja korjaus (p2)", "ratkaisujen arviointi yhdessä toisen opiskelijan kanssa (p10)", "oman koodin selittäminen ja muuttaminen (p11)"],
       tehtavat: {
         "9-1": {
@@ -1174,7 +1181,7 @@ window.NAYTTOPROJEKTI = {
           eiRiita: "”Hyvä peli, muutama bugi.” Havainnosta ei näe, mitä tapahtui, joten virhettä ei voi toistaa eikä korjata.",
           apu: {
             title: "Pohja: vertaisarvio",
-            code: "# Vertaisarvio: toinen peli\n\nPäivä: PÄIVÄMÄÄRÄ\nTestattu versio (commit): TUNNISTE\nTestaaja: toinen opiskelija (älä kirjoita nimeä)\n\n## Havainnot vaatimuksittain\n\n| Vaatimus | Mitä testaaja huomasi | Toistui (kertaa / yritykset) | Luokka | Päätös ja perustelu |\n| --- | --- | --- | --- | --- |\n| 1. Yksi selkeä päämekaniikka | | | | |\n| 2. Pieni kenttä, kierros noin 1–3 minuuttia | | | | |\n| 3. Yhtenäiset grafiikat | | | | |\n| 4. Alkuvalikko ja ohjausohje | | | | |\n| 5. Selkeä kierroksen loppu | | | | |\n| 6. Uudelleenaloitus ja paluu alkuvalikkoon | | | | |\n| 7. Riittävä visuaalinen palaute | | | | |\n| 8. Testattu peliversio ja muokattava Unity-projekti | | | | |\n\nLuokka: estävä virhe, muu virhe tai parannusehdotus.\nPäätös: korjaan tällä viikolla, korjaan työviikolla 13 tai en korjaa.\n\n## Yksi ratkaisu arvioituna yhdessä\n\nRatkaisu: MIKÄ TOIMINTO JA MITEN TOTEUTIT SEN\nTestaajan arvio: MITÄ HÄN SANOI\nMitä teen sen perusteella: PÄÄTÖS",
+            code: "# Vertaisarvio: toinen peli\n\nPäivä: PÄIVÄMÄÄRÄ\nTestattu versio (commit): TUNNISTE\nTestaaja: vertaistestaaja (kirjaa vain rooli, ei nimeä)\n\n## Havainnot vaatimuksittain\n\n| Vaatimus | Mitä testaaja huomasi | Toistui (kertaa / yritykset) | Luokka | Päätös ja perustelu |\n| --- | --- | --- | --- | --- |\n| 1. Yksi selkeä päämekaniikka | | | | |\n| 2. Pieni kenttä, kierros noin 1–3 minuuttia | | | | |\n| 3. Yhtenäiset grafiikat | | | | |\n| 4. Alkuvalikko ja ohjausohje | | | | |\n| 5. Selkeä kierroksen loppu | | | | |\n| 6. Uudelleenaloitus ja paluu alkuvalikkoon | | | | |\n| 7. Riittävä visuaalinen palaute | | | | |\n| 8. Testattu peliversio ja muokattava Unity-projekti | | | | |\n\nLuokka: estävä virhe, muu virhe tai parannusehdotus.\nPäätös: korjaan tällä viikolla, korjaan työviikolla 13 tai en korjaa.\n\n## Yksi ratkaisu arvioituna yhdessä\n\nRatkaisu: MIKÄ TOIMINTO JA MITEN TOTEUTIT SEN\nTestaajan arvio: MITÄ HÄN SANOI\nMitä teen sen perusteella: PÄÄTÖS",
             vinkit: [
               "Vertaisarvio koskee peliä, ei ihmistä. Jos testaaja sanoo esimerkiksi ”tämä on tylsä”, kysy, missä kohdassa ja miksi, ja kirjaa vastaus.",
               "Älä väittele havainnoista. Jos olet eri mieltä, kirjoita perustelu Päätös ja perustelu -sarakkeeseen."
@@ -1182,7 +1189,7 @@ window.NAYTTOPROJEKTI = {
           }
         },
         "9-2": {
-          miksi: "Virheenkorjausketjussa kirjaat virheen koko käsittelyn: miten virhe saadaan esiin, mikä sen aiheutti, miten korjasit sen ja miten tarkistit korjauksen. Ketjusta näkee, että etsit virheen syyn etkä vain kokeillut muutoksia sattumalta. Näytössä tarvitset vähintään kaksi ketjua, ja tämä on ensimmäinen.",
+          miksi: "Virheenkorjausketjussa kirjaat virheen koko käsittelyn: miten virhe saadaan esiin, mikä sen aiheutti, miten korjasit sen ja miten tarkistit korjauksen. Ketjusta näkee, että etsit virheen syyn etkä vain kokeillut muutoksia sattumalta. Teet projektissa kolme ketjua, työviikoilla 9, 13 ja 16, ja tämä on ensimmäinen.",
           osat: [
             ["Valitse virhe", "Valitse vertaisarviosta tai testimatriisista yksi virhe, mieluiten virhe, joka estää pelaamisen."],
             ["Kirjoita toistamisohje", "Kirjoita askel askeleelta, miten virhe saadaan esiin. Kokeile ohjetta kerran ja tarkista, että virhe todella tulee esiin."],
@@ -1236,12 +1243,12 @@ window.NAYTTOPROJEKTI = {
             ["Selitä skripti ohjaajalle", "Selitä ilman muistiinpanoja, mitä skripti tekee: mitä tietoa se käyttää, mikä käynnistää toiminnon ja millä ehdolla toiminto tapahtuu."],
             ["Tee pyydetty muutos", "Ohjaaja pyytää pienen muutoksen, esimerkiksi uuden arvon tai ehdon. Tee muutos ja kokeile sitä Play-tilassa ohjaajan nähden."],
             ["Kirjaa tilanne", "Kirjoita tiedostoon `project-docs/selita-ja-muuta.md` päivä, skripti, pyydetty muutos ja yksi asia, jota et vielä osannut selittää."],
-            ["Tarkista näyttömatriisi", "Avaa sivuston Näyttömatriisi-näkymä ja rastita rivit, joihin sinulla on nyt työnäyte. Kirjaa samaan tiedostoon yksi vaatimus, josta työnäyte vielä puuttuu."],
+            ["Tarkista näyttömatriisi", "Avaa sivuston Näyttömatriisi-näkymä ja katso, mihin riveihin sinulla on jo työnäyte. Rastita ne. Kirjoita tiedostoon `project-docs/selita-ja-muuta.md` yksi vaatimus, josta työnäyte vielä puuttuu."],
             ["Tee commit ja push", "Tee muutoksesta ja merkinnästä commit ja paina Push origin."]
           ],
-          valmis: "Olet selittänyt skriptisi ohjaajalle, pyydetty muutos toimii Play-tilassa, ja tiedostossa `project-docs/selita-ja-muuta.md` on tämän viikon merkintä.",
+          valmis: "Olet selittänyt skriptisi ohjaajalle, pyydetty muutos toimii Play-tilassa, ja tiedostossa `project-docs/selita-ja-muuta.md` on tämän viikon merkintä. Merkinnässä on myös yksi vaatimus, josta työnäyte vielä puuttuu.",
           tallenna: "`project-docs/selita-ja-muuta.md` ja muutoksen commit-linkki projektipäiväkirjaan.",
-          esimerkki: "”Työviikko 9: LevelLoader.cs. Selitin, miten silmukat käyvät kentän rivit ja merkit läpi. Ohjaajan pyytämä muutos: uusi merkki luo kenttään esteen. En osannut selittää TrimEnd-kutsua. Työnäyte, joka puuttui aiemmin, on nyt olemassa: tietovaraston valinta työviikolla 7.”",
+          esimerkki: "”Työviikko 9: LevelLoader.cs. Selitin, miten silmukat käyvät kentän rivit ja merkit läpi. Ohjaajan pyytämä muutos: uusi merkki luo kenttään esteen. En osannut selittää TrimEnd-kutsua. Työnäyte puuttuu vielä: tietoturvan arviointi. Työviikolla 6 puuttunut tietovaraston valinta löytyy nyt työviikolta 7.”",
           eiRiita: "”Koodi liikuttaa pelaajaa.” Selitys ei kerro, mitä tietoa koodi käyttää eikä millä ehdolla."
         }
       }
@@ -1253,8 +1260,8 @@ window.NAYTTOPROJEKTI = {
       connection: "Rajasit kolmannen pelin työviikolla 9. Nyt teet kolmannen pelin päämekaniikan samalla tavalla kuin kahdessa ensimmäisessä pelissä: ensin suunnittelet, sitten ohjelmoit ja lopuksi testaat. Työviikolla 11 teet mekaniikasta kokonaisen kierroksen, jolla on alku ja loppu.",
       deliverable: "Kolmannen pelin Unity-projekti tai kansio, pelaajan liike ja hyökkäys, vihollinen ja osuma, asetukset datasta, grafiikat ja testitapaukset.",
       why: "Päämekaniikka on se toiminto, jota pelaaja toistaa koko kierroksen ajan. Siksi se pitää saada toimimaan ennen kuin teet pelistä kokonaisen kierroksen. Kun asetukset ovat datassa eikä koodissa, pelin vaikeutta voi säätää ilman ohjelmointia, esimerkiksi muuttamalla vihollisen nopeutta.",
-      done: "Esimerkiksi toimintapelissä: liiku areenalla, hyökkää viholliseen ja katso, että osuma näkyy. Anna sitten vihollisen osua pelaajaan ja katso, että siitäkin näkyy palaute. Muuta datassa yhtä asetusta, esimerkiksi vihollisen nopeutta, käynnistä peli uudelleen ja katso, että muutos näkyy. Jos teet muuta peliä, kirjoita vastaava kokeilu työvaiheessa 1. Kolmannen pelin testitapaukset ovat testimatriisissa tuloksineen.",
-      record: "Kirjoita työviikon 10 merkintään, mitä teit kolmannen pelin mekaniikasta ja miten asetuksen muutos datassa näkyi pelissä. Kerro myös, mitä Unityn API:n toimintoa käytit, esimerkiksi Vector2.MoveTowards, ja miksi. Näyttömatriisin rivit: toiminnot suunnitelman mukaan (p7), rakenteinen ohjelmointi (p4), rajapinnat ja tiedon käsittely (s10), yhteys tietovarastoon (s9), Unityn tärkeimmät toiminnot (k3) ja ulkoisten komponenttien eli grafiikoiden tuonti (k4).",
+      done: "Esimerkiksi toimintapelissä: liiku areenalla, hyökkää viholliseen ja katso, että osuma näkyy. Anna sitten vihollisen osua pelaajaan ja katso, että siitäkin näkyy palaute. Muuta datassa yhtä asetusta, esimerkiksi vihollisen nopeutta, käynnistä peli uudelleen ja katso, että muutos näkyy. Jos teet muuta peliä, kirjoita vastaava kokeilu työvaiheessa 10-1. Kolmannen pelin testitapaukset ovat testimatriisissa tuloksineen.",
+      record: "Kirjoita työviikon 10 merkintään vastaukset näihin kysymyksiin:\n1) Mitä teit kolmannen pelin mekaniikasta?\n2) Miten asetuksen muutos datassa näkyi pelissä?\n3) Mitä Unityn API:n toimintoa käytit, esimerkiksi Vector2.MoveTowards, ja miksi?\nRastita näyttömatriisista nämä rivit: toiminnot suunnitelman mukaan (p7), rakenteinen ohjelmointi (p4), rajapinnat ja tiedon käsittely (s10), yhteys tietovarastoon (s9), Unityn tärkeimmät toiminnot (k3) ja ulkoisten komponenttien eli grafiikoiden tuonti (k4). Kirjaa merkintään jokaiselle riville täsmälinkki tämän viikon työnäytteeseen.",
       skills: ["päämekaniikan ohjelmointi (p4, p7)", "rajapinnat ja tiedon käsittely (s10)", "asetukset datasta (s9)", "Unityn tärkeimmät toiminnot (k3)", "grafiikoiden tuonti (k4)"],
       tehtavat: {
         "10-1": {
@@ -1272,11 +1279,12 @@ window.NAYTTOPROJEKTI = {
           esimerkki: "Vihollisen osuma: ”Mitä tietoa tarvitaan? Montako osumaa vihollinen vielä kestää. Mikä käynnistää toiminnon? Pelaajan hyökkäys koskettaa vihollista. Millä ehdolla? Vihollinen on vielä pelissä. Mitä muuttuu? Vihollinen välähtää ja kestää yhden osuman vähemmän. Kun osumia ei ole jäljellä, vihollinen katoaa.”"
         },
         "10-2": {
-          miksi: "Ohjelmoit nyt sen, minkä suunnittelit työvaiheessa 1. Kokeile jokaista osaa Play-tilassa ennen kuin aloitat seuraavan. Jos jokin lakkaa toimimasta, tiedät silloin, että virhe on viimeksi tekemässäsi osassa.",
+          miksi: "Ohjelmoit nyt sen, minkä suunnittelit työvaiheessa 10-1. Kokeile jokaista osaa Play-tilassa ennen kuin aloitat seuraavan. Jos jokin lakkaa toimimasta, tiedät silloin, että virhe on viimeksi tekemässäsi osassa.",
           osat: [
             ["Ohjelmoi pelaajan liike ja hyökkäys", "Tee areena ja pelaaja neliöistä. Kirjoita pseudokoodisi mukaan skripti, jolla pelaaja liikkuu nuolinäppäimillä ja hyökkää yhdellä näppäimellä. Valitse pelaajalle Inspectorin Tag-valikosta tunniste Player. Kokeile ja tee commit."],
-            ["Tee vihollisen asetuksille datatiedosto", "Tee vihollisen asetuksille ScriptableObject tai tekstitiedosto sen mukaan, minkä tallennustavan valitsit työviikolla 7. Jos valitsit ScriptableObjectin, käytä koodipohjan EnemySettings-skriptiä ja luo siitä asetustiedosto Project-ikkunassa."],
-            ["Ohjelmoi vihollinen", "Lisää areenalle vihollinen neliönä. Kirjoita sille skripti, jolla se liikkuu pelaajaa kohti ja katoaa, kun hyökkäys osuu siihen tarpeeksi monta kertaa. Käytä apukohdan koodipohjaa. Raahaa asetustiedosto vihollisen Settings-kenttään. Kokeile Play-tilassa ja tee commit."],
+            ["Tee vihollisen asetuksille datatiedosto", "Käytä samaa tallennustapaa kuin työviikolla 7. ScriptableObject: luo koodipohjan EnemySettings-skriptistä asetustiedosto Project-ikkunassa. Tekstitiedosto: kirjoita asetukset JSON-tiedostoon ja lue vihjeet kohdasta ”Tarvitsen apua tähän työvaiheeseen”."],
+            ["Ohjelmoi vihollinen", "Lisää areenalle vihollinen neliönä. Kirjoita sille apukohdan Enemy-pohjasta skripti, jolla vihollinen liikkuu pelaajaa kohti ja katoaa, kun hyökkäys osuu siihen tarpeeksi monta kertaa."],
+            ["Kytke asetukset viholliseen", "ScriptableObject: raahaa asetustiedosto vihollisen Settings-kenttään. Tekstitiedosto: raahaa JSON-tiedosto vihollisen TextAsset-kenttään. Kokeile Play-tilassa, että vihollinen liikkuu asetuksen nopeudella, ja tee commit."],
             ["Luo vihollisia tasaisin väliajoin", "Tee vihollisesta prefab ja areenan reunoille muutama tyhjä GameObject. Luo apukohdan koodipohjasta skripti EnemySpawner, liitä se tyhjään GameObjectiin ja raahaa sen kenttiin asetustiedosto, prefab ja reunojen GameObjectit."],
             ["Näytä osumat ruudulla", "Lisää näkyvä palaute, kun hyökkäys osuu viholliseen ja kun vihollinen osuu pelaajaan, esimerkiksi lyhyt välähdys. Pelaajan pitää huomata osuma ilman ääntä."],
             ["Kokeile ja lähetä muutokset GitHubiin", "Pelaa areenalla Play-tilassa noin minuutin ajan. Tee commit, paina Push origin ja siirrä kortit tehtävätaulussa Testattavana-sarakkeeseen."]
@@ -1286,14 +1294,16 @@ window.NAYTTOPROJEKTI = {
           sanat: ["JSON"],
           apu: {
             title: "Koodipohjat: asetukset datana, vihollinen ja uudet viholliset",
-            code: "using UnityEngine;\n\n// Asetukset datana, tiedosto EnemySettings.cs\n[CreateAssetMenu(menuName = \"ProtoPaja/Vihollisen asetukset\")]\npublic class EnemySettings : ScriptableObject\n{\n    public float speed = 2f;           // vihollisen nopeus\n    public float spawnInterval = 3f;   // monenko sekunnin välein uusi vihollinen ilmestyy\n    public int hitPoints = 1;          // montako osumaa vihollinen kestää\n}\n\n// Vihollinen, oma tiedosto Enemy.cs\nusing UnityEngine;\n\npublic class Enemy : MonoBehaviour\n{\n    [SerializeField] private EnemySettings settings;   // raahaa asetustiedosto tähän vihollisen prefabissa\n    private Transform player;\n    private int hitPoints;\n\n    void Start()\n    {\n        player = GameObject.FindWithTag(\"Player\").transform;\n        hitPoints = settings.hitPoints;\n    }\n\n    void Update()\n    {\n        // TODO: liiku kohti pelaajaa:\n        //       transform.position = Vector2.MoveTowards(transform.position, player.position, settings.speed * Time.deltaTime);\n    }\n\n    public void TakeHit()\n    {\n        // TODO: vähennä hitPoints-arvoa, näytä palaute ja poista vihollinen (Destroy), kun arvo on 0\n    }\n}\n\n// Uudet viholliset, oma tiedosto EnemySpawner.cs. Liitä tyhjään GameObjectiin.\nusing UnityEngine;\n\npublic class EnemySpawner : MonoBehaviour\n{\n    [SerializeField] private EnemySettings settings;\n    [SerializeField] private GameObject enemyPrefab;\n    [SerializeField] private Transform[] spawnPoints;   // tyhjiä GameObjecteja areenan reunoilla\n\n    void Start()\n    {\n        // TODO: kutsu SpawnEnemy-metodia datassa olevin väliajoin:\n        //       InvokeRepeating(nameof(SpawnEnemy), 1f, settings.spawnInterval);\n    }\n\n    void SpawnEnemy()\n    {\n        // TODO: valitse satunnainen paikka: spawnPoints[Random.Range(0, spawnPoints.Length)]\n        // TODO: luo vihollinen siihen: Instantiate(enemyPrefab, paikka.position, Quaternion.identity);\n    }\n}",
+            code: "using UnityEngine;\n\n// Asetukset datana (vain ScriptableObject-haara), tiedosto EnemySettings.cs\n[CreateAssetMenu(menuName = \"ProtoPaja/Vihollisen asetukset\")]\npublic class EnemySettings : ScriptableObject\n{\n    public float speed = 2f;           // vihollisen nopeus\n    public float spawnInterval = 3f;   // monenko sekunnin välein uusi vihollinen ilmestyy\n    public int hitPoints = 1;          // montako osumaa vihollinen kestää\n}\n\n// Vihollinen, oma tiedosto Enemy.cs\nusing UnityEngine;\n\npublic class Enemy : MonoBehaviour\n{\n    [SerializeField] private EnemySettings settings;   // raahaa asetustiedosto tähän vihollisen prefabissa\n    private Transform player;\n    private int hitPoints;\n\n    void Start()\n    {\n        player = GameObject.FindWithTag(\"Player\").transform;\n        hitPoints = settings.hitPoints;\n    }\n\n    void Update()\n    {\n        // TODO: siirrä vihollista joka ruudunpäivityksellä vähän kohti pelaajaa.\n        //       Yhden päivityksen matka on settings.speed kertaa Time.deltaTime.\n        //       Hakusana Unityn ohjeesta: Vector2.MoveTowards\n    }\n\n    public void TakeHit()\n    {\n        // TODO: vähennä hitPoints-arvoa, näytä palaute ja poista vihollinen (Destroy), kun arvo on 0\n    }\n}\n\n// Uudet viholliset, oma tiedosto EnemySpawner.cs. Liitä tyhjään GameObjectiin.\nusing UnityEngine;\n\npublic class EnemySpawner : MonoBehaviour\n{\n    [SerializeField] private EnemySettings settings;\n    [SerializeField] private GameObject enemyPrefab;\n    [SerializeField] private Transform[] spawnPoints;   // tyhjiä GameObjecteja areenan reunoilla\n\n    void Start()\n    {\n        // TODO: kutsu SpawnEnemy-metodia toistuvasti niin monen sekunnin välein\n        //       kuin asetuksissa lukee.\n        //       Hakusana Unityn ohjeesta: MonoBehaviour.InvokeRepeating\n    }\n\n    void SpawnEnemy()\n    {\n        // TODO: valitse spawnPoints-taulukosta yksi paikka satunnaisesti.\n        //       Hakusana Unityn ohjeesta: Random.Range\n        // TODO: luo enemyPrefabista uusi vihollinen valitsemaasi paikkaan.\n        //       Hakusana Unityn ohjeesta: Object.Instantiate\n    }\n}",
             vinkit: [
-              "Jos valitsit työviikolla 7 tekstitiedoston, kirjoita asetukset JSON-muotoon ja lue ne JsonUtility.FromJson-metodilla. Se on Unityn API:n valmis toiminto.",
+              "Tekstitiedosto, vihje 1: JsonUtility.FromJson ei osaa luoda ScriptableObjectia, joten koodipohjan EnemySettings-luokka ei käy tähän. Jos yrität, Console-ikkunaan tulee virhe, eikä vihollinen saa asetuksia. Lue JSON tavalliseen luokkaan, jonka yläpuolella on rivi [System.Serializable].",
+              "Tekstitiedosto, vihje 2: Kirjoita tavalliseen luokkaan samat kentät samoilla nimillä kuin JSON-tiedostossa, esimerkiksi speed, spawnInterval ja hitPoints. Tee kentistä public-kenttiä, jotta JsonUtility löytää ne. Tallenna JSON-tiedosto Assets-kansioon. Unity käsittelee sitä TextAsset-tyyppinä.",
+              "Tekstitiedosto, vihje 3: Tee Enemy- ja EnemySpawner-skripteihin Settings-kentän tilalle TextAsset-kenttä. Raahaa JSON-tiedosto Inspector-ikkunassa sekä vihollisen että EnemySpawner-objektin TextAsset-kenttään. Lue Start-metodissa TextAsset-kentän teksti tavalliseen luokkaasi. Hakusana: JsonUtility.FromJson.",
               "Hyökkäys voi olla esimerkiksi lyhytkestoinen trigger-collider pelaajan edessä. Kun se koskettaa vihollista, kutsu vihollisen TakeHit-metodia.",
               "Kun vihollinen osuu pelaajaan, Unity kutsuu vihollisen OnCollisionEnter2D-metodia. Tarkista sen sisällä CompareTag-metodilla, että osuma oli pelaajaan.",
               "Anna metodeille nimet, jotka kertovat, mitä ne tekevät, esimerkiksi Attack ja TakeHit. Silloin sinä ja muut, jotka avaavat projektin myöhemmin, löydätte oikean kohdan koodista nopeasti."
             ],
-            test: "Muuta EnemySettings-tiedoston nopeutta Inspectorissa ja paina Play: vihollinen liikkuu uudella nopeudella."
+            test: "ScriptableObject: muuta EnemySettings-tiedoston nopeutta Inspectorissa ja paina Play, niin vihollinen liikkuu uudella nopeudella. Tekstitiedosto: muuta JSON-tiedoston speed-arvoa, tallenna tiedosto ja paina Play, niin vihollinen liikkuu uudella nopeudella."
           }
         },
         "10-3": {
@@ -1327,10 +1337,10 @@ window.NAYTTOPROJEKTI = {
       feature: "Kolmannen pelin kierros päättyy selviytymiseen tai häviöön, ja alkuvalikko, ohjausohje, uudelleenaloitus ja palaute toimivat.",
       excerpt: "Yksi kierros kestää noin 1–3 minuuttia, ja sen pitää päättyä selvästi.",
       connection: "Työviikolla 10 sait kolmannen pelin mekaniikan toimimaan. Nyt teet siitä kierroksen, jolla on kesto ja loppu, ja liität peliin saman alkuvalikon kuin kahteen ensimmäiseen peliin. Kun tämä viikko on valmis, asiakkaat voivat kokeilla kaikkia kolmea peliä työviikolla 12.",
-      deliverable: "Kierroksen ajastin, voitto ja häviö, loppuruutu, alkuvalikko, visuaalinen palaute, testitapaukset ja kolme havaintoa Unityn rajoitteista.",
+      deliverable: "Kierroksen ajastin, voitto ja häviö, loppuruutu, alkuvalikko, visuaalinen palaute, testitapaukset ja kolme havaintoa Unityn mahdollisuuksista ja rajoitteista.",
       why: "Jos kierroksella ei ole kestoa eikä loppua, pelaaja ei tiedä, milloin hän onnistui, eikä peliä voi aloittaa alusta. Asiakkaat kokeilevat peliä työviikolla 12, joten kierroksen pitää toimia alusta loppuun ilman, että kukaan neuvoo.",
       done: "Esimerkiksi toimintapelissä: pelaa yksi kierros loppuun asti, esimerkiksi selviydy 60 sekuntia, ja yksi kierros häviöön. Aloita sitten uudelleen ja palaa alkuvalikkoon. Jos teet muuta peliä, kokeile samalla tavalla kaikkia tapoja, joilla kierros voi päättyä. Kolmannen pelin kierroksen testitapaukset ovat testimatriisissa tuloksineen.",
-      record: "Kirjoita työviikon 11 merkintään, miten teit kolmannen pelin kierroksen, miten varmistit, että kierros päättyy vain kerran, mitä virheitä löysit testatessasi ja yksi havainto Unityn rajoitteista. Näyttömatriisin rivit: toimintalogiikka (s7), käyttöliittymä (p6), suunnittelu, toteutus ja testaus Unityllä (k5) sekä Unityn mahdollisuudet ja rajoitteet (k2).",
+      record: "Kirjoita työviikon 11 merkintään vastaukset näihin kysymyksiin:\n1) Miten teit kolmannen pelin kierroksen?\n2) Miten varmistit, että kierros päättyy vain kerran?\n3) Mitä virheitä löysit testatessasi?\n4) Mikä on yksi havaintosi Unityn mahdollisuuksista tai rajoitteista?\nRastita näyttömatriisista nämä rivit: toimintalogiikka (s7), käyttöliittymä (p6), suunnittelu, toteutus ja testaus Unityllä (k5) sekä Unityn mahdollisuudet ja rajoitteet (k2). Kirjaa merkintään jokaiselle riville täsmälinkki tämän viikon työnäytteeseen.",
       skills: ["toimintalogiikka (s7)", "käyttöliittymä (p6)", "suunnittelu, toteutus ja testaus Unityllä (k5)", "Unityn mahdollisuudet ja rajoitteet (k2)"],
       tehtavat: {
         "11-1": {
@@ -1347,13 +1357,13 @@ window.NAYTTOPROJEKTI = {
           esimerkki: "”Joka ruudunpäivityksellä: vähennä jäljellä olevaa aikaa. Jos aika on loppu ja kierros on yhä käynnissä, päätä kierros voittoon. Kun vihollinen osuu: vähennä kestävyyttä yhdellä. Jos kestävyys on loppu ja kierros on yhä käynnissä, päätä kierros häviöön.”"
         },
         "11-2": {
-          miksi: "Ohjelmoit nyt kierroksen, jonka suunnittelit työvaiheessa 1. Käytät uudelleen ensimmäisen pelin alkuvalikkoa, loppuruutua ja kierroksen lopetusta, joten sinun ei tarvitse tehdä niitä alusta.",
+          miksi: "Ohjelmoit nyt kierroksen, jonka suunnittelit työvaiheessa 11-1. Käytät uudelleen ensimmäisen pelin alkuvalikkoa, loppuruutua ja kierroksen lopetusta, joten sinun ei tarvitse tehdä niitä alusta.",
           osat: [
             ["Tuo valikko ja loppuruutu ensimmäisestä pelistä", "Tuo ensimmäisen pelin valikko- ja loppuruutuprefabit ja RoundManager-skripti kolmanteen peliin samalla tavalla kuin työviikolla 8. Vaihda pelin nimi ja ohjausohje kolmannen pelin mukaisiksi."],
             ["Ohjelmoi kierroksen ajastin", "Kirjoita pseudokoodisi mukaan ajastin, joka laskee aikaa alaspäin ja näyttää jäljellä olevan ajan ruudulla. Kun aika loppuu, ajastin päättää kierroksen voittoon. Käytä koodipohjaa kohdasta ”Tarvitsen apua tähän työvaiheeseen”."],
             ["Kytke ajastin peliin", "Luo tyhjä GameObject nimeltä RoundTimer ja liitä siihen RoundTimer-skripti. Raahaa RoundManager-objekti sen Round Manager -kenttään. Kokeile Play-tilassa, että aika laskee ja kierros päättyy, kun aika loppuu."],
             ["Ohjelmoi häviö", "Vähennä pelaajan kestävyyttä, kun vihollinen osuu, ja näytä kestävyys ruudulla. Kun kestävyys loppuu, päätä kierros häviöön."],
-            ["Varmista, että kierros päättyy vain kerran", "Kutsu kierroksen lopussa aina RoundManagerin EndRound-metodia. Se tarkistaa, onko kierros jo päättynyt, joten loppuruutu ei aukea kahdesti, vaikka aika ja kestävyys loppuisivat samalla hetkellä."],
+            ["Varmista, että kierros päättyy vain kerran", "Kutsu kierroksen lopussa aina RoundManagerin EndRound-metodia. Tarkista, ettei EndRound tee mitään, jos kierros on jo päättynyt. Muuten loppuruutu aukeaa kahdesti, jos aika ja kestävyys loppuvat yhtä aikaa."],
             ["Tarkista uudelleenaloitus ja paluu alkuvalikkoon", "Paina loppuruudussa Uudelleen ja tarkista, että aika ja kestävyys alkavat alusta eikä peli jää pysähdyksiin. Kokeile sitten Alkuvalikkoon-painiketta. Jos scene ei vaihdu, tarkista Scene List -luettelo."],
             ["Pelaa kierros ja lähetä muutokset GitHubiin", "Pelaa kierros Play-tilassa alkuvalikosta loppuun. Tee commit, paina Push origin ja siirrä kortit tehtävätaulussa Testattavana-sarakkeeseen."]
           ],
@@ -1383,14 +1393,14 @@ window.NAYTTOPROJEKTI = {
           tallenna: "Päivitetty `project-docs/testimatriisi.md` ja korjauscommitit repositoryyn."
         },
         "11-4": {
-          miksi: "Näytössä arvioidaan, tunnetko Unityn mahdollisuudet ja rajoitteet. Kirjaat kolme tilannetta omasta työstäsi, joissa Unity ei toiminut niin kuin odotit. Yleinen tieto Unitystä ei riitä, koska se ei näytä, mitä sinä olet oppinut.",
+          miksi: "Näytössä arvioidaan, tunnetko Unityn mahdollisuudet ja rajoitteet. Kirjaat kolme tilannetta omasta työstäsi, joissa Unity helpotti työtäsi tai rajoitti sitä. Yleinen tieto Unitystä ei riitä, koska se ei näytä, mitä sinä olet oppinut.",
           osat: [
             ["Käy läpi oma työsi", "Käy läpi commitisi, päiväkirjasi ja testimatriisin merkinnät työviikoilta 1–11."],
-            ["Valitse kolme tilannetta", "Valitse kolme tilannetta, joissa Unity toimi eri tavalla kuin odotit, esimerkiksi trigger ei toiminut, koska pelaajalta puuttui Rigidbody 2D -komponentti."],
-            ["Kirjoita jokaisesta tilanteesta", "Kirjoita tiedostoon `project-docs/unity-havainnot.md` jokaisesta tilanteesta, mitä yritit, mitä Unity teki, miten ratkaisit asian ja mitä opit Unitystä."],
+            ["Valitse kolme tilannetta", "Valitse ainakin yksi tilanne, jossa Unity helpotti työtäsi, ja yksi, jossa se rajoitti sitä. Esimerkiksi sait valikon prefabina toiseen peliin nopeasti, mutta trigger ei toiminut ilman Rigidbody 2D -komponenttia."],
+            ["Kirjoita jokaisesta tilanteesta", "Kirjoita tiedostoon `project-docs/unity-havainnot.md` jokaisesta tilanteesta, mitä yritit, mitä Unity teki, miten ratkaisit tai hyödynsit asian ja mitä opit Unitystä."],
             ["Lisää linkki tai kuvakaappaus", "Lisää jokaiseen havaintoon commit-linkki tai kuvakaappaus, josta tilanne näkyy. Tee lopuksi commit ja paina Push origin."]
           ],
-          valmis: "Tiedostossa `project-docs/unity-havainnot.md` on kolme havaintoa omasta työstäsi. Jokaisessa on tilanne, ratkaisu ja commit-linkki tai kuvakaappaus.",
+          valmis: "Tiedostossa `project-docs/unity-havainnot.md` on kolme havaintoa Unityn mahdollisuuksista ja rajoitteista omasta työstäsi. Jokaisessa on tilanne, ratkaisu ja commit-linkki tai kuvakaappaus.",
           tallenna: "`project-docs/unity-havainnot.md` repositoryyn.",
           esimerkki: "”Lisäsin Restart-painikkeen, mutta peli jäi pysähdyksiin. Syy: Time.timeScale jäi nollaksi. Ratkaisu: asetin sen arvoon 1 ennen kuin scene ladataan uudelleen (commit-linkki). Opin, että Time.timeScale säilyy, vaikka scene ladataan uudelleen.”",
           eiRiita: "”Unity on raskas ohjelma ja vaatii hyvän koneen.” Havainto ei kerro mitään omasta työstäsi."
@@ -1406,7 +1416,7 @@ window.NAYTTOPROJEKTI = {
       deliverable: "Katselmointiversio (tag v0.2), asiakkaiden palaute heidän sanoillaan, korjauskortit sovitussa järjestyksessä, pyyntö vastaanottotestaajasta ja lista vaatimuksista, joista sinulta puuttuu vielä työnäyte.",
       why: "Et ehdi korjata kaikkea ennen luovutusta. Kun asiakkaat kertovat, mikä on heille tärkeintä, käytät jäljellä olevan ajan korjauksiin, joita he oikeasti tarvitsevat.",
       done: "Lue katselmoinnin päätökset ääneen asiakkaille tai ohjaajalle ja pyydä vahvistus, että ne vastaavat sitä, mitä sovittiin. Jokaisesta sovitusta korjauksesta on kortti tehtävätaulussa, ja olet listannut näyttömatriisin vaatimukset, joista sinulta puuttuu vielä työnäyte.",
-      record: "Kirjoita työviikon 12 merkintään, miten katselmointi sujui, mikä asiakkaiden palautteesta oli mielestäsi tärkeintä, mitkä korjaukset teet työviikolla 13 ja mistä vaatimuksista sinulta puuttuu vielä työnäyte. Näyttömatriisin rivit: asiakaslähtöinen viestintä (s2), version katselmointi (s3), tärkeysjärjestys (s4), versionhallinta (s12), tehtävistä sopiminen ohjaajan kanssa (p8), ratkaisujen toimivuuden arviointi yhdessä (p10) ja oma toiminta tiimin jäsenenä (p11).",
+      record: "Kirjoita työviikon 12 merkintään vastaukset näihin kysymyksiin:\n1) Miten katselmointi sujui?\n2) Mikä asiakkaiden palautteesta oli mielestäsi tärkeintä?\n3) Mitkä korjaukset teet työviikolla 13?\n4) Mistä vaatimuksista sinulta puuttuu vielä työnäyte?\nRastita näyttömatriisista nämä rivit: asiakaslähtöinen viestintä (s2), version katselmointi (s3), tärkeysjärjestys (s4), versionhallinta (s12), tehtävistä sopiminen ohjaajan kanssa (p8), ratkaisujen toimivuuden arviointi yhdessä (p10) ja oma toiminta tiimin jäsenenä (p11). Kirjaa merkintään jokaiselle riville täsmälinkki tämän viikon työnäytteeseen.",
       skills: ["asiakaslähtöinen viestintä (s2)", "version katselmointi (s3, p10)", "tärkeysjärjestys (s4, p8)", "versionhallinta: tag v0.2 (s12)", "oman toiminnan arviointi (p11)"],
       tehtavat: {
         "12-1": {
@@ -1476,10 +1486,10 @@ window.NAYTTOPROJEKTI = {
       type: "laatu",
       feature: "Korjaukset, jotka valitsit työviikolla 12, toimivat peleissä. Olet testannut jokaisen korjauksen ja jokaisen pelin peruskierroksen uudelleen.",
       connection: "Työviikolla 12 kysyit asiakkailta, mitkä korjaukset ovat heille tärkeimmät, ja valitsit niistä ne, jotka ehdit tehdä tällä viikolla. Nyt teet ne. Kirjoitat ensin jokaiseen korjauskorttiin, mitä pelissä pitää tapahtua, kun korjaus on valmis, ja testaat korjauksen sen jälkeen. Työviikolla 14 testaat kaikki kolme peliä tästä korjatusta versiosta.",
-      deliverable: "Korjauskortit, joissa on odotettu tulos ja testitapaus, tekemäsi korjaukset, toinen virheenkorjausketjusi ja uusintatestien tulokset testimatriisissa.",
-      why: "Kun kirjoitat odotetun tuloksen ennen korjausta ja testaat korjauksen sen jälkeen, tiedät varmasti, että korjaus toimii. Ilman uusintatestiä korjaus voi rikkoa jotain muuta, esimerkiksi paluun alkuvalikkoon, etkä huomaa sitä ennen luovutusta.",
+      deliverable: "Korjauskortit, joissa on odotettu tulos ja testitapaus, tekemäsi korjaukset, toinen virheenkorjausketjusi sekä uusintatestien ja regressiotestien tulokset testimatriisissa.",
+      why: "Kun kirjoitat odotetun tuloksen ennen korjausta ja ajat saman testin uudelleen korjauksen jälkeen, tiedät varmasti, että korjaus toimii. Korjaus voi kuitenkin rikkoa jotain muuta, esimerkiksi paluun alkuvalikkoon. Regressiotestillä huomaat sen ennen luovutusta.",
       done: "Aja uudelleen jokaisen korjauksen testitapaus ja pelaa jokaisen pelin peruskierros alusta loppuun. Kaikki testit menevät läpi, ja testimatriisissa on toinen valmis virheenkorjausketjusi.",
-      record: "Kirjoita työviikon 13 merkintään, mitkä korjaukset teit, mistä toisen virheenkorjausketjusi virhe johtui ja löysitkö uusintatesteissä uusia virheitä. Näyttömatriisin rivi: virheiden etsiminen ja korjaaminen (p2).",
+      record: "Kirjoita työviikon 13 merkintään vastaukset näihin kysymyksiin:\n1) Mitkä korjaukset teit?\n2) Mistä toisen virheenkorjausketjusi virhe johtui?\n3) Löysitkö uusintatesteissä tai regressiotesteissä uusia virheitä?\nRastita näyttömatriisista rivi virheiden etsiminen ja korjaaminen (p2). Kirjaa merkintään riville täsmälinkki tämän viikon työnäytteeseen.",
       skills: ["virheiden etsiminen ja korjaaminen (p2)", "korjausten uusintatestaus (p2)"],
       tehtavat: {
         "13-1": {
@@ -1496,18 +1506,19 @@ window.NAYTTOPROJEKTI = {
           eiRiita: "”Korjaa ajastin.” Kortista ei näe, miltä korjatun ajastimen pitää näyttää."
         },
         "13-2": {
-          miksi: "Korjaat nyt ongelmat, joita asiakkaat pitivät työviikolla 12 tärkeimpinä. Yhdestä korjauksesta kirjoitat virheenkorjausketjun: miten sait virheen esiin, mistä se johtui ja miten tarkistit korjauksen. Näytössä tarvitset vähintään kaksi ketjua, ja ensimmäisen teit työviikolla 9.",
+          miksi: "Korjaat nyt ongelmat, joita asiakkaat pitivät työviikolla 12 tärkeimpinä. Yhdestä korjauksesta kirjoitat virheenkorjausketjun: miten sait virheen esiin, mistä se johtui ja miten tarkistit korjauksen. Teet projektissa kolme ketjua, työviikoilla 9, 13 ja 16, ja tämä on toinen.",
           osat: [
             ["Toista ongelma ensin", "Pelaa peliä niin, että ongelma tulee esiin, ennen kuin muutat mitään. Kirjoita korttiin askel askeleelta, miten ongelman saa esiin."],
             ["Etsi syy", "Etsi koodista, mikä aiheuttaa ongelman. Apuna voit käyttää Console-ikkunan viestejä tai Debug.Log-tulostuksia. Kirjoita syy korttiin yhdellä virkkeellä."],
             ["Korjaa yksi kortti kerrallaan", "Korjaa yksi kortti kerrallaan. Tee jokaisesta korjauksesta oma commit, jonka viestissä kerrot, mitä korjasit."],
-            ["Aja kortin testitapaus", "Aja kortin testitapaus ja kirjoita havaittu tulos testimatriisiin. Jos tulos ei vastaa odotettua, korjaus ei ole vielä valmis."],
+            ["Tee uusintatesti", "Uusintatesti tarkoittaa, että ajat kortin oman testitapauksen uudelleen korjauksen jälkeen. Kirjoita havaittu tulos testimatriisiin. Jos tulos ei vastaa odotettua, korjaus ei ole vielä valmis."],
+            ["Tee regressiotesti", "Regressiotestissä pelaat pelin peruskierroksen alusta loppuun ja tarkistat, ettei korjaus rikkonut muuta peliä, esimerkiksi paluuta alkuvalikkoon. Kirjaa tulos testimatriisiin."],
             ["Kirjoita virheenkorjausketju", "Kirjoita merkitsemästäsi korjauksesta testimatriisiin koko ketju: havainto, toistamisohje, syy, korjauscommit, uusintatesti ja regressiotesti. Käytä pohjaa kohdasta ”Tarvitsen apua tähän työvaiheeseen”."],
             ["Lähetä korjaukset GitHubiin", "Paina GitHub Desktopissa Push origin ja siirrä korjatut kortit tehtävätaulussa Valmis-sarakkeeseen."]
           ],
           valmis: "Korjauskortit ovat Valmis-sarakkeessa, jokaisella korjauksella on oma commit ja läpäisty testitapaus, ja testimatriisissa on toinen virheenkorjausketjusi.",
           tallenna: "Korjauscommitit repositoryyn ja virheenkorjausketju testimatriisiin. Lisää commit-linkit päiväkirjaasi.",
-          sanat: ["virheenkorjausketju"],
+          sanat: ["virheenkorjausketju", "regressiotesti"],
           apu: {
             title: "Ketjun pohja ja jos oikeaa virhettä ei ole",
             code: "Virheenkorjausketju\n- Havainto: MITÄ TAPAHTUI\n- Toistamisohje: 1. VAIHE 2. VAIHE 3. VAIHE\n- Syy: MIKÄ KOODISSA AIHEUTTI VIRHEEN\n- Korjauscommit: LINKKI\n- Uusintatesti: TULOS\n- Regressiotesti: PERUSKIERROS ALUSTA LOPPUUN, TULOS",
@@ -1518,7 +1529,7 @@ window.NAYTTOPROJEKTI = {
           miksi: "Testasit jokaisen korjauksen heti sen tekemisen jälkeen. Myöhempi korjaus voi kuitenkin rikkoa aiemman, ja valikon prefabiin tehty muutos näkyy jokaisessa pelissä, jossa samaa prefabia käytetään. Siksi ajat kaikki testit uudelleen vasta, kun kaikki korjaukset ovat valmiina.",
           osat: [
             ["Tarkista, että korjaukset ovat mukana", "Tarkista GitHub Desktopin History-näkymästä, että jokaisesta korjauksesta on commit. Avaa sitten jokainen peli Unityssä."],
-            ["Aja korjausten testitapaukset uudelleen", "Aja jokaisen korjauksen testitapaus uudelleen. Kirjoita testimatriisiin testin tekijäksi itsesi ja versioksi viimeisimmän commitin tunnus."],
+            ["Aja korjausten testitapaukset uudelleen", "Aja jokaisen korjauksen testitapaus uudelleen. Kirjoita testimatriisin Testin tekijä -sarakkeeseen kehittäjä ja Versio-sarakkeeseen viimeisimmän commitin tunnus."],
             ["Pelaa jokainen peli läpi", "Pelaa jokaisen pelin peruskierros alusta loppuun, aloita kierros uudelleen ja palaa alkuvalikkoon. Tätä testiä sanotaan regressiotestiksi: sillä tarkistat, ettei korjaus rikkonut muuta peliä."],
             ["Kirjaa tulokset", "Kirjoita tulokset testimatriisiin. Jos löydät uuden virheen, tee siitä kortti tehtävätauluun."],
             ["Kirjaa korjaamatta jääneet asiat", "Kirjoita tiedostoon `docs/testitulokset-ja-puutteet.md` asiat, joita et ehdi korjata. Ota mukaan myös tehtävätaulun Tiedossa olevat puutteet -sarakkeen kortit. Silloin musiikkikurssin opiskelijat tietävät jo luovutuksessa, mikä peleissä ei vielä toimi."]
@@ -1537,7 +1548,7 @@ window.NAYTTOPROJEKTI = {
       deliverable: "Täydennetty testimatriisi kaikista kolmesta pelistä, buildien testitulokset, rajatapausten tulokset ja tietoturva-arvio tiedostossa `project-docs/tietoturva-arvio.md`.",
       why: "Luovutukseen kuuluu jokaisesta pelistä build eli koottu versio, jota voi pelata ilman Unityä. Musiikkikurssin opiskelijat pelaavat samaa kierrosta monta kertaa ja käyttävät pelejä eri koneilla kuin sinä. Jos et testaa buildeja ja toistuvia kierroksia nyt, he löytävät virheet ensimmäisinä.",
       done: "Sulje Unity ja käynnistä jokaisen pelin build eli koottu peliversio. Pelaa kolme kierrosta peräkkäin ja palaa joka kierroksen jälkeen alkuvalikkoon. Jokainen kierros toimii samalla tavalla, ja testimatriisissa on jokaisesta pelistä vähintään seitsemän testitapausta tuloksineen.",
-      record: "Kirjoita työviikon 14 merkintään, missä build toimi eri tavalla kuin peli Unityssä, mitä rajatapausten testeissä tapahtui ja mitä muutit tietoturva-arvion perusteella. Näyttömatriisin rivit: testaus (p3), suunnittelu, toteutus ja testaus Unityllä (k5), julkaisu asiakkaan ympäristöön (k6) ja tietoturvan arviointi (s11).",
+      record: "Kirjoita työviikon 14 merkintään vastaukset näihin kysymyksiin:\n1) Missä build toimi eri tavalla kuin peli Unityssä?\n2) Mitä rajatapausten testeissä tapahtui?\n3) Mitä muutit tietoturva-arvion perusteella?\nRastita näyttömatriisista nämä rivit: testaus (p3), suunnittelu, toteutus ja testaus Unityllä (k5), julkaisu asiakkaan ympäristöön (k6) ja tietoturvan arviointi (s11). Kirjaa merkintään jokaiselle riville täsmälinkki tämän viikon työnäytteeseen.",
       skills: ["pelien testaus buildeina (p3, k5)", "julkaisu asiakkaan ympäristöön (k6)", "tietoturvan arviointi (s11)"],
       tehtavat: {
         "14-1": {
@@ -1554,7 +1565,7 @@ window.NAYTTOPROJEKTI = {
         "14-2": {
           miksi: "Build on pelin erillinen versio, jota voi pelata ilman Unityä. Peli voi toimia Unityssä oikein mutta buildissa väärin: build voi alkaa pelikentästä eikä alkuvalikosta, tai kenttätiedosto voi puuttua buildista kokonaan. Kun testaat buildit nyt, ehdit korjata tällaiset virheet ennen luovutusta.",
           osat: [
-            ["Tarkista build-asetukset", "Avaa File-valikosta Build Profiles. Tarkista, että alustana on asiakkaiden kanssa sovittu alusta ja että alkuvalikon scene on Scene List -luettelossa ensimmäisenä."],
+            ["Tarkista build-asetukset", "Avaa File-valikosta Build Profiles. Vanhemmissa Unity-versioissa sama ikkuna on nimeltään Build Settings. Tarkista, että alustana on asiakkaiden kanssa sovittu alusta ja että alkuvalikon scene on Scene List -luettelossa ensimmäisenä."],
             ["Tee build jokaisesta pelistä", "Paina Build ja valitse kansioksi Unity-projektin `Builds`-kansio. Toista tämä jokaiselle pelille. Jos pelit ovat samassa projektissa, vaihda Scene List -luetteloon kunkin pelin scenet ja tee jokainen build omaan kansioonsa."],
             ["Sulje Unity", "Sulje Unity kokonaan ennen kuin testaat. Silloin testaat varmasti buildia etkä Unityssä auki olevaa peliä."],
             ["Aja testitapaukset buildissa", "Käynnistä build `Builds`-kansiosta ja aja pelin testitapaukset. Kirjoita testimatriisin versiosarakkeeseen sana build ja commitin tunnus."],
@@ -1567,8 +1578,8 @@ window.NAYTTOPROJEKTI = {
             title: "Jos build toimii eri tavalla kuin Unityssä",
             vinkit: [
               "Build alkaa aina Scene List -luettelon ensimmäisestä scenestä. Jos build alkaa pelikentästä, siirrä alkuvalikon scene luettelossa ensimmäiseksi.",
-              "Jos kenttä tai muu data puuttuu buildista, tarkista, miten peli lukee datatiedoston. Tiedosto, jonka peli lukee suoraan Assets-kansion polusta, ei tule buildiin mukaan. Tee skriptiin TextAsset-tyyppinen kenttä ja vedä tiedosto siihen Inspector-ikkunassa, tai siirrä tiedosto Resources-kansioon.",
-              "Selaimessa toimivaa buildia ei voi avata tuplaklikkaamalla. Käytä Build And Run -painiketta, joka käynnistää paikallisen palvelimen."
+              "Jos kenttä tai muu data puuttuu buildista, tarkista, miten peli lukee datatiedoston. Tiedosto, jonka peli lukee suoraan Assets-kansion polusta, ei tule buildiin mukaan. Tee skriptiin TextAsset-tyyppinen kenttä ja vedä tiedosto siihen Inspector-ikkunassa, tai siirrä tiedosto Resources-kansioon. Jos siirrät tiedoston Resources-kansioon, muuta myös skriptiä niin, että se lataa tiedoston Resources-kansiosta. Hakusana Unityn ohjeesta: Resources.Load.",
+              "Selaimessa toimivaa buildia ei voi avata tuplaklikkaamalla. Käytä Build And Run -painiketta, joka käynnistää paikallisen palvelimen. Pidä Unity silloin auki, mutta testaa vain selaimeen avautunutta peliä."
             ]
           }
         },
@@ -1595,7 +1606,8 @@ window.NAYTTOPROJEKTI = {
           osat: [
             ["Luo arvion tiedosto", "Luo tiedosto `project-docs/tietoturva-arvio.md`. Kirjoita siihen jokaisen seuraavan askeleen jälkeen, mitä tarkistit ja mitä löysit."],
             ["Listaa luovutettavat tiedostot", "Avaa GitHub Desktopin Repository-valikosta komentorivi: Open in Command Prompt tai Open in Terminal. Aja komento kohdasta ”Tarvitsen apua tähän työvaiheeseen”. Se listaa kaikki tiedostot, jotka luovutat repositoryn mukana."],
-            ["Tarkista tiedostot", "Käy lista läpi ja merkitse tiedostot, joissa on nimiä, sähköpostiosoitteita, salasanoja tai muuta, mikä ei kuulu luovutukseen. Katso erityisesti kuvakaappaukset, koska niissä voi näkyä nimiä."],
+            ["Rajaa, mitkä tiedostot avaat", "Sinun ei tarvitse avata jokaista listan tiedostoa. Avaa ainakin kuvat ja kuvakaappaukset, omat tekstitiedostot (.md, .txt ja .json) sekä kaikki docs- ja project-docs-kansioiden tiedostot."],
+            ["Tarkista avaamasi tiedostot", "Merkitse tiedostot, joissa on nimiä, sähköpostiosoitteita, salasanoja tai muuta, mikä ei kuulu luovutukseen. Kirjaa arvioon, mitkä kansiot ja tiedostotyypit kävit läpi."],
             ["Tarkista ulkoiset paketit", "Avaa Window-valikosta Package Manager ja kirjoita arvioon, mitä paketteja peleissäsi on ja mistä ne tulevat."],
             ["Testaa virheellinen data", "Kirjoita testitapaus, jossa pelin datatiedostossa on virhe, esimerkiksi kenttätiedostossa on tuntematon merkki. Aja testi ja kirjoita tulos testimatriisiin."],
             ["Kirjoita, mitä korjasit", "Kirjoita arvion loppuun, mitä korjasit löytämiesi asioiden perusteella, esimerkiksi minkä kuvakaappauksen poistit. Tee lopuksi commit ja paina Push origin."]
@@ -1621,7 +1633,7 @@ window.NAYTTOPROJEKTI = {
       deliverable: "`docs/avaaminen-ja-jatkotyosto.md`, valmis `docs/assetit-ja-lisenssit.md`, siistitty koodi ja projekteista poistettu käyttämätön aineisto.",
       why: "Musiikkikurssin opiskelijat lisäävät peleihin itse musiikin ja äänet, joten heidän pitää saada Unity-projektit auki ja löytää niistä oikeat kohdat. Jos ohjetta ei ole, he joutuvat arvaamaan, mikä kansio avataan ja missä mikäkin on, eikä heille jää aikaa varsinaiseen harjoitukseen.",
       done: "Kloonaa repository uuteen kansioon ja tee avaamis- ja jatkotyöstöohjeen askeleet täsmälleen niin kuin niissä lukee. Jokainen peli aukeaa ja käynnistyy alkuvalikosta, ja kun muutat ohjeen mukaan yhden asetuksen, esimerkiksi kierroksen keston, muutos näkyy Play-tilassa.",
-      record: "Kirjoita työviikon 15 merkintään, mitä korjasit ohjeeseen, kun kokeilit sitä itse, mitä poistit projekteista ja mitä muutit koodissa jatkotyöstöä varten. Näyttömatriisin rivit: dokumentointi sovitulla tavalla (k7), ylläpidettävä koodi (p5) ja asiakaslähtöinen viestintä (s2).",
+      record: "Kirjoita työviikon 15 merkintään vastaukset näihin kysymyksiin:\n1) Mitä korjasit ohjeeseen, kun kokeilit sitä itse?\n2) Mitä poistit projekteista?\n3) Mitä muutit koodissa jatkotyöstöä varten, ja minkä toistuvan koodin siirsit omaan metodiin?\nRastita näyttömatriisista nämä rivit: dokumentointi sovitulla tavalla (k7), ylläpidettävä koodi (p5) ja asiakaslähtöinen viestintä (s2). Kirjaa merkintään jokaiselle riville täsmälinkki tämän viikon työnäytteeseen.",
       skills: ["dokumentointi (k7)", "ylläpidettävä koodi (p5)", "asiakaslähtöinen viestintä (s2)"],
       tehtavat: {
         "15-1": {
@@ -1676,12 +1688,13 @@ window.NAYTTOPROJEKTI = {
             ["Listaa skriptisi", "Listaa jokaisen pelin skriptit, jotka olet kirjoittanut itse. Valmiiden pakettien skriptejä et muuta."],
             ["Tarkista nimet", "Tarkista, että muuttujien, metodien ja luokkien nimet kertovat, mitä ne tekevät. Muuta epäselvät nimet. Lue ensin avusta, mitä nimen muuttamisessa pitää huomata."],
             ["Poista käyttämätön koodi", "Poista kokeilukoodi, jonka olet jättänyt kommentiksi, ja muuttujat, joita koodi ei käytä."],
+            ["Siirrä toistuva koodi omaan metodiin", "Etsi skripteistäsi kohta, jossa sama koodi toistuu, esimerkiksi ajan palautus Restart- ja BackToMenu-metodeissa. Siirrä koodi omaan metodiinsa ja kutsu sitä molemmista kohdista."],
             ["Lisää alkukommentit", "Lisää jokaisen skriptin alkuun kommentti, joka kertoo, mitä skripti tekee ja mihin GameObjectiin se liitetään."],
             ["Pelaa jokainen peli läpi uudelleen", "Pelaa jokaisen pelin peruskierros alusta loppuun, jotta näet, ettei siistiminen rikkonut mitään. Jos muutit nimeä, joka mainitaan jatkotyöstöohjeessa, päivitä nimi myös ohjeeseen."],
             ["Tee commit ja lähetä se GitHubiin", "Tee commit, jonka viestissä kerrot, että siistit koodia, ja paina Push origin."]
           ],
-          valmis: "Skripteissäsi on kuvaavat nimet ja alkukommentit, olet poistanut käyttämättömän koodin, ja jokaisen pelin peruskierros menee läpi.",
-          tallenna: "Siistimiscommit repositoryyn ja yksi ennen ja jälkeen -esimerkki päiväkirjaasi.",
+          valmis: "Skripteissäsi on kuvaavat nimet ja alkukommentit, ja olet siirtänyt ainakin yhden toistuvan koodikohdan omaan metodiinsa. Olet poistanut käyttämättömän koodin, ja jokaisen pelin peruskierros menee läpi.",
+          tallenna: "Siistimiscommit repositoryyn ja yksi ennen ja jälkeen -esimerkki päiväkirjaasi, esimerkiksi omaan metodiin siirretty toisto.",
           esimerkki: "Ennen: muuttuja t ja metodi Do(). Jälkeen: muuttuja timeLeft ja metodi EndRound(bool won), ja skriptin alussa kommentti ”Laskee kierroksen ajan ja päättää kierroksen. Liitetään RoundTimer-objektiin.”",
           eiRiita: "Lisäsit kommentin jokaiselle riville, mutta nimet ovat yhä t ja Do(). Lukija ei vieläkään tiedä, mitä ne tekevät.",
           apu: {
@@ -1700,10 +1713,10 @@ window.NAYTTOPROJEKTI = {
       type: "julkaisu",
       feature: "Vastaanottotestaaja, joka ei ollut nähnyt projektia aiemmin, on avannut Unity-projektit, käynnistänyt pelit ja muuttanut yhden asetuksen pelkän kirjallisen ohjeen avulla. Jokainen hänen havaintonsa on korjattu tai kirjattu tiedossa olevaksi puutteeksi.",
       connection: "Työviikolla 15 kirjoitit ohjeen pelien avaamiseen ja jatkotyöstöön ja siistit koodin. Nyt lopetat uusien asioiden lisäämisen ja merkitset version, jonka aiot luovuttaa. Sitten joku, joka ei ole nähnyt projektiasi, kokeilee, saako hän pelit auki ja yhden asetuksen muutettua pelkän ohjeesi avulla. Kun näet, missä kohdissa hän epäröi, tiedät, mitä ohjeeseen pitää vielä korjata ennen luovutusta.",
-      deliverable: "Luovutusehdokas (tag v0.9), testaajalle kirjoitettu tehtävä, testaajan havainnot hänen omin sanoinaan, korjattu avaamis- ja jatkotyöstöohje ja päivitetty luettelo tiedossa olevista puutteista.",
+      deliverable: "Luovutusehdokas (tag v0.9), testaajalle kirjoitettu tehtävä, testaajan havainnot hänen omin sanoinaan, korjattu avaamis- ja jatkotyöstöohje, kolmas virheenkorjausketju ja päivitetty luettelo tiedossa olevista puutteista.",
       why: "Kun olet itse kirjoittanut ohjeen, et huomaa, mitä siitä puuttuu, koska tiedät asiat jo valmiiksi. Siksi ohjetta kokeilee joku, joka ei tunne projektia. Hän on samassa tilanteessa kuin musiikkikurssin opiskelija, joka avaa pelit luovutuksen jälkeen.",
       done: "Testaaja avaa projektit ja käynnistää pelit pelkän kirjallisen ohjeen avulla, eikä kukaan neuvo häntä. Hän muuttaa ohjeen avulla yhden asetuksen, esimerkiksi kierroksen keston, ja näkee muutoksen Play-tilassa. Jokainen kohta, jossa hän epäröi, on korjattu ohjeeseen tai kirjattu tiedossa olevaksi puutteeksi.",
-      record: "Kirjoita työviikon 16 merkintään, missä kohdissa testaaja epäröi, löysikö hän muutettavan asetuksen ja miten korjasit ohjeen tai koodin. Näyttömatriisin rivit: dokumentointi (k7), versionhallinta (s12) ja virheiden etsiminen ja korjaaminen (p2), jos korjasit estävän virheen.",
+      record: "Kirjoita työviikon 16 merkintään vastaukset näihin kysymyksiin:\n1) Missä kohdissa testaaja epäröi?\n2) Löysikö hän muutettavan asetuksen?\n3) Miten korjasit ohjeen tai koodin?\n4) Mistä virheestä teit kolmannen virheenkorjausketjusi?\nRastita näyttömatriisista nämä rivit: dokumentointi (k7), versionhallinta (s12) ja virheiden etsiminen ja korjaaminen (p2). Kirjaa merkintään jokaiselle riville täsmälinkki tämän viikon työnäytteeseen.",
       skills: ["ohjeen testaus ja korjaus (k7)", "versionhallinta (s12)", "virheiden etsiminen ja korjaaminen (p2)"],
       tehtavat: {
         "16-1": {
@@ -1724,7 +1737,7 @@ window.NAYTTOPROJEKTI = {
           miksi: "Jokainen kohta, jossa testaaja epäröi tai kysyy jotain, on kohta, joka ohjeesta pitää korjata. Kirjoita hänen sanansa muistiin sellaisinaan. Silloin korjaat sen, mikä hänelle oikeasti oli epäselvää, etkä sitä, mitä itse arvaat.",
           osat: [
             ["Anna testaajalle ohje ja tehtävä", "Anna testaajalle kirjallinen ohje ja tehtävä. Älä neuvo häntä puhumalla. Jos hän jää jumiin, kirjaa kohta ja pyydä häntä jatkamaan seuraavasta pelistä."],
-            ["Seuraa testaajaa hiljaa", "Kirjoita muistiin jokainen kohta, jossa testaaja epäröi, kysyy jotain tai tekee jotain muuta kuin ohjeessa tarkoitetaan. Merkitse, mitä ohjeen kohtaa hän oli silloin lukemassa."],
+            ["Seuraa testaajaa hiljaa", "Kirjoita muistiin jokainen kohta, jossa testaaja epäröi, kysyy jotain tai tekee jotain muuta kuin ohjeessa tarkoitetaan. Merkitse, mitä ohjeen kohtaa hän oli silloin lukemassa. Käytä apukohdan havainnointipohjaa."],
             ["Kirjaa, onnistuiko asetuksen muutos", "Kirjaa, löysikö testaaja ohjeen avulla muutettavan asetuksen ja näkyikö muutos Play-tilassa."],
             ["Kysy lopuksi kaksi kysymystä", "Kun testaaja on valmis, kysy häneltä, mikä oli vaikeinta ja mitä ohjeesta puuttui."],
             ["Kirjoita vastaukset testaajan sanoin", "Kirjoita testaajan vastaukset hänen omin sanoinaan lainausmerkkeihin. Kirjaa myös päivä ja testaajan rooli, esimerkiksi ”toisen ryhmän opiskelija”, mutta älä kirjaa nimeä."],
@@ -1733,20 +1746,34 @@ window.NAYTTOPROJEKTI = {
           valmis: "Vastaanottotestin kirjauksessa ovat päivä, testaajan rooli, kohdat, joissa hän epäröi, ja hänen vastauksensa lainauksina. Kirjauksesta näkyy myös, onnistuiko asetuksen muutos, ja jokaisella havainnolla on luokka.",
           tallenna: "Päivitetty `project-docs/vastaanottotesti.md` repositoryyn.",
           esimerkki: "”Ohjeen kohta 3: testaaja etsi sceneä Scenes-kansiosta, mutta ohjeessa luki vain ’avaa valikko’. Testaaja: ’En tiennyt, mikä näistä on valikko.’ Luokka: ohjeen korjaus. Asetuksen muutos: testaaja löysi kierroksen keston RoundTimer-objektista ohjeen kohdan 5 avulla ja muutti sen 60 sekunnista 30 sekuntiin. Muutos näkyi Play-tilassa.”",
-          eiRiita: "”Testaaja sai pelit auki.” Kirjauksesta ei näe, missä kohdissa hän epäröi tai onnistuiko asetuksen muutos."
+          eiRiita: "”Testaaja sai pelit auki.” Kirjauksesta ei näe, missä kohdissa hän epäröi tai onnistuiko asetuksen muutos.",
+          apu: {
+            title: "Havainnointipohja vastaanottotestiin",
+            code: "## Vastaanottotesti (työviikko 16, tag v0.9)\n\nPäivä: PP.KK.VVVV\nTestaajan rooli (ei nimeä): \nLöysikö testaaja muutettavan asetuksen ohjeen avulla: kyllä / ei\nNäkyikö muutos Play-tilassa: kyllä / ei\n\n### Havainnot testin aikana\n\n| Ohjeen kohta | Mitä testaaja teki tai sanoi | Luokka |\n| --- | --- | --- |\n| | | |\n\nLuokka: ohjeen korjaus, estävä virhe tai tiedossa oleva puute.\n\n### Testaajan vastaukset\nMikä oli vaikeinta: ”…”\nMitä ohjeesta puuttui: ”…”",
+            vinkit: [
+              "Kopioi pohja tiedostoon `project-docs/vastaanottotesti.md` ennen testiä. Silloin voit kirjoittaa havainnot suoraan oikeisiin kohtiin testin aikana.",
+              "Luokan voit täyttää vasta testin jälkeen. Testin aikana riittää ohjeen kohta ja se, mitä testaaja teki tai sanoi."
+            ]
+          }
         },
         "16-3": {
-          miksi: "Jokainen koodimuutos voi rikkoa jotain muuta pelissä, ja luovutukseen on enää viikko. Siksi korjaat nyt vain ohjeen epäselvät kohdat ja estävät virheet. Muut havainnot kirjaat tiedossa oleviksi puutteiksi, jotta asiakkaat tietävät niistä.",
+          miksi: "Jokainen koodimuutos voi rikkoa jotain muuta pelissä, ja luovutukseen on enää viikko. Siksi korjaat nyt vain ohjeen epäselvät kohdat ja estävät virheet. Muut havainnot kirjaat tiedossa oleviksi puutteiksi, jotta asiakkaat tietävät niistä. Yhdestä estävästä virheestä kirjoitat kolmannen virheenkorjausketjusi.",
           osat: [
             ["Käy havainnot läpi", "Avaa vastaanottotestin kirjaus ja käy havainnot läpi tässä järjestyksessä: ensin estävät virheet, sitten ohjeen korjaukset ja viimeisenä tiedossa olevat puutteet."],
             ["Korjaa ohjeen epäselvät kohdat", "Korjaa tiedostoon `docs/avaaminen-ja-jatkotyosto.md` jokainen kohta, jossa testaaja epäröi. Kirjoita kohta niin tarkasti, ettei seuraavan lukijan tarvitse kysyä samaa. Lisää esimerkiksi scenen koko polku."],
             ["Korjaa estävät virheet", "Korjaa jokainen estävä virhe virheenkorjausketjuna: toista virhe, etsi syy, korjaa ja testaa korjaus. Pelaa sen jälkeen pelin peruskierros alusta loppuun, jotta näet, ettei korjaus rikkonut muuta (regressiotesti)."],
+            ["Kirjoita kolmas virheenkorjausketju", "Kirjoita yhdestä estävästä virheestä testimatriisiin kolmas virheenkorjausketjusi apukohdan pohjalla. Jos estävää virhettä ei löytynyt, tee ketju ohjaajan antamasta vikatehtävästä eli koodista, jossa on valmiiksi virhe."],
             ["Kirjaa loput havainnot puutteiksi", "Kirjaa havainnot, joita et korjaa, tiedostoon `docs/testitulokset-ja-puutteet.md` tiedossa olevina puutteina."],
             ["Tee commit ja push", "Tee korjauksista commit ja paina Push origin. Kirjoita vastaanottotestin kirjaukseen jokaisen havainnon kohdalle, miten käsittelit sen."]
           ],
-          valmis: "Jokainen vastaanottotestin havainto on korjattu ohjeeseen, korjattu estävänä virheenä tai kirjattu tiedossa olevaksi puutteeksi.",
-          tallenna: "Korjauscommitit, korjattu `docs/avaaminen-ja-jatkotyosto.md` ja päivitetty `docs/testitulokset-ja-puutteet.md` repositoryyn sekä commit-linkit projektipäiväkirjaasi.",
+          valmis: "Jokainen vastaanottotestin havainto on korjattu ohjeeseen, korjattu estävänä virheenä tai kirjattu tiedossa olevaksi puutteeksi. Testimatriisissa on kolmas virheenkorjausketjusi, jonka teit vastaanottotestin estävästä virheestä tai, jos sellaista ei löytynyt, ohjaajan antamasta vikatehtävästä.",
+          tallenna: "Korjauscommitit, kolmas virheenkorjausketju testimatriisiin, korjattu `docs/avaaminen-ja-jatkotyosto.md` ja päivitetty `docs/testitulokset-ja-puutteet.md` repositoryyn sekä commit-linkit projektipäiväkirjaasi.",
           sanat: ["virheenkorjausketju", "regressiotesti"],
+          apu: {
+            title: "Virheenkorjausketjun pohja",
+            code: "Virheenkorjausketju\n- Havainto: MITÄ TAPAHTUI\n- Toistamisohje: 1. VAIHE 2. VAIHE 3. VAIHE\n- Syy: MIKÄ KOODISSA AIHEUTTI VIRHEEN\n- Korjauscommit: LINKKI\n- Uusintatesti: TULOS\n- Regressiotesti: PERUSKIERROS ALUSTA LOPPUUN, TULOS",
+            vinkit: ["Jos vastaanottotestissä ei löytynyt estävää virhettä, pyydä ohjaajalta vikatehtävä eli koodi, jossa on valmiiksi virhe. Älä keksi virhettä ketjua varten."]
+          },
           esimerkki: "Ennen: ”Avaa valikko.” Jälkeen: ”Avaa Unity Hubissa kansio Pulmapeli. Avaa Project-ikkunasta scene Assets/Scenes/Valikko ja paina Play.”"
         }
       }
@@ -1761,7 +1788,7 @@ window.NAYTTOPROJEKTI = {
       deliverable: "Regressiotestin tulokset puhtaasta kloonista, kolmen pelin luovutusbuildit zip-tiedostoina, luovutusversio (tag v1.0), luovutuspaketti ja asiakkaiden kuittaus.",
       why: "Peli voi toimia sinun koneellasi, vaikka siitä puuttuu jotain, esimerkiksi tiedosto, joka on vain sinun työkansiossasi eikä versionhallinnassa. Kun testaat ja kokoat pelit repositoryn uudesta kopiosta, näet saman kuin asiakkaat ja ehdit korjata puutteet ennen luovutusta.",
       done: "Avaa luovutuspaketti toisella koneella tai muussa kansiossa kuin työkansiossasi, käynnistä jokainen peli ja käy luovutuslistan kohdat läpi. Jokainen listan kohta löytyy paketista.",
-      record: "Kirjoita työviikon 17 merkintään, mitä löysit regressiotestissä, millä asetuksilla kokosit luovutusbuildit ja millä tavalla luovutit paketin asiakkaille. Näyttömatriisin rivit: julkaisu tuotantoympäristöön (s14), julkaisu asiakkaan ympäristöön (k6) ja versionhallinta (s12).",
+      record: "Kirjoita työviikon 17 merkintään vastaukset näihin kysymyksiin:\n1) Mitä löysit regressiotestissä?\n2) Millä asetuksilla kokosit luovutusbuildit?\n3) Millä tavalla luovutit paketin asiakkaille?\nRastita näyttömatriisista nämä rivit: julkaisu tuotantoympäristöön (s14), julkaisu asiakkaan ympäristöön (k6) ja versionhallinta (s12). Kirjaa merkintään jokaiselle riville täsmälinkki tämän viikon työnäytteeseen.",
       skills: ["julkaisu asiakkaan ympäristöön (s14, k6)", "versionhallinta (s12)", "regressiotestaus puhtaasta kloonista"],
       tehtavat: {
         "17-1": {
@@ -1789,7 +1816,15 @@ window.NAYTTOPROJEKTI = {
           ],
           valmis: "Kaikkien kolmen pelin buildit on koottu puhtaasta kloonista, ja ne käynnistyvät ilman Unity-editoria. Jokaisen zip-tiedoston nimessä ovat pelin nimi, alusta ja versio.",
           tallenna: "Kolme zip-tiedostoa samaan kansioon repositoryn ulkopuolelle. Kokoat niistä luovutuspaketin seuraavassa työvaiheessa. Kirjoita lisäksi jokaisen pelin alusta ja scenejen järjestys projektipäiväkirjaasi.",
-          sanat: ["build"]
+          sanat: ["build"],
+          apu: {
+            title: "Jos pelit pelataan selaimessa",
+            vinkit: [
+              "Selaimessa toimivaa buildia ei voi avata tuplaklikkaamalla, koska selain tarvitsee sen avaamiseen palvelimen. Testaa selainbuild Build Profiles -ikkunan Build And Run -painikkeella. Unity kokoaa buildin ja avaa pelin selaimeen.",
+              "Pidä Unity silloin auki, mutta testaa vain selaimeen avautunutta peliä, älä Unityn Play-tilaa. Pelaa kierros, aloita kierros uudelleen ja palaa alkuvalikkoon.",
+              "Pakkaa zip-tiedostoksi koko buildin kansio, jossa ovat index.html ja Build-kansio."
+            ]
+          }
         },
         "17-3": {
           miksi: "Asiakkaat tilasivat kolme pelattavaa peliä, muokattavat Unity-projektit ja ohjeet, joiden avulla he jatkavat pelejä. Kun käyt luovutuslistan läpi kohta kohdalta, huomaat puuttuvan asian ennen kuin asiakkaat huomaavat sen. Lopuksi asiakkaat kuittaavat eli vahvistavat, että he ovat saaneet paketin, ja silloin luovutus on valmis.",
@@ -1821,7 +1856,7 @@ window.NAYTTOPROJEKTI = {
       deliverable: "Näyttömatriisi täsmälinkein, esittelyn runko, esittelyssä tehty muutos ja itsearviointi.",
       why: "Arvioija arvioi osaamisesi sen perusteella, mitä hän näkee näytössä. Jos hän ei löydä työnäytettä, hän ei voi ottaa sitä huomioon, vaikka olisit tehnyt työn. Esittelyssä näytät lisäksi, että ymmärrät oman koodisi ja osaat muuttaa sitä.",
       done: "Ohjaaja valitsee yhden ratkaisusi. Selität, mitä koodi tekee, ja teet siihen pienen muutoksen, joka toimii Play-tilassa. Näyttömatriisisi jokaisella rivillä on täsmälinkki tai merkintä siitä, että työnäyte puuttuu.",
-      record: "Kirjoita työviikon 18 merkintään, minkä ratkaisun ohjaaja valitsi, mitä muutit ja mitä työnäytteitä vielä täydentäisit. Näyttömatriisin rivit: oman toiminnan arviointi (p11) ja kaikki rivit, joille kokosit täsmälinkit.",
+      record: "Kirjoita työviikon 18 merkintään vastaukset näihin kysymyksiin:\n1) Minkä ratkaisun ohjaaja valitsi?\n2) Mitä muutit?\n3) Mitä työnäytteitä vielä täydentäisit?\nRastita näyttömatriisista rivi oman toiminnan arviointi (p11) ja kaikki rivit, joille kokosit täsmälinkit. Kirjaa merkintään täsmälinkit tiedostoihin `project-docs/nayttomatriisi.md` ja `project-docs/itsearviointi.md`.",
       skills: ["oman osaamisen esittely", "koodin selittäminen ja muuttaminen", "oman toiminnan arviointi (p11)"],
       paivat: [
         ["Aineisto", "Kokoa näyttömatriisi täsmälinkein ja tarkista, että projektipäiväkirja ja AI-loki ovat repositoryssa kansiossa project-docs."],
@@ -1958,13 +1993,13 @@ window.NAYTTOPROJEKTI = {
         [13, "Palautekorjaukset", "Valitut korjaukset odotettuine tuloksineen, toinen virheenkorjausketju, uusintatestit ja pelien peruskierrokset."],
         [14, "Testitulokset", "Vähintään seitsemän testitapausta peliä kohden, buildien testit ilman editoria, rajatapaukset ja toistuvat uudelleenaloitukset sekä tietoturva-arvio."],
         [15, "Jatkotyöstöohje", "Avaamis- ja jatkotyöstöohje, assettiluettelo, tarpeettoman aineiston poisto ja koodin siistiminen jatkotyöstöä varten."],
-        [16, "Vastaanottotesti", "Luovutusehdokas (tag v0.9), vastaanottotesti ja siirtokokeilu, testaajan havainnot hänen sanoinaan, havaintojen korjaus ja kolmas virheenkorjausketju."],
+        [16, "Vastaanottotesti", "Luovutusehdokas (tag v0.9), vastaanottotesti ja siirtokokeilu, testaajan havainnot hänen sanoinaan, havaintojen korjaus ja kolmas virheenkorjausketju vastaanottotestin estävästä virheestä tai, jos sellaista ei löydy, ohjaajan antamasta vikatehtävästä."],
         [17, "Luovutus", "Regressiotesti puhtaasta kloonista, luovutusbuildit, luovutusversio (tag v1.0), luovutuspaketti ja asiakkaiden kuittaus."],
         [18, "Näyttö", "Näyttömatriisi täsmälinkein, esittely, muutos ohjaajan pyynnöstä ja itsearviointi."]
       ],
       tyonaytteet: {
         p1: ["1, 3", "Unity-asennus ja versiotiedot, muutos kokeiluprojektiin ja ensimmäinen oma skripti kokeilukenttään"],
-        p2: ["9, 13, 16", "Vähintään kolme virheenkorjausketjua oman koodin virheistä: havainto, toistamisohje, syy, korjauscommit, uusintatesti ja regressiotesti"],
+        p2: ["9, 13, 16", "Kolme virheenkorjausketjua: havainto, toistamisohje, syy, korjauscommit, uusintatesti ja regressiotesti. Ketju tehdään aidosta virheestä, kolmas vastaanottotestin estävästä virheestä. Jos aitoa virhettä ei löydy, ohjaaja antaa vikatehtävän"],
         p3: ["4, 5, 8, 14", "Testimatriisin testitapaukset, joihin odotettu tulos on kirjoitettu ennen ajoa: ensimmäisen pelin kierros ja toistuvat kierrokset, toisen pelin koko kierros ja kaikkien pelien testit buildeina"],
         p4: ["1, 3, 4, 7, 10", "Lähtötasokokeilun ehto ja skriptit päämekaniikkaan ja kierroksen logiikkaan: metodit, ehdot, silmukat ja muuttujat, esimerkiksi pelikentän luku datasta silmukalla"],
         p5: ["8, 15", "Valikon uudelleenkäyttö prefabina, toiston poisto omaan metodiin ja koodin siistiminen jatkotyöstöä varten: selkeät nimet ja alkukommentit"],
@@ -1973,7 +2008,7 @@ window.NAYTTOPROJEKTI = {
         p8: ["2, 6, 12", "Tehtävätaulun kortit ja niiden järjestys sovittuna ohjaajan kanssa, viikkotarkistukset sekä palautekorttien ja korjausten järjestys"],
         p9: ["2, 7", "Projektirakenteen vertailu (yksi vai kolme Unity-projektia) ja kenttädatan tallennustapojen vertailu, käyty läpi ohjaajan kanssa ja kirjattu päätöslokiin"],
         p10: ["9, 12", "Vertaisarvio, jossa toinen opiskelija testaa toisen pelin vaatimuslistaa vasten ja havainnot käydään yhdessä läpi, sekä asiakaskatselmointi ja siinä sovitut korjaukset"],
-        p11: ["3, 6, 9, 12, 18", "Selitä ja muuta -merkinnät näyttöaineiston tarkistuksineen työviikoilla 3, 6 ja 9, aukkolista ja arvio omasta toiminnasta työviikolla 12 sekä itsearviointi täsmälinkein työviikolla 18"],
+        p11: ["3, 6, 9, 12, 18", "Selitä ja muuta -merkinnät ja näyttömatriisin tarkistus työviikoilla 3, 6 ja 9, aukkolista ja arvio omasta toiminnasta työviikolla 12 sekä itsearviointi täsmälinkein työviikolla 18"],
         s1: ["1, 2", "Kysymyslista asiakkaille ja ohjaajalle vastauksineen ja aiheiden vahvistuspyyntö asiakkaille"],
         s2: ["6, 12, 15", "Pelien esittely asiakkaille ilman teknistä sanastoa ja jatkotyöstöohje musiikkikurssin opiskelijalle"],
         s3: ["6, 12", "Asiakaskokeilu ja asiakaskatselmointi: pelien esittely ja palaute asiakkaan sanoin, tarkistettuna asiakkaalta"],
@@ -2022,7 +2057,7 @@ window.NAYTTOPROJEKTI = {
         ["Siirrettävät työvaiheet", "Jos viikkotunnit eivät riitä, nämä voi siirtää viikolla eteenpäin, ilman että muut viikot rikkoutuvat: 3-4 build työviikolle 4, 11-4 Unity-havainnot työviikolle 12 ja 14-3 rajatapaukset työviikolle 15. Siirto kirjataan päätöslokiin."],
         ["Perusteversio ja tutkinnon osat", "Matriisin 32 vaatimusta ovat sanatarkasti samat perusteissa OPH-6216-2025 ja OPH-4948-2021. Opiskelijan perusteversio ja suoritettavat osat vahvistetaan opiskelijakohtaisesti, ja näyttömatriisi täytetään vain niiltä osin."],
         ["Heikoimmin istuvat vaatimukset","Tiimityön vaatimukset (p8–p11) näytetään yksilöprojektissa työskentelynä ohjaajan, asiakkaiden ja vertaisarvioijan kanssa: tehtävistä ja järjestyksestä sovitaan ohjaajan kanssa viikkotarkistuksessa, vaihtoehtovertailut käydään läpi ohjaajan kanssa, ja ratkaisujen toimivuutta arvioidaan vertaisarviossa ja asiakaskatselmoinnissa. Tietovaraston valinta ja yhteys (s8, s9) toteutetaan pelin kenttä- tai asetusdatana, koska tallennusjärjestelmä on rajattu pois. Tietoturvan arviointi (s11) on paikallisen pelin luovutuspaketin tarkistus. Julkaisu tuotantoympäristöön (s14) tarkoittaa asiakkaan sovittua alustaa. Ohjaajat vahvistavat, riittävätkö nämä."],
-        ["Virheenkorjausketjut", "Opiskelija tekee vähintään kolme ketjua oman koodinsa virheistä (työviikot 9, 13 ja 16). Keksittyjä virheitä ei kirjata: jos aitoa virhettä ei ole, ohjaaja antaa vikatehtävän."],
+        ["Virheenkorjausketjut", "Opiskelija tekee kolme ketjua työviikoilla 9, 13 ja 16, ensisijaisesti aidoista virheistä (kolmas vastaanottotestin estävästä virheestä). Keksittyjä virheitä ei kirjata: jos aitoa virhettä ei ole, ohjaaja antaa vikatehtävän."],
         ["Ohjaaja ei näe sivuston rasteja", "Sivuston rastit, päiväkirja, suunnitelma ja AI-loki tallentuvat opiskelijan omaan selaimeen, eivätkä ohjaajat näe niitä. Etenemistä seurataan tehtävätaulusta, työaikataulukosta ja repositorysta."],
         ["Nimet repositoryssa", "Repositoryyn kirjataan henkilöistä vain rooli. Opiskelijan tekijänimi ja repositoryn julkisuus sovitaan ohjaajan kanssa työviikolla 1; siihen asti repository on yksityinen."],
         ["Avoimet asiat", "Lähtötaso ja viikkotunnit, kolmen aiheen hyväksyntä, Unity-versio, kohdealusta, projektirakenne (yksi vai kolme Unity-projektia), perusteversio ja suoritettavat osat, tekoälyn käyttö, tehtävätaulu, vertaisarvioija, katselmointien osallistujat ja ajat, repositoryn julkisuus, tekijänimi, lisenssi ja luovutustapa."]

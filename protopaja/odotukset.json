@@ -4,10 +4,10 @@
   "nimi": "ProtoPaja",
   "kieli": "fi",
   "paivaton": true,
-  "generoitu": "2026-11-09",
+  "generoitu": "2026-11-10",
   "lahde": {
-    "sisalto.js": "6230782806d0e9d6",
-    "index.html": "caab6252bc84d496"
+    "sisalto.js": "b6fc0e8c86632584",
+    "index.html": "e779d1831985492a"
   },
   "viikot": [
     1,
@@ -160,7 +160,7 @@
         {
           "id": "2-2",
           "teksti": "Päätä, teetkö pelit yhteen vai kolmeen Unity-projektiin",
-          "valmis": "Päätöslokissa on mittaamasi aika, vertailutaulukko vastauksineen, päätös päivämäärineen ja kaksi syytä, ja olet näyttänyt päätöksen ohjaajalle.",
+          "valmis": "Päätöslokissa on mittaamasi aika, vertailutaulukko vastauksineen, päätös päivämäärineen ja kaksi syytä. Olet käynyt vaihtoehdot ja päätöksen läpi ohjaajan kanssa ja kirjannut hänen kommenttinsa päätöslokiin.",
           "tallenna": "`project-docs/paatokset.md` repositoryyn."
         },
         {
@@ -240,7 +240,7 @@
         {
           "id": "3-5",
           "teksti": "Selitä koodisi ohjaajalle ja tee pyydetty muutos",
-          "valmis": "Olet selittänyt skriptisi ohjaajalle, pyydetty muutos toimii Play-tilassa, ja selitä ja muuta -tiedostossa on tämän viikon merkintä.",
+          "valmis": "Olet selittänyt skriptisi ohjaajalle, pyydetty muutos toimii Play-tilassa, ja selitä ja muuta -tiedostossa on tämän viikon merkintä. Merkinnässä on myös yksi vaatimus, josta työnäyte vielä puuttuu.",
           "tallenna": "`project-docs/selita-ja-muuta.md` ja muutoksen commit-linkki päiväkirjaasi."
         }
       ],
@@ -402,13 +402,13 @@
         {
           "id": "6-4",
           "teksti": "Vertaa tuntiarvioitasi toteutuneisiin tunteihin",
-          "valmis": "Projektipäiväkirjassa on vertailutaulukko ja selitys suurimmalle erolle.",
-          "tallenna": "Vertailu projektipäiväkirjaan."
+          "valmis": "Projektipäiväkirjassa on vertailutaulukko ja selitys suurimmalle erolle. Olet käynyt vertailun läpi ohjaajan kanssa ja kirjannut päiväkirjaan, mitä sovitte seuraavista tuntiarvioista.",
+          "tallenna": "Vertailu ja ohjaajan kanssa sovitut asiat projektipäiväkirjaan."
         },
         {
           "id": "6-5",
           "teksti": "Selitä oma skriptisi ohjaajalle ja tee pyydetty muutos",
-          "valmis": "Olet selittänyt skriptisi ohjaajalle, pyydetty muutos toimii Play-tilassa, ja tiedostossa `project-docs/selita-ja-muuta.md` on tämän viikon merkintä.",
+          "valmis": "Olet selittänyt skriptisi ohjaajalle, pyydetty muutos toimii Play-tilassa, ja tiedostossa `project-docs/selita-ja-muuta.md` on tämän viikon merkintä. Merkinnässä on myös yksi vaatimus, josta työnäyte vielä puuttuu.",
           "tallenna": "`project-docs/selita-ja-muuta.md` ja muutoksen commit-linkki projektipäiväkirjaan."
         }
       ],
@@ -476,7 +476,7 @@
       ],
       "nayta": "Commitit jokaisesta välituloksesta, päätöslokin vertailu kahdesta tallennustavasta, kenttädatan tiedosto ja testimatriisin uudet testitapaukset.",
       "tuotos": "Toisen pelin Unity-projekti tai kansio, päätös kentän tallennustavasta, skripti, joka luo kentän datasta, päämekaniikka ja testitapaukset testimatriisissa.",
-      "valmis": "Esimerkiksi pulmapelissä: siirrä laatikko tavoiteruutuun ja yritä työntää laatikkoa seinää päin. Muuta kenttädatassa yhden ruudun merkki ja käynnistä peli uudelleen: muutos näkyy kentässä. Jos toinen pelisi on jokin muu kuin pulmapeli, kirjoita vastaava kokeilu työvaiheessa 1. Historiassa on commit jokaisesta välituloksesta, ja testitulokset ovat testimatriisissa.",
+      "valmis": "Esimerkiksi pulmapelissä: siirrä laatikko tavoiteruutuun ja yritä työntää laatikkoa seinää päin. Muuta kenttädatassa yhden ruudun merkki ja käynnistä peli uudelleen: muutos näkyy kentässä. Jos toinen pelisi on jokin muu kuin pulmapeli, kirjoita vastaava kokeilu työvaiheessa 7-1. Historiassa on commit jokaisesta välituloksesta, ja testitulokset ovat testimatriisissa.",
       "tarkistukset": [
         {
           "id": "paivakirja:7",
@@ -582,7 +582,7 @@
         {
           "id": "9-5",
           "teksti": "Selitä skriptisi ohjaajalle ja muuta sitä",
-          "valmis": "Olet selittänyt skriptisi ohjaajalle, pyydetty muutos toimii Play-tilassa, ja tiedostossa `project-docs/selita-ja-muuta.md` on tämän viikon merkintä.",
+          "valmis": "Olet selittänyt skriptisi ohjaajalle, pyydetty muutos toimii Play-tilassa, ja tiedostossa `project-docs/selita-ja-muuta.md` on tämän viikon merkintä. Merkinnässä on myös yksi vaatimus, josta työnäyte vielä puuttuu.",
           "tallenna": "`project-docs/selita-ja-muuta.md` ja muutoksen commit-linkki projektipäiväkirjaan."
         }
       ],
@@ -644,7 +644,7 @@
       ],
       "nayta": "Kolmannen pelin commitit, asetustiedosto, päivitetty `docs/assetit-ja-lisenssit.md` ja testimatriisin uudet testitapaukset.",
       "tuotos": "Kolmannen pelin Unity-projekti tai kansio, pelaajan liike ja hyökkäys, vihollinen ja osuma, asetukset datasta, grafiikat ja testitapaukset.",
-      "valmis": "Esimerkiksi toimintapelissä: liiku areenalla, hyökkää viholliseen ja katso, että osuma näkyy. Anna sitten vihollisen osua pelaajaan ja katso, että siitäkin näkyy palaute. Muuta datassa yhtä asetusta, esimerkiksi vihollisen nopeutta, käynnistä peli uudelleen ja katso, että muutos näkyy. Jos teet muuta peliä, kirjoita vastaava kokeilu työvaiheessa 1. Kolmannen pelin testitapaukset ovat testimatriisissa tuloksineen.",
+      "valmis": "Esimerkiksi toimintapelissä: liiku areenalla, hyökkää viholliseen ja katso, että osuma näkyy. Anna sitten vihollisen osua pelaajaan ja katso, että siitäkin näkyy palaute. Muuta datassa yhtä asetusta, esimerkiksi vihollisen nopeutta, käynnistä peli uudelleen ja katso, että muutos näkyy. Jos teet muuta peliä, kirjoita vastaava kokeilu työvaiheessa 10-1. Kolmannen pelin testitapaukset ovat testimatriisissa tuloksineen.",
       "tarkistukset": [
         {
           "id": "paivakirja:10",
@@ -687,13 +687,13 @@
         },
         {
           "id": "11-4",
-          "teksti": "Kirjaa kolme Unityn rajoitetta, jotka tulivat sinulle vastaan",
-          "valmis": "Tiedostossa `project-docs/unity-havainnot.md` on kolme havaintoa omasta työstäsi. Jokaisessa on tilanne, ratkaisu ja commit-linkki tai kuvakaappaus.",
+          "teksti": "Kirjaa kolme havaintoa Unityn mahdollisuuksista ja rajoitteista, jotka tulivat sinulle vastaan",
+          "valmis": "Tiedostossa `project-docs/unity-havainnot.md` on kolme havaintoa Unityn mahdollisuuksista ja rajoitteista omasta työstäsi. Jokaisessa on tilanne, ratkaisu ja commit-linkki tai kuvakaappaus.",
           "tallenna": "`project-docs/unity-havainnot.md` repositoryyn."
         }
       ],
       "nayta": "Kierroksen commitit, alkuvalikko kolmannessa pelissä, testimatriisin voitto-, häviö- ja uudelleenaloitustestit ja `project-docs/unity-havainnot.md`.",
-      "tuotos": "Kierroksen ajastin, voitto ja häviö, loppuruutu, alkuvalikko, visuaalinen palaute, testitapaukset ja kolme havaintoa Unityn rajoitteista.",
+      "tuotos": "Kierroksen ajastin, voitto ja häviö, loppuruutu, alkuvalikko, visuaalinen palaute, testitapaukset ja kolme havaintoa Unityn mahdollisuuksista ja rajoitteista.",
       "valmis": "Esimerkiksi toimintapelissä: pelaa yksi kierros loppuun asti, esimerkiksi selviydy 60 sekuntia, ja yksi kierros häviöön. Aloita sitten uudelleen ja palaa alkuvalikkoon. Jos teet muuta peliä, kokeile samalla tavalla kaikkia tapoja, joilla kierros voi päättyä. Kolmannen pelin kierroksen testitapaukset ovat testimatriisissa tuloksineen.",
       "tarkistukset": [
         {
@@ -804,8 +804,8 @@
           "tallenna": "Päivitetty testimatriisi ja `docs/testitulokset-ja-puutteet.md` repositoryyn."
         }
       ],
-      "nayta": "Korjauscommitisi, toinen virheenkorjausketjusi ja testimatriisin uusintatestit.",
-      "tuotos": "Korjauskortit, joissa on odotettu tulos ja testitapaus, tekemäsi korjaukset, toinen virheenkorjausketjusi ja uusintatestien tulokset testimatriisissa.",
+      "nayta": "Korjauscommitisi, toinen virheenkorjausketjusi sekä testimatriisin uusintatestit ja regressiotestit.",
+      "tuotos": "Korjauskortit, joissa on odotettu tulos ja testitapaus, tekemäsi korjaukset, toinen virheenkorjausketjusi sekä uusintatestien ja regressiotestien tulokset testimatriisissa.",
       "valmis": "Aja uudelleen jokaisen korjauksen testitapaus ja pelaa jokaisen pelin peruskierros alusta loppuun. Kaikki testit menevät läpi, ja testimatriisissa on toinen valmis virheenkorjausketjusi.",
       "tarkistukset": [
         {
@@ -906,8 +906,8 @@
         {
           "id": "15-3",
           "teksti": "Siisti pelien koodi jatkotyöstöä varten",
-          "valmis": "Skripteissäsi on kuvaavat nimet ja alkukommentit, olet poistanut käyttämättömän koodin, ja jokaisen pelin peruskierros menee läpi.",
-          "tallenna": "Siistimiscommit repositoryyn ja yksi ennen ja jälkeen -esimerkki päiväkirjaasi."
+          "valmis": "Skripteissäsi on kuvaavat nimet ja alkukommentit, ja olet siirtänyt ainakin yhden toistuvan koodikohdan omaan metodiinsa. Olet poistanut käyttämättömän koodin, ja jokaisen pelin peruskierros menee läpi.",
+          "tallenna": "Siistimiscommit repositoryyn ja yksi ennen ja jälkeen -esimerkki päiväkirjaasi, esimerkiksi omaan metodiin siirretty toisto."
         }
       ],
       "nayta": "`docs/avaaminen-ja-jatkotyosto.md`, `docs/assetit-ja-lisenssit.md` ja siistimiscommitisi.",
@@ -956,12 +956,12 @@
         {
           "id": "16-3",
           "teksti": "Korjaa vastaanottotestin havainnot",
-          "valmis": "Jokainen vastaanottotestin havainto on korjattu ohjeeseen, korjattu estävänä virheenä tai kirjattu tiedossa olevaksi puutteeksi.",
-          "tallenna": "Korjauscommitit, korjattu `docs/avaaminen-ja-jatkotyosto.md` ja päivitetty `docs/testitulokset-ja-puutteet.md` repositoryyn sekä commit-linkit projektipäiväkirjaasi."
+          "valmis": "Jokainen vastaanottotestin havainto on korjattu ohjeeseen, korjattu estävänä virheenä tai kirjattu tiedossa olevaksi puutteeksi. Testimatriisissa on kolmas virheenkorjausketjusi, jonka teit vastaanottotestin estävästä virheestä tai, jos sellaista ei löytynyt, ohjaajan antamasta vikatehtävästä.",
+          "tallenna": "Korjauscommitit, kolmas virheenkorjausketju testimatriisiin, korjattu `docs/avaaminen-ja-jatkotyosto.md` ja päivitetty `docs/testitulokset-ja-puutteet.md` repositoryyn sekä commit-linkit projektipäiväkirjaasi."
         }
       ],
-      "nayta": "Luovutusehdokkaan versiomerkintä (tag v0.9), `project-docs/vastaanottotesti.md`, korjattu `docs/avaaminen-ja-jatkotyosto.md` ja `docs/testitulokset-ja-puutteet.md`.",
-      "tuotos": "Luovutusehdokas (tag v0.9), testaajalle kirjoitettu tehtävä, testaajan havainnot hänen omin sanoinaan, korjattu avaamis- ja jatkotyöstöohje ja päivitetty luettelo tiedossa olevista puutteista.",
+      "nayta": "Luovutusehdokkaan versiomerkintä (tag v0.9), `project-docs/vastaanottotesti.md`, kolmas virheenkorjausketjusi testimatriisissa, korjattu `docs/avaaminen-ja-jatkotyosto.md` ja `docs/testitulokset-ja-puutteet.md`.",
+      "tuotos": "Luovutusehdokas (tag v0.9), testaajalle kirjoitettu tehtävä, testaajan havainnot hänen omin sanoinaan, korjattu avaamis- ja jatkotyöstöohje, kolmas virheenkorjausketju ja päivitetty luettelo tiedossa olevista puutteista.",
       "valmis": "Testaaja avaa projektit ja käynnistää pelit pelkän kirjallisen ohjeen avulla, eikä kukaan neuvo häntä. Hän muuttaa ohjeen avulla yhden asetuksen, esimerkiksi kierroksen keston, ja näkee muutoksen Play-tilassa. Jokainen kohta, jossa hän epäröi, on korjattu ohjeeseen tai kirjattu tiedossa olevaksi puutteeksi.",
       "tarkistukset": [
         {
