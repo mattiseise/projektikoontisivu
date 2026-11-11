@@ -9,7 +9,7 @@ eikä äänivalmistelua.
 ## Mikä tämä sivusto on
 
 Tämä kansio sisältää **ohjaussivuston**, ei pelejä. Sivusto ohjaa opiskelijan 18 työviikon läpi:
-toimeksianto, kokonaiskuva, suunnitelmalomake, 18 viikkokorttia (72 työvaihetta, 402 osatehtävää), työtapa, termit, projektipäiväkirja, AI-loki, näyttömatriisi (32 vaatimusta)
+toimeksianto, kokonaiskuva, suunnitelmalomake, 18 viikkokorttia (72 työvaihetta, 409 osatehtävää), työtapa, termit, projektipäiväkirja, AI-loki, näyttömatriisi (32 vaatimusta)
 sekä paperinen työpaketti ja opettajan näyttösuunnitelma.
 
 Opiskelijan varsinainen työ (Unity-projektit, `docs/` asiakkaille ja `project-docs/`
@@ -52,6 +52,17 @@ Viikkorunko on läpäissyt Linnea-portin (kriteeristönä skillin pedagoginen ru
 vaatimusta ja projektikuvaus). Kierros 1: KORJATTAVA (henkilökohtainen ohjelmointi joka
 toteutusviikolla, roolinvaihto, viikon 1 järjestys, tekstitehtävien omat artefaktit).
 Kierros 2: **HYVÄKSYTTY 3.11.2026**; kuusi pientä huomiota korjattiin sisällön kirjoitusvaiheessa.
+
+**Ingrid, Oskar ja Linnea 9.–11.11.2026 (skillin vaihe 5b).** Yksilöprojektiversion tarkastivat
+Ingrid (oppimisen tuen esteet, S2; kolme osaa) ja Oskar (tutkintoperusteet OPH-6216-2025; yksi ajo
+jokaista tutkinnon osaa kohden). Revisio 4861af2: kaikki kuusi APPROVED_WITH_NOTES, Linnea r1 KORJATTAVA,
+r2 KORJATTAVA (viikon 1 täsmälinkit). Revisio ed07d4b: uusi Ingrid- ja Oskar-ajo, kaikki kuusi
+APPROVED_WITH_NOTES, Oskar 32/32 vaatimusta suhteella supports. **Linnea r3: HYVÄKSYTTY HUOMAUTUKSIN
+11.11.2026**, ja huomautukset korjattiin samana päivänä. Ajokansiot:
+`~/Documents/agentti-muistiinpanot/ingrid-oskar/tarkastukset/protopaja-4861af2-20261109-1905/` ja
+`…/protopaja-ed07d4b-20261110-2138/` (raportit, run.json, linnea-r1–r3.md). Ohjaajille jäävät
+kysymykset (tiimin määritelmä, Unity-versio, tekoälysäännöt, viikkotunnit, perusteversio, luovutustapa
+ym.) ovat tiedostossa linnea-r3.md. Roolien hyväksyntä ei ole julkaisulupa, vaan opettaja päättää.
 
 **Muutos 9.11.2026.** Kollegan palautteen perusteella ProtoPaja muutettiin pariprojektista
 yksilöprojektiksi, äänivalmistelu poistettiin (äänitapahtumataulukko, `docs/aanitapahtumat.md`)

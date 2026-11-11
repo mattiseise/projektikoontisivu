@@ -4,10 +4,10 @@
   "nimi": "ProtoPaja",
   "kieli": "fi",
   "paivaton": true,
-  "generoitu": "2026-11-10",
+  "generoitu": "2026-11-11",
   "lahde": {
-    "sisalto.js": "b6fc0e8c86632584",
-    "index.html": "e779d1831985492a"
+    "sisalto.js": "7b98c3149cb83a2a",
+    "index.html": "341c68bf35d2fe8e"
   },
   "viikot": [
     1,
@@ -166,8 +166,8 @@
         {
           "id": "2-3",
           "teksti": "Jaa ensimmäinen peli tehtävätaulun korteiksi",
-          "valmis": "Ensimmäisen pelin jokaisella toiminnolla on kortti, jossa on tavoite, valmis kun -ehto ja tuntiarvio, ja kortit ovat siinä järjestyksessä, jossa aiot tehdä ne.",
-          "tallenna": "Kuvakaappaus taulusta polkuun `project-docs/tyonaytteet/viikko-2/kortit.png`."
+          "valmis": "Ensimmäisen pelin jokaisella toiminnolla on kortti, jossa on tavoite, valmis kun -ehto ja tuntiarvio, ja kortit ovat siinä järjestyksessä, jossa aiot tehdä ne. Olet käynyt kortit ja pelin jaon toiminnoiksi läpi ohjaajan kanssa ja kirjannut sovitut muutokset päätöslokiin.",
+          "tallenna": "Kuvakaappaus taulusta polkuun `project-docs/tyonaytteet/viikko-2/kortit.png` ja päätöslokin merkintä siitä, mitä sovit ohjaajan kanssa korttien jaosta."
         },
         {
           "id": "2-4",
@@ -587,7 +587,7 @@
         }
       ],
       "nayta": "`project-docs/vertaisarvio.md`, virheenkorjausketju testimatriisissa, päivitetty `project-docs/asiakaspalaute.md`, kolmannen pelin rajaus ja `project-docs/selita-ja-muuta.md`.",
-      "tuotos": "Vertaisarvio tiedostossa `project-docs/vertaisarvio.md`, virheenkorjausketju testimatriisissa, asiakkaiden kommentti toisesta pelistä, kolmannen pelin vahvistettu rajaus ja selitä ja muuta -merkintä.",
+      "tuotos": "Vertaisarvio tiedostossa `project-docs/vertaisarvio.md`, virheenkorjausketju testimatriisissa, asiakkaiden kommentti toisesta pelistä, kolmannen pelin vahvistettu rajaus ja merkintä tiedostossa `project-docs/selita-ja-muuta.md` (työvaihe 9-5).",
       "valmis": "Kokeile korjausten jälkeen uudelleen jokaista vertaisarviossa löytynyttä virhettä, joka esti pelaamisen: virhe ei enää toistu. Testimatriisissa on yksi valmis virheenkorjausketju, ja vertaisarviossa on kirjattu, mitkä havainnot korjaat.",
       "tarkistukset": [
         {
@@ -744,7 +744,7 @@
         {
           "id": "12-4",
           "teksti": "Tarkista omat työnäytteesi näyttömatriisista",
-          "valmis": "Tiedostossa `project-docs/aukot.md` jokaisella puuttuvalla työnäytteellä on sovittu työvaihe, ja oman toiminnan arvioinnissa on kolme virkettä.",
+          "valmis": "Tiedostossa `project-docs/aukot.md` jokaisella puuttuvalla työnäytteellä on sovittu työvaihe. Samassa tiedostossa on kolme virkettä, joissa arvioit omaa toimintaasi tiimin jäsenenä eli sitä, miten olet toiminut ohjaajan, asiakkaiden ja vertaistestaajan kanssa.",
           "tallenna": "`project-docs/aukot.md` repositoryyn."
         }
       ],
@@ -788,7 +788,7 @@
         {
           "id": "13-1",
           "teksti": "Kirjoita jokaiselle valitulle korjaukselle odotettu tulos",
-          "valmis": "Jokaisella valitulla korjauksella on kortti, odotettu tulos ja testitapaus testimatriisissa, ja olet merkinnyt kortin, josta teet virheenkorjausketjun.",
+          "valmis": "Jokaisella valitulla korjauksella on kortti, odotettu tulos ja testitapaus testimatriisissa. Olet merkinnyt kortin, josta teet virheenkorjausketjun, tai pyytänyt ohjaajalta vikatehtävän ketjua varten.",
           "tallenna": "Päivitetty `project-docs/testimatriisi.md` ja kuvakaappaus korteista polkuun `project-docs/tyonaytteet/viikko-13/kortit.png`."
         },
         {
