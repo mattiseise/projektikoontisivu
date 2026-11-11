@@ -4,10 +4,10 @@
   "nimi": "Vektoripaja",
   "kieli": "fi",
   "paivaton": false,
-  "generoitu": "2026-11-10",
+  "generoitu": "2026-11-11",
   "lahde": {
-    "sisalto.js": "bfa7db3e8430a916",
-    "index.html": "dd3c2f07cba1a6c7"
+    "sisalto.js": "b54d45053201d811",
+    "index.html": "ac0df367dfe65303"
   },
   "viikot": [
     40,
@@ -108,31 +108,31 @@
           "id": "2-3",
           "teksti": "Rakenna .obj-vienti",
           "valmis": "Viety tiedosto sisältää sovitut osat ja nimet.",
-          "tallenna": "Viennin koodi ja testitiedosto tests/test_vienti.py GitHubiin. Testien 19 ja 20 tulokset kortin issueen."
+          "tallenna": "Viennin koodi ja testitiedosto \"tests/test_vienti.py\" GitHubiin. Testien 19 ja 20 tulokset kortin issueen."
         },
         {
           "id": "2-4",
           "teksti": "Tarkista viety tiedosto VS Codessa",
-          "valmis": "Viedyssä tiedostossa esimerkit/malli.obj on kolme o-riviä osien nimillä.",
-          "tallenna": "Viety malli esimerkit/malli.obj omalla koneellasi. Se menee GitHubiin seuraavan työvaiheen commitissa."
+          "valmis": "Viedyssä tiedostossa \"esimerkit/malli.obj\" on kolme o-riviä osien nimillä.",
+          "tallenna": "Viety malli \"esimerkit/malli.obj\" omalla koneellasi. Se menee GitHubiin seuraavan työvaiheen commitissa."
         },
         {
           "id": "2-5",
           "teksti": "Kokeile mallia Blenderissä",
           "valmis": "Malli avautuu Blenderissä, jokainen osa on Outlinerissa oma rivinsä, ja tarkistusten tulokset ovat viennin kortin issuessa.",
-          "tallenna": "Viety malli esimerkit/malli.obj ja kuva project-docs/kuvat/ GitHubissa. Tarkistuksen tulos viennin kortin issueen."
+          "tallenna": "Viety malli \"esimerkit/malli.obj\" ja kuva project-docs/kuvat/ GitHubissa. Tarkistuksen tulos viennin kortin issueen."
         },
         {
           "id": "2-6",
           "teksti": "Kirjoita regressiotesti valitusta virheestä",
           "valmis": "Regressiotesti toistaa valitun virheen, ja tiedät, meneekö se läpi.",
-          "tallenna": "Regressiotesti tiedostossa tests/test_regressio.py ja täydennyksen merkintä tiedostossa project-docs/AI-loki/ai-loki.md omalla koneellasi. Ne menevät GitHubiin seuraavassa työvaiheessa."
+          "tallenna": "Regressiotesti tiedostossa \"tests/test_regressio.py\" ja täydennyksen merkintä tiedostossa project-docs/AI-loki/ai-loki.md omalla koneellasi. Ne menevät GitHubiin seuraavassa työvaiheessa."
         },
         {
           "id": "2-7",
           "teksti": "Korjaa virhe ja varmista korjaus",
           "valmis": "Valitun virheen regressiotesti menee läpi, virhe ei enää toistu, regressiotesti on GitHubissa, ja havaintoissue on suljettu.",
-          "tallenna": "Regressiotesti tiedostossa tests/test_regressio.py ja täydennyksen merkintä tiedostossa project-docs/AI-loki/ai-loki.md GitHubissa. Uusintatestin tulos ketjuun seuraavassa työvaiheessa."
+          "tallenna": "Regressiotesti tiedostossa \"tests/test_regressio.py\" ja täydennyksen merkintä tiedostossa project-docs/AI-loki/ai-loki.md GitHubissa. Uusintatestin tulos ketjuun seuraavassa työvaiheessa."
         },
         {
           "id": "2-8",
@@ -217,19 +217,19 @@
           "id": "3-2",
           "teksti": "Määrittele tallennuksen testit",
           "valmis": "Testien 21 ja 22 syötteet ja omat odotetut tulokset sekä avaus- ja tallennusfunktion rajapinnat on päätetty ennen toteutusta.",
-          "tallenna": "Odotukset ja rajapinnat kortin issueen seuraavassa työvaiheessa. Kirjoitat testit työsyklin kohdassa 3a kansioon tests."
+          "tallenna": "Odotukset ja rajapinnat kortin issueen seuraavassa työvaiheessa. Kirjoitat testit työsyklin kohdassa 3a kansioon \"tests\"."
         },
         {
           "id": "3-3",
           "teksti": "Rakenna tallennus ja avaus",
           "valmis": "Tallennettu työ avautuu samassa tilassa, ja rikottu tiedosto antaa hallitun virheilmoituksen.",
-          "tallenna": "Koodi ja testitiedosto tests/test_tallennus.py GitHubiin. Testien 21 ja 22 tulokset kortin issueen."
+          "tallenna": "Koodi ja testitiedosto \"tests/test_tallennus.py\" GitHubiin. Testien 21 ja 22 tulokset kortin issueen."
         },
         {
           "id": "3-6",
           "teksti": "Mittaa tallennustiedoston koko",
           "valmis": "Oman mallisi tallennustiedoston koko on project-docs/suunnitelma.md GitHubissa.",
-          "tallenna": "Tallennustiedoston koko tiedostossa project-docs/suunnitelma.md GitHubissa. Tallennustiedosto oma-malli.json jää Tiedostot-kansioon."
+          "tallenna": "Tallennustiedoston koko tiedostossa project-docs/suunnitelma.md GitHubissa. Tallennustiedosto \"oma-malli.json\" jää Tiedostot-kansioon."
         },
         {
           "id": "3-5",
@@ -332,7 +332,7 @@
           "id": "4-4",
           "teksti": "Kirjaa jatko katselmoinnin jälkeen",
           "valmis": "Seuraavana-kohdassa on viikon 5 ensimmäinen tehtävä ja issuen numero, ja kaikki työ on GitHubissa.",
-          "tallenna": "Päivitetty PROJEKTIN-TILA.md repositoryn juuressa GitHubissa."
+          "tallenna": "Päivitetty \"PROJEKTIN-TILA.md\" repositoryn juuressa GitHubissa."
         }
       ],
       "nayta": "project-docs/katselmointi.md, havaintoissuet prioriteetteineen ja tilatiedoston Seuraavana-kohta.",
@@ -405,7 +405,7 @@
           "id": "5-6",
           "teksti": "Tee ensimmäinen korjaus",
           "valmis": "Valittu korjaus on testattu, ja se on GitHubissa.",
-          "tallenna": "Korjauscommit ja regressiotesti tiedostossa tests/test_regressio.py GitHubissa. Testitulos kortin issueen."
+          "tallenna": "Korjauscommit ja regressiotesti tiedostossa \"tests/test_regressio.py\" GitHubissa. Testitulos kortin issueen."
         }
       ],
       "nayta": "testiajon tulos viikon kirjauksessa, tärkeän jatkon järjestys project-docs/suunnitelma.md ja issueissa sekä korjauksen commit ja regressiotesti.",
@@ -454,13 +454,13 @@
           "id": "6-2",
           "teksti": "Määrittele päivityksen testi",
           "valmis": "Muokattu testitiedosto on haarassa, ja testin 23 odotetut tulokset on kirjattu ennen toteutusta.",
-          "tallenna": "Tiedosto Testiaineisto/paivitys.svg haarassa paivita-svg GitHubissa. Odotetut tulokset korttiin ja testiin työvaiheessa Rakenna piirroksen päivitys."
+          "tallenna": "Tiedosto \"Testiaineisto/paivitys.svg\" haarassa paivita-svg GitHubissa. Odotetut tulokset korttiin ja testiin työvaiheessa Rakenna piirroksen päivitys."
         },
         {
           "id": "6-3",
           "teksti": "Rakenna piirroksen päivitys",
           "valmis": "SVG päivittyy, osien muokkaukset säilyvät, ja kaikki testit menevät läpi haarassa paivita-svg.",
-          "tallenna": "Koodi ja testi 23 tiedostossa tests/test_paivitys.py haarassa paivita-svg GitHubissa. Testin tulos kortin issueen."
+          "tallenna": "Koodi ja testi 23 tiedostossa \"tests/test_paivitys.py\" haarassa paivita-svg GitHubissa. Testin tulos kortin issueen."
         },
         {
           "id": "6-6",
@@ -527,7 +527,7 @@
           "id": "7-1",
           "teksti": "Sovi viikon tehtävä",
           "valmis": "Olet sopinut, teetkö ensin rästin vai tärkeän jatkon seuraavan toiminnon. Myös virheenkorjausketjun havaintoissue tai vikatehtävä on sovittu. Rästin testin syöte ja odotettu tulos ovat paperilla. Sovittu tehtävä ja sen issue ovat tilatiedostossa.",
-          "tallenna": "Sovittu tehtävä ja sen issuen numero tiedostossa PROJEKTIN-TILA.md GitHubissa. Rästin testin syöte ja odotettu tulos paperilla kortin suunnittelua varten. Sopimus kortin issueen kommenttina työvaiheessa Toteuta sovittu parannus."
+          "tallenna": "Sovittu tehtävä ja sen issuen numero tiedostossa \"PROJEKTIN-TILA.md\" GitHubissa. Rästin testin syöte ja odotettu tulos paperilla kortin suunnittelua varten. Sopimus kortin issueen kommenttina työvaiheessa Toteuta sovittu parannus."
         },
         {
           "id": "7-2",
@@ -539,7 +539,7 @@
           "id": "7-3",
           "teksti": "Toteuta sovittu parannus",
           "valmis": "Sovittu muutos toimii, ja testit menevät läpi. Rästi tai monen tiedoston muutos on haarassa viikko-4.",
-          "tallenna": "Muutos GitHubiin, rästi ja monen tiedoston muutos haaraan viikko-4. Toiminnon testi 24 tiedostossa tests/test_jatko.py. Testin tulos kortin issueen."
+          "tallenna": "Muutos GitHubiin, rästi ja monen tiedoston muutos haaraan viikko-4. Toiminnon testi 24 tiedostossa \"tests/test_jatko.py\". Testin tulos kortin issueen."
         },
         {
           "id": "7-5",
@@ -550,8 +550,8 @@
         {
           "id": "7-4",
           "teksti": "Estä korjatun virheen paluu",
-          "valmis": "Valitun havaintoissuen regressiotesti on tiedostossa tests/test_regressio.py, ja uusintatestin tulos on paperilla.",
-          "tallenna": "Regressiotesti tiedostossa tests/test_regressio.py. Se menee GitHubiin korjauksen commitissa tai työvaiheessa Dokumentoi virheen korjaus."
+          "valmis": "Valitun havaintoissuen regressiotesti on tiedostossa \"tests/test_regressio.py\", ja uusintatestin tulos on paperilla.",
+          "tallenna": "Regressiotesti tiedostossa \"tests/test_regressio.py\". Se menee GitHubiin korjauksen commitissa tai työvaiheessa Dokumentoi virheen korjaus."
         },
         {
           "id": "7-8",
@@ -563,7 +563,7 @@
           "id": "7-6",
           "teksti": "Dokumentoi virheen korjaus",
           "valmis": "Havaintoissuessa on virheenkorjausketjun kuusi osaa, ja project-docs/AI-loki/ai-loki.md on regressiotestin täydennyksen merkintä, jos käytit täydennystä.",
-          "tallenna": "Ketju havaintoissueen kommenttina, merkintä tiedostossa project-docs/AI-loki/ai-loki.md ja regressiotesti tiedostossa tests/test_regressio.py GitHubissa."
+          "tallenna": "Ketju havaintoissueen kommenttina, merkintä tiedostossa project-docs/AI-loki/ai-loki.md ja regressiotesti tiedostossa \"tests/test_regressio.py\" GitHubissa."
         }
       ],
       "nayta": "kortin testi issuessa (testi 24 tai rästin testi), muutos päähaarassa ja virheenkorjausketju 2 havaintoissuessa.",
@@ -697,13 +697,13 @@
           "id": "10-2",
           "teksti": "Kirjoita lataus- ja käynnistysohje",
           "valmis": "README:ssä on lataus- ja käynnistysohje, joka toimii versioille v1.0-rc1 ja v1.0.",
-          "tallenna": "README.md:n lataus- ja käynnistysohje GitHubissa."
+          "tallenna": "Tiedoston \"README.md\" lataus- ja käynnistysohje GitHubissa."
         },
         {
           "id": "10-6",
           "teksti": "Kirjoita piirtämisen ja mallintamisen ohje",
           "valmis": "Ohje kattaa piirroksen nimeämisen, mallintamisen ja viennin sovelluksen painikkeiden nimillä. Jos käyttöohje on omassa tiedostossaan, README:ssä on linkki siihen.",
-          "tallenna": "README.md ja käyttöohje GitHubissa."
+          "tallenna": "\"README.md\" ja käyttöohje GitHubissa."
         },
         {
           "id": "10-3",
@@ -721,7 +721,7 @@
           "id": "10-4",
           "teksti": "Korjaa ohje julkaisutestin perusteella",
           "valmis": "Ohje on korjattu jokaisen epäröinnin kohdalta, estävistä virheistä on havaintoissuet viikolle 11, ja palaverin sopimus on issuen kommenttina.",
-          "tallenna": "Korjattu README.md ja käyttöohje sekä korjauslista tiedostossa project-docs/julkaisutesti.md GitHubissa. Estävät virheet havaintoissueihin ja palaverin sopimus issuen kommentiksi."
+          "tallenna": "Korjattu \"README.md\" ja käyttöohje sekä korjauslista tiedostossa project-docs/julkaisutesti.md GitHubissa. Estävät virheet havaintoissueihin ja palaverin sopimus issuen kommentiksi."
         }
       ],
       "nayta": "tagi v1.0-rc1, README ja käyttöohje sekä project-docs/julkaisutesti.md.",
@@ -787,14 +787,14 @@
         {
           "id": "11-4",
           "teksti": "Kirjoita regressiotesti korjatulle virheelle",
-          "valmis": "Regressiotesti on tiedostossa tests/test_regressio.py, ja se menee läpi.",
-          "tallenna": "Regressiotesti tiedostossa tests/test_regressio.py omalla koneellasi. Se menee GitHubiin seuraavassa työvaiheessa."
+          "valmis": "Regressiotesti on tiedostossa \"tests/test_regressio.py\", ja se menee läpi.",
+          "tallenna": "Regressiotesti tiedostossa \"tests/test_regressio.py\" omalla koneellasi. Se menee GitHubiin seuraavassa työvaiheessa."
         },
         {
           "id": "11-6",
           "teksti": "Kirjaa virheenkorjausketju 3",
           "valmis": "Havaintoissuessa on virheenkorjausketjun kuusi osaa, regressiotesti on GitHubissa, ja Copilotin käyttö on kirjattu.",
-          "tallenna": "Regressiotesti tiedostossa tests/test_regressio.py ja lokimerkintä tiedostossa project-docs/AI-loki/ai-loki.md GitHubissa. Ketju havaintoissueen kommenttina."
+          "tallenna": "Regressiotesti tiedostossa \"tests/test_regressio.py\" ja lokimerkintä tiedostossa project-docs/AI-loki/ai-loki.md GitHubissa. Ketju havaintoissueen kommenttina."
         },
         {
           "id": "11-2",
@@ -934,7 +934,7 @@
           "id": "40-5",
           "teksti": "Kirjaa työkalujen versiot",
           "valmis": "README:ssä on Pythonin, pipin ja Gitin versiot GitHubissa.",
-          "tallenna": "Versiot tiedostossa README.md GitHubissa."
+          "tallenna": "Versiot tiedostossa \"README.md\" GitHubissa."
         },
         {
           "id": "40-3",
@@ -951,7 +951,7 @@
         {
           "id": "40-4",
           "teksti": "Mittaa agentin krediittikulutus",
-          "valmis": "Tiedät agenttipyynnön hinnan prosentteina tai dollareina, tai tiedät, että luku päivittyy myöhemmin. README.md on ennallaan.",
+          "valmis": "Tiedät agenttipyynnön hinnan prosentteina tai dollareina, tai tiedät, että luku päivittyy myöhemmin. \"README.md\" on ennallaan.",
           "tallenna": "Alku- ja loppulukema sekä erotus viikon kirjauksen kohtaan Mitä tein ja miten? viikon viimeisenä työpäivänä."
         }
       ],
@@ -1012,8 +1012,8 @@
         {
           "id": "41-0",
           "teksti": "Viimeistele viikon 40 dokumentit tarvittaessa",
-          "valmis": "Dokumentit ovat repositoryssa ja omalla koneellasi. Jos sinulla oli tiedosto MVP.md, sen teksti on project-docs/suunnitelma.md GitHubissa.",
-          "tallenna": "Tiedoston MVP.md teksti tiedostossa project-docs/suunnitelma.md GitHubissa."
+          "valmis": "Dokumentit ovat repositoryssa ja omalla koneellasi. Jos sinulla oli tiedosto \"MVP.md\", sen teksti on project-docs/suunnitelma.md GitHubissa.",
+          "tallenna": "Tiedoston \"MVP.md\" teksti tiedostossa project-docs/suunnitelma.md GitHubissa."
         },
         {
           "id": "41-7",
@@ -1048,7 +1048,7 @@
       ],
       "nayta": "ympäristötarkistuksen tulos, ruudulla pyörivä kuutio sekä valmiin testin ja itsetestin tulokset viikon kirjauksessa.",
       "tuotos": "Toimiva Python-ympäristö ja ruudulla pyörivä valmis kuutio.",
-      "valmis": "Ympäristötarkistus näyttää Ympäristö on kunnossa. GitHub Copilotin avulla käynnistetty valmis main.py avaa ikkunan, jossa kuutio pyörii. Valmis testi test_1_kiertokulma menee läpi ja itsetesti näyttää ITSETESTI LÄPI. Tämän viikon valmistuminen ei vaadi tehtäväkortteja, julkaisua tai koodin kirjoittamista.",
+      "valmis": "Ympäristötarkistus näyttää Ympäristö on kunnossa. GitHub Copilotin avulla käynnistetty valmis \"main.py\" avaa ikkunan, jossa kuutio pyörii. Valmis testi test_1_kiertokulma menee läpi ja itsetesti näyttää ITSETESTI LÄPI. Tämän viikon valmistuminen ei vaadi tehtäväkortteja, julkaisua tai koodin kirjoittamista.",
       "tarkistukset": [
         {
           "id": "tiedosto:project-docs/AI-loki/ai-loki.md",
@@ -1115,14 +1115,14 @@
         {
           "id": "43-1",
           "teksti": "Piirrä tuonnin testiaineisto",
-          "valmis": "Tiedostossa Testiaineisto/oma-piirros.svg on layer Vartalo, sen sisällä sisäkkäiset ryhmät Pää ja Korvat sekä kolme polkua, ja tiedosto on tallennettu.",
-          "tallenna": "Tiedosto Testiaineisto/oma-piirros.svg omalla koneellasi. Se menee GitHubiin seuraavan työvaiheen commitissa."
+          "valmis": "Tiedostossa \"Testiaineisto/oma-piirros.svg\" on layer \"Vartalo\", sen sisällä sisäkkäiset ryhmät \"Pää\" ja \"Korvat\" sekä kolme polkua, ja tiedosto on tallennettu.",
+          "tallenna": "Tiedosto \"Testiaineisto/oma-piirros.svg\" omalla koneellasi. Se menee GitHubiin seuraavan työvaiheen commitissa."
         },
         {
           "id": "43-7",
           "teksti": "Tee testien 4 ja 5 tiedostot",
-          "valmis": "Kansiossa Testiaineisto ovat oma-piirros.svg, haitallinen.svg ja ei-svg.txt, ja ne ovat GitHubissa.",
-          "tallenna": "Tiedostot Testiaineisto/oma-piirros.svg, Testiaineisto/haitallinen.svg ja Testiaineisto/ei-svg.txt repositoryssa GitHubissa."
+          "valmis": "Kansiossa \"Testiaineisto\" ovat \"oma-piirros.svg\", \"haitallinen.svg\" ja \"ei-svg.txt\", ja ne ovat GitHubissa.",
+          "tallenna": "Tiedostot \"Testiaineisto/oma-piirros.svg\", \"Testiaineisto/haitallinen.svg\" ja \"Testiaineisto/ei-svg.txt\" repositoryssa GitHubissa."
         },
         {
           "id": "43-2",
@@ -1145,14 +1145,14 @@
         {
           "id": "43-13",
           "teksti": "Kirjoita testit ennen koodia",
-          "valmis": "Testitiedostossa test_tuonti.py on kolme testiä omilla viesteilläsi, ja issuessa on rasti kohdassa Testi kirjoitettu.",
-          "tallenna": "Testitiedosto tests/test_tuonti.py omalla koneellasi. Se menee GitHubiin työvaiheessa Kirjaa tulos ja tallenna työ GitHubiin."
+          "valmis": "Testitiedostossa \"test_tuonti.py\" on kolme testiä omilla viesteilläsi, ja issuessa on rasti kohdassa Testi kirjoitettu.",
+          "tallenna": "Testitiedosto \"tests/test_tuonti.py\" omalla koneellasi. Se menee GitHubiin työvaiheessa Kirjaa tulos ja tallenna työ GitHubiin."
         },
         {
           "id": "43-14",
           "teksti": "Pyydä Copilotia tekemään tuonti",
-          "valmis": "Oma piirroksesi avautuu sovelluksessa, tiedostot tuonti.py ja ikkuna.py on tallennettu, ja issuessa on rasti kohdassa Toteutettu.",
-          "tallenna": "Tiedostot vektoripaja/tuonti.py ja vektoripaja/ikkuna.py omalla koneellasi. Ne menevät GitHubiin työvaiheessa Kirjaa tulos ja tallenna työ GitHubiin."
+          "valmis": "Oma piirroksesi avautuu sovelluksessa, tiedostot \"tuonti.py\" ja \"ikkuna.py\" on tallennettu, ja issuessa on rasti kohdassa Toteutettu.",
+          "tallenna": "Tiedostot \"vektoripaja/tuonti.py\" ja \"vektoripaja/ikkuna.py\" omalla koneellasi. Ne menevät GitHubiin työvaiheessa Kirjaa tulos ja tallenna työ GitHubiin."
         },
         {
           "id": "43-8",
@@ -1164,25 +1164,25 @@
           "id": "43-16",
           "teksti": "Kirjaa tulos ja tallenna työ GitHubiin",
           "valmis": "Tilatiedosto on päivitetty, project-docs/AI-loki/ai-loki.md merkintä on tallessa, työ on GitHubissa, ja tuonnin kortin issue on suljettu.",
-          "tallenna": "Tuonnin koodi, testit, PROJEKTIN-TILA.md ja project-docs/AI-loki/ai-loki.md GitHubissa."
+          "tallenna": "Tuonnin koodi, testit, \"PROJEKTIN-TILA.md\" ja project-docs/AI-loki/ai-loki.md GitHubissa."
         },
         {
           "id": "43-9",
           "teksti": "Kokeile, mitä SVG-kirjasto ei osaa",
           "valmis": "Olet kokeillut suorakulmiota ja tekstiä Vektoripajassa, ja havainnot ovat paperilla.",
-          "tallenna": "Kokeilutiedosto Testiaineisto/rajoitteet.svg omalla koneellasi. Se menee GitHubiin työvaiheessa Kirjaa kirjaston rajoitteet."
+          "tallenna": "Kokeilutiedosto \"Testiaineisto/rajoitteet.svg\" omalla koneellasi. Se menee GitHubiin työvaiheessa Kirjaa kirjaston rajoitteet."
         },
         {
           "id": "43-5",
           "teksti": "Kirjaa kirjaston rajoitteet",
           "valmis": "Kaksi itse kokeiltua rajoitetta on tiedostossa project-docs/kirjastot.md GitHubissa.",
-          "tallenna": "Rajoitteet tiedostossa project-docs/kirjastot.md ja kokeilutiedosto Testiaineisto/rajoitteet.svg GitHubissa."
+          "tallenna": "Rajoitteet tiedostossa project-docs/kirjastot.md ja kokeilutiedosto \"Testiaineisto/rajoitteet.svg\" GitHubissa."
         },
         {
           "id": "43-11",
           "teksti": "Kirjaa kirjastojen lisenssit README:hen",
           "valmis": "README:ssä ovat kirjastot versioineen ja lisensseineen GitHubissa.",
-          "tallenna": "Kirjastolista tiedostossa README.md GitHubissa."
+          "tallenna": "Kirjastolista tiedostossa \"README.md\" GitHubissa."
         },
         {
           "id": "43-6",
@@ -1192,7 +1192,7 @@
         }
       ],
       "nayta": "oma SVG-tiedosto, testit 3–5 tuonnin kortin issuessa, project-docs/kirjastot.md ja release v0.0.43.",
-      "tuotos": "Oma testitiedosto Inkscapesta · testit 3–5 · kansiorakenne suunnitelmassa · polut näkymässä · kaksi svgelementsin rajoitetta kirjastot.md:ssä · viikon release.",
+      "tuotos": "Oma testitiedosto Inkscapesta · testit 3–5 · kansiorakenne suunnitelmassa · polut näkymässä · kaksi svgelementsin rajoitetta tiedostossa \"kirjastot.md\" · viikon release.",
       "valmis": "Oma SVG avautuu tiedostoikkunasta, testit 3–5 menevät läpi, ja tiedostossa project-docs/kirjastot.md on kaksi svgelementsin rajoitetta omalla tiedostolla kokeiltuna.",
       "tarkistukset": [
         {
@@ -1315,14 +1315,14 @@
         {
           "id": "45-7",
           "teksti": "Kirjoita testit ennen koodia",
-          "valmis": "Testitiedostossa test_hierarkia.py on neljä testiä, ne vastaavat rajapinnan tiedostoasi, ja issuessa on rasti kohdassa Testi kirjoitettu.",
-          "tallenna": "Testitiedosto tests/test_hierarkia.py omalla koneellasi. Se menee GitHubiin työvaiheessa Kirjaa tulos ja tallenna työ GitHubiin."
+          "valmis": "Testitiedostossa \"test_hierarkia.py\" on neljä testiä, ne vastaavat rajapinnan tiedostoasi, ja issuessa on rasti kohdassa Testi kirjoitettu.",
+          "tallenna": "Testitiedosto \"tests/test_hierarkia.py\" omalla koneellasi. Se menee GitHubiin työvaiheessa Kirjaa tulos ja tallenna työ GitHubiin."
         },
         {
           "id": "45-6",
           "teksti": "Pyydä agenttia tekemään osien hierarkia",
           "valmis": "Hierarkiapaneeli näyttää oman piirroksesi osat sisennettyinä, testitiedosto on ennallaan, ja issuessa on rasti kohdassa Toteutettu.",
-          "tallenna": "Tiedostot vektoripaja/hierarkia.py ja vektoripaja/ikkuna.py omalla koneellasi. Ne menevät GitHubiin työvaiheessa Kirjaa tulos ja tallenna työ GitHubiin. Krediittiluvut paperilla viikon kirjausta varten."
+          "tallenna": "Tiedostot \"vektoripaja/hierarkia.py\" ja \"vektoripaja/ikkuna.py\" omalla koneellasi. Ne menevät GitHubiin työvaiheessa Kirjaa tulos ja tallenna työ GitHubiin. Krediittiluvut paperilla viikon kirjausta varten."
         },
         {
           "id": "45-8",
@@ -1334,7 +1334,7 @@
           "id": "45-9",
           "teksti": "Kirjaa tulos ja tallenna työ GitHubiin",
           "valmis": "Tilatiedosto on päivitetty, project-docs/AI-loki/ai-loki.md merkintä on tallessa, ja työ on GitHubissa. Valmiin kortin issue on suljettu, ja keskeneräinen kortti on auki.",
-          "tallenna": "Hierarkian koodi, testit, PROJEKTIN-TILA.md ja project-docs/AI-loki/ai-loki.md GitHubissa."
+          "tallenna": "Hierarkian koodi, testit, \"PROJEKTIN-TILA.md\" ja project-docs/AI-loki/ai-loki.md GitHubissa."
         },
         {
           "id": "45-3",
@@ -1419,8 +1419,8 @@
         {
           "id": "47-6",
           "teksti": "Piirrä maljakon puoliprofiili",
-          "valmis": "Profiili Testiaineisto/maljakko.svg on piirretty ja nimetty, ja se on GitHubissa yhdessä tiedoston vaara-puoli.svg kanssa.",
-          "tallenna": "Profiili Testiaineisto/maljakko.svg ja testiaineisto Testiaineisto/vaara-puoli.svg GitHubissa."
+          "valmis": "Profiili \"Testiaineisto/maljakko.svg\" on piirretty ja nimetty, ja se on GitHubissa yhdessä tiedoston \"vaara-puoli.svg\" kanssa.",
+          "tallenna": "Profiili \"Testiaineisto/maljakko.svg\" ja testiaineisto \"Testiaineisto/vaara-puoli.svg\" GitHubissa."
         },
         {
           "id": "47-2",
@@ -1443,14 +1443,14 @@
         {
           "id": "47-10",
           "teksti": "Kirjoita testit ennen koodia",
-          "valmis": "Testitiedostossa test_revolve.py ovat valintasi mukaiset testit 9–11, ja issuessa on rasti kohdassa Testi kirjoitettu.",
-          "tallenna": "Testitiedosto tests/test_revolve.py omalla koneellasi. Se menee GitHubiin työvaiheessa Kirjaa tulos ja tallenna työ GitHubiin."
+          "valmis": "Testitiedostossa \"test_revolve.py\" ovat valintasi mukaiset testit 9–11, ja issuessa on rasti kohdassa Testi kirjoitettu.",
+          "tallenna": "Testitiedosto \"tests/test_revolve.py\" omalla koneellasi. Se menee GitHubiin työvaiheessa Kirjaa tulos ja tallenna työ GitHubiin."
         },
         {
           "id": "47-8",
           "teksti": "Pyydä agenttia tekemään pyörähdyskappale",
           "valmis": "Maljakko pyörähtää kappaleeksi oikein päin, testitiedosto on ennallaan, ja issuessa on rasti kohdassa Toteutettu.",
-          "tallenna": "Tiedostot vektoripaja/revolve.py ja vektoripaja/ikkuna.py omalla koneellasi. Ne menevät GitHubiin työvaiheessa Kirjaa tulos ja tallenna työ GitHubiin. Krediittiluvut paperilla viikon kirjausta varten."
+          "tallenna": "Tiedostot \"vektoripaja/revolve.py\" ja \"vektoripaja/ikkuna.py\" omalla koneellasi. Ne menevät GitHubiin työvaiheessa Kirjaa tulos ja tallenna työ GitHubiin. Krediittiluvut paperilla viikon kirjausta varten."
         },
         {
           "id": "47-11",
@@ -1462,7 +1462,7 @@
           "id": "47-12",
           "teksti": "Kirjaa tulos ja tallenna työ GitHubiin",
           "valmis": "Tilatiedosto on päivitetty, project-docs/AI-loki/ai-loki.md merkinnät ovat tallessa, ja työ on GitHubissa. Valmiin kortin issue on suljettu, ja keskeneräinen kortti on auki.",
-          "tallenna": "Pyörähdyskappaleen koodi, testit, PROJEKTIN-TILA.md ja project-docs/AI-loki/ai-loki.md GitHubissa."
+          "tallenna": "Pyörähdyskappaleen koodi, testit, \"PROJEKTIN-TILA.md\" ja project-docs/AI-loki/ai-loki.md GitHubissa."
         },
         {
           "id": "47-5",
@@ -1472,8 +1472,8 @@
         }
       ],
       "nayta": "rajapinta project-docs/Rajapinnat/Profiilin_muunnos.md, testit 9–11 tiedostossa `tests/test_revolve.py`, profiili `Testiaineisto/maljakko.svg`, pyörähdyskappale releasessa v0.0.47 sekä sovittu valintatapa ja hyväksymiskriteeri project-docs/suunnitelma.md.",
-      "tuotos": "Sovittu valintatapa ja akselin väärän puolen hyväksymiskriteeri project-docs/suunnitelma.md · profiili maljakko.svg · rajapinta ja testit 9–11 · pyörähdyskappale ja segmenttisäädin agentin tekemänä · viikon release.",
-      "valmis": "Oma maljakkosi pyörähtää kappaleeksi oikein päin, säädin Segmentit muuttaa kappaletta välillä 3–32, näkymää voi kiertää hiirellä, testit 9–11 menevät läpi, ja tiedostosta vaara-puoli.svg tulee hyväksymiskriteerisi viesti.",
+      "tuotos": "Sovittu valintatapa ja akselin väärän puolen hyväksymiskriteeri project-docs/suunnitelma.md · profiili \"maljakko.svg\" · rajapinta ja testit 9–11 · pyörähdyskappale ja segmenttisäädin agentin tekemänä · viikon release.",
+      "valmis": "Oma maljakkosi pyörähtää kappaleeksi oikein päin, säädin Segmentit muuttaa kappaletta välillä 3–32, näkymää voi kiertää hiirellä, testit 9–11 menevät läpi, ja tiedostosta \"vaara-puoli.svg\" tulee hyväksymiskriteerisi viesti.",
       "tarkistukset": [
         {
           "id": "tiedosto:project-docs/Rajapinnat/Profiilin_muunnos.md",
@@ -1565,7 +1565,7 @@
           "id": "48-6",
           "teksti": "Tallenna keskeneräinen kamera, jos se siirtyy",
           "valmis": "Keskeneräinen kamera ja tilatiedoston rivi ovat GitHubissa, ja kameran kortin issue on auki. Jos kamera valmistui, tämän työvaiheen osatehtävät on rastitettu tekemättä.",
-          "tallenna": "Keskeneräinen kameran koodi ja tilatiedosto PROJEKTIN-TILA.md GitHubiin."
+          "tallenna": "Keskeneräinen kameran koodi ja tilatiedosto \"PROJEKTIN-TILA.md\" GitHubiin."
         },
         {
           "id": "48-5",
@@ -1626,7 +1626,7 @@
           "id": "49-4",
           "teksti": "Määrittele osien muokkaamisen testi",
           "valmis": "Testin 15 syöte ja odotettu tulos sekä maailmamuunnoksen rajapinta ja import-rivit ovat paperilla ennen toteutusta.",
-          "tallenna": "Odotettu tulos ja maailmamuunnoksen rajapinta kortin issueen, kun suunnittelet osien muokkaamisen. Kirjoitat testin kansioon tests työsyklin kohdassa 3a."
+          "tallenna": "Odotettu tulos ja maailmamuunnoksen rajapinta kortin issueen, kun suunnittelet osien muokkaamisen. Kirjoitat testin kansioon \"tests\" työsyklin kohdassa 3a."
         },
         {
           "id": "49-2",
@@ -1649,8 +1649,8 @@
         {
           "id": "49-7",
           "teksti": "Kirjaa pikanäppäimet README:hen",
-          "valmis": "Pikanäppäimet ovat tiedostossa README.md GitHubissa.",
-          "tallenna": "Pikanäppäimet tiedostossa README.md GitHubissa."
+          "valmis": "Pikanäppäimet ovat tiedostossa \"README.md\" GitHubissa.",
+          "tallenna": "Pikanäppäimet tiedostossa \"README.md\" GitHubissa."
         },
         {
           "id": "49-3",
@@ -1790,12 +1790,12 @@
           "id": "51-10",
           "teksti": "Tallenna tilanne ennen joululomaa",
           "valmis": "Seuraavana-kohdassa ovat viennin kortin issuen numero ja korjattava virhe, ja kaikki työ on GitHubissa ennen lomaa.",
-          "tallenna": "Päivitetty PROJEKTIN-TILA.md repositoryn juuressa GitHubissa."
+          "tallenna": "Päivitetty \"PROJEKTIN-TILA.md\" repositoryn juuressa GitHubissa."
         }
       ],
       "nayta": "objektijaon rajapinta project-docs/Rajapinnat/Objektijako.md, viennin kortin issue testien 19–20 odotettuine tuloksineen ja tilatiedoston Seuraavana-kohta.",
       "tuotos": "Objektijaon rajapinta · testien 19–20 odotetut tulokset · viennin kortin issue · valittu havaintoissue · tilatiedoston Seuraavana-kohta.",
-      "valmis": "Objektijaon rajapinta on kansiossa Rajapinnat, viennin kortin issuessa ovat testien 19 ja 20 odotetut tulokset, korjattava havaintoissue on valittu tai vikatehtävä pyydetty, ja tilatiedostossa lukee, mistä jatkat viikolla 2.",
+      "valmis": "Objektijaon rajapinta on kansiossa \"Rajapinnat\", viennin kortin issuessa ovat testien 19 ja 20 odotetut tulokset, korjattava havaintoissue on valittu tai vikatehtävä pyydetty, ja tilatiedostossa lukee, mistä jatkat viikolla 2.",
       "tarkistukset": [
         {
           "id": "tiedosto:project-docs/Rajapinnat/Objektijako.md",

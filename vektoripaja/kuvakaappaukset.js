@@ -12,11 +12,11 @@ window.NAYTTOPROJEKTI.kuvakaappaukset = [
   "kohdat": [
    {
     "n": 1,
-    "teksti": "Avaa ladattu tiedosto. Sen nimen alussa on python-3.13 ja lopussa amd64.exe."
+    "teksti": "Avaa ladattu tiedosto. Sen nimen alussa on \"python-3.13\" ja lopussa \"amd64.exe\"."
    },
    {
     "n": 2,
-    "teksti": "Rastita alareunasta Add python.exe to PATH. Ilman rastia komento `python` ei toimi terminaalissa.",
+    "teksti": "Rastita alareunasta Add \"python.exe\" to PATH. Ilman rastia komento `python` ei toimi terminaalissa.",
     "alue": [
      5,
      90,
@@ -324,7 +324,7 @@ window.NAYTTOPROJEKTI.kuvakaappaukset = [
    },
    {
     "n": 2,
-    "teksti": "Jos VS Code kysyy testikehystä eli testien ajotyökalua, valitse pytest. Valitse sitten kansio tests."
+    "teksti": "Jos VS Code kysyy testikehystä eli testien ajotyökalua, valitse pytest. Valitse sitten kansio \"tests\"."
    },
    {
     "n": 3,
@@ -376,7 +376,7 @@ window.NAYTTOPROJEKTI.kuvakaappaukset = [
   "tiedosto": "assets/kuvakaappaukset/github-release-lataus.png",
   "leveys": 1190,
   "korkeus": 287,
-  "alt": "GitHub CLI:n julkaisun Windows-lataukset, ZIP- ja MSI-tiedostoja. Nimet eroavat Vektoripajan windows.zip-paketista.",
+  "alt": "GitHub CLI:n julkaisun Windows-lataukset, ZIP- ja MSI-tiedostoja. Nimet eroavat Vektoripajan \"windows.zip\"-paketista.",
   "kohdat": [
    {
     "n": 1,
@@ -388,7 +388,7 @@ window.NAYTTOPROJEKTI.kuvakaappaukset = [
    },
    {
     "n": 3,
-    "teksti": "Valitse kohdasta Assets tiedosto, jonka nimen lopussa on windows.zip. Lataus alkaa."
+    "teksti": "Valitse kohdasta Assets tiedosto, jonka nimen lopussa on \"windows.zip\". Lataus alkaa."
    }
   ],
   "pvm": "2026-09-30",
@@ -430,7 +430,7 @@ window.NAYTTOPROJEKTI.kuvakaappaukset = [
    },
    {
     "n": 4,
-    "teksti": "Avaa purettu kansio. Sen sisällä on kansio Vektoripaja. Siellä ovat Vektoripaja.exe, LUE_MINUT.txt ja kansio _internal."
+    "teksti": "Avaa purettu kansio. Sen sisällä on kansio \"Vektoripaja\". Siellä ovat \"Vektoripaja.exe\", \"LUE_MINUT.txt\" ja kansio \"_internal\"."
    }
   ],
   "pvm": "2026-09-30",
@@ -444,11 +444,11 @@ window.NAYTTOPROJEKTI.kuvakaappaukset = [
   "tiedosto": "assets/kuvakaappaukset/windows-smartscreen.png",
   "leveys": 1354,
   "korkeus": 624,
-  "alt": "Kaksi englanninkielistä SmartScreen-näkymää: More info ja sen jälkeen Run anyway. Esimerkin tiedosto on install.bat.",
+  "alt": "Kaksi englanninkielistä SmartScreen-näkymää: More info ja sen jälkeen Run anyway. Esimerkin tiedosto on \"install.bat\".",
   "kohdat": [
    {
     "n": 1,
-    "teksti": "Kaksoisnapsauta tiedostoa Vektoripaja.exe. Jos näet sinisen SmartScreen-varoituksen, jatka tästä."
+    "teksti": "Kaksoisnapsauta tiedostoa \"Vektoripaja.exe\". Jos näet sinisen SmartScreen-varoituksen, jatka tästä."
    },
    {
     "n": 2,
@@ -520,7 +520,7 @@ window.NAYTTOPROJEKTI.kuvakaappaukset = [
   "tiedosto": "assets/kuvakaappaukset/copilot-tilatiedosto.png",
   "leveys": 1295,
   "korkeus": 793,
-  "alt": "Microsoft 365 Copilotin kolme esimerkkinäkymää: tyhjän viestikentän plus-painike, liitevalikon Upload images and files sekä viestikenttään liitetty HSDE Syllabus - Demo.docx. Projektin oma liite on PROJEKTIN-TILA.md.",
+  "alt": "Microsoft 365 Copilotin kolme esimerkkinäkymää: tyhjän viestikentän plus-painike, liitevalikon Upload images and files sekä viestikenttään liitetty HSDE Syllabus - \"Demo.docx\". Projektin oma liite on \"PROJEKTIN-TILA.md\".",
   "kohdat": [
    {
     "n": 1,
@@ -544,7 +544,7 @@ window.NAYTTOPROJEKTI.kuvakaappaukset = [
    },
    {
     "n": 3,
-    "teksti": "Avautuu tiedostoikkuna. Kopioi ensin VS Codessa tiedoston polku: napsauta Explorerissa tiedostoa PROJEKTIN-TILA.md hiiren oikealla painikkeella ja valitse Copy Path. Palaa tiedostoikkunaan. Napsauta kenttää Tiedostonimi (File name), paina Ctrl+V ja valitse Avaa (Open)."
+    "teksti": "Avautuu tiedostoikkuna. Kopioi ensin VS Codessa tiedoston polku: napsauta Explorerissa tiedostoa \"PROJEKTIN-TILA.md\" hiiren oikealla painikkeella ja valitse Copy Path. Palaa tiedostoikkunaan. Napsauta kenttää Tiedostonimi (File name), paina Ctrl+V ja valitse Avaa (Open)."
    },
    {
     "n": 4,
@@ -778,11 +778,11 @@ window.NAYTTOPROJEKTI.kuvakaappaukset = [
    },
    {
     "n": 2,
-    "teksti": "Kaksoisnapsauta layerin nimeä, kirjoita nimi, esimerkiksi Vartalo, ja paina Enter. Kirjoita nimi samoin isoin ja pienin kirjaimin kuin työvaiheessa."
+    "teksti": "Kaksoisnapsauta layerin nimeä, kirjoita nimi, esimerkiksi \"Vartalo\", ja paina Enter. Kirjoita nimi samoin isoin ja pienin kirjaimin kuin työvaiheessa."
    },
    {
     "n": 3,
-    "teksti": "Avaa XML Editor näppäimillä Ctrl+Shift+X. Napsauta puussa layerin riviä, jossa lukee layer1. Napsauta attribuuttien listassa id-rivin arvoa, kirjoita sama nimi ja paina Enter."
+    "teksti": "Avaa XML Editor näppäimillä Ctrl+Shift+X. Napsauta puussa layerin riviä, jossa lukee \"layer1\". Napsauta attribuuttien listassa id-rivin arvoa, kirjoita sama nimi ja paina Enter."
    },
    {
     "n": 4,
@@ -790,7 +790,7 @@ window.NAYTTOPROJEKTI.kuvakaappaukset = [
    },
    {
     "n": 5,
-    "teksti": "Paina Ctrl+Shift+X. Uusi ryhmä on XML Editorissa valmiiksi valittuna. Napsauta id-rivin arvoa, kirjoita ryhmän nimi ja paina Enter. Plain SVG -tiedostoon tallentuu vain tunnus."
+    "teksti": "Paina Ctrl+Shift+X. Uusi ryhmä on XML Editorissa valmiiksi valittuna. Napsauta id-rivin arvoa, kirjoita ryhmän nimi ja paina Enter. Sovellus lukee nimen tunnuksesta eikä Layers and Objects -paneelissa näkyvästä nimestä."
    },
    {
     "n": 6,
