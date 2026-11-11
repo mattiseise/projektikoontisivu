@@ -6,8 +6,8 @@
   "paivaton": false,
   "generoitu": "2026-11-11",
   "lahde": {
-    "sisalto.js": "b54d45053201d811",
-    "index.html": "ac0df367dfe65303"
+    "sisalto.js": "98a457bf4d25e871",
+    "index.html": "2d4846e8a3e41430"
   },
   "viikot": [
     40,
@@ -1304,7 +1304,7 @@
           "id": "45-1",
           "teksti": "Määrittele, mitä piirroksen ryhmistä tulee",
           "valmis": "Rajapinta ja testien 6–8 odotetut tulokset ovat tiedostossa project-docs/Rajapinnat/ GitHubissa.",
-          "tallenna": "Rajapinta ja odotetut tulokset tiedostossa project-docs/Rajapinnat/Hierarkian_muunnos.md GitHubissa."
+          "tallenna": "Rajapinta ja odotetut tulokset tiedostossa project-docs/Rajapinnat/Hierarkian_muunnos.md GitHubissa. Testiaineisto tiedostossa \"Testiaineisto/ryhmat.svg\" GitHubissa."
         },
         {
           "id": "45-2",
@@ -1369,6 +1369,12 @@
           "id": "tiedosto:tests/test_hierarkia.py",
           "tyyppi": "tiedosto",
           "polku": "tests/test_hierarkia.py",
+          "lahde": "auto"
+        },
+        {
+          "id": "tiedosto:Testiaineisto/ryhmat.svg",
+          "tyyppi": "tiedosto",
+          "polku": "Testiaineisto/ryhmat.svg",
           "lahde": "auto"
         },
         {
