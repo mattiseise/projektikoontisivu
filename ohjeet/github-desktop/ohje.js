@@ -11,7 +11,7 @@ const projektit = {
   noppakauppa: { nimi: "NoppaKauppa", client: "frontend", server: "backend" },
   valokaari: { nimi: "Valokaari", client: "client", server: "server" },
   kahvilakoodi: { nimi: "KahvilaKoodi", tyyppi: "unity",
-    paluu: "https://mattiseise.github.io/pelinayttoprojektit/#week-43", paluuTeksti: "Palaa: KahvilaKoodi · viikko 43" },
+    paluu: "https://mattiseise.github.io/pelinayttoprojektit/#week-48", paluuTeksti: "Palaa: KahvilaKoodi · viikko 48" },
   bittibiomi: { nimi: "BittiBiomi", tyyppi: "minecraft",
     paluu: "https://mattiseise.github.io/bittibiomi/#week-34", paluuTeksti: "Palaa: BittiBiomi · viikko 34" },
   protopaja: { nimi: "ProtoPaja", tyyppi: "unity" },

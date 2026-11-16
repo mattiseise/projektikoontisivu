@@ -36,8 +36,8 @@ window.PROJEKTIT = [
     "tila": "kaynnissa",
     "kuvaus": "Koulun kahvilapeli Unitylla: asiakkaat tilaavat, pelaaja toimittaa, vaikeus kasvaa ja tulokset tallentuvat. Peli julkaistaan selaimessa pelattavana WebGL-versiona, jota kuka tahansa voi kokeilla.",
     "lukuvuosi": "2026–27",
-    "viikot": "vko 43–7",
-    "kesto": "15 työviikkoa",
+    "viikot": "vko 48–4",
+    "kesto": "10 työviikkoa",
     "ryhma": "",
     "tekniikat": [
       "Unity",
@@ -53,7 +53,7 @@ window.PROJEKTIT = [
     "tutkinto": "Tieto- ja viestintätekniikan perustutkinto",
     "diaarinumero": "OPH-4948-2021",
     "vaatimuksia": 32,
-    "luovutus": "pe 4.12.2026",
+    "luovutus": "pe 29.1.2027",
     "tutkinnonOsat": [
       {
         "nimi": "Ohjelmointi",
